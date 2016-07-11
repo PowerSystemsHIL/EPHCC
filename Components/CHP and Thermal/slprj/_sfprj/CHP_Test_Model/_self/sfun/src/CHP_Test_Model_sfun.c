@@ -61,10 +61,10 @@ unsigned int sf_CHP_Test_Model_process_check_sum_call( int nlhs, mxArray * plhs[
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(750095122U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(798780673U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2717820285U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2598082665U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2795152032U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(425317954U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(474541671U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4062060118U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
