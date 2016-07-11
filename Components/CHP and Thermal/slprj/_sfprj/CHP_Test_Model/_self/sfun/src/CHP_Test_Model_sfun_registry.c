@@ -11,10 +11,10 @@ unsigned int sf_process_check_sum_call( int nlhs, mxArray * plhs[], int nrhs,
 {
   extern unsigned int sf_CHP_Test_Model_process_check_sum_call( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
-  extern unsigned int sf_breaker_lib_process_check_sum_call( int nlhs, mxArray *
-    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_modbus_lib_process_check_sum_call( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
+  extern unsigned int sf_breaker_lib_process_check_sum_call( int nlhs, mxArray *
+    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_ANSI_F25_lib_process_check_sum_call( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_bkrCtrl_lib_process_check_sum_call( int nlhs,
@@ -23,9 +23,9 @@ unsigned int sf_process_check_sum_call( int nlhs, mxArray * plhs[], int nrhs,
     nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   if (sf_CHP_Test_Model_process_check_sum_call(nlhs,plhs,nrhs,prhs))
     return 1;
-  if (sf_breaker_lib_process_check_sum_call(nlhs,plhs,nrhs,prhs))
-    return 1;
   if (sf_relay_modbus_lib_process_check_sum_call(nlhs,plhs,nrhs,prhs))
+    return 1;
+  if (sf_breaker_lib_process_check_sum_call(nlhs,plhs,nrhs,prhs))
     return 1;
   if (sf_relay_ANSI_F25_lib_process_check_sum_call(nlhs,plhs,nrhs,prhs))
     return 1;
@@ -41,10 +41,10 @@ unsigned int sf_process_autoinheritance_call( int nlhs, mxArray * plhs[], int
 {
   extern unsigned int sf_CHP_Test_Model_autoinheritance_info( int nlhs, mxArray *
     plhs[], int nrhs, const mxArray * prhs[] );
-  extern unsigned int sf_breaker_lib_autoinheritance_info( int nlhs, mxArray *
-    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_modbus_lib_autoinheritance_info( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
+  extern unsigned int sf_breaker_lib_autoinheritance_info( int nlhs, mxArray *
+    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_ANSI_F25_lib_autoinheritance_info( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_bkrCtrl_lib_autoinheritance_info( int nlhs,
@@ -74,15 +74,6 @@ unsigned int sf_process_autoinheritance_call( int nlhs, mxArray * plhs[], int
     return sf_CHP_Test_Model_autoinheritance_info(nlhs,plhs,3,newRhs);
   }
 
-  if (strcmp(machineName, "breaker_lib") == 0) {
-    const mxArray *newRhs[3] = { NULL, NULL, NULL };
-
-    newRhs[0] = prhs[0];
-    newRhs[1] = prhs[2];
-    newRhs[2] = prhs[3];
-    return sf_breaker_lib_autoinheritance_info(nlhs,plhs,3,newRhs);
-  }
-
   if (strcmp(machineName, "relay_modbus_lib") == 0) {
     const mxArray *newRhs[3] = { NULL, NULL, NULL };
 
@@ -90,6 +81,15 @@ unsigned int sf_process_autoinheritance_call( int nlhs, mxArray * plhs[], int
     newRhs[1] = prhs[2];
     newRhs[2] = prhs[3];
     return sf_relay_modbus_lib_autoinheritance_info(nlhs,plhs,3,newRhs);
+  }
+
+  if (strcmp(machineName, "breaker_lib") == 0) {
+    const mxArray *newRhs[3] = { NULL, NULL, NULL };
+
+    newRhs[0] = prhs[0];
+    newRhs[1] = prhs[2];
+    newRhs[2] = prhs[3];
+    return sf_breaker_lib_autoinheritance_info(nlhs,plhs,3,newRhs);
   }
 
   if (strcmp(machineName, "relay_ANSI_F25_lib") == 0) {
@@ -127,10 +127,10 @@ unsigned int sf_process_get_third_party_uses_info_call( int nlhs, mxArray *
 {
   extern unsigned int sf_CHP_Test_Model_third_party_uses_info( int nlhs, mxArray
     * plhs[], int nrhs, const mxArray * prhs[] );
-  extern unsigned int sf_breaker_lib_third_party_uses_info( int nlhs, mxArray *
-    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_modbus_lib_third_party_uses_info( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
+  extern unsigned int sf_breaker_lib_third_party_uses_info( int nlhs, mxArray *
+    plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_ANSI_F25_lib_third_party_uses_info( int nlhs,
     mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_bkrCtrl_lib_third_party_uses_info( int nlhs,
@@ -160,15 +160,6 @@ unsigned int sf_process_get_third_party_uses_info_call( int nlhs, mxArray *
     return sf_CHP_Test_Model_third_party_uses_info(nlhs,plhs,3,newRhs);
   }
 
-  if (strcmp(machineName, "breaker_lib") == 0) {
-    const mxArray *newRhs[3] = { NULL, NULL, NULL };
-
-    newRhs[0] = prhs[0];
-    newRhs[1] = prhs[2];
-    newRhs[2] = prhs[3];
-    return sf_breaker_lib_third_party_uses_info(nlhs,plhs,3,newRhs);
-  }
-
   if (strcmp(machineName, "relay_modbus_lib") == 0) {
     const mxArray *newRhs[3] = { NULL, NULL, NULL };
 
@@ -176,6 +167,15 @@ unsigned int sf_process_get_third_party_uses_info_call( int nlhs, mxArray *
     newRhs[1] = prhs[2];
     newRhs[2] = prhs[3];
     return sf_relay_modbus_lib_third_party_uses_info(nlhs,plhs,3,newRhs);
+  }
+
+  if (strcmp(machineName, "breaker_lib") == 0) {
+    const mxArray *newRhs[3] = { NULL, NULL, NULL };
+
+    newRhs[0] = prhs[0];
+    newRhs[1] = prhs[2];
+    newRhs[2] = prhs[3];
+    return sf_breaker_lib_third_party_uses_info(nlhs,plhs,3,newRhs);
   }
 
   if (strcmp(machineName, "relay_ANSI_F25_lib") == 0) {
@@ -213,10 +213,10 @@ unsigned int sf_process_get_eml_resolved_functions_info_call( int nlhs, mxArray 
 {
   extern unsigned int sf_CHP_Test_Model_get_eml_resolved_functions_info( int
     nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[] );
-  extern unsigned int sf_breaker_lib_get_eml_resolved_functions_info( int nlhs,
-    mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_modbus_lib_get_eml_resolved_functions_info( int
     nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[] );
+  extern unsigned int sf_breaker_lib_get_eml_resolved_functions_info( int nlhs,
+    mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_ANSI_F25_lib_get_eml_resolved_functions_info( int
     nlhs, mxArray * plhs[], int nrhs, const mxArray * prhs[] );
   extern unsigned int sf_relay_bkrCtrl_lib_get_eml_resolved_functions_info( int
@@ -246,14 +246,6 @@ unsigned int sf_process_get_eml_resolved_functions_info_call( int nlhs, mxArray 
     return sf_CHP_Test_Model_get_eml_resolved_functions_info(nlhs,plhs,2,newRhs);
   }
 
-  if (strcmp(machineName, "breaker_lib") == 0) {
-    const mxArray *newRhs[2] = { NULL, NULL };
-
-    newRhs[0] = prhs[0];
-    newRhs[1] = prhs[2];
-    return sf_breaker_lib_get_eml_resolved_functions_info(nlhs,plhs,2,newRhs);
-  }
-
   if (strcmp(machineName, "relay_modbus_lib") == 0) {
     const mxArray *newRhs[2] = { NULL, NULL };
 
@@ -261,6 +253,14 @@ unsigned int sf_process_get_eml_resolved_functions_info_call( int nlhs, mxArray 
     newRhs[1] = prhs[2];
     return sf_relay_modbus_lib_get_eml_resolved_functions_info(nlhs,plhs,2,
       newRhs);
+  }
+
+  if (strcmp(machineName, "breaker_lib") == 0) {
+    const mxArray *newRhs[2] = { NULL, NULL };
+
+    newRhs[0] = prhs[0];
+    newRhs[1] = prhs[2];
+    return sf_breaker_lib_get_eml_resolved_functions_info(nlhs,plhs,2,newRhs);
   }
 
   if (strcmp(machineName, "relay_ANSI_F25_lib") == 0) {
@@ -347,10 +347,10 @@ unsigned int sf_machine_global_initializer_called(void)
 
 extern unsigned int sf_CHP_Test_Model_method_dispatcher(SimStruct *S, unsigned
   int chartFileNumber, const char* specsCksum, int_T method, void *data);
-extern unsigned int sf_breaker_lib_method_dispatcher(SimStruct *S, unsigned int
-  chartFileNumber, const char* specsCksum, int_T method, void *data);
 extern unsigned int sf_relay_modbus_lib_method_dispatcher(SimStruct *S, unsigned
   int chartFileNumber, const char* specsCksum, int_T method, void *data);
+extern unsigned int sf_breaker_lib_method_dispatcher(SimStruct *S, unsigned int
+  chartFileNumber, const char* specsCksum, int_T method, void *data);
 extern unsigned int sf_relay_ANSI_F25_lib_method_dispatcher(SimStruct *S,
   unsigned int chartFileNumber, const char* specsCksum, int_T method, void *data);
 extern unsigned int sf_relay_bkrCtrl_lib_method_dispatcher(SimStruct *S,
@@ -366,13 +366,13 @@ unsigned int sf_machine_global_method_dispatcher(SimStruct *simstructPtr, const
             specsCksum,method,data));
   }
 
-  if (!strcmp(machineName,"breaker_lib")) {
-    return(sf_breaker_lib_method_dispatcher(simstructPtr,chartFileNumber,
+  if (!strcmp(machineName,"relay_modbus_lib")) {
+    return(sf_relay_modbus_lib_method_dispatcher(simstructPtr,chartFileNumber,
             specsCksum,method,data));
   }
 
-  if (!strcmp(machineName,"relay_modbus_lib")) {
-    return(sf_relay_modbus_lib_method_dispatcher(simstructPtr,chartFileNumber,
+  if (!strcmp(machineName,"breaker_lib")) {
+    return(sf_breaker_lib_method_dispatcher(simstructPtr,chartFileNumber,
             specsCksum,method,data));
   }
 
@@ -395,8 +395,8 @@ unsigned int sf_machine_global_method_dispatcher(SimStruct *simstructPtr, const
 }
 
 extern void CHP_Test_Model_terminator(void);
-extern void breaker_lib_terminator(void);
 extern void relay_modbus_lib_terminator(void);
+extern void breaker_lib_terminator(void);
 extern void relay_ANSI_F25_lib_terminator(void);
 extern void relay_bkrCtrl_lib_terminator(void);
 extern void relay_ANSI_functions_lib_terminator(void);
@@ -405,8 +405,8 @@ void sf_machine_global_terminator(void)
   sfGlobalMdlStartCallCounts--;
   if (sfGlobalMdlStartCallCounts == 0) {
     CHP_Test_Model_terminator();
-    breaker_lib_terminator();
     relay_modbus_lib_terminator();
+    breaker_lib_terminator();
     relay_ANSI_F25_lib_terminator();
     relay_bkrCtrl_lib_terminator();
     relay_ANSI_functions_lib_terminator();
@@ -418,20 +418,20 @@ void sf_machine_global_terminator(void)
 }
 
 extern void CHP_Test_Model_initializer(void);
-extern void breaker_lib_initializer(void);
 extern void relay_modbus_lib_initializer(void);
+extern void breaker_lib_initializer(void);
 extern void relay_ANSI_F25_lib_initializer(void);
 extern void relay_bkrCtrl_lib_initializer(void);
 extern void relay_ANSI_functions_lib_initializer(void);
 extern void CHP_Test_Model_register_exported_symbols(SimStruct* S);
-extern void breaker_lib_register_exported_symbols(SimStruct* S);
 extern void relay_modbus_lib_register_exported_symbols(SimStruct* S);
+extern void breaker_lib_register_exported_symbols(SimStruct* S);
 extern void relay_ANSI_F25_lib_register_exported_symbols(SimStruct* S);
 extern void relay_bkrCtrl_lib_register_exported_symbols(SimStruct* S);
 extern void relay_ANSI_functions_lib_register_exported_symbols(SimStruct* S);
 extern void CHP_Test_Model_debug_initialize(struct SfDebugInstanceStruct*);
-extern void breaker_lib_debug_initialize(struct SfDebugInstanceStruct*);
 extern void relay_modbus_lib_debug_initialize(struct SfDebugInstanceStruct*);
+extern void breaker_lib_debug_initialize(struct SfDebugInstanceStruct*);
 extern void relay_ANSI_F25_lib_debug_initialize(struct SfDebugInstanceStruct*);
 extern void relay_bkrCtrl_lib_debug_initialize(struct SfDebugInstanceStruct*);
 extern void relay_ANSI_functions_lib_debug_initialize(struct
@@ -439,8 +439,8 @@ extern void relay_ANSI_functions_lib_debug_initialize(struct
 void sf_register_machine_exported_symbols(SimStruct* S)
 {
   CHP_Test_Model_register_exported_symbols(S);
-  breaker_lib_register_exported_symbols(S);
   relay_modbus_lib_register_exported_symbols(S);
+  breaker_lib_register_exported_symbols(S);
   relay_ANSI_F25_lib_register_exported_symbols(S);
   relay_bkrCtrl_lib_register_exported_symbols(S);
   relay_ANSI_functions_lib_register_exported_symbols(S);
@@ -467,15 +467,15 @@ void sf_machine_global_initializer(SimStruct* S)
 
     CHP_Test_Model_initializer();
     if (!simModeIsRTWGen) {
-      breaker_lib_debug_initialize(sfGlobalDebugInstanceStruct);
-    }
-
-    breaker_lib_initializer();
-    if (!simModeIsRTWGen) {
       relay_modbus_lib_debug_initialize(sfGlobalDebugInstanceStruct);
     }
 
     relay_modbus_lib_initializer();
+    if (!simModeIsRTWGen) {
+      breaker_lib_debug_initialize(sfGlobalDebugInstanceStruct);
+    }
+
+    breaker_lib_initializer();
     if (!simModeIsRTWGen) {
       relay_ANSI_F25_lib_debug_initialize(sfGlobalDebugInstanceStruct);
     }
