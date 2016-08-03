@@ -9,7 +9,7 @@
 % The settings are arrange in increasing order
 % reads relay settings from an excel file
 
-addpath('relay settings', 'relays configuration files');
+%addpath('relay settings', 'relays configuration files');
 
 
 F1 = xlsread('F1_relay_banshee.xlsx');

@@ -9,6 +9,10 @@ v = ver('MATLAB');
 if(~strcmp(v.Version,'8.1'))
     warning('This project must be run in Matlab 2013a.  Any changes committed will cause problems for others.');
 end
+a = computer('arch');
+if(~strcmp(a,'win32'))
+    warning('This project must be run in from 32-bit matlab for Opal support.');
+end
 
 % Use Simulink Project API to get the current project:
 p = slproject.getCurrentProject;
