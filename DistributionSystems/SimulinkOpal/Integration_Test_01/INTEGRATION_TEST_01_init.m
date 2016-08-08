@@ -23,12 +23,14 @@
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
+SIM_HIL = 0; % control mode for NG_CHP [1: Woodward, 0: manual/simulation]
 
 
 %% read relay settings
 % reads-in all relay settings for the system and initializes vectors to
 % hold these settings that will be called from the software relays
 relay_settings_init;
+
 
 %% cable parameters
 % to be used for the PI sections
