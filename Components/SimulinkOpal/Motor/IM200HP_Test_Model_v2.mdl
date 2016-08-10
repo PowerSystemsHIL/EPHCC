@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.45"
+    ComputedModelVersion    "1.46"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -33,7 +33,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1096.0]
+      Location		      [988.0, 633.0, 1936.0, 1096.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -48,7 +48,7 @@ Model {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
@@ -57,9 +57,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 922.0]
+	Extents			[1693.0, 952.0]
 	ZoomFactor		[1.2097428958051422]
-	Offset			[-44.735458612975322, 154.427293064877]
+	Offset			[-44.735458612975322, 154.42729306487695]
       }
     }
   }
@@ -70,11 +70,11 @@ Model {
   Creator		  "ed12083"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 08 17:12:28 2016"
-  RTWModifiedTimeStamp	  392577124
-  ModelVersionFormat	  "1.%<AutoIncrement:45>"
+  LastModifiedDate	  "Wed Aug 10 15:47:58 2016"
+  RTWModifiedTimeStamp	  392744850
+  ModelVersionFormat	  "1.%<AutoIncrement:46>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -900,7 +900,7 @@ Model {
   }
   System {
     Name		    "IM200HP_Test_Model_v2"
-    Location		    [1912, -8, 3848, 1088]
+    Location		    [988, 633, 2924, 1729]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1134,7 +1134,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Motor Load"
-	Location		[1912, -8, 3848, 1088]
+	Location		[607, 345, 2543, 1441]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1174,11 +1174,11 @@ Model {
 	  BlockType		  Reference
 	  Name			  "Asynchronous Machine\nSI Units"
 	  SID			  "36"
-	  Ports			  [1, 1, 0, 0, 0, 3]
+	  Ports			  [2, 1, 0, 0, 0, 3]
 	  Position		  [645, 331, 725, 419]
 	  ZOrder		  2952
 	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.4"
+	  LibraryVersion	  "1.6"
 	  SourceBlock		  "ModifiedInductionMachine_lib/Asynchronous Machine\nSI Units"
 	  SourceType		  "Asynchronous Machine"
 	  PresetModel		  "No"
@@ -1252,12 +1252,12 @@ Model {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "40"
-	  Ports			  [1, 2]
-	  Position		  [760, 281, 765, 319]
+	  Ports			  [1, 3]
+	  Position		  [760, 258, 765, 322]
 	  ZOrder		  2953
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  OutputSignals		  "Iabc,Vabc_bus"
+	  OutputSignals		  "Iabc,Vabc_bus,Status"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<Iabc>"
@@ -1267,6 +1267,12 @@ Model {
 	  Port {
 	    PortNumber		    2
 	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Status>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1381,7 +1387,7 @@ Model {
 	Line {
 	  SrcBlock		  "motor_cb"
 	  SrcPort		  1
-	  Points		  [14, 0; 0, -103; 236, 0]
+	  Points		  [14, 0; 0, -103; 139, 0; 0, 48]
 	  DstBlock		  "Bus\nSelector1"
 	  DstPort		  1
 	}
@@ -1506,7 +1512,7 @@ Model {
 	  LineType		  "Connection"
 	  SrcBlock		  "Asynchronous Machine\nSI Units"
 	  SrcPort		  LConn2
-	  Points		  [-65, 0]
+	  Points		  [0, -5; -65, 0]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
@@ -1523,7 +1529,7 @@ Model {
 	  LineType		  "Connection"
 	  SrcBlock		  "Asynchronous Machine\nSI Units"
 	  SrcPort		  LConn1
-	  Points		  [-80, 0]
+	  Points		  [0, -10; -80, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
 	    DstBlock		    "motor_cb"
@@ -1547,7 +1553,7 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  2
-	  Points		  [82, 0; 0, 15]
+	  Points		  [82, 0; 0, 35]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  2
 	}
@@ -1556,8 +1562,18 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  1
+	  Points		  [92, 0; 0, 20]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  3
+	  Points		  [9, 0; 0, 14; -163, 0; 0, 36]
+	  DstBlock		  "Asynchronous Machine\nSI Units"
+	  DstPort		  2
 	}
 	Annotation {
 	  SID			  "50"
@@ -1638,7 +1654,7 @@ Model {
       Position		      [1245, 589, 1290, 671]
       ZOrder		      2963
       Floating		      off
-      Location		      [1, 48, 1921, 1039]
+      Location		      [6, 48, 1926, 1039]
       Open		      on
       NumInputPorts	      "4"
       ZoomMode		      "xonly"
@@ -1663,8 +1679,8 @@ Model {
       LegendLocations	      "0.93194     0.91086    0.052083    0.052136\n0.91788     0.67272    0.066146    0.052136\n"
       "0.93507      0.4662    0.048958    0.020518\n0.86736     0.22906     0.11667    0.020518"
       TimeRange		      "20"
-      YMin		      "-1750~-450~0~-1750"
-      YMax		      "1750~450~180~3500"
+      YMin		      "-80~-450~0~-1750"
+      YMax		      "80~450~2000~3500"
       SaveName		      "ScopeData2"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
