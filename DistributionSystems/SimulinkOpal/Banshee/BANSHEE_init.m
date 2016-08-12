@@ -34,4 +34,6 @@ relay_settings_init;
 % to be used for the PI sections
 cable_impedance_init;
 
-
+%% adds the component folders to the path
+% eventually, Opal-RT may need to include flexibility to use subfolders in a development 
+% components_path_init;
