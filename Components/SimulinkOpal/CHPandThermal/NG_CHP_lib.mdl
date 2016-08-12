@@ -34,7 +34,7 @@ Library {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1050.0]
+	Extents			[1693.0, 1080.0]
 	ZoomFactor		[1.1393534002229655]
-	Offset			[-177.96526418786684, -8.7876712328766544]
+	Offset			[-177.96526418786686, -8.7876712328766757]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jul 11 10:27:04 2016"
-  RTWModifiedTimeStamp	  390133622
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Fri Aug 12 09:14:29 2016"
+  RTWModifiedTimeStamp	  392894066
+  ModelVersionFormat	  "1.%<AutoIncrement:12>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -707,6 +707,9 @@ Library {
       OutputAsBus	      off
     }
     Block {
+      BlockType		      BusToVector
+    }
+    Block {
       BlockType		      Clock
       DisplayTime	      off
       Decimation	      "10"
@@ -814,6 +817,9 @@ Library {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      Ground
+    }
+    Block {
       BlockType		      Inport
       Port		      "1"
       OutputFunctionCall      off
@@ -845,6 +851,24 @@ Library {
       CurrentSetting	      "1"
       varsize		      off
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      MultiPortSwitch
+      DataPortOrder	      "One-based contiguous"
+      Inputs		      "3"
+      DataPortIndices	      "{1,2,3}"
+      DataPortForDefault      "Last data port"
+      DiagnosticForDefault    "Error"
+      zeroidx		      off
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
     }
     Block {
       BlockType		      Mux
@@ -888,6 +912,14 @@ Library {
       RndMeth		      "Zero"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      RateLimiter
+      RisingSlewLimit	      "1"
+      FallingSlewLimit	      "-1"
+      SampleTimeMode	      "continuous"
+      InitialCondition	      "0"
+      LinearizeAsGain	      on
     }
     Block {
       BlockType		      Scope
@@ -990,7 +1022,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "114"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "362"
+    SIDHighWatermark	    "807"
     Block {
       BlockType		      BusCreator
       Name		      "Bus\nCreator"
@@ -1560,7 +1592,8 @@ Library {
       SID		      "72"
       Ports		      [8, 4, 0, 0, 0, 0, 3]
       Position		      [450, 386, 720, 689]
-      ZOrder		      2999
+      ZOrder		      3009
+      LibraryVersion	      "1.11"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1589,7 +1622,7 @@ Library {
       }
       System {
 	Name			"NG_CHP"
-	Location		[1912, 0, 3848, 1216]
+	Location		[-8, -8, 2568, 1568]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1767,13 +1800,14 @@ Library {
 	  Position		  [340, 418, 620, 592]
 	  ZOrder		  2981
 	  BlockMirror		  on
-	  LibraryVersion	  "1.2"
+	  LibraryVersion	  "1.3"
 	  SourceBlock		  "CHP_Model_lib/CHPThermalModel"
 	  SourceType		  ""
 	  SIM_HIL		  "SIM_HIL"
 	  Port {
 	    PortNumber		    1
 	    Name		    "TempActual"
+	    PropagatedSignals	    "TempActual degF"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1791,15 +1825,94 @@ Library {
 	  DisplayOption		  "bar"
 	}
 	Block {
+	  BlockType		  Goto
+	  Name			  "Goto15"
+	  SID			  "87"
+	  Position		  [660, 733, 780, 747]
+	  ZOrder		  2869
+	  ShowName		  off
+	  GotoTag		  "Grid_opt"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto16"
+	  SID			  "88"
+	  Position		  [765, 718, 885, 732]
+	  ZOrder		  2868
+	  ShowName		  off
+	  GotoTag		  "Mains1_opt"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto18"
+	  SID			  "89"
+	  Position		  [765, 613, 805, 627]
+	  ZOrder		  2864
+	  ShowName		  off
+	  GotoTag		  "Ctrl"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto19"
+	  SID			  "90"
+	  Position		  [660, 703, 780, 717]
+	  ZOrder		  2867
+	  ShowName		  off
+	  GotoTag		  "Load2_opt"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto20"
+	  SID			  "91"
+	  Position		  [765, 688, 885, 702]
+	  ZOrder		  2866
+	  ShowName		  off
+	  GotoTag		  "Load1_opt"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto21"
+	  SID			  "92"
+	  Position		  [690, 628, 730, 642]
+	  ZOrder		  2863
+	  ShowName		  off
+	  GotoTag		  "HWIds"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Modbus device"
+	  SID			  "93"
+	  Ports			  [4, 2]
+	  Position		  [860, 467, 970, 543]
+	  ZOrder		  2911
+	  BlockMirror		  on
+	  LibraryVersion	  "1.13"
+	  SourceBlock		  "rtio_generic_modbus/Modbus device"
+	  SourceType		  "OpModbus"
+	  conf_name		  "CHP_slave_cfg.opal"
+	  conf_name_mask	  "CHP_slave_cfg.xls"
+	  sample_time		  "Ts"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "94"
+	  Ports			  [5, 1]
+	  Position		  [1045, 485, 1050, 585]
+	  ZOrder		  2913
+	  BlockMirror		  on
+	  ShowName		  off
+	  Inputs		  "5"
+	  DisplayOption		  "bar"
+	}
+	Block {
 	  BlockType		  SubSystem
-	  Name			  "Generator"
-	  SID			  "86"
+	  Name			  "NG_3_5_MVA_Generator"
+	  SID			  "366"
 	  Ports			  [6, 10, 0, 0, 0, 0, 3]
-	  Position		  [335, 615, 585, 805]
-	  ZOrder		  2982
+	  Position		  [340, 615, 590, 805]
+	  ZOrder		  2986
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
-	  AncestorBlock		  "NG_Genset_lib/Generator"
-	  LibraryVersion	  "*1.2"
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -1808,14 +1921,21 @@ Library {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  Port {
-	    PortNumber		    10
+	    PortNumber		    9
 	    Name		    "Thermal data"
+	    PropagatedSignals	    "Thermal data"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    10
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
-	    Name		    "Generator"
-	    Location		    [-8, -8, 1928, 1168]
+	    Name		    "NG_3_5_MVA_Generator"
+	    Location		    [145, 272, 2081, 1476]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1827,13 +1947,11 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "94"
-	    SIDHighWatermark	    "856"
-	    SIDPrevWatermark	    "583"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Digital Outputs"
-	      SID		      "86:295"
+	      SID		      "368"
 	      Position		      [170, 198, 200, 212]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
@@ -1841,7 +1959,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Console Breakers"
-	      SID		      "86:296"
+	      SID		      "369"
 	      Position		      [25, 498, 55, 512]
 	      ZOrder		      -2
 	      Port		      "2"
@@ -1850,7 +1968,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Woodward Enable"
-	      SID		      "86:297"
+	      SID		      "370"
 	      Position		      [725, 308, 755, 322]
 	      ZOrder		      -3
 	      Port		      "3"
@@ -1859,7 +1977,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Manual Control Gen1 (opt)"
-	      SID		      "86:298"
+	      SID		      "371"
 	      Position		      [830, 323, 860, 337]
 	      ZOrder		      -4
 	      Port		      "4"
@@ -1868,7 +1986,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "GCB1 V and I"
-	      SID		      "86:299"
+	      SID		      "372"
 	      Position		      [1320, 468, 1350, 482]
 	      ZOrder		      -5
 	      Port		      "5"
@@ -1877,7 +1995,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "MCB1 V and I"
-	      SID		      "86:300"
+	      SID		      "373"
 	      Position		      [1295, 533, 1325, 547]
 	      ZOrder		      -6
 	      Port		      "6"
@@ -1886,7 +2004,7 @@ Library {
 	    Block {
 	      BlockType		      Sum
 	      Name		      "Add1"
-	      SID		      "86:301"
+	      SID		      "374"
 	      Ports		      [2, 1]
 	      Position		      [1455, 232, 1485, 263]
 	      ZOrder		      -2
@@ -1896,20 +2014,9 @@ Library {
 	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
-	      BlockType		      BusCreator
-	      Name		      "Bus\nCreator"
-	      SID		      "86:302"
-	      Ports		      [1, 1]
-	      Position		      [665, 361, 670, 399]
-	      ZOrder		      1982
-	      ShowName		      off
-	      Inputs		      "1"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector"
-	      SID		      "86:303"
+	      SID		      "375"
 	      Ports		      [1, 4]
 	      Position		      [795, 233, 800, 292]
 	      ZOrder		      -3
@@ -1943,7 +2050,7 @@ Library {
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector1"
-	      SID		      "86:304"
+	      SID		      "376"
 	      Ports		      [1, 3]
 	      Position		      [1345, 519, 1350, 561]
 	      ZOrder		      -3
@@ -1971,7 +2078,7 @@ Library {
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector5"
-	      SID		      "86:305"
+	      SID		      "377"
 	      Ports		      [1, 10]
 	      Position		      [90, 400, 95, 610]
 	      ZOrder		      -3
@@ -2042,15 +2149,15 @@ Library {
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector6"
-	      SID		      "86:306"
+	      SID		      "378"
 	      Ports		      [1, 2]
 	      Position		      [1375, 456, 1380, 489]
 	      ZOrder		      -3
 	      ShowName		      off
-	      OutputSignals	      "Vabc_bus,Iabc"
+	      OutputSignals	      "Vabc_line,Iabc"
 	      Port {
 		PortNumber		1
-		Name			"<Vabc_bus>"
+		Name			"<Vabc_line>"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2064,7 +2171,7 @@ Library {
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector7"
-	      SID		      "86:307"
+	      SID		      "379"
 	      Ports		      [1, 1]
 	      Position		      [1345, 208, 1350, 232]
 	      ZOrder		      -3
@@ -2080,29 +2187,15 @@ Library {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant1"
-	      SID		      "86:308"
+	      SID		      "380"
 	      Position		      [1380, 275, 1410, 305]
 	      ZOrder		      -4
 	      Value		      ".02"
 	    }
 	    Block {
-	      BlockType		      Fcn
-	      Name		      "Fcn"
-	      SID		      "86:309"
-	      Position		      [515, 370, 565, 390]
-	      ZOrder		      1983
-	      Expr		      "u(1)==1"
-	      Port {
-		PortNumber		1
-		Name			"Logic_trip"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
 	      BlockType		      From
 	      Name		      "From"
-	      SID		      "86:310"
+	      SID		      "381"
 	      Position		      [170, 347, 310, 363]
 	      ZOrder		      -9
 	      GotoTag		      "Gen1_MCB_Status"
@@ -2110,7 +2203,7 @@ Library {
 	    Block {
 	      BlockType		      From
 	      Name		      "From1"
-	      SID		      "86:311"
+	      SID		      "382"
 	      Position		      [170, 397, 310, 413]
 	      ZOrder		      -9
 	      GotoTag		      "Gen2_MCB_Status"
@@ -2118,34 +2211,3635 @@ Library {
 	    Block {
 	      BlockType		      Goto
 	      Name		      "Goto"
-	      SID		      "86:312"
+	      SID		      "383"
 	      Position		      [1450, 634, 1565, 646]
 	      ZOrder		      -10
 	      GotoTag		      "Gen1_MCB_Status"
 	    }
 	    Block {
-	      BlockType		      Reference
-	      Name		      "NG Genset 3.5MVA"
-	      SID		      "86:313"
+	      BlockType		      SubSystem
+	      Name		      "NG Genset 3.5MVA1"
+	      SID		      "384"
 	      Ports		      [8, 2, 0, 0, 0, 0, 3]
 	      Position		      [945, 212, 1220, 343]
-	      ZOrder		      1984
+	      ZOrder		      1985
 	      BackgroundColor	      "[0.501961, 0.949020, 0.050980]"
-	      LibraryVersion	      "1.3"
-	      SourceBlock	      "NG_Genset_lib/NG Genset 3.5MVA"
-	      SourceType	      "Gen-Set with simulated control modes"
-	      control_mode	      "1"
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Object {
+		$PropName		"MaskObject"
+		$ObjectID		17
+		$ClassName		"Simulink.Mask"
+		Type			"Gen-Set with simulated control modes"
+		Description		"This Gen-Set block allows the user to indicate the control mode of the generator. The available contro"
+		"l modes are: (1) PQ, (2) PV, and (3) VF. \nThe input values to the block will be applied according to the selected c"
+		"ontrol mode. \nFor example, if PQ mode is selected, the controller will only work based on P_ref and Q_ref ignoring "
+		"values of other inputs to the block.\n"
+		Object {
+		  $PropName		  "Parameters"
+		  $ObjectID		  18
+		  $ClassName		  "Simulink.MaskParameter"
+		  Type			  "edit"
+		  Name			  "control_mode"
+		  Prompt		  "Control Mode [0 => Sim. 1 => Wood.]"
+		  Value			  "1"
+		}
+	      }
 	      Port {
 		PortNumber		2
 		Name			"Thermal data"
+		PropagatedSignals	"Thermal Data"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"NG Genset 3.5MVA1"
+		Location		[145, 272, 2081, 1476]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"89"
+		Block {
+		  BlockType		  Inport
+		  Name			  "Woodward Modbus Ref\nfor Governor"
+		  SID			  "654"
+		  Position		  [290, 73, 320, 87]
+		  ZOrder		  -1
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Woodward Modbus Ref\nfor AVR"
+		  SID			  "655"
+		  Position		  [290, 118, 320, 132]
+		  ZOrder		  -1
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Woodward meas w"
+		  SID			  "656"
+		  Position		  [1130, 268, 1160, 282]
+		  ZOrder		  -1
+		  Port			  "3"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Woodward meas V"
+		  SID			  "657"
+		  Position		  [1185, 303, 1215, 317]
+		  ZOrder		  -1
+		  Port			  "4"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Generator Enable"
+		  SID			  "658"
+		  Position		  [680, 443, 710, 457]
+		  ZOrder		  -1
+		  ForegroundColor	  "red"
+		  Port			  "5"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Woodward Enable"
+		  SID			  "659"
+		  Position		  [545, 223, 575, 237]
+		  ZOrder		  -1
+		  Port			  "6"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Manual_control"
+		  SID			  "660"
+		  Position		  [125, 418, 155, 432]
+		  ZOrder		  -1
+		  Port			  "7"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "DIG INPUT"
+		  SID			  "661"
+		  Position		  [445, 18, 475, 32]
+		  ZOrder		  3
+		  ForegroundColor	  "red"
+		  Port			  "8"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "3.5MVA Generator with \nPrimary Controllers1"
+		  SID			  "662"
+		  Ports			  [6, 3, 0, 0, 0, 0, 3]
+		  Position		  [1270, 193, 1385, 332]
+		  ZOrder		  -14
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  System {
+		    Name		    "3.5MVA Generator with \nPrimary Controllers1"
+		    Location		    [145, 272, 2081, 1476]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "245"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "wref"
+		    SID			    "663"
+		    Position		    [15, 83, 45, 97]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Vtref"
+		    SID			    "664"
+		    Position		    [15, 113, 45, 127]
+		    ZOrder		    -1
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Enable"
+		    SID			    "665"
+		    Position		    [15, 148, 45, 162]
+		    ZOrder		    -1
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "w_meas_Woodward"
+		    SID			    "666"
+		    Position		    [40, 183, 70, 197]
+		    ZOrder		    -1
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "V_meas_Woodward"
+		    SID			    "667"
+		    Position		    [45, 213, 75, 227]
+		    ZOrder		    -1
+		    Port		    "5"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Woodward_Enable"
+		    SID			    "668"
+		    Position		    [50, 248, 80, 262]
+		    ZOrder		    -1
+		    Port		    "6"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    BusCreator
+		    Name		    "Bus\nCreator1"
+		    SID			    "669"
+		    Ports		    [4, 1]
+		    Position		    [620, 361, 625, 399]
+		    ZOrder		    -2
+		    ShowName		    off
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    BusCreator
+		    Name		    "Bus\nCreator3"
+		    SID			    "670"
+		    Ports		    [3, 1]
+		    Position		    [540, 326, 545, 364]
+		    ZOrder		    -2
+		    ShowName		    off
+		    Inputs		    "3"
+		    DisplayOption	    "bar"
+		    Port {
+		    PortNumber		    1
+		    Name		    "Vf"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    BusSelector
+		    Name		    "Bus\nSelector"
+		    SID			    "671"
+		    Ports		    [1, 2]
+		    Position		    [445, 261, 450, 299]
+		    ZOrder		    -3
+		    ShowName		    off
+		    OutputSignals	    "Vf_before,Vf_after"
+		    Port {
+		    PortNumber		    1
+		    Name		    "<Vf_before>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    2
+		    Name		    "<Vf_after>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    SubSystem
+		    Name		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SID			    "672"
+		    Ports		    [7, 6]
+		    Position		    [210, 103, 315, 267]
+		    ZOrder		    -4
+		    BackgroundColor	    "orange"
+		    DropShadow		    on
+		    NamePlacement	    "alternate"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Port {
+		    PortNumber		    1
+		    Name		    "Pm"
+		    PropagatedSignals	    "Pmec_gov"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    2
+		    Name		    "vf"
+		    PropagatedSignals	    "Vf_after"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    3
+		    Name		    "vt"
+		    PropagatedSignals	    "wood_AVR_bias, vms"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    4
+		    Name		    "w"
+		    PropagatedSignals	    "wood_Gov_bias, Rotor speed  wm (pu)"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    System {
+		    Name		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    Location		    [145, 272, 2081, 1476]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "135"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "wref"
+		    SID			    "673"
+		    Position		    [550, 138, 580, 152]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Vtref"
+		    SID			    "674"
+		    Position		    [555, 383, 585, 397]
+		    ZOrder		    -2
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Generator Enable"
+		    SID			    "675"
+		    Position		    [710, 173, 740, 187]
+		    ZOrder		    -4
+		    NamePlacement	    "alternate"
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "m"
+		    SID			    "676"
+		    Position		    [180, 188, 210, 202]
+		    ZOrder		    -3
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "w_meas_Wood"
+		    SID			    "677"
+		    Position		    [215, 68, 245, 82]
+		    ZOrder		    -3
+		    Port		    "5"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "V_meas_Wood"
+		    SID			    "678"
+		    Position		    [340, 308, 370, 322]
+		    ZOrder		    -3
+		    Port		    "6"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Woodward Enable"
+		    SID			    "679"
+		    Position		    [80, 93, 110, 107]
+		    ZOrder		    -3
+		    Port		    "7"
+		    IconDisplay		    "Port number"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    BusCreator
+		    Name		    "Bus\nCreator"
+		    SID			    "680"
+		    Ports		    [2, 1]
+		    Position		    [470, 126, 475, 164]
+		    ZOrder		    -2
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    BusCreator
+		    Name		    "Bus\nCreator1"
+		    SID			    "681"
+		    Ports		    [2, 1]
+		    Position		    [490, 371, 495, 409]
+		    ZOrder		    -2
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    BusCreator
+		    Name		    "Bus\nCreator2"
+		    SID			    "682"
+		    Ports		    [2, 1]
+		    Position		    [1180, 356, 1185, 394]
+		    ZOrder		    -2
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    BusSelector
+		    Name		    "Bus\nSelector"
+		    SID			    "683"
+		    Ports		    [1, 1]
+		    Position		    [265, 176, 270, 214]
+		    ZOrder		    -5
+		    ShowName		    off
+		    OutputSignals	    "Mechanical.Rotor speed  wm (pu)"
+		    Port {
+		    PortNumber		    1
+		    Name		    "<Rotor speed  wm (pu)>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    BusSelector
+		    Name		    "Bus\nSelector1"
+		    SID			    "684"
+		    Ports		    [1, 1]
+		    Position		    [250, 416, 255, 454]
+		    ZOrder		    -6
+		    ShowName		    off
+		    OutputSignals	    "dq0 components.Stator voltage  vd (pu),dq0 components.Stator voltage  vq (pu)"
+		    OutputAsBus		    on
+		    }
+		    Block {
+		    BlockType		    BusToVector
+		    Name		    "Bus to Vector"
+		    SID			    "685"
+		    Position		    [290, 413, 315, 457]
+		    ZOrder		    -1
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "Constant1"
+		    SID			    "686"
+		    Position		    [360, 370, 390, 400]
+		    ZOrder		    -4
+		    Value		    "0"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "Constant2"
+		    SID			    "687"
+		    Position		    [290, 115, 320, 145]
+		    ZOrder		    -4
+		    Value		    "0"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Discrete PID Controller1"
+		    SID			    "688"
+		    Ports		    [2, 1]
+		    Position		    [1010, 262, 1050, 298]
+		    ZOrder		    -7
+		    LibraryVersion	    "1.274"
+		    SourceBlock		    "simulink/Continuous/PID Controller"
+		    SourceType		    "PID 1dof"
+		    Controller		    "PID"
+		    TimeDomain		    "Discrete-time"
+		    SampleTime		    "-1"
+		    IntegratorMethod	    "Forward Euler"
+		    FilterMethod	    "Forward Euler"
+		    Form		    "Parallel"
+		    P			    "1"
+		    I			    "0"
+		    D			    "0"
+		    N			    "100"
+		    InitialConditionSource  "internal"
+		    InitialConditionForIntegrator "0"
+		    InitialConditionForFilter "0"
+		    ExternalReset	    "either"
+		    IgnoreLimit		    off
+		    ZeroCross		    on
+		    LimitOutput		    on
+		    UpperSaturationLimit    "5"
+		    LowerSaturationLimit    "-5"
+		    LinearizeAsGain	    off
+		    AntiWindupMode	    "none"
+		    Kb			    "1"
+		    TrackingMode	    off
+		    Kt			    "1"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    LockScale		    off
+		    PParamMin		    "[]"
+		    PParamMax		    "[]"
+		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IParamMin		    "[]"
+		    IParamMax		    "[]"
+		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DParamMin		    "[]"
+		    DParamMax		    "[]"
+		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NParamMin		    "[]"
+		    NParamMax		    "[]"
+		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbParamMin		    "[]"
+		    KbParamMax		    "[]"
+		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtParamMin		    "[]"
+		    KtParamMax		    "[]"
+		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    POutMin		    "[]"
+		    POutMax		    "[]"
+		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IOutMin		    "[]"
+		    IOutMax		    "[]"
+		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DOutMin		    "[]"
+		    DOutMax		    "[]"
+		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NOutMin		    "[]"
+		    NOutMax		    "[]"
+		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbOutMin		    "[]"
+		    KbOutMax		    "[]"
+		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtOutMin		    "[]"
+		    KtOutMax		    "[]"
+		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IntegratorOutMin	    "[]"
+		    IntegratorOutMax	    "[]"
+		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+		    FilterOutMin	    "[]"
+		    FilterOutMax	    "[]"
+		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+		    SumOutMin		    "[]"
+		    SumOutMax		    "[]"
+		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1OutMin		    "[]"
+		    SumI1OutMax		    "[]"
+		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI2OutMin		    "[]"
+		    SumI2OutMax		    "[]"
+		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI3OutMin		    "[]"
+		    SumI3OutMax		    "[]"
+		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumDOutMin		    "[]"
+		    SumDOutMax		    "[]"
+		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+		    SaturationOutMin	    "[]"
+		    SaturationOutMax	    "[]"
+		    SaturationOutDataTypeStr "Inherit: Same as input"
+		    IntegratorContinuousStateAttributes	"''"
+		    IntegratorStateMustResolveToSignalObject off
+		    IntegratorRTWStateStorageClass "Auto"
+		    FilterContinuousStateAttributes "''"
+		    FilterStateMustResolveToSignalObject off
+		    FilterRTWStateStorageClass "Auto"
+		    Port {
+		    PortNumber		    1
+		    Name		    "Vf_after"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Excitation"
+		    SID			    "689"
+		    Ports		    [3, 1]
+		    Position		    [815, 225, 895, 315]
+		    ZOrder		    96
+		    LibraryVersion	    "1.27"
+		    SourceBlock		    "NG_Genset_lib/NG_3_5_MVA_Generator/NG Genset 3.5MVA1/3.5MVA Generator with \nPrimary Controlle"
+		    "rs1/NG Engine\nSpeed & Voltage\nControl\nfast/Excitation1"
+		    SourceType		    "Excitation System"
+		    tr			    "20e-4"
+		    reg			    "[ 200 2e-3 ]"
+		    exc			    "[ 1 0.00000001 ]"
+		    tgr			    "[ 1e-12 1e-12 ]"
+		    damp		    "[0 1e-12 ]"
+		    sat			    "[]"
+		    lim			    "[ 0 5 0 ]"
+		    v0			    "[ 0 0 ]"
+		    Port {
+		    PortNumber		    1
+		    Name		    "Vf_before"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Fcn
+		    Name		    "Fcn1"
+		    SID			    "690"
+		    Position		    [335, 421, 445, 449]
+		    ZOrder		    -11
+		    ShowName		    off
+		    Expr		    "sqrt(u(1)^2 + u(2)^2)"
+		    Port {
+		    PortNumber		    1
+		    Name		    "vms"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    SID			    "691"
+		    Ports		    [3, 2]
+		    Position		    [795, 60, 1085, 150]
+		    ZOrder		    93
+		    LibraryVersion	    "1.6"
+		    SourceBlock		    "GEJenbacherJ620_lib/GE//Jenbacher J620 NG Engine\n(1800 RPM)"
+		    SourceType		    ""
+		    cd			    ".8"
+		    H			    "47133"
+		    keq			    "1.3962"
+		    Ma			    ".029"
+		    Meq			    ".0285"
+		    Mf			    ".019"
+		    P0			    "800000"
+		    Pm			    "37241"
+		    R			    "8.314"
+		    T0			    "300"
+		    Tm			    "325"
+		    thermalEfficiency	    ".45"
+		    V			    "0.031"
+		    Vd			    "0.125"
+		    volumeEfficiency	    ".9"
+		    P			    "3"
+		    I			    "3"
+		    UL			    "1.05"
+		    LL			    "0"
+		    UPL			    "1.5"
+		    LPL			    "-1.5"
+		    Port {
+		    PortNumber		    1
+		    Name		    "Pmec_gov"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Ground
+		    Name		    "Ground"
+		    SID			    "692"
+		    Position		    [770, 325, 790, 345]
+		    ZOrder		    -13
+		    BlockRotation	    270
+		    ShowName		    off
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum"
+		    SID			    "693"
+		    Ports		    [2, 1]
+		    Position		    [600, 110, 620, 130]
+		    ZOrder		    -18
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|++"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "wms"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum1"
+		    SID			    "694"
+		    Ports		    [2, 1]
+		    Position		    [590, 330, 610, 350]
+		    ZOrder		    -18
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|++"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Switch
+		    Name		    "Switch1"
+		    SID			    "695"
+		    Position		    [340, 40, 390, 80]
+		    ZOrder		    -19
+		    Threshold		    "0.5"
+		    InputSameDT		    off
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "wood_Gov_bias"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Switch
+		    Name		    "Switch2"
+		    SID			    "696"
+		    Position		    [410, 320, 460, 360]
+		    ZOrder		    -19
+		    Threshold		    "0.5"
+		    InputSameDT		    off
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "wood_AVR_bias"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Pm"
+		    SID			    "697"
+		    Position		    [1240, 78, 1270, 92]
+		    ZOrder		    -20
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Vf"
+		    SID			    "698"
+		    Position		    [1255, 273, 1285, 287]
+		    ZOrder		    -21
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Vt"
+		    SID			    "699"
+		    Position		    [515, 383, 545, 397]
+		    ZOrder		    -22
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "w"
+		    SID			    "700"
+		    Position		    [510, 138, 540, 152]
+		    ZOrder		    -23
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Misc"
+		    SID			    "701"
+		    Position		    [1215, 413, 1245, 427]
+		    ZOrder		    -22
+		    NamePlacement	    "alternate"
+		    Port		    "5"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Themal data"
+		    SID			    "702"
+		    Position		    [1140, 125, 1220, 135]
+		    ZOrder		    2
+		    ShowName		    off
+		    Port		    "6"
+		    IconDisplay		    "Signal name"
+		    }
+		    Line {
+		    Name		    "<Rotor speed  wm (pu)>"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Bus\nSelector"
+		    SrcPort		    1
+		    Points		    [53, 0]
+		    Branch {
+		    Points		    [0, -40]
+		    DstBlock		    "Bus\nCreator"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [440, 0; 0, -90]
+		    DstBlock		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    SrcPort		    2
+		    DstBlock		    "Themal data"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "Pmec_gov"
+		    Labels		    [0, 0]
+		    SrcBlock		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    SrcPort		    1
+		    DstBlock		    "Pm"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Generator Enable"
+		    SrcPort		    1
+		    Points		    [30, 0]
+		    Branch {
+		    Points		    [220, 0]
+		    DstBlock		    "Discrete PID Controller1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, -45]
+		    DstBlock		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    DstPort		    3
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Bus to Vector"
+		    SrcPort		    1
+		    DstBlock		    "Fcn1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Bus\nSelector1"
+		    SrcPort		    1
+		    DstBlock		    "Bus to Vector"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "m"
+		    SrcPort		    1
+		    Points		    [0, 0]
+		    Branch {
+		    Points		    [-5, 0]
+		    DstBlock		    "Bus\nSelector"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [5, 0; 0, 240]
+		    DstBlock		    "Bus\nSelector1"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    Labels		    [0, 0]
+		    SrcBlock		    "V_meas_Wood"
+		    SrcPort		    1
+		    Points		    [0, 10]
+		    DstBlock		    "Switch2"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "vms"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Fcn1"
+		    SrcPort		    1
+		    Points		    [25, 0]
+		    Branch {
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [257, 0; 0, -165]
+		    DstBlock		    "Excitation"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Ground"
+		    SrcPort		    1
+		    Points		    [0, -20]
+		    DstBlock		    "Excitation"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Bus\nCreator"
+		    SrcPort		    1
+		    DstBlock		    "w"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Bus\nCreator1"
+		    SrcPort		    1
+		    DstBlock		    "Vt"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "Vf_before"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Excitation"
+		    SrcPort		    1
+		    Points		    [55, 0]
+		    Branch {
+		    DstBlock		    "Discrete PID Controller1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Labels		    [2, 0]
+		    Points		    [0, 95]
+		    DstBlock		    "Bus\nCreator2"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    Name		    "Vf_after"
+		    SrcBlock		    "Discrete PID Controller1"
+		    SrcPort		    1
+		    Points		    [35, 0]
+		    Branch {
+		    DstBlock		    "Vf"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Labels		    [2, 0]
+		    Points		    [0, 105]
+		    DstBlock		    "Bus\nCreator2"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Bus\nCreator2"
+		    SrcPort		    1
+		    Points		    [5, 0; 0, 45]
+		    DstBlock		    "Misc"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Woodward Enable"
+		    SrcPort		    1
+		    Points		    [45, 0]
+		    Branch {
+		    Points		    [115, 0; 0, -40]
+		    DstBlock		    "Switch1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, 240]
+		    DstBlock		    "Switch2"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    Name		    "wood_Gov_bias"
+		    SrcBlock		    "Switch1"
+		    SrcPort		    1
+		    Points		    [40, 0; 0, 30]
+		    Branch {
+		    Labels		    [1, 1]
+		    Points		    [0, 45]
+		    DstBlock		    "Bus\nCreator"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [150, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "w_meas_Wood"
+		    SrcPort		    1
+		    Points		    [38, 0; 0, -30]
+		    DstBlock		    "Switch1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Constant2"
+		    SrcPort		    1
+		    Points		    [5, 0; 0, -55]
+		    DstBlock		    "Switch1"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Constant1"
+		    SrcPort		    1
+		    DstBlock		    "Switch2"
+		    DstPort		    3
+		    }
+		    Line {
+		    Name		    "wood_AVR_bias"
+		    SrcBlock		    "Switch2"
+		    SrcPort		    1
+		    Points		    [10, 0]
+		    Branch {
+		    Labels		    [1, 0]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Sum1"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Vtref"
+		    SrcPort		    1
+		    Points		    [10, 0]
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Sum1"
+		    SrcPort		    1
+		    Points		    [80, 0; 0, -100]
+		    DstBlock		    "Excitation"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "wref"
+		    SrcPort		    1
+		    Points		    [0, -20]
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Line {
+		    Name		    "wms"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Sum"
+		    SrcPort		    1
+		    Points		    [3, 0; 0, -45]
+		    DstBlock		    "GE/Jenbacher J620 NG Engine\n(1800 RPM)"
+		    DstPort		    1
+		    }
+		    Annotation {
+		    SID			    "703"
+		    Position		    [285, 135]
+		    ZOrder		    -1
+		    }
+		    Annotation {
+		    SID			    "704"
+		    Name		    "This is the device analog output of =-10Vdc to \nthe HIL Analog Input it should be scaled to 1 pu"
+		    Position		    [498, 520]
+		    ZOrder		    -2
+		    }
+		    Annotation {
+		    SID			    "705"
+		    Name		    "These biases may need to\ngo to the references as opposed\nto the measured signal."
+		    Position		    [582, 20]
+		    ZOrder		    -3
+		    }
+		    Annotation {
+		    SID			    "706"
+		    Name		    "originally ++"
+		    Position		    [659, 113]
+		    ZOrder		    -4
+		    }
+		    Annotation {
+		    SID			    "707"
+		    Name		    "originally ++"
+		    Position		    [634, 293]
+		    ZOrder		    -5
+		    }
+		    }
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Synchronous Machine\npu Fundamental"
+		    SID			    "708"
+		    Ports		    [2, 1, 0, 0, 0, 0, 3]
+		    Position		    [480, 105, 570, 185]
+		    ZOrder		    392
+		    LibraryVersion	    "1.2191"
+		    FontName		    "Verdana"
+		    FontSize		    11
+		    SourceBlock		    "powerlib/Machines/Synchronous Machine\npu Fundamental"
+		    SourceType		    "Synchronous Machine"
+		    PresetModel		    "No"
+		    MechanicalLoad	    "Mechanical power Pm"
+		    ShowDetailedParameters  on
+		    RotorType		    "Salient-pole"
+		    NominalParameters	    "[3.5e+006 13800 60]"
+		    Stator		    "[0.008979 0.05 2.35 1.72]"
+		    Field		    "[0.00206 0.511]"
+		    Dampers2		    "[0.0652, 0.5134, 0.0287, 0.2553, 7.765e-3, 0.9167 ]"
+		    Dampers1		    "[0.2826 3.738 0.02545 0.2392]"
+		    Mechanical		    "[0.3468 0.009238 2]"
+		    PolePairs		    "2"
+		    InitialConditions	    "[ -99  0  0  0  0  0  0  0  0 ]  "
+		    SetSaturation	    off
+		    Saturation		    "[0.6404,0.7127,0.8441,0.9214,0.9956,1.082,1.19,1.316,1.457;0.7,0.7698,0.8872,0.9466,0.9969,1.04"
+		    "6,1.1,1.151,1.201]"
+		    Units		    "per unit fundamental parameters"
+		    LoadFlowParameters	    "[1,0,0,0,0]"
+		    TsPowergui		    "0"
+		    TsBlock		    "-1"
+		    IterativeModel	    "Forward Euler"
+		    BusType		    "swing"
+		    Pref		    "0"
+		    Qref		    "0"
+		    Qmin		    "-inf"
+		    Qmax		    "inf"
+		    PLF			    "0"
+		    QLF			    "0"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "A"
+		    SID			    "709"
+		    Position		    [655, 118, 685, 132]
+		    ZOrder		    -19
+		    BlockMirror		    on
+		    Port		    "1"
+		    Side		    "Right"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "B"
+		    SID			    "710"
+		    Position		    [655, 158, 685, 172]
+		    ZOrder		    -20
+		    BlockMirror		    on
+		    Port		    "2"
+		    Side		    "Right"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "C"
+		    SID			    "711"
+		    Position		    [655, 203, 685, 217]
+		    ZOrder		    -21
+		    BlockMirror		    on
+		    Port		    "3"
+		    Side		    "Right"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "m"
+		    SID			    "712"
+		    Position		    [115, 25, 145, 40]
+		    ZOrder		    -22
+		    BlockRotation	    270
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Primary"
+		    SID			    "713"
+		    Position		    [650, 373, 680, 387]
+		    ZOrder		    -23
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Thermal data"
+		    SID			    "714"
+		    Position		    [220, 313, 300, 327]
+		    ZOrder		    393
+		    BlockMirror		    on
+		    ShowName		    off
+		    Port		    "3"
+		    IconDisplay		    "Signal name"
+		    }
+		    Line {
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    6
+		    Points		    [14, 0; 0, 70]
+		    DstBlock		    "Thermal data"
+		    DstPort		    1
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "Synchronous Machine\npu Fundamental"
+		    SrcPort		    RConn3
+		    Points		    [0, 8; 28, 0; 0, 27]
+		    DstBlock		    "C"
+		    DstPort		    RConn1
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "Synchronous Machine\npu Fundamental"
+		    SrcPort		    RConn2
+		    Points		    [8, 0; 0, 10]
+		    DstBlock		    "B"
+		    DstPort		    RConn1
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "Synchronous Machine\npu Fundamental"
+		    SrcPort		    RConn1
+		    Points		    [27, 0; 0, -10]
+		    DstBlock		    "A"
+		    DstPort		    RConn1
+		    }
+		    Line {
+		    SrcBlock		    "Vtref"
+		    SrcPort		    1
+		    Points		    [130, 0; 0, 15]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "wref"
+		    SrcPort		    1
+		    Points		    [116, 0; 0, 20]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "vf"
+		    Labels		    [0, 0]
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    2
+		    Points		    [100, 0; 0, 15]
+		    Branch {
+		    Points		    [0, 170]
+		    DstBlock		    "Bus\nCreator3"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Synchronous Machine\npu Fundamental"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    Name		    "Pm"
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    1
+		    Points		    [115, 0]
+		    Branch {
+		    Labels		    [3, 0]
+		    Points		    [0, 125; 125, 0; 0, 115]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Synchronous Machine\npu Fundamental"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Enable"
+		    SrcPort		    1
+		    Points		    [119, 0; 0, 5]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Synchronous Machine\npu Fundamental"
+		    SrcPort		    1
+		    Points		    [11, 0; 0, 286; -456, 0; 0, -216]
+		    Branch {
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    4
+		    }
+		    Branch {
+		    DstBlock		    "m"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "w_meas_Woodward"
+		    SrcPort		    1
+		    Points		    [39, 0; 0, 20]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    5
+		    }
+		    Line {
+		    SrcBlock		    "V_meas_Woodward"
+		    SrcPort		    1
+		    Points		    [92, 0; 0, 15]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    6
+		    }
+		    Line {
+		    Name		    "vt"
+		    Labels		    [0, 0]
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    3
+		    Points		    [85, 0; 0, 210]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    3
+		    }
+		    Line {
+		    Name		    "w"
+		    Labels		    [0, 0]
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    4
+		    Points		    [55, 0; 0, 195]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "Bus\nCreator1"
+		    SrcPort		    1
+		    DstBlock		    "Primary"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    SrcPort		    5
+		    Points		    [110, 0]
+		    DstBlock		    "Bus\nSelector"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "<Vf_before>"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Bus\nSelector"
+		    SrcPort		    1
+		    Points		    [70, 0]
+		    DstBlock		    "Bus\nCreator3"
+		    DstPort		    2
+		    }
+		    Line {
+		    Name		    "<Vf_after>"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Bus\nSelector"
+		    SrcPort		    2
+		    Points		    [60, 0; 0, 65]
+		    DstBlock		    "Bus\nCreator3"
+		    DstPort		    3
+		    }
+		    Line {
+		    Name		    "Vf"
+		    Labels		    [2, 0]
+		    SrcBlock		    "Bus\nCreator3"
+		    SrcPort		    1
+		    Points		    [0, 30]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Woodward_Enable"
+		    SrcPort		    1
+		    Points		    [87, 0; 0, 5]
+		    DstBlock		    "NG Engine\nSpeed & Voltage\nControl\nfast"
+		    DstPort		    7
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Gain
+		  Name			  "80 RPM while \"Turning\""
+		  SID			  "715"
+		  Position		  [635, 0, 695, 30]
+		  ZOrder		  5
+		  ForegroundColor	  "red"
+		  Gain			  ".044"
+		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator"
+		  SID			  "716"
+		  Ports			  [2, 1]
+		  Position		  [1595, 46, 1600, 84]
+		  ZOrder		  -2
+		  ShowName		  off
+		  Inputs		  "2"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "w"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator1"
+		  SID			  "717"
+		  Ports			  [2, 1]
+		  Position		  [1595, 96, 1600, 134]
+		  ZOrder		  -2
+		  ShowName		  off
+		  Inputs		  "2"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "Vt"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator2"
+		  SID			  "718"
+		  Ports			  [5, 1]
+		  Position		  [1715, 27, 1720, 113]
+		  ZOrder		  -2
+		  ShowName		  off
+		  Inputs		  "5"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "3.5MVA"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  BusSelector
+		  Name			  "Bus\nSelector"
+		  SID			  "719"
+		  Ports			  [1, 6]
+		  Position		  [190, 321, 200, 534]
+		  ZOrder		  -3
+		  ShowName		  off
+		  OutputSignals		  "P,Q,V,F,Mode,Enable"
+		  Port {
+		    PortNumber		    1
+		    Name		    "<P>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    2
+		    Name		    "<Q>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    3
+		    Name		    "<V>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    4
+		    Name		    "<F>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    5
+		    Name		    "<Mode>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    6
+		    Name		    "<Enable>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  BusSelector
+		  Name			  "Bus\nSelector1"
+		  SID			  "720"
+		  Ports			  [1, 4]
+		  Position		  [1480, 116, 1485, 154]
+		  ZOrder		  -3
+		  ShowName		  off
+		  OutputSignals		  "Pm,Vf,vt,w"
+		  Port {
+		    PortNumber		    1
+		    Name		    "<Pm>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    2
+		    Name		    "<Vf>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    3
+		    Name		    "<vt>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    4
+		    Name		    "<w>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  BusSelector
+		  Name			  "Bus\nSelector3"
+		  SID			  "721"
+		  Ports			  [1, 2]
+		  Position		  [505, 6, 510, 44]
+		  ZOrder		  1987
+		  ForegroundColor	  "red"
+		  ShowName		  off
+		  OutputSignals		  "DIN.DI_CH00-07.Gen1_Starter,DIN.DI_CH00-07.Gen1_Fuel"
+		  Port {
+		    PortNumber		    1
+		    Name		    "<Gen1_Starter>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    2
+		    Name		    "<Gen1_Fuel>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  "722"
+		  Position		  [885, 225, 915, 255]
+		  ZOrder		  -4
+		  BlockMirror		  on
+		  Value			  "0"
+		}
+		Block {
+		  BlockType		  Demux
+		  Name			  "Demux"
+		  SID			  "723"
+		  Ports			  [1, 2]
+		  Position		  [790, 201, 795, 239]
+		  ZOrder		  -6
+		  ShowName		  off
+		  Outputs		  "2"
+		  DisplayOption		  "bar"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "DocBlock"
+		  SID			  "724"
+		  Ports			  []
+		  Position		  [37, 35, 77, 74]
+		  ZOrder		  -2
+		  ShowName		  off
+		  LibraryVersion	  "1.274"
+		  UserDataPersistent	  on
+		  UserData		  "DataTag0"
+		  SourceBlock		  "simulink/Model-Wide\nUtilities/DocBlock"
+		  SourceType		  "DocBlock"
+		  DocumentType		  "Text"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto"
+		  SID			  "725"
+		  Position		  [1400, 175, 1440, 195]
+		  ZOrder		  -10
+		  GotoTag		  "gen_m"
+		  IconDisplay		  "Tag and signal name"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto2"
+		  SID			  "726"
+		  Position		  [265, 325, 315, 355]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "P"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto3"
+		  SID			  "727"
+		  Position		  [265, 360, 315, 390]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "Q"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto4"
+		  SID			  "728"
+		  Position		  [265, 430, 315, 460]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "F"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto5"
+		  SID			  "729"
+		  Position		  [265, 465, 315, 495]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "Mode"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto6"
+		  SID			  "730"
+		  Position		  [265, 500, 315, 530]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "Enable"
+		}
+		Block {
+		  BlockType		  Goto
+		  Name			  "Goto7"
+		  SID			  "731"
+		  Position		  [265, 395, 315, 425]
+		  ZOrder		  -10
+		  ShowName		  off
+		  GotoTag		  "V"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Interface between Woodward Controller\nand simated generator"
+		  SID			  "732"
+		  Ports			  [2, 1]
+		  Position		  [395, 57, 595, 153]
+		  ZOrder		  -30
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  System {
+		    Name		    "Interface between Woodward Controller\nand simated generator"
+		    Location		    [-8, -8, 1928, 1168]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "202"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Woodward\nfor wref"
+		    SID			    "733"
+		    Position		    [105, 123, 135, 137]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Woodward\nfor Vref"
+		    SID			    "734"
+		    Position		    [90, 188, 120, 202]
+		    ZOrder		    -2
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Add2"
+		    SID			    "735"
+		    Ports		    [2, 1]
+		    Position		    [330, 125, 350, 145]
+		    ZOrder		    -2
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Add3"
+		    SID			    "736"
+		    Ports		    [2, 1]
+		    Position		    [330, 190, 350, 210]
+		    ZOrder		    -2
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Gain
+		    Name		    "Gain2"
+		    SID			    "737"
+		    Position		    [195, 114, 265, 146]
+		    ZOrder		    -11
+		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "bias"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Gain
+		    Name		    "Gain3"
+		    SID			    "738"
+		    Position		    [175, 179, 245, 211]
+		    ZOrder		    -11
+		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "bias"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux1"
+		    SID			    "739"
+		    Ports		    [2, 1]
+		    Position		    [430, 126, 435, 164]
+		    ZOrder		    -12
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    Port {
+		    PortNumber		    1
+		    Name		    "hardware"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "Vref_set"
+		    SID			    "740"
+		    Position		    [260, 211, 295, 229]
+		    ZOrder		    -4
+		    Value		    "0"
+		    }
+		    Block {
+		    BlockType		    Constant
+		    Name		    "wref_set"
+		    SID			    "741"
+		    Position		    [260, 157, 295, 173]
+		    ZOrder		    -4
+		    Value		    "0"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "wref,Vref"
+		    SID			    "742"
+		    Position		    [530, 138, 560, 152]
+		    ZOrder		    -16
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    SrcBlock		    "wref_set"
+		    SrcPort		    1
+		    Points		    [12, 0; 0, -25]
+		    DstBlock		    "Add2"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Woodward\nfor Vref"
+		    SrcPort		    1
+		    DstBlock		    "Gain3"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "hardware"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Mux1"
+		    SrcPort		    1
+		    DstBlock		    "wref,Vref"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Woodward\nfor wref"
+		    SrcPort		    1
+		    DstBlock		    "Gain2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Add3"
+		    SrcPort		    1
+		    Points		    [45, 0; 0, -45]
+		    DstBlock		    "Mux1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Vref_set"
+		    SrcPort		    1
+		    Points		    [15, 0]
+		    DstBlock		    "Add3"
+		    DstPort		    2
+		    }
+		    Line {
+		    Name		    "bias"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Gain3"
+		    SrcPort		    1
+		    DstBlock		    "Add3"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Add2"
+		    SrcPort		    1
+		    DstBlock		    "Mux1"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "bias"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Gain2"
+		    SrcPort		    1
+		    DstBlock		    "Add2"
+		    DstPort		    1
+		    }
+		    Annotation {
+		    SID			    "743"
+		    Name		    "Note: This may need a different scaling because it is the reference signal.\nReference has to be betw"
+		    "een 0.95 and 1.05 pu in order to be in tolerance."
+		    Position		    [419, 101]
+		    ZOrder		    -1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  RateLimiter
+		  Name			  "Rate Limiter"
+		  SID			  "744"
+		  Position		  [1055, 165, 1085, 195]
+		  ZOrder		  -7
+		  RisingSlewLimit	  "0.5"
+		  FallingSlewLimit	  "-0.5"
+		  SampleTimeMode	  "inherited"
+		  Port {
+		    PortNumber		    1
+		    Name		    "wref"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  RateLimiter
+		  Name			  "Rate Limiter1"
+		  SID			  "745"
+		  Position		  [975, 285, 1005, 315]
+		  ZOrder		  -7
+		  RisingSlewLimit	  "0.5"
+		  FallingSlewLimit	  "-0.5"
+		  SampleTimeMode	  "inherited"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Simulated\nGenerator Controller 3.5 MW"
+		  SID			  "746"
+		  Ports			  [6, 1]
+		  Position		  [430, 312, 590, 508]
+		  ZOrder		  -33
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "simulated"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  System {
+		    Name		    "Simulated\nGenerator Controller 3.5 MW"
+		    Location		    [-8, -8, 1928, 1168]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "153"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Pref"
+		    SID			    "747"
+		    Position		    [185, 78, 215, 92]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Qref"
+		    SID			    "748"
+		    Position		    [190, 128, 220, 142]
+		    ZOrder		    -1
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "mode"
+		    SID			    "749"
+		    Position		    [435, 28, 465, 42]
+		    ZOrder		    -1
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "set_vtref"
+		    SID			    "750"
+		    Position		    [355, 313, 385, 327]
+		    ZOrder		    -1
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "set_wref"
+		    SID			    "751"
+		    Position		    [355, 358, 385, 372]
+		    ZOrder		    -1
+		    Port		    "5"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "gen_m"
+		    SID			    "752"
+		    Position		    [55, 268, 85, 282]
+		    ZOrder		    -1
+		    Port		    "6"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    BusSelector
+		    Name		    "Bus\nSelector1"
+		    SID			    "753"
+		    Ports		    [1, 2]
+		    Position		    [115, 246, 120, 299]
+		    ZOrder		    -3
+		    ShowName		    off
+		    OutputSignals	    "Output active power   Peo (pu),Output reactive power  Qeo (pu)"
+		    Port {
+		    PortNumber		    1
+		    Name		    "<Output active power   Peo (pu)>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    2
+		    Name		    "<Output reactive power  Qeo (pu)>"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    MultiPortSwitch
+		    Name		    "Multiport\nSwitch1"
+		    SID			    "754"
+		    Ports		    [4, 1]
+		    Position		    [575, 201, 660, 289]
+		    ZOrder		    2
+		    DiagnosticForDefault    "Warning"
+		    InputSameDT		    off
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux1"
+		    SID			    "755"
+		    Ports		    [2, 1]
+		    Position		    [495, 101, 500, 139]
+		    ZOrder		    -12
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux2"
+		    SID			    "756"
+		    Ports		    [2, 1]
+		    Position		    [495, 236, 500, 274]
+		    ZOrder		    -12
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux3"
+		    SID			    "757"
+		    Ports		    [2, 1]
+		    Position		    [515, 356, 520, 394]
+		    ZOrder		    -12
+		    ShowName		    off
+		    Inputs		    "2"
+		    DisplayOption	    "bar"
+		    }
+		    Block {
+		    BlockType		    SubSystem
+		    Name		    "PQ control"
+		    SID			    "758"
+		    Ports		    [4, 2]
+		    Position		    [350, 76, 440, 169]
+		    ZOrder		    -20
+		    DropShadow		    on
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    System {
+		    Name		    "PQ control"
+		    Location		    [1140, 52, 1936, 1285]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "P_ref (pu)"
+		    SID			    "759"
+		    Position		    [75, 93, 105, 107]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "P (pu)"
+		    SID			    "760"
+		    Position		    [75, 48, 105, 62]
+		    ZOrder		    -2
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Q_ref (pu)"
+		    SID			    "761"
+		    Position		    [75, 243, 105, 257]
+		    ZOrder		    -1
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    Port {
+		    PortNumber		    1
+		    Name		    "ref"
+		    PropagatedSignals	    "Q"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Q (pu)"
+		    SID			    "762"
+		    Position		    [75, 198, 105, 212]
+		    ZOrder		    -2
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    Port {
+		    PortNumber		    1
+		    Name		    "pu"
+		    PropagatedSignals	    "Output reactive power  Qeo (pu)"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Discrete PID Controller"
+		    SID			    "763"
+		    Ports		    [1, 1]
+		    Position		    [220, 37, 260, 73]
+		    ZOrder		    -7
+		    LibraryVersion	    "1.274"
+		    SourceBlock		    "simulink/Continuous/PID Controller"
+		    SourceType		    "PID 1dof"
+		    Controller		    "PID"
+		    TimeDomain		    "Discrete-time"
+		    SampleTime		    "-1"
+		    IntegratorMethod	    "Forward Euler"
+		    FilterMethod	    "Forward Euler"
+		    Form		    "Parallel"
+		    P			    "0.025"
+		    I			    "1"
+		    D			    "0"
+		    N			    "10"
+		    InitialConditionSource  "internal"
+		    InitialConditionForIntegrator "0"
+		    InitialConditionForFilter "0"
+		    ExternalReset	    "none"
+		    IgnoreLimit		    off
+		    ZeroCross		    on
+		    LimitOutput		    on
+		    UpperSaturationLimit    "1.15"
+		    LowerSaturationLimit    "0.85"
+		    LinearizeAsGain	    off
+		    AntiWindupMode	    "back-calculation"
+		    Kb			    "1"
+		    TrackingMode	    off
+		    Kt			    "1"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    LockScale		    off
+		    PParamMin		    "[]"
+		    PParamMax		    "[]"
+		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IParamMin		    "[]"
+		    IParamMax		    "[]"
+		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DParamMin		    "[]"
+		    DParamMax		    "[]"
+		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NParamMin		    "[]"
+		    NParamMax		    "[]"
+		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbParamMin		    "[]"
+		    KbParamMax		    "[]"
+		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtParamMin		    "[]"
+		    KtParamMax		    "[]"
+		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    POutMin		    "[]"
+		    POutMax		    "[]"
+		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IOutMin		    "[]"
+		    IOutMax		    "[]"
+		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DOutMin		    "[]"
+		    DOutMax		    "[]"
+		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NOutMin		    "[]"
+		    NOutMax		    "[]"
+		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbOutMin		    "[]"
+		    KbOutMax		    "[]"
+		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtOutMin		    "[]"
+		    KtOutMax		    "[]"
+		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IntegratorOutMin	    "[]"
+		    IntegratorOutMax	    "[]"
+		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+		    FilterOutMin	    "[]"
+		    FilterOutMax	    "[]"
+		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+		    SumOutMin		    "[]"
+		    SumOutMax		    "[]"
+		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1OutMin		    "[]"
+		    SumI1OutMax		    "[]"
+		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI2OutMin		    "[]"
+		    SumI2OutMax		    "[]"
+		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI3OutMin		    "[]"
+		    SumI3OutMax		    "[]"
+		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumDOutMin		    "[]"
+		    SumDOutMax		    "[]"
+		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+		    SaturationOutMin	    "[]"
+		    SaturationOutMax	    "[]"
+		    SaturationOutDataTypeStr "Inherit: Same as input"
+		    IntegratorContinuousStateAttributes	"''"
+		    IntegratorStateMustResolveToSignalObject off
+		    IntegratorRTWStateStorageClass "Auto"
+		    FilterContinuousStateAttributes "''"
+		    FilterStateMustResolveToSignalObject off
+		    FilterRTWStateStorageClass "Auto"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Discrete PID Controller1"
+		    SID			    "764"
+		    Ports		    [1, 1]
+		    Position		    [220, 187, 260, 223]
+		    ZOrder		    -7
+		    LibraryVersion	    "1.274"
+		    SourceBlock		    "simulink/Continuous/PID Controller"
+		    SourceType		    "PID 1dof"
+		    Controller		    "PID"
+		    TimeDomain		    "Discrete-time"
+		    SampleTime		    "-1"
+		    IntegratorMethod	    "Forward Euler"
+		    FilterMethod	    "Forward Euler"
+		    Form		    "Parallel"
+		    P			    "0.2"
+		    I			    "1.5"
+		    D			    "0"
+		    N			    "10"
+		    InitialConditionSource  "internal"
+		    InitialConditionForIntegrator "0"
+		    InitialConditionForFilter "0"
+		    ExternalReset	    "none"
+		    IgnoreLimit		    off
+		    ZeroCross		    on
+		    LimitOutput		    on
+		    UpperSaturationLimit    "1.15"
+		    LowerSaturationLimit    "0.85"
+		    LinearizeAsGain	    off
+		    AntiWindupMode	    "back-calculation"
+		    Kb			    "1"
+		    TrackingMode	    off
+		    Kt			    "1"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    LockScale		    off
+		    PParamMin		    "[]"
+		    PParamMax		    "[]"
+		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IParamMin		    "[]"
+		    IParamMax		    "[]"
+		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DParamMin		    "[]"
+		    DParamMax		    "[]"
+		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NParamMin		    "[]"
+		    NParamMax		    "[]"
+		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbParamMin		    "[]"
+		    KbParamMax		    "[]"
+		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtParamMin		    "[]"
+		    KtParamMax		    "[]"
+		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    POutMin		    "[]"
+		    POutMax		    "[]"
+		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IOutMin		    "[]"
+		    IOutMax		    "[]"
+		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DOutMin		    "[]"
+		    DOutMax		    "[]"
+		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NOutMin		    "[]"
+		    NOutMax		    "[]"
+		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbOutMin		    "[]"
+		    KbOutMax		    "[]"
+		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtOutMin		    "[]"
+		    KtOutMax		    "[]"
+		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IntegratorOutMin	    "[]"
+		    IntegratorOutMax	    "[]"
+		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+		    FilterOutMin	    "[]"
+		    FilterOutMax	    "[]"
+		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+		    SumOutMin		    "[]"
+		    SumOutMax		    "[]"
+		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1OutMin		    "[]"
+		    SumI1OutMax		    "[]"
+		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI2OutMin		    "[]"
+		    SumI2OutMax		    "[]"
+		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI3OutMin		    "[]"
+		    SumI3OutMax		    "[]"
+		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumDOutMin		    "[]"
+		    SumDOutMax		    "[]"
+		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+		    SaturationOutMin	    "[]"
+		    SaturationOutMax	    "[]"
+		    SaturationOutDataTypeStr "Inherit: Same as input"
+		    IntegratorContinuousStateAttributes	"''"
+		    IntegratorStateMustResolveToSignalObject off
+		    IntegratorRTWStateStorageClass "Auto"
+		    FilterContinuousStateAttributes "''"
+		    FilterStateMustResolveToSignalObject off
+		    FilterRTWStateStorageClass "Auto"
+		    Port {
+		    PortNumber		    1
+		    Name		    "v"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum"
+		    SID			    "765"
+		    Ports		    [2, 1]
+		    Position		    [150, 45, 170, 65]
+		    ZOrder		    -8
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|-+"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum1"
+		    SID			    "766"
+		    Ports		    [2, 1]
+		    Position		    [150, 195, 170, 215]
+		    ZOrder		    -8
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|-+"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    Port {
+		    PortNumber		    1
+		    Name		    "dq"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "w_ref (pu)"
+		    SID			    "767"
+		    Position		    [360, 46, 390, 64]
+		    ZOrder		    -9
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "V_ref (pu)"
+		    SID			    "768"
+		    Position		    [360, 196, 390, 214]
+		    ZOrder		    -9
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    Name		    "ref"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Q_ref (pu)"
+		    SrcPort		    1
+		    Points		    [50, 0]
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		    }
+		    Line {
+		    Name		    "v"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Discrete PID Controller1"
+		    SrcPort		    1
+		    DstBlock		    "V_ref (pu)"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "pu"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Q (pu)"
+		    SrcPort		    1
+		    DstBlock		    "Sum1"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "dq"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Sum1"
+		    SrcPort		    1
+		    DstBlock		    "Discrete PID Controller1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "P_ref (pu)"
+		    SrcPort		    1
+		    Points		    [50, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Discrete PID Controller"
+		    SrcPort		    1
+		    DstBlock		    "w_ref (pu)"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "P (pu)"
+		    SrcPort		    1
+		    DstBlock		    "Sum"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Sum"
+		    SrcPort		    1
+		    DstBlock		    "Discrete PID Controller"
+		    DstPort		    1
+		    }
+		    }
+		    }
+		    Block {
+		    BlockType		    SubSystem
+		    Name		    "PV control"
+		    SID			    "769"
+		    Ports		    [2, 1]
+		    Position		    [350, 207, 440, 278]
+		    ZOrder		    -20
+		    DropShadow		    on
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    System {
+		    Name		    "PV control"
+		    Location		    [1140, 52, 1936, 1285]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "P_ref (pu)"
+		    SID			    "770"
+		    Position		    [75, 93, 105, 107]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "P (pu)"
+		    SID			    "771"
+		    Position		    [75, 48, 105, 62]
+		    ZOrder		    -2
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Discrete PID Controller"
+		    SID			    "772"
+		    Ports		    [1, 1]
+		    Position		    [220, 37, 260, 73]
+		    ZOrder		    -7
+		    LibraryVersion	    "1.274"
+		    SourceBlock		    "simulink/Continuous/PID Controller"
+		    SourceType		    "PID 1dof"
+		    Controller		    "PID"
+		    TimeDomain		    "Discrete-time"
+		    SampleTime		    "-1"
+		    IntegratorMethod	    "Forward Euler"
+		    FilterMethod	    "Forward Euler"
+		    Form		    "Parallel"
+		    P			    "0.025"
+		    I			    "1"
+		    D			    "0"
+		    N			    "10"
+		    InitialConditionSource  "internal"
+		    InitialConditionForIntegrator "0"
+		    InitialConditionForFilter "0"
+		    ExternalReset	    "none"
+		    IgnoreLimit		    off
+		    ZeroCross		    on
+		    LimitOutput		    on
+		    UpperSaturationLimit    "1.15"
+		    LowerSaturationLimit    "0.85"
+		    LinearizeAsGain	    off
+		    AntiWindupMode	    "back-calculation"
+		    Kb			    "1"
+		    TrackingMode	    off
+		    Kt			    "1"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    LockScale		    off
+		    PParamMin		    "[]"
+		    PParamMax		    "[]"
+		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IParamMin		    "[]"
+		    IParamMax		    "[]"
+		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DParamMin		    "[]"
+		    DParamMax		    "[]"
+		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NParamMin		    "[]"
+		    NParamMax		    "[]"
+		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbParamMin		    "[]"
+		    KbParamMax		    "[]"
+		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtParamMin		    "[]"
+		    KtParamMax		    "[]"
+		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    POutMin		    "[]"
+		    POutMax		    "[]"
+		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IOutMin		    "[]"
+		    IOutMax		    "[]"
+		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    DOutMin		    "[]"
+		    DOutMax		    "[]"
+		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    NOutMin		    "[]"
+		    NOutMax		    "[]"
+		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KbOutMin		    "[]"
+		    KbOutMax		    "[]"
+		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    KtOutMin		    "[]"
+		    KtOutMax		    "[]"
+		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    IntegratorOutMin	    "[]"
+		    IntegratorOutMax	    "[]"
+		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+		    FilterOutMin	    "[]"
+		    FilterOutMax	    "[]"
+		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
+		    SumOutMin		    "[]"
+		    SumOutMax		    "[]"
+		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1OutMin		    "[]"
+		    SumI1OutMax		    "[]"
+		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI2OutMin		    "[]"
+		    SumI2OutMax		    "[]"
+		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI3OutMin		    "[]"
+		    SumI3OutMax		    "[]"
+		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumDOutMin		    "[]"
+		    SumDOutMax		    "[]"
+		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
+		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
+		    SaturationOutMin	    "[]"
+		    SaturationOutMax	    "[]"
+		    SaturationOutDataTypeStr "Inherit: Same as input"
+		    IntegratorContinuousStateAttributes	"''"
+		    IntegratorStateMustResolveToSignalObject off
+		    IntegratorRTWStateStorageClass "Auto"
+		    FilterContinuousStateAttributes "''"
+		    FilterStateMustResolveToSignalObject off
+		    FilterRTWStateStorageClass "Auto"
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum"
+		    SID			    "773"
+		    Ports		    [2, 1]
+		    Position		    [150, 45, 170, 65]
+		    ZOrder		    -8
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|-+"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "w_ref (pu)"
+		    SID			    "774"
+		    Position		    [360, 46, 390, 64]
+		    ZOrder		    -9
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    SrcBlock		    "Sum"
+		    SrcPort		    1
+		    DstBlock		    "Discrete PID Controller"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "P (pu)"
+		    SrcPort		    1
+		    DstBlock		    "Sum"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete PID Controller"
+		    SrcPort		    1
+		    DstBlock		    "w_ref (pu)"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "P_ref (pu)"
+		    SrcPort		    1
+		    Points		    [50, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    }
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "wref, Vref"
+		    SID			    "775"
+		    Position		    [685, 238, 715, 252]
+		    ZOrder		    -22
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    SrcBlock		    "Multiport\nSwitch1"
+		    SrcPort		    1
+		    DstBlock		    "wref, Vref"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "mode"
+		    SrcPort		    1
+		    Points		    [82, 0; 0, 180]
+		    DstBlock		    "Multiport\nSwitch1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Qref"
+		    SrcPort		    1
+		    DstBlock		    "PQ control"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "set_wref"
+		    SrcPort		    1
+		    DstBlock		    "Mux3"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "<Output reactive power  Qeo (pu)>"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Bus\nSelector1"
+		    SrcPort		    2
+		    Points		    [190, 0; 0, -125]
+		    DstBlock		    "PQ control"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "Pref"
+		    SrcPort		    1
+		    Points		    [70, 0]
+		    Branch {
+		    Points		    [0, 140]
+		    DstBlock		    "PV control"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "PQ control"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Mux3"
+		    SrcPort		    1
+		    Points		    [27, 0; 0, -100]
+		    DstBlock		    "Multiport\nSwitch1"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "Mux2"
+		    SrcPort		    1
+		    DstBlock		    "Multiport\nSwitch1"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Mux1"
+		    SrcPort		    1
+		    Points		    [25, 0; 0, 115]
+		    DstBlock		    "Multiport\nSwitch1"
+		    DstPort		    2
+		    }
+		    Line {
+		    Labels		    [1, 0]
+		    SrcBlock		    "set_vtref"
+		    SrcPort		    1
+		    Points		    [70, 0]
+		    Branch {
+		    Points		    [0, 65]
+		    DstBlock		    "Mux3"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, -55]
+		    DstBlock		    "Mux2"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "PV control"
+		    SrcPort		    1
+		    DstBlock		    "Mux2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "PQ control"
+		    SrcPort		    2
+		    Points		    [15, 0; 0, -15]
+		    DstBlock		    "Mux1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "PQ control"
+		    SrcPort		    1
+		    Points		    [15, 0; 0, 10]
+		    DstBlock		    "Mux1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "gen_m"
+		    SrcPort		    1
+		    DstBlock		    "Bus\nSelector1"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "<Output active power   Peo (pu)>"
+		    Labels		    [0, 0]
+		    SrcBlock		    "Bus\nSelector1"
+		    SrcPort		    1
+		    Points		    [140, 0]
+		    Branch {
+		    DstBlock		    "PV control"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, -150]
+		    DstBlock		    "PQ control"
+		    DstPort		    2
+		    }
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "StabilityL"
+		  SID			  "776"
+		  Ports			  [0, 0, 0, 0, 0, 3]
+		  Position		  [1805, 130, 1845, 190]
+		  ZOrder		  -34
+		  BackgroundColor	  "gray"
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    19
+		    $ClassName		    "Simulink.Mask"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    3
+		    Object {
+		    $ObjectID		    20
+		    Type		    "edit"
+		    Name		    "v"
+		    Prompt		    "v"
+		    Value		    "13800"
+		    }
+		    Object {
+		    $ObjectID		    21
+		    Type		    "edit"
+		    Name		    "kVA"
+		    Prompt		    "kVA"
+		    Value		    "320"
+		    }
+		    Object {
+		    $ObjectID		    22
+		    Type		    "edit"
+		    Name		    "pf"
+		    Prompt		    "PF"
+		    Value		    "1"
+		    }
+		    PropName		    "Parameters"
+		    }
+		  }
+		  System {
+		    Name		    "StabilityL"
+		    Location		    [942, 362, 1433, 747]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Reference
+		    Name		    "Constant Load"
+		    SID			    "777"
+		    Ports		    [0, 0, 0, 0, 0, 3]
+		    Position		    [315, 68, 410, 162]
+		    ZOrder		    -1
+		    NamePlacement	    "alternate"
+		    AttributesFormatString  "\\n"
+		    LibraryVersion	    "1.2191"
+		    FontName		    "Verdana"
+		    FontSize		    11
+		    SourceBlock		    "powerlib/Elements/Three-Phase\nParallel RLC Load"
+		    SourceType		    "Three-Phase Parallel RLC Load"
+		    LConnTagsString	    "A|B|C"
+		    Configuration	    "Y (grounded)"
+		    NominalVoltage	    "v"
+		    NominalFrequency	    "60"
+		    ActivePower		    "kVA*1E3*pf"
+		    InductivePower	    "kVA*1E3*sqrt(1-pf^2)"
+		    CapacitivePower	    "0"
+		    Measurements	    "None"
+		    LoadType		    "constant Z"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "A"
+		    SID			    "778"
+		    Position		    [55, 53, 85, 67]
+		    ZOrder		    -2
+		    Port		    "1"
+		    Side		    "Left"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "B"
+		    SID			    "779"
+		    Position		    [15, 108, 45, 122]
+		    ZOrder		    -3
+		    Port		    "2"
+		    Side		    "Left"
+		    }
+		    Block {
+		    BlockType		    PMIOPort
+		    Name		    "C"
+		    SID			    "780"
+		    Position		    [55, 163, 85, 177]
+		    ZOrder		    -4
+		    Port		    "3"
+		    Side		    "Left"
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "C"
+		    SrcPort		    RConn1
+		    Points		    [0, -25]
+		    DstBlock		    "Constant Load"
+		    DstPort		    LConn3
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "B"
+		    SrcPort		    RConn1
+		    DstBlock		    "Constant Load"
+		    DstPort		    LConn2
+		    }
+		    Line {
+		    LineType		    "Connection"
+		    SrcBlock		    "A"
+		    SrcPort		    RConn1
+		    Points		    [0, 25]
+		    DstBlock		    "Constant Load"
+		    DstPort		    LConn1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "Sum"
+		  SID			  "781"
+		  Ports			  [2, 1]
+		  Position		  [1005, 170, 1025, 190]
+		  ZOrder		  4
+		  ForegroundColor	  "red"
+		  ShowName		  off
+		  IconShape		  "round"
+		  Inputs		  "++|"
+		  InputSameDT		  off
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Switch
+		  Name			  "Switch"
+		  SID			  "782"
+		  Position		  [690, 100, 740, 140]
+		  ZOrder		  -19
+		  Threshold		  "0.5"
+		  InputSameDT		  off
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Switch
+		  Name			  "Switch1"
+		  SID			  "783"
+		  Position		  [770, 470, 820, 510]
+		  ZOrder		  -19
+		  ForegroundColor	  "red"
+		  Threshold		  "0.5"
+		  InputSameDT		  off
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Switch
+		  Name			  "Switch2"
+		  SID			  "784"
+		  Position		  [885, 160, 935, 200]
+		  ZOrder		  -19
+		  Threshold		  "0.5"
+		  InputSameDT		  off
+		  SaturateOnIntegerOverflow off
+		  Port {
+		    PortNumber		    1
+		    Name		    "w_ref"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Switch
+		  Name			  "Switch3"
+		  SID			  "785"
+		  Position		  [885, 280, 935, 320]
+		  ZOrder		  -19
+		  Threshold		  "0.5"
+		  InputSameDT		  off
+		  SaturateOnIntegerOverflow off
+		  Port {
+		    PortNumber		    1
+		    Name		    "v_ref"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Fcn
+		  Name			  "[gal/hr] vs. Pm[pu]"
+		  SID			  "786"
+		  Position		  [1580, 170, 1640, 200]
+		  ZOrder		  -1
+		  ForegroundColor	  "[0.000000, 0.819608, 0.000000]"
+		  Expr			  "RATING*(14.827*u^4-27.253*u^3+15.553*u^2+7.9033*u+2.5)"
+		  Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    23
+		    $ClassName		    "Simulink.Mask"
+		    Description		    "This block computes the gal/hr vs Pm[pu] of a generator of a given rating [MW]."
+		    Object {
+		    $PropName		    "Parameters"
+		    $ObjectID		    24
+		    $ClassName		    "Simulink.MaskParameter"
+		    Type		    "edit"
+		    Name		    "RATING"
+		    Prompt		    "Rating [MW]"
+		    Value		    "4"
+		    }
+		  }
+		  Port {
+		    PortNumber		    1
+		    Name		    "gal_per_hr_4MVA"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m"
+		  SID			  "787"
+		  Position		  [355, 474, 400, 496]
+		  ZOrder		  -9
+		  GotoTag		  "gen_m"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m1"
+		  SID			  "788"
+		  Position		  [355, 444, 400, 466]
+		  ZOrder		  -9
+		  GotoTag		  "F"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m2"
+		  SID			  "789"
+		  Position		  [355, 414, 400, 436]
+		  ZOrder		  -9
+		  GotoTag		  "V"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m3"
+		  SID			  "790"
+		  Position		  [355, 384, 400, 406]
+		  ZOrder		  -9
+		  GotoTag		  "Mode"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m4"
+		  SID			  "791"
+		  Position		  [355, 354, 400, 376]
+		  ZOrder		  -9
+		  GotoTag		  "Q"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m5"
+		  SID			  "792"
+		  Position		  [355, 324, 400, 346]
+		  ZOrder		  -9
+		  GotoTag		  "P"
+		}
+		Block {
+		  BlockType		  From
+		  Name			  "m6"
+		  SID			  "793"
+		  Position		  [690, 504, 735, 526]
+		  ZOrder		  -9
+		  GotoTag		  "Enable"
+		}
+		Block {
+		  BlockType		  PMIOPort
+		  Name			  "A"
+		  SID			  "794"
+		  Position		  [1820, 258, 1850, 272]
+		  ZOrder		  -47
+		  BlockMirror		  on
+		  Port			  "1"
+		  Side			  "Right"
+		}
+		Block {
+		  BlockType		  PMIOPort
+		  Name			  "B"
+		  SID			  "795"
+		  Position		  [1855, 283, 1885, 297]
+		  ZOrder		  -48
+		  BlockMirror		  on
+		  Port			  "2"
+		  Side			  "Right"
+		}
+		Block {
+		  BlockType		  PMIOPort
+		  Name			  "C"
+		  SID			  "796"
+		  Position		  [1885, 308, 1915, 322]
+		  ZOrder		  -49
+		  BlockMirror		  on
+		  Port			  "3"
+		  Side			  "Right"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "gen_meas"
+		  SID			  "797"
+		  Position		  [1775, 33, 1805, 47]
+		  ZOrder		  -23
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Thermal data"
+		  SID			  "798"
+		  Position		  [1580, 373, 1670, 387]
+		  ZOrder		  2
+		  ShowName		  off
+		  Port			  "2"
+		  IconDisplay		  "Signal name"
+		}
+		Line {
+		  SrcBlock		  "Generator Enable"
+		  SrcPort		  1
+		  Points		  [386, 0; 0, -200]
+		  DstBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "<Gen1_Fuel>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector3"
+		  SrcPort		  2
+		  Points		  [95, 0; 0, 440]
+		  DstBlock		  "Switch1"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<Gen1_Starter>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector3"
+		  SrcPort		  1
+		  DstBlock		  "80 RPM while \"Turning\""
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "80 RPM while \"Turning\""
+		  SrcPort		  1
+		  Points		  [315, 0]
+		  DstBlock		  "Sum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Sum"
+		  SrcPort		  1
+		  DstBlock		  "Rate Limiter"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "DIG INPUT"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nSelector3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<w>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector1"
+		  SrcPort		  4
+		  Points		  [50, 0; 0, -75]
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  SrcPort		  3
+		  Points		  [102, 0; 0, 130]
+		  DstBlock		  "Thermal data"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "gal_per_hr_4MVA"
+		  Labels		  [0, 0]
+		  SrcBlock		  "[gal/hr] vs. Pm[pu]"
+		  SrcPort		  1
+		  Points		  [55, 0]
+		  DstBlock		  "Bus\nCreator2"
+		  DstPort		  5
+		}
+		Line {
+		  SrcBlock		  "Woodward Enable"
+		  SrcPort		  1
+		  Points		  [65, 0]
+		  Branch {
+		    Points		    [0, -110]
+		    DstBlock		    "Switch"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, 260]
+		    Branch {
+		    DstBlock		    "Switch1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, 55; 605, 0; 0, -220]
+		    DstBlock		    "3.5MVA Generator with \nPrimary Controllers1"
+		    DstPort		    6
+		    }
+		  }
+		}
+		Line {
+		  SrcBlock		  "Rate Limiter1"
+		  SrcPort		  1
+		  Points		  [86, 0; 0, -75]
+		  Branch {
+		    DstBlock		    "3.5MVA Generator with \nPrimary Controllers1"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, -120]
+		    DstBlock		    "Bus\nCreator1"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  Name			  "wref"
+		  SrcBlock		  "Rate Limiter"
+		  SrcPort		  1
+		  Points		  [55, 0]
+		  Branch {
+		    Points		    [0, -125]
+		    DstBlock		    "Bus\nCreator"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Labels		    [1, 0]
+		    Points		    [110, 0]
+		    DstBlock		    "3.5MVA Generator with \nPrimary Controllers1"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  Name			  "3.5MVA"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator2"
+		  SrcPort		  1
+		  Points		  [20, 0; 0, -30]
+		  DstBlock		  "gen_meas"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "w"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator"
+		  SrcPort		  1
+		  Points		  [67, 0; 0, 20]
+		  DstBlock		  "Bus\nCreator2"
+		  DstPort		  4
+		}
+		Line {
+		  Name			  "Vt"
+		  Labels		  [2, 0]
+		  SrcBlock		  "Bus\nCreator1"
+		  SrcPort		  1
+		  Points		  [40, 0; 0, -64; 55, 0]
+		  DstBlock		  "Bus\nCreator2"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "<Pm>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector1"
+		  SrcPort		  1
+		  Points		  [10, 0]
+		  Branch {
+		    Points		    [55, 0; 0, 65]
+		    DstBlock		    "[gal/hr] vs. Pm[pu]"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, -80]
+		    DstBlock		    "Bus\nCreator2"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  Name			  "<Vf>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector1"
+		  SrcPort		  2
+		  Points		  [35, 0; 0, -91; 175, 0]
+		  DstBlock		  "Bus\nCreator2"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "<vt>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector1"
+		  SrcPort		  3
+		  Points		  [80, 0; 0, -15]
+		  DstBlock		  "Bus\nCreator1"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "v_ref"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Switch3"
+		  SrcPort		  1
+		  DstBlock		  "Rate Limiter1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  Points		  [-15, 0]
+		  Branch {
+		    Points		    [0, -45]
+		    DstBlock		    "Switch2"
+		    DstPort		    3
+		  }
+		  Branch {
+		    Points		    [0, 75]
+		    DstBlock		    "Switch3"
+		    DstPort		    3
+		  }
+		}
+		Line {
+		  SrcBlock		  "Demux"
+		  SrcPort		  2
+		  Points		  [15, 0; 0, 55]
+		  DstBlock		  "Switch3"
+		  DstPort		  1
+		}
+		Line {
+		  Labels		  [2, 0]
+		  SrcBlock		  "Demux"
+		  SrcPort		  1
+		  Points		  [15, 0; 0, -45]
+		  DstBlock		  "Switch2"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "w_ref"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Switch2"
+		  SrcPort		  1
+		  DstBlock		  "Sum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Switch1"
+		  SrcPort		  1
+		  Points		  [10, 0; 0, -190; 10, 0]
+		  Branch {
+		    DstBlock		    "Switch3"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, -120]
+		    DstBlock		    "Switch2"
+		    DstPort		    2
+		  }
+		}
+		Line {
+		  SrcBlock		  "m6"
+		  SrcPort		  1
+		  Points		  [0, -10]
+		  DstBlock		  "Switch1"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  SrcPort		  2
+		  Points		  [70, 0; 0, -90]
+		  DstBlock		  "Bus\nSelector1"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<Enable>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  6
+		  DstBlock		  "Goto6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Woodward meas V"
+		  SrcPort		  1
+		  Points		  [35, 0]
+		  DstBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  DstPort		  5
+		}
+		Line {
+		  SrcBlock		  "Woodward meas w"
+		  SrcPort		  1
+		  DstBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  DstPort		  4
+		}
+		Line {
+		  SrcBlock		  "Woodward Modbus Ref\nfor AVR"
+		  SrcPort		  1
+		  Points		  [32, 0; 0, 5]
+		  DstBlock		  "Interface between Woodward Controller\nand simated generator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Woodward Modbus Ref\nfor Governor"
+		  SrcPort		  1
+		  DstBlock		  "Interface between Woodward Controller\nand simated generator"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Switch"
+		  SrcPort		  1
+		  Points		  [0, 100]
+		  DstBlock		  "Demux"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Interface between Woodward Controller\nand simated generator"
+		  SrcPort		  1
+		  DstBlock		  "Switch"
+		  DstPort		  1
+		}
+		Line {
+		  LineType		  "Connection"
+		  Points		  [1785, 315; -279, 0; 0, 10; -106, 0]
+		  DstBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  DstPort		  RConn3
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "C"
+		    SrcPort		    RConn1
+		    Points		    [-85, 0]
+		  }
+		  Branch {
+		    ConnectType		    "SRC_SRC"
+		    Points		    [0, -135]
+		    DstBlock		    "StabilityL"
+		    DstPort		    LConn3
+		  }
+		}
+		Line {
+		  LineType		  "Connection"
+		  SrcBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  SrcPort		  RConn2
+		  Points		  [0, -10; 370, 0]
+		  Branch {
+		    ConnectType		    "DEST_SRC"
+		    DstBlock		    "B"
+		    DstPort		    RConn1
+		  }
+		  Branch {
+		    ConnectType		    "DEST_SRC"
+		    Points		    [0, -130]
+		    DstBlock		    "StabilityL"
+		    DstPort		    LConn2
+		  }
+		}
+		Line {
+		  LineType		  "Connection"
+		  Points		  [1755, 265; -249, 0; 0, 10; -106, 0]
+		  DstBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  DstPort		  RConn1
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "A"
+		    SrcPort		    RConn1
+		    Points		    [-50, 0]
+		  }
+		  Branch {
+		    ConnectType		    "SRC_SRC"
+		    Points		    [0, -125]
+		    DstBlock		    "StabilityL"
+		    DstPort		    LConn1
+		  }
+		}
+		Line {
+		  SrcBlock		  "3.5MVA Generator with \nPrimary Controllers1"
+		  SrcPort		  1
+		  Points		  [2, 0; 0, -15]
+		  DstBlock		  "Goto"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "simulated"
+		  Labels		  [1, 0]
+		  SrcBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  SrcPort		  1
+		  Points		  [80, 0]
+		  DstBlock		  "Switch"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Manual_control"
+		  SrcPort		  1
+		  Points		  [15, 0]
+		  DstBlock		  "Bus\nSelector"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<P>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  1
+		  DstBlock		  "Goto2"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<Q>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  2
+		  DstBlock		  "Goto3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<V>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  3
+		  DstBlock		  "Goto7"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<F>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  4
+		  DstBlock		  "Goto4"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "<Mode>"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nSelector"
+		  SrcPort		  5
+		  DstBlock		  "Goto5"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "m"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  6
+		}
+		Line {
+		  SrcBlock		  "m5"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "m4"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "m3"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "m2"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  4
+		}
+		Line {
+		  SrcBlock		  "m1"
+		  SrcPort		  1
+		  DstBlock		  "Simulated\nGenerator Controller 3.5 MW"
+		  DstPort		  5
+		}
+		Annotation {
+		  SID			  "799"
+		  Name			  "broke link"
+		  Position		  [1632, 241]
+		  ZOrder		  -1
+		}
+		Annotation {
+		  SID			  "800"
+		  Name			  "Set as 8% 9/21/2015\nSet as 7.5% 8/26/2015"
+		  Position		  [1892, 120]
+		  ZOrder		  -2
+		}
+		Annotation {
+		  SID			  "801"
+		  Position		  [1697, 68]
+		  ZOrder		  -3
+		}
+		Annotation {
+		  SID			  "802"
+		  Name			  " "
+		  Position		  [1549, 463]
+		  ZOrder		  -4
+		}
+		Annotation {
+		  SID			  "803"
+		  Position		  [1346, 250]
+		  ZOrder		  -5
+		}
+		Annotation {
+		  SID			  "804"
+		  Name			  "Voltage and Currents of Generator. \nThis will be outputs of the HIL Unit\nand inputs to the device cont"
+		  "roller.\nNeed to T off lines if use here."
+		  Position		  [1419, 468]
+		  ZOrder		  -6
+		}
+		Annotation {
+		  SID			  "805"
+		  Name			  "Modbus Register for the values."
+		  Position		  [377, 71]
+		  ZOrder		  -7
+		}
+		Annotation {
+		  SID			  "806"
+		  Name			  "Switch if \"Gen Fuel\" is hi"
+		  Position		  [907, 394]
+		  ZOrder		  -8
+		}
+		Annotation {
+		  SID			  "807"
+		  Name			  "hi as long as starter is cranking"
+		  Position		  [870, 26]
+		  ZOrder		  -9
+		}
 	      }
 	    }
 	    Block {
 	      BlockType		      Switch
 	      Name		      "Switch"
-	      SID		      "86:314"
+	      SID		      "385"
 	      Position		      [595, 520, 645, 560]
 	      ZOrder		      -19
 	      Threshold		      "0.5"
@@ -2155,7 +5849,7 @@ Library {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Woodward Inputs"
-	      SID		      "86:315"
+	      SID		      "386"
 	      Ports		      [5]
 	      Position		      [1645, 400, 1770, 600]
 	      ZOrder		      -31
@@ -2184,7 +5878,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "MPU1_speed"
-		  SID			  "86:316"
+		  SID			  "387"
 		  Position		  [520, 408, 550, 422]
 		  ZOrder		  -1
 		  IconDisplay		  "Port number"
@@ -2192,7 +5886,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Generator1_Voltage"
-		  SID			  "86:317"
+		  SID			  "388"
 		  Position		  [40, 73, 70, 87]
 		  ZOrder		  -2
 		  Port			  "2"
@@ -2201,7 +5895,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Generator1_Current"
-		  SID			  "86:318"
+		  SID			  "389"
 		  Position		  [80, 618, 110, 632]
 		  ZOrder		  -3
 		  Port			  "3"
@@ -2210,7 +5904,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Mains1_Voltage"
-		  SID			  "86:319"
+		  SID			  "390"
 		  Position		  [40, 148, 70, 162]
 		  ZOrder		  -4
 		  Port			  "4"
@@ -2219,7 +5913,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Mains1_Current"
-		  SID			  "86:320"
+		  SID			  "391"
 		  Position		  [80, 573, 110, 587]
 		  ZOrder		  -5
 		  Port			  "5"
@@ -2228,7 +5922,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "AnalogOut"
-		  SID			  "86:321"
+		  SID			  "392"
 		  Ports			  [1, 1]
 		  Position		  [945, 325, 1170, 365]
 		  ZOrder		  -11
@@ -2240,9 +5934,9 @@ Library {
 		  portNb		  "1"
 		  FcnNos		  "Slot 1 Module A Subsection 1"
 		  size			  "16"
-		  maxcount		  "-2"
-		  count			  "-2"
-		  numchan		  "-2"
+		  maxcount		  "8"
+		  count			  "8"
+		  numchan		  "8"
 		  israngeinput		  off
 		  voltagerange		  "[-16 ... 16]"
 		  slot			  "0"
@@ -2253,7 +5947,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "AnalogOut1"
-		  SID			  "86:322"
+		  SID			  "393"
 		  Ports			  [1, 1]
 		  Position		  [945, 395, 1170, 435]
 		  ZOrder		  -12
@@ -2265,9 +5959,9 @@ Library {
 		  portNb		  "2"
 		  FcnNos		  "Slot 1 Module A Subsection 2"
 		  size			  "16"
-		  maxcount		  "-2"
-		  count			  "-2"
-		  numchan		  "-2"
+		  maxcount		  "8"
+		  count			  "8"
+		  numchan		  "8"
 		  israngeinput		  off
 		  voltagerange		  "[-16 ... 16]"
 		  slot			  "0"
@@ -2278,7 +5972,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "AnalogOut2"
-		  SID			  "86:323"
+		  SID			  "394"
 		  Ports			  [1, 1]
 		  Position		  [950, 840, 1175, 880]
 		  ZOrder		  -13
@@ -2290,9 +5984,9 @@ Library {
 		  portNb		  "3"
 		  FcnNos		  "Slot 2 Module A Subsection 1"
 		  size			  "16"
-		  maxcount		  "-2"
-		  count			  "-2"
-		  numchan		  "-2"
+		  maxcount		  "8"
+		  count			  "8"
+		  numchan		  "8"
 		  israngeinput		  off
 		  voltagerange		  "[-16 ... 16]"
 		  slot			  "1"
@@ -2303,7 +5997,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "AnalogOut3"
-		  SID			  "86:324"
+		  SID			  "395"
 		  Ports			  [1, 1]
 		  Position		  [950, 910, 1175, 950]
 		  ZOrder		  -14
@@ -2315,9 +6009,9 @@ Library {
 		  portNb		  "4"
 		  FcnNos		  "Slot 2 Module A Subsection 2"
 		  size			  "16"
-		  maxcount		  "-2"
-		  count			  "-2"
-		  numchan		  "-2"
+		  maxcount		  "8"
+		  count			  "8"
+		  numchan		  "8"
 		  israngeinput		  off
 		  voltagerange		  "[-16 ... 16]"
 		  slot			  "1"
@@ -2328,7 +6022,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux"
-		  SID			  "86:325"
+		  SID			  "396"
 		  Ports			  [1, 2]
 		  Position		  [905, 336, 910, 374]
 		  ZOrder		  -6
@@ -2339,7 +6033,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux1"
-		  SID			  "86:326"
+		  SID			  "397"
 		  Ports			  [1, 3]
 		  Position		  [715, 61, 720, 99]
 		  ZOrder		  -6
@@ -2350,7 +6044,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux2"
-		  SID			  "86:327"
+		  SID			  "398"
 		  Ports			  [1, 3]
 		  Position		  [715, 136, 720, 174]
 		  ZOrder		  -6
@@ -2361,7 +6055,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux3"
-		  SID			  "86:328"
+		  SID			  "399"
 		  Ports			  [1, 3]
 		  Position		  [315, 606, 320, 644]
 		  ZOrder		  -6
@@ -2372,7 +6066,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux4"
-		  SID			  "86:329"
+		  SID			  "400"
 		  Ports			  [1, 3]
 		  Position		  [655, 241, 660, 279]
 		  ZOrder		  -6
@@ -2383,7 +6077,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux5"
-		  SID			  "86:330"
+		  SID			  "401"
 		  Ports			  [1, 3]
 		  Position		  [655, 331, 660, 369]
 		  ZOrder		  -6
@@ -2394,7 +6088,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux6"
-		  SID			  "86:331"
+		  SID			  "402"
 		  Ports			  [1, 2]
 		  Position		  [910, 851, 915, 889]
 		  ZOrder		  -6
@@ -2405,7 +6099,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux7"
-		  SID			  "86:332"
+		  SID			  "403"
 		  Ports			  [1, 3]
 		  Position		  [290, 561, 295, 599]
 		  ZOrder		  -6
@@ -2416,7 +6110,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux8"
-		  SID			  "86:333"
+		  SID			  "404"
 		  Ports			  [1, 3]
 		  Position		  [290, 661, 295, 699]
 		  ZOrder		  -6
@@ -2427,7 +6121,7 @@ Library {
 		Block {
 		  BlockType		  Demux
 		  Name			  "Demux9"
-		  SID			  "86:334"
+		  SID			  "405"
 		  Ports			  [1, 3]
 		  Position		  [320, 706, 325, 744]
 		  ZOrder		  -6
@@ -2438,7 +6132,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain"
-		  SID			  "86:335"
+		  SID			  "406"
 		  Position		  [110, 65, 140, 95]
 		  ZOrder		  -8
 		  Gain			  "15/11268"
@@ -2449,7 +6143,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain1"
-		  SID			  "86:336"
+		  SID			  "407"
 		  Position		  [110, 140, 140, 170]
 		  ZOrder		  -8
 		  Gain			  "15/11268"
@@ -2460,7 +6154,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain2"
-		  SID			  "86:337"
+		  SID			  "408"
 		  Position		  [150, 610, 180, 640]
 		  ZOrder		  -8
 		  Gain			  "15/(3150000/11268)"
@@ -2471,7 +6165,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain3"
-		  SID			  "86:338"
+		  SID			  "409"
 		  Position		  [150, 565, 180, 595]
 		  ZOrder		  -8
 		  Gain			  "15/(3150000/11268)"
@@ -2482,7 +6176,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain4"
-		  SID			  "86:339"
+		  SID			  "410"
 		  Position		  [110, 245, 140, 275]
 		  ZOrder		  -8
 		  Gain			  "15/11268"
@@ -2493,7 +6187,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain5"
-		  SID			  "86:340"
+		  SID			  "411"
 		  Position		  [110, 335, 140, 365]
 		  ZOrder		  -8
 		  Gain			  "15/11268"
@@ -2504,7 +6198,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain6"
-		  SID			  "86:341"
+		  SID			  "412"
 		  Position		  [150, 710, 180, 740]
 		  ZOrder		  -8
 		  Gain			  "15/(900000/391)"
@@ -2515,7 +6209,7 @@ Library {
 		Block {
 		  BlockType		  Gain
 		  Name			  "Gain7"
-		  SID			  "86:342"
+		  SID			  "413"
 		  Position		  [150, 665, 180, 695]
 		  ZOrder		  -8
 		  Gain			  "15/(900000/11268)"
@@ -2526,7 +6220,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux"
-		  SID			  "86:343"
+		  SID			  "414"
 		  Ports			  [8, 1]
 		  Position		  [770, 41, 775, 244]
 		  ZOrder		  -33
@@ -2537,7 +6231,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux1"
-		  SID			  "86:344"
+		  SID			  "415"
 		  Ports			  [8, 1]
 		  Position		  [780, 301, 785, 504]
 		  ZOrder		  -34
@@ -2548,7 +6242,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux2"
-		  SID			  "86:345"
+		  SID			  "416"
 		  Ports			  [2, 1]
 		  Position		  [865, 253, 870, 457]
 		  ZOrder		  -35
@@ -2559,7 +6253,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux3"
-		  SID			  "86:346"
+		  SID			  "417"
 		  Ports			  [8, 1]
 		  Position		  [775, 556, 780, 759]
 		  ZOrder		  -36
@@ -2570,7 +6264,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux4"
-		  SID			  "86:347"
+		  SID			  "418"
 		  Ports			  [8, 1]
 		  Position		  [785, 816, 790, 1019]
 		  ZOrder		  -37
@@ -2581,7 +6275,7 @@ Library {
 		Block {
 		  BlockType		  Mux
 		  Name			  "Mux5"
-		  SID			  "86:348"
+		  SID			  "419"
 		  Ports			  [2, 1]
 		  Position		  [870, 768, 875, 972]
 		  ZOrder		  -38
@@ -2592,7 +6286,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Speed_System"
-		  SID			  "86:349"
+		  SID			  "420"
 		  Ports			  [1, 1]
 		  Position		  [610, 385, 650, 445]
 		  ZOrder		  -39
@@ -2621,7 +6315,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
-		    SID			    "86:350"
+		    SID			    "421"
 		    Position		    [25, 93, 55, 107]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -2629,7 +6323,7 @@ Library {
 		    Block {
 		    BlockType		    Clock
 		    Name		    "Clock1"
-		    SID			    "86:351"
+		    SID			    "422"
 		    Position		    [145, 35, 165, 55]
 		    ZOrder		    -1
 		    ShowName		    off
@@ -2639,7 +6333,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Duty"
-		    SID			    "86:352"
+		    SID			    "423"
 		    Position		    [25, 260, 85, 290]
 		    ZOrder		    -9
 		    DisableCoverage	    on
@@ -2648,7 +6342,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain1"
-		    SID			    "86:353"
+		    SID			    "424"
 		    Position		    [345, 245, 375, 275]
 		    ZOrder		    -8
 		    Gain		    "5"
@@ -2659,7 +6353,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain3"
-		    SID			    "86:354"
+		    SID			    "425"
 		    Position		    [290, 105, 320, 135]
 		    ZOrder		    -8
 		    Gain		    "5"
@@ -2670,7 +6364,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain4"
-		    SID			    "86:355"
+		    SID			    "426"
 		    Position		    [80, 85, 110, 115]
 		    ZOrder		    -8
 		    Gain		    "1800"
@@ -2681,7 +6375,7 @@ Library {
 		    Block {
 		    BlockType		    Trigonometry
 		    Name		    "Output"
-		    SID			    "86:356"
+		    SID			    "427"
 		    Ports		    [1, 1]
 		    Position		    [295, 25, 325, 55]
 		    ZOrder		    -3
@@ -2690,7 +6384,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product1"
-		    SID			    "86:357"
+		    SID			    "428"
 		    Ports		    [2, 1]
 		    Position		    [200, 33, 225, 77]
 		    ZOrder		    -5
@@ -2701,7 +6395,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product3"
-		    SID			    "86:358"
+		    SID			    "429"
 		    Ports		    [2, 1]
 		    Position		    [135, 63, 160, 107]
 		    ZOrder		    -5
@@ -2712,7 +6406,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "RTE Conversion"
-		    SID			    "86:359"
+		    SID			    "430"
 		    Ports		    [1, 1]
 		    Position		    [230, 241, 270, 279]
 		    ZOrder		    -16
@@ -2728,7 +6422,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "RTE SPWM"
-		    SID			    "86:360"
+		    SID			    "431"
 		    Ports		    [2, 1]
 		    Position		    [135, 240, 175, 280]
 		    ZOrder		    -17
@@ -2749,7 +6443,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "initialFreq"
-		    SID			    "86:361"
+		    SID			    "432"
 		    Position		    [55, 35, 115, 65]
 		    ZOrder		    -9
 		    DisableCoverage	    on
@@ -2758,7 +6452,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out1"
-		    SID			    "86:362"
+		    SID			    "433"
 		    Position		    [405, 203, 435, 217]
 		    ZOrder		    -19
 		    IconDisplay		    "Port number"
@@ -2846,7 +6540,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Speed_System1"
-		  SID			  "86:363"
+		  SID			  "434"
 		  Ports			  [1, 1]
 		  Position		  [610, 465, 650, 525]
 		  ZOrder		  -40
@@ -2875,7 +6569,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
-		    SID			    "86:364"
+		    SID			    "435"
 		    Position		    [25, 93, 55, 107]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -2883,7 +6577,7 @@ Library {
 		    Block {
 		    BlockType		    Clock
 		    Name		    "Clock1"
-		    SID			    "86:365"
+		    SID			    "436"
 		    Position		    [145, 35, 165, 55]
 		    ZOrder		    -1
 		    ShowName		    off
@@ -2893,7 +6587,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Duty"
-		    SID			    "86:366"
+		    SID			    "437"
 		    Position		    [25, 260, 85, 290]
 		    ZOrder		    -9
 		    DisableCoverage	    on
@@ -2902,7 +6596,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain1"
-		    SID			    "86:367"
+		    SID			    "438"
 		    Position		    [345, 245, 375, 275]
 		    ZOrder		    -8
 		    Gain		    "5"
@@ -2913,7 +6607,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain3"
-		    SID			    "86:368"
+		    SID			    "439"
 		    Position		    [290, 105, 320, 135]
 		    ZOrder		    -8
 		    Gain		    "5"
@@ -2924,7 +6618,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain4"
-		    SID			    "86:369"
+		    SID			    "440"
 		    Position		    [80, 85, 110, 115]
 		    ZOrder		    -8
 		    Gain		    "1800"
@@ -2935,7 +6629,7 @@ Library {
 		    Block {
 		    BlockType		    Trigonometry
 		    Name		    "Output"
-		    SID			    "86:370"
+		    SID			    "441"
 		    Ports		    [1, 1]
 		    Position		    [295, 25, 325, 55]
 		    ZOrder		    -3
@@ -2944,7 +6638,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product1"
-		    SID			    "86:371"
+		    SID			    "442"
 		    Ports		    [2, 1]
 		    Position		    [200, 33, 225, 77]
 		    ZOrder		    -5
@@ -2955,7 +6649,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product3"
-		    SID			    "86:372"
+		    SID			    "443"
 		    Ports		    [2, 1]
 		    Position		    [135, 63, 160, 107]
 		    ZOrder		    -5
@@ -2966,7 +6660,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "RTE Conversion"
-		    SID			    "86:373"
+		    SID			    "444"
 		    Ports		    [1, 1]
 		    Position		    [230, 241, 270, 279]
 		    ZOrder		    -16
@@ -2982,7 +6676,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "RTE SPWM"
-		    SID			    "86:374"
+		    SID			    "445"
 		    Ports		    [2, 1]
 		    Position		    [135, 240, 175, 280]
 		    ZOrder		    -17
@@ -3003,7 +6697,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "initialFreq"
-		    SID			    "86:375"
+		    SID			    "446"
 		    Position		    [55, 35, 115, 65]
 		    ZOrder		    -9
 		    DisableCoverage	    on
@@ -3012,7 +6706,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out1"
-		    SID			    "86:376"
+		    SID			    "447"
 		    Position		    [405, 203, 435, 217]
 		    ZOrder		    -19
 		    IconDisplay		    "Port number"
@@ -3100,28 +6794,28 @@ Library {
 		Block {
 		  BlockType		  Terminator
 		  Name			  "Terminator"
-		  SID			  "86:377"
+		  SID			  "448"
 		  Position		  [1200, 335, 1220, 355]
 		  ZOrder		  -20
 		}
 		Block {
 		  BlockType		  Terminator
 		  Name			  "Terminator1"
-		  SID			  "86:378"
+		  SID			  "449"
 		  Position		  [1205, 405, 1225, 425]
 		  ZOrder		  -20
 		}
 		Block {
 		  BlockType		  Terminator
 		  Name			  "Terminator2"
-		  SID			  "86:379"
+		  SID			  "450"
 		  Position		  [1205, 850, 1225, 870]
 		  ZOrder		  -20
 		}
 		Block {
 		  BlockType		  Terminator
 		  Name			  "Terminator3"
-		  SID			  "86:380"
+		  SID			  "451"
 		  Position		  [1210, 920, 1230, 940]
 		  ZOrder		  -20
 		}
@@ -3467,7 +7161,7 @@ Library {
 		  DstPort		  8
 		}
 		Annotation {
-		  SID			  "86:385"
+		  SID			  "452"
 		  Name			  "Current scale factors chosen to match\neasYgen settings for 3.5 MVA gas engine\nCT ratio of 1500/x made "
 		  "on 20160518"
 		  Position		  [156, 785]
@@ -3475,25 +7169,25 @@ Library {
 		  FontSize		  14
 		}
 		Annotation {
-		  SID			  "86:384"
+		  SID			  "453"
 		  Name			  "6Vout / ( 900,000W / 391 Vpk) "
 		  Position		  [202, 538]
 		  ZOrder		  -2
 		}
 		Annotation {
-		  SID			  "86:383"
+		  SID			  "454"
 		  Name			  "For 120 => 12Vout / 170Vpk\nFor 480 => 12Vout / 391Vpk\nFor 13.8kv => 12Vout / 11268Vpk"
 		  Position		  [160, 24]
 		  ZOrder		  -3
 		}
 		Annotation {
-		  SID			  "86:382"
+		  SID			  "455"
 		  Name			  "GR1 A AOUT (CH00-15)"
 		  Position		  [506, 33]
 		  ZOrder		  -4
 		}
 		Annotation {
-		  SID			  "86:381"
+		  SID			  "456"
 		  Name			  "There will need to be a\nnew scaling factor to use\nthe current cards (0-1A)"
 		  Position		  [189, 492]
 		  ZOrder		  -5
@@ -3503,7 +7197,7 @@ Library {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Woodward Outputs"
-	      SID		      "86:386"
+	      SID		      "457"
 	      Ports		      [5, 7]
 	      Position		      [325, 184, 465, 436]
 	      ZOrder		      -32
@@ -3532,7 +7226,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Digital Output"
-		  SID			  "86:387"
+		  SID			  "458"
 		  Position		  [90, 183, 120, 197]
 		  ZOrder		  -1
 		  IconDisplay		  "Port number"
@@ -3540,7 +7234,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "DIO Enable"
-		  SID			  "86:388"
+		  SID			  "459"
 		  Position		  [190, 203, 220, 217]
 		  ZOrder		  -2
 		  Port			  "2"
@@ -3549,7 +7243,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Bias Enable"
-		  SID			  "86:389"
+		  SID			  "460"
 		  Position		  [110, 583, 140, 597]
 		  ZOrder		  -3
 		  Port			  "3"
@@ -3558,7 +7252,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Gen1 MCB Status"
-		  SID			  "86:390"
+		  SID			  "461"
 		  Position		  [185, 248, 215, 262]
 		  ZOrder		  -4
 		  Port			  "4"
@@ -3567,7 +7261,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Gen2 MCB Status"
-		  SID			  "86:391"
+		  SID			  "462"
 		  Position		  [185, 278, 215, 292]
 		  ZOrder		  -5
 		  Port			  "5"
@@ -3576,7 +7270,7 @@ Library {
 		Block {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator1"
-		  SID			  "86:392"
+		  SID			  "463"
 		  Ports			  [3, 1]
 		  Position		  [685, 172, 695, 468]
 		  ZOrder		  -6
@@ -3587,7 +7281,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "DIO - Gr3"
-		  SID			  "86:393"
+		  SID			  "464"
 		  Ports			  [1, 1]
 		  Position		  [475, 200, 570, 240]
 		  ZOrder		  -7
@@ -3623,7 +7317,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Dout"
-		    SID			    "86:394"
+		    SID			    "465"
 		    Position		    [15, 43, 45, 57]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -3631,7 +7325,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:395"
+		    SID			    "466"
 		    Ports		    [2, 1]
 		    Position		    [985, 19, 990, 146]
 		    ZOrder		    -2
@@ -3642,7 +7336,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector"
-		    SID			    "86:396"
+		    SID			    "467"
 		    Ports		    [1, 1]
 		    Position		    [130, 31, 135, 69]
 		    ZOrder		    -3
@@ -3653,7 +7347,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector1"
-		    SID			    "86:397"
+		    SID			    "468"
 		    Ports		    [1, 1]
 		    Position		    [130, 101, 135, 139]
 		    ZOrder		    -3
@@ -3664,7 +7358,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Conditioning"
-		    SID			    "86:398"
+		    SID			    "469"
 		    Ports		    [1, 1]
 		    Position		    [835, 32, 915, 68]
 		    ZOrder		    -5
@@ -3693,7 +7387,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
-		    SID			    "86:399"
+		    SID			    "470"
 		    Position		    [25, 88, 55, 102]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -3701,7 +7395,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:400"
+		    SID			    "471"
 		    Ports		    [8, 1]
 		    Position		    [200, 40, 210, 245]
 		    ZOrder		    -2
@@ -3718,7 +7412,7 @@ Library {
 		    Block {
 		    BlockType		    Demux
 		    Name		    "Demux"
-		    SID			    "86:401"
+		    SID			    "472"
 		    Ports		    [1, 8]
 		    Position		    [80, 37, 90, 248]
 		    ZOrder		    -6
@@ -3777,7 +7471,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out1"
-		    SID			    "86:402"
+		    SID			    "473"
 		    Position		    [290, 138, 320, 152]
 		    ZOrder		    -7
 		    IconDisplay		    "Port number"
@@ -3866,7 +7560,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Conditioning1"
-		    SID			    "86:403"
+		    SID			    "474"
 		    Ports		    [1, 1]
 		    Position		    [835, 96, 915, 134]
 		    ZOrder		    -6
@@ -3895,7 +7589,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
-		    SID			    "86:404"
+		    SID			    "475"
 		    Position		    [25, 88, 55, 102]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -3903,7 +7597,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:405"
+		    SID			    "476"
 		    Ports		    [8, 1]
 		    Position		    [200, 40, 210, 245]
 		    ZOrder		    -2
@@ -3920,7 +7614,7 @@ Library {
 		    Block {
 		    BlockType		    Demux
 		    Name		    "Demux"
-		    SID			    "86:406"
+		    SID			    "477"
 		    Ports		    [1, 8]
 		    Position		    [80, 37, 90, 248]
 		    ZOrder		    -6
@@ -3979,7 +7673,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out1"
-		    SID			    "86:407"
+		    SID			    "478"
 		    Position		    [290, 138, 320, 152]
 		    ZOrder		    -7
 		    IconDisplay		    "Port number"
@@ -4068,7 +7762,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DigitalIn"
-		    SID			    "86:408"
+		    SID			    "479"
 		    Ports		    [0, 2]
 		    Position		    [525, 40, 750, 80]
 		    ZOrder		    -7
@@ -4080,10 +7774,10 @@ Library {
 		    portNb		    "5"
 		    FcnNos		    "Slot 3 Module A Subsection 1"
 		    size		    "1"
-		    maxcount		    "-2"
-		    count		    "-2"
+		    maxcount		    "8"
+		    count		    "8"
 		    sampleTime		    "0"
-		    numchan		    "-2"
+		    numchan		    "8"
 		    Port {
 		    PortNumber		    1
 		    Name		    "DI_CH00-07"
@@ -4094,7 +7788,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DigitalIn1"
-		    SID			    "86:409"
+		    SID			    "480"
 		    Ports		    [0, 2]
 		    Position		    [525, 105, 750, 145]
 		    ZOrder		    -8
@@ -4106,10 +7800,10 @@ Library {
 		    portNb		    "6"
 		    FcnNos		    "Slot 3 Module A Subsection 2"
 		    size		    "1"
-		    maxcount		    "-2"
-		    count		    "-2"
+		    maxcount		    "8"
+		    count		    "8"
 		    sampleTime		    "0"
-		    numchan		    "-2"
+		    numchan		    "8"
 		    Port {
 		    PortNumber		    1
 		    Name		    "DI_CH08-15"
@@ -4120,7 +7814,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DigitalOut"
-		    SID			    "86:410"
+		    SID			    "481"
 		    Ports		    [1, 1]
 		    Position		    [180, 30, 405, 70]
 		    ZOrder		    -9
@@ -4132,14 +7826,14 @@ Library {
 		    portNb		    "5"
 		    FcnNos		    "Slot 3 Module B Subsection 1"
 		    size		    "1"
-		    maxcount		    "-2"
+		    maxcount		    "8"
 		    count		    "8"
 		    numchan		    "8"
 		    }
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DigitalOut1"
-		    SID			    "86:411"
+		    SID			    "482"
 		    Ports		    [1, 1]
 		    Position		    [180, 100, 405, 140]
 		    ZOrder		    -10
@@ -4151,14 +7845,14 @@ Library {
 		    portNb		    "6"
 		    FcnNos		    "Slot 3 Module B Subsection 2"
 		    size		    "1"
-		    maxcount		    "-2"
+		    maxcount		    "8"
 		    count		    "8"
 		    numchan		    "8"
 		    }
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator1"
-		    SID			    "86:412"
+		    SID			    "483"
 		    Position		    [460, 110, 480, 130]
 		    ZOrder		    -11
 		    ShowName		    off
@@ -4166,7 +7860,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator3"
-		    SID			    "86:413"
+		    SID			    "484"
 		    Position		    [460, 40, 480, 60]
 		    ZOrder		    -12
 		    ShowName		    off
@@ -4174,7 +7868,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator5"
-		    SID			    "86:414"
+		    SID			    "485"
 		    Position		    [790, 60, 810, 80]
 		    ZOrder		    -13
 		    ShowName		    off
@@ -4182,7 +7876,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator6"
-		    SID			    "86:415"
+		    SID			    "486"
 		    Position		    [790, 125, 810, 145]
 		    ZOrder		    -14
 		    ShowName		    off
@@ -4190,7 +7884,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "DIn"
-		    SID			    "86:416"
+		    SID			    "487"
 		    Position		    [1005, 78, 1035, 92]
 		    ZOrder		    -15
 		    IconDisplay		    "Port number"
@@ -4280,7 +7974,7 @@ Library {
 		    DstPort		    2
 		    }
 		    Annotation {
-		    SID			    "86:417"
+		    SID			    "488"
 		    Position		    [134, 124]
 		    ZOrder		    -1
 		    }
@@ -4289,7 +7983,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "DIO - Woodward"
-		  SID			  "86:418"
+		  SID			  "489"
 		  Ports			  [6, 7]
 		  Position		  [265, 143, 415, 297]
 		  ZOrder		  -8
@@ -4318,7 +8012,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Din_Wood1"
-		    SID			    "86:419"
+		    SID			    "490"
 		    Position		    [105, 318, 135, 332]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -4326,7 +8020,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Din_sim"
-		    SID			    "86:420"
+		    SID			    "491"
 		    Position		    [85, 553, 115, 567]
 		    ZOrder		    -2
 		    Port		    "2"
@@ -4335,7 +8029,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "control"
-		    SID			    "86:421"
+		    SID			    "492"
 		    Position		    [360, 253, 390, 267]
 		    ZOrder		    -3
 		    Port		    "3"
@@ -4344,7 +8038,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "control1"
-		    SID			    "86:422"
+		    SID			    "493"
 		    Position		    [360, 858, 390, 872]
 		    ZOrder		    -4
 		    Port		    "4"
@@ -4353,7 +8047,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Gen1 MCB Status"
-		    SID			    "86:423"
+		    SID			    "494"
 		    Position		    [775, 488, 805, 502]
 		    ZOrder		    -5
 		    Port		    "5"
@@ -4362,7 +8056,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Gen2 MCB Status"
-		    SID			    "86:424"
+		    SID			    "495"
 		    Position		    [775, 1088, 805, 1102]
 		    ZOrder		    -6
 		    Port		    "6"
@@ -4371,7 +8065,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Add"
-		    SID			    "86:425"
+		    SID			    "496"
 		    Ports		    [2, 1]
 		    Position		    [845, 252, 875, 283]
 		    ZOrder		    -2
@@ -4382,7 +8076,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Add1"
-		    SID			    "86:426"
+		    SID			    "497"
 		    Ports		    [2, 1]
 		    Position		    [845, 417, 875, 448]
 		    ZOrder		    -2
@@ -4393,7 +8087,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Add2"
-		    SID			    "86:427"
+		    SID			    "498"
 		    Ports		    [2, 1]
 		    Position		    [845, 857, 875, 888]
 		    ZOrder		    -2
@@ -4404,7 +8098,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Add3"
-		    SID			    "86:428"
+		    SID			    "499"
 		    Ports		    [2, 1]
 		    Position		    [845, 1022, 875, 1053]
 		    ZOrder		    -2
@@ -4415,7 +8109,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:429"
+		    SID			    "500"
 		    Ports		    [2, 1]
 		    Position		    [1160, 611, 1165, 649]
 		    ZOrder		    -2
@@ -4426,7 +8120,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector"
-		    SID			    "86:430"
+		    SID			    "501"
 		    Ports		    [1, 2]
 		    Position		    [565, 86, 570, 124]
 		    ZOrder		    -3
@@ -4449,7 +8143,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector1"
-		    SID			    "86:431"
+		    SID			    "502"
 		    Ports		    [1, 8]
 		    Position		    [270, 1171, 275, 1294]
 		    ZOrder		    -3
@@ -4509,7 +8203,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector3"
-		    SID			    "86:432"
+		    SID			    "503"
 		    Ports		    [1, 4]
 		    Position		    [200, 273, 205, 372]
 		    ZOrder		    -3
@@ -4544,7 +8238,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector5"
-		    SID			    "86:433"
+		    SID			    "504"
 		    Ports		    [1, 2]
 		    Position		    [565, 716, 570, 754]
 		    ZOrder		    -3
@@ -4566,7 +8260,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector6"
-		    SID			    "86:434"
+		    SID			    "505"
 		    Ports		    [1, 4]
 		    Position		    [200, 878, 205, 977]
 		    ZOrder		    -3
@@ -4601,7 +8295,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector7"
-		    SID			    "86:435"
+		    SID			    "506"
 		    Ports		    [1, 8]
 		    Position		    [300, 556, 305, 679]
 		    ZOrder		    -3
@@ -4661,7 +8355,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero"
-		    SID			    "86:436"
+		    SID			    "507"
 		    Ports		    [1, 1]
 		    Position		    [310, 150, 340, 180]
 		    ZOrder		    -6
@@ -4675,7 +8369,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero1"
-		    SID			    "86:437"
+		    SID			    "508"
 		    Ports		    [1, 1]
 		    Position		    [310, 210, 340, 240]
 		    ZOrder		    -6
@@ -4689,7 +8383,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero10"
-		    SID			    "86:438"
+		    SID			    "509"
 		    Ports		    [1, 1]
 		    Position		    [320, 925, 350, 955]
 		    ZOrder		    -6
@@ -4703,7 +8397,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero11"
-		    SID			    "86:439"
+		    SID			    "510"
 		    Ports		    [1, 1]
 		    Position		    [320, 985, 350, 1015]
 		    ZOrder		    -6
@@ -4717,7 +8411,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero12"
-		    SID			    "86:440"
+		    SID			    "511"
 		    Ports		    [1, 1]
 		    Position		    [660, 710, 690, 740]
 		    ZOrder		    -6
@@ -4731,7 +8425,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero13"
-		    SID			    "86:441"
+		    SID			    "512"
 		    Ports		    [1, 1]
 		    Position		    [660, 770, 690, 800]
 		    ZOrder		    -6
@@ -4745,7 +8439,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero2"
-		    SID			    "86:442"
+		    SID			    "513"
 		    Ports		    [1, 1]
 		    Position		    [440, 245, 470, 275]
 		    ZOrder		    -6
@@ -4759,7 +8453,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero3"
-		    SID			    "86:443"
+		    SID			    "514"
 		    Ports		    [1, 1]
 		    Position		    [320, 320, 350, 350]
 		    ZOrder		    -6
@@ -4773,7 +8467,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero4"
-		    SID			    "86:444"
+		    SID			    "515"
 		    Ports		    [1, 1]
 		    Position		    [320, 380, 350, 410]
 		    ZOrder		    -6
@@ -4787,7 +8481,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero5"
-		    SID			    "86:445"
+		    SID			    "516"
 		    Ports		    [1, 1]
 		    Position		    [660, 80, 690, 110]
 		    ZOrder		    -6
@@ -4801,7 +8495,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero6"
-		    SID			    "86:446"
+		    SID			    "517"
 		    Ports		    [1, 1]
 		    Position		    [660, 140, 690, 170]
 		    ZOrder		    -6
@@ -4815,7 +8509,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero7"
-		    SID			    "86:447"
+		    SID			    "518"
 		    Ports		    [1, 1]
 		    Position		    [310, 755, 340, 785]
 		    ZOrder		    -6
@@ -4829,7 +8523,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero8"
-		    SID			    "86:448"
+		    SID			    "519"
 		    Ports		    [1, 1]
 		    Position		    [310, 815, 340, 845]
 		    ZOrder		    -6
@@ -4843,7 +8537,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "Compare\nTo Zero9"
-		    SID			    "86:449"
+		    SID			    "520"
 		    Ports		    [1, 1]
 		    Position		    [440, 850, 470, 880]
 		    ZOrder		    -6
@@ -4857,21 +8551,21 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant"
-		    SID			    "86:450"
+		    SID			    "521"
 		    Position		    [760, 335, 790, 365]
 		    ZOrder		    -4
 		    }
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant1"
-		    SID			    "86:451"
+		    SID			    "522"
 		    Position		    [795, 45, 825, 75]
 		    ZOrder		    -4
 		    }
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant2"
-		    SID			    "86:452"
+		    SID			    "523"
 		    Position		    [795, 140, 825, 170]
 		    ZOrder		    -4
 		    Value		    "0"
@@ -4879,21 +8573,21 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant3"
-		    SID			    "86:453"
+		    SID			    "524"
 		    Position		    [760, 940, 790, 970]
 		    ZOrder		    -4
 		    }
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant4"
-		    SID			    "86:454"
+		    SID			    "525"
 		    Position		    [795, 675, 825, 705]
 		    ZOrder		    -4
 		    }
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant5"
-		    SID			    "86:455"
+		    SID			    "526"
 		    Position		    [795, 770, 825, 800]
 		    ZOrder		    -4
 		    Value		    "0"
@@ -4901,7 +8595,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type Conversion"
-		    SID			    "86:456"
+		    SID			    "527"
 		    Position		    [975, 478, 1050, 512]
 		    ZOrder		    -5
 		    OutDataTypeStr	    "double"
@@ -4911,7 +8605,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type Conversion1"
-		    SID			    "86:457"
+		    SID			    "528"
 		    Position		    [980, 1078, 1055, 1112]
 		    ZOrder		    -5
 		    OutDataTypeStr	    "double"
@@ -4921,7 +8615,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator"
-		    SID			    "86:458"
+		    SID			    "529"
 		    Ports		    [1, 1]
 		    Position		    [920, 479, 950, 511]
 		    ZOrder		    -17
@@ -4932,7 +8626,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator1"
-		    SID			    "86:459"
+		    SID			    "530"
 		    Ports		    [1, 1]
 		    Position		    [925, 1079, 955, 1111]
 		    ZOrder		    -17
@@ -4943,7 +8637,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator2"
-		    SID			    "86:460"
+		    SID			    "531"
 		    Ports		    [2, 1]
 		    Position		    [1080, 122, 1110, 153]
 		    ZOrder		    3
@@ -4955,7 +8649,7 @@ Library {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "Mux1"
-		    SID			    "86:461"
+		    SID			    "532"
 		    Ports		    [8, 1]
 		    Position		    [1085, 1177, 1090, 1288]
 		    ZOrder		    -12
@@ -4972,7 +8666,7 @@ Library {
 		    Block {
 		    BlockType		    Mux
 		    Name		    "Mux2"
-		    SID			    "86:462"
+		    SID			    "533"
 		    Ports		    [8, 1]
 		    Position		    [1080, 562, 1085, 673]
 		    ZOrder		    -12
@@ -4989,7 +8683,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop"
-		    SID			    "86:463"
+		    SID			    "534"
 		    Ports		    [2, 2]
 		    Position		    [390, 170, 435, 245]
 		    ZOrder		    -44
@@ -5001,7 +8695,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop1"
-		    SID			    "86:464"
+		    SID			    "535"
 		    Ports		    [2, 2]
 		    Position		    [390, 340, 435, 415]
 		    ZOrder		    -45
@@ -5013,7 +8707,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop2"
-		    SID			    "86:465"
+		    SID			    "536"
 		    Ports		    [2, 2]
 		    Position		    [730, 75, 775, 150]
 		    ZOrder		    -46
@@ -5025,7 +8719,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop3"
-		    SID			    "86:466"
+		    SID			    "537"
 		    Ports		    [2, 2]
 		    Position		    [390, 775, 435, 850]
 		    ZOrder		    -47
@@ -5037,7 +8731,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop4"
-		    SID			    "86:467"
+		    SID			    "538"
 		    Ports		    [2, 2]
 		    Position		    [390, 945, 435, 1020]
 		    ZOrder		    -48
@@ -5049,7 +8743,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "S-R\nFlip-Flop5"
-		    SID			    "86:468"
+		    SID			    "539"
 		    Ports		    [2, 2]
 		    Position		    [730, 705, 775, 780]
 		    ZOrder		    -49
@@ -5061,7 +8755,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch"
-		    SID			    "86:469"
+		    SID			    "540"
 		    Position		    [850, 105, 900, 145]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5071,7 +8765,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch1"
-		    SID			    "86:470"
+		    SID			    "541"
 		    Position		    [525, 240, 575, 280]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5082,7 +8776,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch2"
-		    SID			    "86:471"
+		    SID			    "542"
 		    Position		    [535, 420, 585, 460]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5093,7 +8787,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch3"
-		    SID			    "86:472"
+		    SID			    "543"
 		    Position		    [645, 290, 695, 330]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5104,7 +8798,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch4"
-		    SID			    "86:473"
+		    SID			    "544"
 		    Position		    [850, 510, 900, 550]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5115,7 +8809,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch5"
-		    SID			    "86:474"
+		    SID			    "545"
 		    Position		    [850, 735, 900, 775]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5125,7 +8819,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch6"
-		    SID			    "86:475"
+		    SID			    "546"
 		    Position		    [525, 845, 575, 885]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5136,7 +8830,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch7"
-		    SID			    "86:476"
+		    SID			    "547"
 		    Position		    [545, 1025, 595, 1065]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5147,7 +8841,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch8"
-		    SID			    "86:477"
+		    SID			    "548"
 		    Position		    [645, 895, 695, 935]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5159,7 +8853,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch9"
-		    SID			    "86:478"
+		    SID			    "549"
 		    Position		    [855, 1120, 905, 1160]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -5170,7 +8864,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen1 Fuel Enable"
-		    SID			    "86:479"
+		    SID			    "550"
 		    Position		    [1190, 133, 1220, 147]
 		    ZOrder		    -60
 		    IconDisplay		    "Port number"
@@ -5178,7 +8872,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen1 GCB"
-		    SID			    "86:480"
+		    SID			    "551"
 		    Position		    [940, 263, 970, 277]
 		    ZOrder		    -61
 		    Port		    "2"
@@ -5187,7 +8881,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen1 MCB"
-		    SID			    "86:481"
+		    SID			    "552"
 		    Position		    [940, 428, 970, 442]
 		    ZOrder		    -62
 		    Port		    "3"
@@ -5196,7 +8890,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "DIn1"
-		    SID			    "86:482"
+		    SID			    "553"
 		    Position		    [1200, 623, 1230, 637]
 		    ZOrder		    -63
 		    Port		    "4"
@@ -5205,7 +8899,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen2 Fuel Enable"
-		    SID			    "86:483"
+		    SID			    "554"
 		    Position		    [940, 748, 970, 762]
 		    ZOrder		    -64
 		    Port		    "5"
@@ -5214,7 +8908,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen2 GCB"
-		    SID			    "86:484"
+		    SID			    "555"
 		    Position		    [940, 868, 970, 882]
 		    ZOrder		    -65
 		    Port		    "6"
@@ -5223,7 +8917,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen2 MCB"
-		    SID			    "86:485"
+		    SID			    "556"
 		    Position		    [940, 1033, 970, 1047]
 		    ZOrder		    -66
 		    Port		    "7"
@@ -5968,12 +9662,12 @@ Library {
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "86:487"
+		    SID			    "557"
 		    Position		    [264, 654]
 		    ZOrder		    -1
 		    }
 		    Annotation {
-		    SID			    "86:486"
+		    SID			    "558"
 		    Name		    "These are the inputs to\nthe HIL Outputs."
 		    Position		    [1244, 704]
 		    ZOrder		    -2
@@ -5983,7 +9677,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "DOUT type config"
-		  SID			  "86:488"
+		  SID			  "559"
 		  Ports			  []
 		  Position		  [20, 326, 122, 380]
 		  ZOrder		  -9
@@ -6012,7 +9706,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DataIn Send"
-		    SID			    "86:489"
+		    SID			    "560"
 		    Ports		    [1, 1]
 		    Position		    [100, 89, 210, 121]
 		    ZOrder		    -1
@@ -6032,7 +9726,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "DataIn Send1"
-		    SID			    "86:490"
+		    SID			    "561"
 		    Ports		    [1, 1]
 		    Position		    [100, 159, 210, 191]
 		    ZOrder		    -2
@@ -6052,21 +9746,21 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Subsection 3\nDOUT type"
-		    SID			    "86:491"
+		    SID			    "562"
 		    Position		    [30, 90, 60, 120]
 		    ZOrder		    -3
 		    }
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Subsection 4\nDOUT type"
-		    SID			    "86:492"
+		    SID			    "563"
 		    Position		    [30, 160, 60, 190]
 		    ZOrder		    -4
 		    }
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator1"
-		    SID			    "86:493"
+		    SID			    "564"
 		    Position		    [240, 165, 260, 185]
 		    ZOrder		    -5
 		    ShowName		    off
@@ -6074,7 +9768,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator2"
-		    SID			    "86:494"
+		    SID			    "565"
 		    Position		    [240, 95, 260, 115]
 		    ZOrder		    -6
 		    ShowName		    off
@@ -6104,7 +9798,7 @@ Library {
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "86:495"
+		    SID			    "566"
 		    Name		    "The Constants are used to select Digital Output type:\n- 0: Time-Stamped Digital Output\n- 1: Pulse-W"
 		    "idth Modulated DIgital Output "
 		    Position		    [152, 94]
@@ -6118,7 +9812,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "OpCtrl"
-		  SID			  "86:496"
+		  SID			  "567"
 		  Ports			  [0, 2]
 		  Position		  [345, 27, 535, 78]
 		  ZOrder		  -10
@@ -6142,7 +9836,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "PWM IO - Gr3"
-		  SID			  "86:497"
+		  SID			  "568"
 		  Ports			  [1, 1]
 		  Position		  [270, 401, 565, 439]
 		  ZOrder		  -11
@@ -6178,7 +9872,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "PWMOut"
-		    SID			    "86:498"
+		    SID			    "569"
 		    Position		    [35, 133, 65, 147]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -6186,7 +9880,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:499"
+		    SID			    "570"
 		    Ports		    [2, 1]
 		    Position		    [1050, 111, 1055, 149]
 		    ZOrder		    -2
@@ -6197,7 +9891,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator1"
-		    SID			    "86:500"
+		    SID			    "571"
 		    Ports		    [2, 1]
 		    Position		    [930, 56, 935, 89]
 		    ZOrder		    -2
@@ -6214,7 +9908,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator2"
-		    SID			    "86:501"
+		    SID			    "572"
 		    Ports		    [2, 1]
 		    Position		    [930, 166, 935, 199]
 		    ZOrder		    -2
@@ -6231,7 +9925,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector"
-		    SID			    "86:502"
+		    SID			    "573"
 		    Ports		    [1, 2]
 		    Position		    [185, 41, 190, 119]
 		    ZOrder		    -5
@@ -6253,7 +9947,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector1"
-		    SID			    "86:503"
+		    SID			    "574"
 		    Ports		    [1, 2]
 		    Position		    [185, 156, 190, 234]
 		    ZOrder		    -6
@@ -6275,7 +9969,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector2"
-		    SID			    "86:504"
+		    SID			    "575"
 		    Ports		    [1, 2]
 		    Position		    [100, 21, 105, 254]
 		    ZOrder		    -7
@@ -6297,7 +9991,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "PWM In"
-		    SID			    "86:505"
+		    SID			    "576"
 		    Ports		    [0, 3]
 		    Position		    [640, 55, 865, 105]
 		    ZOrder		    -8
@@ -6328,7 +10022,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "PWM In1"
-		    SID			    "86:506"
+		    SID			    "577"
 		    Ports		    [0, 3]
 		    Position		    [640, 165, 865, 215]
 		    ZOrder		    -9
@@ -6359,7 +10053,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "PWM Out"
-		    SID			    "86:507"
+		    SID			    "578"
 		    Ports		    [2, 1]
 		    Position		    [310, 41, 535, 119]
 		    ZOrder		    -10
@@ -6384,7 +10078,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "PWM Out1"
-		    SID			    "86:508"
+		    SID			    "579"
 		    Ports		    [2, 1]
 		    Position		    [310, 155, 535, 235]
 		    ZOrder		    -11
@@ -6409,7 +10103,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator"
-		    SID			    "86:509"
+		    SID			    "580"
 		    Position		    [565, 70, 585, 90]
 		    ZOrder		    -12
 		    ShowName		    off
@@ -6417,7 +10111,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator1"
-		    SID			    "86:510"
+		    SID			    "581"
 		    Position		    [565, 185, 585, 205]
 		    ZOrder		    -13
 		    ShowName		    off
@@ -6425,7 +10119,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator4"
-		    SID			    "86:511"
+		    SID			    "582"
 		    Position		    [890, 85, 910, 105]
 		    ZOrder		    -14
 		    ShowName		    off
@@ -6433,7 +10127,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator5"
-		    SID			    "86:512"
+		    SID			    "583"
 		    Position		    [890, 195, 910, 215]
 		    ZOrder		    -15
 		    ShowName		    off
@@ -6441,7 +10135,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "PWMIn"
-		    SID			    "86:513"
+		    SID			    "584"
 		    Position		    [1075, 123, 1105, 137]
 		    ZOrder		    -16
 		    IconDisplay		    "Port number"
@@ -6585,7 +10279,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "TSDIO - Gr3"
-		  SID			  "86:514"
+		  SID			  "585"
 		  Ports			  [1, 1]
 		  Position		  [270, 342, 565, 378]
 		  ZOrder		  -12
@@ -6621,7 +10315,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "TSDout"
-		    SID			    "86:515"
+		    SID			    "586"
 		    Position		    [30, 313, 60, 327]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -6629,7 +10323,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:516"
+		    SID			    "587"
 		    Ports		    [16, 1]
 		    Position		    [1130, 20, 1135, 255]
 		    ZOrder		    -2
@@ -6646,7 +10340,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator1"
-		    SID			    "86:517"
+		    SID			    "588"
 		    Ports		    [16, 1]
 		    Position		    [1130, 310, 1135, 545]
 		    ZOrder		    -3
@@ -6663,7 +10357,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator2"
-		    SID			    "86:518"
+		    SID			    "589"
 		    Ports		    [2, 1]
 		    Position		    [1295, 69, 1300, 471]
 		    ZOrder		    -4
@@ -6680,7 +10374,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector"
-		    SID			    "86:519"
+		    SID			    "590"
 		    Ports		    [1, 16]
 		    Position		    [295, 13, 300, 262]
 		    ZOrder		    -5
@@ -6791,7 +10485,7 @@ Library {
 		    Block {
 		    BlockType		    BusSelector
 		    Name		    "Bus\nSelector1"
-		    SID			    "86:520"
+		    SID			    "591"
 		    Ports		    [1, 16]
 		    Position		    [295, 303, 300, 552]
 		    ZOrder		    -6
@@ -6902,7 +10596,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "EventDetector"
-		    SID			    "86:521"
+		    SID			    "592"
 		    Ports		    [0, 17]
 		    Position		    [790, 16, 1030, 274]
 		    ZOrder		    -7
@@ -6914,7 +10608,7 @@ Library {
 		    portNb		    "7"
 		    FcnNos		    "Slot 3 Module A Subsection 3"
 		    size		    "32"
-		    maxcount		    "-2"
+		    maxcount		    "8"
 		    nbChannels		    "8"
 		    width		    "4"
 		    timeUnit		    "Time ratio"
@@ -7020,7 +10714,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "EventDetector1"
-		    SID			    "86:522"
+		    SID			    "593"
 		    Ports		    [0, 17]
 		    Position		    [790, 306, 1030, 564]
 		    ZOrder		    -8
@@ -7032,7 +10726,7 @@ Library {
 		    portNb		    "8"
 		    FcnNos		    "Slot 3 Module A Subsection 4"
 		    size		    "32"
-		    maxcount		    "-2"
+		    maxcount		    "8"
 		    nbChannels		    "8"
 		    width		    "4"
 		    timeUnit		    "Time ratio"
@@ -7144,7 +10838,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "EventGenerator"
-		    SID			    "86:523"
+		    SID			    "594"
 		    Ports		    [16, 1]
 		    Position		    [470, 16, 685, 259]
 		    ZOrder		    -9
@@ -7165,7 +10859,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "EventGenerator1"
-		    SID			    "86:524"
+		    SID			    "595"
 		    Ports		    [16, 1]
 		    Position		    [470, 304, 685, 551]
 		    ZOrder		    -10
@@ -7186,35 +10880,35 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator"
-		    SID			    "86:525"
+		    SID			    "596"
 		    Position		    [710, 130, 730, 150]
 		    ZOrder		    -11
 		    }
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator1"
-		    SID			    "86:526"
+		    SID			    "597"
 		    Position		    [1075, 255, 1095, 275]
 		    ZOrder		    -12
 		    }
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator2"
-		    SID			    "86:527"
+		    SID			    "598"
 		    Position		    [710, 420, 730, 440]
 		    ZOrder		    -13
 		    }
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator3"
-		    SID			    "86:528"
+		    SID			    "599"
 		    Position		    [1075, 545, 1095, 565]
 		    ZOrder		    -14
 		    }
 		    Block {
 		    BlockType		    Outport
 		    Name		    "TSDin"
-		    SID			    "86:529"
+		    SID			    "600"
 		    Position		    [1350, 263, 1380, 277]
 		    ZOrder		    -15
 		    IconDisplay		    "Port number"
@@ -7803,7 +11497,7 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Woodward Primary Inputs"
-		  SID			  "86:530"
+		  SID			  "601"
 		  Ports			  [1, 1]
 		  Position		  [170, 549, 285, 631]
 		  ZOrder		  -13
@@ -7832,7 +11526,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Bias-ctrl"
-		    SID			    "86:531"
+		    SID			    "602"
 		    Position		    [455, 218, 485, 232]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -7840,7 +11534,7 @@ Library {
 		    Block {
 		    BlockType		    BusCreator
 		    Name		    "Bus\nCreator"
-		    SID			    "86:532"
+		    SID			    "603"
 		    Ports		    [4, 1]
 		    Position		    [755, 151, 760, 189]
 		    ZOrder		    -2
@@ -7850,7 +11544,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant"
-		    SID			    "86:533"
+		    SID			    "604"
 		    Position		    [560, 15, 590, 45]
 		    ZOrder		    -4
 		    Value		    "1.00"
@@ -7864,7 +11558,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant1"
-		    SID			    "86:534"
+		    SID			    "605"
 		    Position		    [560, 220, 590, 250]
 		    ZOrder		    -4
 		    BlockMirror		    on
@@ -7873,7 +11567,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant2"
-		    SID			    "86:535"
+		    SID			    "606"
 		    Position		    [280, 195, 310, 225]
 		    ZOrder		    -4
 		    BlockMirror		    on
@@ -7882,7 +11576,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant3"
-		    SID			    "86:536"
+		    SID			    "607"
 		    Position		    [335, 170, 365, 200]
 		    ZOrder		    -4
 		    Value		    "0"
@@ -7890,7 +11584,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant4"
-		    SID			    "86:537"
+		    SID			    "608"
 		    Position		    [335, 340, 365, 370]
 		    ZOrder		    -4
 		    Value		    "0"
@@ -7898,7 +11592,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant5"
-		    SID			    "86:538"
+		    SID			    "609"
 		    Position		    [560, 65, 590, 95]
 		    ZOrder		    -4
 		    Value		    "1.00"
@@ -7912,7 +11606,7 @@ Library {
 		    Block {
 		    BlockType		    Demux
 		    Name		    "Demux1"
-		    SID			    "86:539"
+		    SID			    "610"
 		    Ports		    [1, 16]
 		    Position		    [170, 131, 175, 244]
 		    ZOrder		    -6
@@ -7923,7 +11617,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Divide"
-		    SID			    "86:540"
+		    SID			    "611"
 		    Ports		    [2, 1]
 		    Position		    [290, 140, 320, 175]
 		    ZOrder		    -8
@@ -7936,7 +11630,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Divide1"
-		    SID			    "86:541"
+		    SID			    "612"
 		    Ports		    [2, 1]
 		    Position		    [290, 277, 320, 308]
 		    ZOrder		    -8
@@ -7949,7 +11643,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "GR1 B AIN (CH00-15)"
-		    SID			    "86:542"
+		    SID			    "613"
 		    Ports		    [0, 1]
 		    Position		    [25, 103, 140, 127]
 		    ZOrder		    -21
@@ -7978,7 +11672,7 @@ Library {
 		    Block {
 		    BlockType		    Reference
 		    Name		    "AnalogIn"
-		    SID			    "86:543"
+		    SID			    "614"
 		    Ports		    [0, 2]
 		    Position		    [25, 40, 250, 80]
 		    ZOrder		    -1
@@ -7990,15 +11684,15 @@ Library {
 		    portNb		    "1"
 		    FcnNos		    "Slot 1 Module B Subsection 1"
 		    size		    "16"
-		    maxcount		    "-2"
-		    count		    "-2"
-		    numchan		    "-2"
+		    maxcount		    "8"
+		    count		    "8"
+		    numchan		    "8"
 		    sampleTime		    "0"
 		    }
 		    Block {
 		    BlockType		    Reference
 		    Name		    "AnalogIn1"
-		    SID			    "86:544"
+		    SID			    "615"
 		    Ports		    [0, 2]
 		    Position		    [25, 100, 250, 140]
 		    ZOrder		    -2
@@ -8010,15 +11704,15 @@ Library {
 		    portNb		    "2"
 		    FcnNos		    "Slot 1 Module B Subsection 2"
 		    size		    "16"
-		    maxcount		    "-2"
-		    count		    "-2"
-		    numchan		    "-2"
+		    maxcount		    "8"
+		    count		    "8"
+		    numchan		    "8"
 		    sampleTime		    "0"
 		    }
 		    Block {
 		    BlockType		    Mux
 		    Name		    "Mux6"
-		    SID			    "86:545"
+		    SID			    "616"
 		    Ports		    [2, 1]
 		    Position		    [360, 29, 365, 111]
 		    ZOrder		    -3
@@ -8029,7 +11723,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator2"
-		    SID			    "86:546"
+		    SID			    "617"
 		    Position		    [285, 60, 305, 80]
 		    ZOrder		    -4
 		    ShowName		    off
@@ -8037,7 +11731,7 @@ Library {
 		    Block {
 		    BlockType		    Terminator
 		    Name		    "Terminator3"
-		    SID			    "86:547"
+		    SID			    "618"
 		    Position		    [290, 120, 310, 140]
 		    ZOrder		    -5
 		    ShowName		    off
@@ -8045,7 +11739,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out1"
-		    SID			    "86:548"
+		    SID			    "619"
 		    Position		    [390, 63, 420, 77]
 		    ZOrder		    -6
 		    IconDisplay		    "Port number"
@@ -8086,7 +11780,7 @@ Library {
 		    Block {
 		    BlockType		    Goto
 		    Name		    "Goto5"
-		    SID			    "86:549"
+		    SID			    "620"
 		    Position		    [190, 108, 310, 122]
 		    ZOrder		    -22
 		    ShowName		    off
@@ -8095,14 +11789,14 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Lowpass Filter"
-		    SID			    "86:550"
+		    SID			    "621"
 		    Ports		    [1, 1]
 		    Position		    [435, 138, 490, 182]
 		    ZOrder		    -12
 		    UserDataPersistent	    on
-		    UserData		    "DataTag0"
+		    UserData		    "DataTag1"
 		    DialogController	    "fdesignblkfcn"
-		    DialogControllerArgs    "DataTag1"
+		    DialogControllerArgs    "DataTag2"
 		    CopyFcn		    "fdesignblkfcn(gcbh, {'CopyFcn'});"
 		    InitFcn		    "fdesignblkfcn(gcbh, {'InitFcn'});"
 		    MinAlgLoopOccurrences   off
@@ -8114,7 +11808,7 @@ Library {
 		    MaskHideContents	    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    17
+		    $ObjectID		    25
 		    $ClassName		    "Simulink.Mask"
 		    Type		    "Lowpass Filter"
 		    Description		    "Design a lowpass filter"
@@ -8138,11 +11832,11 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "845"
+		    SIDHighWatermark	    "851"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
-		    SID			    "86:550:12"
+		    SID			    "621:12"
 		    Position		    [110, 103, 140, 117]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -8150,7 +11844,7 @@ Library {
 		    Block {
 		    BlockType		    DiscreteFir
 		    Name		    "Generated Filter Block"
-		    SID			    "86:550:838"
+		    SID			    "621:838"
 		    Tag			    "BlockMethodSubSystem"
 		    Ports		    [1, 1]
 		    Position		    [220, 90, 295, 130]
@@ -8164,7 +11858,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out"
-		    SID			    "86:550:839"
+		    SID			    "621:839"
 		    Position		    [360, 103, 390, 117]
 		    ZOrder		    -3
 		    IconDisplay		    "Port number"
@@ -8186,14 +11880,14 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Lowpass Filter1"
-		    SID			    "86:551"
+		    SID			    "622"
 		    Ports		    [1, 1]
 		    Position		    [430, 273, 485, 317]
 		    ZOrder		    -12
 		    UserDataPersistent	    on
-		    UserData		    "DataTag2"
+		    UserData		    "DataTag3"
 		    DialogController	    "fdesignblkfcn"
-		    DialogControllerArgs    "DataTag3"
+		    DialogControllerArgs    "DataTag4"
 		    CopyFcn		    "fdesignblkfcn(gcbh, {'CopyFcn'});"
 		    InitFcn		    "fdesignblkfcn(gcbh, {'InitFcn'});"
 		    MinAlgLoopOccurrences   off
@@ -8205,7 +11899,7 @@ Library {
 		    MaskHideContents	    off
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    18
+		    $ObjectID		    26
 		    $ClassName		    "Simulink.Mask"
 		    Type		    "Lowpass Filter"
 		    Description		    "Design a lowpass filter"
@@ -8229,11 +11923,11 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "841"
+		    SIDHighWatermark	    "847"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
-		    SID			    "86:551:12"
+		    SID			    "622:12"
 		    Position		    [110, 103, 140, 117]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -8241,7 +11935,7 @@ Library {
 		    Block {
 		    BlockType		    DiscreteFir
 		    Name		    "Generated Filter Block"
-		    SID			    "86:551:834"
+		    SID			    "622:834"
 		    Tag			    "BlockMethodSubSystem"
 		    Ports		    [1, 1]
 		    Position		    [220, 90, 295, 130]
@@ -8255,7 +11949,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out"
-		    SID			    "86:551:835"
+		    SID			    "622:835"
 		    Position		    [360, 103, 390, 117]
 		    ZOrder		    -3
 		    IconDisplay		    "Port number"
@@ -8277,7 +11971,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum"
-		    SID			    "86:552"
+		    SID			    "623"
 		    Ports		    [2, 1]
 		    Position		    [370, 150, 390, 170]
 		    ZOrder		    -18
@@ -8291,7 +11985,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum1"
-		    SID			    "86:553"
+		    SID			    "624"
 		    Ports		    [2, 1]
 		    Position		    [370, 285, 390, 305]
 		    ZOrder		    -18
@@ -8305,7 +11999,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch"
-		    SID			    "86:554"
+		    SID			    "625"
 		    Position		    [565, 155, 615, 195]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -8321,7 +12015,7 @@ Library {
 		    Block {
 		    BlockType		    Switch
 		    Name		    "Switch1"
-		    SID			    "86:555"
+		    SID			    "626"
 		    Position		    [555, 275, 605, 315]
 		    ZOrder		    -19
 		    Threshold		    "0.5"
@@ -8337,7 +12031,7 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Gen1 Gov and AVR"
-		    SID			    "86:556"
+		    SID			    "627"
 		    Position		    [800, 163, 830, 177]
 		    ZOrder		    -35
 		    IconDisplay		    "Port number"
@@ -8509,7 +12203,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Error"
-		  SID			  "86:557"
+		  SID			  "628"
 		  Position		  [570, 33, 600, 47]
 		  ZOrder		  -14
 		  IconDisplay		  "Port number"
@@ -8517,7 +12211,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "IDs"
-		  SID			  "86:558"
+		  SID			  "629"
 		  Position		  [610, 58, 640, 72]
 		  ZOrder		  -15
 		  Port			  "2"
@@ -8526,7 +12220,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Digital Inputs"
-		  SID			  "86:559"
+		  SID			  "630"
 		  Position		  [730, 313, 760, 327]
 		  ZOrder		  -16
 		  Port			  "3"
@@ -8535,7 +12229,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Gen1 Gov and AVR"
-		  SID			  "86:560"
+		  SID			  "631"
 		  Position		  [335, 563, 365, 577]
 		  ZOrder		  -17
 		  Port			  "4"
@@ -8544,7 +12238,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Gen1 Fuel Enable"
-		  SID			  "86:561"
+		  SID			  "632"
 		  Position		  [455, 108, 485, 122]
 		  ZOrder		  -19
 		  Port			  "5"
@@ -8553,7 +12247,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Gen1 GCB"
-		  SID			  "86:562"
+		  SID			  "633"
 		  Position		  [535, 133, 565, 147]
 		  ZOrder		  -20
 		  Port			  "6"
@@ -8562,7 +12256,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Gen1 MCB"
-		  SID			  "86:563"
+		  SID			  "634"
 		  Position		  [465, 153, 495, 167]
 		  ZOrder		  -21
 		  Port			  "7"
@@ -8710,7 +12404,7 @@ Library {
 		  DstPort		  6
 		}
 		Annotation {
-		  SID			  "86:564"
+		  SID			  "635"
 		  Position		  [369, 262]
 		  ZOrder		  -1
 		}
@@ -8719,8 +12413,8 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "Gen1 A"
-	      SID		      "86:565"
-	      Position		      [1280, 263, 1310, 277]
+	      SID		      "636"
+	      Position		      [1280, 273, 1310, 287]
 	      ZOrder		      -33
 	      BlockMirror	      on
 	      Port		      "1"
@@ -8729,8 +12423,8 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "Gen1 B"
-	      SID		      "86:566"
-	      Position		      [1305, 293, 1335, 307]
+	      SID		      "637"
+	      Position		      [1305, 298, 1335, 312]
 	      ZOrder		      -34
 	      BlockMirror	      on
 	      Port		      "2"
@@ -8739,8 +12433,8 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "Gen1 C"
-	      SID		      "86:567"
-	      Position		      [1305, 328, 1335, 342]
+	      SID		      "638"
+	      Position		      [1340, 323, 1370, 337]
 	      ZOrder		      -35
 	      BlockMirror	      on
 	      Port		      "3"
@@ -8749,7 +12443,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Error (opt)"
-	      SID		      "86:568"
+	      SID		      "639"
 	      Position		      [495, 153, 525, 167]
 	      ZOrder		      -39
 	      IconDisplay	      "Port number"
@@ -8757,7 +12451,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "ID (opt)"
-	      SID		      "86:569"
+	      SID		      "640"
 	      Position		      [515, 188, 545, 202]
 	      ZOrder		      -40
 	      Port		      "2"
@@ -8766,7 +12460,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Digital Inputs"
-	      SID		      "86:570"
+	      SID		      "641"
 	      Position		      [650, 133, 680, 147]
 	      ZOrder		      -41
 	      Port		      "3"
@@ -8775,7 +12469,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Gen1 Monitor"
-	      SID		      "86:571"
+	      SID		      "642"
 	      Position		      [1305, 228, 1335, 242]
 	      ZOrder		      -42
 	      Port		      "4"
@@ -8783,76 +12477,71 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "Gen1 GCB Control"
-	      SID		      "86:572"
-	      Position		      [780, 373, 810, 387]
-	      ZOrder		      -43
+	      Name		      "1 LCB Control (opt)"
+	      SID		      "643"
+	      Position		      [260, 528, 290, 542]
+	      ZOrder		      -44
 	      Port		      "5"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "1 LCB Control (opt)"
-	      SID		      "86:573"
-	      Position		      [260, 528, 290, 542]
-	      ZOrder		      -44
+	      Name		      "2 LCB Control (opt)"
+	      SID		      "644"
+	      Position		      [370, 543, 400, 557]
+	      ZOrder		      -45
 	      Port		      "6"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "2 LCB Control (opt)"
-	      SID		      "86:574"
-	      Position		      [370, 543, 400, 557]
-	      ZOrder		      -45
+	      Name		      "Gen 1 MCB Control (opt)"
+	      SID		      "645"
+	      Position		      [760, 533, 790, 547]
+	      ZOrder		      -46
 	      Port		      "7"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "Gen 1 MCB Control (opt)"
-	      SID		      "86:575"
-	      Position		      [760, 533, 790, 547]
-	      ZOrder		      -46
+	      Name		      "Grid Control (opt)"
+	      SID		      "646"
+	      Position		      [285, 573, 315, 587]
+	      ZOrder		      -48
 	      Port		      "8"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "Grid Control (opt)"
-	      SID		      "86:576"
-	      Position		      [285, 573, 315, 587]
-	      ZOrder		      -48
-	      Port		      "9"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
 	      Name		      "Out2"
-	      SID		      "86:577"
+	      SID		      "647"
 	      Position		      [1115, 430, 1210, 440]
 	      ZOrder		      1981
 	      BlockMirror	      on
 	      ShowName		      off
-	      Port		      "10"
+	      Port		      "9"
 	      IconDisplay	      "Signal name"
 	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Gen1 GCB Control"
+	      SID		      "648"
+	      Position		      [560, 373, 590, 387]
+	      ZOrder		      -43
+	      Port		      "10"
+	      IconDisplay	      "Port number"
+	    }
 	    Line {
-	      Name		      "Logic_trip"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Fcn"
-	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator"
+	      Name		      "<Status>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      3
+	      Points		      [45, 0; 0, 85]
+	      DstBlock		      "Goto"
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Bus\nCreator"
-	      SrcPort		      1
-	      DstBlock		      "Gen1 GCB Control"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "NG Genset 3.5MVA"
+	      SrcBlock		      "NG Genset 3.5MVA1"
 	      SrcPort		      1
 	      Points		      [55, 0]
 	      Branch {
@@ -8867,7 +12556,7 @@ Library {
 	      }
 	    }
 	    Line {
-	      Name		      "<Vabc_bus>"
+	      Name		      "<Vabc_line>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector6"
 	      SrcPort		      1
@@ -8896,8 +12585,8 @@ Library {
 	    Line {
 	      SrcBlock		      "Manual Control Gen1 (opt)"
 	      SrcPort		      1
-	      Points		      [29, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      Points		      [24, 0; 0, -15]
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      7
 	    }
 	    Line {
@@ -8936,14 +12625,14 @@ Library {
 	      SrcBlock		      "Woodward Enable"
 	      SrcPort		      1
 	      Points		      [65, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      6
 	    }
 	    Line {
 	      SrcBlock		      "Woodward Outputs"
 	      SrcPort		      5
-	      Points		      [158, 0; 0, 66; 304, 0; 0, -126]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      Points		      [158, 0; 0, 19; 307, 0; 0, -79]
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      5
 	    }
 	    Line {
@@ -8977,23 +12666,21 @@ Library {
 	    }
 	    Line {
 	      LineType		      "Connection"
-	      SrcBlock		      "NG Genset 3.5MVA"
+	      SrcBlock		      "NG Genset 3.5MVA1"
 	      SrcPort		      RConn1
-	      Points		      [24, 0; 0, -10]
 	      DstBlock		      "Gen1 A"
 	      DstPort		      RConn1
 	    }
 	    Line {
 	      SrcBlock		      "Woodward Outputs"
 	      SrcPort		      6
-	      DstBlock		      "Fcn"
+	      DstBlock		      "Gen1 GCB Control"
 	      DstPort		      1
 	    }
 	    Line {
 	      LineType		      "Connection"
-	      SrcBlock		      "NG Genset 3.5MVA"
+	      SrcBlock		      "NG Genset 3.5MVA1"
 	      SrcPort		      RConn2
-	      Points		      [5, 0; 25, -5]
 	      DstBlock		      "Gen1 B"
 	      DstPort		      RConn1
 	    }
@@ -9054,7 +12741,7 @@ Library {
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      1
 	      Points		      [46, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      1
 	    }
 	    Line {
@@ -9062,8 +12749,8 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      2
-	      Points		      [96, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      Points		      [76, 0; 0, -15]
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      2
 	    }
 	    Line {
@@ -9072,7 +12759,7 @@ Library {
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      3
 	      Points		      [105, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      3
 	    }
 	    Line {
@@ -9080,18 +12767,9 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      4
-	      Points		      [110, 0; 0, -15]
-	      DstBlock		      "NG Genset 3.5MVA"
+	      Points		      [120, 0; 0, -15]
+	      DstBlock		      "NG Genset 3.5MVA1"
 	      DstPort		      4
-	    }
-	    Line {
-	      Name		      "<Status>"
-	      Labels		      [0, 0]
-	      SrcBlock		      "Bus\nSelector1"
-	      SrcPort		      3
-	      Points		      [45, 0; 0, 85]
-	      DstBlock		      "Goto"
-	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "From"
@@ -9143,18 +12821,17 @@ Library {
 	    }
 	    Line {
 	      LineType		      "Connection"
-	      SrcBlock		      "NG Genset 3.5MVA"
+	      SrcBlock		      "NG Genset 3.5MVA1"
 	      SrcPort		      RConn3
-	      Points		      [37, 0; 0, 5]
 	      DstBlock		      "Gen1 C"
 	      DstPort		      RConn1
 	    }
 	    Line {
 	      Name		      "Thermal data"
 	      Labels		      [0, 0]
-	      SrcBlock		      "NG Genset 3.5MVA"
+	      SrcBlock		      "NG Genset 3.5MVA1"
 	      SrcPort		      2
-	      Points		      [14, 0; 0, 180]
+	      Points		      [9, 0; 0, 180]
 	      DstBlock		      "Out2"
 	      DstPort		      1
 	    }
@@ -9170,135 +12847,47 @@ Library {
 	      SrcPort		      3
 	      Points		      [156, 0; 0, -98]
 	      Branch {
+		Points			[292, 0; 0, 153]
+		DstBlock		"NG Genset 3.5MVA1"
+		DstPort			8
+	      }
+	      Branch {
 		Points			[0, -37]
 		DstBlock		"Digital Inputs"
 		DstPort			1
 	      }
-	      Branch {
-		Points			[292, 0; 0, 153]
-		DstBlock		"NG Genset 3.5MVA"
-		DstPort			8
-	      }
 	    }
 	    Annotation {
-	      SID		      "86:583"
+	      SID		      "649"
 	      Name		      "Op_Mode:\n0 = Relay Functions\n1 = Close Breaker\n2 = Open Breaker"
 	      Position		      [111, 704]
 	      ZOrder		      -1
 	    }
 	    Annotation {
-	      SID		      "86:582"
+	      SID		      "650"
 	      Position		      [1346, 548]
 	      ZOrder		      -2
 	    }
 	    Annotation {
-	      SID		      "86:581"
+	      SID		      "651"
 	      Name		      "These values are due to\nthe noise in the signals\nor the Model's speed"
 	      Position		      [1483, 352]
 	      ZOrder		      -3
 	    }
 	    Annotation {
-	      SID		      "86:580"
+	      SID		      "652"
 	      Name		      "Gen1: 1MVA generator\nGen2: 4MVA generator"
 	      Position		      [273, 668]
 	      ForegroundColor	      "blue"
 	      ZOrder		      -4
 	    }
 	    Annotation {
-	      SID		      "86:579"
+	      SID		      "653"
 	      Name		      "When the system uses the simulated\nSecondary Controller the digital I/O \nshould be disabled."
 	      Position		      [335, 730]
 	      ZOrder		      -5
 	    }
-	    Annotation {
-	      SID		      "86:578"
-	      Name		      "This u(1)==1 is used to fix the logic problem within the woodward outputs block"
-	      Position		      [685, 426]
-	      BackgroundColor	      "orange"
-	      ZOrder		      -6
-	    }
 	  }
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto15"
-	  SID			  "87"
-	  Position		  [660, 733, 780, 747]
-	  ZOrder		  2869
-	  ShowName		  off
-	  GotoTag		  "Grid_opt"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto16"
-	  SID			  "88"
-	  Position		  [765, 718, 885, 732]
-	  ZOrder		  2868
-	  ShowName		  off
-	  GotoTag		  "Mains1_opt"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto18"
-	  SID			  "89"
-	  Position		  [765, 613, 805, 627]
-	  ZOrder		  2864
-	  ShowName		  off
-	  GotoTag		  "Ctrl"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto19"
-	  SID			  "90"
-	  Position		  [660, 703, 780, 717]
-	  ZOrder		  2867
-	  ShowName		  off
-	  GotoTag		  "Load2_opt"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto20"
-	  SID			  "91"
-	  Position		  [765, 688, 885, 702]
-	  ZOrder		  2866
-	  ShowName		  off
-	  GotoTag		  "Load1_opt"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto21"
-	  SID			  "92"
-	  Position		  [690, 628, 730, 642]
-	  ZOrder		  2863
-	  ShowName		  off
-	  GotoTag		  "HWIds"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Modbus device"
-	  SID			  "93"
-	  Ports			  [4, 2]
-	  Position		  [860, 467, 970, 543]
-	  ZOrder		  2911
-	  BlockMirror		  on
-	  LibraryVersion	  "1.13"
-	  SourceBlock		  "rtio_generic_modbus/Modbus device"
-	  SourceType		  "OpModbus"
-	  conf_name		  "CHP_slave_cfg.opal"
-	  conf_name_mask	  "CHP_slave_cfg.xls"
-	  sample_time		  "Ts"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux1"
-	  SID			  "94"
-	  Ports			  [5, 1]
-	  Position		  [1045, 485, 1050, 585]
-	  ZOrder		  2913
-	  BlockMirror		  on
-	  ShowName		  off
-	  Inputs		  "5"
-	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -9370,6 +12959,14 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "Logic_trip"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
+	  SrcPort		  10
+	  Points		  [23, 0; 0, 10]
+	  DstBlock		  "GCB Control"
+	  DstPort		  1
+	}
+	Line {
 	  Name			  "CHP_SIM_Cmds"
 	  Labels		  [1, 0]
 	  SrcBlock		  "In2"
@@ -9378,7 +12975,7 @@ Library {
 	  DstPort		  5
 	}
 	Line {
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  3
 	  DstBlock		  "Out2"
 	  DstPort		  1
@@ -9386,9 +12983,9 @@ Library {
 	Line {
 	  LineType		  "Connection"
 	  Labels		  [-1, 1]
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  RConn1
-	  Points		  [245, 0; 0, 105]
+	  Points		  [374, 0; 0, 105]
 	  DstBlock		  "A"
 	  DstPort		  RConn1
 	}
@@ -9418,50 +13015,45 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Generator"
-	  SrcPort		  6
-	  DstBlock		  "Goto20"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  5
-	  Points		  [347, 0; 0, 85]
-	  DstBlock		  "GCB Control"
+	  Points		  [31, 0; 0, 15]
+	  DstBlock		  "Goto20"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "MCB"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  6
 	}
 	Line {
-	  SrcBlock		  "Generator"
-	  SrcPort		  7
+	  SrcBlock		  "NG_3_5_MVA_Generator"
+	  SrcPort		  6
+	  Points		  [9, 0; 0, -8; 32, 0; 0, 23]
 	  DstBlock		  "Goto19"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Manual Control (opt)"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "GCB"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  5
 	}
 	Line {
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  4
 	  DstBlock		  "Generator Data"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  1
 	  DstBlock		  "Goto18"
 	  DstPort		  1
@@ -9469,11 +13061,11 @@ Library {
 	Line {
 	  SrcBlock		  "Woodward Enable"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  3
 	}
 	Line {
-	  SrcBlock		  "Generator"
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  2
 	  DstBlock		  "Goto21"
 	  DstPort		  1
@@ -9486,18 +13078,18 @@ Library {
 	}
 	Line {
 	  Name			  "Thermal data"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Generator"
-	  SrcPort		  10
-	  Points		  [50, 0; 0, -259; 75, 0; 0, -31]
+	  SrcBlock		  "NG_3_5_MVA_Generator"
+	  SrcPort		  9
+	  Points		  [36, 0; 0, -375; 84, 0]
 	  Branch {
-	    DstBlock		    "Bus\nSelector6"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -100]
 	    DstBlock		    "Bus\nCreator2"
 	    DstPort		    2
+	  }
+	  Branch {
+	    Labels		    [-1, 0]
+	    Points		    [0, 100]
+	    DstBlock		    "Bus\nSelector6"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -9561,43 +13153,45 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Generator"
+	  Labels		  [3, 1]
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  RConn2
-	  Points		  [113, 0; 0, 155]
+	  Points		  [0, 124; 789, 0; 0, 65; -311, 0; 0, -34]
 	  DstBlock		  "B"
 	  DstPort		  RConn1
 	}
 	Line {
 	  SrcBlock		  "Digital Outputs"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Generator"
-	  SrcPort		  9
+	  SrcBlock		  "NG_3_5_MVA_Generator"
+	  SrcPort		  8
+	  Points		  [0, -122; 785, 0; 0, 151; -735, 0]
 	  DstBlock		  "Goto15"
 	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"
-	  Labels		  [3, 1]
-	  SrcBlock		  "Generator"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "NG_3_5_MVA_Generator"
 	  SrcPort		  RConn3
-	  Points		  [49, 0; 0, 200]
+	  Points		  [803, 0; 0, 234; -319, 0; 0, -34]
 	  DstBlock		  "C"
 	  DstPort		  RConn1
 	}
 	Line {
 	  SrcBlock		  "Console Breakers"
 	  SrcPort		  1
-	  DstBlock		  "Generator"
+	  DstBlock		  "NG_3_5_MVA_Generator"
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Generator"
-	  SrcPort		  8
+	  SrcBlock		  "NG_3_5_MVA_Generator"
+	  SrcPort		  7
+	  Points		  [21, 0; 0, -6; 34, 0; 0, 21]
 	  DstBlock		  "Goto16"
 	  DstPort		  1
 	}
@@ -14736,9 +18330,23 @@ Library {
   }
 }
 MatData {
-  NumRecords		  4
+  NumRecords		  5
   DataRecord {
     Tag			    DataTag0
+    Data		    "  %)30     .    < ,   8    (     @         %    \"     $    !     0         %  0 \"     $    8    =F5R<"
+    "VEO;@!C;VYT96YT &9O<FUA=   #@   #@    &    \"     8         !0    @    !     0    $         \"0    @    S,S,S,S/S/"
+    "PX   \"@ @  !@    @    $          4    (     0   &T\"   !         !    !M @  075T:&]R.B!-:7)J86YA($UA<F1E;BP@36%Y("
+    "#(P,34*\"E1H:7,@:7,@=&AE(&UO9&5L(&]F(#8P:U<@9V5N97)A=&]R('=I=&@@0592(&%N9\"!';W9E<FYO<BX*5&AE<F4@87)E('1W;R!M;V1E<"
+    "R!F;W(@8V]N=')O;&QE<B!I;7!L96UE;G1A=&EO;CH*(\" @(#$N($AA<F1W87)E(&EM<&QE;65N=&5D(%=O;V1W87)D(&-O;G1R;VQL97(*(\" @("
+    "#(N(%-I;75L871E9\"!'96YE<F%T;W(@0V]N=')O;&QE<@H*,2X@2&%R9'=A<F4@:6UP;&5M96YT960@5V]O9'=A<F0@8V]N=')O;&QE<B=S(&]U='"
+    "!U=\"!S:6=N86QS(&%R92!$0R!V;VQT86=E<R!F;W(@8F]T:\"!B:6%S('-I9VYA;',N\"B @(%1H92!V;VQT86=E(')A;F=E(&ES(\"TQ,\"!T;R "
+    "Q,%8N( H@(\"!4:&4@8V]M;6%N9&5D(')E9F5R96YC92!V86QU97,@9F]R(&=E;F5R871O<B!F<F5Q=65N8WD@86YD('9O;'1A9V4@87)E('=R968@"
+    "86YD(%9R968N\"B @($EN=&5R9F%C92!B971W965N(%=O;V1W87)D(&-O;G1R;VQL97(@86YD('-I;75L871I;VX@:7,@82!B;&]C:R!T:&%T('-C8"
+    "6QE<R!T:&4@8FEA<R!S:6=N86QS+B *,BX@4VEM=6QA=&5D(&=E;F5R871O<B!C;VYT<F]L;&5R(&AA<R!T:')E92!M;V1E<R!042P@5F8@86YD(%!"
+    "6\"@H*    #@   #     &    \"     0         !0    @    !     P    $         $  # %185  "
+  }
+  DataRecord {
+    Tag			    DataTag1
     Data		    "  %)30     .    8*@!  8    (     @         %    \"     $    !     0         %  0 '@    $   \"^!0  8VQA<"
     "W,                                 3W!E<F%T:6YG36]D90                      5F%R:6%B;&5.86UE                       "
     " 26UP=6QS95)E<W!O;G-E                    3W)D97)-;V1E                            3W)D97(                          "
@@ -16024,13 +19632,13 @@ MatData {
     "       (  0 !    #@   #     &    \"     8         !0    @               $         \"0         "
   }
   DataRecord {
-    Tag			    DataTag1
+    Tag			    DataTag2
     Data		    "  %)30     .    P     8    (     0         %    \"     $    \"     0         .    .     8    (    !    "
     "      %    \"     $    '     0         0    !P   $]P96Y&8VX #@   %     &    \"     0         !0    @    !    (    "
     " $         $    \"    !&:6QT97)$97-I9VY$:6%L;V<N3&]W<&%S<T1E<VEG;@"
   }
   DataRecord {
-    Tag			    DataTag2
+    Tag			    DataTag3
     Data		    "  %)30     .    H!H!  8    (     @         %    \"     $    !     0         %  0 '@    $   \"^!0  8VQA<"
     "W,                                 3W!E<F%T:6YG36]D90                      5F%R:6%B;&5.86UE                       "
     " 26UP=6QS95)E<W!O;G-E                    3W)D97)-;V1E                            3W)D97(                          "
@@ -16888,7 +20496,7 @@ MatData {
     " !0    @               $         \"0         "
   }
   DataRecord {
-    Tag			    DataTag3
+    Tag			    DataTag4
     Data		    "  %)30     .    P     8    (     0         %    \"     $    \"     0         .    .     8    (    !    "
     "      %    \"     $    '     0         0    !P   $]P96Y&8VX #@   %     &    \"     0         !0    @    !    (    "
     " $         $    \"    !&:6QT97)$97-I9VY$:6%L;V<N3&]W<&%S<T1E<VEG;@"
