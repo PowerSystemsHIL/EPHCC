@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.50"
+    ComputedModelVersion    "1.51"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -33,7 +33,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [620.0, 38.0, 1242.0, 1040.0]
+      Location		      [829.0, 35.0, 1614.0, 1160.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,16 +55,16 @@ Model {
 	Dimension		2
 	Object {
 	  $ObjectID		  5
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [999.0, 893.0]
-	  ZoomFactor		  [1.25]
-	  Offset		  [412.04660194174761, 202.39101941747577]
+	  Extents		  [1371.0, 1013.0]
+	  ZoomFactor		  [1.5]
+	  Offset		  [455.43738798257436, 296.4835221421215]
 	}
 	Object {
 	  $ObjectID		  6
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "33"
 	  Extents		  [999.0, 893.0]
@@ -84,9 +84,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 12 00:50:06 2016"
-  RTWModifiedTimeStamp	  392863793
-  ModelVersionFormat	  "1.%<AutoIncrement:50>"
+  LastModifiedDate	  "Tue Aug 16 09:21:34 2016"
+  RTWModifiedTimeStamp	  393240083
+  ModelVersionFormat	  "1.%<AutoIncrement:51>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -809,6 +809,11 @@ Model {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Fcn
+      Expr		      "sin(u[1])"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -912,7 +917,7 @@ Model {
   }
   System {
     Name		    "IM200HP_Test_Model_v2"
-    Location		    [620, 38, 1862, 1078]
+    Location		    [829, 35, 2443, 1195]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -924,9 +929,19 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "125"
+    ZoomFactor		    "150"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "70"
+    SIDHighWatermark	    "74"
+    Block {
+      BlockType		      Fcn
+      Name		      "200 HP chiller compressor\n(Base torque =791 N-m;  Base speed = 1800 RPM)\nCourtesy Schweitzer Engi"
+      "neering Laboratory"
+      SID		      "71"
+      Position		      [880, 402, 1040, 428]
+      ZOrder		      2973
+      BlockMirror	      on
+      Expr		      "85.52-.1118*u[1]+.000861*u[1]^2-3.371e-7*u[1]^3"
+    }
     Block {
       BlockType		      ManualSwitch
       Name		      "Breaker control1"
@@ -948,7 +963,7 @@ Model {
       Position		      [1080, 589, 1085, 671]
       ZOrder		      2962
       ShowName		      off
-      OutputSignals	      "Iabc,RPM,Electromagnetic torque Te (N*m),Vabc_bus"
+      OutputSignals	      "Iabc,Vabc_bus,RPM,Electromagnetic torque Te (N*m)"
       Port {
 	PortNumber		1
 	Name			"<Iabc>"
@@ -957,19 +972,19 @@ Model {
       }
       Port {
 	PortNumber		2
-	Name			"<RPM>"
+	Name			"<Vabc_bus>"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
       Port {
 	PortNumber		3
-	Name			"<Electromagnetic torque Te (N*m)>"
+	Name			"<RPM>"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
       Port {
 	PortNumber		4
-	Name			"<Vabc_bus>"
+	Name			"<Electromagnetic torque Te (N*m)>"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
@@ -1009,14 +1024,6 @@ Model {
       Qref		      "0"
       Qmin		      "-inf"
       Qmax		      "inf"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Full Load N-m1"
-      SID		      "54"
-      Position		      [710, 460, 740, 490]
-      ZOrder		      2964
-      Value		      "750"
     }
     Block {
       BlockType		      Reference
@@ -1145,7 +1152,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Motor Load"
-	Location		[620, 38, 1862, 1078]
+	Location		[829, 35, 2071, 1075]
 	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1614,7 +1621,7 @@ Model {
       BlockType		      Constant
       Name		      "No load N-m1"
       SID		      "55"
-      Position		      [710, 390, 740, 420]
+      Position		      [720, 485, 750, 515]
       ZOrder		      2966
       Value		      "0"
     }
@@ -1625,6 +1632,36 @@ Model {
       Position		      [500, 515, 530, 545]
       ZOrder		      2970
       Value		      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope"
+      SID		      "73"
+      Ports		      [1]
+      Position		      [935, 524, 965, 556]
+      ZOrder		      2975
+      Floating		      off
+      Location		      [171, 132, 495, 371]
+      Open		      on
+      NumInputPorts	      "1"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      List {
+	ListType		ScopeGraphics
+	FigureColor		"[0.5 0.5 0.5]"
+	AxesColor		"[0 0 0]"
+	AxesTickColor		"[1 1 1]"
+	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	LineStyles		"-|-|-|-|-|-"
+	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
+	MarkerStyles		"none|none|none|none|none|none"
+      }
+      ShowLegends	      off
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      SampleTime	      "0"
     }
     Block {
       BlockType		      ManualSwitch
@@ -1665,10 +1702,10 @@ Model {
       Position		      [1245, 589, 1290, 671]
       ZOrder		      2963
       Floating		      off
-      Location		      [32, 91, 732, 1066]
+      Location		      [6, 490, 706, 1465]
       Open		      on
       NumInputPorts	      "4"
-      ZoomMode		      "xonly"
+      ZoomMode		      "yonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
@@ -1689,8 +1726,8 @@ Model {
       ShowLegends	      on
       LegendLocations	      "0.88655     0.91043     0.14286    0.052991\n0.86069     0.67229     0.18143    0.052991\n"
       "0.89241     0.46603     0.13429    0.020855\n0.76569     0.22889        0.32    0.020855"
-      YMin		      "-80~-450~0~-1750"
-      YMax		      "80~450~2000~3500"
+      YMin		      "-1750~-450~0~-2000"
+      YMax		      "1750~450~2000~3500"
       SaveName		      "ScopeData2"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
@@ -1817,10 +1854,18 @@ Model {
       Name		      "<RPM>"
       Labels		      [0, 0]
       SrcBlock		      "Bus\nSelector2"
-      SrcPort		      2
-      Points		      [0, 20]
-      DstBlock		      "ak"
-      DstPort		      3
+      SrcPort		      3
+      Points		      [67, 0]
+      Branch {
+	Points			[0, -225]
+	DstBlock		"200 HP chiller compressor\n(Base torque =791 N-m;  Base speed = 1800 RPM)\nCourtesy Schweitzer Engineering"
+	" Laboratory"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"ak"
+	DstPort			3
+      }
     }
     Line {
       Name		      "<Iabc>"
@@ -1834,24 +1879,9 @@ Model {
       Name		      "<Electromagnetic torque Te (N*m)>"
       Labels		      [0, 0]
       SrcBlock		      "Bus\nSelector2"
-      SrcPort		      3
-      Points		      [112, 0; 0, 20]
+      SrcPort		      4
       DstBlock		      "ak"
       DstPort		      4
-    }
-    Line {
-      SrcBlock		      "Full Load N-m1"
-      SrcPort		      1
-      Points		      [12, 0; 0, -25]
-      DstBlock		      "Step load1"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "No load N-m1"
-      SrcPort		      1
-      Points		      [13, 0; 0, 25]
-      DstBlock		      "Step load1"
-      DstPort		      1
     }
     Line {
       SrcBlock		      "Close1"
@@ -1866,13 +1896,6 @@ Model {
       Points		      [29, 0; 0, -20]
       DstBlock		      "Breaker control1"
       DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Step load1"
-      SrcPort		      1
-      Points		      [15, 0; 0, 150]
-      DstBlock		      "Motor Load"
-      DstPort		      1
     }
     Line {
       Name		      "Logic_trip"
@@ -1910,10 +1933,43 @@ Model {
       Name		      "<Vabc_bus>"
       Labels		      [0, 0]
       SrcBlock		      "Bus\nSelector2"
-      SrcPort		      4
-      Points		      [70, 0; 0, -40]
+      SrcPort		      2
       DstBlock		      "ak"
       DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Step load1"
+      SrcPort		      1
+      Points		      [19, 0; 0, 100]
+      Branch {
+	DstBlock		"Scope"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 50]
+	DstBlock		"Motor Load"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "No load N-m1"
+      SrcPort		      1
+      Points		      [7, 0; 0, -50]
+      DstBlock		      "Step load1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "200 HP chiller compressor\n(Base torque =791 N-m;  Base speed = 1800 RPM)\nCourtesy Schweitzer "
+      "Engineering Laboratory"
+      SrcPort		      1
+      Points		      [-115, 0; 0, 15]
+      DstBlock		      "Step load1"
+      DstPort		      1
+    }
+    Annotation {
+      SID		      "74"
+      Name		      "-791*(.1081-.2544*u[1]+3.63*u[1]^2-2.485*u[1]^3)"
+      Position		      [1043, 743]
     }
     Annotation {
       SID		      "6"
