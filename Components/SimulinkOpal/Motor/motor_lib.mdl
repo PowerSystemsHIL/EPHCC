@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1176.0]
+      Location		      [-8.0, 0.0, 1282.0, 1176.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -34,17 +34,17 @@ Library {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[1886.0, 1010.0]
-	ZoomFactor		[1.0]
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"14"
+	Extents			[1232.0, 1040.0]
+	ZoomFactor		[1.25]
 	Offset			[0.0, 0.0]
       }
     }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 19 11:51:21 2015"
-  RTWModifiedTimeStamp	  368113570
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Tue Aug 16 10:21:27 2016"
+  RTWModifiedTimeStamp	  393243678
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -688,17 +688,66 @@ Library {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      SamplingMode	      "Sample based"
+      BlockType		      BusCreator
+      Inputs		      "4"
+      DisplayOption	      "none"
+      OutDataTypeStr	      "Inherit: auto"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
+      OutputAsBus	      off
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
       OutMin		      "[]"
       OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      OutDataTypeStr	      "Inherit: Same as input"
       LockScale		      off
-      SampleTime	      "inf"
-      FramePeriod	      "inf"
-      PreserveConstantTs      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
     }
     Block {
       BlockType		      PMIOPort
@@ -730,8 +779,8 @@ Library {
   }
   System {
     Name		    "motor_lib"
-    Location		    [-8, -8, 1928, 1168]
-    Open		    on
+    Location		    [-8, 0, 1274, 1176]
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -744,15 +793,15 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "13"
+    SIDHighWatermark	    "32"
     Block {
       BlockType		      SubSystem
-      Name		      "250 HP Motor"
-      SID		      "1"
-      Ports		      [0, 0, 0, 0, 0, 3]
-      Position		      [175, 83, 270, 147]
-      ZOrder		      -1
-      BackgroundColor	      "[1.000000, 0.725490, 1.000000]"
+      Name		      "Motor"
+      SID		      "14"
+      Ports		      [2, 1, 0, 0, 0, 3]
+      Position		      [250, 272, 400, 368]
+      ZOrder		      2961
+      BackgroundColor	      "[0.780392, 0.447059, 0.176471]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -760,31 +809,10 @@ Library {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
-      Object {
-	$PropName		"MaskObject"
-	$ObjectID		17
-	$ClassName		"Simulink.Mask"
-	Type			"SimPowersystems 250 HP custom motor"
-	Description		"This motor was built using parameters from the EPTM motor models. \n\nTo keep this model stable, the in"
-	"ertia must be suffiently high. Otherwise, after the initial step the solution will be invalid and noisy. Also note th"
-	"at adding input filters appears to cause the solution to ring.\n\nWhen connecting this motor to an inductive load (su"
-	"ch as a transformer), a capacitive load is necessary for the solvers to work properly."
-	Display			"disp('250 HP\\nmotor')\nport_label('LConn', 1, 'A')\nport_label('LConn', 2, 'B')\nport_label('LConn', 3, '"
-	"C')"
-	Object {
-	  $PropName		  "Parameters"
-	  $ObjectID		  18
-	  $ClassName		  "Simulink.MaskParameter"
-	  Type			  "edit"
-	  Name			  "H"
-	  Prompt		  "Inertia [Sec]"
-	  Value			  "0.03"
-	}
-      }
       System {
-	Name			"250 HP Motor"
-	Location		[16, 52, 1954, 1272]
-	Open			off
+	Name			"Motor"
+	Location		[-8, 0, 1274, 1176]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -795,65 +823,161 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"208"
+	ZoomFactor		"125"
 	Block {
-	  BlockType		  Reference
-	  Name			  "250HP Motor1"
-	  SID			  "2"
-	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [375, 51, 455, 139]
-	  ZOrder		  -2
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Machines/Asynchronous Machine\npu Units"
-	  SourceType		  "Asynchronous Machine"
-	  PresetModel		  "No"
-	  MechanicalLoad	  "Torque Tm"
-	  ShowDetailedParameters  on
-	  RotorType		  "Squirrel-cage"
-	  ReferenceFrame	  "Synchronous"
-	  NominalParameters	  "[187e3 460 60]"
-	  Stator		  "[0.0256294 0.0998644]"
-	  Rotor			  "[0.0100649 0.0998644]"
-	  Cage1			  "[0.01909 0.0397]"
-	  Cage2			  "[0.01909 0.0397]"
-	  Lm			  "3.47857"
-	  Mechanical		  "[H 0.005479 4]"
-	  PolePairs		  "4"
-	  InitialConditions	  "[ 1,0   0,0,0   0,0,0 ]  "
-	  Units			  "pu"
-	  LoadFlowParameters	  "0"
-	  SimulateSaturation	  off
-	  Saturation		  "[0.212,0.4201,0.8125,1.0979,1.4799,2.2457,3.2586,4.5763,6.4763 ;   0.5,0.7,0.9,1,1.1,1.2 ,1.3,1.4,1."
-	  "5]"
-	  TsPowergui		  "0"
-	  TsBlock		  "-1"
-	  IterativeModel	  "Forward Euler"
-	  Pmec			  "0"
+	  BlockType		  Inport
+	  Name			  "Mechanical Load [Nm]"
+	  SID			  "15"
+	  Position		  [580, 263, 610, 277]
+	  ZOrder		  2959
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "CB Trip Signal"
+	  SID			  "16"
+	  Position		  [280, 233, 310, 247]
+	  ZOrder		  2960
+	  Port			  "2"
+	  IconDisplay		  "Port number"
 	  Port {
 	    PortNumber		    1
-	    Name		    "Motor Measurements"
-	    PropagatedSignals	    "Rotor measurements, Stator measurements, Mechanical"
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "Constant"
-	  SID			  "3"
-	  Position		  [40, 25, 90, 55]
-	  ZOrder		  -4
-	  Value			  "0"
+	  BlockType		  Reference
+	  Name			  "Asynchronous Machine\nSI Units"
+	  SID			  "17"
+	  Ports			  [2, 1, 0, 0, 0, 3]
+	  Position		  [635, 331, 725, 419]
+	  ZOrder		  2965
+	  AttributesFormatString  "\\n"
+	  LibraryVersion	  "1.10"
+	  SourceBlock		  "Motor_InductionMachine_lib/Asynchronous Machine\nSI Units"
+	  SourceType		  "Asynchronous Machine"
+	  PresetModel		  "No"
+	  MechanicalLoad	  "Torque Tm"
+	  ShowDetailedParameters  on
+	  RotorType		  "Squirrel-cage"
+	  ReferenceFrame	  "Stationary"
+	  NominalParameters	  "[ 136700/.92/.93, 480, 60 ]"
+	  Stator		  "[ 0.029 0.226/377/1.5]"
+	  Rotor			  "[ 0.022*3 0.226/377/1.5]"
+	  Cage1			  "[ 0.022 0.226/377]"
+	  Cage2			  "[ 0.022 0.226/377]"
+	  Lm			  "13.04/377"
+	  Mechanical		  "[ 63.87 0  2 ]"
+	  PolePairs		  "2"
+	  InitialConditions	  "[1 0 0 0 0 0 0 0]"
+	  Units			  "SI"
+	  LoadFlowParameters	  "1492000"
+	  SimulateSaturation	  off
+	  Saturation		  "[14.03593122, 27.81365428, 53.79336849, 72.68890987, 97.98006896, 148.6815601, 215.7428561, 302.9841"
+	  "135, 420.4778367 ; 230, 322, 414, 460, 506, 552, 598, 644, 690]"
+	  TsPowergui		  "0"
+	  TsBlock		  "-1"
+	  IterativeModel	  "Trapezoidal non iterative"
+	  Pmec			  "0"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator"
+	  SID			  "18"
+	  Ports			  [1, 1]
+	  Position		  [395, 221, 400, 259]
+	  ZOrder		  2943
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator1"
+	  SID			  "19"
+	  Ports			  [4, 1]
+	  Position		  [960, 271, 970, 414]
+	  ZOrder		  2958
+	  ShowName		  off
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "20"
+	  Ports			  [1, 2]
+	  Position		  [750, 334, 755, 416]
+	  ZOrder		  2947
+	  ShowName		  off
+	  OutputSignals		  "Mechanical.Rotor speed (wm),Mechanical.Electromagnetic torque Te (N*m)"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Rotor speed (wm)>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Electromagnetic torque Te (N*m)>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "21"
+	  Ports			  [1, 3]
+	  Position		  [760, 258, 765, 322]
+	  ZOrder		  2953
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  OutputSignals		  "Iabc,Status,Vabc_bus"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "22"
+	  Position		  [830, 340, 895, 370]
+	  ZOrder		  2949
+	  Gain			  "60/2/pi"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "RPM"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Ground2"
-	  SID			  "7"
+	  SID			  "23"
 	  Ports			  [0, 0, 0, 0, 0, 1]
-	  Position		  [139, 445, 161, 470]
-	  ZOrder		  358
+	  Position		  [554, 595, 576, 620]
+	  ZOrder		  2941
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  ShowName		  off
@@ -866,226 +990,184 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "RLCa"
-	  SID			  "8"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [124, 335, 176, 390]
-	  ZOrder		  -9
+	  Name			  "Three-Phase\nParallel RLC Branch1"
+	  SID			  "24"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [541, 480, 589, 550]
+	  ZOrder		  2940
 	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
+	  BackgroundColor	  "[1.000000, 0.258824, 0.819608]"
+	  ShowName		  off
 	  AttributesFormatString  "\\n"
 	  LibraryVersion	  "1.2191"
 	  FontName		  "Verdana"
 	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "RLC"
+	  SourceBlock		  "powerlib/Elements/Three-Phase\nParallel RLC Branch"
+	  SourceType		  "Three-Phase Parallel RLC Branch"
+	  LConnTagsString	  "A|B|C"
+	  RConnTagsString	  "A|B|C"
+	  BranchType		  "RC"
 	  Resistance		  "1e6"
 	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
 	  Capacitance		  "10e-6"
-	  Setx0			  off
-	  InitialVoltage	  "0"
 	  Measurements		  "None"
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "RLCb"
-	  SID			  "9"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [199, 335, 251, 390]
-	  ZOrder		  -9
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "RLC"
-	  Resistance		  "1e6"
-	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
-	  Capacitance		  "10e-6"
-	  Setx0			  off
-	  InitialVoltage	  "0"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "RLCc "
-	  SID			  "10"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [284, 335, 336, 390]
-	  ZOrder		  -9
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "RLC"
-	  Resistance		  "1e6"
-	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
-	  Capacitance		  "10e-6"
-	  Setx0			  off
-	  InitialVoltage	  "0"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Ra"
-	  SID			  "11"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [124, 240, 176, 295]
-	  ZOrder		  -9
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "R"
-	  Resistance		  "10e-3"
-	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
-	  Capacitance		  "0"
-	  Setx0			  off
-	  InitialVoltage	  "0"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Rb"
-	  SID			  "12"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [199, 240, 251, 295]
-	  ZOrder		  -9
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "R"
-	  Resistance		  "10e-3"
-	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
-	  Capacitance		  "0"
-	  Setx0			  off
-	  InitialVoltage	  "0"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Rc"
-	  SID			  "13"
-	  Ports			  [0, 0, 0, 0, 0, 1, 1]
-	  Position		  [284, 240, 336, 295]
-	  ZOrder		  -9
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib/Elements/Parallel RLC Branch"
-	  SourceType		  "Parallel RLC Branch"
-	  LConnTagsString	  "a"
-	  RConnTagsString	  "__new0"
-	  BranchType		  "R"
-	  Resistance		  "10e-3"
-	  Inductance		  "inf"
-	  SetiL0		  off
-	  InitialCurrent	  "0"
-	  Capacitance		  "0"
-	  Setx0			  off
-	  InitialVoltage	  "0"
-	  Measurements		  "None"
+	  Name			  "motor_cb"
+	  SID			  "25"
+	  Ports			  [1, 1, 0, 0, 0, 3, 3]
+	  Position		  [435, 333, 490, 417]
+	  ZOrder		  2939
+	  BackgroundColor	  "lightBlue"
+	  LibraryVersion	  "1.462"
+	  SourceBlock		  "breaker_lib/Breaker"
+	  SourceType		  "Breaker"
+	  Ts			  "Ts"
 	}
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "A"
-	  SID			  "4"
-	  Position		  [15, 78, 45, 92]
-	  ZOrder		  -15
+	  SID			  "26"
+	  Position		  [310, 338, 340, 352]
+	  ZOrder		  2962
 	  Port			  "1"
 	  Side			  "Left"
 	}
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "B"
-	  SID			  "5"
-	  Position		  [40, 98, 70, 112]
-	  ZOrder		  -16
+	  SID			  "27"
+	  Position		  [310, 378, 340, 392]
+	  ZOrder		  2963
 	  Port			  "2"
 	  Side			  "Left"
 	}
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "C"
-	  SID			  "6"
-	  Position		  [65, 118, 95, 132]
-	  ZOrder		  -17
+	  SID			  "28"
+	  Position		  [310, 418, 340, 432]
+	  ZOrder		  2964
 	  Port			  "3"
 	  Side			  "Left"
 	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ms"
+	  SID			  "29"
+	  Position		  [1015, 330, 1030, 360]
+	  ZOrder		  2961
+	  NamePlacement		  "alternate"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  Points		  [9, 0; 0, -73; -252, 0; 0, 143]
+	  DstBlock		  "Asynchronous Machine\nSI Units"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  Points		  [92, 0; 0, 20]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  3
+	  Points		  [99, 0; 0, 15]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  DstBlock		  "ms"
+	  DstPort		  1
+	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "C"
-	  SrcPort		  RConn1
-	  Points		  [200, 0]
+	  Points		  [550, 375; 0, -10; -45, 0]
+	  DstBlock		  "motor_cb"
+	  DstPort		  RConn1
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "250HP Motor1"
-	    DstPort		    LConn3
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
+	    SrcPort		    RConn1
+	    Points		    [0, -90]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Rc"
-	    DstPort		    LConn1
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Asynchronous Machine\nSI Units"
+	    SrcPort		    LConn1
+	    Points		    [-70, 0]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "B"
-	  SrcPort		  RConn1
-	  Points		  [140, 0]
+	  Points		  [565, 390; 0, -5; -60, 0]
+	  DstBlock		  "motor_cb"
+	  DstPort		  RConn2
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
+	    SrcPort		    RConn2
+	    Points		    [0, -75]
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Asynchronous Machine\nSI Units"
+	    SrcPort		    LConn2
+	    Points		    [-55, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Asynchronous Machine\nSI Units"
+	  SrcPort		  LConn3
+	  Points		  [-40, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "250HP Motor1"
-	    DstPort		    LConn2
+	    DstBlock		    "motor_cb"
+	    DstPort		    RConn3
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
+	    SrcPort		    RConn3
+	    Points		    [0, -60]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nParallel RLC Branch1"
+	  SrcPort		  LConn2
+	  Points		  [0, 15]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
+	    SrcPort		    LConn3
+	    Points		    [0, 15; -15, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Ground2"
+	    SrcPort		    LConn1
+	    Points		    [0, 0]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Rb"
+	    Points		    [-15, 0]
+	    DstBlock		    "Three-Phase\nParallel RLC Branch1"
 	    DstPort		    LConn1
 	  }
 	}
@@ -1093,75 +1175,123 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "A"
 	  SrcPort		  RConn1
-	  Points		  [90, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "250HP Motor1"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Ra"
-	    DstPort		    LConn1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Constant"
-	  SrcPort		  1
-	  Points		  [265, 0]
-	  DstBlock		  "250HP Motor1"
-	  DstPort		  1
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [225, 415; 85, 0; 0, -10]
-	  DstBlock		  "RLCc "
-	  DstPort		  RConn1
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "RLCb"
-	    SrcPort		    RConn1
-	    Points		    [0, 10]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    Points		    [150, 415; 75, 0]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Ground2"
-	      SrcPort		      LConn1
-	      Points		      [0, -15]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "RLCa"
-	      SrcPort		      RConn1
-	      Points		      [0, 10]
-	    }
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "RLCb"
-	  SrcPort		  LConn1
-	  DstBlock		  "Rb"
-	  DstPort		  RConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Ra"
-	  SrcPort		  RConn1
-	  DstBlock		  "RLCa"
+	  Points		  [0, 20]
+	  DstBlock		  "motor_cb"
 	  DstPort		  LConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "RLCc "
-	  SrcPort		  LConn1
-	  DstBlock		  "Rc"
-	  DstPort		  RConn1
+	  SrcBlock		  "B"
+	  SrcPort		  RConn1
+	  DstBlock		  "motor_cb"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "C"
+	  SrcPort		  RConn1
+	  Points		  [0, -20]
+	  DstBlock		  "motor_cb"
+	  DstPort		  LConn3
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "CB Trip Signal"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  Points		  [7, 0; 0, 105]
+	  DstBlock		  "motor_cb"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mechanical Load [Nm]"
+	  SrcPort		  1
+	  Points		  [9, 0; 0, -18; -83, 0; 0, 93]
+	  DstBlock		  "Asynchronous Machine\nSI Units"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Asynchronous Machine\nSI Units"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Rotor speed (wm)>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Electromagnetic torque Te (N*m)>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "RPM"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  Points		  [27, 0; 0, 5]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "motor_cb"
+	  SrcPort		  1
+	  Points		  [14, 0; 0, -103; 139, 0; 0, 48]
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "31"
+	  Name			  "Ballast load"
+	  Position		  [626, 528]
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "30"
+	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
+	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
+	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
+	  "ribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnished to"
+	  " do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "
+	  "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURP"
+	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
+	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
+	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n "
+	  Position		  [280, 107]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -2
+	  FontWeight		  "bold"
 	}
       }
+    }
+    Annotation {
+      SID		      "32"
+      Name		      "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of cha"
+      "rge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to d"
+      "eal\nin the Software without restriction, including without limitation the rights to use, copy, modify, merge, p"
+      "ublish, distribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software "
+      "is furnished to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARR"
+      "ANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS "
+      "FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR"
+      " ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT"
+      " OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n "
+      Position		      [148, 541]
+      HorizontalAlignment     "left"
+      ZOrder		      -2
     }
   }
 }
