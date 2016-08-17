@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 04 15:08:38 2016"
-  RTWModifiedTimeStamp	  392224114
-  ModelVersionFormat	  "1.%<AutoIncrement:462>"
+  LastModifiedDate	  "Wed Aug 17 12:48:07 2016"
+  RTWModifiedTimeStamp	  393338869
+  ModelVersionFormat	  "1.%<AutoIncrement:463>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -934,16 +934,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "122"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82392"
+    SIDHighWatermark	    "82402"
     Block {
       BlockType		      SubSystem
       Name		      "Breaker"
       SID		      "52436"
       Ports		      [1, 1, 0, 0, 0, 3, 3]
       Position		      [95, 383, 150, 467]
-      ZOrder		      1837
-      BackgroundColor	      "lightBlue"
-      LibraryVersion	      "*1.442"
+      ZOrder		      3089
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      LibraryVersion	      "*1.462"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -960,14 +960,31 @@ Library {
 	" provided via external relay-blocks.\nThe breaker model also facilitates the system measurements for all logic functi"
 	"ons to operate. \nThe connectivity convention adopted for this block is as follows: ABC indicates the “entry-point” o"
 	"r line, and the abc indicates the “exit-point” or bus.\n"
-	Object {
-	  $PropName		  "Parameters"
-	  $ObjectID		  18
-	  $ClassName		  "Simulink.MaskParameter"
-	  Type			  "edit"
-	  Name			  "Ts"
-	  Prompt		  "Sampling Time [Sec]"
-	  Value			  "Ts"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  3
+	  Object {
+	    $ObjectID		    18
+	    Type		    "edit"
+	    Name		    "Ts"
+	    Prompt		    "Sampling Time [Sec]"
+	    Value		    "Ts"
+	  }
+	  Object {
+	    $ObjectID		    19
+	    Type		    "edit"
+	    Name		    "oMechDelayCycles"
+	    Prompt		    "CB Open - Mechanical Delay [60Hz-Cycles]"
+	    Value		    "5"
+	  }
+	  Object {
+	    $ObjectID		    20
+	    Type		    "edit"
+	    Name		    "cMechDelayCycles"
+	    Prompt		    "CB Close - Mechanical Delay [60Hz-Cycles]"
+	    Value		    "5"
+	  }
+	  PropName		  "Parameters"
 	}
       }
       System {
@@ -984,12 +1001,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"60"
+	ZoomFactor		"109"
 	Block {
 	  BlockType		  Inport
 	  Name			  "From"
 	  SID			  "52437"
-	  Position		  [1155, 243, 1185, 257]
+	  Position		  [1080, 18, 1110, 32]
 	  ZOrder		  -1
 	  BlockMirror		  on
 	  IconDisplay		  "Port number"
@@ -1015,7 +1032,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "52439"
 	  Ports			  [1, 1]
-	  Position		  [1100, 231, 1105, 269]
+	  Position		  [1025, 6, 1030, 44]
 	  ZOrder		  -3
 	  BlockMirror		  on
 	  ShowName		  off
@@ -1031,28 +1048,13 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion1"
 	  SID			  "52440"
-	  Position		  [980, 240, 1030, 260]
+	  Position		  [910, 15, 960, 35]
 	  ZOrder		  1622
 	  BlockMirror		  on
+	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Delay
-	  Name			  "Delay"
-	  SID			  "82202"
-	  Ports			  [3, 1]
-	  Position		  [770, 205, 850, 245]
-	  ZOrder		  1786
-	  BlockMirror		  on
-	  BackgroundColor	  "red"
-	  ShowName		  off
-	  InputPortMap		  "u0,p1,p4"
-	  DelayLengthSource	  "Input port"
-	  DelayLength		  "lower(0.05/Ts)"
-	  DelayLengthUpperLimit	  "1000"
-	  InitialConditionSource  "Input port"
 	}
 	Block {
 	  BlockType		  From
@@ -1083,6 +1085,26 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From3"
+	  SID			  "82393"
+	  Position		  [1285, 158, 1350, 172]
+	  ZOrder		  3141
+	  BlockMirror		  on
+	  ShowName		  off
+	  GotoTag		  "trip_signal"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From4"
+	  SID			  "82394"
+	  Position		  [960, 173, 1025, 187]
+	  ZOrder		  3142
+	  BlockMirror		  on
+	  ShowName		  off
+	  GotoTag		  "trip_signal"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From9"
 	  SID			  "52446"
 	  Position		  [305, 131, 375, 149]
@@ -1092,9 +1114,19 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "82401"
+	  Position		  [805, 17, 865, 33]
+	  ZOrder		  3144
+	  BlockMirror		  on
+	  ShowName		  off
+	  GotoTag		  "trip_signal"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "52447"
-	  Position		  [785, 287, 835, 303]
+	  Position		  [805, 287, 855, 303]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Status"
@@ -1355,12 +1387,51 @@ Library {
 	  Measurements		  "None"
 	}
 	Block {
+	  BlockType		  Delay
+	  Name			  "Variable Delay"
+	  SID			  "82395"
+	  Ports			  [3, 1]
+	  Position		  [840, 175, 920, 215]
+	  ZOrder		  3137
+	  BlockMirror		  on
+	  BackgroundColor	  "red"
+	  InputPortMap		  "u0,p1,p4"
+	  DelayLengthSource	  "Input port"
+	  DelayLength		  "lower(0.05/Ts)"
+	  DelayLengthUpperLimit	  "10000"
+	  InitialConditionSource  "Input port"
+	  Port {
+	    PortNumber		    1
+	    Name		    "tripSignalWithDelay"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "close delay"
+	  SID			  "82396"
+	  Position		  [1295, 199, 1420, 211]
+	  ZOrder		  3140
+	  BlockMirror		  on
+	  Value			  "cMechDelayCycles/60"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "close delay1"
+	  SID			  "82397"
+	  Position		  [1275, 219, 1300, 231]
+	  ZOrder		  3143
+	  BlockMirror		  on
+	  Value			  "Ts"
+	}
+	Block {
 	  BlockType		  SubSystem
-	  Name			  "delay"
-	  SID			  "82213"
-	  Ports			  [1, 1]
-	  Position		  [885, 209, 935, 241]
-	  ZOrder		  1796
+	  Name			  "delay function"
+	  SID			  "82398"
+	  Ports			  [4, 1]
+	  Position		  [1070, 159, 1240, 231]
+	  ZOrder		  3138
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  LibraryVersion	  "1.32"
@@ -1375,8 +1446,15 @@ Library {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  SFBlockType		  "MATLAB Function"
+	  Port {
+	    PortNumber		    1
+	    Name		    "trip_delay"
+	    PropagatedSignals	    "d"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	  System {
-	    Name		    "delay"
+	    Name		    "delay function"
 	    Location		    [223, 338, 826, 833]
 	    Open		    off
 	    ModelBrowserVisibility  on
@@ -1390,34 +1468,61 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "45"
+	    SIDHighWatermark	    "59"
 	    Block {
 	      BlockType		      Inport
-	      Name		      "u"
-	      SID		      "82213::1"
+	      Name		      "trip_signal"
+	      SID		      "82398::1"
 	      Position		      [20, 101, 40, 119]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
+	      BlockType		      Inport
+	      Name		      "oMechDelay"
+	      SID		      "82398::54"
+	      Position		      [20, 136, 40, 154]
+	      ZOrder		      10
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "cMechDelay"
+	      SID		      "82398::55"
+	      Position		      [20, 171, 40, 189]
+	      ZOrder		      11
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Ts"
+	      SID		      "82398::56"
+	      Position		      [20, 206, 40, 224]
+	      ZOrder		      12
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "82213::19"
+	      SID		      "82398::58"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      5
+	      ZOrder		      14
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "82213::18"
-	      Tag		      "Stateflow S-Function breaker_lib 13"
-	      Ports		      [1, 2]
-	      Position		      [180, 100, 230, 160]
-	      ZOrder		      4
+	      SID		      "82398::57"
+	      Tag		      "Stateflow S-Function breaker_lib 1"
+	      Ports		      [4, 2]
+	      Position		      [180, 102, 230, 203]
+	      ZOrder		      13
 	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[1 2]"
+	      PortCounts	      "[4 2]"
 	      EnableBusSupport	      off
 	      Port {
 		PortNumber		2
@@ -1429,23 +1534,41 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "82213::20"
+	      SID		      "82398::59"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      6
+	      ZOrder		      15
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "d"
-	      SID		      "82213::5"
+	      SID		      "82398::5"
 	      Position		      [460, 101, 480, 119]
 	      ZOrder		      -5
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "u"
+	      SrcBlock		      "trip_signal"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "oMechDelay"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "cMechDelay"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Ts"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      4
 	    }
 	    Line {
 	      Name		      "d"
@@ -1477,7 +1600,7 @@ Library {
 	  Position		  [1330, 336, 1375, 404]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.461"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1491,11 +1614,20 @@ Library {
 	  Position		  [360, 301, 405, 369]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.461"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
 	  par_sets		  "1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "open delay"
+	  SID			  "82399"
+	  Position		  [1425, 179, 1540, 191]
+	  ZOrder		  3139
+	  BlockMirror		  on
+	  Value			  "oMechDelayCycles/60"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -1504,6 +1636,7 @@ Library {
 	  Tag			  "PMCPort"
 	  Position		  [150, 281, 190, 309]
 	  ZOrder		  1505
+	  NamePlacement		  "alternate"
 	  Port			  "1"
 	  Side			  "Left"
 	}
@@ -1512,7 +1645,7 @@ Library {
 	  Name			  "B"
 	  SID			  "52466"
 	  Tag			  "PMCPort"
-	  Position		  [100, 311, 140, 339]
+	  Position		  [150, 321, 190, 349]
 	  ZOrder		  1506
 	  Port			  "2"
 	  Side			  "Left"
@@ -1522,7 +1655,7 @@ Library {
 	  Name			  "C"
 	  SID			  "52467"
 	  Tag			  "PMCPort"
-	  Position		  [45, 341, 85, 369]
+	  Position		  [150, 366, 190, 394]
 	  ZOrder		  1507
 	  Port			  "3"
 	  Side			  "Left"
@@ -1532,7 +1665,7 @@ Library {
 	  Name			  "a"
 	  SID			  "52468"
 	  Tag			  "PMCPort"
-	  Position		  [1540, 336, 1575, 364]
+	  Position		  [1470, 301, 1505, 329]
 	  ZOrder		  1508
 	  BlockMirror		  on
 	  Port			  "4"
@@ -1543,7 +1676,7 @@ Library {
 	  Name			  "b"
 	  SID			  "52469"
 	  Tag			  "PMCPort"
-	  Position		  [1490, 376, 1530, 404]
+	  Position		  [1465, 356, 1505, 384]
 	  ZOrder		  1509
 	  BlockMirror		  on
 	  Port			  "5"
@@ -1554,7 +1687,7 @@ Library {
 	  Name			  "c"
 	  SID			  "52470"
 	  Tag			  "PMCPort"
-	  Position		  [1490, 426, 1530, 454]
+	  Position		  [1465, 411, 1505, 439]
 	  ZOrder		  1510
 	  BlockMirror		  on
 	  Port			  "6"
@@ -1569,362 +1702,94 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Delay"
+	  SrcBlock		  "Data Type Conversion1"
 	  SrcPort		  1
-	  Points		  [-14, 0; 0, 70]
+	  DstBlock		  "Goto"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "close delay1"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "close delay"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "open delay"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  Points		  [-12, 0]
 	  Branch {
-	    DstBlock		    "Goto1"
+	    Points		    [0, 30]
+	    DstBlock		    "Variable Delay"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "Variable Delay"
 	    DstPort		    1
 	  }
+	}
+	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tripSignalWithDelay"
+	  Labels		  [2, 1]
+	  SrcBlock		  "Variable Delay"
+	  SrcPort		  1
+	  Points		  [-65, 0; 0, 100]
 	  Branch {
 	    Points		    [0, 35]
 	    DstBlock		    "Three-Phase Breaker"
 	    DstPort		    1
 	  }
-	}
-	Line {
-	  SrcBlock		  "delay"
-	  SrcPort		  1
-	  DstBlock		  "Delay"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Data Type Conversion1"
-	  SrcPort		  1
-	  Points		  [-18, 0]
 	  Branch {
-	    Points		    [-89, 0; 0, -10]
-	    DstBlock		    "Delay"
-	    DstPort		    3
-	  }
-	  Branch {
-	    Points		    [0, -25]
-	    Branch {
-	      DstBlock		      "delay"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, -42; -87, 0; 0, 27]
-	      DstBlock		      "Delay"
-	      DstPort		      1
-	    }
+	    DstBlock		    "Goto1"
+	    DstPort		    1
 	  }
 	}
 	Line {
-	  Name			  "m"
+	  Name			  "trip_delay"
 	  Labels		  [1, 0]
-	  SrcBlock		  "Bus\nCreator1"
+	  SrcBlock		  "delay function"
 	  SrcPort		  1
-	  DstBlock		  "To"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Three-Phase\nV-I Measurement"
-	  SrcPort		  1
-	  DstBlock		  "Goto3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Three-Phase\nV-I Measurement"
-	  SrcPort		  2
-	  DstBlock		  "Goto2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "Memory5"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From10"
-	  SrcPort		  1
-	  DstBlock		  "Memory1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From9"
-	  SrcPort		  1
-	  DstBlock		  "Memory2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Three-Phase\nV-I Measurement1"
-	  SrcPort		  1
-	  Points		  [0, -5]
-	  DstBlock		  "Goto4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "Memory3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Three-Phase\nV-I Measurement1"
-	  SrcPort		  2
-	  DstBlock		  "Terminator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "Status"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Memory5"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "Iabc"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Memory1"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
+	  DstBlock		  "Variable Delay"
 	  DstPort		  2
 	}
 	Line {
-	  Name			  "Vabc_bus"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Memory2"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "Vabc_line"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Memory3"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "<Logic_trip>"
-	  Labels		  [0, 1]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  DstBlock		  "Data Type Conversion1"
-	  DstPort		  1
-	}
-	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
-	  SrcPort		  RConn3
-	  Points		  [0, 5; 80, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn3
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn3
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
-	  SrcPort		  RConn2
-	  Points		  [65, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn2
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn2
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
+	  SrcBlock		  "c"
 	  SrcPort		  RConn1
-	  Points		  [0, -5; 50, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn1
-	  }
+	  Points		  [-28, 0; 0, -35]
+	  DstBlock		  "impedance"
+	  DstPort		  RConn3
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
-	  SrcPort		  LConn3
-	  Points		  [-40, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn3
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
-	    DstPort		    LConn3
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
-	  SrcPort		  LConn2
-	  Points		  [-55, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-210, 0]
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn2
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
-	    DstPort		    LConn2
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase Breaker"
-	  SrcPort		  LConn1
-	  Points		  [-70, 0]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-195, 0]
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
-	    DstPort		    LConn1
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch"
-	  SrcPort		  RConn2
-	  Points		  [0, 5]
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "Three-Phase\nSeries RLC Branch"
-	    SrcPort		    RConn3
-	    Points		    [0, 5; -15, 0]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [0, 5]
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      DstBlock		      "Ground"
-	      DstPort		      LConn1
-	    }
-	    Branch {
-	      ConnectType	      "DEST_DEST"
-	      SrcBlock		      "Three-Phase\nSeries RLC Branch"
-	      SrcPort		      RConn1
-	      Points		      [0, 10; 15, 0]
-	    }
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch1"
-	  SrcPort		  RConn2
-	  Points		  [0, 5]
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "Three-Phase\nSeries RLC Branch1"
-	    SrcPort		    RConn3
-	    Points		    [0, 5; -15, 0]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [0, 5]
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      DstBlock		      "Ground1"
-	      DstPort		      LConn1
-	    }
-	    Branch {
-	      ConnectType	      "DEST_DEST"
-	      SrcBlock		      "Three-Phase\nSeries RLC Branch1"
-	      SrcPort		      RConn1
-	      Points		      [0, 10; 15, 0]
-	    }
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "impedance1"
-	  SrcPort		  RConn2
-	  DstBlock		  "Three-Phase\nV-I Measurement"
-	  DstPort		  LConn2
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "impedance1"
-	  SrcPort		  RConn3
-	  Points		  [25, 0; 0, 10]
-	  DstBlock		  "Three-Phase\nV-I Measurement"
-	  DstPort		  LConn3
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "impedance1"
+	  SrcBlock		  "b"
 	  SrcPort		  RConn1
-	  Points		  [25, 0; 0, -10]
-	  DstBlock		  "Three-Phase\nV-I Measurement"
-	  DstPort		  LConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "A"
-	  SrcPort		  RConn1
-	  Points		  [70, 0; 0, 20]
-	  DstBlock		  "impedance1"
-	  DstPort		  LConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "B"
-	  SrcPort		  RConn1
-	  Points		  [0, 10]
-	  DstBlock		  "impedance1"
-	  DstPort		  LConn2
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "C"
-	  SrcPort		  RConn1
-	  Points		  [3, 0; 0, 11; 224, 0; 0, -11]
-	  DstBlock		  "impedance1"
-	  DstPort		  LConn3
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "impedance"
-	  SrcPort		  LConn2
-	  DstBlock		  "Three-Phase\nV-I Measurement1"
+	  DstBlock		  "impedance"
 	  DstPort		  RConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "impedance"
-	  SrcPort		  LConn1
-	  Points		  [-52, 0; 0, 5]
-	  DstBlock		  "Three-Phase\nV-I Measurement1"
+	  SrcBlock		  "a"
+	  SrcPort		  RConn1
+	  Points		  [-32, 0; 0, 35]
+	  DstBlock		  "impedance"
 	  DstPort		  RConn1
 	}
 	Line {
@@ -1937,59 +1802,331 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "a"
-	  SrcPort		  RConn1
-	  DstBlock		  "impedance"
+	  SrcBlock		  "impedance"
+	  SrcPort		  LConn1
+	  Points		  [-52, 0; 0, 5]
+	  DstBlock		  "Three-Phase\nV-I Measurement1"
 	  DstPort		  RConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "b"
-	  SrcPort		  RConn1
-	  Points		  [0, 1; -8, 0; 0, -21]
-	  DstBlock		  "impedance"
+	  SrcBlock		  "impedance"
+	  SrcPort		  LConn2
+	  DstBlock		  "Three-Phase\nV-I Measurement1"
 	  DstPort		  RConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "c"
+	  SrcBlock		  "C"
 	  SrcPort		  RConn1
-	  Points		  [-53, 0; 0, -50]
-	  DstBlock		  "impedance"
-	  DstPort		  RConn3
+	  Points		  [70, 0; 0, -25]
+	  DstBlock		  "impedance1"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "B"
+	  SrcPort		  RConn1
+	  DstBlock		  "impedance1"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "A"
+	  SrcPort		  RConn1
+	  Points		  [70, 0; 0, 20]
+	  DstBlock		  "impedance1"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "impedance1"
+	  SrcPort		  RConn1
+	  Points		  [25, 0; 0, -10]
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "impedance1"
+	  SrcPort		  RConn3
+	  Points		  [25, 0; 0, 10]
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "impedance1"
+	  SrcPort		  RConn2
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nSeries RLC Branch1"
+	  SrcPort		  RConn1
+	  Points		  [0, 10; 15, 0]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Ground1"
+	    DstPort		    LConn1
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [975, 495; 0, 5]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nSeries RLC Branch1"
+	      SrcPort		      RConn3
+	      Points		      [0, 5; -15, 0]
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nSeries RLC Branch1"
+	      SrcPort		      RConn2
+	      Points		      [0, 5]
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcPort		  RConn1
+	  Points		  [0, 10; 15, 0]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Ground"
+	    DstPort		    LConn1
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [770, 495; 0, 5]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nSeries RLC Branch"
+	      SrcPort		      RConn3
+	      Points		      [0, 5; -15, 0]
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nSeries RLC Branch"
+	      SrcPort		      RConn2
+	      Points		      [0, 5]
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [755, 345; 0, 45]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn1
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    Points		    [-195, 0]
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn1
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn1
+	    Points		    [-70, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [770, 360; 0, 30]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn2
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    Points		    [-210, 0]
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn2
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn2
+	    Points		    [-55, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [785, 375; 0, 15]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn3
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn3
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn3
+	    Points		    [-40, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [960, 330; 0, 60]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn1
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
+	    DstPort		    LConn1
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn1
+	    Points		    [0, -5; 50, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [975, 355; 0, 35]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn2
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
+	    DstPort		    LConn2
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn2
+	    Points		    [65, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [990, 380; 0, 10]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn3
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
+	    DstPort		    LConn3
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn3
+	    Points		    [0, 5; 80, 0]
+	  }
+	}
+	Line {
+	  Name			  "<Logic_trip>"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Vabc_line"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Memory3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "Vabc_bus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Memory2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "Iabc"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Memory1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Status"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Memory5"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Three-Phase\nV-I Measurement1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Memory3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Three-Phase\nV-I Measurement1"
+	  SrcPort		  1
+	  Points		  [0, -5]
+	  DstBlock		  "Goto4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From9"
+	  SrcPort		  1
+	  DstBlock		  "Memory2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From10"
+	  SrcPort		  1
+	  DstBlock		  "Memory1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "Memory5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Three-Phase\nV-I Measurement"
+	  SrcPort		  2
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Three-Phase\nV-I Measurement"
+	  SrcPort		  1
+	  DstBlock		  "Goto3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "m"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  DstBlock		  "To"
+	  DstPort		  1
 	}
 	Annotation {
-	  SID			  "82122"
-	  Position		  [454, 213]
+	  SID			  "82400"
+	  Name			  "using trip_signal t(k-1) \nas the initial condition"
+	  Position		  [893, 149]
 	  ZOrder		  -1
-	}
-	Annotation {
-	  SID			  "82123"
-	  Position		  [422, 29]
-	  ZOrder		  -2
-	}
-	Annotation {
-	  SID			  "82124"
-	  Position		  [936, 414]
-	  ZOrder		  -3
-	}
-	Annotation {
-	  SID			  "82125"
-	  Name			  "Resistors used for numerical stability"
-	  Position		  [873, 539]
-	  ZOrder		  -4
-	}
-	Annotation {
-	  SID			  "82126"
-	  Name			  "Measurement at the \"entry-point\""
-	  Position		  [519, 402]
-	  ZOrder		  -5
-	}
-	Annotation {
-	  SID			  "82127"
-	  Name			  "Measurement at the \"exit-point\""
-	  Position		  [1109, 402]
-	  ZOrder		  -6
 	}
 	Annotation {
 	  SID			  "82388"
@@ -2004,10 +2141,50 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [16, 747]
+	  Position		  [16, 617]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -25
+	  ZOrder		  -2
 	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "82127"
+	  Name			  "Measurement at the \"exit-point\""
+	  Position		  [1109, 402]
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "82126"
+	  Name			  "Measurement at the \"entry-point\""
+	  Position		  [519, 402]
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "82125"
+	  Name			  "Resistors used for numerical stability"
+	  Position		  [873, 539]
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "82124"
+	  Position		  [936, 414]
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "82123"
+	  Position		  [422, 29]
+	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "82122"
+	  Position		  [454, 213]
+	  ZOrder		  -8
+	}
+	Annotation {
+	  SID			  "82402"
+	  Name			  "Breaker model currently ignores current ratings, max interruption currents, and base voltages"
+	  Position		  [957, 608]
+	  ForegroundColor	  "blue"
+	  ZOrder		  -9
 	}
       }
     }
@@ -2028,7 +2205,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		19
+	$ObjectID		21
 	$ClassName		"Simulink.Mask"
 	Type			"Breaker"
 	Description		"This block simulates the open/close behavior of a breaker. The logic (1-closed; 0-open) of operation is"
@@ -2037,7 +2214,7 @@ Library {
 	"r line, and the abc indicates the “exit-point” or bus.\n"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  20
+	  $ObjectID		  22
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -2983,7 +3160,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		21
+	$ObjectID		23
 	$ClassName		"Simulink.Mask"
 	Type			"Breaker"
 	Description		"This block simulates the open/close behavior of a breaker. The logic (1-closed; 0-open) of operation is"
@@ -2992,7 +3169,7 @@ Library {
 	"r line, and the abc indicates the “exit-point” or bus.\n"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  22
+	  $ObjectID		  24
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -3763,7 +3940,7 @@ Library {
 	  Position		  [265, 376, 310, 444]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.461"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -3777,7 +3954,7 @@ Library {
 	  Position		  [665, 401, 710, 469]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.461"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -4160,7 +4337,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		23
+	$ObjectID		25
 	$ClassName		"Simulink.Mask"
 	Type			"1/0AWG cable"
 	Description		"This block represents a 1/0AWG cable based on Table 4A-7  60 Hz impedance data for three-phase copper c"
@@ -4169,14 +4346,14 @@ Library {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    24
+	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "length"
 	    Prompt		    "Length [ft]"
 	    Value		    "10"
 	  }
 	  Object {
-	    $ObjectID		    25
+	    $ObjectID		    27
 	    Type		    "edit"
 	    Name		    "par_sets"
 	    Prompt		    "No. of parallel sets"
@@ -4401,26 +4578,27 @@ Stateflow {
     name		    "breaker_lib"
     created		    "06-Aug-2015 14:16:05"
     isLibrary		    1
-    firstTarget		    9
+    firstTarget		    12
     sfVersion		    76014001.0015
   }
   chart {
     id			    2
-    name		    "Breaker/delay"
+    name		    "Breaker/delay function"
     windowPosition	    [357.331 483.407 167 391]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1280 1024 1.041050272174191]
     treeNode		    [0 3 0 0]
-    firstTransition	    7
-    firstJunction	    6
+    firstTransition	    10
+    firstJunction	    9
     viewObj		    2
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    5
+    subviewS {
+    }
+    ssIdHighWaterMark	    8
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    4
-    chartFileNumber	    13
+    chartFileNumber	    1
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -4440,15 +4618,28 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function d = fcn(u)\n%#codegen\n\nd=0; % zero delay to close\nif u < 0.5\n    % 500 = (3 cycles m"
-      "ech delay) / (Ts = 100uS)\n    d=500;\nend"
+      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
+      "of charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software"
+      "\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modif"
+      "y,\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to wh"
+      "om the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright noti"
+      "ce and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% "
+      "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMIT"
+      "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
+      "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
+      "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
+      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction d = fcn(trip_signal, oMechDelay, cMechDelay, Ts)\n%#codegen\n"
+      "\n% VARIABLES:\n% trip_signal: signal received from relay\n% * trip_signal < 0.5 : CB open\n% * trip_signal > 0."
+      "5 : CB close\n% oMechDelay [s]: open mechanical delay\n% cMechDelay [s]: close mechanical delay\n% d: output del"
+      "ay length\n% Ts [s]: simulation time step\n\nif trip_signal < 0.5\n    % open delay length = oMechDelay / Ts\n  "
+      "  d = oMechDelay / Ts;\nelse\n    % close delay length = cMechDelay / Ts\n    d = cMechDelay / Ts;\nend\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
   data {
     id			    4
     ssIdNumber		    4
-    name		    "u"
+    name		    "trip_signal"
     linkNode		    [2 0 5]
     scope		    INPUT_DATA
     machine		    1
@@ -4468,7 +4659,7 @@ Stateflow {
     id			    5
     ssIdNumber		    5
     name		    "d"
-    linkNode		    [2 4 0]
+    linkNode		    [2 4 6]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4484,8 +4675,74 @@ Stateflow {
     }
     dataType		    "Inherit: Same as Simulink"
   }
-  junction {
+  data {
     id			    6
+    ssIdNumber		    6
+    name		    "oMechDelay"
+    linkNode		    [2 5 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    7
+    name		    "cMechDelay"
+    linkNode		    [2 6 8]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    8
+    name		    "Ts"
+    linkNode		    [2 7 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    9
     position		    [23.5747 49.5747 7]
     chart		    2
     linkNode		    [2 0 0]
@@ -4494,7 +4751,7 @@ Stateflow {
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    7
+    id			    10
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -4502,7 +4759,7 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      6
+      id		      9
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
@@ -4518,13 +4775,13 @@ Stateflow {
     ssIdNumber		    2
   }
   instance {
-    id			    8
-    name		    "Breaker/delay"
+    id			    11
+    name		    "Breaker/delay function"
     machine		    1
     chart		    2
   }
   target {
-    id			    9
+    id			    12
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
