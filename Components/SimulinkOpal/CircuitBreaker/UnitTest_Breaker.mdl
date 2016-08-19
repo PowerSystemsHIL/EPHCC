@@ -6,12 +6,12 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2580"
+    ComputedModelVersion    "1.2582"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "windows-1252"
-  PostLoadFcn		  "Ts=100e-6; RELAY_TEST_init;"
+  PostLoadFcn		  "Ts=100e-6;"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime off
@@ -22,7 +22,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "Ts=100e-6; RELAY_TEST_init;"
+  InitFcn		  "Ts=100e-6;"
   UserBdParams		  "PhysicalModelingChecksum;PhysicalModelingParameterChecksum;PhysicalModelingProducts;ARTEMISmethode_"
   "block_infos"
   Object {
@@ -58,9 +58,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 999.0]
+	Extents			[1693.0, 1002.0]
 	ZoomFactor		[1.3214285714285714]
-	Offset			[59.4054054054054, -95.000000000000014]
+	Offset			[59.4054054054054, -96.135135135135172]
       }
     }
   }
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 17 13:09:49 2016"
-  RTWModifiedTimeStamp	  393340187
-  ModelVersionFormat	  "1.%<AutoIncrement:2580>"
+  LastModifiedDate	  "Fri Aug 19 17:53:13 2016"
+  RTWModifiedTimeStamp	  393529988
+  ModelVersionFormat	  "1.%<AutoIncrement:2582>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -813,6 +813,12 @@ Model {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      ManualSwitch
+      CurrentSetting	      "1"
+      varsize		      off
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -879,7 +885,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "132"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "27374"
+    SIDHighWatermark	    "27378"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1019,7 +1025,7 @@ Model {
       SID		      "27332"
       Position		      [825, 478, 900, 502]
       ZOrder		      3097
-      BackgroundColor	      "darkGreen"
+      BackgroundColor	      "[0.419608, 0.588235, 0.239216]"
       GotoTag		      "PQLOAD_1"
     }
     Block {
@@ -1103,12 +1109,24 @@ Model {
       Position		      [370, 508, 425, 592]
       ZOrder		      3089
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "1.463"
+      LibraryVersion	      "1.464"
       SourceBlock	      "breaker_lib/Breaker"
       SourceType	      "Breaker"
       Ts		      "Ts"
-      oMechDelayCycles	      "5"
-      cMechDelayCycles	      "5"
+      mech_delays	      "[cb_mech_delay(1,:)]"
+    }
+    Block {
+      BlockType		      ManualSwitch
+      Name		      "Manual Switch"
+      SID		      "27378"
+      Position		      [255, 392, 285, 428]
+      ZOrder		      3119
+      Port {
+	PortNumber		1
+	Name			"Logic_trip"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      SubSystem
@@ -1151,7 +1169,7 @@ Model {
 	    Type		    "edit"
 	    Name		    "InitFcnX"
 	    Prompt		    "Initialisation"
-	    Value		    "Ts=100e-6; RELAY_TEST_init;"
+	    Value		    "Ts=100e-6;"
 	    Evaluate		    "off"
 	  }
 	  Object {
@@ -1244,28 +1262,9 @@ Model {
       LibraryVersion	      "1.28"
       SourceBlock	      "cables_lib/PI-Section"
       SourceType	      "Cable Model"
-      cable_spec	      "[cable_spec(13, :)]"
+      cable_spec	      "[0.074938, 1.1405, 0.00030953, 0.002005, 6.3294e-07, 6.3294e-07]"
       line_length	      "10000"
       parallel_sets	      "1"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "Repeating\nSequence"
-      SID		      "27361"
-      Ports		      [0, 1]
-      Position		      [160, 445, 190, 475]
-      ZOrder		      3117
-      LibraryVersion	      "1.274"
-      SourceBlock	      "simulink/Sources/Repeating\nSequence"
-      SourceType	      "Repeating table"
-      rep_seq_t		      "[0 2.5 2.5 4.5 4.5 10]"
-      rep_seq_y		      "[1 1 0 0 1 1]"
-      Port {
-	PortNumber		1
-	Name			"Logic_trip"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
     }
     Block {
       BlockType		      Constant
@@ -1284,8 +1283,8 @@ Model {
       ZOrder		      3100
       BackgroundColor	      "yellow"
       Floating		      off
-      Location		      [581, 136, 1525, 1271]
-      Open		      off
+      Location		      [1929, 56, 2873, 1191]
+      Open		      on
       NumInputPorts	      "5"
       List {
 	ListType		AxesTitles
@@ -1363,6 +1362,38 @@ Model {
       Vs		      "480"
       Z			      "5.75"
       XR		      "6.6"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "close-open-close"
+      SID		      "27361"
+      Ports		      [0, 1]
+      Position		      [135, 425, 165, 455]
+      ZOrder		      3117
+      LibraryVersion	      "1.274"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence"
+      SourceType	      "Repeating table"
+      rep_seq_t		      "[0 2.5 2.5 4.5 4.5 10]"
+      rep_seq_y		      "[1 1 0 0 1 1]"
+      Port {
+	PortNumber		1
+	Name			"Logic_trip"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "open-close-open"
+      SID		      "27377"
+      Ports		      [0, 1]
+      Position		      [135, 370, 165, 400]
+      ZOrder		      3118
+      LibraryVersion	      "1.274"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence"
+      SourceType	      "Repeating table"
+      rep_seq_t		      "[0 2.5 2.5 4.5 4.5 10]"
+      rep_seq_y		      "[0 0 1 1 0 0]"
     }
     Block {
       BlockType		      Reference
@@ -1544,22 +1575,6 @@ Model {
       DstPort		      1
     }
     Line {
-      Name		      "Logic_trip"
-      Labels		      [0, 0]
-      SrcBlock		      "Repeating\nSequence"
-      SrcPort		      1
-      Points		      [106, 0]
-      Branch {
-	Points			[0, -155]
-	DstBlock		"Scope"
-	DstPort			1
-      }
-      Branch {
-	DstBlock		"Bus\nCreator1"
-	DstPort			1
-      }
-    }
-    Line {
       SrcBlock		      "Stop_Index "
       SrcPort		      1
       DstBlock		      "Mux"
@@ -1685,6 +1700,42 @@ Model {
       SrcPort		      4
       DstBlock		      "Scope"
       DstPort		      5
+    }
+    Line {
+      Name		      "Logic_trip"
+      FontName		      "Helvetica"
+      FontSize		      9
+      FontWeight	      "normal"
+      FontAngle		      "normal"
+      SrcBlock		      "Manual Switch"
+      SrcPort		      1
+      Points		      [14, 0]
+      Branch {
+	Labels			[0, 0]
+	Points			[0, -105]
+	DstBlock		"Scope"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 50]
+	DstBlock		"Bus\nCreator1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "open-close-open"
+      SrcPort		      1
+      Points		      [40, 0; 0, 15]
+      DstBlock		      "Manual Switch"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Logic_trip"
+      SrcBlock		      "close-open-close"
+      SrcPort		      1
+      Points		      [33, 0; 0, -20]
+      DstBlock		      "Manual Switch"
+      DstPort		      2
     }
     Annotation {
       SID		      "27191"

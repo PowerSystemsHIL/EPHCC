@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 17 12:48:07 2016"
-  RTWModifiedTimeStamp	  393338869
-  ModelVersionFormat	  "1.%<AutoIncrement:463>"
+  LastModifiedDate	  "Fri Aug 19 17:46:51 2016"
+  RTWModifiedTimeStamp	  393529598
+  ModelVersionFormat	  "1.%<AutoIncrement:464>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -758,6 +758,10 @@ Library {
       BusSelectionMode	      off
     }
     Block {
+      BlockType		      DigitalClock
+      SampleTime	      "1"
+    }
+    Block {
       BlockType		      Fcn
       Expr		      "sin(u[1])"
       SampleTime	      "-1"
@@ -934,16 +938,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "122"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82402"
+    SIDHighWatermark	    "82429"
     Block {
       BlockType		      SubSystem
       Name		      "Breaker"
       SID		      "52436"
       Ports		      [1, 1, 0, 0, 0, 3, 3]
       Position		      [95, 383, 150, 467]
-      ZOrder		      3089
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "*1.462"
+      ZOrder		      1838
+      BackgroundColor	      "lightBlue"
+      LibraryVersion	      "*1.463"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -959,10 +963,11 @@ Library {
 	Description		"This block simulates the open/close behavior of a breaker. The logic (1-closed; 0-open) of operation is"
 	" provided via external relay-blocks.\nThe breaker model also facilitates the system measurements for all logic functi"
 	"ons to operate. \nThe connectivity convention adopted for this block is as follows: ABC indicates the “entry-point” o"
-	"r line, and the abc indicates the “exit-point” or bus.\n"
+	"r line, and the abc indicates the “exit-point” or bus.\n\nTs [s]: simulation time step\nBreaker mechanical delay [s]\n"
+	" - format: [open_delay, close_delay]"
 	Array {
 	  Type			  "Simulink.MaskParameter"
-	  Dimension		  3
+	  Dimension		  2
 	  Object {
 	    $ObjectID		    18
 	    Type		    "edit"
@@ -973,16 +978,9 @@ Library {
 	  Object {
 	    $ObjectID		    19
 	    Type		    "edit"
-	    Name		    "oMechDelayCycles"
-	    Prompt		    "CB Open - Mechanical Delay [60Hz-Cycles]"
-	    Value		    "5"
-	  }
-	  Object {
-	    $ObjectID		    20
-	    Type		    "edit"
-	    Name		    "cMechDelayCycles"
-	    Prompt		    "CB Close - Mechanical Delay [60Hz-Cycles]"
-	    Value		    "5"
+	    Name		    "mech_delays"
+	    Prompt		    "Open/Close Mechanical Delay [Sec]"
+	    Value		    "[cb_mech_delay(1,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
@@ -1001,7 +999,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"109"
+	ZoomFactor		"115"
 	Block {
 	  BlockType		  Inport
 	  Name			  "From"
@@ -1057,6 +1055,41 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  SID			  "82429"
+	  Ports			  [1, 2]
+	  Position		  [1385, 157, 1390, 208]
+	  ZOrder		  3171
+	  BlockMirror		  on
+	  ShowName		  off
+	  Outputs		  "2"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "open delay"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "close delay"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DigitalClock
+	  Name			  "Digital Clock1"
+	  SID			  "82427"
+	  Position		  [1345, 235, 1390, 255]
+	  ZOrder		  3169
+	  BlockMirror		  on
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  SampleTime		  "Ts"
+	}
+	Block {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "52442"
@@ -1087,7 +1120,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "82393"
-	  Position		  [1285, 158, 1350, 172]
+	  Position		  [1295, 138, 1360, 152]
 	  ZOrder		  3141
 	  BlockMirror		  on
 	  ShowName		  off
@@ -1097,7 +1130,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From4"
 	  SID			  "82394"
-	  Position		  [960, 173, 1025, 187]
+	  Position		  [965, 173, 1030, 187]
 	  ZOrder		  3142
 	  BlockMirror		  on
 	  ShowName		  off
@@ -1126,7 +1159,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "52447"
-	  Position		  [805, 287, 855, 303]
+	  Position		  [845, 267, 895, 283]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Status"
@@ -1409,18 +1442,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "close delay"
-	  SID			  "82396"
-	  Position		  [1295, 199, 1420, 211]
-	  ZOrder		  3140
-	  BlockMirror		  on
-	  Value			  "cMechDelayCycles/60"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "close delay1"
 	  SID			  "82397"
-	  Position		  [1275, 219, 1300, 231]
+	  Position		  [1285, 214, 1310, 226]
 	  ZOrder		  3143
 	  BlockMirror		  on
 	  Value			  "Ts"
@@ -1429,8 +1453,8 @@ Library {
 	  BlockType		  SubSystem
 	  Name			  "delay function"
 	  SID			  "82398"
-	  Ports			  [4, 1]
-	  Position		  [1070, 159, 1240, 231]
+	  Ports			  [5, 1]
+	  Position		  [1070, 136, 1240, 254]
 	  ZOrder		  3138
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -1468,7 +1492,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "59"
+	    SIDHighWatermark	    "74"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "trip_signal"
@@ -1505,24 +1529,33 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
+	      BlockType		      Inport
+	      Name		      "time"
+	      SID		      "82398::71"
+	      Position		      [20, 246, 40, 264]
+	      ZOrder		      19
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "82398::58"
+	      SID		      "82398::73"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      14
+	      ZOrder		      21
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "82398::57"
+	      SID		      "82398::72"
 	      Tag		      "Stateflow S-Function breaker_lib 1"
-	      Ports		      [4, 2]
-	      Position		      [180, 102, 230, 203]
-	      ZOrder		      13
+	      Ports		      [5, 2]
+	      Position		      [180, 100, 230, 220]
+	      ZOrder		      20
 	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[4 2]"
+	      PortCounts	      "[5 2]"
 	      EnableBusSupport	      off
 	      Port {
 		PortNumber		2
@@ -1534,9 +1567,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "82398::59"
+	      SID		      "82398::74"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      15
+	      ZOrder		      22
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1571,6 +1604,12 @@ Library {
 	      DstPort		      4
 	    }
 	    Line {
+	      SrcBlock		      "time"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      5
+	    }
+	    Line {
 	      Name		      "d"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
@@ -1593,6 +1632,16 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "delay parameters in seconds"
+	  SID			  "82428"
+	  Position		  [1430, 174, 1595, 196]
+	  ZOrder		  3170
+	  BlockMirror		  on
+	  BackgroundColor	  "yellow"
+	  Value			  "[mech_delays(1:2)]"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "impedance"
 	  SID			  "82382"
@@ -1600,7 +1649,7 @@ Library {
 	  Position		  [1330, 336, 1375, 404]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.463"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1614,20 +1663,11 @@ Library {
 	  Position		  [360, 301, 405, 369]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.463"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
 	  par_sets		  "1"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "open delay"
-	  SID			  "82399"
-	  Position		  [1425, 179, 1540, 191]
-	  ZOrder		  3139
-	  BlockMirror		  on
-	  Value			  "oMechDelayCycles/60"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -1702,6 +1742,50 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "open delay"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "close delay"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "delay function"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "delay parameters in seconds"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Digital Clock1"
+	  SrcPort		  1
+	  DstBlock		  "delay function"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "tripSignalWithDelay"
+	  Labels		  [2, 1]
+	  SrcBlock		  "Variable Delay"
+	  SrcPort		  1
+	  Points		  [-39, 0; 0, 80]
+	  Branch {
+	    Points		    [0, 55]
+	    DstBlock		    "Three-Phase Breaker"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Goto1"
+	    DstPort		    1
+	  }
+	}
+	Line {
 	  SrcBlock		  "Data Type Conversion1"
 	  SrcPort		  1
 	  DstBlock		  "Goto"
@@ -1714,29 +1798,17 @@ Library {
 	  DstPort		  4
 	}
 	Line {
-	  SrcBlock		  "close delay"
-	  SrcPort		  1
-	  DstBlock		  "delay function"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "open delay"
-	  SrcPort		  1
-	  DstBlock		  "delay function"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "From4"
 	  SrcPort		  1
-	  Points		  [-12, 0]
+	  Points		  [-10, 0]
+	  Branch {
+	    DstBlock		    "Variable Delay"
+	    DstPort		    1
+	  }
 	  Branch {
 	    Points		    [0, 30]
 	    DstBlock		    "Variable Delay"
 	    DstPort		    3
-	  }
-	  Branch {
-	    DstBlock		    "Variable Delay"
-	    DstPort		    1
 	  }
 	}
 	Line {
@@ -1744,22 +1816,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "delay function"
 	  DstPort		  1
-	}
-	Line {
-	  Name			  "tripSignalWithDelay"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Variable Delay"
-	  SrcPort		  1
-	  Points		  [-65, 0; 0, 100]
-	  Branch {
-	    Points		    [0, 35]
-	    DstBlock		    "Three-Phase Breaker"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Goto1"
-	    DstPort		    1
-	  }
 	}
 	Line {
 	  Name			  "trip_delay"
@@ -2141,7 +2197,7 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [16, 617]
+	  Position		  [146, 672]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -2
 	  FontWeight		  "bold"
@@ -2205,7 +2261,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		21
+	$ObjectID		20
 	$ClassName		"Simulink.Mask"
 	Type			"Breaker"
 	Description		"This block simulates the open/close behavior of a breaker. The logic (1-closed; 0-open) of operation is"
@@ -2214,7 +2270,7 @@ Library {
 	"r line, and the abc indicates the “exit-point” or bus.\n"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  22
+	  $ObjectID		  21
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -3160,7 +3216,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		23
+	$ObjectID		22
 	$ClassName		"Simulink.Mask"
 	Type			"Breaker"
 	Description		"This block simulates the open/close behavior of a breaker. The logic (1-closed; 0-open) of operation is"
@@ -3169,7 +3225,7 @@ Library {
 	"r line, and the abc indicates the “exit-point” or bus.\n"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  24
+	  $ObjectID		  23
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -3940,7 +3996,7 @@ Library {
 	  Position		  [265, 376, 310, 444]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.463"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -3954,7 +4010,7 @@ Library {
 	  Position		  [665, 401, 710, 469]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.463"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -4337,7 +4393,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		25
+	$ObjectID		24
 	$ClassName		"Simulink.Mask"
 	Type			"1/0AWG cable"
 	Description		"This block represents a 1/0AWG cable based on Table 4A-7  60 Hz impedance data for three-phase copper c"
@@ -4346,14 +4402,14 @@ Library {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    26
+	    $ObjectID		    25
 	    Type		    "edit"
 	    Name		    "length"
 	    Prompt		    "Length [ft]"
 	    Value		    "10"
 	  }
 	  Object {
-	    $ObjectID		    27
+	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "par_sets"
 	    Prompt		    "No. of parallel sets"
@@ -4578,7 +4634,7 @@ Stateflow {
     name		    "breaker_lib"
     created		    "06-Aug-2015 14:16:05"
     isLibrary		    1
-    firstTarget		    12
+    firstTarget		    13
     sfVersion		    76014001.0015
   }
   chart {
@@ -4588,13 +4644,13 @@ Stateflow {
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1280 1024 1.041050272174191]
     treeNode		    [0 3 0 0]
-    firstTransition	    10
-    firstJunction	    9
+    firstTransition	    11
+    firstJunction	    10
     viewObj		    2
     machine		    1
     subviewS {
     }
-    ssIdHighWaterMark	    8
+    ssIdHighWaterMark	    9
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    4
@@ -4628,11 +4684,14 @@ Stateflow {
       "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
       "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
       "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
-      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction d = fcn(trip_signal, oMechDelay, cMechDelay, Ts)\n%#codegen\n"
-      "\n% VARIABLES:\n% trip_signal: signal received from relay\n% * trip_signal < 0.5 : CB open\n% * trip_signal > 0."
-      "5 : CB close\n% oMechDelay [s]: open mechanical delay\n% cMechDelay [s]: close mechanical delay\n% d: output del"
-      "ay length\n% Ts [s]: simulation time step\n\nif trip_signal < 0.5\n    % open delay length = oMechDelay / Ts\n  "
-      "  d = oMechDelay / Ts;\nelse\n    % close delay length = cMechDelay / Ts\n    d = cMechDelay / Ts;\nend\n\n"
+      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction d = fcn(trip_signal, oMechDelay, cMechDelay, Ts, time)\n%#co"
+      "degen\n\n% VARIABLES:\n% trip_signal: signal received from relay\n% * trip_signal < 0.5 : CB open\n% * trip_sign"
+      "al > 0.5 : CB close\n% oMechDelay [s]: open mechanical delay\n% cMechDelay [s]: close mechanical delay\n% d: out"
+      "put delay length\n% Ts [s]: simulation time step\n% time: simulation clock time\n% init_cond_time [s]: time to h"
+      "old the initial signal condition\n\ninit_cond_time = max(oMechDelay, cMechDelay) + Ts;\nd = 0; % no delays for i"
+      "nitial conditions to the breaker\nif time > init_cond_time\n    if trip_signal < 0.5\n        % open delay lengt"
+      "h = oMechDelay / Ts\n        d = oMechDelay / Ts;\n    else\n        % close delay length = cMechDelay / Ts\n   "
+      "     d = cMechDelay / Ts;\n    end\nend\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
@@ -4723,7 +4782,29 @@ Stateflow {
     id			    8
     ssIdNumber		    8
     name		    "Ts"
-    linkNode		    [2 7 0]
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    9
+    name		    "time"
+    linkNode		    [2 8 0]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4742,7 +4823,7 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   junction {
-    id			    9
+    id			    10
     position		    [23.5747 49.5747 7]
     chart		    2
     linkNode		    [2 0 0]
@@ -4751,7 +4832,7 @@ Stateflow {
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    10
+    id			    11
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -4759,7 +4840,7 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      9
+      id		      10
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
@@ -4775,13 +4856,13 @@ Stateflow {
     ssIdNumber		    2
   }
   instance {
-    id			    11
+    id			    12
     name		    "Breaker/delay function"
     machine		    1
     chart		    2
   }
   target {
-    id			    12
+    id			    13
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
