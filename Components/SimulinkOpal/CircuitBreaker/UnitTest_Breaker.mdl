@@ -6,12 +6,12 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2582"
+    ComputedModelVersion    "1.2592"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "windows-1252"
-  PostLoadFcn		  "Ts=100e-6;"
+  PostLoadFcn		  "Ts=100e-6; UnitTest_Breaker_init;"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime off
@@ -22,7 +22,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "Ts=100e-6;"
+  InitFcn		  "Ts=100e-6; UnitTest_Breaker_init;"
   UserBdParams		  "PhysicalModelingChecksum;PhysicalModelingParameterChecksum;PhysicalModelingProducts;ARTEMISmethode_"
   "block_infos"
   Object {
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, 0.0, 1936.0, 1176.0]
+      Location		      [-8.0, 0.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -58,25 +58,25 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1002.0]
-	ZoomFactor		[1.3214285714285714]
-	Offset			[59.4054054054054, -96.135135135135172]
+	Extents			[1693.0, 882.0]
+	ZoomFactor		[0.91729323308270683]
+	Offset			[-282.82377049180309, -65.262295081967068]
       }
     }
   }
-  PhysicalModelingChecksum "1616974036"
-  PhysicalModelingParameterChecksum "3545056414"
+  PhysicalModelingChecksum "2515477270"
+  PhysicalModelingParameterChecksum "1581221278"
   PhysicalModelingProducts "Power_System_Blocks"
   ARTEMISmethode_block_infos "$$__separator__$$UnitTest_Breaker/ARTEMIS Guide$$__separator__$$"
   Created		  "Tue Jun 07 15:01:07 2016"
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 19 17:53:13 2016"
-  RTWModifiedTimeStamp	  393529988
-  ModelVersionFormat	  "1.%<AutoIncrement:2582>"
+  LastModifiedDate	  "Mon Aug 22 21:05:03 2016"
+  RTWModifiedTimeStamp	  393800475
+  ModelVersionFormat	  "1.%<AutoIncrement:2592>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -813,6 +813,24 @@ Model {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
       BlockType		      ManualSwitch
       CurrentSetting	      "1"
       varsize		      off
@@ -868,10 +886,18 @@ Model {
       Variant		      off
       GeneratePreprocessorConditionals off
     }
+    Block {
+      BlockType		      ToFile
+      Filename		      "untitled.mat"
+      MatrixName	      "ans"
+      SaveFormat	      "Array"
+      Decimation	      "1"
+      SampleTime	      "-1"
+    }
   }
   System {
     Name		    "UnitTest_Breaker"
-    Location		    [-8, 0, 1928, 1176]
+    Location		    [-8, 0, 1928, 1056]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
@@ -883,9 +909,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "132"
+    ZoomFactor		    "92"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "27378"
+    SIDHighWatermark	    "27444"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -893,7 +919,7 @@ Model {
       Tag		      "FTSSmethode_opal_4hx0r99"
       Description	      "5.0_z1"
       Ports		      []
-      Position		      [595, 125, 695, 185]
+      Position		      [275, 195, 375, 255]
       ZOrder		      -4
       BackgroundColor	      "[0.000000, 1.000000, 0.250980]"
       DropShadow	      on
@@ -947,7 +973,7 @@ Model {
       Name		      "Bus\nCreator1"
       SID		      "27358"
       Ports		      [1, 1]
-      Position		      [325, 441, 330, 479]
+      Position		      [350, 316, 355, 354]
       ZOrder		      3116
       ShowName		      off
       Inputs		      "1"
@@ -961,35 +987,37 @@ Model {
       }
     }
     Block {
-      BlockType		      BusSelector
-      Name		      "Bus\nSelector4"
-      SID		      "27330"
-      Ports		      [1, 4]
-      Position		      [470, 356, 475, 409]
-      ZOrder		      3099
+      BlockType		      BusCreator
+      Name		      "Bus\nCreator2"
+      SID		      "27393"
+      Ports		      [1, 1]
+      Position		      [350, 516, 355, 554]
+      ZOrder		      3137
       ShowName		      off
-      OutputSignals	      "Status,Iabc,Vabc_bus,Vabc_line"
+      Inputs		      "1"
+      DisplayOption	      "bar"
       Port {
 	PortNumber		1
-	Name			"<Status>"
+	Name			"Relay"
+	PropagatedSignals	"Logic_trip"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
+    }
+    Block {
+      BlockType		      BusCreator
+      Name		      "Bus\nCreator3"
+      SID		      "27401"
+      Ports		      [1, 1]
+      Position		      [350, 716, 355, 754]
+      ZOrder		      3145
+      ShowName		      off
+      Inputs		      "1"
+      DisplayOption	      "bar"
       Port {
-	PortNumber		2
-	Name			"<Iabc>"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-      Port {
-	PortNumber		3
-	Name			"<Vabc_bus>"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-      Port {
-	PortNumber		4
-	Name			"<Vabc_line>"
+	PortNumber		1
+	Name			"Relay"
+	PropagatedSignals	"Logic_trip"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
@@ -999,18 +1027,244 @@ Model {
       Name		      "Demux3"
       SID		      "27343"
       Ports		      [1, 6]
-      Position		      [920, 138, 930, 237]
+      Position		      [600, 133, 610, 232]
       ZOrder		      3112
       ShowName		      off
       Outputs		      "6"
       DisplayOption	      "bar"
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "Dynamic"
+      SID		      "27437"
+      Ports		      [2]
+      Position		      [1040, 777, 1105, 833]
+      ZOrder		      3167
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Dynamic"
+	Location		[-8, -8, 1928, 1048]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"414"
+	Block {
+	  BlockType		  Inport
+	  Name			  "logic"
+	  SID			  "27438"
+	  Position		  [125, 23, 155, 37]
+	  ZOrder		  3101
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "signals"
+	  SID			  "27439"
+	  Position		  [125, 88, 155, 102]
+	  ZOrder		  3102
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector4"
+	  SID			  "27440"
+	  Ports			  [1, 4]
+	  Position		  [255, 46, 260, 139]
+	  ZOrder		  3099
+	  ShowName		  off
+	  OutputSignals		  "Status,Iabc,Vabc_bus,Vabc_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Dynamic"
+	  SID			  "27442"
+	  Ports			  [5]
+	  Position		  [375, 20, 425, 140]
+	  ZOrder		  3100
+	  BackgroundColor	  "yellow"
+	  Floating		  off
+	  Location		  [1299, 56, 1913, 1031]
+	  Open			  off
+	  NumInputPorts		  "5"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	    axes3		    "%<SignalLabel>"
+	    axes4		    "%<SignalLabel>"
+	    axes5		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  on
+	  LegendLocations	  "0.78067     0.94154     0.16938    0.020855\n0.78719     0.75077     0.16287    0.020855\n0.7871"
+	  "9     0.52889     0.16287    0.052991\n0.74321     0.33915     0.20684    0.052991\n0.74484     0.14838     0.20521"
+	  "    0.052991"
+	  TimeRange		  "8"
+	  YMin			  "0~0~-125~-12500~-12500"
+	  YMax			  "1~1~125~12500~12500"
+	  SaveName		  "ScopeData2"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "27441"
+	  Ports			  [2, 1]
+	  Position		  [255, 173, 260, 237]
+	  ZOrder		  3158
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  ToFile
+	  Name			  "To File"
+	  SID			  "27443"
+	  Ports			  [1]
+	  Position		  [295, 190, 410, 220]
+	  ZOrder		  3157
+	  ShowName		  off
+	  Filename		  "CB_DynamicLoad.mat"
+	  MatrixName		  "data"
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  3
+	  DstBlock		  "Dynamic"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  4
+	  DstBlock		  "Dynamic"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  SrcBlock		  "logic"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    Points		    [0, 160]
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [1, 1]
+	    DstBlock		    "Dynamic"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  2
+	  DstBlock		  "Dynamic"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  1
+	  DstBlock		  "Dynamic"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "signals"
+	  SrcPort		  1
+	  Points		  [27, 0]
+	  Branch {
+	    Points		    [0, 125]
+	    DstBlock		    "Mux1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "To File"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "27444"
+	  Name			  " "
+	  Position		  [297, 129]
+	  ZOrder		  -1
+	}
+      }
+    }
+    Block {
       BlockType		      Reference
-      Name		      "Dynamic_Load_1"
+      Name		      "Dynamic_Load"
       SID		      "27331"
       Ports		      [1, 1, 0, 0, 0, 3]
-      Position		      [940, 511, 1000, 599]
+      Position		      [750, 776, 810, 864]
       ZOrder		      3095
       BackgroundColor	      "gray"
       LibraryVersion	      "1.74"
@@ -1021,20 +1275,186 @@ Model {
     }
     Block {
       BlockType		      From
+      Name		      "From1"
+      SID		      "27390"
+      Position		      [925, 578, 1000, 602]
+      ZOrder		      3129
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "MID_1"
+    }
+    Block {
+      BlockType		      From
       Name		      "From17"
       SID		      "27332"
-      Position		      [825, 478, 900, 502]
+      Position		      [635, 743, 710, 767]
       ZOrder		      3097
       BackgroundColor	      "[0.419608, 0.588235, 0.239216]"
       GotoTag		      "PQLOAD_1"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From2"
+      SID		      "27391"
+      Position		      [925, 548, 1000, 572]
+      ZOrder		      3130
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From3"
+      SID		      "27392"
+      Position		      [225, 323, 300, 347]
+      ZOrder		      3131
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
+      Port {
+	PortNumber		1
+	Name			"Logic_trip"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      From
+      Name		      "From4"
+      SID		      "27394"
+      Position		      [225, 523, 300, 547]
+      ZOrder		      3139
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
+      Port {
+	PortNumber		1
+	Name			"Logic_trip"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      From
+      Name		      "From5"
+      SID		      "27402"
+      Position		      [225, 723, 300, 747]
+      ZOrder		      3147
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
+      Port {
+	PortNumber		1
+	Name			"Logic_trip"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      From
+      Name		      "From6"
+      SID		      "27425"
+      Position		      [925, 693, 1000, 717]
+      ZOrder		      3162
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "MID_2"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From7"
+      SID		      "27426"
+      Position		      [925, 663, 1000, 687]
+      ZOrder		      3163
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From8"
+      SID		      "27435"
+      Position		      [925, 808, 1000, 832]
+      ZOrder		      3165
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "MID_3"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From9"
+      SID		      "27436"
+      Position		      [925, 778, 1000, 802]
+      ZOrder		      3166
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      GotoTag		      "Logic_trip"
     }
     Block {
       BlockType		      Reference
       Name		      "GRID"
       SID		      "27334"
       Ports		      [0, 0, 0, 0, 0, 0, 3]
-      Position		      [70, 531, 155, 589]
+      Position		      [95, 396, 180, 454]
       ZOrder		      3088
+      BackgroundColor	      "yellow"
+      LibraryVersion	      "1.2191"
+      FontName		      "Verdana"
+      FontSize		      11
+      SourceBlock	      "powerlib/Electrical\nSources/Three-Phase Source"
+      SourceType	      "Three-Phase Source"
+      Voltage		      "13800"
+      PhaseAngle	      "0"
+      Frequency		      "60"
+      InternalConnection      "Yg"
+      SpecifyImpedance	      on
+      Resistance	      "0.8929"
+      Inductance	      "16.58e-3"
+      ShortCircuitLevel	      "375e6"
+      BaseVoltage	      "13800"
+      XRratio		      "7.9"
+      BusType		      "swing"
+      Pref		      "0"
+      Qref		      "0"
+      Qmin		      "-inf"
+      Qmax		      "inf"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "GRID1"
+      SID		      "27395"
+      Ports		      [0, 0, 0, 0, 0, 0, 3]
+      Position		      [95, 596, 180, 654]
+      ZOrder		      3132
+      BackgroundColor	      "yellow"
+      LibraryVersion	      "1.2191"
+      FontName		      "Verdana"
+      FontSize		      11
+      SourceBlock	      "powerlib/Electrical\nSources/Three-Phase Source"
+      SourceType	      "Three-Phase Source"
+      Voltage		      "13800"
+      PhaseAngle	      "0"
+      Frequency		      "60"
+      InternalConnection      "Yg"
+      SpecifyImpedance	      on
+      Resistance	      "0.8929"
+      Inductance	      "16.58e-3"
+      ShortCircuitLevel	      "375e6"
+      BaseVoltage	      "13800"
+      XRratio		      "7.9"
+      BusType		      "swing"
+      Pref		      "0"
+      Qref		      "0"
+      Qmin		      "-inf"
+      Qmax		      "inf"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "GRID2"
+      SID		      "27403"
+      Ports		      [0, 0, 0, 0, 0, 0, 3]
+      Position		      [95, 796, 180, 854]
+      ZOrder		      3140
       BackgroundColor	      "yellow"
       LibraryVersion	      "1.2191"
       FontName		      "Verdana"
@@ -1061,43 +1481,53 @@ Model {
       BlockType		      Goto
       Name		      "Goto1"
       SID		      "27335"
-      Position		      [460, 455, 540, 475]
+      Position		      [485, 325, 565, 345]
       ZOrder		      3090
       ShowName		      off
-      GotoTag		      "MID"
+      GotoTag		      "MID_1"
     }
     Block {
       BlockType		      Goto
       Name		      "Goto18"
       SID		      "27344"
-      Position		      [1250, 165, 1330, 185]
+      Position		      [930, 160, 1010, 180]
       ZOrder		      3111
       ShowName		      off
       GotoTag		      "PQLOAD_1"
     }
     Block {
       BlockType		      Goto
-      Name		      "Goto4"
-      SID		      "27336"
-      Position		      [1040, 545, 1120, 565]
-      ZOrder		      3094
+      Name		      "Goto2"
+      SID		      "27388"
+      Position		      [1105, 405, 1185, 425]
+      ZOrder		      3128
+      BackgroundColor	      "red"
       ShowName		      off
-      GotoTag		      "LOAD_1"
+      GotoTag		      "Logic_trip"
     }
     Block {
       BlockType		      Goto
-      Name		      "Goto7"
-      SID		      "27337"
-      Position		      [705, 525, 785, 545]
-      ZOrder		      3092
+      Name		      "Goto3"
+      SID		      "27396"
+      Position		      [485, 525, 565, 545]
+      ZOrder		      3134
       ShowName		      off
-      GotoTag		      "XFR_01"
+      GotoTag		      "MID_2"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto4"
+      SID		      "27404"
+      Position		      [485, 725, 565, 745]
+      ZOrder		      3142
+      ShowName		      off
+      GotoTag		      "MID_3"
     }
     Block {
       BlockType		      Constant
       Name		      "Interpolation "
       SID		      "27346"
-      Position		      [775, 240, 820, 260]
+      Position		      [455, 235, 500, 255]
       ZOrder		      3106
       ShowName		      off
     }
@@ -1106,10 +1536,38 @@ Model {
       Name		      "MID"
       SID		      "27338"
       Ports		      [1, 1, 0, 0, 0, 3, 3]
-      Position		      [370, 508, 425, 592]
+      Position		      [395, 373, 450, 457]
       ZOrder		      3089
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "1.464"
+      LibraryVersion	      "1.465"
+      SourceBlock	      "breaker_lib/Breaker"
+      SourceType	      "Breaker"
+      Ts		      "Ts"
+      mech_delays	      "[cb_mech_delay(1,:)]"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "MID1"
+      SID		      "27397"
+      Ports		      [1, 1, 0, 0, 0, 3, 3]
+      Position		      [395, 573, 450, 657]
+      ZOrder		      3133
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      LibraryVersion	      "1.465"
+      SourceBlock	      "breaker_lib/Breaker"
+      SourceType	      "Breaker"
+      Ts		      "Ts"
+      mech_delays	      "[cb_mech_delay(1,:)]"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "MID2"
+      SID		      "27405"
+      Ports		      [1, 1, 0, 0, 0, 3, 3]
+      Position		      [395, 773, 450, 857]
+      ZOrder		      3141
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      LibraryVersion	      "1.465"
       SourceBlock	      "breaker_lib/Breaker"
       SourceType	      "Breaker"
       Ts		      "Ts"
@@ -1119,21 +1577,16 @@ Model {
       BlockType		      ManualSwitch
       Name		      "Manual Switch"
       SID		      "27378"
-      Position		      [255, 392, 285, 428]
+      Position		      [1040, 397, 1070, 433]
       ZOrder		      3119
-      Port {
-	PortNumber		1
-	Name			"Logic_trip"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
+      CurrentSetting	      "0"
     }
     Block {
       BlockType		      SubSystem
       Name		      "Model Initialization"
       SID		      "1120"
       Ports		      []
-      Position		      [277, 129, 555, 179]
+      Position		      [97, 114, 375, 164]
       ZOrder		      -1
       AncestorBlock	      "artemis/Tools /Misc/Model Initialization"
       LibraryVersion	      "1.271"
@@ -1169,7 +1622,7 @@ Model {
 	    Type		    "edit"
 	    Name		    "InitFcnX"
 	    Prompt		    "Initialisation"
-	    Value		    "Ts=100e-6;"
+	    Value		    "Ts=100e-6; UnitTest_Breaker_init;"
 	    Evaluate		    "off"
 	  }
 	  Object {
@@ -1227,7 +1680,7 @@ Model {
       Name		      "Mux"
       SID		      "27347"
       Ports		      [6, 1]
-      Position		      [860, 115, 870, 260]
+      Position		      [540, 110, 550, 255]
       ZOrder		      3107
       ShowName		      off
       Inputs		      "6"
@@ -1238,7 +1691,7 @@ Model {
       Name		      "OpFromFile2"
       SID		      "27349"
       Ports		      [6, 4]
-      Position		      [980, 140, 1210, 235]
+      Position		      [660, 135, 890, 230]
       ZOrder		      3113
       LibraryVersion	      "1.471"
       SourceBlock	      "rtlab/DataLogging/OpFromFile"
@@ -1256,7 +1709,7 @@ Model {
       Name		      "PI-Section"
       SID		      "27339"
       Ports		      [0, 0, 0, 0, 0, 3, 3]
-      Position		      [230, 530, 275, 590]
+      Position		      [255, 395, 300, 455]
       ZOrder		      3091
       BackgroundColor	      "orange"
       LibraryVersion	      "1.28"
@@ -1267,57 +1720,531 @@ Model {
       parallel_sets	      "1"
     }
     Block {
+      BlockType		      Reference
+      Name		      "PI-Section1"
+      SID		      "27398"
+      Ports		      [0, 0, 0, 0, 0, 3, 3]
+      Position		      [255, 595, 300, 655]
+      ZOrder		      3135
+      BackgroundColor	      "orange"
+      LibraryVersion	      "1.28"
+      SourceBlock	      "cables_lib/PI-Section"
+      SourceType	      "Cable Model"
+      cable_spec	      "[0.074938, 1.1405, 0.00030953, 0.002005, 6.3294e-07, 6.3294e-07]"
+      line_length	      "10000"
+      parallel_sets	      "1"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "PI-Section2"
+      SID		      "27406"
+      Ports		      [0, 0, 0, 0, 0, 3, 3]
+      Position		      [255, 795, 300, 855]
+      ZOrder		      3143
+      BackgroundColor	      "orange"
+      LibraryVersion	      "1.28"
+      SourceBlock	      "cables_lib/PI-Section"
+      SourceType	      "Cable Model"
+      cable_spec	      "[0.074938, 1.1405, 0.00030953, 0.002005, 6.3294e-07, 6.3294e-07]"
+      line_length	      "10000"
+      parallel_sets	      "1"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Parallel"
+      SID		      "27427"
+      Ports		      [2]
+      Position		      [1040, 662, 1105, 718]
+      ZOrder		      3164
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Parallel"
+	Location		[-8, -8, 1928, 1048]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"414"
+	Block {
+	  BlockType		  Inport
+	  Name			  "logic"
+	  SID			  "27428"
+	  Position		  [125, 23, 155, 37]
+	  ZOrder		  3101
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "signals"
+	  SID			  "27429"
+	  Position		  [125, 88, 155, 102]
+	  ZOrder		  3102
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector4"
+	  SID			  "27430"
+	  Ports			  [1, 4]
+	  Position		  [255, 46, 260, 139]
+	  ZOrder		  3099
+	  ShowName		  off
+	  OutputSignals		  "Status,Iabc,Vabc_bus,Vabc_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "27431"
+	  Ports			  [2, 1]
+	  Position		  [255, 173, 260, 237]
+	  ZOrder		  3158
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Parallel"
+	  SID			  "27432"
+	  Ports			  [5]
+	  Position		  [375, 20, 425, 140]
+	  ZOrder		  3100
+	  BackgroundColor	  "yellow"
+	  Floating		  off
+	  Location		  [622, 56, 1284, 1028]
+	  Open			  off
+	  NumInputPorts		  "5"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	    axes3		    "%<SignalLabel>"
+	    axes4		    "%<SignalLabel>"
+	    axes5		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  on
+	  LegendLocations	  "0.79658     0.94136      0.1571    0.020919\n0.80262     0.75103     0.15106    0.020919\n0.8026"
+	  "2     0.52846     0.15106    0.053155\n0.76183     0.33813     0.19184    0.053155\n0.76334     0.14883     0.19033"
+	  "    0.053155"
+	  TimeRange		  "8"
+	  YMin			  "0~0~-125~-12500~-12500"
+	  YMax			  "1~1~125~12500~12500"
+	  SaveName		  "ScopeData2"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  ToFile
+	  Name			  "To File"
+	  SID			  "27433"
+	  Ports			  [1]
+	  Position		  [295, 190, 410, 220]
+	  ZOrder		  3157
+	  ShowName		  off
+	  Filename		  "CB_ParallelLoad.mat"
+	  MatrixName		  "data"
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  3
+	  DstBlock		  "Parallel"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  4
+	  DstBlock		  "Parallel"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  SrcBlock		  "logic"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    Points		    [0, 160]
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [1, 1]
+	    DstBlock		    "Parallel"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  2
+	  DstBlock		  "Parallel"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  1
+	  DstBlock		  "Parallel"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "signals"
+	  SrcPort		  1
+	  Points		  [27, 0]
+	  Branch {
+	    Points		    [0, 125]
+	    DstBlock		    "Mux1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "To File"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "27434"
+	  Name			  " "
+	  Position		  [297, 129]
+	  ZOrder		  -1
+	}
+      }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Parallel_Constant_Load"
+      SID		      "27384"
+      Ports		      [0, 0, 0, 0, 0, 0, 3]
+      Position		      [755, 600, 800, 660]
+      ZOrder		      3124
+      BlockMirror	      on
+      BackgroundColor	      "gray"
+      LibraryVersion	      "1.74"
+      SourceBlock	      "Load_lib/Parallel_Constant_Load"
+      SourceType	      "Static Parallel PQ Load"
+      v			      "460"
+      kVA		      "1000"
+      pf		      "0.90"
+    }
+    Block {
       BlockType		      Constant
       Name		      "Repetative "
       SID		      "27350"
-      Position		      [775, 140, 820, 160]
+      Position		      [455, 135, 500, 155]
       ZOrder		      3105
       ShowName		      off
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "27340"
-      Ports		      [5]
-      Position		      [595, 295, 645, 415]
-      ZOrder		      3100
-      BackgroundColor	      "yellow"
-      Floating		      off
-      Location		      [1929, 56, 2873, 1191]
-      Open		      on
-      NumInputPorts	      "5"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-	axes2			"%<SignalLabel>"
-	axes3			"%<SignalLabel>"
-	axes4			"%<SignalLabel>"
-	axes5			"%<SignalLabel>"
+      BlockType		      SubSystem
+      Name		      "Series"
+      SID		      "27422"
+      Ports		      [2]
+      Position		      [1040, 547, 1105, 603]
+      ZOrder		      3161
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Series"
+	Location		[-8, -8, 1928, 1048]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"414"
+	Block {
+	  BlockType		  Inport
+	  Name			  "logic"
+	  SID			  "27423"
+	  Position		  [125, 23, 155, 37]
+	  ZOrder		  3101
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "signals"
+	  SID			  "27424"
+	  Position		  [125, 88, 155, 102]
+	  ZOrder		  3102
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector4"
+	  SID			  "27330"
+	  Ports			  [1, 4]
+	  Position		  [255, 46, 260, 139]
+	  ZOrder		  3099
+	  ShowName		  off
+	  OutputSignals		  "Status,Iabc,Vabc_bus,Vabc_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "27417"
+	  Ports			  [2, 1]
+	  Position		  [255, 173, 260, 237]
+	  ZOrder		  3158
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Series"
+	  SID			  "27340"
+	  Ports			  [5]
+	  Position		  [375, 20, 425, 140]
+	  ZOrder		  3100
+	  BackgroundColor	  "yellow"
+	  Floating		  off
+	  Location		  [9, 56, 608, 1031]
+	  Open			  off
+	  NumInputPorts		  "5"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	    axes3		    "%<SignalLabel>"
+	    axes4		    "%<SignalLabel>"
+	    axes5		    "%<SignalLabel>"
+	  }
+	  List {
+	    ListType		    ScopeGraphics
+	    FigureColor		    "[0.5 0.5 0.5]"
+	    AxesColor		    "[0 0 0]"
+	    AxesTickColor	    "[1 1 1]"
+	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
+	    LineStyles		    "-|-|-|-|-|-"
+	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
+	    MarkerStyles	    "none|none|none|none|none|none"
+	  }
+	  ShowLegends		  on
+	  LegendLocations	  "0.77518     0.94154     0.17362    0.020855\n0.78186     0.75077     0.16694    0.020855\n0.7818"
+	  "6     0.52889     0.16694    0.052991\n0.73678     0.33915     0.21202    0.052991\n0.73845     0.14838     0.21035"
+	  "    0.052991"
+	  TimeRange		  "8"
+	  YMin			  "0~0~-125~-12500~-12500"
+	  YMax			  "1~1~125~12500~12500"
+	  SaveName		  "ScopeData2"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	  SampleTime		  "0"
+	}
+	Block {
+	  BlockType		  ToFile
+	  Name			  "To File"
+	  SID			  "27386"
+	  Ports			  [1]
+	  Position		  [295, 190, 410, 220]
+	  ZOrder		  3157
+	  ShowName		  off
+	  Filename		  "CB_SeriesLoad.mat"
+	  MatrixName		  "data"
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  3
+	  DstBlock		  "Series"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  4
+	  DstBlock		  "Series"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  SrcBlock		  "logic"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    Points		    [0, 160]
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [1, 1]
+	    DstBlock		    "Series"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  2
+	  DstBlock		  "Series"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  1
+	  DstBlock		  "Series"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "signals"
+	  SrcPort		  1
+	  Points		  [27, 0]
+	  Branch {
+	    Points		    [0, 125]
+	    DstBlock		    "Mux1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "To File"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "27389"
+	  Name			  " "
+	  Position		  [297, 129]
+	  ZOrder		  -1
+	}
       }
-      List {
-	ListType		ScopeGraphics
-	FigureColor		"[0.5 0.5 0.5]"
-	AxesColor		"[0 0 0]"
-	AxesTickColor		"[1 1 1]"
-	LineColors		"[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	LineStyles		"-|-|-|-|-|-"
-	LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
-	MarkerStyles		"none|none|none|none|none|none"
-      }
-      ShowLegends	      off
-      TimeRange		      "8"
-      YMin		      "0~0~-50~-15000~-120000"
-      YMax		      "1~1~50~15000~20000"
-      SaveName		      "ScopeData2"
-      DataFormat	      "StructureWithTime"
-      LimitDataPoints	      off
-      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Series_Constant_Load"
+      SID		      "27383"
+      Ports		      [0, 0, 0, 0, 0, 3]
+      Position		      [755, 400, 800, 460]
+      ZOrder		      3123
+      BackgroundColor	      "gray"
+      LibraryVersion	      "1.74"
+      SourceBlock	      "Load_lib/Series_Constant_Load"
+      SourceType	      "Static Series PQ Load"
+      v			      "460"
+      kVA		      "100"
+      pf		      "0.90"
     }
     Block {
       BlockType		      Constant
       Name		      "Start_Index "
       SID		      "27351"
-      Position		      [775, 165, 820, 185]
+      Position		      [455, 160, 500, 180]
       ZOrder		      3104
       ShowName		      off
     }
@@ -1325,7 +2252,7 @@ Model {
       BlockType		      Constant
       Name		      "State "
       SID		      "27352"
-      Position		      [775, 115, 820, 135]
+      Position		      [455, 110, 500, 130]
       ZOrder		      3103
       ShowName		      off
     }
@@ -1333,7 +2260,7 @@ Model {
       BlockType		      Constant
       Name		      "Stop_Index "
       SID		      "27353"
-      Position		      [775, 190, 820, 210]
+      Position		      [455, 185, 500, 205]
       ZOrder		      3102
       ShowName		      off
       Value		      "1800-1"
@@ -1342,17 +2269,51 @@ Model {
       BlockType		      Constant
       Name		      "Time_Scale_Factor "
       SID		      "27354"
-      Position		      [775, 215, 820, 235]
+      Position		      [455, 210, 500, 230]
       ZOrder		      3101
       ShowName		      off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "XFR DYg-30 HIL1"
+      SID		      "27400"
+      Ports		      [0, 1, 0, 0, 0, 3, 3]
+      Position		      [560, 589, 645, 656]
+      ZOrder		      3136
+      BackgroundColor	      "[0.674510, 0.341176, 0.043137]"
+      LibraryVersion	      "1.29"
+      SourceBlock	      "transformer_lib/XFR DYg-30 HIL"
+      SourceType	      "Transformers"
+      Rating		      "2500"
+      Vp		      "13800"
+      Vs		      "480"
+      Z			      "5.75"
+      XR		      "6.6"
     }
     Block {
       BlockType		      Reference
       Name		      "XFR DYg-30 HIL2"
       SID		      "27341"
       Ports		      [0, 1, 0, 0, 0, 3, 3]
-      Position		      [575, 524, 660, 591]
+      Position		      [560, 389, 645, 456]
       ZOrder		      3093
+      BackgroundColor	      "[0.674510, 0.341176, 0.043137]"
+      LibraryVersion	      "1.29"
+      SourceBlock	      "transformer_lib/XFR DYg-30 HIL"
+      SourceType	      "Transformers"
+      Rating		      "2500"
+      Vp		      "13800"
+      Vs		      "480"
+      Z			      "5.75"
+      XR		      "6.6"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "XFR DYg-30 HIL3"
+      SID		      "27408"
+      Ports		      [0, 1, 0, 0, 0, 3, 3]
+      Position		      [560, 789, 645, 856]
+      ZOrder		      3144
       BackgroundColor	      "[0.674510, 0.341176, 0.043137]"
       LibraryVersion	      "1.29"
       SourceBlock	      "transformer_lib/XFR DYg-30 HIL"
@@ -1368,7 +2329,7 @@ Model {
       Name		      "close-open-close"
       SID		      "27361"
       Ports		      [0, 1]
-      Position		      [135, 425, 165, 455]
+      Position		      [920, 430, 950, 460]
       ZOrder		      3117
       LibraryVersion	      "1.274"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -1387,7 +2348,7 @@ Model {
       Name		      "open-close-open"
       SID		      "27377"
       Ports		      [0, 1]
-      Position		      [135, 370, 165, 400]
+      Position		      [920, 375, 950, 405]
       ZOrder		      3118
       LibraryVersion	      "1.274"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -1400,7 +2361,7 @@ Model {
       Name		      "powergui"
       SID		      "604"
       Ports		      []
-      Position		      [150, 140, 241, 169]
+      Position		      [105, 195, 196, 224]
       ZOrder		      371
       ForegroundColor	      "red"
       DropShadow	      on
@@ -1478,29 +2439,6 @@ Model {
     }
     Line {
       LineType		      "Connection"
-      SrcBlock		      "Dynamic_Load_1"
-      SrcPort		      LConn2
-      DstBlock		      "XFR DYg-30 HIL2"
-      DstPort		      RConn2
-    }
-    Line {
-      LineType		      "Connection"
-      SrcBlock		      "Dynamic_Load_1"
-      SrcPort		      LConn3
-      Points		      [-98, 0; 0, -5]
-      DstBlock		      "XFR DYg-30 HIL2"
-      DstPort		      RConn3
-    }
-    Line {
-      LineType		      "Connection"
-      SrcBlock		      "Dynamic_Load_1"
-      SrcPort		      LConn1
-      Points		      [-62, 0; 0, 5]
-      DstBlock		      "XFR DYg-30 HIL2"
-      DstPort		      RConn1
-    }
-    Line {
-      LineType		      "Connection"
       SrcBlock		      "PI-Section"
       SrcPort		      RConn1
       DstBlock		      "MID"
@@ -1544,34 +2482,15 @@ Model {
     Line {
       SrcBlock		      "MID"
       SrcPort		      1
-      Points		      [15, 0; 0, -55]
-      Branch {
-	DstBlock		"Goto1"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -80]
-	DstBlock		"Bus\nSelector4"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "XFR DYg-30 HIL2"
-      SrcPort		      1
-      DstBlock		      "Goto7"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Dynamic_Load_1"
-      SrcPort		      1
-      DstBlock		      "Goto4"
+      Points		      [15, 0]
+      DstBlock		      "Goto1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "From17"
       SrcPort		      1
       Points		      [15, 0; 0, 35]
-      DstBlock		      "Dynamic_Load_1"
+      DstBlock		      "Dynamic_Load"
       DstPort		      1
     }
     Line {
@@ -1662,65 +2581,15 @@ Model {
       Name		      "Relay"
       SrcBlock		      "Bus\nCreator1"
       SrcPort		      1
-      Points		      [9, 0; 0, 60]
+      Points		      [9, 0; 0, 50]
       DstBlock		      "MID"
       DstPort		      1
     }
     Line {
-      Name		      "<Status>"
-      Labels		      [0, 0]
-      SrcBlock		      "Bus\nSelector4"
-      SrcPort		      1
-      Points		      [32, 0; 0, -30]
-      DstBlock		      "Scope"
-      DstPort		      2
-    }
-    Line {
-      Name		      "<Iabc>"
-      Labels		      [0, 0]
-      SrcBlock		      "Bus\nSelector4"
-      SrcPort		      2
-      Points		      [51, 0; 0, -20]
-      DstBlock		      "Scope"
-      DstPort		      3
-    }
-    Line {
-      Name		      "<Vabc_bus>"
-      Labels		      [0, 0]
-      SrcBlock		      "Bus\nSelector4"
-      SrcPort		      3
-      Points		      [67, 0; 0, -10]
-      DstBlock		      "Scope"
-      DstPort		      4
-    }
-    Line {
-      Name		      "<Vabc_line>"
-      Labels		      [0, 0]
-      SrcBlock		      "Bus\nSelector4"
-      SrcPort		      4
-      DstBlock		      "Scope"
-      DstPort		      5
-    }
-    Line {
-      Name		      "Logic_trip"
-      FontName		      "Helvetica"
-      FontSize		      9
-      FontWeight	      "normal"
-      FontAngle		      "normal"
       SrcBlock		      "Manual Switch"
       SrcPort		      1
-      Points		      [14, 0]
-      Branch {
-	Labels			[0, 0]
-	Points			[0, -105]
-	DstBlock		"Scope"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, 50]
-	DstBlock		"Bus\nCreator1"
-	DstPort			1
-      }
+      DstBlock		      "Goto2"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "open-close-open"
@@ -1735,6 +2604,291 @@ Model {
       SrcPort		      1
       Points		      [33, 0; 0, -20]
       DstBlock		      "Manual Switch"
+      DstPort		      2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Series_Constant_Load"
+      SrcPort		      LConn2
+      DstBlock		      "XFR DYg-30 HIL2"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Series_Constant_Load"
+      SrcPort		      LConn1
+      Points		      [0, 5]
+      DstBlock		      "XFR DYg-30 HIL2"
+      DstPort		      RConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Series_Constant_Load"
+      SrcPort		      LConn3
+      Points		      [0, -5]
+      DstBlock		      "XFR DYg-30 HIL2"
+      DstPort		      RConn3
+    }
+    Line {
+      Name		      "Logic_trip"
+      Labels		      [1, 1]
+      SrcBlock		      "From3"
+      SrcPort		      1
+      DstBlock		      "Bus\nCreator1"
+      DstPort		      1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL1"
+      SrcPort		      LConn3
+      DstBlock		      "MID1"
+      DstPort		      RConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL1"
+      SrcPort		      LConn2
+      DstBlock		      "MID1"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL1"
+      SrcPort		      LConn1
+      DstBlock		      "MID1"
+      DstPort		      RConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      RConn1
+      DstBlock		      "MID1"
+      DstPort		      LConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      RConn3
+      DstBlock		      "MID1"
+      DstPort		      LConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      RConn2
+      DstBlock		      "MID1"
+      DstPort		      LConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      LConn3
+      DstBlock		      "GRID1"
+      DstPort		      RConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      LConn2
+      DstBlock		      "GRID1"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section1"
+      SrcPort		      LConn1
+      DstBlock		      "GRID1"
+      DstPort		      RConn1
+    }
+    Line {
+      SrcBlock		      "MID1"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Goto3"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Relay"
+      SrcBlock		      "Bus\nCreator2"
+      SrcPort		      1
+      Points		      [9, 0; 0, 50]
+      DstBlock		      "MID1"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Logic_trip"
+      Labels		      [1, 1]
+      SrcBlock		      "From4"
+      SrcPort		      1
+      DstBlock		      "Bus\nCreator2"
+      DstPort		      1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      LConn3
+      DstBlock		      "MID2"
+      DstPort		      RConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      LConn2
+      DstBlock		      "MID2"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      LConn1
+      DstBlock		      "MID2"
+      DstPort		      RConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      RConn1
+      DstBlock		      "MID2"
+      DstPort		      LConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      RConn3
+      DstBlock		      "MID2"
+      DstPort		      LConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      RConn2
+      DstBlock		      "MID2"
+      DstPort		      LConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      LConn3
+      DstBlock		      "GRID2"
+      DstPort		      RConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      LConn2
+      DstBlock		      "GRID2"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "PI-Section2"
+      SrcPort		      LConn1
+      DstBlock		      "GRID2"
+      DstPort		      RConn1
+    }
+    Line {
+      SrcBlock		      "MID2"
+      SrcPort		      1
+      Points		      [15, 0]
+      DstBlock		      "Goto4"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Relay"
+      SrcBlock		      "Bus\nCreator3"
+      SrcPort		      1
+      Points		      [9, 0; 0, 50]
+      DstBlock		      "MID2"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Logic_trip"
+      Labels		      [1, 1]
+      SrcBlock		      "From5"
+      SrcPort		      1
+      DstBlock		      "Bus\nCreator3"
+      DstPort		      1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Parallel_Constant_Load"
+      SrcPort		      RConn2
+      DstBlock		      "XFR DYg-30 HIL1"
+      DstPort		      RConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Parallel_Constant_Load"
+      SrcPort		      RConn1
+      Points		      [-80, 0]
+      DstBlock		      "XFR DYg-30 HIL1"
+      DstPort		      RConn1
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "Parallel_Constant_Load"
+      SrcPort		      RConn3
+      Points		      [-40, 0; 0, -5]
+      DstBlock		      "XFR DYg-30 HIL1"
+      DstPort		      RConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      RConn3
+      Points		      [37, 0; 0, 5]
+      DstBlock		      "Dynamic_Load"
+      DstPort		      LConn3
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      RConn2
+      DstBlock		      "Dynamic_Load"
+      DstPort		      LConn2
+    }
+    Line {
+      LineType		      "Connection"
+      SrcBlock		      "XFR DYg-30 HIL3"
+      SrcPort		      RConn1
+      Points		      [11, 0; 0, -5]
+      DstBlock		      "Dynamic_Load"
+      DstPort		      LConn1
+    }
+    Line {
+      SrcBlock		      "From2"
+      SrcPort		      1
+      DstBlock		      "Series"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From1"
+      SrcPort		      1
+      DstBlock		      "Series"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "From7"
+      SrcPort		      1
+      DstBlock		      "Parallel"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From6"
+      SrcPort		      1
+      DstBlock		      "Parallel"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "From9"
+      SrcPort		      1
+      DstBlock		      "Dynamic"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From8"
+      SrcPort		      1
+      DstBlock		      "Dynamic"
       DstPort		      2
     }
     Annotation {
@@ -1755,7 +2909,7 @@ Model {
     Annotation {
       SID		      "27355"
       Name		      "Stop_index = length of data - 1 to data chopping"
-      Position		      [1080, 114]
+      Position		      [760, 109]
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
       ZOrder		      -1
