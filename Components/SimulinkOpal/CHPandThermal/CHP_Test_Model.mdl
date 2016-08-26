@@ -6,12 +6,12 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2534"
+    ComputedModelVersion    "1.2535"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "windows-1252"
-  PostLoadFcn		  "Ts=100e-6; HILLTOP_init;SIM_HIL=0"
+  PostLoadFcn		  "Ts=100e-6; HILLTOP_init;SIM_HIL=0; UnitTest_Breaker_init"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime off
@@ -22,7 +22,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "Ts=100e-6; HILLTOP_init;SIM_HIL=0"
+  InitFcn		  "Ts=100e-6; HILLTOP_init;SIM_HIL=0; UnitTest_Breaker_init"
   UserBdParams		  "PhysicalModelingChecksum;PhysicalModelingParameterChecksum;PhysicalModelingProducts;ARTEMISmethode_"
   "block_infos"
   Object {
@@ -78,8 +78,8 @@ Model {
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "24936"
 	  Extents		  [472.0, 1283.0]
-	  ZoomFactor		  [0.25]
-	  Offset		  [222.66666666666663, -1477.6013513513512]
+	  ZoomFactor		  [1.0]
+	  Offset		  [413.0, 446.89864864864876]
 	}
 	Object {
 	  $ObjectID		  8
@@ -88,7 +88,7 @@ Model {
 	  LoadSaveID		  "26131"
 	  Extents		  [472.0, 1283.0]
 	  ZoomFactor		  [1.0256111757857975]
-	  Offset		  [-29.861520998864762, 1.3496027241770889]
+	  Offset		  [-29.861520998864762, -7.6503972758229111]
 	}
 	Object {
 	  $ObjectID		  9
@@ -113,9 +113,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 19 10:29:58 2016"
-  RTWModifiedTimeStamp	  393503368
-  ModelVersionFormat	  "1.%<AutoIncrement:2534>"
+  LastModifiedDate	  "Fri Aug 26 09:40:48 2016"
+  RTWModifiedTimeStamp	  394105221
+  ModelVersionFormat	  "1.%<AutoIncrement:2535>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1095,7 +1095,7 @@ Model {
 	    Type		    "edit"
 	    Name		    "InitFcnX"
 	    Prompt		    "Initialisation"
-	    Value		    "Ts=100e-6; HILLTOP_init;SIM_HIL=0"
+	    Value		    "Ts=100e-6; HILLTOP_init;SIM_HIL=0; UnitTest_Breaker_init"
 	    Evaluate		    "off"
 	  }
 	  Object {
@@ -8007,7 +8007,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"25"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "faults"
@@ -8097,10 +8097,11 @@ Model {
 	  Position		  [425, 1558, 480, 1642]
 	  ZOrder		  1838
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.465"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  Reference
@@ -8110,10 +8111,11 @@ Model {
 	  Position		  [1430, 1818, 1485, 1902]
 	  ZOrder		  1940
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.465"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  Reference
@@ -8123,10 +8125,11 @@ Model {
 	  Position		  [1485, 1378, 1540, 1462]
 	  ZOrder		  2908
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.465"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  BusCreator
@@ -9095,7 +9098,7 @@ Model {
 	  Ports			  [1, 1, 0, 0, 0, 3]
 	  Position		  [1865, 1478, 2020, 1587]
 	  ZOrder		  3007
-	  LibraryVersion	  "1.23"
+	  LibraryVersion	  "1.24"
 	  SourceBlock		  "alpha_betaActiveLoad_lib/alpha_betaActiveLoad"
 	  SourceType		  ""
 	  V			  "480"
@@ -9107,7 +9110,7 @@ Model {
 	  Ports			  [1, 1, 0, 0, 0, 3]
 	  Position		  [2080, 1878, 2235, 1987]
 	  ZOrder		  3008
-	  LibraryVersion	  "1.23"
+	  LibraryVersion	  "1.24"
 	  SourceBlock		  "alpha_betaActiveLoad_lib/alpha_betaActiveLoad"
 	  SourceType		  ""
 	  V			  "460"
