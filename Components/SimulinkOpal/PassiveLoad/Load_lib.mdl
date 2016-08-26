@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 26 15:01:32 2016"
-  RTWModifiedTimeStamp	  394124491
-  ModelVersionFormat	  "1.%<AutoIncrement:89>"
+  LastModifiedDate	  "Fri Aug 26 15:08:31 2016"
+  RTWModifiedTimeStamp	  394124909
+  ModelVersionFormat	  "1.%<AutoIncrement:90>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -3371,9 +3371,9 @@ Library {
       SID		      "23"
       Ports		      [1, 1, 0, 0, 0, 3]
       Position		      [335, 421, 395, 509]
-      ZOrder		      3127
+      ZOrder		      3130
       BackgroundColor	      "gray"
-      LibraryVersion	      "*1.87"
+      LibraryVersion	      "*1.89"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3411,7 +3411,7 @@ Library {
       }
       System {
 	Name			"Dynamic_Load"
-	Location		[204, 261, 2136, 1353]
+	Location		[128, 153, 2082, 1474]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -3423,7 +3423,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"88"
+	ZoomFactor		"102"
 	Block {
 	  BlockType		  Inport
 	  Name			  "PQ"
@@ -4109,7 +4109,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"1645"
+		SIDHighWatermark	"1641"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Vabc"
@@ -4216,7 +4216,7 @@ Library {
 	  ZOrder		  1917
 	  BlockMirror		  on
 	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.87"
+	  LibraryVersion	  "1.89"
 	  SourceBlock		  "Load_lib/Parallel_Constant_Load"
 	  SourceType		  "Static Parallel PQ Load"
 	  v			  "V"
@@ -4519,28 +4519,6 @@ Library {
 	  Resistance		  "1e6"
 	  Inductance		  "inf"
 	  Capacitance		  "0"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Three-Phase\nSnubber"
-	  SID			  "374"
-	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [1947, 905, 1993, 975]
-	  ZOrder		  3006
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  SourceBlock		  "powerlib/Elements/Three-Phase\nSeries RLC Branch"
-	  SourceType		  "Three-Phase Series RLC Branch"
-	  LConnTagsString	  "A|B|C"
-	  RConnTagsString	  "A|B|C"
-	  BranchType		  "RLC"
-	  Resistance		  "1"
-	  Inductance		  "0"
-	  Capacitance		  "1e-3"
 	  Measurements		  "None"
 	}
 	Block {
@@ -4904,23 +4882,13 @@ Library {
 	      ConnectType	      "DEST_DEST"
 	      Points		      [1875, 785; 0, -155]
 	      Branch {
-		ConnectType		"SRC_DEST"
-		Points			[1895, 785; -20, 0]
-		Branch {
-		  ConnectType		  "SRC_SRC"
-		  DstBlock		  "Voltage Measurement"
-		  DstPort		  LConn1
-		}
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  SrcBlock		  "Three-Phase\nSnubber"
-		  SrcPort		  LConn1
-		  Points		  [-60, 0; 0, -105]
-		}
+		ConnectType		"SRC_SRC"
+		DstBlock		"Controlled Current Source"
+		DstPort			LConn1
 	      }
 	      Branch {
 		ConnectType		"SRC_SRC"
-		DstBlock		"Controlled Current Source"
+		DstBlock		"Voltage Measurement"
 		DstPort			LConn1
 	      }
 	    }
@@ -4949,12 +4917,6 @@ Library {
 	    Branch {
 	      ConnectType	      "DEST_DEST"
 	      Points		      [2020, 785; 0, -135]
-	      Branch {
-		ConnectType		"SRC_DEST"
-		SrcBlock		"Three-Phase\nSnubber"
-		SrcPort			LConn2
-		Points			[0, -105; 50, 0]
-	      }
 	      Branch {
 		ConnectType		"SRC_SRC"
 		DstBlock		"Voltage Measurement1"
@@ -4998,23 +4960,13 @@ Library {
 	      ConnectType	      "DEST_DEST"
 	      Points		      [2185, 785; 0, -115]
 	      Branch {
-		ConnectType		"SRC_DEST"
-		Points			[2205, 785; -20, 0]
-		Branch {
-		  ConnectType		  "SRC_SRC"
-		  DstBlock		  "Voltage Measurement2"
-		  DstPort		  LConn1
-		}
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  SrcBlock		  "Three-Phase\nSnubber"
-		  SrcPort		  LConn3
-		  Points		  [0, -27; 220, 0; 0, -78]
-		}
+		ConnectType		"SRC_SRC"
+		DstBlock		"Controlled Current Source2"
+		DstPort			LConn1
 	      }
 	      Branch {
 		ConnectType		"SRC_SRC"
-		DstBlock		"Controlled Current Source2"
+		DstBlock		"Voltage Measurement2"
 		DstPort			LConn1
 	      }
 	    }
@@ -5022,110 +4974,80 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSnubber"
-	  SrcPort		  RConn1
-	  Points		  [0, 37]
+	  SrcBlock		  "Voltage Measurement2"
+	  SrcPort		  LConn2
+	  Points		  [0, 80; -40, 0]
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [1970, 1027; -15, 0]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      Points		      [1985, 1027; -15, 0]
-	      Branch {
-		ConnectType		"SRC_DEST"
-		Points			[2010, 1027; -25, 0]
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  Points		  [2175, 875; 0, 152; -165, 0]
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Voltage Measurement2"
-		    SrcPort		    LConn2
-		    Points		    [0, 80; -40, 0]
-		  }
-		  Branch {
-		    ConnectType		    "SRC_SRC"
-		    DstBlock		    "Controlled Current Source2"
-		    DstPort		    RConn1
-		  }
-		}
-		Branch {
-		  ConnectType		  "SRC_DEST"
-		  Points		  [2010, 875; 0, 152]
-		  Branch {
-		    ConnectType		    "SRC_DEST"
-		    SrcBlock		    "Voltage Measurement1"
-		    SrcPort		    LConn2
-		    Points		    [0, 80; -40, 0]
-		  }
-		  Branch {
-		    ConnectType		    "SRC_SRC"
-		    DstBlock		    "Controlled Current Source1"
-		    DstPort		    RConn1
-		  }
-		}
-	      }
-	      Branch {
-		ConnectType		"SRC_DEST"
-		SrcBlock		"Three-Phase\nSnubber"
-		SrcPort			RConn3
-		Points			[0, 37]
-	      }
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase\nSnubber"
-	      SrcPort		      RConn2
-	      Points		      [0, 37]
-	    }
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Controlled Current Source2"
+	    DstPort		    RConn1
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [-90, 0]
-	    Branch {
-	      ConnectType	      "DEST_SRC"
-	      Points		      [-115, 0; 0, -2]
-	      Branch {
-		ConnectType		"DEST_DEST"
-		SrcBlock		"Ground2"
-		SrcPort			LConn1
-		Points			[0, 0]
-	      }
-	      Branch {
-		ConnectType		"DEST_SRC"
-		Points			[0, -55]
-		Branch {
-		  ConnectType		  "DEST_SRC"
-		  Points		  [-15, 0]
-		  DstBlock		  "Three-Phase\nParallel RLC Branch1"
-		  DstPort		  LConn1
-		}
-		Branch {
-		  ConnectType		  "DEST_SRC"
-		  DstBlock		  "Three-Phase\nParallel RLC Branch1"
-		  DstPort		  LConn2
-		}
-		Branch {
-		  ConnectType		  "DEST_DEST"
-		  SrcBlock		  "Three-Phase\nParallel RLC Branch1"
-		  SrcPort		  LConn3
-		  Points		  [0, 5; -15, 0]
-		}
-	      }
-	    }
+	    Points		    [0, 152; -165, 0]
 	    Branch {
 	      ConnectType	      "DEST_DEST"
-	      Points		      [1865, 875; 0, 152]
+	      Points		      [2010, 875; 0, 152]
 	      Branch {
 		ConnectType		"SRC_DEST"
-		SrcBlock		"Voltage Measurement"
+		SrcBlock		"Voltage Measurement1"
 		SrcPort			LConn2
 		Points			[0, 80; -40, 0]
 	      }
 	      Branch {
 		ConnectType		"SRC_SRC"
-		DstBlock		"Controlled Current Source"
+		DstBlock		"Controlled Current Source1"
 		DstPort			RConn1
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [-145, 0]
+	      Branch {
+		ConnectType		"DEST_SRC"
+		Points			[-115, 0; 0, -2]
+		Branch {
+		  ConnectType		  "DEST_DEST"
+		  SrcBlock		  "Ground2"
+		  SrcPort		  LConn1
+		  Points		  [0, 0]
+		}
+		Branch {
+		  ConnectType		  "DEST_SRC"
+		  Points		  [0, -55]
+		  Branch {
+		    ConnectType		    "DEST_SRC"
+		    Points		    [-15, 0]
+		    DstBlock		    "Three-Phase\nParallel RLC Branch1"
+		    DstPort		    LConn1
+		  }
+		  Branch {
+		    ConnectType		    "DEST_SRC"
+		    DstBlock		    "Three-Phase\nParallel RLC Branch1"
+		    DstPort		    LConn2
+		  }
+		  Branch {
+		    ConnectType		    "DEST_DEST"
+		    SrcBlock		    "Three-Phase\nParallel RLC Branch1"
+		    SrcPort		    LConn3
+		    Points		    [0, 5; -15, 0]
+		  }
+		}
+	      }
+	      Branch {
+		ConnectType		"DEST_DEST"
+		Points			[1865, 875; 0, 152]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Voltage Measurement"
+		  SrcPort		  LConn2
+		  Points		  [0, 80; -40, 0]
+		}
+		Branch {
+		  ConnectType		  "SRC_SRC"
+		  DstBlock		  "Controlled Current Source"
+		  DstPort		  RConn1
+		}
 	      }
 	    }
 	  }
