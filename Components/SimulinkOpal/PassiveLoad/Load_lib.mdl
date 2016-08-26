@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [79.0, 208.0, 1936.0, 1216.0]
+      Location		      [204.0, 261.0, 1932.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1080.0]
-	ZoomFactor		[1.75]
-	Offset			[204.76234609813474, 251.85714285714289]
+	Extents			[1689.0, 956.0]
+	ZoomFactor		[1.7499999999999998]
+	Offset			[204.76234609813463, 251.85714285714289]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 17 08:59:09 2016"
-  RTWModifiedTimeStamp	  393325139
-  ModelVersionFormat	  "1.%<AutoIncrement:79>"
+  LastModifiedDate	  "Thu Aug 25 23:37:31 2016"
+  RTWModifiedTimeStamp	  394069042
+  ModelVersionFormat	  "1.%<AutoIncrement:82>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -706,6 +706,23 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Delay
+      DelayLengthSource	      "Dialog"
+      DelayLength	      "2"
+      DelayLengthUpperLimit   "100"
+      InitialConditionSource  "Dialog"
+      InitialCondition	      "0.0"
+      ExternalReset	      "None"
+      PreventDirectFeedthrough off
+      DiagnosticForOutOfRangeDelayLength "None"
+      RemoveProtectionDelayLength off
+      InputProcessing	      "Elements as channels (sample based)"
+      UseCircularBuffer	      off
+      SampleTime	      "-1"
+      StateMustResolveToSignalObject off
+      CodeGenStateStorageClass "Auto"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -865,19 +882,10 @@ Library {
       SampleTime	      "-1"
       AllowDiffInputSizes     off
     }
-    Block {
-      BlockType		      UnitDelay
-      InitialCondition	      "0"
-      InputProcessing	      "Inherited"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      CodeGenStateStorageClass "Auto"
-      HasFrameUpgradeWarning  on
-    }
   }
   System {
     Name		    "Load_lib"
-    Location		    [79, 208, 2015, 1424]
+    Location		    [204, 261, 2136, 1353]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -891,7 +899,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "175"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "365"
+    SIDHighWatermark	    "374"
     Block {
       BlockType		      SubSystem
       Name		      "200 HP chiller compressor"
@@ -973,8 +981,9 @@ Library {
       SID		      "23"
       Ports		      [1, 1, 0, 0, 0, 3]
       Position		      [335, 421, 395, 509]
-      ZOrder		      -17
+      ZOrder		      3095
       BackgroundColor	      "gray"
+      LibraryVersion	      "1.81"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -998,7 +1007,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "V"
 	    Prompt		    "VRMSLL"
-	    Value		    "460"
+	    Value		    "480"
 	  }
 	  Object {
 	    $ObjectID		    19
@@ -1012,7 +1021,7 @@ Library {
       }
       System {
 	Name			"Dynamic_Load"
-	Location		[1912, 0, 3848, 1216]
+	Location		[23, 13, 1612, 1105]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1024,7 +1033,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"98"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "PQ"
@@ -1032,6 +1041,16 @@ Library {
 	  Position		  [765, 378, 795, 392]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Delay
+	  Name			  "1 cycle delay\nfor CB"
+	  SID			  "367"
+	  Ports			  [1, 1]
+	  Position		  [1300, 678, 1335, 712]
+	  ZOrder		  3004
+	  InputPortMap		  "u0"
+	  DelayLength		  "160"
 	}
 	Block {
 	  BlockType		  BusSelector
@@ -1500,7 +1519,7 @@ Library {
 	  Position		  [1770, 168, 1825, 252]
 	  ZOrder		  1912
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.465"
 	  SourceBlock		  "breaker_lib/Meter"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1594,7 +1613,7 @@ Library {
 		Type			"edit"
 		Name			"ParK"
 		Prompt			"Regulator gains [ Kp, Ki, Kd ]:"
-		Value			"[180, 5000, 1]"
+		Value			"[180, 3200, 1]"
 	      }
 	      Object {
 		$ObjectID		24
@@ -1642,7 +1661,7 @@ Library {
 	  }
 	  System {
 	    Name		    "PLL\n(3ph)"
-	    Location		    [186, 46, 1742, 1102]
+	    Location		    [-8, 0, 1581, 1176]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1655,7 +1674,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "56"
+	    SIDHighWatermark	    "60"
 	    SIDPrevWatermark	    "48"
 	    Block {
 	      BlockType		      Inport
@@ -1807,7 +1826,7 @@ Library {
 	  ZOrder		  1917
 	  BlockMirror		  on
 	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.71"
+	  LibraryVersion	  "1.81"
 	  SourceBlock		  "Load_lib/Parallel_Constant_Load"
 	  SourceType		  "Static Parallel PQ Load"
 	  v			  "V"
@@ -2084,6 +2103,7 @@ Library {
 	  SID			  "341"
 	  Position		  [1480, 415, 1530, 455]
 	  ZOrder		  2996
+	  Threshold		  ".5"
 	  InputSameDT		  off
 	  SaturateOnIntegerOverflow off
 	}
@@ -2112,13 +2132,26 @@ Library {
 	  Measurements		  "None"
 	}
 	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay"
-	  SID			  "342"
-	  Position		  [1285, 678, 1320, 712]
-	  ZOrder		  2998
-	  InputProcessing	  "Elements as channels (sample based)"
-	  SampleTime		  "-1"
+	  BlockType		  Reference
+	  Name			  "Three-Phase\nSeries RLC Branch"
+	  SID			  "374"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [1947, 905, 1993, 975]
+	  ZOrder		  3006
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  AttributesFormatString  "\\n"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Elements/Three-Phase\nSeries RLC Branch"
+	  SourceType		  "Three-Phase Series RLC Branch"
+	  LConnTagsString	  "A|B|C"
+	  RConnTagsString	  "A|B|C"
+	  BranchType		  "RLC"
+	  Resistance		  "1"
+	  Inductance		  "0"
+	  Capacitance		  "1e-3"
+	  Measurements		  "None"
 	}
 	Block {
 	  BlockType		  Constant
@@ -2436,136 +2469,243 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  LineType		  "Connection"
-	  Points		  [1875, 785; 0, -155]
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "1 cycle delay\nfor CB"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "1 cycle delay\nfor CB"
+	  SrcPort		  1
+	  Points		  [117, 0]
 	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Voltage Measurement"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Controlled Current Source"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [1875, 200; 0, 430]
+	    Points		    [0, 118; -705, 0; 0, -383; 228, 0]
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Meter"
-	      SrcPort		      RConn1
-	      Points		      [35, 0]
+	      DstBlock		      "Discrete PID Controller q"
+	      DstPort		      2
 	    }
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Parallel_Constant_Load"
-	      SrcPort		      RConn1
-	      Points		      [-430, 0]
+	      Points		      [0, -100]
+	      DstBlock		      "Discrete PID Controller d"
+	      DstPort		      2
 	    }
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-140, 0]
-	    DstBlock		    "Three-Phase\nParallel RLC Branch1"
-	    DstPort		    RConn1
+	    Points		    [0, -260]
+	    DstBlock		    "Switch"
+	    DstPort		    2
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2020, 785; 0, -135]
+	  Points		  [1895, 785; 10, 0]
+	  DstBlock		  "Voltage Measurement"
+	  DstPort		  LConn1
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase\nSeries RLC Branch"
+	    SrcPort		    LConn1
+	    Points		    [-60, 0; 0, -105]
+	  }
 	  Branch {
 	    ConnectType		    "SRC_SRC"
+	    Points		    [-20, 0]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "Controlled Current Source"
+	      DstPort		      LConn1
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [0, -155]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		Points			[1875, 200; 0, 430]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Meter"
+		  SrcPort		  RConn1
+		  Points		  [35, 0]
+		}
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Parallel_Constant_Load"
+		  SrcPort		  RConn1
+		  Points		  [-430, 0]
+		}
+	      }
+	      Branch {
+		ConnectType		"DEST_SRC"
+		Points			[-140, 0]
+		DstBlock		"Three-Phase\nParallel RLC Branch1"
+		DstPort			RConn1
+	      }
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcPort		  LConn2
+	  Points		  [0, -105; 50, 0]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
 	    DstBlock		    "Voltage Measurement1"
 	    DstPort		    LConn1
 	  }
 	  Branch {
-	    ConnectType		    "SRC_SRC"
+	    ConnectType		    "DEST_SRC"
 	    DstBlock		    "Controlled Current Source1"
 	    DstPort		    LConn1
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [2020, 220; 0, 430]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Parallel_Constant_Load"
-	      SrcPort		      RConn2
-	      Points		      [-285, 0]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Meter"
-	      SrcPort		      RConn2
-	      Points		      [180, 0]
-	    }
-	  }
-	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [-270, 0]
-	    DstBlock		    "Three-Phase\nParallel RLC Branch1"
-	    DstPort		    RConn2
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [2185, 785; 0, -115]
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Voltage Measurement2"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Controlled Current Source2"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [2185, 240; 0, 430]
+	    Points		    [0, -135]
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Parallel_Constant_Load"
-	      SrcPort		      RConn3
-	      Points		      [-120, 0]
+	      ConnectType	      "DEST_DEST"
+	      Points		      [2020, 220; 0, 430]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"Parallel_Constant_Load"
+		SrcPort			RConn2
+		Points			[-285, 0]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"Meter"
+		SrcPort			RConn2
+		Points			[180, 0]
+	      }
 	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Meter"
-	      SrcPort		      RConn3
-	      Points		      [345, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-420, 0]
-	    DstBlock		    "Three-Phase\nParallel RLC Branch1"
-	    DstPort		    RConn3
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [2175, 875; 0, 105; -165, 0]
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Voltage Measurement2"
-	    SrcPort		    LConn2
-	    Points		    [0, 80; -40, 0]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Controlled Current Source2"
-	    DstPort		    RConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-145, 0]
 	    Branch {
 	      ConnectType	      "DEST_SRC"
-	      Points		      [-115, 0]
+	      Points		      [-270, 0]
+	      DstBlock		      "Three-Phase\nParallel RLC Branch1"
+	      DstPort		      RConn2
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [2205, 785; 10, 0]
+	  DstBlock		  "Voltage Measurement2"
+	  DstPort		  LConn1
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase\nSeries RLC Branch"
+	    SrcPort		    LConn3
+	    Points		    [0, -27; 220, 0; 0, -78]
+	  }
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    Points		    [-20, 0]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "Controlled Current Source2"
+	      DstPort		      LConn1
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [0, -115]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		Points			[2185, 240; 0, 430]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Parallel_Constant_Load"
+		  SrcPort		  RConn3
+		  Points		  [-120, 0]
+		}
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  SrcBlock		  "Meter"
+		  SrcPort		  RConn3
+		  Points		  [345, 0]
+		}
+	      }
 	      Branch {
 		ConnectType		"DEST_SRC"
-		Points			[0, -10]
+		Points			[-420, 0]
+		DstBlock		"Three-Phase\nParallel RLC Branch1"
+		DstPort			RConn3
+	      }
+	    }
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcPort		  RConn1
+	  Points		  [0, 37]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [1970, 1027; -15, 0]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      Points		      [1985, 1027; -15, 0]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		Points			[2010, 1027; -25, 0]
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  Points		  [2175, 875; 0, 152; -165, 0]
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "Voltage Measurement2"
+		    SrcPort		    LConn2
+		    Points		    [0, 80; -40, 0]
+		  }
+		  Branch {
+		    ConnectType		    "SRC_SRC"
+		    DstBlock		    "Controlled Current Source2"
+		    DstPort		    RConn1
+		  }
+		}
+		Branch {
+		  ConnectType		  "SRC_DEST"
+		  Points		  [2010, 875; 0, 152]
+		  Branch {
+		    ConnectType		    "SRC_DEST"
+		    SrcBlock		    "Voltage Measurement1"
+		    SrcPort		    LConn2
+		    Points		    [0, 80; -40, 0]
+		  }
+		  Branch {
+		    ConnectType		    "SRC_SRC"
+		    DstBlock		    "Controlled Current Source1"
+		    DstPort		    RConn1
+		  }
+		}
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"Three-Phase\nSeries RLC Branch"
+		SrcPort			RConn3
+		Points			[0, 37]
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nSeries RLC Branch"
+	      SrcPort		      RConn2
+	      Points		      [0, 37]
+	    }
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-90, 0]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [-115, 0; 0, -2]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		SrcBlock		"Ground2"
+		SrcPort			LConn1
+		Points			[0, 0]
+	      }
+	      Branch {
+		ConnectType		"DEST_SRC"
+		Points			[0, -55]
 		Branch {
 		  ConnectType		  "DEST_SRC"
 		  Points		  [-15, 0]
@@ -2584,16 +2724,10 @@ Library {
 		  Points		  [0, 5; -15, 0]
 		}
 	      }
-	      Branch {
-		ConnectType		"DEST_DEST"
-		SrcBlock		"Ground2"
-		SrcPort			LConn1
-		Points			[0, -45]
-	      }
 	    }
 	    Branch {
 	      ConnectType	      "DEST_DEST"
-	      Points		      [1865, 875; 0, 105]
+	      Points		      [1865, 875; 0, 152]
 	      Branch {
 		ConnectType		"SRC_DEST"
 		SrcBlock		"Voltage Measurement"
@@ -2605,21 +2739,6 @@ Library {
 		DstBlock		"Controlled Current Source"
 		DstPort			RConn1
 	      }
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [2010, 875; 0, 105]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Voltage Measurement1"
-	      SrcPort		      LConn2
-	      Points		      [0, 80; -40, 0]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      DstBlock		      "Controlled Current Source1"
-	      DstPort		      RConn1
 	    }
 	  }
 	}
@@ -2885,28 +3004,6 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Unit Delay"
-	  SrcPort		  1
-	  Points		  [132, 0]
-	  Branch {
-	    Points		    [0, 118; -705, 0; 0, -383; 228, 0]
-	    Branch {
-	      DstBlock		      "Discrete PID Controller q"
-	      DstPort		      2
-	    }
-	    Branch {
-	      Points		      [0, -100]
-	      DstBlock		      "Discrete PID Controller d"
-	      DstPort		      2
-	    }
-	  }
-	  Branch {
-	    Points		    [0, -260]
-	    DstBlock		    "Switch"
-	    DstPort		    2
-	  }
-	}
-	Line {
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
 	  DstBlock		  "Logical\nOperator"
@@ -2923,12 +3020,6 @@ Library {
 	  SrcPort		  3
 	  DstBlock		  "Logical\nOperator"
 	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "Logical\nOperator"
-	  SrcPort		  1
-	  DstBlock		  "Unit Delay"
-	  DstPort		  1
 	}
 	Line {
 	  Name			  "<kW>"
@@ -2963,19 +3054,19 @@ Library {
 	  SID			  "230"
 	  Name			  "Large resistor for numerical stability"
 	  Position		  [1663, 984]
-	  ZOrder		  -2
+	  ZOrder		  -1
 	}
 	Annotation {
 	  SID			  "229"
 	  Name			  "Current drain based on calculated values"
-	  Position		  [1976, 1003]
-	  ZOrder		  -3
+	  Position		  [1971, 1073]
+	  ZOrder		  -2
 	}
 	Annotation {
 	  SID			  "355"
 	  Name			  "Large resistor for numerical stability"
 	  Position		  [1428, 874]
-	  ZOrder		  -1
+	  ZOrder		  -3
 	}
       }
     }
