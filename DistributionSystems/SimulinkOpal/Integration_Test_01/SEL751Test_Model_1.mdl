@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2541"
+    ComputedModelVersion    "1.2542"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -61,7 +61,7 @@ Model {
 	  LoadSaveID		  "24888"
 	  Extents		  [1693.0, 1029.0]
 	  ZoomFactor		  [1.5]
-	  Offset		  [228.66666666666663, 5.6666666666666856]
+	  Offset		  [228.66666666666663, -3.3333333333333144]
 	}
 	Object {
 	  $ObjectID		  6
@@ -97,7 +97,7 @@ Model {
 	  LoadSaveID		  "25864"
 	  Extents		  [1693.0, 1029.0]
 	  ZoomFactor		  [1.37]
-	  Offset		  [2.0463630789890885e-12, 0.0]
+	  Offset		  [2.2737367544323206e-12, 0.0]
 	}
 	Object {
 	  $ObjectID		  10
@@ -105,16 +105,16 @@ Model {
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "24936"
 	  Extents		  [1693.0, 1029.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [0.0, 0.0]
+	  ZoomFactor		  [0.6]
+	  Offset		  [-208.66783216783233, 422.67307692307674]
 	}
 	Object {
 	  $ObjectID		  11
 	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "1435"
+	  ViewObjType		  "SimulinkTopLevel"
+	  LoadSaveID		  "0"
 	  Extents		  [1693.0, 1029.0]
-	  ZoomFactor		  [1.0]
+	  ZoomFactor		  [1.78]
 	  Offset		  [0.0, 0.0]
 	}
 	PropName		"EditorsInfo"
@@ -131,9 +131,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 25 09:07:23 2016"
-  RTWModifiedTimeStamp	  394016814
-  ModelVersionFormat	  "1.%<AutoIncrement:2541>"
+  LastModifiedDate	  "Thu Sep 01 08:45:30 2016"
+  RTWModifiedTimeStamp	  394620294
+  ModelVersionFormat	  "1.%<AutoIncrement:2542>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1109,7 +1109,7 @@ Model {
   System {
     Name		    "SEL751Test_Model_1"
     Location		    [534, 172, 2470, 1348]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
     ScreenColor		    "white"
@@ -1122,7 +1122,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "178"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "27260"
+    SIDHighWatermark	    "27262"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -8131,7 +8131,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"60"
 	Block {
 	  BlockType		  Inport
 	  Name			  "faults"
@@ -8247,10 +8247,11 @@ Model {
 	  Position		  [425, 1558, 480, 1642]
 	  ZOrder		  1838
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.466"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  Reference
@@ -8260,10 +8261,11 @@ Model {
 	  Position		  [1430, 1818, 1485, 1902]
 	  ZOrder		  1940
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.466"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  Reference
@@ -8273,10 +8275,11 @@ Model {
 	  Position		  [1445, 1378, 1500, 1462]
 	  ZOrder		  2908
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.462"
+	  LibraryVersion	  "1.466"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delays		  "[cb_mech_delay(1,:)]"
 	}
 	Block {
 	  BlockType		  BusCreator
@@ -8426,6 +8429,34 @@ Model {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CVS_Dynamic_Load"
+	  SID			  "27261"
+	  Ports			  [1, 1, 0, 0, 0, 3]
+	  Position		  [1910, 1481, 1970, 1569]
+	  ZOrder		  3138
+	  BackgroundColor	  "gray"
+	  LibraryVersion	  "1.97"
+	  SourceBlock		  "Load_lib/CVS_Dynamic_Load"
+	  SourceType		  "Dynamic load"
+	  V			  "480"
+	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CVS_Dynamic_Load1"
+	  SID			  "27262"
+	  Ports			  [1, 1, 0, 0, 0, 3]
+	  Position		  [2080, 1891, 2140, 1979]
+	  ZOrder		  3139
+	  BackgroundColor	  "gray"
+	  LibraryVersion	  "1.97"
+	  SourceBlock		  "Load_lib/CVS_Dynamic_Load"
+	  SourceType		  "Dynamic load"
+	  V			  "460"
+	  Ts			  "Ts"
 	}
 	Block {
 	  BlockType		  Constant
@@ -8960,7 +8991,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto17"
 	  SID			  "26178"
-	  Position		  [2060, 1525, 2140, 1545]
+	  Position		  [2020, 1515, 2100, 1535]
 	  ZOrder		  2977
 	  ShowName		  off
 	  GotoTag		  "LOAD_1"
@@ -9033,7 +9064,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto7"
 	  SID			  "26181"
-	  Position		  [2270, 1965, 2350, 1985]
+	  Position		  [2180, 1925, 2260, 1945]
 	  ZOrder		  2980
 	  ShowName		  off
 	  GotoTag		  "LOAD_2"
@@ -17442,30 +17473,6 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "alpha_betaActiveLoad"
-	  SID			  "27245"
-	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [2080, 1878, 2235, 1987]
-	  ZOrder		  3033
-	  LibraryVersion	  "1.23"
-	  SourceBlock		  "alpha_betaActiveLoad_lib/alpha_betaActiveLoad"
-	  SourceType		  ""
-	  V			  "460"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "alpha_betaActiveLoad1"
-	  SID			  "27246"
-	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [1865, 1478, 2020, 1587]
-	  ZOrder		  3034
-	  LibraryVersion	  "1.23"
-	  SourceBlock		  "alpha_betaActiveLoad_lib/alpha_betaActiveLoad"
-	  SourceType		  ""
-	  V			  "480"
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "opElectricFault"
 	  SID			  "24973"
 	  Ports			  [2, 0, 0, 0, 0, 3]
@@ -17892,9 +17899,9 @@ Model {
 	  Points		  [-236, 0; 0, -90]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "alpha_betaActiveLoad1"
+	    SrcBlock		    "CVS_Dynamic_Load"
 	    SrcPort		    LConn2
-	    Points		    [-251, 0; 0, 80]
+	    Points		    [-296, 0; 0, 90]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -17909,9 +17916,9 @@ Model {
 	  Points		  [-182, 0; 0, -85]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "alpha_betaActiveLoad1"
+	    SrcBlock		    "CVS_Dynamic_Load"
 	    SrcPort		    LConn1
-	    Points		    [-197, 0; 0, 90]
+	    Points		    [-242, 0; 0, 95]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -17926,9 +17933,9 @@ Model {
 	  Points		  [-274, 0; 0, -95]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "alpha_betaActiveLoad1"
+	    SrcBlock		    "CVS_Dynamic_Load"
 	    SrcPort		    LConn3
-	    Points		    [-289, 0; 0, 70]
+	    Points		    [-334, 0; 0, 85]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -18183,7 +18190,7 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "alpha_betaActiveLoad1"
+	  SrcBlock		  "CVS_Dynamic_Load"
 	  SrcPort		  1
 	  DstBlock		  "Goto17"
 	  DstPort		  1
@@ -18194,9 +18201,8 @@ Model {
 	  Points		  [39, 0; 0, 10]
 	}
 	Line {
-	  SrcBlock		  "alpha_betaActiveLoad"
+	  SrcBlock		  "CVS_Dynamic_Load1"
 	  SrcPort		  1
-	  Points		  [12, 0; 0, 40]
 	  DstBlock		  "Goto7"
 	  DstPort		  1
 	}
@@ -18254,7 +18260,7 @@ Model {
 	  SrcBlock		  "Mux2"
 	  SrcPort		  1
 	  Points		  [25, 0; 0, 90]
-	  DstBlock		  "alpha_betaActiveLoad1"
+	  DstBlock		  "CVS_Dynamic_Load"
 	  DstPort		  1
 	}
 	Line {
@@ -18274,7 +18280,8 @@ Model {
 	Line {
 	  SrcBlock		  "Mux3"
 	  SrcPort		  1
-	  DstBlock		  "alpha_betaActiveLoad"
+	  Points		  [47, 0; 0, 10]
+	  DstBlock		  "CVS_Dynamic_Load1"
 	  DstPort		  1
 	}
 	Line {
@@ -18368,25 +18375,25 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "alpha_betaActiveLoad"
+	  SrcBlock		  "CVS_Dynamic_Load1"
 	  SrcPort		  LConn3
-	  Points		  [-7, 0; 0, 32; -356, 0; 0, -112]
+	  Points		  [-23, 0; 0, 40; -323, 0; 0, -115]
 	  DstBlock		  "500kcmil-Mutual4"
 	  DstPort		  RConn3
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "alpha_betaActiveLoad"
+	  SrcBlock		  "CVS_Dynamic_Load1"
 	  SrcPort		  LConn2
-	  Points		  [-49, 0; 0, 50; -263, 0; 0, -125]
+	  Points		  [-56, 0; 0, 46; -253, 0; 0, -121]
 	  DstBlock		  "500kcmil-Mutual4"
 	  DstPort		  RConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "alpha_betaActiveLoad"
+	  SrcBlock		  "CVS_Dynamic_Load1"
 	  SrcPort		  LConn1
-	  Points		  [-122, 0; 0, 62; -151, 0; 0, -132]
+	  Points		  [-52, 0; 0, -63; -74, 0; 0, 93; -146, 0; 0, -105]
 	  DstBlock		  "500kcmil-Mutual4"
 	  DstPort		  RConn1
 	}
