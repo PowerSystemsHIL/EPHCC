@@ -37,3 +37,7 @@ relay_settings_init;
 cable_impedance_init;
 
 
+%% circuit breaker delays
+% breaker mechanical delay in seconds
+%  - format: [open_delay, close_delay]
+cb_mech_delay = [5, 5]./60;
