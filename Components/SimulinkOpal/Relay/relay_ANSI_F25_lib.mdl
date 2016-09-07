@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1176.0]
+      Location		      [1912.0, -8.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1010.0]
+	Extents			[1693.0, 1050.0]
 	ZoomFactor		[1.4613095238095239]
-	Offset			[-1.2749490835030315, 87.419551934826885]
+	Offset			[-1.2749490835030883, 87.41955193482687]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 04 15:32:23 2016"
-  RTWModifiedTimeStamp	  392225528
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Wed Aug 31 15:18:18 2016"
+  RTWModifiedTimeStamp	  394557365
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -895,7 +895,7 @@ Library {
   }
   System {
     Name		    "relay_ANSI_F25_lib"
-    Location		    [-8, -8, 1928, 1168]
+    Location		    [1912, -8, 3848, 1208]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -909,7 +909,1900 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "146"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "175"
+    SIDHighWatermark	    "270"
+    Block {
+      BlockType		      SubSystem
+      Name		      "R25 - Sync Check v0.1"
+      SID		      "176"
+      Ports		      [5, 1]
+      Position		      [845, 234, 1045, 386]
+      ZOrder		      3101
+      BackgroundColor	      "gray"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		17
+	$ClassName		"Simulink.Mask"
+	Type			"Relay synch check"
+	Description		"This block checks if the the specified conditions for breaker reclosing \nare met at both terminals of "
+	"the circuit breaker. This synch check is\nintended for use in bus-ties, and service lines. \n\nThe input bus with the"
+	" relay parameters should be ordered as follows:\n1) VRMSLL\n2) IOC\n3) TOC\n4) dV_threshold\n5) angle_threshold\n6) d"
+	"F_threshold"
+	Object {
+	  $PropName		  "Parameters"
+	  $ObjectID		  18
+	  $ClassName		  "Simulink.MaskParameter"
+	  Type			  "edit"
+	  Name			  "Ts"
+	  Prompt		  "Sampling Time [Sec]"
+	  Value			  "Ts"
+	}
+      }
+      System {
+	Name			"R25 - Sync Check v0.1"
+	Location		[1912, -8, 3848, 1208]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"117"
+	Block {
+	  BlockType		  Inport
+	  Name			  "VPKLN_bus"
+	  SID			  "177"
+	  Position		  [65, 433, 95, 447]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "VPKLN_line"
+	  SID			  "178"
+	  Position		  [65, 528, 95, 542]
+	  ZOrder		  -1
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "trip_or"
+	  SID			  "179"
+	  Position		  [1010, 288, 1040, 302]
+	  ZOrder		  -1
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "mode_in"
+	  SID			  "180"
+	  Position		  [1010, 328, 1040, 342]
+	  ZOrder		  -1
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "relay_param"
+	  SID			  "181"
+	  Position		  [160, 223, 190, 237]
+	  ZOrder		  1589
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "182"
+	  Ports			  [1, 4]
+	  Position		  [245, 188, 250, 272]
+	  ZOrder		  1590
+	  ShowName		  off
+	  OutputSignals		  "VRMSLL,dV_threshold,angle_threshold,dF_threshold"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<VRMSLL>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<dV_threshold>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<angle_threshold>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<dF_threshold>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "183"
+	  Ports			  [1, 3]
+	  Position		  [120, 404, 125, 476]
+	  ZOrder		  -6
+	  ForegroundColor	  "orange"
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "a_sys"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  SID			  "184"
+	  Ports			  [1, 3]
+	  Position		  [120, 499, 125, 571]
+	  ZOrder		  -6
+	  ForegroundColor	  "orange"
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux10"
+	  SID			  "185"
+	  Ports			  [1, 2]
+	  Position		  [495, 376, 500, 414]
+	  ZOrder		  -6
+	  ShowName		  off
+	  Outputs		  "2"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "vbus"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "vline"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "Fcn"
+	  SID			  "186"
+	  Position		  [1065, 325, 1105, 345]
+	  ZOrder		  -1
+	  ShowName		  off
+	  Expr			  "u(1)==2"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Freq_Comparator"
+	  SID			  "187"
+	  Ports			  [3, 1]
+	  Position		  [620, 501, 735, 549]
+	  ZOrder		  -17
+	  BackgroundColor	  "cyan"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "dF"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Freq_Comparator"
+	    Location		    [0, 0, 1408, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "306"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "f_grid"
+	      SID		      "188"
+	      Position		      [95, 73, 125, 87]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "f_gen"
+	      SID		      "189"
+	      Position		      [65, 108, 95, 122]
+	      ZOrder		      -1
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "dF_threshold"
+	      SID		      "190"
+	      Position		      [95, 143, 125, 157]
+	      ZOrder		      1
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn2"
+	      SID		      "191"
+	      Position		      [220, 102, 325, 128]
+	      ZOrder		      -1
+	      Expr		      "abs(u(2)-u(1)) <= u(3)"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "192"
+	      Ports		      [3, 1]
+	      Position		      [160, 63, 165, 167]
+	      ZOrder		      -12
+	      ShowName		      off
+	      Inputs		      "3"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Locked"
+	      SID		      "193"
+	      Position		      [405, 108, 435, 122]
+	      ZOrder		      -2
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "Fcn2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "f_gen"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "f_grid"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Fcn2"
+	      SrcPort		      1
+	      DstBlock		      "Locked"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "dF_threshold"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Annotation {
+	      SID		      "194"
+	      Name		      "This block compares the frequency at the circuit breaker terminals\n* if the difference is less th"
+	      "an threshold dF_threshold, then outputs 1"
+	      Position		      [276, 210]
+	      ZOrder		      -1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "195"
+	  Position		  [620, 211, 685, 229]
+	  ZOrder		  1595
+	  ShowName		  off
+	  GotoTag		  "VRMSLL"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "196"
+	  Position		  [205, 596, 270, 614]
+	  ZOrder		  1596
+	  ShowName		  off
+	  GotoTag		  "VRMSLL"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "197"
+	  Position		  [510, 531, 595, 549]
+	  ZOrder		  1597
+	  ShowName		  off
+	  GotoTag		  "dF_threshold"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From3"
+	  SID			  "198"
+	  Position		  [380, 661, 480, 679]
+	  ZOrder		  1598
+	  ShowName		  off
+	  GotoTag		  "angle_threshold"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From4"
+	  SID			  "199"
+	  Position		  [535, 416, 600, 434]
+	  ZOrder		  1599
+	  ShowName		  off
+	  GotoTag		  "VRMSLL"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From5"
+	  SID			  "200"
+	  Position		  [505, 436, 600, 454]
+	  ZOrder		  1600
+	  ShowName		  off
+	  GotoTag		  "dV_threshold"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "201"
+	  Position		  [340, 192, 440, 208]
+	  ZOrder		  1591
+	  ShowName		  off
+	  GotoTag		  "VRMSLL"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto1"
+	  SID			  "202"
+	  Position		  [340, 212, 440, 228]
+	  ZOrder		  1592
+	  ShowName		  off
+	  GotoTag		  "dV_threshold"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto2"
+	  SID			  "203"
+	  Position		  [340, 230, 440, 250]
+	  ZOrder		  1593
+	  ShowName		  off
+	  GotoTag		  "angle_threshold"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto3"
+	  SID			  "204"
+	  Position		  [345, 252, 440, 268]
+	  ZOrder		  1594
+	  ShowName		  off
+	  GotoTag		  "dF_threshold"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "205"
+	  Ports			  [3, 1]
+	  Position		  [995, 400, 1030, 480]
+	  ZOrder		  -11
+	  BackgroundColor	  "red"
+	  Inputs		  "3"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	  Port {
+	    PortNumber		    1
+	    Name		    "dV&dF&dW"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "206"
+	  Ports			  [3, 1]
+	  Position		  [1160, 318, 1190, 352]
+	  ZOrder		  -11
+	  ShowName		  off
+	  Operator		  "OR"
+	  Inputs		  "3"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator3"
+	  SID			  "207"
+	  Ports			  [2, 1]
+	  Position		  [1375, 417, 1405, 448]
+	  ZOrder		  -11
+	  ShowName		  off
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "208"
+	  Ports			  [2, 1]
+	  Position		  [340, 375, 345, 415]
+	  ZOrder		  -12
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Phase_Comparator"
+	  SID			  "209"
+	  Ports			  [3, 1]
+	  Position		  [530, 629, 665, 681]
+	  ZOrder		  -17
+	  BackgroundColor	  "cyan"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "dW"
+	    PropagatedSignals	    "bool"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Phase_Comparator"
+	    Location		    [0, 0, 1408, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "153"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wt_grid"
+	      SID		      "210"
+	      Position		      [25, 48, 55, 62]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wt_gen"
+	      SID		      "211"
+	      Position		      [25, 108, 55, 122]
+	      ZOrder		      -1
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "angle_threshold"
+	      SID		      "212"
+	      Position		      [530, 143, 560, 157]
+	      ZOrder		      3
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      "213"
+	      Position		      [125, 98, 160, 122]
+	      ZOrder		      -5
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "2*pi"
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn1"
+	      SID		      "214"
+	      Position		      [625, 112, 685, 138]
+	      ZOrder		      1
+	      Expr		      "u(1) <= u(2)"
+	      SampleTime	      "Ts"
+	      Port {
+		PortNumber		1
+		Name			"bool"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn3"
+	      SID		      "215"
+	      Position		      [310, 87, 415, 113]
+	      ZOrder		      -1
+	      Expr		      "abs(u(2)-u(1))"
+	      SampleTime	      "Ts"
+	      Port {
+		PortNumber		1
+		Name			"diff"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Math
+	      Name		      "Math\nFunction"
+	      SID		      "216"
+	      Ports		      [2, 1]
+	      Position		      [185, 73, 215, 122]
+	      ZOrder		      -11
+	      ShowName		      off
+	      Operator		      "mod"
+	      SampleTime	      "Ts"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "217"
+	      Ports		      [2, 1]
+	      Position		      [590, 73, 595, 177]
+	      ZOrder		      2
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux3"
+	      SID		      "218"
+	      Ports		      [2, 1]
+	      Position		      [85, 66, 90, 104]
+	      ZOrder		      -12
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Radians\nto Degrees"
+	      SID		      "219"
+	      Ports		      [1, 1]
+	      Position		      [450, 85, 480, 115]
+	      ZOrder		      -13
+	      LibraryVersion	      "1.44"
+	      SourceBlock	      "simulink_extras/Transformations/Radians\nto Degrees"
+	      SourceType	      "RadiansToDegrees"
+	      Port {
+		PortNumber		1
+		Name			"R2D"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Unwrap"
+	      SID		      "220"
+	      Ports		      [1, 1]
+	      Position		      [245, 82, 290, 118]
+	      ZOrder		      -13
+	      LibraryVersion	      "1.731"
+	      UserDataPersistent      on
+	      UserData		      "DataTag0"
+	      SourceBlock	      "dspsigops/Unwrap"
+	      SourceType	      "Unwrap"
+	      tol		      "pi"
+	      InputProcessing	      "Columns as channels (frame based)"
+	      running		      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Locked"
+	      SID		      "221"
+	      Position		      [735, 118, 765, 132]
+	      ZOrder		      -2
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      DstBlock		      "Math\nFunction"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux3"
+	      SrcPort		      1
+	      DstBlock		      "Math\nFunction"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "diff"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Fcn3"
+	      SrcPort		      1
+	      DstBlock		      "Radians\nto Degrees"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wt_grid"
+	      SrcPort		      1
+	      Points		      [0, 20]
+	      DstBlock		      "Mux3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wt_gen"
+	      SrcPort		      1
+	      Points		      [0, -20]
+	      DstBlock		      "Mux3"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "bool"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Fcn1"
+	      SrcPort		      1
+	      DstBlock		      "Locked"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Math\nFunction"
+	      SrcPort		      1
+	      DstBlock		      "Unwrap"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Unwrap"
+	      SrcPort		      1
+	      DstBlock		      "Fcn3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "angle_threshold"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "Fcn1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "R2D"
+	      SrcBlock		      "Radians\nto Degrees"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "222"
+	      Name		      "This block compares the angle (phase A only) at the circuit breaker terminals\n* if the difference"
+	      " is less than threshold angle_threshold, then outputs 1"
+	      Position		      [271, 185]
+	      ZOrder		      -1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "RMS"
+	  SID			  "223"
+	  Ports			  [1, 1]
+	  Position		  [365, 382, 400, 408]
+	  ZOrder		  -17
+	  BackgroundColor	  "lightBlue"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "RMS"
+	    Location		    [0, 0, 1408, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "s"
+	      SID		      "224"
+	      Position		      [45, 93, 75, 107]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Discrete \nMean value6"
+	      SID		      "225"
+	      Ports		      [1, 1]
+	      Position		      [270, 85, 340, 135]
+	      ZOrder		      -7
+	      LibraryVersion	      "1.664"
+	      FontName		      "Verdana"
+	      FontSize		      11
+	      SourceBlock	      "powerlib_extras/Discrete\nMeasurements/Discrete \nMean value"
+	      SourceType	      "Discrete Mean value"
+	      Freq		      "60"
+	      Vinit		      "0"
+	      Ts		      "Ts"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product3"
+	      SID		      "226"
+	      Ports		      [2, 1]
+	      Position		      [200, 92, 230, 123]
+	      ZOrder		      -19
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sqrt
+	      Name		      "Signed\nSqrt"
+	      SID		      "227"
+	      Position		      [370, 95, 400, 125]
+	      ZOrder		      -26
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "S"
+	      SID		      "228"
+	      Position		      [495, 103, 525, 117]
+	      ZOrder		      -2
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "s"
+	      SrcPort		      1
+	      Points		      [50, 0]
+	      Branch {
+		DstBlock		"Product3"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 15]
+		DstBlock		"Product3"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Product3"
+	      SrcPort		      1
+	      DstBlock		      "Discrete \nMean value6"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete \nMean value6"
+	      SrcPort		      1
+	      DstBlock		      "Signed\nSqrt"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Signed\nSqrt"
+	      SrcPort		      1
+	      DstBlock		      "S"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop1"
+	  SID			  "229"
+	  Ports			  [2, 2]
+	  Position		  [1225, 185, 1270, 260]
+	  ZOrder		  1441
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "deadbus"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator1"
+	  SID			  "230"
+	  Position		  [1295, 230, 1315, 250]
+	  ZOrder		  -20
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator5"
+	  SID			  "231"
+	  Position		  [185, 550, 205, 570]
+	  ZOrder		  -20
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator6"
+	  SID			  "232"
+	  Position		  [185, 525, 205, 545]
+	  ZOrder		  -20
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator7"
+	  SID			  "233"
+	  Position		  [185, 430, 205, 450]
+	  ZOrder		  -20
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator8"
+	  SID			  "234"
+	  Position		  [185, 455, 205, 475]
+	  ZOrder		  -20
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Voltage_Comparator"
+	  SID			  "235"
+	  Ports			  [4, 1]
+	  Position		  [680, 379, 805, 451]
+	  ZOrder		  -17
+	  BackgroundColor	  "cyan"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "dV"
+	    PropagatedSignals	    "thshld"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Voltage_Comparator"
+	    Location		    [1912, -8, 3848, 1208]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "315"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "V_bus"
+	      SID		      "236"
+	      Position		      [165, 53, 195, 67]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "V_line"
+	      SID		      "237"
+	      Position		      [165, 93, 195, 107]
+	      ZOrder		      -1
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VRMSLL"
+	      SID		      "238"
+	      Position		      [20, 138, 50, 152]
+	      ZOrder		      1
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "dV_threshold"
+	      SID		      "239"
+	      Position		      [20, 188, 50, 202]
+	      ZOrder		      2
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"[%]"
+		PropagatedSignals	"dV_threshold"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn2"
+	      SID		      "240"
+	      Position		      [280, 87, 385, 113]
+	      ZOrder		      -1
+	      Expr		      "abs(u(2)-u(1)) <= u(3)"
+	      Port {
+		PortNumber		1
+		Name			"thshld"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "241"
+	      Ports		      [3, 1]
+	      Position		      [255, 81, 260, 119]
+	      ZOrder		      -12
+	      ShowName		      off
+	      Inputs		      "3"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product"
+	      SID		      "242"
+	      Ports		      [2, 1]
+	      Position		      [175, 152, 205, 183]
+	      ZOrder		      3
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "a"
+	      SID		      "243"
+	      Position		      [80, 182, 130, 208]
+	      ZOrder		      5
+	      ShowName		      off
+	      Gain		      "0.01"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"[dec]"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Locked"
+	      SID		      "244"
+	      Position		      [460, 93, 490, 107]
+	      ZOrder		      -2
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "[dec]"
+	      Labels		      [1, 1]
+	      SrcBlock		      "a"
+	      SrcPort		      1
+	      Points		      [12, 0; 0, -20]
+	      DstBlock		      "Product"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "Fcn2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "thshld"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Fcn2"
+	      SrcPort		      1
+	      DstBlock		      "Locked"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "V_line"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "V_bus"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 30]
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "[%]"
+	      Labels		      [-1, 1]
+	      SrcBlock		      "dV_threshold"
+	      SrcPort		      1
+	      DstBlock		      "a"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "VRMSLL"
+	      SrcPort		      1
+	      Points		      [93, 0; 0, 15]
+	      DstBlock		      "Product"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product"
+	      SrcPort		      1
+	      Points		      [9, 0; 0, -60]
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Annotation {
+	      SID		      "246"
+	      Name		      "dV_threshold% of the nominal VRMSLL"
+	      Position		      [342, 217]
+	      ZOrder		      -1
+	    }
+	    Annotation {
+	      SID		      "245"
+	      Name		      "This block compares the voltage at the circuit breaker terminals\n* if the difference is less than"
+	      " threshold, then outputs 1"
+	      Position		      [396, 180]
+	      ZOrder		      -2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "deadbus fcn"
+	  SID			  "247"
+	  Ports			  [3, 1]
+	  Position		  [720, 180, 820, 230]
+	  ZOrder		  -4
+	  LibraryVersion	  "1.32"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  SFBlockType		  "MATLAB Function"
+	  System {
+	    Name		    "deadbus fcn"
+	    Location		    [227, 345, 838, 789]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "56"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Vbus"
+	      SID		      "247::1"
+	      Position		      [20, 101, 40, 119]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Vline"
+	      SID		      "247::18"
+	      Position		      [20, 136, 40, 154]
+	      ZOrder		      -2
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VRMSLL"
+	      SID		      "247::19"
+	      Position		      [20, 171, 40, 189]
+	      ZOrder		      -3
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "247::55"
+	      Ports		      [1, 1]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      11
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "247::54"
+	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 2"
+	      Ports		      [3, 2]
+	      Position		      [180, 100, 230, 180]
+	      ZOrder		      10
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[3 2]"
+	      EnableBusSupport	      on
+	      Port {
+		PortNumber		2
+		Name			"y"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "247::56"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      12
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "y"
+	      SID		      "247::5"
+	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -7
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "y"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "y"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "VRMSLL"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Vline"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Vbus"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "set of 1ph PLLs"
+	  SID			  "248"
+	  Ports			  [3, 4]
+	  Position		  [310, 533, 410, 617]
+	  ZOrder		  -17
+	  BackgroundColor	  "magenta"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "set of 1ph PLLs"
+	    Location		    [0, 0, 1408, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "234"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "V_bus"
+	      SID		      "249"
+	      Position		      [65, 93, 95, 107]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "V_line"
+	      SID		      "250"
+	      Position		      [65, 253, 95, 267]
+	      ZOrder		      -1
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VRMSLL"
+	      SID		      "251"
+	      Position		      [65, 333, 95, 347]
+	      ZOrder		      4
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Discrete\n1-phase PLL"
+	      SID		      "252"
+	      Ports		      [1, 3]
+	      Position		      [340, 233, 405, 307]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.664"
+	      FontName		      "Verdana"
+	      FontSize		      11
+	      SourceBlock	      "powerlib_extras/Discrete \nControl Blocks/Discrete\n1-phase PLL"
+	      SourceType	      "Discrete 1-phase PLL"
+	      Fmin		      "45"
+	      Par_Init		      "[0 60]"
+	      ParK		      "[ 180 3200 1]"
+	      Ts		      "Ts"
+	      AGC		      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Discrete\n1-phase PLL1"
+	      SID		      "253"
+	      Ports		      [1, 3]
+	      Position		      [335, 73, 400, 147]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.664"
+	      FontName		      "Verdana"
+	      FontSize		      11
+	      SourceBlock	      "powerlib_extras/Discrete \nControl Blocks/Discrete\n1-phase PLL"
+	      SourceType	      "Discrete 1-phase PLL"
+	      Fmin		      "45"
+	      Par_Init		      "[0 60]"
+	      ParK		      "[ 180 3200 1]"
+	      Ts		      "Ts"
+	      AGC		      on
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Divide"
+	      SID		      "254"
+	      Ports		      [2, 1]
+	      Position		      [215, 252, 245, 283]
+	      ZOrder		      1
+	      Inputs		      "*/"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Divide1"
+	      SID		      "255"
+	      Ports		      [2, 1]
+	      Position		      [205, 92, 235, 123]
+	      ZOrder		      5
+	      Inputs		      "*/"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "256"
+	      Position		      [440, 285, 460, 305]
+	      ZOrder		      -20
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator1"
+	      SID		      "257"
+	      Position		      [430, 125, 450, 145]
+	      ZOrder		      -20
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "f_bus"
+	      SID		      "258"
+	      Position		      [515, 78, 545, 92]
+	      ZOrder		      -2
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "f_line"
+	      SID		      "259"
+	      Position		      [515, 238, 545, 252]
+	      ZOrder		      -2
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "wt_bus"
+	      SID		      "260"
+	      Position		      [475, 103, 505, 117]
+	      ZOrder		      -2
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "wt_line"
+	      SID		      "261"
+	      Position		      [480, 263, 510, 277]
+	      ZOrder		      -2
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL1"
+	      SrcPort		      3
+	      DstBlock		      "Terminator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL"
+	      SrcPort		      3
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL"
+	      SrcPort		      2
+	      DstBlock		      "wt_line"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL"
+	      SrcPort		      1
+	      DstBlock		      "f_line"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL1"
+	      SrcPort		      2
+	      DstBlock		      "wt_bus"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL1"
+	      SrcPort		      1
+	      DstBlock		      "f_bus"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "VRMSLL"
+	      SrcPort		      1
+	      Points		      [74, 0; 0, -65]
+	      Branch {
+		DstBlock		"Divide"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, -160]
+		DstBlock		"Divide1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Divide"
+	      SrcPort		      1
+	      DstBlock		      "Discrete\n1-phase PLL"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "V_line"
+	      SrcPort		      1
+	      DstBlock		      "Divide"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Divide1"
+	      SrcPort		      1
+	      DstBlock		      "Discrete\n1-phase PLL1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "V_bus"
+	      SrcPort		      1
+	      DstBlock		      "Divide1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "sqrt3"
+	  SID			  "262"
+	  Position		  [430, 380, 460, 410]
+	  ZOrder		  -8
+	  Gain			  "1.7321"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "RMSLL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "R25"
+	  SID			  "263"
+	  Position		  [1450, 428, 1480, 442]
+	  ZOrder		  -2
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "dV&dF&dW"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [100, 0]
+	  Branch {
+	    DstBlock		    "Logical\nOperator3"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, -95]
+	    DstBlock		    "Logical\nOperator1"
+	    DstPort		    3
+	  }
+	}
+	Line {
+	  SrcBlock		  "VPKLN_line"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "VPKLN_bus"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Terminator8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Terminator7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "Terminator5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  Points		  [105, 0]
+	  Branch {
+	    Points		    [0, 65]
+	    DstBlock		    "set of 1ph PLLs"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [40, 0; 0, -105]
+	    DstBlock		    "Mux1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "a_sys"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, -30; 70, 0]
+	  Branch {
+	    Points		    [0, 160]
+	    DstBlock		    "set of 1ph PLLs"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "vbus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux10"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    DstBlock		    "Voltage_Comparator"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -195]
+	    DstBlock		    "deadbus fcn"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  1
+	  Points		  [37, 0; 0, -35]
+	  DstBlock		  "Freq_Comparator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  2
+	  Points		  [57, 0; 0, -40]
+	  DstBlock		  "Freq_Comparator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  3
+	  Points		  [57, 0; 0, 55]
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  4
+	  Points		  [35, 0; 0, 50]
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "vline"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux10"
+	  SrcPort		  2
+	  Points		  [80, 0]
+	  Branch {
+	    DstBlock		    "Voltage_Comparator"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, -200]
+	    DstBlock		    "deadbus fcn"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "dV"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Voltage_Comparator"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "dF"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Freq_Comparator"
+	  SrcPort		  1
+	  Points		  [122, 0; 0, -85]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "dW"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Phase_Comparator"
+	  SrcPort		  1
+	  Points		  [225, 0; 0, -190]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "RMS"
+	  SrcPort		  1
+	  DstBlock		  "sqrt3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "RMS"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "RMSLL"
+	  Labels		  [1, 1]
+	  SrcBlock		  "sqrt3"
+	  SrcPort		  1
+	  DstBlock		  "Demux10"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "deadbus fcn"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "R25"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "deadbus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "S-R\nFlip-Flop1"
+	  SrcPort		  1
+	  Points		  [66, 0; 0, 220]
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "deadbus fcn"
+	  SrcPort		  1
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, -95]
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "trip_or"
+	  SrcPort		  1
+	  Points		  [85, 0; 0, 30]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "mode_in"
+	  SrcPort		  1
+	  DstBlock		  "Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Fcn"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "relay_param"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<VRMSLL>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Goto"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<dV_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Goto1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<angle_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  3
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<dF_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  4
+	  DstBlock		  "Goto3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "set of 1ph PLLs"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Freq_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  DstBlock		  "Voltage_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From5"
+	  SrcPort		  1
+	  DstBlock		  "Voltage_Comparator"
+	  DstPort		  4
+	}
+	Annotation {
+	  SID			  "270"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
+	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
+	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
+	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
+	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
+	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
+	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
+	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
+	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
+	  "FTWARE.\n%\n%\n%%"
+	  Position		  [66, 842]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -1
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "269"
+	  Name			  "true: If the life bus has voltage > 0.9pu and the other bus has voltage < threshold\ntrue: both sides of "
+	  "the breaker are deadbuses"
+	  Position		  [742, 157]
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "268"
+	  Name			  "voltage difference"
+	  Position		  [720, 364]
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "267"
+	  Name			  "frequency difference"
+	  Position		  [650, 489]
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "266"
+	  Name			  "angle difference"
+	  Position		  [600, 614]
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "265"
+	  Name			  "* this block checks for synchronism based on phase A only\n* the block also implements a deadbus logic"
+	  Position		  [254, 162]
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "264"
+	  Name			  "If any protection elements give a trip indication \nor the MGC requests the CB to open, reset the RS FF"
+	  Position		  [953, 264]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -7
+	}
+      }
+    }
     Block {
       BlockType		      SubSystem
       Name		      "Relay 25 - Sync Check - RS"
@@ -927,41 +2820,41 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		17
+	$ObjectID		19
 	$ClassName		"Simulink.Mask"
 	Array {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  5
 	  Object {
-	    $ObjectID		    18
+	    $ObjectID		    20
 	    Type		    "edit"
 	    Name		    "VRMSLL"
 	    Prompt		    "Nominal Voltage [VRMSLL]"
 	    Value		    "VRMSLL"
 	  }
 	  Object {
-	    $ObjectID		    19
+	    $ObjectID		    21
 	    Type		    "edit"
 	    Name		    "Ts"
 	    Prompt		    "Sampling Time [Sec]"
 	    Value		    "Ts"
 	  }
 	  Object {
-	    $ObjectID		    20
+	    $ObjectID		    22
 	    Type		    "edit"
 	    Name		    "dV_threshold"
 	    Prompt		    "Percent Voltage Threshold [%]"
 	    Value		    "dV_threshold"
 	  }
 	  Object {
-	    $ObjectID		    21
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "angle_threshold"
 	    Prompt		    "Angle Threshold [degress]"
 	    Value		    "angle_threshold"
 	  }
 	  Object {
-	    $ObjectID		    22
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "dF_threshold"
 	    Prompt		    "Frequency Threshold [Hz]"
@@ -1445,7 +3338,7 @@ Library {
 	      ZOrder		      -13
 	      LibraryVersion	      "1.731"
 	      UserDataPersistent      on
-	      UserData		      "DataTag0"
+	      UserData		      "DataTag1"
 	      SourceBlock	      "dspsigops/Unwrap"
 	      SourceType	      "Unwrap"
 	      tol		      "pi"
@@ -2539,7 +4432,7 @@ Library {
       Name		      "Relay 25 - Sync Check - ext_param"
       SID		      "1"
       Ports		      [5, 1]
-      Position		      [720, 240, 910, 370]
+      Position		      [535, 235, 725, 365]
       ZOrder		      3
       BackgroundColor	      "gray"
       MinAlgLoopOccurrences   off
@@ -2551,7 +4444,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		23
+	$ObjectID		25
 	$ClassName		"Simulink.Mask"
 	Type			"Relay synch check"
 	Description		"This block checks if the the specified conditions for breaker reclosing \nare met at both terminals of "
@@ -2560,7 +4453,7 @@ Library {
 	"F_threshold"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  24
+	  $ObjectID		  26
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -2570,7 +4463,7 @@ Library {
       }
       System {
 	Name			"Relay 25 - Sync Check - ext_param"
-	Location		[-8, -8, 1928, 1168]
+	Location		[1912, -8, 3848, 1208]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -3157,7 +5050,7 @@ Library {
 	      ZOrder		      -13
 	      LibraryVersion	      "1.731"
 	      UserDataPersistent      on
-	      UserData		      "DataTag1"
+	      UserData		      "DataTag2"
 	      SourceBlock	      "dspsigops/Unwrap"
 	      SourceType	      "Unwrap"
 	      tol		      "pi"
@@ -3639,7 +5532,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "46"
+	    SIDHighWatermark	    "53"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -4379,7 +6272,7 @@ Library {
     Annotation {
       SID		      "170"
       Name		      "blockfor relay with external parameters"
-      Position		      [804, 215]
+      Position		      [619, 210]
       ZOrder		      -1
     }
     Annotation {
@@ -4416,7 +6309,7 @@ Library {
   }
 }
 MatData {
-  NumRecords		  2
+  NumRecords		  3
   DataRecord {
     Tag			    DataTag0
     Data		    "  %)30     .    B     8    (     @         %    \"     $    !     0         %  0 $P    $    3    :&%S26"
@@ -4424,6 +6317,11 @@ MatData {
   }
   DataRecord {
     Tag			    DataTag1
+    Data		    "  %)30     .    B     8    (     @         %    \"     $    !     0         %  0 $P    $    3    :&%S26"
+    "YH97)I=&5D3W!T:6]N        #@   #     &    \"     D\"        !0    @    !     0    $          @ !  $    "
+  }
+  DataRecord {
+    Tag			    DataTag2
     Data		    "  %)30     .    B     8    (     @         %    \"     $    !     0         %  0 $P    $    3    :&%S26"
     "YH97)I=&5D3W!T:6]N        #@   #     &    \"     D\"        !0    @    !     0    $          @ !  $    "
   }
@@ -4440,7 +6338,7 @@ Stateflow {
     name		    "relay_ANSI_F25_lib"
     created		    "19-Apr-2016 10:15:12"
     isLibrary		    1
-    firstTarget		    20
+    firstTarget		    29
     sfVersion		    76014001.0015
   }
   chart {
@@ -4453,11 +6351,8 @@ Stateflow {
     firstTransition	    9
     firstJunction	    8
     viewObj		    2
-    visible		    1
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -4625,7 +6520,7 @@ Stateflow {
   }
   chart {
     id			    11
-    name		    "Relay 25 - Sync Check - RS/deadbus fcn"
+    name		    "R25 - Sync Check v0.1/deadbus fcn"
     windowPosition	    [541 458.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1200 1.333333333333333]
@@ -4633,16 +6528,14 @@ Stateflow {
     firstTransition	    18
     firstJunction	    17
     viewObj		    11
-    visible		    1
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
     subviewS {
     }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    13
-    chartFileNumber	    7
+    chartFileNumber	    2
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -4799,12 +6692,189 @@ Stateflow {
   }
   instance {
     id			    19
-    name		    "Relay 25 - Sync Check - RS/deadbus fcn"
+    name		    "R25 - Sync Check v0.1/deadbus fcn"
     machine		    1
     chart		    11
   }
-  target {
+  chart {
     id			    20
+    name		    "Relay 25 - Sync Check - RS/deadbus fcn"
+    windowPosition	    [541 458.75 213 385]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1200 1.333333333333333]
+    treeNode		    [0 21 0 0]
+    firstTransition	    27
+    firstJunction	    26
+    viewObj		    20
+    machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    ssIdHighWaterMark	    7
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    22
+    chartFileNumber	    7
+    disableImplicitCasting  1
+    eml {
+      name		      "fcn"
+    }
+  }
+  state {
+    id			    21
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    20
+    treeNode		    [20 0 0 0]
+    superState		    SUBCHART
+    subviewer		    20
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
+      "of charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
+      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modi"
+      "fy, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to"
+      " whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyrigh"
+      "t notice and this permission notice shall be included in \n% all copies or substantial portions of the Software."
+      "\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT "
+      "NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN N"
+      "O EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER "
+      "IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR "
+      "THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction y = fcn(Vbus, Vline, VRMSLL)\n%#codegen\nif isn"
+      "an(Vbus)\n    Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% voltage threshold for deadbus\nif VRMSLL > "
+      "400\n    threshold = VRMSLL * 0.003; % @ 0.3%\nelse\n    threshold = VRMSLL * 0.05; % @ 5%\nend\n\n% bounding op"
+      "en-circuit voltage at 120%\na = (Vbus>(VRMSLL*0.90)) && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline"
+      ">(VRMSLL*0.90)) && (Vline<(VRMSLL*1.20)) && (Vbus < threshold);\nc = (Vline < threshold) && (Vbus < threshold);\n"
+      "y = a||b||c;\n"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    22
+    ssIdNumber		    4
+    name		    "Vbus"
+    linkNode		    [20 0 23]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    23
+    ssIdNumber		    5
+    name		    "y"
+    linkNode		    [20 22 24]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    24
+    ssIdNumber		    6
+    name		    "Vline"
+    linkNode		    [20 23 25]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    25
+    ssIdNumber		    7
+    name		    "VRMSLL"
+    linkNode		    [20 24 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    26
+    position		    [23.5747 49.5747 7]
+    chart		    20
+    linkNode		    [20 0 0]
+    subviewer		    20
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    27
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      26
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    20
+    linkNode		    [20 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    20
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  instance {
+    id			    28
+    name		    "Relay 25 - Sync Check - RS/deadbus fcn"
+    machine		    1
+    chart		    20
+  }
+  target {
+    id			    29
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
