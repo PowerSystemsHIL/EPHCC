@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [478.0, 203.0, 1932.0, 1056.0]
+      Location		      [71.0, 138.0, 1932.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Sep 01 21:45:29 2016"
-  RTWModifiedTimeStamp	  394666027
-  ModelVersionFormat	  "1.%<AutoIncrement:17>"
+  LastModifiedDate	  "Wed Sep 07 15:45:25 2016"
+  RTWModifiedTimeStamp	  395163656
+  ModelVersionFormat	  "1.%<AutoIncrement:19>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -830,7 +830,7 @@ Library {
   }
   System {
     Name		    "Motor_InductionMachine_lib"
-    Location		    [478, 203, 2410, 1259]
+    Location		    [71, 138, 2003, 1194]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -844,10 +844,10 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "226"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "124"
+    SIDHighWatermark	    "126"
     Block {
       BlockType		      SubSystem
-      Name		      "InsrumentedMotor"
+      Name		      "InstrumentedMotor"
       SID		      "106"
       Ports		      [2, 2, 0, 0, 0, 3]
       Position		      [540, 182, 690, 278]
@@ -862,8 +862,8 @@ Library {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"InsrumentedMotor"
-	Location		[-8, -8, 1928, 1048]
+	Name			"InstrumentedMotor"
+	Location		[71, 138, 2003, 1194]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1320,7 +1320,7 @@ Library {
 	      ZOrder		      1
 	      BackgroundColor	      "lightBlue"
 	      AttributesFormatString  "%<BlockChoice>"
-	      BlockChoice	      "Discrete Trapezoidal"
+	      BlockChoice	      "Continuous"
 	      TemplateBlock	      "spsAsynchronousMachineModel/Electrical model"
 	      MemberBlocks	      "Continuous,Continuous double-cage,Discrete,Discrete Trapezoidal,Discrete double-cage,Phasor"
 	      ",Phasor double-cage"
@@ -1366,14 +1366,14 @@ Library {
 		}
 		Block {
 		  BlockType		  Reference
-		  Name			  "Discrete Trapezoidal"
-		  SID			  "109:225::29233"
+		  Name			  "Continuous"
+		  SID			  "109:225::29230"
 		  Ports			  [2, 3]
 		  Position		  [100, 40, 140, 80]
-		  ZOrder		  14
+		  ZOrder		  17
 		  BackgroundColor	  "lightBlue"
 		  LibraryVersion	  "1.150"
-		  SourceBlock		  "spsAsynchronousMachineModel/Discrete Trapezoidal"
+		  SourceBlock		  "spsAsynchronousMachineModel/Continuous"
 		  SourceType		  "SubSystem"
 		}
 		Block {
@@ -1403,33 +1403,33 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
-		  SrcPort		  3
-		  DstBlock		  "Te"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
-		  SrcPort		  2
-		  DstBlock		  "m"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
+		  SrcBlock		  "v"
 		  SrcPort		  1
-		  DstBlock		  "i"
+		  DstBlock		  "Continuous"
 		  DstPort		  1
 		}
 		Line {
 		  SrcBlock		  "input"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Trapezoidal"
+		  DstBlock		  "Continuous"
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "v"
+		  SrcBlock		  "Continuous"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Trapezoidal"
+		  DstBlock		  "i"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous"
+		  SrcPort		  2
+		  DstBlock		  "m"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous"
+		  SrcPort		  3
+		  DstBlock		  "Te"
 		  DstPort		  1
 		}
 	      }
@@ -1556,7 +1556,7 @@ Library {
 	      ZOrder		      -7
 	      BackgroundColor	      "green"
 	      AttributesFormatString  "%<BlockChoice>"
-	      BlockChoice	      "Discrete Tm input Trapezoidal"
+	      BlockChoice	      "Continuous Tm input"
 	      TemplateBlock	      "spsAsynchronousMachineModel/Mechanical model"
 	      MemberBlocks	      "Continuous Tm input,Continuous w input,Discrete Tm input,Discrete Tm input Trapezoidal,Disc"
 	      "rete w input,Phasor Shaft input,Phasor Tm input,Phasor w input,Shaft input,Shaft input BAL"
@@ -1602,18 +1602,15 @@ Library {
 		}
 		Block {
 		  BlockType		  Reference
-		  Name			  "Discrete Tm input Trapezoidal"
-		  SID			  "109:153::545"
+		  Name			  "Continuous Tm input"
+		  SID			  "109:153::251"
 		  Ports			  [2, 2]
 		  Position		  [100, 40, 140, 80]
-		  ZOrder		  -8
+		  ZOrder		  -3
 		  BackgroundColor	  "green"
 		  LibraryVersion	  "1.150"
-		  FontSize		  11
-		  SourceBlock		  "spsAsynchronousMachineModel/Discrete Tm input Trapezoidal"
-		  SourceType		  ""
-		  SM			  "SM"
-		  Ts			  "Ts"
+		  SourceBlock		  "spsAsynchronousMachineModel/Continuous Tm input"
+		  SourceType		  "SubSystem"
 		}
 		Block {
 		  BlockType		  PMIOPort
@@ -1643,27 +1640,27 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Discrete Tm input Trapezoidal"
-		  SrcPort		  2
-		  DstBlock		  "thr,wr"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Tm input Trapezoidal"
+		  SrcBlock		  "input"
 		  SrcPort		  1
-		  DstBlock		  "m"
+		  DstBlock		  "Continuous Tm input"
 		  DstPort		  1
 		}
 		Line {
 		  SrcBlock		  "Te"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Tm input Trapezoidal"
+		  DstBlock		  "Continuous Tm input"
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "input"
+		  SrcBlock		  "Continuous Tm input"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Tm input Trapezoidal"
+		  DstBlock		  "m"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous Tm input"
+		  SrcPort		  2
+		  DstBlock		  "thr,wr"
 		  DstPort		  1
 		}
 	      }
@@ -1860,17 +1857,6 @@ Library {
 	}
 	Block {
 	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator"
-	  SID			  "110"
-	  Ports			  [1, 1]
-	  Position		  [395, 221, 400, 259]
-	  ZOrder		  2943
-	  ShowName		  off
-	  Inputs		  "1"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "111"
 	  Ports			  [4, 1]
@@ -1996,11 +1982,10 @@ Library {
 	  Position		  [435, 333, 490, 417]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[3 3]./60"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -2182,16 +2167,10 @@ Library {
 	}
 	Line {
 	  Name			  "Logic_trip"
-	  Labels		  [1, 1]
+	  Labels		  [0, 0]
 	  SrcBlock		  "CB Trip Signal"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Bus\nCreator"
-	  SrcPort		  1
-	  Points		  [7, 0; 0, 105]
+	  Points		  [80, 0; 0, 105]
 	  DstBlock		  "motor_cb"
 	  DstPort		  1
 	}
@@ -2282,7 +2261,7 @@ Library {
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
       AncestorBlock	      "motor_lib/Motor"
-      LibraryVersion	      "1.15"
+      LibraryVersion	      "*1.15"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2292,7 +2271,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Motor"
-	Location		[35, 104, 2303, 1367]
+	Location		[71, 138, 2003, 1194]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2750,7 +2729,7 @@ Library {
 	      ZOrder		      1
 	      BackgroundColor	      "lightBlue"
 	      AttributesFormatString  "%<BlockChoice>"
-	      BlockChoice	      "Discrete Trapezoidal"
+	      BlockChoice	      "Continuous"
 	      TemplateBlock	      "spsAsynchronousMachineModel/Electrical model"
 	      MemberBlocks	      "Continuous,Continuous double-cage,Discrete,Discrete Trapezoidal,Discrete double-cage,Phasor"
 	      ",Phasor double-cage"
@@ -2796,14 +2775,14 @@ Library {
 		}
 		Block {
 		  BlockType		  Reference
-		  Name			  "Discrete Trapezoidal"
-		  SID			  "2:91:225::29233"
+		  Name			  "Continuous"
+		  SID			  "2:91:225::29230"
 		  Ports			  [2, 3]
 		  Position		  [100, 40, 140, 80]
-		  ZOrder		  14
+		  ZOrder		  17
 		  BackgroundColor	  "lightBlue"
 		  LibraryVersion	  "1.150"
-		  SourceBlock		  "spsAsynchronousMachineModel/Discrete Trapezoidal"
+		  SourceBlock		  "spsAsynchronousMachineModel/Continuous"
 		  SourceType		  "SubSystem"
 		}
 		Block {
@@ -2833,33 +2812,33 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
-		  SrcPort		  3
-		  DstBlock		  "Te"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
-		  SrcPort		  2
-		  DstBlock		  "m"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Trapezoidal"
+		  SrcBlock		  "v"
 		  SrcPort		  1
-		  DstBlock		  "i"
+		  DstBlock		  "Continuous"
 		  DstPort		  1
 		}
 		Line {
 		  SrcBlock		  "input"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Trapezoidal"
+		  DstBlock		  "Continuous"
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "v"
+		  SrcBlock		  "Continuous"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Trapezoidal"
+		  DstBlock		  "i"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous"
+		  SrcPort		  2
+		  DstBlock		  "m"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous"
+		  SrcPort		  3
+		  DstBlock		  "Te"
 		  DstPort		  1
 		}
 	      }
@@ -2872,7 +2851,7 @@ Library {
 	      ZOrder		      -4
 	      BackgroundColor	      "cyan"
 	      CloseFcn		      "tagdialog Close"
-	      GotoTag		      "tp93306169_01f8_45eb_a96b_63de074ed08d"
+	      GotoTag		      "LibraryTag"
 	      TagVisibility	      "global"
 	    }
 	    Block {
@@ -2882,7 +2861,7 @@ Library {
 	      Position		      [790, 148, 860, 172]
 	      ZOrder		      -5
 	      BackgroundColor	      "cyan"
-	      GotoTag		      "tp1667c7c0_f6c6_48ea_a24a_38b15e5e989c"
+	      GotoTag		      "LibraryTag"
 	      TagVisibility	      "global"
 	    }
 	    Block {
@@ -2986,7 +2965,7 @@ Library {
 	      ZOrder		      -7
 	      BackgroundColor	      "green"
 	      AttributesFormatString  "%<BlockChoice>"
-	      BlockChoice	      "Discrete Tm input Trapezoidal"
+	      BlockChoice	      "Continuous Tm input"
 	      TemplateBlock	      "spsAsynchronousMachineModel/Mechanical model"
 	      MemberBlocks	      "Continuous Tm input,Continuous w input,Discrete Tm input,Discrete Tm input Trapezoidal,Disc"
 	      "rete w input,Phasor Shaft input,Phasor Tm input,Phasor w input,Shaft input,Shaft input BAL"
@@ -3032,18 +3011,15 @@ Library {
 		}
 		Block {
 		  BlockType		  Reference
-		  Name			  "Discrete Tm input Trapezoidal"
-		  SID			  "2:91:153::545"
+		  Name			  "Continuous Tm input"
+		  SID			  "2:91:153::251"
 		  Ports			  [2, 2]
 		  Position		  [100, 40, 140, 80]
-		  ZOrder		  -8
+		  ZOrder		  -3
 		  BackgroundColor	  "green"
 		  LibraryVersion	  "1.150"
-		  FontSize		  11
-		  SourceBlock		  "spsAsynchronousMachineModel/Discrete Tm input Trapezoidal"
-		  SourceType		  ""
-		  SM			  "SM"
-		  Ts			  "Ts"
+		  SourceBlock		  "spsAsynchronousMachineModel/Continuous Tm input"
+		  SourceType		  "SubSystem"
 		}
 		Block {
 		  BlockType		  PMIOPort
@@ -3073,27 +3049,27 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Discrete Tm input Trapezoidal"
-		  SrcPort		  2
-		  DstBlock		  "thr,wr"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Discrete Tm input Trapezoidal"
+		  SrcBlock		  "input"
 		  SrcPort		  1
-		  DstBlock		  "m"
+		  DstBlock		  "Continuous Tm input"
 		  DstPort		  1
 		}
 		Line {
 		  SrcBlock		  "Te"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Tm input Trapezoidal"
+		  DstBlock		  "Continuous Tm input"
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "input"
+		  SrcBlock		  "Continuous Tm input"
 		  SrcPort		  1
-		  DstBlock		  "Discrete Tm input Trapezoidal"
+		  DstBlock		  "m"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Continuous Tm input"
+		  SrcPort		  2
+		  DstBlock		  "thr,wr"
 		  DstPort		  1
 		}
 	      }
@@ -3290,17 +3266,6 @@ Library {
 	}
 	Block {
 	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator"
-	  SID			  "2:92"
-	  Ports			  [1, 1]
-	  Position		  [395, 221, 400, 259]
-	  ZOrder		  2943
-	  ShowName		  off
-	  Inputs		  "1"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "2:93"
 	  Ports			  [4, 1]
@@ -3426,11 +3391,10 @@ Library {
 	  Position		  [435, 333, 490, 417]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.462"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[3 3]./60"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -3603,16 +3567,10 @@ Library {
 	}
 	Line {
 	  Name			  "Logic_trip"
-	  Labels		  [1, 1]
+	  Labels		  [0, 0]
 	  SrcBlock		  "CB Trip Signal"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Bus\nCreator"
-	  SrcPort		  1
-	  Points		  [7, 0; 0, 105]
+	  Points		  [80, 0; 0, 105]
 	  DstBlock		  "motor_cb"
 	  DstPort		  1
 	}
