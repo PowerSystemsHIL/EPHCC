@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 07 10:39:30 2016"
-  RTWModifiedTimeStamp	  395145541
-  ModelVersionFormat	  "1.%<AutoIncrement:508>"
+  LastModifiedDate	  "Wed Sep 07 17:46:23 2016"
+  RTWModifiedTimeStamp	  395171151
+  ModelVersionFormat	  "1.%<AutoIncrement:509>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -935,16 +935,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "231"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82653"
+    SIDHighWatermark	    "82668"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      3017
+      ZOrder		      1957
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.506"
+      LibraryVersion	      "*1.508"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -999,7 +999,7 @@ Library {
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[1912, -8, 3848, 1208]
+	Location		[-8, 0, 1928, 1176]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1011,12 +1011,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"46"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
 	  SID			  "82310"
-	  Position		  [40, 363, 70, 377]
+	  Position		  [35, 383, 65, 397]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
@@ -1116,11 +1116,11 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "82317"
-	  Ports			  [1, 3]
-	  Position		  [130, 327, 140, 413]
+	  Ports			  [1, 4]
+	  Position		  [130, 329, 135, 451]
 	  ZOrder		  -3
 	  ShowName		  off
-	  OutputSignals		  "Iabc,Vabc_bus,Vabc_line"
+	  OutputSignals		  "Iabc,Vabc_bus,Vabc_line,Status"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<Iabc>"
@@ -1136,6 +1136,12 @@ Library {
 	  Port {
 	    PortNumber		    3
 	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Status>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1203,7 +1209,7 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion2"
 	  SID			  "82326"
-	  Position		  [685, 1395, 735, 1415]
+	  Position		  [580, 1415, 630, 1435]
 	  ZOrder		  -5
 	  ShowName		  off
 	  RndMeth		  "Floor"
@@ -1223,7 +1229,7 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion4"
 	  SID			  "82328"
-	  Position		  [645, 1255, 695, 1275]
+	  Position		  [645, 1230, 695, 1250]
 	  ZOrder		  -5
 	  ShowName		  off
 	  RndMeth		  "Floor"
@@ -1256,7 +1262,7 @@ Library {
 	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "Status"
+	    Name		    "trip_cmd"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1265,10 +1271,22 @@ Library {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "82332"
-	  Ports			  [1, 4]
-	  Position		  [730, 1181, 740, 1349]
+	  Ports			  [1, 5]
+	  Position		  [730, 1156, 740, 1324]
 	  ZOrder		  -6
 	  ShowName		  off
+	  Outputs		  "5"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  SID			  "82661"
+	  Ports			  [1, 2]
+	  Position		  [665, 1376, 675, 1474]
+	  ZOrder		  3110
+	  ShowName		  off
+	  Outputs		  "2"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1334,6 +1352,7 @@ Library {
 	  Ports			  [2, 1]
 	  Position		  [2995, 1252, 3025, 1283]
 	  ZOrder		  1609
+	  ShowName		  off
 	  Inputs		  "*/"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1627,7 +1646,7 @@ Library {
 	  Position		  [2425, 1324, 2505, 1346]
 	  ZOrder		  -9
 	  ShowName		  off
-	  GotoTag		  "Status"
+	  GotoTag		  "trip_cmd"
 	}
 	Block {
 	  BlockType		  From
@@ -1680,7 +1699,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From39"
 	  SID			  "82370"
-	  Position		  [520, 1196, 580, 1214]
+	  Position		  [480, 1191, 540, 1209]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "R50"
@@ -1707,7 +1726,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From41"
 	  SID			  "82373"
-	  Position		  [520, 1236, 580, 1254]
+	  Position		  [480, 1231, 540, 1249]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "R51"
@@ -1732,7 +1751,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From43"
 	  SID			  "82375"
-	  Position		  [520, 1276, 580, 1294]
+	  Position		  [480, 1271, 540, 1289]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "R27"
@@ -1792,10 +1811,10 @@ Library {
 	  BlockType		  From
 	  Name			  "From49"
 	  SID			  "82381"
-	  Position		  [575, 1396, 635, 1414]
+	  Position		  [410, 1391, 470, 1409]
 	  ZOrder		  -9
 	  ShowName		  off
-	  GotoTag		  "Status"
+	  GotoTag		  "trip_cmd"
 	}
 	Block {
 	  BlockType		  From
@@ -1946,7 +1965,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From61"
 	  SID			  "82395"
-	  Position		  [520, 1316, 580, 1334]
+	  Position		  [480, 1311, 540, 1329]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "R59"
@@ -2061,6 +2080,24 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From73"
+	  SID			  "82655"
+	  Position		  [480, 1151, 540, 1169]
+	  ZOrder		  3104
+	  ShowName		  off
+	  GotoTag		  "R25"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From74"
+	  SID			  "82659"
+	  Position		  [410, 1441, 470, 1459]
+	  ZOrder		  3108
+	  ShowName		  off
+	  GotoTag		  "cb_state"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From76"
 	  SID			  "82652"
 	  Position		  [2855, 764, 2935, 786]
@@ -2097,10 +2134,10 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "82402"
-	  Position		  [820, 1230, 850, 1260]
+	  Position		  [790, 1225, 820, 1255]
 	  ZOrder		  -8
 	  ShowName		  off
-	  Gain			  "2^3"
+	  Gain			  "2^2"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -2157,22 +2194,28 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain13"
 	  SID			  "82407"
-	  Position		  [805, 1310, 835, 1340]
+	  Position		  [790, 1435, 820, 1465]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "2"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "52A"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Gain
 	  Name			  "Gain14"
-	  SID			  "82408"
-	  Position		  [775, 1390, 815, 1420]
-	  ZOrder		  -8
+	  SID			  "82662"
+	  Position		  [790, 1295, 820, 1325]
+	  ZOrder		  3111
 	  ShowName		  off
-	  Gain			  "2^14"
+	  Gain			  "2^4"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -2241,7 +2284,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain2"
 	  SID			  "82590"
-	  Position		  [2925, 1290, 2955, 1310]
+	  Position		  [2925, 1290, 2960, 1310]
 	  ZOrder		  1611
 	  ShowName		  off
 	  Gain			  "1/1.732"
@@ -2272,6 +2315,48 @@ Library {
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain22"
+	  SID			  "82656"
+	  Position		  [790, 1260, 820, 1290]
+	  ZOrder		  3105
+	  ShowName		  off
+	  Gain			  "2^3"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain23"
+	  SID			  "82657"
+	  Position		  [790, 1190, 820, 1220]
+	  ZOrder		  3106
+	  ShowName		  off
+	  Gain			  "2"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain24"
+	  SID			  "82666"
+	  Position		  [790, 1485, 820, 1515]
+	  ZOrder		  3115
+	  ShowName		  off
+	  Gain			  "2^2"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "52B"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Gain
@@ -2361,7 +2446,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "82424"
-	  Position		  [210, 359, 260, 381]
+	  Position		  [210, 364, 260, 386]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Vabc"
@@ -2370,7 +2455,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "82425"
-	  Position		  [205, 330, 260, 350]
+	  Position		  [205, 335, 260, 355]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Iabc"
@@ -2535,7 +2620,7 @@ Library {
 	  Position		  [3490, 691, 3550, 709]
 	  ZOrder		  -10
 	  ShowName		  off
-	  GotoTag		  "Status"
+	  GotoTag		  "trip_cmd"
 	}
 	Block {
 	  BlockType		  Goto
@@ -2559,7 +2644,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto29"
 	  SID			  "82446"
-	  Position		  [195, 390, 260, 410]
+	  Position		  [195, 395, 260, 415]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Vabc_line"
@@ -2712,6 +2797,15 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto44"
+	  SID			  "82654"
+	  Position		  [195, 425, 260, 445]
+	  ZOrder		  3103
+	  ShowName		  off
+	  GotoTag		  "cb_state"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto5"
 	  SID			  "82457"
 	  Position		  [280, 992, 330, 1008]
@@ -2754,6 +2848,19 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "op_mode"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "82667"
+	  Ports			  [1, 1]
+	  Position		  [730, 1444, 760, 1456]
+	  ZOrder		  3116
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Logic
@@ -2836,10 +2943,11 @@ Library {
 	  BlockType		  Mux
 	  Name			  "Mux"
 	  SID			  "82470"
-	  Ports			  [4, 1]
-	  Position		  [605, 1180, 610, 1350]
+	  Ports			  [5, 1]
+	  Position		  [600, 1140, 605, 1340]
 	  ZOrder		  -12
 	  ShowName		  off
+	  Inputs		  "5"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -2860,6 +2968,17 @@ Library {
 	  Ports			  [2, 1]
 	  Position		  [2840, 1586, 2845, 1639]
 	  ZOrder		  -12
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux3"
+	  SID			  "82660"
+	  Ports			  [2, 1]
+	  Position		  [530, 1374, 535, 1476]
+	  ZOrder		  3109
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
@@ -3767,12 +3886,11 @@ Library {
 	  BlockType		  Sum
 	  Name			  "Sum"
 	  SID			  "82523"
-	  Ports			  [2, 1]
-	  Position		  [880, 1195, 900, 1215]
+	  Ports			  [5, 1]
+	  Position		  [865, 1148, 905, 1332]
 	  ZOrder		  -32
 	  ShowName		  off
-	  IconShape		  "round"
-	  Inputs		  "|++"
+	  Inputs		  "+++++"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -3782,7 +3900,7 @@ Library {
 	  Name			  "Sum1"
 	  SID			  "82524"
 	  Ports			  [3, 1]
-	  Position		  [925, 1264, 955, 1376]
+	  Position		  [875, 1378, 915, 1522]
 	  ZOrder		  -32
 	  ShowName		  off
 	  Inputs		  "+++"
@@ -4337,6 +4455,158 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "Gain13"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [0, 50]
+	    DstBlock		    "Gain24"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Logical\nOperator"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "52B"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain24"
+	  SrcPort		  1
+	  DstBlock		  "Sum1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From74"
+	  SrcPort		  1
+	  DstBlock		  "Mux3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From49"
+	  SrcPort		  1
+	  DstBlock		  "Mux3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  5
+	  DstBlock		  "Gain14"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain14"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion2"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  DstBlock		  "Sum1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "52A"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain13"
+	  SrcPort		  1
+	  DstBlock		  "Sum1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux3"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain22"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Gain23"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  4
+	  DstBlock		  "Gain22"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Gain23"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From61"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "From43"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "From41"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From39"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From73"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  4
+	  DstBlock		  "Goto44"
+	  DstPort		  1
+	}
+	Line {
 	  Name			  "trip_out"
 	  Labels		  [1, 1]
 	  SrcBlock		  "State Condition Mng"
@@ -4628,30 +4898,15 @@ Library {
 	Line {
 	  SrcBlock		  "Sum1"
 	  SrcPort		  1
-	  Points		  [40, 0]
+	  Points		  [46, 0; 0, -170]
 	  DstBlock		  "Memory2"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Gain13"
-	  SrcPort		  1
-	  Points		  [70, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "Sum"
 	  SrcPort		  1
-	  Points		  [95, 0]
 	  DstBlock		  "Memory9"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Gain"
-	  SrcPort		  1
-	  Points		  [35, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  2
 	}
 	Line {
 	  Name			  "51"
@@ -4670,18 +4925,6 @@ Library {
 	  }
 	}
 	Line {
-	  SrcBlock		  "From39"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From41"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
 	  DstBlock		  "Data Type Conversion4"
@@ -4691,24 +4934,6 @@ Library {
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
 	  DstBlock		  "Sum"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  2
-	  DstBlock		  "Gain"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  3
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  4
-	  DstBlock		  "Gain13"
 	  DstPort		  1
 	}
 	Line {
@@ -4995,18 +5220,6 @@ Library {
 	  DstPort		  23
 	}
 	Line {
-	  SrcBlock		  "Data Type Conversion2"
-	  SrcPort		  1
-	  DstBlock		  "Gain14"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From49"
-	  SrcPort		  1
-	  DstBlock		  "Data Type Conversion2"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Vabc_bus1"
 	  SrcPort		  1
 	  DstBlock		  "R25 - Sync Check v0.1"
@@ -5206,7 +5419,7 @@ Library {
 	  DstPort		  7
 	}
 	Line {
-	  Name			  "Status"
+	  Name			  "trip_cmd"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Data Type Conversion6"
 	  SrcPort		  1
@@ -5304,25 +5517,6 @@ Library {
 	  SrcPort		  4
 	  DstBlock		  "Goto30"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From43"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From61"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Gain14"
-	  SrcPort		  1
-	  Points		  [55, 0; 0, -50]
-	  DstBlock		  "Sum1"
-	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "Mux2"
@@ -5460,7 +5654,7 @@ Library {
 	Line {
 	  SrcBlock		  "Gain2"
 	  SrcPort		  1
-	  Points		  [20, 0]
+	  Points		  [15, 0]
 	  DstBlock		  "Divide2"
 	  DstPort		  2
 	}
@@ -5576,8 +5770,12 @@ Library {
 	}
 	Annotation {
 	  SID			  "82561"
-	  Name			  "Reg 24: bit 14 = true then breaker is closed"
-	  Position		  [679, 1443]
+	  Name			  "TRIP STATUS LO - Register Num.: 23\nBit 0 = 25  (1: synch, 0: not synch)\nBit 1 = 50P (1: trip, 0: not tr"
+	  "ip)\nBit 2 = 51P (1: trip, 0: not trip)\nBit 3 = 27P (1: trip, 0: not trip)\nBit 4 = 59P (1: trip, 0: not trip)\n\n"
+	  "TRIP STATUS HI - Register Num.: 24\nBit 0 = trip_cmd  (1: close, 0: open)\nBit 1 = 52A (1: open, 0: close)\nBit 2 ="
+	  " 52B (1: close, 0: open)"
+	  Position		  [448, 1648]
+	  HorizontalAlignment	  "left"
 	  DropShadow		  on
 	  ZOrder		  -5
 	  FontName		  "Courier New"
