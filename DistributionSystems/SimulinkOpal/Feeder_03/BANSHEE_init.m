@@ -37,3 +37,8 @@ cable_impedance_init;
 %% adds the component folders to the path
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development 
 % components_path_init;
+
+%% circuit breaker delays
+% breaker mechanical delay in seconds
+%  - format: [open_delay, close_delay]
+cb_mech_delay = [5, 5]./60;
