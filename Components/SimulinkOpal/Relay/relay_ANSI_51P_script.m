@@ -41,8 +41,11 @@ y = relay_TCC( timeDial, M , curveType);
 % selecting the smallest trip time
 t51 = min(y(1:3));
 % reset the timer if the Irms is less than the pickup current
+% the relay counter needs to indicate the line current to be above
+% pickup current for longer than t51. To act as reset, t51 is assigned 
+% a large value
 if t51 < 0
-    t51 = 0;
+    t51 = 1E6;
 end
 
 % check signal threshold
