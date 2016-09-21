@@ -21,6 +21,7 @@
 %%
 
 components_path_init;
+TestProcedure_xlsRead;
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
