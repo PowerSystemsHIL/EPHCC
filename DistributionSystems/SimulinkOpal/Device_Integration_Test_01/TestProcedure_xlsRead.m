@@ -4,7 +4,9 @@
 % Date: 8/16/2016
 
 [num, txt, raw] = xlsread('TestProcedure_detailed','v1'); %v1 is the sheet name in the excel file
-
+%
+clear time_vec POI_all diesel solarIrr solarBreaker CHP load_gain motor1 motor2 fault_all dso* ; %clear old stuff
+%
 %% Column number variables - in case sheet gets reformatted
 % the third row of the excel sheet is where to search for the column names
 

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.337"
+    ComputedModelVersion    "1.338"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -61,7 +61,7 @@ Model {
 	  LoadSaveID		  "0"
 	  Extents		  [1299.0, 1225.0]
 	  ZoomFactor		  [0.80987821380243585]
-	  Offset		  [-10.972431077694146, 1.7134502923976598]
+	  Offset		  [-10.972431077694182, 1.7134502923976243]
 	}
 	Object {
 	  $ObjectID		  6
@@ -95,9 +95,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Sep 20 11:09:51 2016"
-  RTWModifiedTimeStamp	  396270581
-  ModelVersionFormat	  "1.%<AutoIncrement:337>"
+  LastModifiedDate	  "Wed Sep 21 10:02:06 2016"
+  RTWModifiedTimeStamp	  396352913
+  ModelVersionFormat	  "1.%<AutoIncrement:338>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1021,7 +1021,7 @@ Model {
       Name		      "DMS Modbus  device"
       SID		      "109"
       Ports		      [4, 2]
-      Position		      [1310, 1057, 1455, 1198]
+      Position		      [1310, 1061, 1455, 1204]
       ZOrder		      2917
       LibraryVersion	      "1.13"
       SourceBlock	      "rtio_generic_modbus/Modbus device"
@@ -2657,7 +2657,10 @@ Stateflow {
     firstTransition	    10
     firstJunction	    9
     viewObj		    2
+    visible		    1
     machine		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    8
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -2710,17 +2713,15 @@ Stateflow {
       "end\n\n\nif n > numCMDs   %do nothing if we have exhausted all commands\n    n1 = n;\nelse\n    if u > time(n) %"
       " when the simulation time is greater than the command signal time, execute set_param\n        n1 = n+1; % increm"
       "ent to next command to execute\n        \n        %parameters to set within simulink model\n        set_param('t"
-      "estScript_model/TestSequenceCommands','diesel_breaker',num2str(CMD_signals(n,5)),'pv_breaker',num2str(CMD_signal"
-      "s(n,7)),'CHP_breaker',num2str(CMD_signals(n,8)),'load_gain',num2str(CMD_signals(n,9)),'motor1_breaker',num2str(C"
-      "MD_signals(n,10)),'motor2_breaker',num2str(CMD_signals(n,11)),'fault1',num2str(CMD_signals(n,12)),'fault2',num2s"
-      "tr(CMD_signals(n,13)),'fault3',num2str(CMD_signals(n,14)),'fault4',num2str(CMD_signals(n,15)),'fault5',num2str(C"
-      "MD_signals(n,16)),'fault6',num2str(CMD_signals(n,17)),'fault7',num2str(CMD_signals(n,18)),'fault8',num2str(CMD_s"
-      "ignals(n,19))); \n%%%\n        set_param('testScript_model/DMSCommandsToMGC','DSO_Start_Time',num2str(CMD_signal"
-      "s(n,31)),'DSO_Duration',num2str(CMD_signals(n,32)),'DSO_Disconnect',num2str(CMD_signals(n,20)),'DSO_Export',num2"
-      "str(CMD_signals(n,22)),'Import_Export_Value',num2str(CMD_signals(n,27)),'DSO_PF_Support',num2str(CMD_signals(n,2"
-      "4)),'PF_Value',num2str(CMD_signals(n,28)),'DSO_VAR_Support',num2str(CMD_signals(n,25)),'VAR_Value',num2str(CMD_s"
-      "ignals(n,30)));\n        \n        \n     else  % wait until the simulation time has eclisped the next command t"
-      "ime\n        n1 = n; \n    end\nend\n\n"
+      "estScript_model/TestSequenceCommands','load_gain',num2str(CMD_signals(n,9)),'fault1',num2str(CMD_signals(n,12)),"
+      "'fault2',num2str(CMD_signals(n,13)),'fault3',num2str(CMD_signals(n,14)),'fault4',num2str(CMD_signals(n,15)),'fau"
+      "lt5',num2str(CMD_signals(n,16)),'fault6',num2str(CMD_signals(n,17)),'fault7',num2str(CMD_signals(n,18)),'fault8'"
+      ",num2str(CMD_signals(n,19))); \n%%%\n        set_param('testScript_model/DMSCommandsToMGC','DSO_Start_Time',num2"
+      "str(CMD_signals(n,31)),'DSO_Duration',num2str(CMD_signals(n,32)),'DSO_Disconnect',num2str(CMD_signals(n,20)),'DS"
+      "O_Export',num2str(CMD_signals(n,22)),'Import_Export_Value',num2str(CMD_signals(n,27)),'DSO_PF_Support',num2str(C"
+      "MD_signals(n,24)),'PF_Value',num2str(CMD_signals(n,28)),'DSO_VAR_Support',num2str(CMD_signals(n,25)),'VAR_Value'"
+      ",num2str(CMD_signals(n,30)));\n        \n        \n     else  % wait until the simulation time has eclisped the "
+      "next command time\n        n1 = n; \n    end\nend\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
