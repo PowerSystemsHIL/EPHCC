@@ -38,7 +38,10 @@ cable_impedance_init;
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development 
 % components_path_init;
 
+
 %% circuit breaker delays
-% breaker mechanical delay in seconds
-%  - format: [open_delay, close_delay]
-cb_mech_delay = [5, 5]./60;
+% breaker mechanical open/close delay in seconds
+% different delays may be applied to each breaker, however,
+% for convenience it is assumed all breaker have the same delay 
+cb_mech_delay = 5/60;
+
