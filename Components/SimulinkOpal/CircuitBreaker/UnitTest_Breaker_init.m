@@ -26,6 +26,8 @@ Ts = 100E-6; % integration time
 
 
 %% circuit breaker delays
-% breaker mechanical delay in seconds
-%  - format: [open_delay, close_delay]
-cb_mech_delay = [5, 5]./60;
+% breaker mechanical open/close delay in seconds
+% different delays may be applied to each breaker, however,
+% for convenience it is assumed all breaker have the same delay 
+cb_mech_delay = 5/60;
+

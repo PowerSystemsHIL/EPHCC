@@ -22,10 +22,10 @@
 
 function UnitTest_Breaker_Plots()
 
-file_name = 'CB_SeriesLoad';
-cb_plots(file_name, 0);
-file_name = 'CB_ParallelLoad';
-cb_plots(file_name, 0);
+% file_name = 'CB_SeriesLoad';
+% cb_plots(file_name, 0);
+% file_name = 'CB_ParallelLoad';
+% cb_plots(file_name, 0);
 file_name = 'CB_DynamicLoad';
 cb_plots(file_name, 0);
 
