@@ -13,6 +13,7 @@ Ts = 100E-6;
 % hold these settings that will be called from the software relays
 relay_settings_init;
 cb_mech_delay=[3 3]./60;
+TestProcedure_xlsRead;
 
 
 
