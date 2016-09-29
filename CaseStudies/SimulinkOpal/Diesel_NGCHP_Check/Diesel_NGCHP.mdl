@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2675"
+    ComputedModelVersion    "1.2676"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1216.0]
+      Location		      [1912.0, 0.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Sep 29 12:13:46 2016"
-  RTWModifiedTimeStamp	  397051875
-  ModelVersionFormat	  "1.%<AutoIncrement:2675>"
+  LastModifiedDate	  "Thu Sep 29 12:37:32 2016"
+  RTWModifiedTimeStamp	  397053447
+  ModelVersionFormat	  "1.%<AutoIncrement:2676>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1126,7 +1126,7 @@ Model {
   }
   System {
     Name		    "Diesel_NGCHP"
-    Location		    [1912, -8, 3848, 1208]
+    Location		    [1912, 0, 3848, 1216]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
@@ -1140,7 +1140,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "217"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "28231"
+    SIDHighWatermark	    "28232"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -16864,6 +16864,7 @@ Model {
 		    Name		    "NG-CHP -> Gen1"
 		    Position		    [348, 175]
 		    ForegroundColor	    "red"
+		    ZOrder		    -1
 		    FontSize		    18
 		    FontWeight		    "bold"
 		    }
@@ -18838,7 +18839,7 @@ Model {
       }
       System {
 	Name			"SS_signals"
-	Location		[1912, -8, 3848, 1208]
+	Location		[1912, 0, 3848, 1216]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -18850,7 +18851,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"115"
+	ZoomFactor		"120"
 	Block {
 	  BlockType		  Inport
 	  Name			  "ScaledSignals"
@@ -19183,6 +19184,13 @@ Model {
 	  ZOrder		  3001
 	  ShowName		  off
 	  GotoTag		  "NGCHP_ScaledSignals"
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory"
+	  SID			  "28232"
+	  Position		  [2440, 1365, 2470, 1395]
+	  ZOrder		  3289
 	}
 	Block {
 	  BlockType		  Reference
@@ -19961,7 +19969,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "WoodwardBias"
 	  SID			  "28224"
-	  Position		  [2455, 1373, 2485, 1387]
+	  Position		  [2515, 1373, 2545, 1387]
 	  ZOrder		  3288
 	  IconDisplay		  "Port number"
 	}
@@ -20096,7 +20104,6 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Demux1"
 	  SrcPort		  1
-	  Points		  [145, 0]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
 	}
@@ -20105,7 +20112,6 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Demux1"
 	  SrcPort		  2
-	  Points		  [145, 0]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  2
 	}
@@ -20127,6 +20133,12 @@ Model {
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  DstBlock		  "Memory"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Memory"
 	  SrcPort		  1
 	  DstBlock		  "WoodwardBias"
 	  DstPort		  1
@@ -20161,7 +20173,7 @@ Model {
       DropShadow	      on
       ShowName		      off
       Priority		      "2"
-      LibraryVersion	      "*1.2191"
+      LibraryVersion	      "1.2191"
       UserDataPersistent      on
       UserData		      "DataTag10"
       SourceBlock	      "powerlib/powergui"
