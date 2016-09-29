@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-181.0, 81.0, 1932.0, 1056.0]
+      Location		      [71.0, 138.0, 1932.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -34,18 +34,18 @@ Library {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"106"
-	Extents			[1689.0, 890.0]
-	ZoomFactor		[1.5188356164383565]
-	Offset			[-2.2737367544323206e-13, 0.0]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1689.0, 920.0]
+	ZoomFactor		[2.26]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ed12083"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Sep 08 13:32:50 2016"
-  RTWModifiedTimeStamp	  395242338
-  ModelVersionFormat	  "1.%<AutoIncrement:20>"
+  LastModifiedDate	  "Thu Sep 29 10:28:23 2016"
+  RTWModifiedTimeStamp	  397045654
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -831,7 +831,7 @@ Library {
   System {
     Name		    "Motor_InductionMachine_lib"
     Location		    [71, 138, 2003, 1194]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -844,7 +844,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "226"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "127"
+    SIDHighWatermark	    "143"
     Block {
       BlockType		      SubSystem
       Name		      "InstrumentedMotor"
@@ -853,7 +853,7 @@ Library {
       Position		      [540, 182, 690, 278]
       ZOrder		      3156
       BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.19"
+      LibraryVersion	      "*1.21"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -863,8 +863,8 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"InstrumentedMotor"
-	Location		[-181, 81, 1751, 1137]
-	Open			on
+	Location		[71, 138, 2003, 1194]
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -875,7 +875,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"152"
+	ZoomFactor		"151"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Mechanical Load [Nm]"
@@ -896,6 +896,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Logic_trip"
+	    PropagatedSignals	    "motor_signals"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1240,7 +1241,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Asynchronous Machine\nSI Units"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [71, 138, 2003, 1194]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1252,8 +1253,8 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "116"
-	    SIDHighWatermark	    "372"
+	    ZoomFactor		    "125"
+	    SIDHighWatermark	    "388"
 	    SIDPrevWatermark	    "339"
 	    Block {
 	      BlockType		      Inport
@@ -1530,9 +1531,9 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Single-cage SI"
+		  SrcBlock		  "electric"
 		  SrcPort		  1
-		  DstBlock		  "Measurements"
+		  DstBlock		  "Single-cage SI"
 		  DstPort		  1
 		}
 		Line {
@@ -1542,9 +1543,9 @@ Library {
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "electric"
+		  SrcBlock		  "Single-cage SI"
 		  SrcPort		  1
-		  DstBlock		  "Single-cage SI"
+		  DstBlock		  "Measurements"
 		  DstPort		  1
 		}
 	      }
@@ -1739,13 +1740,6 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Constant1"
-	      SrcPort		      1
-	      Points		      [57, 0; 0, -35]
-	      DstBlock		      "Switch1"
-	      DstPort		      3
-	    }
-	    Line {
 	      SrcBlock		      "Switch"
 	      SrcPort		      1
 	      Points		      [45, 0; 0, 125]
@@ -1767,18 +1761,18 @@ Library {
 	      }
 	    }
 	    Line {
-	      SrcBlock		      "Constant"
-	      SrcPort		      1
-	      Points		      [62, 0; 0, -50]
-	      DstBlock		      "Switch"
-	      DstPort		      3
-	    }
-	    Line {
 	      SrcBlock		      "From"
 	      SrcPort		      1
-	      Points		      [40, 0; 0, 80]
-	      DstBlock		      "Switch1"
-	      DstPort		      1
+	      Points		      [40, 0; 0, 80; 18, 0]
+	      Branch {
+		DstBlock		"Switch1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 30]
+		DstBlock		"Switch1"
+		DstPort			3
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Mechanical model"
@@ -1797,9 +1791,16 @@ Library {
 	    Line {
 	      SrcBlock		      "Electrical model"
 	      SrcPort		      1
-	      Points		      [13, 0; 0, -140]
-	      DstBlock		      "Switch"
-	      DstPort		      1
+	      Points		      [13, 0; 0, -140; 135, 0]
+	      Branch {
+		DstBlock		"Switch"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 30]
+		DstBlock		"Switch"
+		DstPort			3
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Measurements"
@@ -1996,11 +1997,11 @@ Library {
 	  Position		  [485, 368, 565, 482]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.470"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -2263,7 +2264,7 @@ Library {
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
       AncestorBlock	      "motor_lib/Motor"
-      LibraryVersion	      "*1.15"
+      LibraryVersion	      "*1.20"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2286,11 +2287,11 @@ Library {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"155"
-	SIDHighWatermark	"105"
+	SIDHighWatermark	"143"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Mechanical Load [Nm]"
-	  SID			  "2:89"
+	  SID			  "2:128"
 	  Position		  [580, 263, 610, 277]
 	  ZOrder		  2959
 	  IconDisplay		  "Port number"
@@ -2298,7 +2299,7 @@ Library {
 	Block {
 	  BlockType		  Inport
 	  Name			  "CB Trip Signal"
-	  SID			  "2:90"
+	  SID			  "2:129"
 	  Position		  [280, 233, 310, 247]
 	  ZOrder		  2960
 	  Port			  "2"
@@ -2313,7 +2314,7 @@ Library {
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "Asynchronous Machine\nSI Units"
-	  SID			  "2:91"
+	  SID			  "2:130"
 	  Ports			  [2, 1, 0, 0, 0, 3]
 	  Position		  [635, 331, 725, 419]
 	  ZOrder		  2965
@@ -2649,7 +2650,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Asynchronous Machine\nSI Units"
-	    Location		    [829, 35, 2443, 1195]
+	    Location		    [71, 138, 2003, 1194]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2662,12 +2663,12 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "116"
-	    SIDHighWatermark	    "372"
+	    SIDHighWatermark	    "388"
 	    SIDPrevWatermark	    "339"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "mec"
-	      SID		      "2:91:147"
+	      SID		      "2:130:147"
 	      Position		      [495, 230, 515, 250]
 	      ZOrder		      -1
 	      ForegroundColor	      "blue"
@@ -2678,7 +2679,7 @@ Library {
 	    Block {
 	      BlockType		      Inport
 	      Name		      "BrkrStatus"
-	      SID		      "2:91:286"
+	      SID		      "2:130:286"
 	      Position		      [495, 28, 525, 42]
 	      ZOrder		      4
 	      Port		      "2"
@@ -2687,7 +2688,7 @@ Library {
 	    Block {
 	      BlockType		      PMComponent
 	      Name		      "ASM"
-	      SID		      "2:91:148"
+	      SID		      "2:130:148"
 	      Ports		      [0, 0, 0, 0, 0, 3, 3]
 	      Position		      [335, 15, 425, 125]
 	      ZOrder		      -2
@@ -2709,7 +2710,7 @@ Library {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant"
-	      SID		      "2:91:288"
+	      SID		      "2:130:288"
 	      Position		      [495, 85, 525, 115]
 	      ZOrder		      6
 	      Value		      "0"
@@ -2717,7 +2718,7 @@ Library {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant1"
-	      SID		      "2:91:305"
+	      SID		      "2:130:305"
 	      Position		      [30, 300, 60, 330]
 	      ZOrder		      8
 	      Value		      "0"
@@ -2725,7 +2726,7 @@ Library {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Electrical model"
-	      SID		      "2:91:225"
+	      SID		      "2:130:225"
 	      Ports		      [2, 3]
 	      Position		      [370, 144, 455, 246]
 	      ZOrder		      1
@@ -2761,7 +2762,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "v"
-		  SID			  "2:91:225::31843"
+		  SID			  "2:130:225::31843"
 		  Position		  [20, 40, 40, 60]
 		  ZOrder		  -13
 		  IconDisplay		  "Port number"
@@ -2769,7 +2770,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "input"
-		  SID			  "2:91:225::31844"
+		  SID			  "2:130:225::31844"
 		  Position		  [20, 80, 40, 100]
 		  ZOrder		  -14
 		  Port			  "2"
@@ -2778,7 +2779,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "Continuous"
-		  SID			  "2:91:225::29230"
+		  SID			  "2:130:225::29230"
 		  Ports			  [2, 3]
 		  Position		  [100, 40, 140, 80]
 		  ZOrder		  17
@@ -2790,7 +2791,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "i"
-		  SID			  "2:91:225::31845"
+		  SID			  "2:130:225::31845"
 		  Position		  [200, 40, 220, 60]
 		  ZOrder		  -15
 		  IconDisplay		  "Port number"
@@ -2798,7 +2799,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "m"
-		  SID			  "2:91:225::31846"
+		  SID			  "2:130:225::31846"
 		  Position		  [200, 80, 220, 100]
 		  ZOrder		  -16
 		  Port			  "2"
@@ -2807,7 +2808,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Te"
-		  SID			  "2:91:225::31847"
+		  SID			  "2:130:225::31847"
 		  Position		  [200, 120, 220, 140]
 		  ZOrder		  -17
 		  Port			  "3"
@@ -2848,7 +2849,7 @@ Library {
 	    Block {
 	      BlockType		      From
 	      Name		      "From"
-	      SID		      "2:91:150"
+	      SID		      "2:130:150"
 	      Position		      [20, 157, 95, 183]
 	      ZOrder		      -4
 	      BackgroundColor	      "cyan"
@@ -2859,7 +2860,7 @@ Library {
 	    Block {
 	      BlockType		      Goto
 	      Name		      "Goto"
-	      SID		      "2:91:151"
+	      SID		      "2:130:151"
 	      Position		      [790, 148, 860, 172]
 	      ZOrder		      -5
 	      BackgroundColor	      "cyan"
@@ -2869,7 +2870,7 @@ Library {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Measurements"
-	      SID		      "2:91:152"
+	      SID		      "2:130:152"
 	      Ports		      [2, 1]
 	      Position		      [695, 180, 790, 260]
 	      ZOrder		      -6
@@ -2904,7 +2905,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "electric"
-		  SID			  "2:91:152::1783"
+		  SID			  "2:130:152::1783"
 		  Position		  [20, 40, 40, 60]
 		  ZOrder		  -1
 		  IconDisplay		  "Port number"
@@ -2912,7 +2913,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "mechanic"
-		  SID			  "2:91:152::1784"
+		  SID			  "2:130:152::1784"
 		  Position		  [20, 80, 40, 100]
 		  ZOrder		  -2
 		  Port			  "2"
@@ -2921,7 +2922,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "Single-cage SI"
-		  SID			  "2:91:152::29195"
+		  SID			  "2:130:152::29195"
 		  Ports			  [2, 1]
 		  Position		  [100, 40, 140, 80]
 		  ZOrder		  8
@@ -2933,15 +2934,15 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "Measurements"
-		  SID			  "2:91:152::1785"
+		  SID			  "2:130:152::1785"
 		  Position		  [200, 40, 220, 60]
 		  ZOrder		  -4
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Single-cage SI"
+		  SrcBlock		  "electric"
 		  SrcPort		  1
-		  DstBlock		  "Measurements"
+		  DstBlock		  "Single-cage SI"
 		  DstPort		  1
 		}
 		Line {
@@ -2951,9 +2952,9 @@ Library {
 		  DstPort		  2
 		}
 		Line {
-		  SrcBlock		  "electric"
+		  SrcBlock		  "Single-cage SI"
 		  SrcPort		  1
-		  DstBlock		  "Single-cage SI"
+		  DstBlock		  "Measurements"
 		  DstPort		  1
 		}
 	      }
@@ -2961,7 +2962,7 @@ Library {
 	    Block {
 	      BlockType		      SubSystem
 	      Name		      "Mechanical model"
-	      SID		      "2:91:153"
+	      SID		      "2:130:153"
 	      Ports		      [2, 2, 0, 0, 0, 1]
 	      Position		      [545, 239, 650, 361]
 	      ZOrder		      -7
@@ -2997,7 +2998,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "input"
-		  SID			  "2:91:153::880"
+		  SID			  "2:130:153::880"
 		  Position		  [20, 40, 40, 60]
 		  ZOrder		  -1
 		  IconDisplay		  "Port number"
@@ -3005,7 +3006,7 @@ Library {
 		Block {
 		  BlockType		  Inport
 		  Name			  "Te"
-		  SID			  "2:91:153::881"
+		  SID			  "2:130:153::881"
 		  Position		  [20, 80, 40, 100]
 		  ZOrder		  -2
 		  Port			  "2"
@@ -3014,7 +3015,7 @@ Library {
 		Block {
 		  BlockType		  Reference
 		  Name			  "Continuous Tm input"
-		  SID			  "2:91:153::251"
+		  SID			  "2:130:153::251"
 		  Ports			  [2, 2]
 		  Position		  [100, 40, 140, 80]
 		  ZOrder		  -3
@@ -3026,7 +3027,7 @@ Library {
 		Block {
 		  BlockType		  PMIOPort
 		  Name			  "Shaft"
-		  SID			  "2:91:153::8803"
+		  SID			  "2:130:153::8803"
 		  Position		  [20, 40, 40, 60]
 		  ZOrder		  -4
 		  ForegroundColor	  "yellow"
@@ -3036,7 +3037,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "m"
-		  SID			  "2:91:153::883"
+		  SID			  "2:130:153::883"
 		  Position		  [200, 40, 220, 60]
 		  ZOrder		  -5
 		  IconDisplay		  "Port number"
@@ -3044,7 +3045,7 @@ Library {
 		Block {
 		  BlockType		  Outport
 		  Name			  "thr,wr"
-		  SID			  "2:91:153::884"
+		  SID			  "2:130:153::884"
 		  Position		  [200, 80, 220, 100]
 		  ZOrder		  -6
 		  Port			  "2"
@@ -3079,7 +3080,7 @@ Library {
 	    Block {
 	      BlockType		      Switch
 	      Name		      "Switch"
-	      SID		      "2:91:287"
+	      SID		      "2:130:287"
 	      Position		      [640, 15, 690, 55]
 	      ZOrder		      5
 	      Threshold		      ".5"
@@ -3089,7 +3090,7 @@ Library {
 	    Block {
 	      BlockType		      Switch
 	      Name		      "Switch1"
-	      SID		      "2:91:304"
+	      SID		      "2:130:304"
 	      Position		      [185, 245, 235, 285]
 	      ZOrder		      7
 	      Threshold		      ".5"
@@ -3099,7 +3100,7 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "A"
-	      SID		      "2:91:154"
+	      SID		      "2:130:154"
 	      Position		      [255, 25, 285, 45]
 	      ZOrder		      -8
 	      BackgroundColor	      "yellow"
@@ -3110,7 +3111,7 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "B"
-	      SID		      "2:91:155"
+	      SID		      "2:130:155"
 	      Position		      [255, 60, 285, 80]
 	      ZOrder		      -9
 	      BackgroundColor	      "yellow"
@@ -3121,7 +3122,7 @@ Library {
 	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "C"
-	      SID		      "2:91:156"
+	      SID		      "2:130:156"
 	      Position		      [255, 95, 285, 115]
 	      ZOrder		      -10
 	      BackgroundColor	      "yellow"
@@ -3132,7 +3133,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "m"
-	      SID		      "2:91:157"
+	      SID		      "2:130:157"
 	      Position		      [830, 210, 850, 230]
 	      ZOrder		      -11
 	      ForegroundColor	      "blue"
@@ -3259,7 +3260,7 @@ Library {
 	      DstPort		      2
 	    }
 	    Annotation {
-	      SID		      "2:91:158"
+	      SID		      "2:130:158"
 	      Name		      "Tm / w"
 	      Position		      [513, 223]
 	      ZOrder		      -1
@@ -3269,7 +3270,7 @@ Library {
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
-	  SID			  "2:93"
+	  SID			  "2:131"
 	  Ports			  [4, 1]
 	  Position		  [960, 271, 970, 414]
 	  ZOrder		  2958
@@ -3279,7 +3280,7 @@ Library {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector"
-	  SID			  "2:94"
+	  SID			  "2:132"
 	  Ports			  [1, 2]
 	  Position		  [750, 334, 755, 416]
 	  ZOrder		  2947
@@ -3301,7 +3302,7 @@ Library {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
-	  SID			  "2:95"
+	  SID			  "2:133"
 	  Ports			  [1, 3]
 	  Position		  [760, 258, 765, 322]
 	  ZOrder		  2953
@@ -3330,7 +3331,7 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "Gain"
-	  SID			  "2:96"
+	  SID			  "2:134"
 	  Position		  [830, 340, 895, 370]
 	  ZOrder		  2949
 	  Gain			  "60/2/pi"
@@ -3347,7 +3348,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "Ground2"
-	  SID			  "2:97"
+	  SID			  "2:135"
 	  Ports			  [0, 0, 0, 0, 0, 1]
 	  Position		  [554, 595, 576, 620]
 	  ZOrder		  2941
@@ -3364,7 +3365,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "Three-Phase\nParallel RLC Branch1"
-	  SID			  "2:98"
+	  SID			  "2:136"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
 	  Position		  [541, 480, 589, 550]
 	  ZOrder		  2940
@@ -3388,21 +3389,21 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "motor_cb"
-	  SID			  "2:99"
+	  SID			  "2:137"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
 	  Position		  [435, 333, 490, 417]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.470"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "A"
-	  SID			  "2:100"
+	  SID			  "2:138"
 	  Position		  [310, 338, 340, 352]
 	  ZOrder		  2962
 	  Port			  "1"
@@ -3411,7 +3412,7 @@ Library {
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "B"
-	  SID			  "2:101"
+	  SID			  "2:139"
 	  Position		  [310, 378, 340, 392]
 	  ZOrder		  2963
 	  Port			  "2"
@@ -3420,7 +3421,7 @@ Library {
 	Block {
 	  BlockType		  PMIOPort
 	  Name			  "C"
-	  SID			  "2:102"
+	  SID			  "2:140"
 	  Position		  [310, 418, 340, 432]
 	  ZOrder		  2964
 	  Port			  "3"
@@ -3429,7 +3430,7 @@ Library {
 	Block {
 	  BlockType		  Outport
 	  Name			  "ms"
-	  SID			  "2:103"
+	  SID			  "2:141"
 	  Position		  [1015, 330, 1030, 360]
 	  ZOrder		  2961
 	  NamePlacement		  "alternate"
@@ -3623,13 +3624,13 @@ Library {
 	  DstPort		  1
 	}
 	Annotation {
-	  SID			  "2:105"
+	  SID			  "2:143"
 	  Name			  "Ballast load"
 	  Position		  [626, 528]
 	  ZOrder		  -1
 	}
 	Annotation {
-	  SID			  "2:104"
+	  SID			  "2:142"
 	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
 	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
 	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
