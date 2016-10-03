@@ -23,7 +23,7 @@
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
-
+SIM_HIL = 1; % Selects Opal-RT(1) or Simulink(0)
 
 %% read relay settings
 % reads-in all relay settings for the system and initializes vectors to
@@ -42,6 +42,6 @@ cable_impedance_init;
 %% circuit breaker delays
 % breaker mechanical open/close delay in seconds
 % different delays may be applied to each breaker, however,
-% for convenience it is assumed all breaker have the same delay 
+% for convenience it is assumed all breaker have the same delay
 cb_mech_delay = 5/60;
 
