@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 12 00:48:48 2016"
-  RTWModifiedTimeStamp	  392863725
-  ModelVersionFormat	  "1.%<AutoIncrement:16>"
+  LastModifiedDate	  "Mon Oct 03 14:34:53 2016"
+  RTWModifiedTimeStamp	  397406090
+  ModelVersionFormat	  "1.%<AutoIncrement:18>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1060,7 +1060,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "3603"
+    SIDHighWatermark	    "3610"
     Block {
       BlockType		      SubSystem
       Name		      "4_MVA_Diesel_Generator"
@@ -1079,7 +1079,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"4_MVA_Diesel_Generator"
-	Location		[58, 84, 1978, 889]
+	Location		[1, 1, 1919, 1039]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1373,7 +1373,7 @@ Library {
 	  }
 	  System {
 	    Name		    "GenSet_4MVA_copy1mva"
-	    Location		    [-8, 0, 1923, 1056]
+	    Location		    [1, 1, 1919, 1039]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1464,7 +1464,7 @@ Library {
 	      MaskHideContents	      off
 	      System {
 		Name			"4MVA Generator with \nPrimary Controllers"
-		Location		[-8, 0, 1923, 1056]
+		Location		[1, 1, 1919, 1039]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -1626,7 +1626,7 @@ Library {
 		  }
 		  System {
 		    Name		    "Diesel Engine\nSpeed & Voltage\nControl\nfast"
-		    Location		    [-8, 0, 1923, 1056]
+		    Location		    [1, 1, 1919, 1039]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -3071,7 +3071,7 @@ Library {
 		    }
 		    System {
 		    Name		    "GOVERNOR\n& DIESEL ENGINE1"
-		    Location		    [72, 52, 1826, 1208]
+		    Location		    [1, 1, 1919, 1039]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -3109,6 +3109,18 @@ Library {
 		    ZOrder		    -3
 		    Port		    "3"
 		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Gain
+		    Name		    "Damping due to pumping losses"
+		    SID			    "3608"
+		    Position		    [395, 224, 495, 276]
+		    ZOrder		    61
+		    ForegroundColor	    "blue"
+		    Gain		    "0.3"
+		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
 		    }
 		    Block {
 		    BlockType		    Reference
@@ -3271,6 +3283,19 @@ Library {
 		    RndMeth		    "Floor"
 		    }
 		    Block {
+		    BlockType		    Product
+		    Name		    "Product1"
+		    SID			    "3609"
+		    Ports		    [2, 1]
+		    Position		    [250, 232, 280, 263]
+		    ZOrder		    62
+		    ForegroundColor	    "blue"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum"
 		    SID			    "2945"
@@ -3279,6 +3304,21 @@ Library {
 		    ZOrder		    -14
 		    ShowName		    off
 		    Inputs		    "+-"
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum1"
+		    SID			    "3610"
+		    Ports		    [2, 1]
+		    Position		    [865, 80, 885, 100]
+		    ZOrder		    60
+		    ForegroundColor	    "blue"
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|+-"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
 		    }
 		    Block {
 		    BlockType		    Reference
@@ -3318,7 +3358,7 @@ Library {
 		    BlockType		    Outport
 		    Name		    "Pmec (pu)"
 		    SID			    "2948"
-		    Position		    [855, 78, 885, 92]
+		    Position		    [915, 83, 945, 97]
 		    ZOrder		    -17
 		    IconDisplay		    "Port number"
 		    }
@@ -3362,8 +3402,7 @@ Library {
 		    Line {
 		    SrcBlock		    "Product"
 		    SrcPort		    1
-		    Points		    [0, -5]
-		    DstBlock		    "Pmec (pu)"
+		    DstBlock		    "Sum1"
 		    DstPort		    1
 		    }
 		    Line {
@@ -3378,20 +3417,6 @@ Library {
 		    Points		    [10, 0]
 		    DstBlock		    "Product"
 		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "w (pu)"
-		    SrcPort		    1
-		    Points		    [15, 0]
-		    Branch {
-		    DstBlock		    "Sum"
-		    DstPort		    2
-		    }
-		    Branch {
-		    Points		    [0, 85; 705, 0]
-		    DstBlock		    "Product"
-		    DstPort		    2
-		    }
 		    }
 		    Line {
 		    SrcBlock		    "Gain K"
@@ -3409,6 +3434,55 @@ Library {
 		    SrcBlock		    "Discrete PID Controller"
 		    SrcPort		    1
 		    DstBlock		    "Gain K"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "w (pu)"
+		    SrcPort		    1
+		    Points		    [15, 0]
+		    Branch {
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, 85]
+		    Branch {
+		    Points		    [0, 85; 154, 0]
+		    Branch {
+		    DstBlock		    "Product1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 15]
+		    DstBlock		    "Product1"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    Points		    [705, 0]
+		    DstBlock		    "Product"
+		    DstPort		    2
+		    }
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Damping due to pumping losses"
+		    SrcPort		    1
+		    Points		    [375, 0]
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Product1"
+		    SrcPort		    1
+		    DstBlock		    "Damping due to pumping losses"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Sum1"
+		    SrcPort		    1
+		    Points		    [10, 0]
+		    DstBlock		    "Pmec (pu)"
 		    DstPort		    1
 		    }
 		    Annotation {
@@ -3752,7 +3826,7 @@ Library {
 		    SrcPort		    1
 		    Points		    [55, 0]
 		    Branch {
-		    Points		    [130, 0; 0, 25]
+		    Points		    [130, 0]
 		    DstBlock		    "Sum"
 		    DstPort		    1
 		    }
@@ -3813,7 +3887,6 @@ Library {
 		    Line {
 		    SrcBlock		    "wref"
 		    SrcPort		    1
-		    Points		    [0, -20]
 		    DstBlock		    "Sum"
 		    DstPort		    2
 		    }
@@ -12481,7 +12554,7 @@ Library {
       }
       System {
 	Name			"Diesel_GenSet_4MVA"
-	Location		[-183, 160, 1749, 1252]
+	Location		[1, 1, 1919, 1039]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -12572,7 +12645,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "4MVA Generator with \nPrimary Controllers"
-	    Location		    [-183, 160, 1749, 1252]
+	    Location		    [1, 1, 1919, 1039]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -12734,7 +12807,7 @@ Library {
 	      }
 	      System {
 		Name			"Diesel Engine\nSpeed & Voltage\nControl\nfast"
-		Location		[-183, 160, 1749, 1252]
+		Location		[1, 1, 1919, 1039]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -14887,7 +14960,7 @@ Library {
 		  }
 		  System {
 		    Name		    "GOVERNOR\n& DIESEL ENGINE1"
-		    Location		    [72, 52, 1826, 1208]
+		    Location		    [1, 1, 1919, 1039]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -14927,6 +15000,18 @@ Library {
 		    IconDisplay		    "Port number"
 		    }
 		    Block {
+		    BlockType		    Gain
+		    Name		    "Damping due to pumping losses"
+		    SID			    "3604"
+		    Position		    [395, 219, 495, 271]
+		    ZOrder		    57
+		    ForegroundColor	    "blue"
+		    Gain		    "0.3"
+		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
 		    BlockType		    Reference
 		    Name		    "Discrete PID Controller"
 		    SID			    "3338"
@@ -14936,104 +15021,104 @@ Library {
 		    LibraryVersion	    "1.274"
 		    SourceBlock		    "simulink/Continuous/PID Controller"
 		    SourceType		    "PID 1dof"
-		    Controller		    PD
+		    Controller		    "PD"
 		    TimeDomain		    "Discrete-time"
-		    SampleTime		    -1
+		    SampleTime		    "-1"
 		    IntegratorMethod	    "Forward Euler"
 		    FilterMethod	    "Forward Euler"
-		    Form		    Parallel
-		    P			    1
-		    I			    0
-		    D			    0.5
-		    N			    10000
-		    InitialConditionSource  internal
-		    InitialConditionForIntegrator 0
-		    InitialConditionForFilter 0
-		    ExternalReset	    rising
+		    Form		    "Parallel"
+		    P			    "1"
+		    I			    "0"
+		    D			    "0.5"
+		    N			    "10000"
+		    InitialConditionSource  "internal"
+		    InitialConditionForIntegrator "0"
+		    InitialConditionForFilter "0"
+		    ExternalReset	    "rising"
 		    IgnoreLimit		    off
 		    ZeroCross		    off
 		    LimitOutput		    off
 		    UpperSaturationLimit    ".5"
-		    LowerSaturationLimit    -.5
+		    LowerSaturationLimit    "-.5"
 		    LinearizeAsGain	    off
-		    AntiWindupMode	    none
-		    Kb			    1
+		    AntiWindupMode	    "none"
+		    Kb			    "1"
 		    TrackingMode	    off
-		    Kt			    1
-		    RndMeth		    Floor
+		    Kt			    "1"
+		    RndMeth		    "Floor"
 		    SaturateOnIntegerOverflow off
 		    LockScale		    off
-		    PParamMin		    []
-		    PParamMax		    []
+		    PParamMin		    "[]"
+		    PParamMax		    "[]"
 		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IParamMin		    []
-		    IParamMax		    []
+		    IParamMin		    "[]"
+		    IParamMax		    "[]"
 		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    DParamMin		    []
-		    DParamMax		    []
+		    DParamMin		    "[]"
+		    DParamMax		    "[]"
 		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    NParamMin		    []
-		    NParamMax		    []
+		    NParamMin		    "[]"
+		    NParamMax		    "[]"
 		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KbParamMin		    []
-		    KbParamMax		    []
+		    KbParamMin		    "[]"
+		    KbParamMax		    "[]"
 		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KtParamMin		    []
-		    KtParamMax		    []
+		    KtParamMin		    "[]"
+		    KtParamMax		    "[]"
 		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    POutMin		    []
-		    POutMax		    []
+		    POutMin		    "[]"
+		    POutMax		    "[]"
 		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IOutMin		    []
-		    IOutMax		    []
+		    IOutMin		    "[]"
+		    IOutMax		    "[]"
 		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    DOutMin		    []
-		    DOutMax		    []
+		    DOutMin		    "[]"
+		    DOutMax		    "[]"
 		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    NOutMin		    []
-		    NOutMax		    []
+		    NOutMin		    "[]"
+		    NOutMax		    "[]"
 		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KbOutMin		    []
-		    KbOutMax		    []
+		    KbOutMin		    "[]"
+		    KbOutMax		    "[]"
 		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KtOutMin		    []
-		    KtOutMax		    []
+		    KtOutMin		    "[]"
+		    KtOutMax		    "[]"
 		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IntegratorOutMin	    []
-		    IntegratorOutMax	    []
+		    IntegratorOutMin	    "[]"
+		    IntegratorOutMax	    "[]"
 		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
-		    FilterOutMin	    []
-		    FilterOutMax	    []
+		    FilterOutMin	    "[]"
+		    FilterOutMax	    "[]"
 		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
-		    SumOutMin		    []
-		    SumOutMax		    []
+		    SumOutMin		    "[]"
+		    SumOutMax		    "[]"
 		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI1OutMin		    []
-		    SumI1OutMax		    []
+		    SumI1OutMin		    "[]"
+		    SumI1OutMax		    "[]"
 		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI2OutMin		    []
-		    SumI2OutMax		    []
+		    SumI2OutMin		    "[]"
+		    SumI2OutMax		    "[]"
 		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI3OutMin		    []
-		    SumI3OutMax		    []
+		    SumI3OutMin		    "[]"
+		    SumI3OutMax		    "[]"
 		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumDOutMin		    []
-		    SumDOutMax		    []
+		    SumDOutMin		    "[]"
+		    SumDOutMax		    "[]"
 		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
 		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
 		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
 		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
 		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
 		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
-		    SaturationOutMin	    []
-		    SaturationOutMax	    []
+		    SaturationOutMin	    "[]"
+		    SaturationOutMax	    "[]"
 		    SaturationOutDataTypeStr "Inherit: Same as input"
 		    IntegratorContinuousStateAttributes	"''"
 		    IntegratorStateMustResolveToSignalObject off
-		    IntegratorRTWStateStorageClass Auto
+		    IntegratorRTWStateStorageClass "Auto"
 		    FilterContinuousStateAttributes "''"
 		    FilterStateMustResolveToSignalObject off
-		    FilterRTWStateStorageClass Auto
+		    FilterRTWStateStorageClass "Auto"
 		    }
 		    Block {
 		    BlockType		    DiscreteIntegrator
@@ -15087,6 +15172,19 @@ Library {
 		    RndMeth		    "Floor"
 		    }
 		    Block {
+		    BlockType		    Product
+		    Name		    "Product1"
+		    SID			    "3605"
+		    Ports		    [2, 1]
+		    Position		    [250, 227, 280, 258]
+		    ZOrder		    58
+		    ForegroundColor	    "blue"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    RndMeth		    "Floor"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum"
 		    SID			    "3343"
@@ -15095,6 +15193,21 @@ Library {
 		    ZOrder		    -14
 		    ShowName		    off
 		    Inputs		    "+-"
+		    }
+		    Block {
+		    BlockType		    Sum
+		    Name		    "Sum1"
+		    SID			    "3606"
+		    Ports		    [2, 1]
+		    Position		    [850, 80, 870, 100]
+		    ZOrder		    56
+		    ForegroundColor	    "blue"
+		    ShowName		    off
+		    IconShape		    "round"
+		    Inputs		    "|+-"
+		    InputSameDT		    off
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
 		    }
 		    Block {
 		    BlockType		    Reference
@@ -15106,12 +15219,12 @@ Library {
 		    LibraryVersion	    "1.218"
 		    SourceBlock		    "discretizing/Discretized\nTransfer Fcn"
 		    SourceType		    "DiscretizedTransferFcn"
-		    Numerator		    1
+		    Numerator		    "1"
 		    Denominator		    "([Ta(3) 1])"
-		    AbsTol		    auto
-		    SampleTime		    Ts
-		    method		    zoh
-		    Wc			    1
+		    AbsTol		    "auto"
+		    SampleTime		    "Ts"
+		    method		    "zoh"
+		    Wc			    "1"
 		    }
 		    Block {
 		    BlockType		    Reference
@@ -15125,16 +15238,16 @@ Library {
 		    SourceType		    "DiscretizedTransferFcn"
 		    Numerator		    "([Ta(1) 1])"
 		    Denominator		    "([Ta(2) 1])"
-		    AbsTol		    auto
-		    SampleTime		    Ts
-		    method		    zoh
-		    Wc			    1
+		    AbsTol		    "auto"
+		    SampleTime		    "Ts"
+		    method		    "zoh"
+		    Wc			    "1"
 		    }
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Pmec (pu)"
 		    SID			    "3346"
-		    Position		    [855, 78, 885, 92]
+		    Position		    [915, 83, 945, 97]
 		    ZOrder		    -17
 		    IconDisplay		    "Port number"
 		    }
@@ -15178,8 +15291,7 @@ Library {
 		    Line {
 		    SrcBlock		    "Product"
 		    SrcPort		    1
-		    Points		    [0, -5]
-		    DstBlock		    "Pmec (pu)"
+		    DstBlock		    "Sum1"
 		    DstPort		    1
 		    }
 		    Line {
@@ -15194,20 +15306,6 @@ Library {
 		    Points		    [10, 0]
 		    DstBlock		    "Product"
 		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "w (pu)"
-		    SrcPort		    1
-		    Points		    [15, 0]
-		    Branch {
-		    DstBlock		    "Sum"
-		    DstPort		    2
-		    }
-		    Branch {
-		    Points		    [0, 85; 705, 0]
-		    DstBlock		    "Product"
-		    DstPort		    2
-		    }
 		    }
 		    Line {
 		    SrcBlock		    "Gain K"
@@ -15225,6 +15323,54 @@ Library {
 		    SrcBlock		    "Discrete PID Controller"
 		    SrcPort		    1
 		    DstBlock		    "Gain K"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "w (pu)"
+		    SrcPort		    1
+		    Points		    [15, 0]
+		    Branch {
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, 85]
+		    Branch {
+		    Points		    [0, 80; 154, 0]
+		    Branch {
+		    DstBlock		    "Product1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 15]
+		    DstBlock		    "Product1"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    Points		    [705, 0]
+		    DstBlock		    "Product"
+		    DstPort		    2
+		    }
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Damping due to pumping losses"
+		    SrcPort		    1
+		    Points		    [360, 0]
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Product1"
+		    SrcPort		    1
+		    DstBlock		    "Damping due to pumping losses"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Sum1"
+		    SrcPort		    1
+		    DstBlock		    "Pmec (pu)"
 		    DstPort		    1
 		    }
 		    Annotation {
