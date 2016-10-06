@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [-316.0, 107.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[1693.0, 890.0]
 	ZoomFactor		[1.5351736420302757]
-	Offset			[120.09657772621806, 163.38051044083528]
+	Offset			[120.09657772621802, 163.38051044083539]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 05 19:08:42 2016"
-  RTWModifiedTimeStamp	  397595319
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Wed Oct 05 22:08:05 2016"
+  RTWModifiedTimeStamp	  397606059
+  ModelVersionFormat	  "1.%<AutoIncrement:3>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -939,7 +939,7 @@ Library {
   }
   System {
     Name		    "HWController_NGCHP_Genset_3p5MVA_lib"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [-316, 107, 1620, 1163]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1166,7 +1166,7 @@ Library {
 	  Position		  [330, 614, 580, 806]
 	  ZOrder		  3285
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
-	  LibraryVersion	  "1.1"
+	  LibraryVersion	  "1.2"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Generator"
 	  SourceType		  "SubSystem"
 	  Port {
@@ -1479,8 +1479,9 @@ Library {
       SID		      "730"
       Ports		      [1, 3, 0, 0, 0, 0, 3]
       Position		      [555, 414, 805, 606]
-      ZOrder		      3218
+      ZOrder		      3285
       BackgroundColor	      "[0.000000, 0.819608, 0.000000]"
+      LibraryVersion	      "*1.2"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1490,7 +1491,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"HWController_NG_Generator"
-	Location		[1912, -8, 3848, 1088]
+	Location		[1912, 0, 3848, 1092]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1565,7 +1566,7 @@ Library {
 	  Position		  [330, 354, 335, 706]
 	  ZOrder		  3299
 	  ShowName		  off
-	  OutputSignals		  "NGCHP_Gen1.Gov_and_AVR,NGCHP_Gen1.FuelEnable,NGCHP_Gen1.GCB_Crtl,NGCHP_Gen1.DIN"
+	  OutputSignals		  "Gov_and_AVR,FuelEnable,GCB_Crtl,DIN"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<Gov_and_AVR>"
@@ -1613,7 +1614,7 @@ Library {
 	  Position		  [955, 344, 1240, 566]
 	  ZOrder		  3301
 	  BackgroundColor	  "[0.501961, 0.949020, 0.050980]"
-	  LibraryVersion	  "1.1"
+	  LibraryVersion	  "1.2"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Genset_3.5MVA"
 	  SourceType		  "Gen-Set with simulated control modes"
 	  control_mode		  "1"
@@ -1691,89 +1692,36 @@ Library {
 	  IconDisplay		  "Signal name"
 	}
 	Line {
-	  Name			  "<Gen1 AVR>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  4
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "<Gen1 Gov>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  3
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "<Gen1 Ref AVR>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  2
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "<Gen1 Ref GOV>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Fcn"
 	  SrcPort		  1
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<FuelEnable>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector5"
-	  SrcPort		  2
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "HWController_Outputs"
+	  SrcBlock		  "Bus\nCreator"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector5"
+	  DstBlock		  "Gen1 GCB Control"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<Gov_and_AVR>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector5"
-	  SrcPort		  1
-	  Points		  [152, 0; 0, 15]
-	  DstBlock		  "Bus\nSelector"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<DIN>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector5"
-	  SrcPort		  4
-	  Points		  [492, 0; 0, -120]
-	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  7
-	}
-	Line {
-	  Name			  "Thermal data"
-	  Labels		  [0, 0]
 	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
-	  SrcPort		  2
-	  DstBlock		  "Out2"
+	  SrcPort		  1
+	  DstBlock		  "Gen1 Monitor"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "enable_HWController_control_mode_only"
+	  SrcPort		  1
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  6
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
-	  SrcPort		  RConn3
-	  DstBlock		  "Gen1 C"
-	  DstPort		  RConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
-	  SrcPort		  RConn2
-	  DstBlock		  "Gen1 B"
+	  SrcPort		  RConn1
+	  DstBlock		  "Gen1 A"
 	  DstPort		  RConn1
 	}
 	Line {
@@ -1787,35 +1735,95 @@ Library {
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
-	  SrcPort		  RConn1
-	  DstBlock		  "Gen1 A"
+	  SrcPort		  RConn2
+	  DstBlock		  "Gen1 B"
 	  DstPort		  RConn1
 	}
 	Line {
-	  SrcBlock		  "enable_HWController_control_mode_only"
+	  LineType		  "Connection"
+	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
+	  SrcPort		  RConn3
+	  DstBlock		  "Gen1 C"
+	  DstPort		  RConn1
+	}
+	Line {
+	  Name			  "Thermal data"
+	  Labels		  [0, 0]
+	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
+	  SrcPort		  2
+	  DstBlock		  "Out2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<DIN>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector5"
+	  SrcPort		  4
+	  Points		  [492, 0; 0, -120]
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "<Gov_and_AVR>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector5"
+	  SrcPort		  1
+	  Points		  [152, 0; 0, 15]
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "HWController_Outputs"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<FuelEnable>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector5"
+	  SrcPort		  2
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "<Gen1 Ref GOV>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
 	  SrcPort		  1
 	  DstBlock		  "HWController_NG_Genset_3.5MVA"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "HWController_NG_Genset_3.5MVA"
-	  SrcPort		  1
-	  DstBlock		  "Gen1 Monitor"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Bus\nCreator"
-	  SrcPort		  1
-	  DstBlock		  "Gen1 GCB Control"
-	  DstPort		  1
+	  Name			  "<Gen1 Ref AVR>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  2
 	}
 	Line {
-	  Name			  "Logic_trip"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Fcn"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
+	  Name			  "<Gen1 Gov>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  3
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Gen1 AVR>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  4
+	  DstBlock		  "HWController_NG_Genset_3.5MVA"
+	  DstPort		  4
+	}
+	Annotation {
+	  SID			  "744"
+	  Name			  "This u(1)==1 is used to fix the logic problem within the HWController outputs block"
+	  Position		  [530, 546]
+	  BackgroundColor	  "orange"
+	  ZOrder		  -1
 	}
 	Annotation {
 	  SID			  "745"
@@ -1830,16 +1838,9 @@ Library {
 	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
 	  Position		  [329, 251]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -1
+	  ZOrder		  -2
 	  FontSize		  12
 	  FontWeight		  "bold"
-	}
-	Annotation {
-	  SID			  "744"
-	  Name			  "This u(1)==1 is used to fix the logic problem within the HWController outputs block"
-	  Position		  [530, 546]
-	  BackgroundColor	  "orange"
-	  ZOrder		  -2
 	}
       }
     }
@@ -2721,7 +2722,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "12"
+		    SIDHighWatermark	    "15"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -2975,7 +2976,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "12"
+		    SIDHighWatermark	    "15"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -3143,7 +3144,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "12"
+		    SIDHighWatermark	    "15"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
@@ -3314,7 +3315,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "12"
+		    SIDHighWatermark	    "15"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -3524,7 +3525,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "12"
+		    SIDHighWatermark	    "15"
 		    SIDPrevWatermark	    "3"
 		    Block {
 		    BlockType		    Inport
