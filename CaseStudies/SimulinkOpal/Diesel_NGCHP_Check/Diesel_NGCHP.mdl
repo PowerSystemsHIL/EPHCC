@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2714"
+    ComputedModelVersion    "1.2716"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, 0.0, 1936.0, 1092.0]
+      Location		      [1912.0, -8.0, 1936.0, 1096.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -56,11 +56,11 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"27906"
-	Extents			[1693.0, 918.0]
-	ZoomFactor		[0.60482500849473331]
-	Offset			[1442.6091292134831, 804.35280898876408]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1693.0, 922.0]
+	ZoomFactor		[2.06]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 05 20:05:02 2016"
-  RTWModifiedTimeStamp	  397598696
-  ModelVersionFormat	  "1.%<AutoIncrement:2714>"
+  LastModifiedDate	  "Wed Oct 05 22:34:59 2016"
+  RTWModifiedTimeStamp	  397607696
+  ModelVersionFormat	  "1.%<AutoIncrement:2716>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1036,8 +1036,8 @@ Model {
   }
   System {
     Name		    "Diesel_NGCHP"
-    Location		    [1912, 0, 3848, 1092]
-    Open		    off
+    Location		    [1912, -8, 3848, 1088]
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
     ScreenColor		    "white"
@@ -1050,7 +1050,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "206"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "28970"
+    SIDHighWatermark	    "28973"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -4426,7 +4426,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "WoodWard_CMD"
 	  SID			  "28225"
-	  Position		  [2095, 1228, 2125, 1242]
+	  Position		  [2095, 1248, 2125, 1262]
 	  ZOrder		  3283
 	  NamePlacement		  "alternate"
 	  Port			  "2"
@@ -4475,6 +4475,28 @@ Model {
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "28971"
+	  Ports			  [1, 2]
+	  Position		  [2335, 1203, 2345, 1307]
+	  ZOrder		  3310
+	  ShowName		  off
+	  OutputSignals		  "NGCHP_Gen1,Diesel_Gen2"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<NGCHP_Gen1>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Diesel_Gen2>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  BusSelector
@@ -4677,10 +4699,10 @@ Model {
 	  SID			  "28493"
 	  Position		  [3265, 2140, 3400, 2160]
 	  ZOrder		  3297
-	  BackgroundColor	  "[0.666667, 0.000000, 1.000000]"
+	  BackgroundColor	  "[0.247059, 0.298039, 0.729412]"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "WoodwardBias"
+	  GotoTag		  "Diesel_Gen2"
 	}
 	Block {
 	  BlockType		  From
@@ -4734,10 +4756,10 @@ Model {
 	  SID			  "28231"
 	  Position		  [3035, 1240, 3170, 1260]
 	  ZOrder		  3287
-	  BackgroundColor	  "[0.666667, 0.000000, 1.000000]"
+	  BackgroundColor	  "green"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "WoodwardBias"
+	  GotoTag		  "NGCHP_Gen1"
 	}
 	Block {
 	  BlockType		  From
@@ -4904,6 +4926,8 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "NGCHP_ScaledSignals"
+	    PropagatedSignals	    "scaled_gcb_voltage, scaled_gcb_current, scaled_mcb_voltage, scaled_mcb_current, scaled_spe"
+	    "ed, MCB_CB_Status"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -4928,6 +4952,8 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Diesel_ScaledSignals"
+	    PropagatedSignals	    "scaled_gcb_voltage, scaled_gcb_current, scaled_mcb_voltage, scaled_mcb_current, scaled_spe"
+	    "ed, MCB_CB_Status"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -4974,12 +5000,12 @@ Model {
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto2"
-	  SID			  "28228"
-	  Position		  [2290, 1228, 2410, 1242]
-	  ZOrder		  3284
-	  BackgroundColor	  "[0.666667, 0.000000, 1.000000]"
+	  SID			  "28972"
+	  Position		  [2415, 1223, 2535, 1237]
+	  ZOrder		  3311
+	  BackgroundColor	  "green"
 	  ShowName		  off
-	  GotoTag		  "WoodwardBias"
+	  GotoTag		  "NGCHP_Gen1"
 	}
 	Block {
 	  BlockType		  Goto
@@ -4989,6 +5015,16 @@ Model {
 	  ZOrder		  2708
 	  ShowName		  off
 	  GotoTag		  "XFR_01"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto4"
+	  SID			  "28973"
+	  Position		  [2415, 1273, 2535, 1287]
+	  ZOrder		  3312
+	  BackgroundColor	  "[0.247059, 0.298039, 0.729412]"
+	  ShowName		  off
+	  GotoTag		  "Diesel_Gen2"
 	}
 	Block {
 	  BlockType		  Goto
@@ -5036,7 +5072,7 @@ Model {
 	  Position		  [3220, 998, 3490, 1302]
 	  ZOrder		  3307
 	  BackgroundColor	  "green"
-	  LibraryVersion	  "1.2"
+	  LibraryVersion	  "1.3"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_3.5MVA_NGCHP"
 	  SourceType		  "SubSystem"
 	  Port {
@@ -5062,7 +5098,7 @@ Model {
 	  Position		  [3450, 2013, 3700, 2287]
 	  ZOrder		  3306
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.2"
+	  LibraryVersion	  "1.3"
 	  SourceBlock		  "HWController_Diesel_GenSet_4MVA_lib/HWController_4MVA_DieselGenset"
 	  SourceType		  "SubSystem"
 	}
@@ -5130,7 +5166,7 @@ Model {
 	  Name			  "OpComm1"
 	  SID			  "28229"
 	  Ports			  [1, 1]
-	  Position		  [2180, 1218, 2240, 1252]
+	  Position		  [2180, 1238, 2240, 1272]
 	  ZOrder		  3281
 	  LibraryVersion	  "1.471"
 	  SourceBlock		  "rtlab/OpComm"
@@ -6053,7 +6089,7 @@ Model {
 	Line {
 	  SrcBlock		  "OpComm1"
 	  SrcPort		  1
-	  DstBlock		  "Goto2"
+	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
 	}
 	Line {
@@ -6171,6 +6207,22 @@ Model {
 	  DstBlock		  "CB-GCB1"
 	  DstPort		  1
 	}
+	Line {
+	  Name			  "<NGCHP_Gen1>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Diesel_Gen2>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Goto4"
+	  DstPort		  1
+	}
 	Annotation {
 	  SID			  "27190"
 	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
@@ -6222,7 +6274,7 @@ Model {
       System {
 	Name			"SS_signals"
 	Location		[1912, 0, 3848, 1092]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -6233,7 +6285,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"60"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "ScaledSignals"
@@ -12019,7 +12071,7 @@ Model {
       DropShadow	      on
       ShowName		      off
       Priority		      "2"
-      LibraryVersion	      "1.2191"
+      LibraryVersion	      "*1.2191"
       UserDataPersistent      on
       UserData		      "DataTag9"
       SourceBlock	      "powerlib/powergui"
