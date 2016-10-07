@@ -23,10 +23,16 @@ clear;
 
 components_path_init;
 
+clear;
 %% model configuration parameters
 Ts = 100E-6; % integration time
+<<<<<<< HEAD
 SIM_HIL = 1; % control mode for NG_CHP [1: Woodward, 0: manual/simulation]
 % TestProcedure_xlsRead;
+=======
+SIM_HIL = 0; % control mode for NG_CHP [1: Woodward, 0: manual/simulation]
+TestProcedure_xlsRead;
+>>>>>>> master
 
 
 %% read relay settings
