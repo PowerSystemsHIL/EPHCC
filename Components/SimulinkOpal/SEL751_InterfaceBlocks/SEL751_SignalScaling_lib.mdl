@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [-8.0, 0.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 05 21:54:27 2016"
-  RTWModifiedTimeStamp	  397605228
-  ModelVersionFormat	  "1.%<AutoIncrement:1>"
+  LastModifiedDate	  "Fri Oct 07 17:02:36 2016"
+  RTWModifiedTimeStamp	  397760553
+  ModelVersionFormat	  "1.%<AutoIncrement:2>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -828,7 +828,7 @@ Library {
   }
   System {
     Name		    "SEL751_SignalScaling_lib"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [-8, 0, 1928, 1056]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -842,15 +842,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "20"
+    SIDHighWatermark	    "22"
     Block {
       BlockType		      SubSystem
       Name		      "SEL751 - SignalScaling"
       SID		      "1"
       Ports		      [1, 1]
       Position		      [755, 314, 915, 376]
-      ZOrder		      3349
+      ZOrder		      3351
       BackgroundColor	      "lightBlue"
+      LibraryVersion	      "*1.1"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -863,6 +864,7 @@ Library {
 	$ObjectID		17
 	$ClassName		"Simulink.Mask"
 	Type			"SEL751 - SignalScaling"
+	Description		"CT and PT ratios should match the settings in the corresponding SEL751\n"
 	Array {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
@@ -871,7 +873,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "ct_ratio"
 	    Prompt		    "CT Ratio"
-	    Value		    "5/1250"
+	    Value		    "1/1250"
 	  }
 	  Object {
 	    $ObjectID		    19
@@ -885,7 +887,7 @@ Library {
       }
       System {
 	Name			"SEL751 - SignalScaling"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-8, -8, 1928, 1168]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -897,7 +899,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"110"
+	ZoomFactor		"126"
 	Block {
 	  BlockType		  Inport
 	  Name			  "CB_Meas"
@@ -905,6 +907,17 @@ Library {
 	  Position		  [20, 543, 50, 557]
 	  ZOrder		  3275
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "5V/1A"
+	  SID			  "21"
+	  Position		  [385, 425, 415, 455]
+	  ZOrder		  3283
+	  Gain			  "5"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  BusCreator
@@ -955,7 +968,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "CT Ratio"
 	  SID			  "5"
-	  Position		  [340, 425, 405, 455]
+	  Position		  [265, 425, 330, 455]
 	  ZOrder		  3264
 	  Gain			  "ct_ratio"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1145,6 +1158,12 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "5V/1A"
+	  SrcPort		  1
+	  DstBlock		  "Thermal\nProtection for\nTransconductance Amp"
+	  DstPort		  1
+	}
+	Line {
 	  SrcBlock		  "Bus\nCreator"
 	  SrcPort		  1
 	  DstBlock		  "ScaledSignals"
@@ -1183,7 +1202,7 @@ Library {
 	Line {
 	  SrcBlock		  "CT Ratio"
 	  SrcPort		  1
-	  DstBlock		  "Thermal\nProtection for\nTransconductance Amp"
+	  DstBlock		  "5V/1A"
 	  DstPort		  1
 	}
 	Line {
@@ -1334,6 +1353,12 @@ Library {
 	  ForegroundColor	  "red"
 	  ZOrder		  -2
 	  FontSize		  14
+	}
+	Annotation {
+	  SID			  "22"
+	  Name			  "5V/1A for the transconductor \namplifier in the interface box"
+	  Position		  [413, 395]
+	  ZOrder		  -3
 	}
       }
     }
