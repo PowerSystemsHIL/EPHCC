@@ -1,0 +1,39 @@
+Notes to Igor:
+-I removed power factor, lets use a miscellaneous data field to send PF.
+
+
+Required changes before implementing UDP block.
+* the scale factors must match the internal scaling
+
+
+
+
+Profile ID: (1-sheriff f, 2-banshee, 3-miniBanshee) 
+
+Waveforms Data: Number of per phase waveforms sent at 5Hz rate to the display, and the number of point per waveform [dt=80us, 208; dt=100us, 166]. Each waveform must have the same scaling factor
+-Input format: [No. of waveforms, No. of datapoints, [scale]]
+-Ex. from integration test-01:[3, 166, [0.8*2^15]]
+
+Relay Data: The relays need to feed data to the breakers in the graph (packet) - mapped/indexed in order
+-Packet order: Active power(kW), reactive power(kVAR), voltage(per-unit), frequency (Hz), breaker status (1:closed, 0:open)
+-Input format: [No. of Relays, [scale_kW, scale_kVAR, scale_Vpu, scale_Hz, 1]]
+-Ex. from integration test-01:[4, [1, 1, 0.8*2^15, 2^15/70, 1]]
+
+No. of Batteries: Number of BESS monitored in the system. The data packet can be modified to access multiple points in vector format. At this moment, only looking at array[0] = SoC
+
+No. of Generators: ---
+
+Motors Data: Number of motors monitored in the system. The data packet can be modified to access multiple points in vector format. At this moment, only looking at array[0] = motor on/off signal
+-Input format: [No. of signals, [array of scale factors]]
+-Ex. from integration test-01: [1, [2^15]]
+
+No. of PV: ---
+
+Miscellaneous Data#1: Unstructured/mixed data sets and array of corresponding scaling values. This can be power, speed, heat, or any other quantity.  
+-Input format: [No. of signals, [array of scale factors]]
+-Ex. from integration test-01: [4, [2^15, 2^15, 2^15, 2^15]]
+
+Miscellaneous Data#2: see Miscellaneous Data#1 
+
+Miscellaneous Data#3: see Miscellaneous Data#1 
+
