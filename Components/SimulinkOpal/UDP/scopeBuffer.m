@@ -6,7 +6,7 @@ function [y, sync] = scopeBuffer(u)
 
 %#codegen
 
-Ts = 80e-6;
+Ts = 100e-6;
 holdOff = 0.2-2*Ts; % must be less than triggering signal or hold off will be delayed
 
 
