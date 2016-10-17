@@ -23,7 +23,8 @@ clear;
 
 components_path_init;
 
-clear;
+TestProcedure_xlsRead; % testing DMS/TST
+
 %% model configuration parameters
 Ts = 100E-6; % integration time
 SIM_HIL = 1; % control mode for NG_CHP [1: Woodward, 0: manual/simulation]
