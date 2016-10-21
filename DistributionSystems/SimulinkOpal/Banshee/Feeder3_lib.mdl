@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Sep 12 16:02:41 2016"
-  RTWModifiedTimeStamp	  395596838
-  ModelVersionFormat	  "1.%<AutoIncrement:25>"
+  LastModifiedDate	  "Fri Oct 21 13:16:38 2016"
+  RTWModifiedTimeStamp	  398956542
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -720,6 +720,12 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -763,6 +769,23 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      Memory
+      X0		      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      LinearizeAsDelay	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
     }
     Block {
       BlockType		      Outport
@@ -825,15 +848,15 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "342"
+    SIDHighWatermark	    "551"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
       SID		      "1"
-      Ports		      [3, 1, 0, 0, 0, 3, 12]
+      Ports		      [4, 1, 0, 0, 0, 3, 12]
       Position		      [635, 231, 935, 519]
       ZOrder		      2323
-      LibraryVersion	      "*1.24"
+      LibraryVersion	      "*1.26"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -843,7 +866,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[-8, 0, 1928, 1176]
+	Location		[1912, -8, 3848, 1208]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -855,12 +878,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"20"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
 	  SID			  "186"
-	  Position		  [2540, 103, 2570, 117]
+	  Position		  [2220, 458, 2250, 472]
 	  ZOrder		  2446
 	  ForegroundColor	  "cyan"
 	  IconDisplay		  "Port number"
@@ -869,7 +892,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "LOAD_IN"
 	  SID			  "80"
-	  Position		  [2540, 73, 2570, 87]
+	  Position		  [2220, 423, 2250, 437]
 	  ZOrder		  2361
 	  ForegroundColor	  "cyan"
 	  NamePlacement		  "alternate"
@@ -878,23 +901,32 @@ Library {
 	}
 	Block {
 	  BlockType		  Inport
-	  Name			  "FAULT_CMD"
+	  Name			  "SC_CMD"
 	  SID			  "337"
-	  Position		  [2540, 238, 2570, 252]
+	  Position		  [2225, 773, 2255, 787]
 	  ZOrder		  2712
 	  ForegroundColor	  "cyan"
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "HWCtrl_CMD"
+	  SID			  "503"
+	  Position		  [2220, 493, 2250, 507]
+	  ZOrder		  3418
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "1000 kVA"
 	  SID			  "2"
-	  Ports			  [0, 1, 0, 0, 0, 3, 3]
-	  Position		  [3010, 2006, 3095, 2069]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3065, 2783, 3150, 2847]
 	  ZOrder		  1963
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.29"
+	  LibraryVersion	  "1.30"
 	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
 	  SourceType		  "Transformers"
 	  Rating		  "1000"
@@ -907,11 +939,11 @@ Library {
 	  BlockType		  Reference
 	  Name			  "1000 kVA1"
 	  SID			  "3"
-	  Ports			  [0, 1, 0, 0, 0, 3, 3]
-	  Position		  [2965, 1556, 3050, 1619]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3020, 2383, 3105, 2447]
 	  ZOrder		  2026
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.29"
+	  LibraryVersion	  "1.30"
 	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
 	  SourceType		  "Transformers"
 	  Rating		  "1000"
@@ -924,11 +956,11 @@ Library {
 	  BlockType		  Reference
 	  Name			  "2000 kVA"
 	  SID			  "4"
-	  Ports			  [0, 1, 0, 0, 0, 3, 3]
-	  Position		  [3010, 2981, 3095, 3044]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3065, 3758, 3150, 3822]
 	  ZOrder		  1981
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.29"
+	  LibraryVersion	  "1.30"
 	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
 	  SourceType		  "Transformers"
 	  Rating		  "2000"
@@ -941,11 +973,11 @@ Library {
 	  BlockType		  Reference
 	  Name			  "2000 kVA1"
 	  SID			  "5"
-	  Ports			  [0, 1, 0, 0, 0, 3, 3]
-	  Position		  [3525, 2501, 3610, 2564]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3580, 3278, 3665, 3342]
 	  ZOrder		  1982
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.29"
+	  LibraryVersion	  "1.30"
 	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
 	  SourceType		  "Transformers"
 	  Rating		  "2000"
@@ -958,11 +990,11 @@ Library {
 	  BlockType		  Reference
 	  Name			  "2500 kVA"
 	  SID			  "213"
-	  Ports			  [0, 1, 0, 0, 0, 3, 3]
-	  Position		  [2540, 825, 2625, 890]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [2600, 1172, 2685, 1238]
 	  ZOrder		  2469
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.29"
+	  LibraryVersion	  "1.30"
 	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
 	  SourceType		  "Transformers"
 	  Rating		  "2500"
@@ -976,7 +1008,7 @@ Library {
 	  Name			  "500kcmil_cable"
 	  SID			  "341"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2130, 1091, 2175, 1159]
+	  Position		  [2190, 1436, 2235, 1504]
 	  ZOrder		  2715
 	  BackgroundColor	  "orange"
 	  LibraryVersion	  "1.28"
@@ -990,7 +1022,7 @@ Library {
 	  Name			  "Bus\nCreator"
 	  SID			  "13"
 	  Ports			  [1, 1]
-	  Position		  [3270, 21, 3275, 59]
+	  Position		  [3090, 761, 3095, 799]
 	  ZOrder		  1913
 	  ShowName		  off
 	  Inputs		  "1"
@@ -1001,7 +1033,7 @@ Library {
 	  Name			  "Bus\nCreator1"
 	  SID			  "14"
 	  Ports			  [1, 1]
-	  Position		  [3270, 96, 3275, 134]
+	  Position		  [3090, 836, 3095, 874]
 	  ZOrder		  1916
 	  ShowName		  off
 	  Inputs		  "1"
@@ -1010,26 +1042,20 @@ Library {
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
-	  SID			  "99"
-	  Ports			  [5, 1]
-	  Position		  [3765, 16, 3770, 254]
-	  ZOrder		  2377
+	  SID			  "513"
+	  Ports			  [3, 1]
+	  Position		  [4405, 370, 4410, 680]
+	  ZOrder		  3423
 	  ShowName		  off
-	  Inputs		  "5"
+	  Inputs		  "3"
 	  DisplayOption		  "bar"
-	  Port {
-	    PortNumber		    1
-	    Name		    "XFR"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator3"
 	  SID			  "110"
 	  Ports			  [5, 1]
-	  Position		  [3765, 285, 3770, 515]
+	  Position		  [3495, 390, 3500, 620]
 	  ZOrder		  2388
 	  ShowName		  off
 	  Inputs		  "5"
@@ -1043,24 +1069,24 @@ Library {
 	}
 	Block {
 	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator4"
-	  SID			  "119"
-	  Ports			  [2, 1]
-	  Position		  [3850, 208, 3855, 317]
-	  ZOrder		  2397
+	  Name			  "Bus\nCreator5"
+	  SID			  "127"
+	  Ports			  [10, 1]
+	  Position		  [3945, 380, 3950, 715]
+	  ZOrder		  2405
 	  ShowName		  off
-	  Inputs		  "2"
+	  Inputs		  "10"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator5"
-	  SID			  "127"
-	  Ports			  [10, 1]
-	  Position		  [4235, 295, 4240, 630]
-	  ZOrder		  2405
+	  Name			  "Bus\nCreator6"
+	  SID			  "491"
+	  Ports			  [3, 1]
+	  Position		  [3750, 1674, 3755, 1826]
+	  ZOrder		  3403
 	  ShowName		  off
-	  Inputs		  "10"
+	  Inputs		  "3"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1068,7 +1094,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "325"
 	  Ports			  [1, 1]
-	  Position		  [2365, 421, 2370, 459]
+	  Position		  [1100, 586, 1105, 624]
 	  ZOrder		  2705
 	  ShowName		  off
 	  OutputSignals		  "Vabc_bus"
@@ -1084,7 +1110,7 @@ Library {
 	  Name			  "Bus\nSelector1"
 	  SID			  "190"
 	  Ports			  [1, 1]
-	  Position		  [2020, 753, 2025, 777]
+	  Position		  [2080, 1098, 2085, 1122]
 	  ZOrder		  2448
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_4"
@@ -1100,7 +1126,7 @@ Library {
 	  Name			  "Bus\nSelector10"
 	  SID			  "201"
 	  Ports			  [1, 1]
-	  Position		  [2755, 2918, 2760, 2942]
+	  Position		  [2810, 3693, 2815, 3717]
 	  ZOrder		  2458
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_5"
@@ -1116,7 +1142,7 @@ Library {
 	  Name			  "Bus\nSelector11"
 	  SID			  "226"
 	  Ports			  [1, 1]
-	  Position		  [3730, 781, 3735, 819]
+	  Position		  [3790, 1126, 3795, 1164]
 	  ZOrder		  2615
 	  ShowName		  off
 	  OutputSignals		  "P6"
@@ -1132,7 +1158,7 @@ Library {
 	  Name			  "Bus\nSelector12"
 	  SID			  "231"
 	  Ports			  [1, 1]
-	  Position		  [3325, 788, 3330, 812]
+	  Position		  [3385, 1133, 3390, 1157]
 	  ZOrder		  2621
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_9"
@@ -1148,7 +1174,7 @@ Library {
 	  Name			  "Bus\nSelector13"
 	  SID			  "209"
 	  Ports			  [1, 1]
-	  Position		  [2365, 1303, 2370, 1327]
+	  Position		  [2420, 2078, 2425, 2102]
 	  ZOrder		  2466
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_3"
@@ -1164,7 +1190,7 @@ Library {
 	  Name			  "Bus\nSelector14"
 	  SID			  "235"
 	  Ports			  [1, 1]
-	  Position		  [4090, 2443, 4095, 2467]
+	  Position		  [4145, 3213, 4150, 3237]
 	  ZOrder		  2625
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_8"
@@ -1177,10 +1203,54 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector15"
+	  SID			  "480"
+	  Ports			  [1, 3]
+	  Position		  [2465, 641, 2470, 919]
+	  ZOrder		  3400
+	  ShowName		  off
+	  OutputSignals		  "IO ctrl.16 DOUT GR3.CHP_SIM_Cmds,motor_signals,fault_cmd"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<CHP_SIM_Cmds>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<motor_signals>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<fault_cmd>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector16"
+	  SID			  "504"
+	  Ports			  [1, 1]
+	  Position		  [2625, 485, 2635, 515]
+	  ZOrder		  3419
+	  ShowName		  off
+	  OutputSignals		  "NGCHP_Gen1"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<NGCHP_Gen1>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector2"
 	  SID			  "86"
 	  Ports			  [1, 1]
-	  Position		  [3200, 1451, 3205, 1489]
+	  Position		  [3255, 2276, 3260, 2314]
 	  ZOrder		  2364
 	  ShowName		  off
 	  OutputSignals		  "C6"
@@ -1196,7 +1266,7 @@ Library {
 	  Name			  "Bus\nSelector3"
 	  SID			  "88"
 	  Ports			  [1, 1]
-	  Position		  [3955, 1906, 3960, 1944]
+	  Position		  [4010, 2681, 4015, 2719]
 	  ZOrder		  2366
 	  ShowName		  off
 	  OutputSignals		  "P4"
@@ -1212,7 +1282,7 @@ Library {
 	  Name			  "Bus\nSelector4"
 	  SID			  "90"
 	  Ports			  [1, 1]
-	  Position		  [4515, 2446, 4520, 2484]
+	  Position		  [4570, 3216, 4575, 3254]
 	  ZOrder		  2368
 	  ShowName		  off
 	  OutputSignals		  "I6"
@@ -1228,7 +1298,7 @@ Library {
 	  Name			  "Bus\nSelector5"
 	  SID			  "92"
 	  Ports			  [1, 1]
-	  Position		  [3385, 2901, 3390, 2939]
+	  Position		  [3440, 3671, 3445, 3709]
 	  ZOrder		  2370
 	  ShowName		  off
 	  OutputSignals		  "C5"
@@ -1244,7 +1314,7 @@ Library {
 	  Name			  "Bus\nSelector6"
 	  SID			  "193"
 	  Ports			  [1, 1]
-	  Position		  [2480, 1938, 2485, 1962]
+	  Position		  [2535, 2713, 2540, 2737]
 	  ZOrder		  2450
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_2"
@@ -1260,7 +1330,7 @@ Library {
 	  Name			  "Bus\nSelector7"
 	  SID			  "195"
 	  Ports			  [1, 1]
-	  Position		  [3435, 1963, 3440, 1987]
+	  Position		  [3490, 2738, 3495, 2762]
 	  ZOrder		  2452
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_7"
@@ -1276,7 +1346,7 @@ Library {
 	  Name			  "Bus\nSelector8"
 	  SID			  "197"
 	  Ports			  [1, 1]
-	  Position		  [3250, 2458, 3255, 2482]
+	  Position		  [3305, 3233, 3310, 3257]
 	  ZOrder		  2454
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_6"
@@ -1292,7 +1362,7 @@ Library {
 	  Name			  "Bus\nSelector9"
 	  SID			  "199"
 	  Ports			  [1, 1]
-	  Position		  [2075, 2563, 2080, 2587]
+	  Position		  [2130, 3338, 2135, 3362]
 	  ZOrder		  2456
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_1"
@@ -1308,7 +1378,7 @@ Library {
 	  Name			  "C301"
 	  SID			  "247"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2350, 2630, 2395, 2690]
+	  Position		  [2405, 3405, 2450, 3465]
 	  ZOrder		  2635
 	  BackgroundColor	  "orange"
 	  LibraryVersion	  "1.28"
@@ -1323,7 +1393,7 @@ Library {
 	  Name			  "C302"
 	  SID			  "242"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2615, 1385, 2660, 1445]
+	  Position		  [2670, 2160, 2715, 2220]
 	  ZOrder		  2630
 	  BackgroundColor	  "orange"
 	  LibraryVersion	  "1.28"
@@ -1338,7 +1408,7 @@ Library {
 	  Name			  "C303"
 	  SID			  "248"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2325, 830, 2370, 890]
+	  Position		  [2385, 1175, 2430, 1235]
 	  ZOrder		  2636
 	  BackgroundColor	  "orange"
 	  LibraryVersion	  "1.28"
@@ -1353,7 +1423,7 @@ Library {
 	  Name			  "C304"
 	  SID			  "245"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2790, 2010, 2835, 2070]
+	  Position		  [2845, 2785, 2890, 2845]
 	  ZOrder		  2633
 	  BackgroundColor	  "orange"
 	  LibraryVersion	  "1.28"
@@ -1367,7 +1437,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "CB closed"
 	  SID			  "16"
-	  Position		  [3165, 25, 3195, 55]
+	  Position		  [2985, 765, 3015, 795]
 	  ZOrder		  1915
 	  Port {
 	    PortNumber		    1
@@ -1380,7 +1450,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "CB open"
 	  SID			  "17"
-	  Position		  [3165, 100, 3195, 130]
+	  Position		  [2985, 840, 3015, 870]
 	  ZOrder		  1917
 	  Value			  "0"
 	  Port {
@@ -1395,7 +1465,7 @@ Library {
 	  Name			  "Critical_5"
 	  SID			  "18"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3440, 2966, 3500, 3054]
+	  Position		  [3495, 3736, 3555, 3824]
 	  ZOrder		  1983
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.97"
@@ -1409,7 +1479,7 @@ Library {
 	  Name			  "Critical_6"
 	  SID			  "19"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3260, 1536, 3320, 1624]
+	  Position		  [3315, 2361, 3375, 2449]
 	  ZOrder		  2031
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.97"
@@ -1419,164 +1489,175 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
+	  BlockType		  Demux
+	  Name			  "Demux2"
+	  SID			  "446"
+	  Ports			  [1, 6]
+	  Position		  [1130, 343, 1140, 442]
+	  ZOrder		  3326
+	  ShowName		  off
+	  Outputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_1"
 	  SID			  "21"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2130, 2608, 2185, 2692]
+	  Position		  [2185, 3383, 2240, 3467]
 	  ZOrder		  1842
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_2"
 	  SID			  "22"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2545, 1988, 2600, 2072]
+	  Position		  [2600, 2763, 2655, 2847]
 	  ZOrder		  1844
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_3"
 	  SID			  "23"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2420, 1363, 2475, 1447]
+	  Position		  [2475, 2138, 2530, 2222]
 	  ZOrder		  1845
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_4"
 	  SID			  "24"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2075, 808, 2130, 892]
+	  Position		  [2135, 1153, 2190, 1237]
 	  ZOrder		  1846
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_5"
 	  SID			  "25"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2835, 2963, 2890, 3047]
+	  Position		  [2890, 3738, 2945, 3822]
 	  ZOrder		  2023
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_6"
 	  SID			  "26"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3350, 2483, 3405, 2567]
+	  Position		  [3405, 3258, 3460, 3342]
 	  ZOrder		  2024
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_7"
 	  SID			  "27"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3535, 1988, 3590, 2072]
+	  Position		  [3590, 2763, 3645, 2847]
 	  ZOrder		  2025
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_8"
 	  SID			  "236"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [4130, 2488, 4185, 2572]
+	  Position		  [4185, 3258, 4240, 3342]
 	  ZOrder		  2623
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_CB_9"
 	  SID			  "232"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3385, 818, 3440, 902]
+	  Position		  [3445, 1163, 3500, 1247]
 	  ZOrder		  2619
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_GCB"
-	  SID			  "28"
+	  SID			  "492"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3005, 1193, 3060, 1277]
-	  ZOrder		  2029
+	  Position		  [3420, 1848, 3475, 1932]
+	  ZOrder		  3404
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "F3_PCC"
 	  SID			  "29"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [1185, 1988, 1240, 2072]
+	  Position		  [1240, 2763, 1295, 2847]
 	  ZOrder		  1852
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.466"
+	  LibraryVersion	  "1.471"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delays		  "[cb_mech_delay(1,:)]"
+	  mech_delay		  "cb_mech_delay"
 	}
 	Block {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "194"
-	  Position		  [2365, 1940, 2440, 1960]
+	  Position		  [2420, 2715, 2495, 2735]
 	  ZOrder		  2451
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1586,7 +1667,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From10"
 	  SID			  "206"
-	  Position		  [1060, 1940, 1135, 1960]
+	  Position		  [1115, 2715, 1190, 2735]
 	  ZOrder		  2463
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1596,7 +1677,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From11"
 	  SID			  "91"
-	  Position		  [4395, 2456, 4470, 2474]
+	  Position		  [4450, 3226, 4525, 3244]
 	  ZOrder		  2369
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -1605,7 +1686,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From12"
 	  SID			  "93"
-	  Position		  [3265, 2911, 3340, 2929]
+	  Position		  [3320, 3681, 3395, 3699]
 	  ZOrder		  2371
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -1614,7 +1695,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From13"
 	  SID			  "210"
-	  Position		  [2250, 1305, 2325, 1325]
+	  Position		  [2305, 2080, 2380, 2100]
 	  ZOrder		  2467
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1622,77 +1703,9 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From14"
-	  SID			  "101"
-	  Position		  [3560, 125, 3635, 145]
-	  ZOrder		  2379
-	  BackgroundColor	  "magenta"
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_3"
-	  Port {
-	    PortNumber		    1
-	    Name		    "F3_X3"
-	    PropagatedSignals	    "kW, kvar, % Loading"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From15"
-	  SID			  "102"
-	  Position		  [3560, 80, 3635, 100]
-	  ZOrder		  2380
-	  BackgroundColor	  "magenta"
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_2"
-	  Port {
-	    PortNumber		    1
-	    Name		    "F3_X2"
-	    PropagatedSignals	    "kW, kvar, % Loading"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From16"
-	  SID			  "103"
-	  Position		  [3560, 170, 3635, 190]
-	  ZOrder		  2381
-	  BackgroundColor	  "magenta"
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_4"
-	  Port {
-	    PortNumber		    1
-	    Name		    "F3_X4"
-	    PropagatedSignals	    "kW, kvar, % Loading"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From17"
-	  SID			  "104"
-	  Position		  [3560, 215, 3635, 235]
-	  ZOrder		  2382
-	  BackgroundColor	  "magenta"
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_5"
-	  Port {
-	    PortNumber		    1
-	    Name		    "F3_X5"
-	    PropagatedSignals	    "kW, kvar, % Loading"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From18"
 	  SID			  "116"
-	  Position		  [3560, 345, 3635, 365]
+	  Position		  [3290, 450, 3365, 470]
 	  ZOrder		  2394
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -1709,7 +1722,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From19"
 	  SID			  "117"
-	  Position		  [3560, 390, 3635, 410]
+	  Position		  [3290, 495, 3365, 515]
 	  ZOrder		  2395
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -1726,7 +1739,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From2"
 	  SID			  "196"
-	  Position		  [3320, 1965, 3395, 1985]
+	  Position		  [3375, 2740, 3450, 2760]
 	  ZOrder		  2453
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1736,7 +1749,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From20"
 	  SID			  "118"
-	  Position		  [3560, 435, 3635, 455]
+	  Position		  [3290, 540, 3365, 560]
 	  ZOrder		  2396
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -1753,7 +1766,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From21"
 	  SID			  "128"
-	  Position		  [4025, 295, 4100, 315]
+	  Position		  [3735, 380, 3810, 400]
 	  ZOrder		  2406
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1770,7 +1783,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From22"
 	  SID			  "115"
-	  Position		  [3560, 300, 3635, 320]
+	  Position		  [3290, 405, 3365, 425]
 	  ZOrder		  2389
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -1787,7 +1800,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From23"
 	  SID			  "129"
-	  Position		  [4025, 330, 4100, 350]
+	  Position		  [3735, 415, 3810, 435]
 	  ZOrder		  2407
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1804,7 +1817,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From24"
 	  SID			  "130"
-	  Position		  [4025, 365, 4100, 385]
+	  Position		  [3735, 450, 3810, 470]
 	  ZOrder		  2408
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1821,7 +1834,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From25"
 	  SID			  "131"
-	  Position		  [4025, 400, 4100, 420]
+	  Position		  [3735, 485, 3810, 505]
 	  ZOrder		  2409
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1838,7 +1851,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From26"
 	  SID			  "132"
-	  Position		  [4025, 435, 4100, 455]
+	  Position		  [3735, 520, 3810, 540]
 	  ZOrder		  2410
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1855,7 +1868,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From27"
 	  SID			  "133"
-	  Position		  [4025, 470, 4100, 490]
+	  Position		  [3735, 555, 3810, 575]
 	  ZOrder		  2411
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1872,7 +1885,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From28"
 	  SID			  "134"
-	  Position		  [4025, 505, 4100, 525]
+	  Position		  [3735, 590, 3810, 610]
 	  ZOrder		  2412
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1889,7 +1902,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From29"
 	  SID			  "191"
-	  Position		  [1905, 755, 1980, 775]
+	  Position		  [1965, 1100, 2040, 1120]
 	  ZOrder		  2449
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1899,7 +1912,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "198"
-	  Position		  [3135, 2460, 3210, 2480]
+	  Position		  [3190, 3235, 3265, 3255]
 	  ZOrder		  2455
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1909,7 +1922,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From30"
 	  SID			  "225"
-	  Position		  [4025, 610, 4100, 630]
+	  Position		  [3735, 695, 3810, 715]
 	  ZOrder		  2613
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1926,7 +1939,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From31"
 	  SID			  "227"
-	  Position		  [3625, 791, 3700, 809]
+	  Position		  [3685, 1136, 3760, 1154]
 	  ZOrder		  2616
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -1935,7 +1948,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From32"
 	  SID			  "230"
-	  Position		  [3560, 480, 3635, 500]
+	  Position		  [3290, 585, 3365, 605]
 	  ZOrder		  2618
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -1952,7 +1965,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From33"
 	  SID			  "233"
-	  Position		  [3210, 790, 3285, 810]
+	  Position		  [3270, 1135, 3345, 1155]
 	  ZOrder		  2622
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1962,7 +1975,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From34"
 	  SID			  "237"
-	  Position		  [3975, 2445, 4050, 2465]
+	  Position		  [4030, 3215, 4105, 3235]
 	  ZOrder		  2626
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -1972,7 +1985,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From35"
 	  SID			  "239"
-	  Position		  [4025, 540, 4100, 560]
+	  Position		  [3735, 625, 3810, 645]
 	  ZOrder		  2627
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -1989,7 +2002,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From36"
 	  SID			  "240"
-	  Position		  [4025, 575, 4100, 595]
+	  Position		  [3735, 660, 3810, 680]
 	  ZOrder		  2628
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2006,7 +2019,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From37"
 	  SID			  "339"
-	  Position		  [2260, 430, 2335, 450]
+	  Position		  [995, 595, 1070, 615]
 	  ZOrder		  2713
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2016,7 +2029,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From38"
 	  SID			  "327"
-	  Position		  [2410, 477, 2475, 493]
+	  Position		  [1145, 642, 1210, 658]
 	  ZOrder		  2702
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -2027,7 +2040,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From39"
 	  SID			  "333"
-	  Position		  [2020, 1077, 2095, 1093]
+	  Position		  [2080, 1422, 2155, 1438]
 	  ZOrder		  2708
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -2037,16 +2050,18 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From4"
-	  SID			  "100"
-	  Position		  [3560, 35, 3635, 55]
-	  ZOrder		  2378
-	  BackgroundColor	  "magenta"
+	  SID			  "514"
+	  Position		  [4200, 412, 4310, 428]
+	  ZOrder		  3424
+	  BackgroundColor	  "green"
+	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  GotoTag		  "XFM_F3_1"
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "CB_DATA"
 	  Port {
 	    PortNumber		    1
-	    Name		    "F3_X1"
-	    PropagatedSignals	    "kW, kvar, % Loading"
+	    Name		    "CB_DATA"
+	    PropagatedSignals	    "F3_CB_1, F3_CB_2, F3_CB_3, F3_CB_4, F3_CB_5, F3_CB_6, F3_CB_7, F3_CB_8, F3_CB_9, F3_PCC"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -2055,7 +2070,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From40"
 	  SID			  "334"
-	  Position		  [2020, 1057, 2090, 1073]
+	  Position		  [2080, 1402, 2150, 1418]
 	  ZOrder		  2707
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -2064,18 +2079,70 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From41"
+	  SID			  "463"
+	  Position		  [2620, 1717, 2730, 1733]
+	  ZOrder		  3379
+	  BackgroundColor	  "cyan"
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "heat_load"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "87"
-	  Position		  [3100, 1461, 3175, 1479]
+	  Position		  [3155, 2286, 3230, 2304]
 	  ZOrder		  2365
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From51"
+	  SID			  "472"
+	  Position		  [4200, 622, 4310, 638]
+	  ZOrder		  3388
+	  BackgroundColor	  "green"
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "NG_CHP_DATA"
+	  Port {
+	    PortNumber		    1
+	    Name		    "NG_CHP_DATA"
+	    PropagatedSignals	    "CHPData, Gen1_meas, NG_CHP_GCB"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From52"
+	  SID			  "494"
+	  Position		  [2625, 1815, 2725, 1835]
+	  ZOrder		  3406
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "CHP_SIM_cmds"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From53"
+	  SID			  "495"
+	  Position		  [2625, 1915, 2760, 1935]
+	  ZOrder		  3409
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "NGCHP_Gen1"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From6"
 	  SID			  "89"
-	  Position		  [3850, 1916, 3925, 1934]
+	  Position		  [3905, 2691, 3980, 2709]
 	  ZOrder		  2367
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -2084,7 +2151,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From7"
 	  SID			  "200"
-	  Position		  [1970, 2565, 2045, 2585]
+	  Position		  [2025, 3340, 2100, 3360]
 	  ZOrder		  2457
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2094,7 +2161,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From8"
 	  SID			  "202"
-	  Position		  [2640, 2920, 2715, 2940]
+	  Position		  [2695, 3695, 2770, 3715]
 	  ZOrder		  2459
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2103,18 +2170,36 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From9"
-	  SID			  "211"
-	  Position		  [2880, 1160, 2955, 1180]
-	  ZOrder		  2468
+	  SID			  "515"
+	  Position		  [4200, 517, 4310, 533]
+	  ZOrder		  3425
 	  BackgroundColor	  "green"
+	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  GotoTag		  "cb_o"
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "LOAD_DATA"
+	  Port {
+	    PortNumber		    1
+	    Name		    "LOAD_DATA"
+	    PropagatedSignals	    "LOAD"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "440"
+	  Position		  [3565, 492, 3660, 518]
+	  ZOrder		  3151
+	  BackgroundColor	  "magenta"
+	  GotoTag		  "LOAD_DATA"
 	}
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "43"
-	  Position		  [3320, 30, 3400, 50]
+	  Position		  [3140, 770, 3220, 790]
 	  ZOrder		  1918
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2124,7 +2209,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto10"
 	  SID			  "107"
-	  Position		  [4115, 2020, 4195, 2040]
+	  Position		  [4170, 2795, 4250, 2815]
 	  ZOrder		  2385
 	  ShowName		  off
 	  GotoTag		  "LOAD_P4"
@@ -2133,7 +2218,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto11"
 	  SID			  "108"
-	  Position		  [4645, 2520, 4725, 2540]
+	  Position		  [4700, 3290, 4780, 3310]
 	  ZOrder		  2386
 	  ShowName		  off
 	  GotoTag		  "LOAD_I6"
@@ -2142,7 +2227,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto12"
 	  SID			  "109"
-	  Position		  [3570, 3000, 3650, 3020]
+	  Position		  [3625, 3770, 3705, 3790]
 	  ZOrder		  2387
 	  ShowName		  off
 	  GotoTag		  "LOAD_C5"
@@ -2151,7 +2236,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto13"
 	  SID			  "120"
-	  Position		  [2180, 755, 2260, 775]
+	  Position		  [2240, 1100, 2320, 1120]
 	  ZOrder		  2398
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2161,7 +2246,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto14"
 	  SID			  "121"
-	  Position		  [2525, 1325, 2605, 1345]
+	  Position		  [2580, 2100, 2660, 2120]
 	  ZOrder		  2399
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2171,7 +2256,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto15"
 	  SID			  "122"
-	  Position		  [2645, 1930, 2725, 1950]
+	  Position		  [2700, 2705, 2780, 2725]
 	  ZOrder		  2400
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2181,7 +2266,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto16"
 	  SID			  "123"
-	  Position		  [2220, 2565, 2300, 2585]
+	  Position		  [2275, 3340, 2355, 3360]
 	  ZOrder		  2401
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2191,7 +2276,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto17"
 	  SID			  "124"
-	  Position		  [3440, 2465, 3520, 2485]
+	  Position		  [3495, 3240, 3575, 3260]
 	  ZOrder		  2402
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2201,7 +2286,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto18"
 	  SID			  "125"
-	  Position		  [2940, 2920, 3020, 2940]
+	  Position		  [2995, 3695, 3075, 3715]
 	  ZOrder		  2403
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2211,7 +2296,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto19"
 	  SID			  "126"
-	  Position		  [3630, 1950, 3710, 1970]
+	  Position		  [3685, 2725, 3765, 2745]
 	  ZOrder		  2404
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2221,7 +2306,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  "44"
-	  Position		  [3320, 105, 3400, 125]
+	  Position		  [3140, 845, 3220, 865]
 	  ZOrder		  1919
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -2231,7 +2316,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto20"
 	  SID			  "187"
-	  Position		  [2835, 100, 2915, 120]
+	  Position		  [2515, 455, 2595, 475]
 	  ZOrder		  2445
 	  ShowName		  off
 	  GotoTag		  "RELAY_IN"
@@ -2240,7 +2325,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto21"
 	  SID			  "228"
-	  Position		  [3905, 850, 3985, 870]
+	  Position		  [3965, 1195, 4045, 1215]
 	  ZOrder		  2617
 	  ShowName		  off
 	  GotoTag		  "LOAD_P6"
@@ -2249,7 +2334,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto22"
 	  SID			  "224"
-	  Position		  [1300, 1940, 1380, 1960]
+	  Position		  [1355, 2715, 1435, 2735]
 	  ZOrder		  2612
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -2259,7 +2344,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto23"
 	  SID			  "234"
-	  Position		  [3485, 790, 3565, 810]
+	  Position		  [3545, 1135, 3625, 1155]
 	  ZOrder		  2620
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2269,7 +2354,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto24"
 	  SID			  "238"
-	  Position		  [4230, 2455, 4310, 2475]
+	  Position		  [4285, 3225, 4365, 3245]
 	  ZOrder		  2624
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2279,7 +2364,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto25"
 	  SID			  "328"
-	  Position		  [2945, 478, 3000, 492]
+	  Position		  [1680, 643, 1735, 657]
 	  ZOrder		  2701
 	  ShowName		  off
 	  GotoTag		  "trigger"
@@ -2287,81 +2372,128 @@ Library {
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto26"
-	  SID			  "338"
-	  Position		  [2820, 235, 2900, 255]
-	  ZOrder		  2711
+	  SID			  "507"
+	  Position		  [2575, 683, 2695, 697]
+	  ZOrder		  3415
 	  ShowName		  off
-	  GotoTag		  "fault_cmd"
+	  GotoTag		  "CHP_SIM_cmds"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto27"
+	  SID			  "447"
+	  Position		  [1460, 369, 1535, 391]
+	  ZOrder		  3325
+	  BackgroundColor	  "cyan"
+	  GotoTag		  "heat_load"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto28"
+	  SID			  "497"
+	  Position		  [3800, 1742, 3925, 1758]
+	  ZOrder		  3408
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "NG_CHP_DATA"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto29"
+	  SID			  "508"
+	  Position		  [2715, 488, 2835, 512]
+	  ZOrder		  3420
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  GotoTag		  "NGCHP_Gen1"
 	}
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto3"
 	  SID			  "82"
-	  Position		  [2835, 70, 2915, 90]
+	  Position		  [2515, 420, 2595, 440]
 	  ZOrder		  2359
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto35"
+	  SID			  "488"
+	  Position		  [2620, 769, 2695, 791]
+	  ZOrder		  3399
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  GotoTag		  "motor_cmd"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto4"
-	  SID			  "214"
-	  Position		  [2685, 765, 2765, 785]
-	  ZOrder		  2473
+	  SID			  "512"
+	  Position		  [4000, 537, 4095, 563]
+	  ZOrder		  3422
+	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
-	  GotoTag		  "XFM_F3_5"
+	  GotoTag		  "CB_DATA"
 	}
 	Block {
 	  BlockType		  Goto
-	  Name			  "Goto5"
-	  SID			  "95"
-	  Position		  [3090, 1515, 3170, 1535]
-	  ZOrder		  2373
+	  Name			  "Goto44"
+	  SID			  "487"
+	  Position		  [2615, 860, 2695, 880]
+	  ZOrder		  3392
 	  ShowName		  off
-	  GotoTag		  "XFM_F3_4"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto6"
-	  SID			  "96"
-	  Position		  [3145, 1970, 3225, 1990]
-	  ZOrder		  2374
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_3"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto7"
-	  SID			  "97"
-	  Position		  [3655, 2465, 3735, 2485]
-	  ZOrder		  2375
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_2"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto8"
-	  SID			  "98"
-	  Position		  [3140, 2945, 3220, 2965]
-	  ZOrder		  2376
-	  ShowName		  off
-	  GotoTag		  "XFM_F3_1"
+	  GotoTag		  "fault_cmd"
 	}
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto9"
 	  SID			  "106"
-	  Position		  [3360, 1570, 3440, 1590]
+	  Position		  [3415, 2395, 3495, 2415]
 	  ZOrder		  2384
 	  ShowName		  off
 	  GotoTag		  "LOAD_C6"
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "HWController_3.5MVA_NGCHP"
+	  SID			  "499"
+	  Ports			  [3, 3, 0, 0, 0, 0, 3]
+	  Position		  [2810, 1673, 3080, 1977]
+	  ZOrder		  3410
+	  BackgroundColor	  "green"
+	  LibraryVersion	  "1.4"
+	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_3.5MVA_NGCHP"
+	  SourceType		  "SubSystem"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CHPData"
+	    PropagatedSignals	    "CHPData"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Gen1_meas"
+	    PropagatedSignals	    "3.5MVA"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Interpolation "
+	  SID			  "448"
+	  Position		  [1000, 445, 1045, 465]
+	  ZOrder		  3323
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "Interruptible_6"
 	  SID			  "47"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [4545, 2486, 4605, 2574]
+	  Position		  [4600, 3256, 4660, 3344]
 	  ZOrder		  1984
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.97"
@@ -2371,16 +2503,35 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
+	  BlockType		  Memory
+	  Name			  "Memory"
+	  SID			  "444"
+	  Position		  [4485, 510, 4515, 540]
+	  ZOrder		  3152
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "449"
+	  Ports			  [6, 1]
+	  Position		  [1085, 320, 1095, 465]
+	  ZOrder		  3324
+	  ShowName		  off
+	  Inputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "OpComm1"
 	  SID			  "83"
-	  Ports			  [2, 2]
-	  Position		  [2670, 65, 2735, 125]
+	  Ports			  [3, 3]
+	  Position		  [2350, 415, 2420, 515]
 	  ZOrder		  2357
 	  LibraryVersion	  "1.471"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "2"
+	  nbport		  "3"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -2408,7 +2559,7 @@ Library {
 	  Name			  "OpComm2"
 	  SID			  "340"
 	  Ports			  [1, 1]
-	  Position		  [2670, 215, 2735, 275]
+	  Position		  [2345, 760, 2400, 800]
 	  ZOrder		  2714
 	  LibraryVersion	  "1.471"
 	  SourceBlock		  "rtlab/OpComm"
@@ -2431,10 +2582,70 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "OpFromFile"
+	  SID			  "451"
+	  Ports			  [6, 4]
+	  Position		  [1190, 345, 1420, 440]
+	  ZOrder		  3317
+	  LibraryVersion	  "1.471"
+	  SourceBlock		  "rtlab/DataLogging/OpFromFile"
+	  SourceType		  "OpFromFile"
+	  filename_mode		  "Static (same filename all the time)"
+	  reload_mode		  "Next time model is paused (Real-Time)"
+	  init_file_id		  "0"
+	  filename		  "HeatLoad.mat"
+	  rtpath		  "'./'"
+	  nrtpath		  "'.\\'"
+	  sample_time		  "Ts"
+	  Port {
+	    PortNumber		    2
+	    Name		    "Heat Load MBtu/hr"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "PI-Section2"
+	  SID			  "500"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3265, 1870, 3310, 1930]
+	  ZOrder		  3407
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.28"
+	  SourceBlock		  "cables_lib/PI-Section"
+	  SourceType		  "Cable Model"
+	  cable_spec		  "[cable_spec(11, :)]"
+	  line_length		  "2000"
+	  parallel_sets		  "1"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "PQFV"
+	  SID			  "548"
+	  Ports			  [1, 1]
+	  Position		  [3560, 1788, 3660, 1812]
+	  ZOrder		  3468
+	  ForegroundColor	  "blue"
+	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
+	  LibraryVersion	  "1.2"
+	  SourceBlock		  "PQFV_lib/PQFV"
+	  SourceType		  "PQFV"
+	  VRMSLL		  "13800"
+	  Port {
+	    PortNumber		    1
+	    Name		    "NG_CHP_GCB"
+	    PropagatedSignals	    "VRMSLL, Freq, kw, kvar, Vpu, gcb_ms"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "Priority_4"
 	  SID			  "50"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3985, 1986, 4045, 2074]
+	  Position		  [4040, 2761, 4100, 2849]
 	  ZOrder		  1966
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.97"
@@ -2448,7 +2659,7 @@ Library {
 	  Name			  "Priority_6"
 	  SID			  "229"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3775, 816, 3835, 904]
+	  Position		  [3835, 1161, 3895, 1249]
 	  ZOrder		  2614
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.97"
@@ -2458,11 +2669,19 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "Repetative "
+	  SID			  "452"
+	  Position		  [1000, 345, 1045, 365]
+	  ZOrder		  3322
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "SSN Interface Block (3ph)1"
 	  SID			  "241"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2825, 2487, 2895, 2583]
+	  Position		  [2880, 3262, 2950, 3358]
 	  ZOrder		  2629
 	  LibraryVersion	  "1.187"
 	  SourceBlock		  "ssn_lib/SSN Interface Block (3ph)"
@@ -2492,7 +2711,7 @@ Library {
 	  Name			  "SSN Interface Block (3ph)2"
 	  SID			  "342"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3070, 822, 3140, 918]
+	  Position		  [3130, 1167, 3200, 1263]
 	  ZOrder		  2716
 	  LibraryVersion	  "1.187"
 	  SourceBlock		  "ssn_lib/SSN Interface Block (3ph)"
@@ -2522,7 +2741,7 @@ Library {
 	  Name			  "SSN Interface Block (3ph)5"
 	  SID			  "52"
 	  Ports			  [0, 0, 0, 0, 0, 3, 9]
-	  Position		  [1650, 1745, 1735, 1925]
+	  Position		  [1705, 2520, 1790, 2700]
 	  ZOrder		  2296
 	  LibraryVersion	  "1.187"
 	  SourceBlock		  "ssn_lib/SSN Interface Block (3ph)"
@@ -2548,10 +2767,43 @@ Library {
 	  I_port_shunt_resistance "1e9"
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "Start_Index "
+	  SID			  "453"
+	  Position		  [1000, 370, 1045, 390]
+	  ZOrder		  3321
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "State "
+	  SID			  "454"
+	  Position		  [1000, 320, 1045, 340]
+	  ZOrder		  3320
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Stop_Index "
+	  SID			  "455"
+	  Position		  [1000, 395, 1045, 415]
+	  ZOrder		  3319
+	  ShowName		  off
+	  Value			  "1800-1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Time_Scale_Factor "
+	  SID			  "456"
+	  Position		  [1000, 420, 1045, 440]
+	  ZOrder		  3318
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "a"
 	  SID			  "329"
-	  Position		  [2430, 425, 2475, 455]
+	  Position		  [1165, 590, 1210, 620]
 	  ZOrder		  2706
 	  Gain			  "1/(13800*sqrt(2/3))"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -2563,7 +2815,7 @@ Library {
 	  Name			  "opElectricFault"
 	  SID			  "335"
 	  Ports			  [2, 0, 0, 0, 0, 3]
-	  Position		  [2235, 1054, 2325, 1156]
+	  Position		  [2295, 1399, 2385, 1501]
 	  ZOrder		  2709
 	  LibraryVersion	  "1.286"
 	  FontName		  "Verdana"
@@ -2582,7 +2834,7 @@ Library {
 	  Name			  "opPOWFaultControl1"
 	  SID			  "330"
 	  Ports			  [2, 2]
-	  Position		  [2505, 416, 2810, 509]
+	  Position		  [1240, 581, 1545, 674]
 	  ZOrder		  2703
 	  LibraryVersion	  "1.286"
 	  SourceBlock		  "artemis/Tools /POW faults/opPOWFaultControl"
@@ -2599,7 +2851,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "triggerFAULT"
 	  SID			  "331"
-	  Position		  [2835, 470, 2865, 500]
+	  Position		  [1570, 635, 1600, 665]
 	  ZOrder		  2700
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -2615,7 +2867,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_CB_4"
 	  SID			  "215"
-	  Position		  [2820, 938, 2850, 952]
+	  Position		  [2880, 1283, 2910, 1297]
 	  ZOrder		  2470
 	  BlockMirror		  on
 	  Port			  "1"
@@ -2625,7 +2877,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_CB_4"
 	  SID			  "216"
-	  Position		  [2880, 968, 2910, 982]
+	  Position		  [2940, 1313, 2970, 1327]
 	  ZOrder		  2471
 	  BlockMirror		  on
 	  Port			  "2"
@@ -2635,7 +2887,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_CB_4"
 	  SID			  "217"
-	  Position		  [2920, 998, 2950, 1012]
+	  Position		  [2980, 1343, 3010, 1357]
 	  ZOrder		  2472
 	  BlockMirror		  on
 	  Port			  "3"
@@ -2645,7 +2897,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_CB_5"
 	  SID			  "70"
-	  Position		  [3390, 3103, 3420, 3117]
+	  Position		  [3445, 3873, 3475, 3887]
 	  ZOrder		  2354
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2656,7 +2908,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_CB_5"
 	  SID			  "71"
-	  Position		  [3390, 3148, 3420, 3162]
+	  Position		  [3445, 3918, 3475, 3932]
 	  ZOrder		  2355
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2667,7 +2919,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_CB_5"
 	  SID			  "72"
-	  Position		  [3390, 3188, 3420, 3202]
+	  Position		  [3445, 3958, 3475, 3972]
 	  ZOrder		  2356
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2678,7 +2930,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_CB_6"
 	  SID			  "67"
-	  Position		  [3885, 2613, 3915, 2627]
+	  Position		  [3940, 3383, 3970, 3397]
 	  ZOrder		  2351
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2689,7 +2941,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_CB_6"
 	  SID			  "68"
-	  Position		  [3885, 2658, 3915, 2672]
+	  Position		  [3940, 3428, 3970, 3442]
 	  ZOrder		  2352
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2700,7 +2952,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_CB_6"
 	  SID			  "69"
-	  Position		  [3885, 2698, 3915, 2712]
+	  Position		  [3940, 3468, 3970, 3482]
 	  ZOrder		  2353
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2711,7 +2963,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_CB_7"
 	  SID			  "64"
-	  Position		  [4235, 2118, 4265, 2132]
+	  Position		  [4290, 2893, 4320, 2907]
 	  ZOrder		  2348
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2722,7 +2974,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_CB_7"
 	  SID			  "65"
-	  Position		  [4235, 2163, 4265, 2177]
+	  Position		  [4290, 2938, 4320, 2952]
 	  ZOrder		  2349
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2733,7 +2985,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_CB_7"
 	  SID			  "66"
-	  Position		  [4235, 2203, 4265, 2217]
+	  Position		  [4290, 2978, 4320, 2992]
 	  ZOrder		  2350
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2744,7 +2996,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_PCC"
 	  SID			  "314"
-	  Position		  [885, 2003, 915, 2017]
+	  Position		  [940, 2778, 970, 2792]
 	  ZOrder		  2637
 	  ForegroundColor	  "blue"
 	  Port			  "13"
@@ -2754,7 +3006,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_PCC"
 	  SID			  "315"
-	  Position		  [885, 2033, 915, 2047]
+	  Position		  [940, 2808, 970, 2822]
 	  ZOrder		  2638
 	  ForegroundColor	  "blue"
 	  Port			  "14"
@@ -2764,7 +3016,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_PCC"
 	  SID			  "316"
-	  Position		  [885, 2063, 915, 2077]
+	  Position		  [940, 2838, 970, 2852]
 	  ZOrder		  2639
 	  ForegroundColor	  "blue"
 	  Port			  "15"
@@ -2772,11 +3024,309 @@ Library {
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "CB_MS_OUT"
+	  Name			  "DATA_OUT"
 	  SID			  "189"
-	  Position		  [4305, 458, 4335, 472]
+	  Position		  [4565, 518, 4595, 532]
 	  ZOrder		  2447
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<CHP_SIM_Cmds>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector15"
+	  SrcPort		  1
+	  DstBlock		  "Goto26"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "NG_CHP_DATA"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From51"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "LOAD_DATA"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From9"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CB_DATA"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator2"
+	  SrcPort		  1
+	  DstBlock		  "Memory"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "1000 kVA1"
+	  SrcPort		  RConn3
+	  DstBlock		  "Critical_6"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "1000 kVA1"
+	  SrcPort		  RConn2
+	  DstBlock		  "Critical_6"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "1000 kVA1"
+	  SrcPort		  RConn1
+	  DstBlock		  "Critical_6"
+	  DstPort		  LConn1
+	}
+	Line {
+	  Name			  "<NGCHP_Gen1>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector16"
+	  SrcPort		  1
+	  DstBlock		  "Goto29"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm1"
+	  SrcPort		  3
+	  DstBlock		  "Bus\nSelector16"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "HWCtrl_CMD"
+	  SrcPort		  1
+	  DstBlock		  "OpComm1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From41"
+	  SrcPort		  1
+	  DstBlock		  "HWController_3.5MVA_NGCHP"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  3
+	  Points		  [223, 0; 0, 60]
+	  DstBlock		  "F3_GCB"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From53"
+	  SrcPort		  1
+	  DstBlock		  "HWController_3.5MVA_NGCHP"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator6"
+	  SrcPort		  1
+	  DstBlock		  "Goto28"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From52"
+	  SrcPort		  1
+	  DstBlock		  "HWController_3.5MVA_NGCHP"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CHPData"
+	  Labels		  [0, 0]
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Gen1_meas"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nCreator6"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "NG_CHP_GCB"
+	  Labels		  [0, 0]
+	  SrcBlock		  "PQFV"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator6"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "F3_GCB"
+	  SrcPort		  1
+	  Points		  [37, 0; 0, -60]
+	  DstBlock		  "PQFV"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  RConn1
+	  Points		  [102, 0; 0, 30]
+	  DstBlock		  "PI-Section2"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  RConn3
+	  Points		  [72, 0; 0, -30]
+	  DstBlock		  "PI-Section2"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "HWController_3.5MVA_NGCHP"
+	  SrcPort		  RConn2
+	  DstBlock		  "PI-Section2"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "PI-Section2"
+	  SrcPort		  RConn1
+	  DstBlock		  "F3_GCB"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "PI-Section2"
+	  SrcPort		  RConn2
+	  DstBlock		  "F3_GCB"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "PI-Section2"
+	  SrcPort		  RConn3
+	  DstBlock		  "F3_GCB"
+	  DstPort		  LConn3
+	}
+	Line {
+	  Name			  "<fault_cmd>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector15"
+	  SrcPort		  3
+	  DstBlock		  "Goto44"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector15"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<motor_signals>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector15"
+	  SrcPort		  2
+	  DstBlock		  "Goto35"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Stop_Index "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Interpolation "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Demux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  2
+	  DstBlock		  "OpFromFile"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  6
+	  DstBlock		  "OpFromFile"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  3
+	  DstBlock		  "OpFromFile"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Repetative "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  5
+	  DstBlock		  "OpFromFile"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Heat Load MBtu/hr"
+	  SrcBlock		  "OpFromFile"
+	  SrcPort		  2
+	  DstBlock		  "Goto27"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  4
+	  DstBlock		  "OpFromFile"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  1
+	  DstBlock		  "OpFromFile"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "State "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Time_Scale_Factor "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Start_Index "
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Memory"
+	  SrcPort		  1
+	  DstBlock		  "DATA_OUT"
+	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"
@@ -2823,20 +3373,14 @@ Library {
 	  DstPort		  LConn2
 	}
 	Line {
-	  SrcBlock		  "FAULT_CMD"
+	  SrcBlock		  "SC_CMD"
 	  SrcPort		  1
 	  DstBlock		  "OpComm2"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm2"
-	  SrcPort		  1
-	  DstBlock		  "Goto26"
-	  DstPort		  1
-	}
-	Line {
 	  LineType		  "Connection"
-	  Points		  [1521, 2040; 0, -205; 114, 0]
+	  Points		  [1576, 2815; 0, -205; 114, 0]
 	  DstBlock		  "SSN Interface Block (3ph)5"
 	  DstPort		  LConn2
 	  Branch {
@@ -2854,7 +3398,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1543, 2060; 0, -165; 92, 0]
+	  Points		  [1598, 2835; 0, -165; 92, 0]
 	  DstBlock		  "SSN Interface Block (3ph)5"
 	  DstPort		  LConn3
 	  Branch {
@@ -2872,7 +3416,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1496, 2020; 0, -245; 139, 0]
+	  Points		  [1551, 2795; 0, -245; 139, 0]
 	  DstBlock		  "SSN Interface Block (3ph)5"
 	  DstPort		  LConn1
 	  Branch {
@@ -3078,56 +3622,56 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1876, 1125; 0, -265; 184, 0]
+	  Points		  [1931, 1470; 0, -265; 189, 0]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn2
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "500kcmil_cable"
 	    SrcPort		    LConn2
-	    Points		    [-239, 0]
+	    Points		    [-244, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    RConn2
-	    Points		    [126, 0; 0, -650]
+	    Points		    [126, 0; 0, -1080]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1904, 1145; 0, -265; 156, 0]
+	  Points		  [1959, 1490; 0, -265; 161, 0]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn3
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "500kcmil_cable"
 	    SrcPort		    LConn3
-	    Points		    [-211, 0]
+	    Points		    [-216, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    RConn3
-	    Points		    [154, 0; 0, -650]
+	    Points		    [154, 0; 0, -1080]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1848, 1105; 0, -265; 212, 0]
+	  Points		  [1903, 1450; 0, -265; 217, 0]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn1
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "500kcmil_cable"
 	    SrcPort		    LConn1
-	    Points		    [-267, 0]
+	    Points		    [-272, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    RConn1
-	    Points		    [98, 0; 0, -650]
+	    Points		    [98, 0; 0, -1080]
 	  }
 	}
 	Line {
@@ -3280,7 +3824,6 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "1000 kVA"
 	  SrcPort		  RConn1
-	  Points		  [205, 0; 0, -10]
 	  DstBlock		  "F3_CB_7"
 	  DstPort		  LConn1
 	}
@@ -3288,7 +3831,6 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "1000 kVA"
 	  SrcPort		  RConn2
-	  Points		  [205, 0; 0, -5]
 	  DstBlock		  "F3_CB_7"
 	  DstPort		  LConn2
 	}
@@ -3328,15 +3870,8 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "2500 kVA"
-	  SrcPort		  1
-	  Points		  [19, 0; 0, -60]
-	  DstBlock		  "Goto4"
-	  DstPort		  1
-	}
-	Line {
 	  LineType		  "Connection"
-	  Points		  [2703, 870; 0, 105; 162, 0]
+	  Points		  [2763, 1215; 0, 105; 162, 0]
 	  DstBlock		  "B_CB_4"
 	  DstPort		  RConn1
 	  Branch {
@@ -3349,12 +3884,12 @@ Library {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "2500 kVA"
 	    SrcPort		    RConn2
-	    Points		    [63, 0; 0, 5]
+	    Points		    [63, 0; 0, 10]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2677, 900; 0, 105; 228, 0]
+	  Points		  [2737, 1245; 0, 105; 228, 0]
 	  DstBlock		  "C_CB_4"
 	  DstPort		  RConn1
 	  Branch {
@@ -3372,28 +3907,21 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2726, 850; 0, 95; 79, 0]
-	  DstBlock		  "A_CB_4"
-	  DstPort		  RConn1
+	  SrcBlock		  "SSN Interface Block (3ph)2"
+	  SrcPort		  LConn1
+	  Points		  [-329, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)2"
-	    SrcPort		    LConn1
-	    Points		    [-329, 0; 0, 10]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, 105]
+	    DstBlock		    "A_CB_4"
+	    DstPort		    RConn1
 	  }
 	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "2500 kVA"
 	    SrcPort		    RConn1
 	    Points		    [86, 0]
 	  }
-	}
-	Line {
-	  SrcBlock		  "From9"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 35]
-	  DstBlock		  "F3_GCB"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From10"
@@ -3513,7 +4041,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator5"
 	  SrcPort		  1
-	  DstBlock		  "CB_MS_OUT"
+	  DstBlock		  "Goto4"
 	  DstPort		  1
 	}
 	Line {
@@ -3616,20 +4144,10 @@ Library {
 	}
 	Line {
 	  Name			  "LOAD"
-	  Labels		  [1, 1]
+	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nCreator3"
 	  SrcPort		  1
-	  Points		  [47, 0; 0, -110]
-	  DstBlock		  "Bus\nCreator4"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "XFR"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Bus\nCreator2"
-	  SrcPort		  1
-	  Points		  [47, 0; 0, 100]
-	  DstBlock		  "Bus\nCreator4"
+	  DstBlock		  "Goto"
 	  DstPort		  1
 	}
 	Line {
@@ -3686,74 +4204,6 @@ Library {
 	  SrcBlock		  "Critical_6"
 	  SrcPort		  1
 	  DstBlock		  "Goto9"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "F3_X4"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From16"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "F3_X3"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From14"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "F3_X5"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From17"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "F3_X1"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From4"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "F3_X2"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From15"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "1000 kVA1"
-	  SrcPort		  1
-	  Points		  [15, 0; 0, -40]
-	  DstBlock		  "Goto5"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "1000 kVA"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, -35]
-	  DstBlock		  "Goto6"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "2000 kVA1"
-	  SrcPort		  1
-	  Points		  [17, 0; 0, -35]
-	  DstBlock		  "Goto7"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "2000 kVA"
-	  SrcPort		  1
-	  Points		  [17, 0; 0, -35]
-	  DstBlock		  "Goto8"
 	  DstPort		  1
 	}
 	Line {
@@ -3830,9 +4280,9 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Critical_5"
-	  SrcPort		  LConn2
-	  Points		  [-223, 0]
+	  SrcBlock		  "2000 kVA"
+	  SrcPort		  RConn2
+	  Points		  [95, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
 	    Points		    [0, 135]
@@ -3840,16 +4290,17 @@ Library {
 	    DstPort		    RConn1
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "2000 kVA"
-	    DstPort		    RConn2
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Critical_5"
+	    SrcPort		    LConn2
+	    Points		    [-220, 0]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Critical_5"
-	  SrcPort		  LConn3
-	  Points		  [-241, 0]
+	  SrcBlock		  "2000 kVA"
+	  SrcPort		  RConn3
+	  Points		  [76, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
 	    Points		    [0, 155]
@@ -3857,25 +4308,25 @@ Library {
 	    DstPort		    RConn1
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [-34, 0; 0, -5]
-	    DstBlock		    "2000 kVA"
-	    DstPort		    RConn3
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Critical_5"
+	    SrcPort		    LConn3
+	    Points		    [-239, 0]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3220, 3000; -110, 0; 0, 5]
-	  DstBlock		  "2000 kVA"
-	  DstPort		  RConn1
+	  SrcBlock		  "2000 kVA"
+	  SrcPort		  RConn1
+	  Points		  [110, 0]
 	  Branch {
-	    ConnectType		    "SRC_SRC"
+	    ConnectType		    "DEST_SRC"
 	    Points		    [0, 110]
 	    DstBlock		    "A_CB_5"
 	    DstPort		    RConn1
 	  }
 	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Critical_5"
 	    SrcPort		    LConn1
 	    Points		    [-205, 0]
@@ -3883,14 +4334,14 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3710, 2540; -85, 0]
-	  DstBlock		  "2000 kVA1"
-	  DstPort		  RConn2
+	  Points		  [3765, 3310; 0, 125; 160, 0]
+	  DstBlock		  "B_CB_6"
+	  DstPort		  RConn1
 	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    Points		    [0, 125]
-	    DstBlock		    "B_CB_6"
-	    DstPort		    RConn1
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "2000 kVA1"
+	    SrcPort		    RConn2
+	    Points		    [85, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
@@ -3912,32 +4363,31 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [0, -5]
 	    DstBlock		    "2000 kVA1"
 	    DstPort		    RConn3
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3729, 2525; -104, 0]
-	  DstBlock		  "2000 kVA1"
+	  Points		  [3784, 3290; 0, 100; 141, 0]
+	  DstBlock		  "A_CB_6"
 	  DstPort		  RConn1
 	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    Points		    [0, 95]
-	    DstBlock		    "A_CB_6"
-	    DstPort		    RConn1
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "2000 kVA1"
+	    SrcPort		    RConn1
+	    Points		    [104, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "F3_CB_8"
 	    SrcPort		    LConn1
-	    Points		    [-386, 0; 0, 5]
+	    Points		    [-386, 0]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3828, 2040; 142, 0]
+	  Points		  [3883, 2815; 142, 0]
 	  DstBlock		  "Priority_4"
 	  DstPort		  LConn2
 	  Branch {
@@ -3955,7 +4405,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3808, 2060; 162, 0]
+	  Points		  [3863, 2835; 162, 0]
 	  DstBlock		  "Priority_4"
 	  DstPort		  LConn3
 	  Branch {
@@ -3973,7 +4423,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3849, 2020; 121, 0]
+	  Points		  [3904, 2795; 121, 0]
 	  DstBlock		  "Priority_4"
 	  DstPort		  LConn1
 	  Branch {
@@ -4095,20 +4545,20 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_GCB"
-	  SrcPort		  LConn2
-	  Points		  [-181, 0; 0, 170]
+	  Points		  [2864, 2190; 0, 225; 141, 0]
+	  DstBlock		  "1000 kVA1"
+	  DstPort		  LConn2
 	  Branch {
-	    ConnectType		    "DEST_DEST"
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "F3_GCB"
+	    SrcPort		    RConn2
+	    Points		    [34, 0; 0, 290; -660, 0]
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "C302"
 	    SrcPort		    RConn2
 	    Points		    [134, 0]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "1000 kVA1"
-	    SrcPort		    LConn2
-	    Points		    [-141, 0; 0, -175]
 	  }
 	}
 	Line {
@@ -4120,20 +4570,20 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_GCB"
-	  SrcPort		  LConn1
-	  Points		  [-155, 0; 0, 170]
+	  Points		  [2890, 2170; 0, 225; 115, 0]
+	  DstBlock		  "1000 kVA1"
+	  DstPort		  LConn1
 	  Branch {
-	    ConnectType		    "DEST_DEST"
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "F3_GCB"
+	    SrcPort		    RConn1
+	    Points		    [48, 0; 0, 290; -648, 0]
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "C302"
 	    SrcPort		    RConn1
 	    Points		    [160, 0]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "1000 kVA1"
-	    SrcPort		    LConn1
-	    Points		    [-115, 0; 0, -175]
 	  }
 	}
 	Line {
@@ -4151,20 +4601,20 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_GCB"
-	  SrcPort		  LConn3
-	  Points		  [-211, 0; 0, 170]
+	  Points		  [2836, 2210; 0, 225; 169, 0]
+	  DstBlock		  "1000 kVA1"
+	  DstPort		  LConn3
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "C302"
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "F3_GCB"
 	    SrcPort		    RConn3
-	    Points		    [104, 0]
+	    Points		    [20, 0; 0, 290; -674, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "1000 kVA1"
-	    SrcPort		    LConn3
-	    Points		    [-169, 0; 0, -175; -2, 0]
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "C302"
+	    SrcPort		    RConn3
+	    Points		    [106, 0]
 	  }
 	}
 	Line {
@@ -4179,13 +4629,6 @@ Library {
 	  SrcBlock		  "C301"
 	  SrcPort		  LConn3
 	  DstBlock		  "F3_CB_1"
-	  DstPort		  RConn3
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Critical_6"
-	  SrcPort		  LConn3
-	  DstBlock		  "1000 kVA1"
 	  DstPort		  RConn3
 	}
 	Line {
@@ -4208,14 +4651,6 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Critical_6"
-	  SrcPort		  LConn1
-	  Points		  [-108, 0; 0, 10]
-	  DstBlock		  "1000 kVA1"
-	  DstPort		  RConn1
-	}
-	Line {
-	  LineType		  "Connection"
 	  SrcBlock		  "C301"
 	  SrcPort		  LConn2
 	  DstBlock		  "F3_CB_1"
@@ -4228,14 +4663,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Critical_6"
-	  SrcPort		  LConn2
-	  Points		  [-64, 0; 0, 5]
-	  DstBlock		  "1000 kVA1"
-	  DstPort		  RConn2
 	}
 	Line {
 	  LineType		  "Connection"
@@ -4265,7 +4692,7 @@ Library {
 	Annotation {
 	  SID			  "332"
 	  Name			  "Point-on-wave synchronisation voltage (3-phase) in PU - Using 13.8 kV"
-	  Position		  [2495, 395]
+	  Position		  [1230, 560]
 	  ZOrder		  -1
 	}
 	Annotation {
@@ -4281,7 +4708,7 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [1616, 152]
+	  Position		  [1026, 937]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -2
 	  FontWeight		  "bold"
@@ -4289,38 +4716,32 @@ Library {
 	Annotation {
 	  SID			  "218"
 	  Name			  "connect to F1"
-	  Position		  [2766, 1021]
+	  Position		  [2826, 1366]
 	  ZOrder		  -3
 	}
 	Annotation {
 	  SID			  "77"
 	  Name			  "connect to F2"
-	  Position		  [4281, 2266]
+	  Position		  [4336, 3041]
 	  ZOrder		  -4
 	}
 	Annotation {
 	  SID			  "76"
 	  Name			  "connect to F2"
-	  Position		  [3381, 3246]
+	  Position		  [3436, 4021]
 	  ZOrder		  -5
 	}
 	Annotation {
 	  SID			  "74"
 	  Name			  "connect to F2"
-	  Position		  [3981, 2636]
+	  Position		  [4036, 3406]
 	  ZOrder		  -6
-	}
-	Annotation {
-	  SID			  "73"
-	  Name			  "CHP"
-	  Position		  [3112, 1310]
-	  ZOrder		  -7
 	}
 	Annotation {
 	  SID			  "212"
 	  Name			  "Signal for this Cb will come from a SEL relay"
-	  Position		  [1227, 2131]
-	  ZOrder		  -8
+	  Position		  [1282, 2906]
+	  ZOrder		  -7
 	}
       }
     }
