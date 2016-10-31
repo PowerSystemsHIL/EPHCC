@@ -1,6 +1,6 @@
 Library {
   Name			  "HIL_UDP_lib"
-  Version		  7.8
+  Version		  8.1
   MdlSubVersion		  0
   SavedCharacterEncoding  "windows-1252"
   LibraryType		  "BlockLibrary"
@@ -10,15 +10,54 @@ Library {
   DisableAllScopes	  off
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
+  Object {
+    $PropName		    "BdWindowsInfo"
+    $ObjectID		    1
+    $ClassName		    "Simulink.BDWindowsInfo"
+    Object {
+      $PropName		      "WindowsInfo"
+      $ObjectID		      2
+      $ClassName	      "Simulink.WindowInfo"
+      IsActive		      [1]
+      Location		      [74.0, 70.0, 817.0, 1036.0]
+      Object {
+	$PropName		"ModelBrowserInfo"
+	$ObjectID		3
+	$ClassName		"Simulink.ModelBrowserInfo"
+	Visible			[0]
+	DockPosition		"Left"
+	Width			[50]
+	Height			[50]
+	Filter			[12]
+      }
+      Object {
+	$PropName		"ExplorerBarInfo"
+	$ObjectID		4
+	$ClassName		"Simulink.ExplorerBarInfo"
+	Visible			[1]
+      }
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[773.0, 884.0]
+	ZoomFactor		[1.0]
+	Offset			[0.0, -68.88749897480011]
+      }
+    }
+  }
   Created		  "Tue Sep 15 15:25:05 2015"
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "ch24070"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Sep 22 11:15:12 2015"
-  RTWModifiedTimeStamp	  364821302
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Wed Jun 29 13:59:26 2016"
+  RTWModifiedTimeStamp	  389109362
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -86,14 +125,14 @@ Library {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      1
-      Version		      "1.11.1"
+      $ObjectID		      6
+      Version		      "1.13.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  2
-	  Version		  "1.11.1"
+	  $ObjectID		  7
+	  Version		  "1.13.0"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
@@ -111,6 +150,7 @@ Library {
 	  MaxConsecutiveMinStep	  "1"
 	  RelTol		  "1e-3"
 	  SolverMode		  "Auto"
+	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
 	  Solver		  "ode45"
 	  SolverName		  "ode45"
@@ -126,8 +166,8 @@ Library {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  3
-	  Version		  "1.11.1"
+	  $ObjectID		  8
+	  Version		  "1.13.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -158,8 +198,8 @@ Library {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  4
-	  Version		  "1.11.1"
+	  $ObjectID		  9
+	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -211,11 +251,11 @@ Library {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
-	  AccelParallelForEachSubsystem	on
+	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  5
-	  Version		  "1.11.1"
+	  $ObjectID		  10
+	  Version		  "1.13.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -264,7 +304,7 @@ Library {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "Enable All"
+	  FcnCallInpInsideContextMsg "EnableAllAsWarning"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
@@ -300,14 +340,17 @@ Library {
 	  SFNoUnconditionalDefaultTransitionDiag "warning"
 	  SFTransitionOutsideNaturalParentDiag "warning"
 	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUndirectedBroadcastEventsDiag "warning"
+	  SFTransitionActionBeforeConditionDiag	"warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  6
-	  Version		  "1.11.1"
+	  $ObjectID		  11
+	  Version		  "1.13.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
 	  ProdBitPerLong	  32
+	  ProdBitPerLongLong	  64
 	  ProdBitPerFloat	  32
 	  ProdBitPerDouble	  64
 	  ProdBitPerPointer	  32
@@ -317,17 +360,20 @@ Library {
 	  ProdEndianess		  "Unspecified"
 	  ProdWordSize		  32
 	  ProdShiftRightIntArith  on
+	  ProdLongLongMode	  off
 	  ProdHWDeviceType	  "32-bit Generic"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
 	  TargetBitPerInt	  32
 	  TargetBitPerLong	  32
+	  TargetBitPerLongLong	  64
 	  TargetBitPerFloat	  32
 	  TargetBitPerDouble	  64
 	  TargetBitPerPointer	  32
 	  TargetLargestAtomicInteger "Char"
 	  TargetLargestAtomicFloat "None"
 	  TargetShiftRightIntArith on
+	  TargetLongLongMode	  off
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
@@ -339,8 +385,8 @@ Library {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  7
-	  Version		  "1.11.1"
+	  $ObjectID		  12
+	  Version		  "1.13.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -354,8 +400,8 @@ Library {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  8
-	  Version		  "1.11.1"
+	  $ObjectID		  13
+	  Version		  "1.13.0"
 	  SFSimEnableDebug	  on
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
@@ -369,8 +415,8 @@ Library {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  9
-	  Version		  "1.11.1"
+	  $ObjectID		  14
+	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -388,6 +434,7 @@ Library {
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
+	  PackageGeneratedCodeAndArtifacts off
 	  TemplateMakefile	  "grt_default_tmf"
 	  GenerateReport	  off
 	  SaveLog		  off
@@ -404,6 +451,14 @@ Library {
 	  RTWUseSimCustomCode	  off
 	  IncludeHyperlinkInReport off
 	  LaunchReport		  off
+	  PortableWordSizes	  off
+	  GenerateErtSFunction	  off
+	  CreateSILPILBlock	  "None"
+	  CodeExecutionProfiling  off
+	  CodeExecutionProfileVariable "executionProfile"
+	  CodeProfilingSaveOptions "SummaryOnly"
+	  CodeProfilingInstrumentation off
+	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
 	  IncludeERTFirstTime	  off
@@ -413,8 +468,9 @@ Library {
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
 	  GenerateCodeInfo	  off
-	  GenerateSLWebview	  off
+	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
+	  GenerateCodeReplacementReport	off
 	  RTWCompilerOptimization "Off"
 	  CheckMdlBeforeBuild	  "Off"
 	  CustomRebuildMode	  "OnUpdate"
@@ -422,8 +478,8 @@ Library {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      10
-	      Version		      "1.11.1"
+	      $ObjectID		      15
+	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
 		Dimension		21
@@ -459,6 +515,7 @@ Library {
 	      PreserveName	      off
 	      PreserveNameWithParent  off
 	      ShowEliminatedStatement off
+	      OperatorAnnotations     off
 	      IncAutoGenComments      off
 	      SimulinkDataObjDesc     off
 	      SFDataObjDesc	      off
@@ -466,7 +523,7 @@ Library {
 	      IncDataTypeInIds	      off
 	      MangleLength	      1
 	      CustomSymbolStrGlobalVar "$R$N$M"
-	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrType     "$N$R$M_T"
 	      CustomSymbolStrField    "$N$M"
 	      CustomSymbolStrFcn      "$R$N$M$F"
 	      CustomSymbolStrFcnArg   "rt$I$N$M"
@@ -481,14 +538,15 @@ Library {
 	      SimulinkBlockComments   on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
+	      InternalIdentifier      "Shortened"
 	      InlinedPrmAccess	      "Literals"
 	      ReqsInCode	      off
 	      UseSimReservedNames     off
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      11
-	      Version		      "1.11.1"
+	      $ObjectID		      16
+	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
 		Dimension		16
@@ -501,22 +559,21 @@ Library {
 		Cell			"GenerateTestInterfaces"
 		Cell			"ModelStepFunctionPrototypeControlCompliant"
 		Cell			"CPPClassGenCompliant"
-		Cell			"MultiInstanceERTCode"
+		Cell			"PortableWordSizes"
 		Cell			"PurelyIntegerCode"
 		Cell			"SupportComplex"
 		Cell			"SupportAbsoluteTime"
 		Cell			"SupportContinuousTime"
 		Cell			"SupportNonInlinedSFcns"
-		Cell			"PortableWordSizes"
+		Cell			"GenerateAllocFcn"
 		PropName		"DisabledProps"
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
 	      TargetPreCompLibLocation ""
-	      TargetFunctionLibrary   "ANSI_C"
+	      CodeReplacementLibrary  "ANSI_C"
 	      UtilityFuncGeneration   "Auto"
 	      ERTMultiwordTypeDef     "System defined"
-	      CodeExecutionProfiling  off
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
@@ -547,10 +604,12 @@ Library {
 	      SupportVariableSizeSignals off
 	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
-	      PortableWordSizes	      off
+	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
 	      ModelStepFunctionPrototypeControlCompliant off
 	      CPPClassGenCompliant    off
 	      AutosarCompliant	      off
+	      GRTInterface	      on
+	      GenerateAllocFcn	      off
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -569,8 +628,8 @@ Library {
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  12
-	  Version		  "1.11.1"
+	  $ObjectID		  17
+	  Version		  "1.13.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -589,6 +648,7 @@ Library {
     }
     PropName		    "ConfigurationSets"
   }
+  ExplicitPartitioning	  off
   BlockDefaults {
     ForegroundColor	    "black"
     BackgroundColor	    "white"
@@ -620,6 +680,25 @@ Library {
     FontWeight		    "normal"
     FontAngle		    "normal"
   }
+  MaskDefaults {
+    SelfModifiable	    "off"
+    IconFrame		    "on"
+    IconOpaque		    "on"
+    RunInitForIconRedraw    "off"
+    IconRotate		    "none"
+    PortRotate		    "default"
+    IconUnits		    "autoscale"
+  }
+  MaskParameterDefaults {
+    Evaluate		    "on"
+    Tunable		    "on"
+    NeverSave		    "off"
+    Internal		    "off"
+    ReadOnly		    "off"
+    Enabled		    "on"
+    Visible		    "on"
+    ToolTip		    "on"
+  }
   BlockParameterDefaults {
     Block {
       BlockType		      ArithShift
@@ -632,6 +711,7 @@ Library {
     }
     Block {
       BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
       OutputAsBus	      off
     }
     Block {
@@ -677,6 +757,7 @@ Library {
     }
     Block {
       BlockType		      From
+      GotoTag		      "A"
       IconDisplay	      "Tag"
       TagVisibility	      "local"
     }
@@ -697,7 +778,9 @@ Library {
     }
     Block {
       BlockType		      Goto
+      GotoTag		      "A"
       IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Inport
@@ -779,6 +862,7 @@ Library {
       SystemSampleTime	      "-1"
       RTWFcnNameOpts	      "Auto"
       RTWFileNameOpts	      "Auto"
+      FunctionInterfaceSpec   "void_void"
       RTWMemSecFuncInitTerm   "Inherit from model"
       RTWMemSecFuncExecute    "Inherit from model"
       RTWMemSecDataConstants  "Inherit from model"
@@ -814,7 +898,7 @@ Library {
   }
   System {
     Name		    "HIL_UDP_lib"
-    Location		    [2, 82, 1918, 1171]
+    Location		    [74, 70, 891, 1106]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -828,13 +912,14 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "356"
+    SIDHighWatermark	    "426"
     Block {
       BlockType		      SubSystem
       Name		      "Data to record with OpWriteFile"
       SID		      "235"
       Ports		      [3, 1]
       Position		      [445, 356, 530, 444]
+      ZOrder		      -1
       BackgroundColor	      "orange"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -845,7 +930,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Data to record with OpWriteFile"
-	Location		[202, 82, 1918, 1147]
+	Location		[172, 52, 1944, 1301]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -863,6 +948,7 @@ Library {
 	  Name			  "ms"
 	  SID			  "236"
 	  Position		  [50, 273, 80, 287]
+	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -870,6 +956,7 @@ Library {
 	  Name			  "batt"
 	  SID			  "237"
 	  Position		  [595, 918, 625, 932]
+	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -878,6 +965,7 @@ Library {
 	  Name			  "gen"
 	  SID			  "238"
 	  Position		  [600, 1088, 630, 1102]
+	  ZOrder		  -3
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
@@ -1527,6 +1615,7 @@ Library {
 	  Name			  "From1"
 	  SID			  "247"
 	  Position		  [1150, 301, 1230, 319]
+	  ZOrder		  -12
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "pf"
@@ -1536,6 +1625,7 @@ Library {
 	  Name			  "From2"
 	  SID			  "248"
 	  Position		  [1150, 481, 1230, 499]
+	  ZOrder		  -13
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "batt_meas"
@@ -1545,6 +1635,7 @@ Library {
 	  Name			  "From3"
 	  SID			  "249"
 	  Position		  [1150, 331, 1230, 349]
+	  ZOrder		  -14
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "kW"
@@ -1554,6 +1645,7 @@ Library {
 	  Name			  "From4"
 	  SID			  "250"
 	  Position		  [1150, 361, 1230, 379]
+	  ZOrder		  -15
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "kvar"
@@ -1563,6 +1655,7 @@ Library {
 	  Name			  "From5"
 	  SID			  "251"
 	  Position		  [1150, 391, 1230, 409]
+	  ZOrder		  -16
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "Vpu"
@@ -1572,6 +1665,7 @@ Library {
 	  Name			  "From6"
 	  SID			  "252"
 	  Position		  [1150, 451, 1230, 469]
+	  ZOrder		  -17
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "status"
@@ -1581,6 +1675,7 @@ Library {
 	  Name			  "From7"
 	  SID			  "253"
 	  Position		  [1150, 421, 1230, 439]
+	  ZOrder		  -18
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "freq"
@@ -1590,6 +1685,7 @@ Library {
 	  Name			  "From8"
 	  SID			  "254"
 	  Position		  [1150, 511, 1230, 529]
+	  ZOrder		  -19
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "gen_meas"
@@ -1638,7 +1734,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "kW"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1648,7 +1743,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "pf"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1658,7 +1752,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "kvar"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1668,7 +1761,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Vpu"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1678,7 +1770,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "status"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1688,7 +1779,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "batt_meas"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1698,7 +1788,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "freq"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1708,7 +1797,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "gen_meas"
-	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  Mux
@@ -1756,8 +1844,6 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Hz"
-	    PropagatedSignals	    "freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, freq, "
-	    "freq, freq, freq, freq"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -2712,22 +2798,28 @@ Library {
 	  }
 	}
 	Annotation {
+	  SID			  "357"
 	  Name			  "The signals will appear in the mat file in the same order that are being vectorized"
 	  Position		  [1235, 285]
 	  ForegroundColor	  "blue"
+	  ZOrder		  -1
 	}
 	Annotation {
+	  SID			  "358"
 	  Name			  "Relay function status as bitwise:\nR25-R27-R50-R51-R59-Reset"
 	  Position		  [743, 577]
 	  ForegroundColor	  "blue"
+	  ZOrder		  -2
 	}
 	Annotation {
+	  SID			  "359"
 	  Name			  "data mapping to output vector:\nfield_1 : time\nfield_2 : PCC power factor\nfield_3-21 : kw\nfield_22-40 "
 	  ": kvar\nfield_41-59 : Vpu\nfield_60-65 : frequency\nfield_66-84 : relay status as bitwise\nfield_85 : battery SoC\n"
 	  "field_86 : batt cmd reg 0\nfield_87 : batt cmd reg 1 - kvar\nfield_88 : batt cmd reg 2 - kw\nfield_89 : batt cmd re"
 	  "g 3 - enable\nfield_90 : battery faults as bitwise\nfield_91 : gen_1MVA gal_per_hr\nfield_92 : gen_4MVA gal_per_hr"
 	  Position		  [1221, 658]
 	  ForegroundColor	  "red"
+	  ZOrder		  -3
 	}
       }
     }
@@ -2737,6 +2829,7 @@ Library {
       SID		      "70"
       Ports		      [2, 8]
       Position		      [245, 155, 330, 280]
+      ZOrder		      -2
       BackgroundColor	      "cyan"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2747,7 +2840,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Input to UDP Block - TO BE REVISED FOR DEMO"
-	Location		[202, 82, 1885, 1027]
+	Location		[172, 52, 1911, 1181]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2765,6 +2858,7 @@ Library {
 	  Name			  "ms"
 	  SID			  "71"
 	  Position		  [55, 138, 85, 152]
+	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -2772,6 +2866,7 @@ Library {
 	  Name			  "batt"
 	  SID			  "72"
 	  Position		  [945, 108, 975, 122]
+	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -3623,6 +3718,7 @@ Library {
 	  Name			  "waveforms"
 	  SID			  "94"
 	  Position		  [630, 138, 660, 152]
+	  ZOrder		  -24
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -3630,6 +3726,7 @@ Library {
 	  Name			  "kW"
 	  SID			  "95"
 	  Position		  [405, 448, 435, 462]
+	  ZOrder		  -25
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -3638,6 +3735,7 @@ Library {
 	  Name			  "kvar"
 	  SID			  "96"
 	  Position		  [405, 723, 435, 737]
+	  ZOrder		  -26
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
@@ -3646,6 +3744,7 @@ Library {
 	  Name			  "Vpu"
 	  SID			  "97"
 	  Position		  [410, 1013, 440, 1027]
+	  ZOrder		  -27
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
@@ -3654,6 +3753,7 @@ Library {
 	  Name			  "freq"
 	  SID			  "98"
 	  Position		  [830, 448, 860, 462]
+	  ZOrder		  -28
 	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
@@ -3662,6 +3762,7 @@ Library {
 	  Name			  "breaker_status"
 	  SID			  "99"
 	  Position		  [845, 713, 875, 727]
+	  ZOrder		  -29
 	  Port			  "6"
 	  IconDisplay		  "Port number"
 	}
@@ -3670,6 +3771,7 @@ Library {
 	  Name			  "Batt SoC"
 	  SID			  "100"
 	  Position		  [1155, 108, 1185, 122]
+	  ZOrder		  -30
 	  Port			  "7"
 	  IconDisplay		  "Port number"
 	}
@@ -3678,6 +3780,7 @@ Library {
 	  Name			  "PF at PCC"
 	  SID			  "101"
 	  Position		  [835, 1013, 865, 1027]
+	  ZOrder		  -31
 	  Port			  "8"
 	  IconDisplay		  "Port number"
 	}
@@ -4620,9 +4723,11 @@ Library {
 	  DstPort		  19
 	}
 	Annotation {
+	  SID			  "360"
 	  Name			  "Using phase A:\n1)  voltage 1MVA gen\n2) voltage 4MVA gen\n3) battery current "
 	  Position		  [594, 50]
 	  ForegroundColor	  "blue"
+	  ZOrder		  -1
 	}
       }
     }
@@ -4632,6 +4737,7 @@ Library {
       SID		      "102"
       Ports		      [2, 8]
       Position		      [245, 350, 330, 475]
+      ZOrder		      -3
       BackgroundColor	      "cyan"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -4642,7 +4748,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Input to UDP Block - v1"
-	Location		[2, 82, 1901, 1147]
+	Location		[16, 52, 1971, 1301]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4660,6 +4766,7 @@ Library {
 	  Name			  "ms"
 	  SID			  "103"
 	  Position		  [55, 138, 85, 152]
+	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -4667,6 +4774,7 @@ Library {
 	  Name			  "batt"
 	  SID			  "104"
 	  Position		  [945, 108, 975, 122]
+	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -5539,6 +5647,7 @@ Library {
 	  Name			  "waveforms"
 	  SID			  "126"
 	  Position		  [630, 138, 660, 152]
+	  ZOrder		  -26
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -5546,6 +5655,7 @@ Library {
 	  Name			  "kW"
 	  SID			  "127"
 	  Position		  [405, 448, 435, 462]
+	  ZOrder		  -27
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -5554,6 +5664,7 @@ Library {
 	  Name			  "kvar"
 	  SID			  "128"
 	  Position		  [405, 723, 435, 737]
+	  ZOrder		  -28
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
@@ -5562,6 +5673,7 @@ Library {
 	  Name			  "Vpu"
 	  SID			  "129"
 	  Position		  [410, 1013, 440, 1027]
+	  ZOrder		  -29
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
@@ -5570,6 +5682,7 @@ Library {
 	  Name			  "freq"
 	  SID			  "130"
 	  Position		  [830, 448, 860, 462]
+	  ZOrder		  -30
 	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
@@ -5578,6 +5691,7 @@ Library {
 	  Name			  "breaker_status"
 	  SID			  "131"
 	  Position		  [925, 713, 955, 727]
+	  ZOrder		  -31
 	  Port			  "6"
 	  IconDisplay		  "Port number"
 	}
@@ -5586,6 +5700,7 @@ Library {
 	  Name			  "Batt SoC"
 	  SID			  "132"
 	  Position		  [1155, 108, 1185, 122]
+	  ZOrder		  -32
 	  Port			  "7"
 	  IconDisplay		  "Port number"
 	}
@@ -5594,6 +5709,7 @@ Library {
 	  Name			  "PF at PCC"
 	  SID			  "133"
 	  Position		  [835, 1013, 865, 1027]
+	  ZOrder		  -33
 	  Port			  "8"
 	  IconDisplay		  "Port number"
 	}
@@ -6643,9 +6759,11 @@ Library {
 	  DstPort		  19
 	}
 	Annotation {
+	  SID			  "361"
 	  Name			  "Using phase A:\n1)  voltage 1MVA gen\n2) voltage 4MVA gen\n3) battery current "
 	  Position		  [594, 50]
 	  ForegroundColor	  "blue"
+	  ZOrder		  -1
 	}
       }
     }
@@ -6655,6 +6773,7 @@ Library {
       SID		      "1"
       Ports		      [9]
       Position		      [435, 159, 540, 291]
+      ZOrder		      -4
       ForegroundColor	      "blue"
       BackgroundColor	      "yellow"
       MinAlgLoopOccurrences   off
@@ -6666,8 +6785,8 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"UDP Data Send"
-	Location		[2, 127, 1918, 1072]
-	Open			on
+	Location		[16, 52, 1988, 1181]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -6684,6 +6803,7 @@ Library {
 	  Name			  "Waveforms"
 	  SID			  "2"
 	  Position		  [80, 108, 110, 122]
+	  ZOrder		  -5
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "3"
 	}
@@ -6692,6 +6812,7 @@ Library {
 	  Name			  "Power Real"
 	  SID			  "3"
 	  Position		  [345, 468, 375, 482]
+	  ZOrder		  -6
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "20"
@@ -6701,6 +6822,7 @@ Library {
 	  Name			  "Power Reactive"
 	  SID			  "4"
 	  Position		  [345, 498, 375, 512]
+	  ZOrder		  -7
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "20"
@@ -6710,6 +6832,7 @@ Library {
 	  Name			  "Voltage"
 	  SID			  "5"
 	  Position		  [345, 528, 375, 542]
+	  ZOrder		  -8
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "20"
@@ -6719,6 +6842,7 @@ Library {
 	  Name			  "Frequency"
 	  SID			  "6"
 	  Position		  [345, 558, 375, 572]
+	  ZOrder		  -9
 	  Port			  "5"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "20"
@@ -6728,6 +6852,7 @@ Library {
 	  Name			  "Breaker Status"
 	  SID			  "7"
 	  Position		  [65, 693, 95, 707]
+	  ZOrder		  -10
 	  Port			  "6"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "20"
@@ -6737,6 +6862,7 @@ Library {
 	  Name			  "Battery SoC"
 	  SID			  "8"
 	  Position		  [65, 838, 95, 852]
+	  ZOrder		  -11
 	  Port			  "7"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "1"
@@ -6746,6 +6872,7 @@ Library {
 	  Name			  "PF"
 	  SID			  "9"
 	  Position		  [65, 888, 95, 902]
+	  ZOrder		  -12
 	  Port			  "8"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "1"
@@ -6755,6 +6882,7 @@ Library {
 	  Name			  "FuelUsageGalPerHour"
 	  SID			  "342"
 	  Position		  [65, 938, 95, 952]
+	  ZOrder		  -13
 	  Port			  "9"
 	  IconDisplay		  "Port number"
 	  PortDimensions	  "2"
@@ -6778,19 +6906,9 @@ Library {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  SFBlockType		  "MATLAB Function"
-	  MaskType		  "Stateflow"
-	  MaskDescription	  "Embedded MATLAB block"
-	  MaskSelfModifiable	  on
-	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
-	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'fcn']);"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  off
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "normalized"
 	  System {
 	    Name		    "Cast uint16"
-	    Location		    [257, 457, 812, 717]
+	    Location		    [227, 345, 838, 789]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -6803,32 +6921,35 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "17"
+	    SIDHighWatermark	    "20"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
 	      SID		      "10::1"
 	      Position		      [20, 101, 40, 119]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "10::15"
+	      SID		      "10::19"
 	      Ports		      [1, 1]
-	      Position		      [270, 160, 320, 200]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      2
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "10::14"
+	      SID		      "10::18"
 	      Tag		      "Stateflow S-Function HIL_UDP_lib 2"
 	      Ports		      [1, 2]
 	      Position		      [180, 100, 230, 160]
+	      ZOrder		      1
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 2]"
-	      EnableBusSupport	      on
+	      EnableBusSupport	      off
 	      Port {
 		PortNumber		2
 		Name			"y"
@@ -6839,14 +6960,16 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "10::17"
-	      Position		      [460, 171, 480, 189]
+	      SID		      "10::20"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      3
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "y"
 	      SID		      "10::5"
 	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -5
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -6926,6 +7049,7 @@ Library {
 	  SID			  "15"
 	  Ports			  [2, 2]
 	  Position		  [1070, 369, 1270, 536]
+	  ZOrder		  -2
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -6933,51 +7057,213 @@ Library {
 	  Opaque		  off
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
-	  MaskType		  "AsyncEthernet"
-	  MaskDescription	  "This block is used as a communication interface to send data to a remote dedevice and receive da"
-	  "ta from it."
-	  MaskHelp		  "eval('rtlab_io_help(''Generic/Ethernet/Ethernet_interface.htm'');');"
-	  MaskPromptString	  "Controller ID|Number of data to send|Type of data to send|Byte offset of transmission buffer|Sw"
-	  "ap data endianness before transmission|Number of data expected to be received|Type of data expected to be received|"
-	  "Byte offset of reception buffer|Swap data endianness after reception|Executable name|Network interface name|Protoco"
-	  "l|TCP mode|Port number|Remote IP address"
-	  MaskStyleString	  "edit,edit,popup(UINT8|INT8|UINT16|INT16|UINT32|INT32|FLOAT|DOUBLE),edit,checkbox,edit,popup(UINT"
-	  "8|INT8|UINT16|INT16|UINT32|INT32|FLOAT|DOUBLE),edit,checkbox,edit,edit,popup(UDP|TCP),popup(Client|Server),edit,edi"
-	  "t"
-	  MaskVariables		  "ctrl_id=@1;nbr_to_remote_endpoint=@2;type_to_remote_endpoint=@3;offset_to_remote_endpoint=@4;swap"
-	  "_tx=@5;nbr_from_remote_endpoint=@6;type_from_remote_endpoint=@7;offset_from_remote_endpoint=@8;swap_rx=@9;exe_name="
-	  "&10;nic_name=&11;protocol=@12;tcp_mode=@13;port=@14;remote_ip=&15;"
-	  MaskTunableValueString  "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	  MaskCallbackString	  "var = get_param(gcb,'ctrl_id');\nset_param([gcb '/AsyncEthernetCtrl'],'ctrl_id',var)|var = ge"
-	  "t_param(gcb,'nbr_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_to_remote_endpoint',var)|var = ge"
-	  "t_param(gcb,'type_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_to_remote_endpoint',var)|var = "
-	  "get_param(gcb,'offset_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_to_remote_endpoint',var)|"
-	  "var = get_param(gcb,'swap_tx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_tx',var)|var = get_param(gcb,'nbr_from_"
-	  "remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_from_remote_endpoint',var)|var = get_param(gcb,'type_"
-	  "from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_from_remote_endpoint',var)|var = get_param(gcb,"
-	  "'offset_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_from_remote_endpoint',var)|var = get_"
-	  "param(gcb,'swap_rx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_rx',var)|str = get_param(gcb,'exe_name');\n\nif e"
-	  "xist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/AsyncEthernetCtrl'],'exe_name',str)\n|str = get_pa"
-	  "ram(gcb,'nic_name');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/AsyncEthernetCtrl'],'n"
-	  "ic_name',str)\n|generic_ethernet_cb('protocol')|generic_ethernet_cb('tcp_mode')|var = get_param(gcb,'port');\nset_p"
-	  "aram([gcb '/AsyncEthernetCtrl'],'port',var)|str = get_param(gcb,'remote_ip');\n\nif exist('str','var')\n    str = e"
-	  "val(str);\nend\n\nset_param([gcb '/AsyncEthernetCtrl'],'remote_ip',str)\n"
-	  MaskEnableString	  "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	  MaskVisibilityString	  "on,on,on,on,on,on,on,on,on,on,on,on,off,on,on"
-	  MaskToolTipString	  "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	  MaskSelfModifiable	  on
-	  MaskDisplay		  "\n"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  on
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "1|721|INT16|0|off|4|UINT16|0|off|'AsyncEthernet'|'eth0'|UDP|Server|7200|'255.255.255.255'"
-	  MaskTabNameString	  "General,General,General,General,General,General,General,General,General,General,Communication,"
-	  "Communication,Communication,Communication,Communication"
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    18
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "AsyncEthernet"
+	    Description		    "This block is used as a communication interface to send data to a remote dedevice and receive d"
+	    "ata from it."
+	    Help		    "eval('rtlab_io_help(''Generic/Ethernet/Ethernet_interface.htm'');');"
+	    SelfModifiable	    "on"
+	    Display		    "\n"
+	    Array {
+	      Type		      "Simulink.MaskParameter"
+	      Dimension		      15
+	      Object {
+		$ObjectID		19
+		Type			"edit"
+		Name			"ctrl_id"
+		Prompt			"Controller ID"
+		Value			"1"
+		Callback		"var = get_param(gcb,'ctrl_id');\nset_param([gcb '/AsyncEthernetCtrl'],'ctrl_id',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		20
+		Type			"edit"
+		Name			"nbr_to_remote_endpoint"
+		Prompt			"Number of data to send"
+		Value			"721"
+		Callback		"var = get_param(gcb,'nbr_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_to_remote_endpo"
+		"int',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		21
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  8
+		  Cell			  "UINT8"
+		  Cell			  "INT8"
+		  Cell			  "UINT16"
+		  Cell			  "INT16"
+		  Cell			  "UINT32"
+		  Cell			  "INT32"
+		  Cell			  "FLOAT"
+		  Cell			  "DOUBLE"
+		  PropName		  "TypeOptions"
+		}
+		Name			"type_to_remote_endpoint"
+		Prompt			"Type of data to send"
+		Value			"INT16"
+		Callback		"var = get_param(gcb,'type_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_to_remote_end"
+		"point',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		22
+		Type			"edit"
+		Name			"offset_to_remote_endpoint"
+		Prompt			"Byte offset of transmission buffer"
+		Value			"0"
+		Callback		"var = get_param(gcb,'offset_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_to_remote"
+		"_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		23
+		Type			"checkbox"
+		Name			"swap_tx"
+		Prompt			"Swap data endianness before transmission"
+		Value			"off"
+		Callback		"var = get_param(gcb,'swap_tx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_tx',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		24
+		Type			"edit"
+		Name			"nbr_from_remote_endpoint"
+		Prompt			"Number of data expected to be received"
+		Value			"4"
+		Callback		"var = get_param(gcb,'nbr_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_from_remote_e"
+		"ndpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		25
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  8
+		  Cell			  "UINT8"
+		  Cell			  "INT8"
+		  Cell			  "UINT16"
+		  Cell			  "INT16"
+		  Cell			  "UINT32"
+		  Cell			  "INT32"
+		  Cell			  "FLOAT"
+		  Cell			  "DOUBLE"
+		  PropName		  "TypeOptions"
+		}
+		Name			"type_from_remote_endpoint"
+		Prompt			"Type of data expected to be received"
+		Value			"UINT16"
+		Callback		"var = get_param(gcb,'type_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_from_remote"
+		"_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		26
+		Type			"edit"
+		Name			"offset_from_remote_endpoint"
+		Prompt			"Byte offset of reception buffer"
+		Value			"0"
+		Callback		"var = get_param(gcb,'offset_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_from_re"
+		"mote_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		27
+		Type			"checkbox"
+		Name			"swap_rx"
+		Prompt			"Swap data endianness after reception"
+		Value			"off"
+		Callback		"var = get_param(gcb,'swap_rx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_rx',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		28
+		Type			"edit"
+		Name			"exe_name"
+		Prompt			"Executable name"
+		Value			"'AsyncEthernet'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'exe_name');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/"
+		"AsyncEthernetCtrl'],'exe_name',str)\n"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		29
+		Type			"edit"
+		Name			"nic_name"
+		Prompt			"Network interface name"
+		Value			"'eth0'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'nic_name');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/"
+		"AsyncEthernetCtrl'],'nic_name',str)\n"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		30
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  2
+		  Cell			  "UDP"
+		  Cell			  "TCP"
+		  PropName		  "TypeOptions"
+		}
+		Name			"protocol"
+		Prompt			"Protocol"
+		Value			"UDP"
+		Callback		"generic_ethernet_cb('protocol')"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		31
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  2
+		  Cell			  "Client"
+		  Cell			  "Server"
+		  PropName		  "TypeOptions"
+		}
+		Name			"tcp_mode"
+		Prompt			"TCP mode"
+		Value			"Server"
+		Visible			"off"
+		Callback		"generic_ethernet_cb('tcp_mode')"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		32
+		Type			"edit"
+		Name			"port"
+		Prompt			"Port number"
+		Value			"7200"
+		Callback		"var = get_param(gcb,'port');\nset_param([gcb '/AsyncEthernetCtrl'],'port',var)"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		33
+		Type			"edit"
+		Name			"remote_ip"
+		Prompt			"Remote IP address"
+		Value			"'255.255.255.255'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'remote_ip');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '"
+		"/AsyncEthernetCtrl'],'remote_ip',str)\n"
+		TabName			"Communication"
+	      }
+	      PropName		      "Parameters"
+	    }
+	  }
 	  System {
 	    Name		    "Ethernet communication interface"
-	    Location		    [299, 360, 1216, 713]
+	    Location		    [269, 248, 1242, 785]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -6990,12 +7276,13 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "12"
+	    SIDHighWatermark	    "14"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Data trigger"
 	      SID		      "15:1"
 	      Position		      [215, 83, 245, 97]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -7003,6 +7290,7 @@ Library {
 	      Name		      "Data to send"
 	      SID		      "15:2"
 	      Position		      [215, 118, 245, 132]
+	      ZOrder		      -2
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
@@ -7012,43 +7300,182 @@ Library {
 	      SID		      "15:4"
 	      Ports		      []
 	      Position		      [20, 82, 161, 146]
+	      ZOrder		      -3
 	      InitFcn		      "generic_ethernet_cb('initfcn');"
 	      FunctionName	      "sfun_gen_async_ctrl"
 	      Parameters	      "ctrl_id, nbr_to_remote_endpoint, type_to_remote_endpoint,nbr_from_remote_endpoint,type_from_r"
 	      "emote_endpoint,protocol,tcp_mode, port, offset_to_remote_endpoint,offset_from_remote_endpoint,swap_tx,swap_rx,0"
 	      ",nic_name,remote_ip,'','','','','','','','','','',exe_name,0"
 	      EnableBusSupport	      off
-	      MaskType		      "AsyncEthernetCtrl"
-	      MaskDescription	      "Generic asynchronous process configuration block"
-	      MaskHelp		      "eval('rtlab_help(''opasyncgenctrl'');');"
-	      MaskPromptString	      "Controller ID|Number of data to send|Type of data to send|Byte offset of transmission b"
-	      "uffer|Number of data expected to be received|Type of data expected to be received|Byte offset of reception buff"
-	      "er|Network interface name|Protocol|TCP mode|Port|Remote IP address|Name of the executable|Swap data endianness "
-	      "before transmission|Swap data endianness after reception"
-	      MaskStyleString	      "edit,edit,popup(UINT8|INT8|UINT16|INT16|UINT32|INT32|FLOAT|DOUBLE),edit,edit,popup(UINT8"
-	      "|INT8|UINT16|INT16|UINT32|INT32|FLOAT|DOUBLE),edit,edit,popup(UDP|TCP),popup(Client|Server),edit,edit,edit,chec"
-	      "kbox,checkbox"
-	      MaskVariables	      "ctrl_id=@1;nbr_to_remote_endpoint=@2;type_to_remote_endpoint=@3;offset_to_remote_endpoint="
-	      "@4;nbr_from_remote_endpoint=@5;type_from_remote_endpoint=@6;offset_from_remote_endpoint=@7;nic_name=&8;protocol"
-	      "=@9;tcp_mode=@10;port=@11;remote_ip=&12;exe_name=&13;swap_tx=@14;swap_rx=@15;"
-	      MaskTunableValueString  "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	      MaskCallbackString      "||||||||||||||"
-	      MaskEnableString	      "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	      MaskVisibilityString    "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	      MaskToolTipString	      "on,on,on,on,on,on,on,on,on,on,on,on,on,on,on"
-	      MaskDisplay	      "disp(sprintf('\\nEthernet communication \\ninterface controller\\n'))"
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      on
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	      MaskValueString	      "1|721|INT16|0|4|UINT16|0|eth0|UDP|Server|7200|255.255.255.255|AsyncEthernet|off|off"
+	      Object {
+		$PropName		"MaskObject"
+		$ObjectID		34
+		$ClassName		"Simulink.Mask"
+		Type			"AsyncEthernetCtrl"
+		Description		"Generic asynchronous process configuration block"
+		Help			"eval('rtlab_help(''opasyncgenctrl'');');"
+		Display			"disp(sprintf('\\nEthernet communication \\ninterface controller\\n'))"
+		Array {
+		  Type			  "Simulink.MaskParameter"
+		  Dimension		  15
+		  Object {
+		    $ObjectID		    35
+		    Type		    "edit"
+		    Name		    "ctrl_id"
+		    Prompt		    "Controller ID"
+		    Value		    "1"
+		  }
+		  Object {
+		    $ObjectID		    36
+		    Type		    "edit"
+		    Name		    "nbr_to_remote_endpoint"
+		    Prompt		    "Number of data to send"
+		    Value		    "721"
+		  }
+		  Object {
+		    $ObjectID		    37
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    8
+		    Cell		    "UINT8"
+		    Cell		    "INT8"
+		    Cell		    "UINT16"
+		    Cell		    "INT16"
+		    Cell		    "UINT32"
+		    Cell		    "INT32"
+		    Cell		    "FLOAT"
+		    Cell		    "DOUBLE"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "type_to_remote_endpoint"
+		    Prompt		    "Type of data to send"
+		    Value		    "INT16"
+		  }
+		  Object {
+		    $ObjectID		    38
+		    Type		    "edit"
+		    Name		    "offset_to_remote_endpoint"
+		    Prompt		    "Byte offset of transmission buffer"
+		    Value		    "0"
+		  }
+		  Object {
+		    $ObjectID		    39
+		    Type		    "edit"
+		    Name		    "nbr_from_remote_endpoint"
+		    Prompt		    "Number of data expected to be received"
+		    Value		    "4"
+		  }
+		  Object {
+		    $ObjectID		    40
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    8
+		    Cell		    "UINT8"
+		    Cell		    "INT8"
+		    Cell		    "UINT16"
+		    Cell		    "INT16"
+		    Cell		    "UINT32"
+		    Cell		    "INT32"
+		    Cell		    "FLOAT"
+		    Cell		    "DOUBLE"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "type_from_remote_endpoint"
+		    Prompt		    "Type of data expected to be received"
+		    Value		    "UINT16"
+		  }
+		  Object {
+		    $ObjectID		    41
+		    Type		    "edit"
+		    Name		    "offset_from_remote_endpoint"
+		    Prompt		    "Byte offset of reception buffer"
+		    Value		    "0"
+		  }
+		  Object {
+		    $ObjectID		    42
+		    Type		    "edit"
+		    Name		    "nic_name"
+		    Prompt		    "Network interface name"
+		    Value		    "eth0"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    43
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "UDP"
+		    Cell		    "TCP"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "protocol"
+		    Prompt		    "Protocol"
+		    Value		    "UDP"
+		  }
+		  Object {
+		    $ObjectID		    44
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Client"
+		    Cell		    "Server"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "tcp_mode"
+		    Prompt		    "TCP mode"
+		    Value		    "Server"
+		  }
+		  Object {
+		    $ObjectID		    45
+		    Type		    "edit"
+		    Name		    "port"
+		    Prompt		    "Port"
+		    Value		    "7200"
+		  }
+		  Object {
+		    $ObjectID		    46
+		    Type		    "edit"
+		    Name		    "remote_ip"
+		    Prompt		    "Remote IP address"
+		    Value		    "255.255.255.255"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    47
+		    Type		    "edit"
+		    Name		    "exe_name"
+		    Prompt		    "Name of the executable"
+		    Value		    "AsyncEthernet"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    48
+		    Type		    "checkbox"
+		    Name		    "swap_tx"
+		    Prompt		    "Swap data endianness before transmission"
+		    Value		    "off"
+		  }
+		  Object {
+		    $ObjectID		    49
+		    Type		    "checkbox"
+		    Name		    "swap_rx"
+		    Prompt		    "Swap data endianness after reception"
+		    Value		    "off"
+		  }
+		  PropName		  "Parameters"
+		}
+	      }
 	    }
 	    Block {
 	      BlockType		      SignalSpecification
 	      Name		      "B-width"
 	      SID		      "15:3"
 	      Position		      [530, 262, 650, 288]
+	      ZOrder		      -4
 	      ShowName		      off
 	      Dimensions	      "nbr_from_remote_endpoint"
 	    }
@@ -7057,6 +7484,7 @@ Library {
 	      Name		      "Constant"
 	      SID		      "15:5"
 	      Position		      [250, 235, 280, 265]
+	      ZOrder		      -5
 	      ShowName		      off
 	      Value		      "1000"
 	    }
@@ -7066,6 +7494,7 @@ Library {
 	      SID		      "15:6"
 	      Ports		      []
 	      Position		      [18, 15, 116, 64]
+	      ZOrder		      -6
 	      ShowName		      off
 	      LibraryVersion	      "1.294"
 	      SourceBlock	      "opal_lib/Logo1"
@@ -7078,6 +7507,7 @@ Library {
 	      SID		      "15:7"
 	      Ports		      [2, 1]
 	      Position		      [580, 185, 585, 240]
+	      ZOrder		      -7
 	      ShowName		      off
 	      Inputs		      "2"
 	      DisplayOption	      "bar"
@@ -7088,6 +7518,7 @@ Library {
 	      SID		      "15:8"
 	      Ports		      [1, 3]
 	      Position		      [325, 214, 480, 286]
+	      ZOrder		      -8
 	      LibraryVersion	      "1.471"
 	      SourceBlock	      "rtlab/Communication/Asynchronous/OpAsyncRecv"
 	      SourceType	      "OpAsyncRecv"
@@ -7111,6 +7542,7 @@ Library {
 	      SID		      "15:9"
 	      Ports		      [2, 1]
 	      Position		      [325, 71, 485, 144]
+	      ZOrder		      -9
 	      LibraryVersion	      "1.471"
 	      SourceBlock	      "rtlab/Communication/Asynchronous/OpAsyncSend"
 	      SourceType	      "OpAsyncSend"
@@ -7134,6 +7566,7 @@ Library {
 	      Name		      "Terminator"
 	      SID		      "15:10"
 	      Position		      [500, 242, 515, 258]
+	      ZOrder		      -10
 	      ShowName		      off
 	    }
 	    Block {
@@ -7141,6 +7574,7 @@ Library {
 	      Name		      "Data received"
 	      SID		      "15:11"
 	      Position		      [700, 268, 730, 282]
+	      ZOrder		      -11
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -7148,6 +7582,7 @@ Library {
 	      Name		      "Status"
 	      SID		      "15:12"
 	      Position		      [700, 208, 730, 222]
+	      ZOrder		      -12
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
@@ -7207,14 +7642,18 @@ Library {
 	      DstPort		      2
 	    }
 	    Annotation {
+	      SID		      "15:13"
 	      Name		      "Ethernet communication interface example model"
 	      Position		      [323, 27]
+	      ZOrder		      -1
 	      FontName		      "Verdana"
 	      FontSize		      14
 	      FontWeight	      "bold"
 	    }
 	    Annotation {
+	      SID		      "15:14"
 	      Position		      [79, 135]
+	      ZOrder		      -2
 	    }
 	  }
 	}
@@ -7248,19 +7687,9 @@ Library {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  SFBlockType		  "MATLAB Function"
-	  MaskType		  "Stateflow"
-	  MaskDescription	  "Embedded MATLAB block"
-	  MaskSelfModifiable	  on
-	  MaskDisplay		  "bgColor = Simulink.Root.ColorString2Rgb(get_param(gcbh, 'BackgroundColor')); image(imread('private/"
-	  "eml_membrane_16.png','png','BackgroundColor',bgColor(1:3)),'center'); disp([10 10 'fcn']);"
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  off
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "normalized"
 	  System {
 	    Name		    "MATLAB Function"
-	    Location		    [257, 457, 812, 717]
+	    Location		    [227, 345, 838, 789]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -7273,32 +7702,35 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "18"
+	    SIDHighWatermark	    "21"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
 	      SID		      "17::1"
 	      Position		      [20, 101, 40, 119]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "17::15"
+	      SID		      "17::20"
 	      Ports		      [1, 1]
-	      Position		      [270, 180, 320, 220]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      2
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "17::14"
+	      SID		      "17::19"
 	      Tag		      "Stateflow S-Function HIL_UDP_lib 3"
 	      Ports		      [1, 3]
 	      Position		      [180, 100, 230, 180]
+	      ZOrder		      1
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 3]"
-	      EnableBusSupport	      on
+	      EnableBusSupport	      off
 	      Port {
 		PortNumber		2
 		Name			"y"
@@ -7315,14 +7747,16 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "17::17"
-	      Position		      [460, 191, 480, 209]
+	      SID		      "17::21"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      3
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "y"
 	      SID		      "17::5"
 	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -5
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -7330,27 +7764,14 @@ Library {
 	      Name		      "sync"
 	      SID		      "17::18"
 	      Position		      [460, 136, 480, 154]
+	      ZOrder		      -6
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      " SFunction "
+	      SrcBlock		      "u"
 	      SrcPort		      1
-	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
-	      SrcPort		      1
-	      DstBlock		      " Terminator "
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "sync"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      3
-	      DstBlock		      "sync"
+	      DstBlock		      " SFunction "
 	      DstPort		      1
 	    }
 	    Line {
@@ -7362,9 +7783,23 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "u"
+	      Name		      "sync"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "sync"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
 	      SrcPort		      1
-	      DstBlock		      " SFunction "
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
 	      DstPort		      1
 	    }
 	  }
@@ -7375,6 +7810,7 @@ Library {
 	  SID			  "18"
 	  Ports			  [4, 1]
 	  Position		  [465, 27, 475, 218]
+	  ZOrder		  -38
 	  ShowName		  off
 	  DisplayOption		  "bar"
 	}
@@ -7384,6 +7820,7 @@ Library {
 	  SID			  "345"
 	  Ports			  [10, 1]
 	  Position		  [470, 598, 480, 802]
+	  ZOrder		  -39
 	  ShowName		  off
 	  Inputs		  "10"
 	  DisplayOption		  "bar"
@@ -7394,6 +7831,7 @@ Library {
 	  SID			  "19"
 	  Ports			  [4, 1]
 	  Position		  [465, 824, 480, 1016]
+	  ZOrder		  -40
 	  ShowName		  off
 	  DisplayOption		  "bar"
 	}
@@ -7403,6 +7841,7 @@ Library {
 	  SID			  "20"
 	  Ports			  [7, 1]
 	  Position		  [710, 443, 720, 617]
+	  ZOrder		  -41
 	  ShowName		  off
 	  Inputs		  "7"
 	  DisplayOption		  "bar"
@@ -7413,6 +7852,7 @@ Library {
 	  SID			  "21"
 	  Ports			  [2, 1]
 	  Position		  [985, 446, 995, 544]
+	  ZOrder		  -42
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
@@ -7423,6 +7863,7 @@ Library {
 	  SID			  "22"
 	  Ports			  [0, 1]
 	  Position		  [780, 297, 850, 313]
+	  ZOrder		  -43
 	  BackgroundColor	  "yellow"
 	  PulseType		  "Time based"
 	  Period		  "1/5"
@@ -7545,6 +7986,7 @@ Library {
 	  SID			  "28"
 	  Ports			  [1, 1]
 	  Position		  [190, 601, 300, 619]
+	  ZOrder		  -4
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -7554,7 +7996,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "bitwise_status1"
-	    Location		    [202, 82, 1346, 739]
+	    Location		    [172, 52, 1372, 893]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -7572,6 +8014,7 @@ Library {
 	      Name		      "status_array"
 	      SID		      "29"
 	      Position		      [25, 253, 55, 267]
+	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -7652,6 +8095,7 @@ Library {
 	      Name		      "bit_field"
 	      SID		      "41"
 	      Position		      [955, 203, 985, 217]
+	      ZOrder		      -20
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -7705,12 +8149,16 @@ Library {
 	      DstPort		      1
 	    }
 	    Annotation {
+	      SID		      "363"
 	      Name		      "Constant array has LSB on most left."
 	      Position		      [110, 152]
+	      ZOrder		      -1
 	    }
 	    Annotation {
+	      SID		      "362"
 	      Name		      "2-bit status indicators are packed into 16 bits"
 	      Position		      [260, 600]
+	      ZOrder		      -2
 	    }
 	  }
 	}
@@ -7720,6 +8168,7 @@ Library {
 	  SID			  "356"
 	  Ports			  [1, 1]
 	  Position		  [190, 781, 300, 799]
+	  ZOrder		  -54
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7730,6 +8179,7 @@ Library {
 	  SID			  "348"
 	  Ports			  [1, 1]
 	  Position		  [190, 621, 300, 639]
+	  ZOrder		  -55
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7740,6 +8190,7 @@ Library {
 	  SID			  "349"
 	  Ports			  [1, 1]
 	  Position		  [190, 641, 300, 659]
+	  ZOrder		  -56
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7750,6 +8201,7 @@ Library {
 	  SID			  "350"
 	  Ports			  [1, 1]
 	  Position		  [190, 661, 300, 679]
+	  ZOrder		  -57
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7760,6 +8212,7 @@ Library {
 	  SID			  "351"
 	  Ports			  [1, 1]
 	  Position		  [190, 681, 300, 699]
+	  ZOrder		  -58
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7770,6 +8223,7 @@ Library {
 	  SID			  "352"
 	  Ports			  [1, 1]
 	  Position		  [190, 701, 300, 719]
+	  ZOrder		  -59
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7780,6 +8234,7 @@ Library {
 	  SID			  "353"
 	  Ports			  [1, 1]
 	  Position		  [190, 721, 300, 739]
+	  ZOrder		  -60
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7790,6 +8245,7 @@ Library {
 	  SID			  "354"
 	  Ports			  [1, 1]
 	  Position		  [190, 741, 300, 759]
+	  ZOrder		  -61
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -7800,6 +8256,7 @@ Library {
 	  SID			  "355"
 	  Ports			  [1, 1]
 	  Position		  [190, 761, 300, 779]
+	  ZOrder		  -62
 	  LibraryVersion	  "1.25"
 	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
 	  SourceType		  "SubSystem"
@@ -8143,14 +8600,1990 @@ Library {
 	}
       }
     }
+    Block {
+      BlockType		      SubSystem
+      Name		      "UDP Data Test"
+      SID		      "364"
+      Ports		      [9]
+      Position		      [445, 489, 550, 621]
+      ZOrder		      1747
+      ForegroundColor	      "blue"
+      BackgroundColor	      "yellow"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"UDP Data Test"
+	Location		[247, 33, 1539, 1069]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"150"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Waveforms"
+	  SID			  "365"
+	  Position		  [95, 433, 125, 447]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "3"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Power Real"
+	  SID			  "366"
+	  Position		  [400, 708, 430, 722]
+	  ZOrder		  -2
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "20"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Power Reactive"
+	  SID			  "367"
+	  Position		  [400, 738, 430, 752]
+	  ZOrder		  -3
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "20"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Voltage"
+	  SID			  "368"
+	  Position		  [400, 768, 430, 782]
+	  ZOrder		  -4
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "20"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Frequency"
+	  SID			  "369"
+	  Position		  [400, 798, 430, 812]
+	  ZOrder		  -5
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "20"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Breaker Status"
+	  SID			  "370"
+	  Position		  [120, 933, 150, 947]
+	  ZOrder		  -6
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "20"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Battery SoC"
+	  SID			  "371"
+	  Position		  [120, 1078, 150, 1092]
+	  ZOrder		  -7
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "1"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PF"
+	  SID			  "372"
+	  Position		  [120, 1128, 150, 1142]
+	  ZOrder		  -8
+	  Port			  "8"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "1"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "FuelUsageGalPerHour"
+	  SID			  "373"
+	  Position		  [120, 1178, 150, 1192]
+	  ZOrder		  -9
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "2"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  " # of motors"
+	  SID			  "374"
+	  Position		  [20, 352, 100, 378]
+	  ZOrder		  21
+	  Value			  "0"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of Batteries"
+	  SID			  "375"
+	  Position		  [20, 221, 100, 239]
+	  ZOrder		  19
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of PF's"
+	  SID			  "376"
+	  Position		  [20, 262, 100, 288]
+	  ZOrder		  20
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of PVs"
+	  SID			  "377"
+	  Position		  [20, 392, 100, 418]
+	  ZOrder		  22
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of Points"
+	  SID			  "378"
+	  Position		  [20, 132, 100, 158]
+	  ZOrder		  16
+	  Value			  "208"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of Relays"
+	  SID			  "379"
+	  Position		  [20, 177, 100, 203]
+	  ZOrder		  17
+	  Value			  "20"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of Waveform s"
+	  SID			  "380"
+	  Position		  [20, 82, 100, 108]
+	  ZOrder		  15
+	  Value			  "3"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "# of gensets"
+	  SID			  "381"
+	  Position		  [20, 307, 100, 333]
+	  ZOrder		  18
+	  Value			  "2"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Cast uint16"
+	  SID			  "382"
+	  Ports			  [1, 1]
+	  Position		  [935, 737, 1005, 783]
+	  ZOrder		  -4
+	  LibraryVersion	  "1.32"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  SFBlockType		  "MATLAB Function"
+	  System {
+	    Name		    "Cast uint16"
+	    Location		    [227, 345, 838, 789]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "31"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "u"
+	      SID		      "382::1"
+	      Position		      [20, 101, 40, 119]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "382::30"
+	      Ports		      [1, 1]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      8
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "382::29"
+	      Tag		      "Stateflow S-Function HIL_UDP_lib 1"
+	      Ports		      [1, 2]
+	      Position		      [180, 100, 230, 160]
+	      ZOrder		      7
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[1 2]"
+	      EnableBusSupport	      off
+	      Port {
+		PortNumber		2
+		Name			"y"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "382::31"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      9
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "y"
+	      SID		      "382::5"
+	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -5
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "y"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "y"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "u"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Checksum"
+	  SID			  "383"
+	  Ports			  [1, 1]
+	  Position		  [880, 745, 910, 775]
+	  ZOrder		  -33
+	  Inputs		  "+"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "384"
+	  Position		  [1060, 632, 1090, 668]
+	  ZOrder		  -5
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion1"
+	  SID			  "385"
+	  Position		  [810, 742, 845, 778]
+	  ZOrder		  -5
+	  OutDataTypeStr	  "uint32"
+	  ConvertRealWorld	  "Stored Integer (SI)"
+	  RndMeth		  "Nearest"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "386"
+	  Ports			  [1, 10]
+	  Position		  [205, 838, 210, 1042]
+	  ZOrder		  -7
+	  ShowName		  off
+	  Outputs		  "[2 2 2 2 2 2 2 2 2 2]"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Ethernet communication interface"
+	  SID			  "387"
+	  Ports			  [2, 2]
+	  Position		  [1125, 609, 1325, 776]
+	  ZOrder		  -37
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    50
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "AsyncEthernet"
+	    Description		    "This block is used as a communication interface to send data to a remote dedevice and receive d"
+	    "ata from it."
+	    Help		    "eval('rtlab_io_help(''Generic/Ethernet/Ethernet_interface.htm'');');"
+	    SelfModifiable	    "on"
+	    Display		    "\n"
+	    Array {
+	      Type		      "Simulink.MaskParameter"
+	      Dimension		      15
+	      Object {
+		$ObjectID		51
+		Type			"edit"
+		Name			"ctrl_id"
+		Prompt			"Controller ID"
+		Value			"1"
+		Callback		"var = get_param(gcb,'ctrl_id');\nset_param([gcb '/AsyncEthernetCtrl'],'ctrl_id',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		52
+		Type			"edit"
+		Name			"nbr_to_remote_endpoint"
+		Prompt			"Number of data to send"
+		Value			"730"
+		Callback		"var = get_param(gcb,'nbr_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_to_remote_endpo"
+		"int',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		53
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  8
+		  Cell			  "UINT8"
+		  Cell			  "INT8"
+		  Cell			  "UINT16"
+		  Cell			  "INT16"
+		  Cell			  "UINT32"
+		  Cell			  "INT32"
+		  Cell			  "FLOAT"
+		  Cell			  "DOUBLE"
+		  PropName		  "TypeOptions"
+		}
+		Name			"type_to_remote_endpoint"
+		Prompt			"Type of data to send"
+		Value			"INT16"
+		Callback		"var = get_param(gcb,'type_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_to_remote_end"
+		"point',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		54
+		Type			"edit"
+		Name			"offset_to_remote_endpoint"
+		Prompt			"Byte offset of transmission buffer"
+		Value			"0"
+		Callback		"var = get_param(gcb,'offset_to_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_to_remote"
+		"_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		55
+		Type			"checkbox"
+		Name			"swap_tx"
+		Prompt			"Swap data endianness before transmission"
+		Value			"off"
+		Callback		"var = get_param(gcb,'swap_tx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_tx',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		56
+		Type			"edit"
+		Name			"nbr_from_remote_endpoint"
+		Prompt			"Number of data expected to be received"
+		Value			"4"
+		Callback		"var = get_param(gcb,'nbr_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'nbr_from_remote_e"
+		"ndpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		57
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  8
+		  Cell			  "UINT8"
+		  Cell			  "INT8"
+		  Cell			  "UINT16"
+		  Cell			  "INT16"
+		  Cell			  "UINT32"
+		  Cell			  "INT32"
+		  Cell			  "FLOAT"
+		  Cell			  "DOUBLE"
+		  PropName		  "TypeOptions"
+		}
+		Name			"type_from_remote_endpoint"
+		Prompt			"Type of data expected to be received"
+		Value			"UINT16"
+		Callback		"var = get_param(gcb,'type_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'type_from_remote"
+		"_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		58
+		Type			"edit"
+		Name			"offset_from_remote_endpoint"
+		Prompt			"Byte offset of reception buffer"
+		Value			"0"
+		Callback		"var = get_param(gcb,'offset_from_remote_endpoint');\nset_param([gcb '/AsyncEthernetCtrl'],'offset_from_re"
+		"mote_endpoint',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		59
+		Type			"checkbox"
+		Name			"swap_rx"
+		Prompt			"Swap data endianness after reception"
+		Value			"off"
+		Callback		"var = get_param(gcb,'swap_rx');\nset_param([gcb '/AsyncEthernetCtrl'],'swap_rx',var)"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		60
+		Type			"edit"
+		Name			"exe_name"
+		Prompt			"Executable name"
+		Value			"'AsyncEthernet'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'exe_name');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/"
+		"AsyncEthernetCtrl'],'exe_name',str)\n"
+		TabName			"General"
+	      }
+	      Object {
+		$ObjectID		61
+		Type			"edit"
+		Name			"nic_name"
+		Prompt			"Network interface name"
+		Value			"'eth0'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'nic_name');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '/"
+		"AsyncEthernetCtrl'],'nic_name',str)\n"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		62
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  2
+		  Cell			  "UDP"
+		  Cell			  "TCP"
+		  PropName		  "TypeOptions"
+		}
+		Name			"protocol"
+		Prompt			"Protocol"
+		Value			"UDP"
+		Callback		"generic_ethernet_cb('protocol')"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		63
+		Type			"popup"
+		Array {
+		  Type			  "Cell"
+		  Dimension		  2
+		  Cell			  "Client"
+		  Cell			  "Server"
+		  PropName		  "TypeOptions"
+		}
+		Name			"tcp_mode"
+		Prompt			"TCP mode"
+		Value			"Server"
+		Visible			"off"
+		Callback		"generic_ethernet_cb('tcp_mode')"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		64
+		Type			"edit"
+		Name			"port"
+		Prompt			"Port number"
+		Value			"7200"
+		Callback		"var = get_param(gcb,'port');\nset_param([gcb '/AsyncEthernetCtrl'],'port',var)"
+		TabName			"Communication"
+	      }
+	      Object {
+		$ObjectID		65
+		Type			"edit"
+		Name			"remote_ip"
+		Prompt			"Remote IP address"
+		Value			"'255.255.255.255'"
+		Evaluate		"off"
+		Callback		"str = get_param(gcb,'remote_ip');\n\nif exist('str','var')\n    str = eval(str);\nend\n\nset_param([gcb '"
+		"/AsyncEthernetCtrl'],'remote_ip',str)\n"
+		TabName			"Communication"
+	      }
+	      PropName		      "Parameters"
+	    }
+	  }
+	  System {
+	    Name		    "Ethernet communication interface"
+	    Location		    [269, 248, 1242, 785]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "26"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Data trigger"
+	      SID		      "387:1"
+	      Position		      [215, 83, 245, 97]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Data to send"
+	      SID		      "387:2"
+	      Position		      [215, 118, 245, 132]
+	      ZOrder		      -2
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      "AsyncEthernetCtrl"
+	      SID		      "387:4"
+	      Ports		      []
+	      Position		      [20, 82, 161, 146]
+	      ZOrder		      -3
+	      InitFcn		      "generic_ethernet_cb('initfcn');"
+	      FunctionName	      "sfun_gen_async_ctrl"
+	      Parameters	      "ctrl_id, nbr_to_remote_endpoint, type_to_remote_endpoint,nbr_from_remote_endpoint,type_from_r"
+	      "emote_endpoint,protocol,tcp_mode, port, offset_to_remote_endpoint,offset_from_remote_endpoint,swap_tx,swap_rx,0"
+	      ",nic_name,remote_ip,'','','','','','','','','','',exe_name,0"
+	      EnableBusSupport	      off
+	      Object {
+		$PropName		"MaskObject"
+		$ObjectID		66
+		$ClassName		"Simulink.Mask"
+		Type			"AsyncEthernetCtrl"
+		Description		"Generic asynchronous process configuration block"
+		Help			"eval('rtlab_help(''opasyncgenctrl'');');"
+		Display			"disp(sprintf('\\nEthernet communication \\ninterface controller\\n'))"
+		Array {
+		  Type			  "Simulink.MaskParameter"
+		  Dimension		  15
+		  Object {
+		    $ObjectID		    67
+		    Type		    "edit"
+		    Name		    "ctrl_id"
+		    Prompt		    "Controller ID"
+		    Value		    "1"
+		  }
+		  Object {
+		    $ObjectID		    68
+		    Type		    "edit"
+		    Name		    "nbr_to_remote_endpoint"
+		    Prompt		    "Number of data to send"
+		    Value		    "730"
+		  }
+		  Object {
+		    $ObjectID		    69
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    8
+		    Cell		    "UINT8"
+		    Cell		    "INT8"
+		    Cell		    "UINT16"
+		    Cell		    "INT16"
+		    Cell		    "UINT32"
+		    Cell		    "INT32"
+		    Cell		    "FLOAT"
+		    Cell		    "DOUBLE"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "type_to_remote_endpoint"
+		    Prompt		    "Type of data to send"
+		    Value		    "INT16"
+		  }
+		  Object {
+		    $ObjectID		    70
+		    Type		    "edit"
+		    Name		    "offset_to_remote_endpoint"
+		    Prompt		    "Byte offset of transmission buffer"
+		    Value		    "0"
+		  }
+		  Object {
+		    $ObjectID		    71
+		    Type		    "edit"
+		    Name		    "nbr_from_remote_endpoint"
+		    Prompt		    "Number of data expected to be received"
+		    Value		    "4"
+		  }
+		  Object {
+		    $ObjectID		    72
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    8
+		    Cell		    "UINT8"
+		    Cell		    "INT8"
+		    Cell		    "UINT16"
+		    Cell		    "INT16"
+		    Cell		    "UINT32"
+		    Cell		    "INT32"
+		    Cell		    "FLOAT"
+		    Cell		    "DOUBLE"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "type_from_remote_endpoint"
+		    Prompt		    "Type of data expected to be received"
+		    Value		    "UINT16"
+		  }
+		  Object {
+		    $ObjectID		    73
+		    Type		    "edit"
+		    Name		    "offset_from_remote_endpoint"
+		    Prompt		    "Byte offset of reception buffer"
+		    Value		    "0"
+		  }
+		  Object {
+		    $ObjectID		    74
+		    Type		    "edit"
+		    Name		    "nic_name"
+		    Prompt		    "Network interface name"
+		    Value		    "eth0"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    75
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "UDP"
+		    Cell		    "TCP"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "protocol"
+		    Prompt		    "Protocol"
+		    Value		    "UDP"
+		  }
+		  Object {
+		    $ObjectID		    76
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Client"
+		    Cell		    "Server"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "tcp_mode"
+		    Prompt		    "TCP mode"
+		    Value		    "Server"
+		  }
+		  Object {
+		    $ObjectID		    77
+		    Type		    "edit"
+		    Name		    "port"
+		    Prompt		    "Port"
+		    Value		    "7200"
+		  }
+		  Object {
+		    $ObjectID		    78
+		    Type		    "edit"
+		    Name		    "remote_ip"
+		    Prompt		    "Remote IP address"
+		    Value		    "255.255.255.255"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    79
+		    Type		    "edit"
+		    Name		    "exe_name"
+		    Prompt		    "Name of the executable"
+		    Value		    "AsyncEthernet"
+		    Evaluate		    "off"
+		  }
+		  Object {
+		    $ObjectID		    80
+		    Type		    "checkbox"
+		    Name		    "swap_tx"
+		    Prompt		    "Swap data endianness before transmission"
+		    Value		    "off"
+		  }
+		  Object {
+		    $ObjectID		    81
+		    Type		    "checkbox"
+		    Name		    "swap_rx"
+		    Prompt		    "Swap data endianness after reception"
+		    Value		    "off"
+		  }
+		  PropName		  "Parameters"
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SignalSpecification
+	      Name		      "B-width"
+	      SID		      "387:3"
+	      Position		      [530, 262, 650, 288]
+	      ZOrder		      -4
+	      ShowName		      off
+	      Dimensions	      "nbr_from_remote_endpoint"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      "387:5"
+	      Position		      [250, 235, 280, 265]
+	      ZOrder		      -5
+	      ShowName		      off
+	      Value		      "1000"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Logo"
+	      SID		      "387:6"
+	      Ports		      []
+	      Position		      [18, 15, 116, 64]
+	      ZOrder		      -6
+	      ShowName		      off
+	      LibraryVersion	      "1.294"
+	      SourceBlock	      "opal_lib/Logo1"
+	      SourceType	      "Opal-RT logo"
+	      vide		      "[]"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      SID		      "387:7"
+	      Ports		      [2, 1]
+	      Position		      [580, 185, 585, 240]
+	      ZOrder		      -7
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "OpAsyncRecv"
+	      SID		      "387:8"
+	      Ports		      [1, 3]
+	      Position		      [325, 214, 480, 286]
+	      ZOrder		      -8
+	      LibraryVersion	      "1.471"
+	      SourceBlock	      "rtlab/Communication/Asynchronous/OpAsyncRecv"
+	      SourceType	      "OpAsyncRecv"
+	      ctl_id		      "ctrl_id"
+	      recv_id		      "ctrl_id"
+	      enable_param	      off
+	      fp1		      "1"
+	      fp2		      "2"
+	      fp3		      "3"
+	      fp4		      "4"
+	      fp5		      "5"
+	      sp1		      "string1"
+	      sp2		      "string2"
+	      sp3		      "string3"
+	      sp4		      "string4"
+	      sp5		      "string5"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "OpAsyncSend"
+	      SID		      "387:9"
+	      Ports		      [2, 1]
+	      Position		      [325, 71, 485, 144]
+	      ZOrder		      -9
+	      LibraryVersion	      "1.471"
+	      SourceBlock	      "rtlab/Communication/Asynchronous/OpAsyncSend"
+	      SourceType	      "OpAsyncSend"
+	      ctl_id		      "ctrl_id"
+	      send_id		      "ctrl_id"
+	      mode		      "DONT_NEED_REPLY"
+	      enable_param	      off
+	      fp1		      "1"
+	      fp2		      "2"
+	      fp3		      "3"
+	      fp4		      "4"
+	      fp5		      "5"
+	      sp1		      "string1"
+	      sp2		      "string2"
+	      sp3		      "string3"
+	      sp4		      "string4"
+	      sp5		      "string5"
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "387:10"
+	      Position		      [500, 242, 515, 258]
+	      ZOrder		      -10
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Data received"
+	      SID		      "387:11"
+	      Position		      [700, 268, 730, 282]
+	      ZOrder		      -11
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Status"
+	      SID		      "387:12"
+	      Position		      [700, 208, 730, 222]
+	      ZOrder		      -12
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "B-width"
+	      SrcPort		      1
+	      DstBlock		      "Data received"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "OpAsyncRecv"
+	      SrcPort		      3
+	      DstBlock		      "B-width"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "OpAsyncRecv"
+	      SrcPort		      2
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "OpAsyncRecv"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "Status"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "OpAsyncRecv"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "OpAsyncSend"
+	      SrcPort		      1
+	      Points		      [35, 0; 0, 90]
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data trigger"
+	      SrcPort		      1
+	      DstBlock		      "OpAsyncSend"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data to send"
+	      SrcPort		      1
+	      DstBlock		      "OpAsyncSend"
+	      DstPort		      2
+	    }
+	    Annotation {
+	      SID		      "387:25"
+	      Name		      "Ethernet communication interface example model"
+	      Position		      [323, 27]
+	      ZOrder		      -1
+	      FontName		      "Verdana"
+	      FontSize		      14
+	      FontWeight	      "bold"
+	    }
+	    Annotation {
+	      SID		      "387:26"
+	      Position		      [79, 135]
+	      ZOrder		      -2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "INT16"
+	  SID			  "388"
+	  Position		  [600, 790, 630, 820]
+	  ZOrder		  -11
+	  Gain			  "2^15/70"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "MATLAB Function"
+	  SID			  "389"
+	  Ports			  [1, 2]
+	  Position		  [245, 414, 315, 461]
+	  ZOrder		  -4
+	  LibraryVersion	  "1.32"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  SFBlockType		  "MATLAB Function"
+	  System {
+	    Name		    "MATLAB Function"
+	    Location		    [227, 345, 838, 789]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "33"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "u"
+	      SID		      "389::1"
+	      Position		      [20, 101, 40, 119]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "389::32"
+	      Ports		      [1, 1]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      8
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "389::31"
+	      Tag		      "Stateflow S-Function HIL_UDP_lib 4"
+	      Ports		      [1, 3]
+	      Position		      [180, 100, 230, 180]
+	      ZOrder		      7
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[1 3]"
+	      EnableBusSupport	      off
+	      Port {
+		PortNumber		2
+		Name			"y"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"sync"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "389::33"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      9
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "y"
+	      SID		      "389::5"
+	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -5
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "sync"
+	      SID		      "389::18"
+	      Position		      [460, 136, 480, 154]
+	      ZOrder		      -6
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "sync"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "sync"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "y"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      DstBlock		      "y"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "u"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "390"
+	  Ports			  [13, 1]
+	  Position		  [520, 129, 525, 461]
+	  ZOrder		  -40
+	  ShowName		  off
+	  Inputs		  "13"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  SID			  "391"
+	  Ports			  [10, 1]
+	  Position		  [525, 838, 535, 1042]
+	  ZOrder		  -41
+	  ShowName		  off
+	  Inputs		  "10"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux7"
+	  SID			  "392"
+	  Ports			  [4, 1]
+	  Position		  [520, 1064, 535, 1256]
+	  ZOrder		  -42
+	  ShowName		  off
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux8"
+	  SID			  "393"
+	  Ports			  [7, 1]
+	  Position		  [765, 683, 775, 857]
+	  ZOrder		  -43
+	  ShowName		  off
+	  Inputs		  "7"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux9"
+	  SID			  "394"
+	  Ports			  [2, 1]
+	  Position		  [1040, 686, 1050, 784]
+	  ZOrder		  -44
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Profile ID"
+	  SID			  "395"
+	  Position		  [35, 20, 90, 50]
+	  ZOrder		  14
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  DiscretePulseGenerator
+	  Name			  "Pulse input"
+	  SID			  "396"
+	  Ports			  [0, 1]
+	  Position		  [835, 537, 905, 553]
+	  ZOrder		  -45
+	  BackgroundColor	  "yellow"
+	  PulseType		  "Time based"
+	  Period		  "1/5"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Scale to 80% INT16"
+	  SID			  "397"
+	  Position		  [165, 425, 195, 455]
+	  ZOrder		  -11
+	  Gain			  "0.8*2^15"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Scale to 80% INT16_1"
+	  SID			  "398"
+	  Position		  [520, 760, 550, 790]
+	  ZOrder		  -11
+	  Gain			  "0.8*2^15"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Scale to INT16_1"
+	  SID			  "399"
+	  Position		  [360, 1070, 390, 1100]
+	  ZOrder		  -11
+	  Gain			  "2^15/100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Scale to INT16_2"
+	  SID			  "400"
+	  Position		  [275, 1120, 305, 1150]
+	  ZOrder		  -11
+	  Gain			  "2^15"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Scale to INT16_3"
+	  SID			  "401"
+	  Position		  [225, 1170, 255, 1200]
+	  ZOrder		  -11
+	  Gain			  "2^15/100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector"
+	  SID			  "402"
+	  Ports			  [1, 1]
+	  Position		  [375, 412, 400, 438]
+	  ZOrder		  -17
+	  NumberOfDimensions	  "2"
+	  InputPortWidth	  "3"
+	  IndexOptions		  "Index vector (dialog),Select all"
+	  Indices		  "[1],1"
+	  OutputSizes		  "208,1"
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector1"
+	  SID			  "403"
+	  Ports			  [1, 1]
+	  Position		  [375, 457, 400, 483]
+	  ZOrder		  -17
+	  NumberOfDimensions	  "2"
+	  InputPortWidth	  "3"
+	  IndexOptions		  "Index vector (dialog),Select all"
+	  Indices		  "[2],1"
+	  OutputSizes		  "208,1"
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector2"
+	  SID			  "404"
+	  Ports			  [1, 1]
+	  Position		  [375, 502, 400, 528]
+	  ZOrder		  -17
+	  NumberOfDimensions	  "2"
+	  InputPortWidth	  "3"
+	  IndexOptions		  "Index vector (dialog),Select all"
+	  Indices		  "[3],1"
+	  OutputSizes		  "208,1"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Start Word 0xAFAF"
+	  SID			  "405"
+	  Position		  [445, 80, 475, 110]
+	  ZOrder		  -5
+	  Value			  "44975"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Stop Word 0x5555"
+	  SID			  "406"
+	  Position		  [120, 1225, 150, 1255]
+	  ZOrder		  -5
+	  Value			  "21845"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "bitwise_status1"
+	  SID			  "407"
+	  Ports			  [1, 1]
+	  Position		  [245, 841, 355, 859]
+	  ZOrder		  -56
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "bitwise_status1"
+	    Location		    [172, 52, 1372, 893]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "status_array"
+	      SID		      "408"
+	      Position		      [25, 253, 55, 267]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Bitwise\nOperator"
+	      SID		      "409"
+	      Ports		      [2, 1]
+	      Position		      [760, 140, 805, 275]
+	      ZOrder		      -3
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Bitwise\nOperator"
+	      SourceType	      "Bitwise Operator"
+	      logicop		      "OR"
+	      UseBitMask	      off
+	      NumInputPorts	      "2"
+	      BitMask		      "bin2dec('11011001')"
+	      BitMaskRealWorld	      "Stored Integer"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Bitwise\nOperator1"
+	      SID		      "410"
+	      Ports		      [1, 1]
+	      Position		      [585, 160, 630, 190]
+	      ZOrder		      -3
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Bitwise\nOperator"
+	      SourceType	      "Bitwise Operator"
+	      logicop		      "AND"
+	      UseBitMask	      on
+	      NumInputPorts	      "1"
+	      BitMask		      "bin2dec('0000000011111111')"
+	      BitMaskRealWorld	      "Stored Integer"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "411"
+	      Position		      [80, 243, 155, 277]
+	      ZOrder		      -7
+	      OutDataTypeStr	      "uint16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "412"
+	      Position		      [840, 193, 915, 227]
+	      ZOrder		      -7
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      SID		      "413"
+	      Ports		      [1, 2]
+	      Position		      [210, 96, 220, 414]
+	      ZOrder		      -7
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      ArithShift
+	      Name		      "Shift\nArithmetic"
+	      SID		      "414"
+	      Ports		      [1, 1]
+	      Position		      [370, 315, 450, 355]
+	      ZOrder		      -19
+	      InputPortMap	      "u0"
+	      BitShiftNumber	      "8"
+	      BitShiftDirection	      "Left"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "bit_field"
+	      SID		      "415"
+	      Position		      [955, 203, 985, 217]
+	      ZOrder		      -20
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "bit_field"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bitwise\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "status_array"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      DstBlock		      "Shift\nArithmetic"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      Points		      [35, 0]
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Shift\nArithmetic"
+	      SrcPort		      1
+	      Points		      [0, -95]
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Bitwise\nOperator1"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "417"
+	      Name		      "Constant array has LSB on most left."
+	      Position		      [110, 152]
+	      ZOrder		      -1
+	    }
+	    Annotation {
+	      SID		      "416"
+	      Name		      "2-bit status indicators are packed into 16 bits"
+	      Position		      [260, 600]
+	      ZOrder		      -2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status10"
+	  SID			  "418"
+	  Ports			  [1, 1]
+	  Position		  [245, 1021, 355, 1039]
+	  ZOrder		  -57
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status2"
+	  SID			  "419"
+	  Ports			  [1, 1]
+	  Position		  [245, 861, 355, 879]
+	  ZOrder		  -58
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status3"
+	  SID			  "420"
+	  Ports			  [1, 1]
+	  Position		  [245, 881, 355, 899]
+	  ZOrder		  -59
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status4"
+	  SID			  "421"
+	  Ports			  [1, 1]
+	  Position		  [245, 901, 355, 919]
+	  ZOrder		  -60
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status5"
+	  SID			  "422"
+	  Ports			  [1, 1]
+	  Position		  [245, 921, 355, 939]
+	  ZOrder		  -61
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status6"
+	  SID			  "423"
+	  Ports			  [1, 1]
+	  Position		  [245, 941, 355, 959]
+	  ZOrder		  -62
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status7"
+	  SID			  "424"
+	  Ports			  [1, 1]
+	  Position		  [245, 961, 355, 979]
+	  ZOrder		  -63
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status8"
+	  SID			  "425"
+	  Ports			  [1, 1]
+	  Position		  [245, 981, 355, 999]
+	  ZOrder		  -64
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bitwise_status9"
+	  SID			  "426"
+	  Ports			  [1, 1]
+	  Position		  [245, 1001, 355, 1019]
+	  ZOrder		  -65
+	  LibraryVersion	  "1.26"
+	  SourceBlock		  "HIL_UDP_lib/UDP Data Send/bitwise_status1"
+	  SourceType		  "SubSystem"
+	}
+	Line {
+	  SrcBlock		  "# of PVs"
+	  SrcPort		  1
+	  Points		  [100, 0; 0, -35]
+	  DstBlock		  "Mux1"
+	  DstPort		  10
+	}
+	Line {
+	  SrcBlock		  " # of motors"
+	  SrcPort		  1
+	  Points		  [205, 0; 0, -20]
+	  DstBlock		  "Mux1"
+	  DstPort		  9
+	}
+	Line {
+	  SrcBlock		  "# of PF's"
+	  SrcPort		  1
+	  Points		  [187, 0; 0, 20]
+	  DstBlock		  "Mux1"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "# of Batteries"
+	  SrcPort		  1
+	  Points		  [213, 0; 0, 40]
+	  DstBlock		  "Mux1"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "# of gensets"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "# of Relays"
+	  SrcPort		  1
+	  Points		  [231, 0; 0, 55]
+	  DstBlock		  "Mux1"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "# of Points"
+	  SrcPort		  1
+	  Points		  [247, 0; 0, 75]
+	  DstBlock		  "Mux1"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "# of Waveform s"
+	  SrcPort		  1
+	  Points		  [279, 0; 0, 100]
+	  DstBlock		  "Mux1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Profile ID"
+	  SrcPort		  1
+	  Points		  [319, 0; 0, 135]
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Start Word 0xAFAF"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Pulse input"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 105]
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Ethernet communication interface"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Waveforms"
+	  SrcPort		  1
+	  DstBlock		  "Scale to 80% INT16"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "MATLAB Function"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  Branch {
+	    DstBlock		    "Selector"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 45]
+	    Branch {
+	      DstBlock		      "Selector1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 45]
+	      DstBlock		      "Selector2"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Selector"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, -30]
+	  DstBlock		  "Mux1"
+	  DstPort		  11
+	}
+	Line {
+	  SrcBlock		  "Selector1"
+	  SrcPort		  1
+	  Points		  [56, 0; 0, -33; 44, 0]
+	  DstBlock		  "Mux1"
+	  DstPort		  12
+	}
+	Line {
+	  SrcBlock		  "Selector2"
+	  SrcPort		  1
+	  Points		  [85, 0; 0, -70]
+	  DstBlock		  "Mux1"
+	  DstPort		  13
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  Points		  [110, 0; 0, 400]
+	  DstBlock		  "Mux8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux8"
+	  SrcPort		  1
+	  Points		  [0, -10; 15, 0]
+	  Branch {
+	    Points		    [0, -50]
+	    DstBlock		    "Mux9"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Data Type Conversion1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Checksum"
+	  SrcPort		  1
+	  DstBlock		  "Cast uint16"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Cast uint16"
+	  SrcPort		  1
+	  DstBlock		  "Mux9"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux9"
+	  SrcPort		  1
+	  DstBlock		  "Ethernet communication interface"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Power Real"
+	  SrcPort		  1
+	  Points		  [315, 0]
+	  DstBlock		  "Mux8"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Power Reactive"
+	  SrcPort		  1
+	  DstBlock		  "Mux8"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Voltage"
+	  SrcPort		  1
+	  DstBlock		  "Scale to 80% INT16_1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Frequency"
+	  SrcPort		  1
+	  DstBlock		  "INT16"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "bitwise_status1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Breaker Status"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion1"
+	  SrcPort		  1
+	  DstBlock		  "Checksum"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Battery SoC"
+	  SrcPort		  1
+	  DstBlock		  "Scale to INT16_1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PF"
+	  SrcPort		  1
+	  DstBlock		  "Scale to INT16_2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Scale to 80% INT16"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Scale to 80% INT16_1"
+	  SrcPort		  1
+	  Points		  [195, 0]
+	  DstBlock		  "Mux8"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "INT16"
+	  SrcPort		  1
+	  Points		  [115, 0]
+	  DstBlock		  "Mux8"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "FuelUsageGalPerHour"
+	  SrcPort		  1
+	  DstBlock		  "Scale to INT16_3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Stop Word 0x5555"
+	  SrcPort		  1
+	  Points		  [175, 0; 0, -5]
+	  DstBlock		  "Mux7"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Scale to INT16_1"
+	  SrcPort		  1
+	  DstBlock		  "Mux7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Scale to INT16_2"
+	  SrcPort		  1
+	  DstBlock		  "Mux7"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Scale to INT16_3"
+	  SrcPort		  1
+	  DstBlock		  "Mux7"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  Points		  [105, 0; 0, -120]
+	  DstBlock		  "Mux8"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Mux7"
+	  SrcPort		  1
+	  Points		  [210, 0]
+	  DstBlock		  "Mux8"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "bitwise_status1"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "bitwise_status2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "bitwise_status3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  4
+	  DstBlock		  "bitwise_status4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  5
+	  DstBlock		  "bitwise_status5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  6
+	  DstBlock		  "bitwise_status6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  7
+	  DstBlock		  "bitwise_status7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  8
+	  DstBlock		  "bitwise_status8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  9
+	  DstBlock		  "bitwise_status9"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  10
+	  DstBlock		  "bitwise_status10"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "bitwise_status2"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "bitwise_status3"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "bitwise_status4"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "bitwise_status5"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "bitwise_status6"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "bitwise_status7"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "bitwise_status8"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "bitwise_status9"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  9
+	}
+	Line {
+	  SrcBlock		  "bitwise_status10"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  10
+	}
+      }
+    }
   }
 }
 # Finite State Machines
 #
-#    Stateflow Version 7.6 (R2011b) dated Aug  6 2011, 17:15:36
+#    Stateflow Version 7.6 (R2013a) dated Jan 19 2013, 14:32:03
 #
 #
-
 
 Stateflow {
   machine {
@@ -8158,26 +10591,28 @@ Stateflow {
     name		    "HIL_UDP_lib"
     created		    "15-Sep-2015 15:26:17"
     isLibrary		    1
-    firstTarget		    17
-    sfVersion		    76014001.0002
+    firstTarget		    32
+    sfVersion		    76014001.0015
   }
   chart {
     id			    2
-    name		    "UDP Data Send/Cast uint16"
-    windowPosition	    [390.75 188.25 200.25 189.75]
+    name		    "UDP Data Test/Cast uint16"
+    windowPosition	    [347.333 326.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1200 1.333333333333333]
+    screen		    [1 1 1280 1024 1.333333333333333]
     treeNode		    [0 3 0 0]
-    firstTransition	    5
-    firstJunction	    4
+    firstTransition	    7
+    firstJunction	    6
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    6
-    chartFileNumber	    2
+    firstData		    4
+    chartFileNumber	    1
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -8201,41 +10636,11 @@ Stateflow {
       editorLayout	      "100 M4x1[205 227 1080 733]"
     }
   }
-  junction {
-    id			    4
-    position		    [23.5747 49.5747 7]
-    chart		    2
-    linkNode		    [2 0 0]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    5
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      4
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    2
-    linkNode		    [2 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    2
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
   data {
-    id			    6
+    id			    4
     ssIdNumber		    4
     name		    "u"
-    linkNode		    [2 0 7]
+    linkNode		    [2 0 5]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8251,10 +10656,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    7
+    id			    5
     ssIdNumber		    5
     name		    "y"
-    linkNode		    [2 6 0]
+    linkNode		    [2 4 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8270,28 +10675,62 @@ Stateflow {
     }
     dataType		    "Inherit: Same as Simulink"
   }
+  junction {
+    id			    6
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    7
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      6
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
   instance {
     id			    8
-    name		    "UDP Data Send/Cast uint16"
+    name		    "UDP Data Test/Cast uint16"
     machine		    1
     chart		    2
   }
   chart {
     id			    9
-    name		    "UDP Data Send/MATLAB Function"
-    windowPosition	    [378.207 275.147 200.25 189.75]
+    name		    "UDP Data Send/Cast uint16"
+    windowPosition	    [347.333 326.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1200 1.333333333333333]
+    screen		    [1 1 1280 1024 1.333333333333333]
     treeNode		    [0 10 0 0]
-    firstTransition	    12
-    firstJunction	    11
+    firstTransition	    14
+    firstJunction	    13
     viewObj		    9
     machine		    1
-    ssIdHighWaterMark	    6
+    toolbarMode		    LIBRARY_TOOLBAR
+    ssIdHighWaterMark	    5
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    13
-    chartFileNumber	    3
+    firstData		    11
+    chartFileNumber	    2
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -8311,45 +10750,15 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function [y, sync] = fcn(u)\n%#codegen\n\n[y, sync] = scopeBuffer(u);"
-      editorLayout	      "100 M4x1[25 47 750 500]"
+      script		      "function y = fcn(u)\n%#codegen\n\nx = double(typecast(uint32(u),'uint16'));\ny = x(1); % low bits"
+      editorLayout	      "100 M4x1[205 227 1080 733]"
     }
-  }
-  junction {
-    id			    11
-    position		    [23.5747 49.5747 7]
-    chart		    9
-    linkNode		    [9 0 0]
-    subviewer		    9
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    12
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      11
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    9
-    linkNode		    [9 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    9
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
   }
   data {
-    id			    13
+    id			    11
     ssIdNumber		    4
     name		    "u"
-    linkNode		    [9 0 14]
+    linkNode		    [9 0 12]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8365,10 +10774,127 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    14
+    id			    12
     ssIdNumber		    5
     name		    "y"
-    linkNode		    [9 13 15]
+    linkNode		    [9 11 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    13
+    position		    [23.5747 49.5747 7]
+    chart		    9
+    linkNode		    [9 0 0]
+    subviewer		    9
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    14
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      13
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    9
+    linkNode		    [9 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    9
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  instance {
+    id			    15
+    name		    "UDP Data Send/Cast uint16"
+    machine		    1
+    chart		    9
+  }
+  chart {
+    id			    16
+    name		    "UDP Data Send/MATLAB Function"
+    windowPosition	    [336 326.75 213 385]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1280 1024 1.333333333333333]
+    treeNode		    [0 17 0 0]
+    firstTransition	    22
+    firstJunction	    21
+    viewObj		    16
+    machine		    1
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    18
+    chartFileNumber	    3
+    disableImplicitCasting  1
+    eml {
+      name		      "fcn"
+    }
+  }
+  state {
+    id			    17
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    16
+    treeNode		    [16 0 0 0]
+    superState		    SUBCHART
+    subviewer		    16
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [y, sync] = fcn(u)\n%#codegen\n\n[y, sync] = scopeBuffer(u);"
+      editorLayout	      "100 M4x1[25 47 750 500]"
+    }
+  }
+  data {
+    id			    18
+    ssIdNumber		    4
+    name		    "u"
+    linkNode		    [16 0 19]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    19
+    ssIdNumber		    5
+    name		    "y"
+    linkNode		    [16 18 20]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8385,10 +10911,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    15
+    id			    20
     ssIdNumber		    6
     name		    "sync"
-    linkNode		    [9 14 0]
+    linkNode		    [16 19 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8406,14 +10932,188 @@ Stateflow {
     }
     dataType		    "Inherit: Same as Simulink"
   }
+  junction {
+    id			    21
+    position		    [23.5747 49.5747 7]
+    chart		    16
+    linkNode		    [16 0 0]
+    subviewer		    16
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    22
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      21
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    16
+    linkNode		    [16 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    16
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
   instance {
-    id			    16
+    id			    23
     name		    "UDP Data Send/MATLAB Function"
     machine		    1
-    chart		    9
+    chart		    16
+  }
+  chart {
+    id			    24
+    name		    "UDP Data Test/MATLAB Function"
+    windowPosition	    [336 326.75 213 385]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1280 1024 1.333333333333333]
+    treeNode		    [0 25 0 0]
+    firstTransition	    30
+    firstJunction	    29
+    viewObj		    24
+    machine		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    6
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    26
+    chartFileNumber	    4
+    disableImplicitCasting  1
+    eml {
+      name		      "fcn"
+    }
+  }
+  state {
+    id			    25
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    24
+    treeNode		    [24 0 0 0]
+    superState		    SUBCHART
+    subviewer		    24
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [y, sync] = fcn(u)\n%#codegen\n\n[y, sync] = scopeBuffer(u);"
+      editorLayout	      "100 M4x1[25 47 750 500]"
+    }
+  }
+  data {
+    id			    26
+    ssIdNumber		    4
+    name		    "u"
+    linkNode		    [24 0 27]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    27
+    ssIdNumber		    5
+    name		    "y"
+    linkNode		    [24 26 28]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    28
+    ssIdNumber		    6
+    name		    "sync"
+    linkNode		    [24 27 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    29
+    position		    [23.5747 49.5747 7]
+    chart		    24
+    linkNode		    [24 0 0]
+    subviewer		    24
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    30
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      29
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    24
+    linkNode		    [24 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    24
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  instance {
+    id			    31
+    name		    "UDP Data Test/MATLAB Function"
+    machine		    1
+    chart		    24
   }
   target {
-    id			    17
+    id			    32
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
