@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2638"
+    ComputedModelVersion    "1.2639"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [-8.0, 0.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -59,8 +59,8 @@ Model {
 	ViewObjType		"SimulinkSubsys"
 	LoadSaveID		"27531"
 	Extents			[1693.0, 882.0]
-	ZoomFactor		[1.1216814159292035]
-	Offset			[-356.17061143984222, -57.481262327416232]
+	ZoomFactor		[1.0]
+	Offset			[-368.32051282051282, -129.40433925049319]
       }
     }
   }
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 01 18:24:09 2016"
-  RTWModifiedTimeStamp	  398714020
-  ModelVersionFormat	  "1.%<AutoIncrement:2638>"
+  LastModifiedDate	  "Tue Nov 01 19:04:26 2016"
+  RTWModifiedTimeStamp	  399927860
+  ModelVersionFormat	  "1.%<AutoIncrement:2639>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -827,6 +827,14 @@ Model {
       RTWStateStorageClass    "Auto"
     }
     Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -894,7 +902,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "245"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "27536"
+    SIDHighWatermark	    "27538"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1096,7 +1104,7 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "DSO and Test Sequence Engine"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [-8, 0, 1928, 1056]
 	    Open		    on
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1108,13 +1116,13 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "112"
+	    ZoomFactor		    "100"
 	    Block {
 	      BlockType		      Reference
 	      Name		      "DMS Modbus  device"
 	      SID		      "27419"
 	      Ports		      [1, 1]
-	      Position		      [440, 463, 600, 557]
+	      Position		      [695, 468, 855, 562]
 	      ZOrder		      3226
 	      LibraryVersion	      "1.13"
 	      SourceBlock	      "rtio_generic_modbus/Modbus device"
@@ -1128,7 +1136,7 @@ Model {
 	      Name		      "DSOCommandsToMGC"
 	      SID		      "27420"
 	      Ports		      [0, 1]
-	      Position		      [40, 464, 335, 556]
+	      Position		      [25, 444, 320, 536]
 	      ZOrder		      3234
 	      BackgroundColor	      "yellow"
 	      MinAlgLoopOccurrences   off
@@ -1222,7 +1230,7 @@ Model {
 	      }
 	      System {
 		Name			"DSOCommandsToMGC"
-		Location		[1912, 0, 3848, 1216]
+		Location		[-8, 0, 1928, 1056]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -1234,7 +1242,7 @@ Model {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"131"
+		ZoomFactor		"100"
 		Block {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator"
@@ -1484,11 +1492,23 @@ Model {
 	      }
 	    }
 	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      SID		      "27538"
+	      Ports		      [1, 2]
+	      Position		      [920, 496, 925, 534]
+	      ZOrder		      3336
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
 	      BlockType		      DigitalClock
 	      Name		      "Digital Clock"
 	      SID		      "27440"
-	      Position		      [355, 223, 420, 247]
+	      Position		      [285, 223, 350, 247]
 	      ZOrder		      3228
+	      ForegroundColor	      "blue"
 	      BackgroundColor	      "red"
 	      NamePlacement	      "alternate"
 	      SampleTime	      "Ts"
@@ -1514,9 +1534,20 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory3"
 	      SID		      "27536"
-	      Position		      [370, 495, 400, 525]
+	      Position		      [625, 500, 655, 530]
 	      ZOrder		      3334
 	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      SID		      "27537"
+	      Ports		      [2, 1]
+	      Position		      [560, 466, 570, 564]
+	      ZOrder		      3335
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -2056,14 +2087,16 @@ Model {
 	    Line {
 	      SrcBlock		      "Digital Clock"
 	      SrcPort		      1
-	      DstBlock		      "Scheduler-Engine"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "DSOCommandsToMGC"
-	      SrcPort		      1
-	      DstBlock		      "Memory3"
-	      DstPort		      1
+	      Points		      [22, 0]
+	      Branch {
+		Points			[0, 305]
+		DstBlock		"Mux"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Scheduler-Engine"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "TestSequenceCommands"
@@ -2081,6 +2114,24 @@ Model {
 	      SrcBlock		      "Memory3"
 	      SrcPort		      1
 	      DstBlock		      "DMS Modbus  device"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "Memory3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DSOCommandsToMGC"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DMS Modbus  device"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
 	      DstPort		      1
 	    }
 	    Annotation {
