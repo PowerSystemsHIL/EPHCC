@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1096.0]
+      Location		      [604.0, 201.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -34,7 +34,7 @@ Library {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 930.0]
+	Extents			[1693.0, 1080.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -53,10 +53,10 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 05 18:39:29 2016"
-  RTWModifiedTimeStamp	  397593559
+  LastModifiedDate	  "Wed Nov 02 12:00:01 2016"
+  RTWModifiedTimeStamp	  399988790
   ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
@@ -743,6 +743,21 @@ Library {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Goto
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -859,7 +874,7 @@ Library {
   }
   System {
     Name		    "CHP_Model_lib"
-    Location		    [1912, -8, 3848, 1088]
+    Location		    [604, 201, 2540, 1417]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -873,15 +888,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "33"
+    SIDHighWatermark	    "38"
     Block {
       BlockType		      SubSystem
       Name		      "CHPThermalModel"
       SID		      "1"
-      Ports		      [5, 3]
+      Ports		      [5, 5]
       Position		      [465, 283, 745, 457]
-      ZOrder		      2960
+      ZOrder		      2981
       BlockMirror	      on
+      LibraryVersion	      "*1.3"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -905,7 +921,7 @@ Library {
       }
       System {
 	Name			"CHPThermalModel"
-	Location		[1912, -8, 3848, 1088]
+	Location		[0, 0, 1932, 1092]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -917,12 +933,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"96"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In2"
 	  SID			  "2"
-	  Position		  [95, 338, 210, 352]
+	  Position		  [95, 218, 210, 232]
 	  ZOrder		  59
 	  ShowName		  off
 	  IconDisplay		  "Signal name"
@@ -938,7 +954,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "Heat Load, MBtu/hr"
 	  SID			  "3"
-	  Position		  [385, 463, 415, 477]
+	  Position		  [385, 343, 415, 357]
 	  ZOrder		  63
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -947,7 +963,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "Temp Set Point deg F"
 	  SID			  "4"
-	  Position		  [135, 553, 165, 567]
+	  Position		  [135, 433, 165, 447]
 	  ZOrder		  62
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -956,7 +972,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "Enable CHP Heating (1)"
 	  SID			  "5"
-	  Position		  [885, 138, 915, 152]
+	  Position		  [885, 18, 915, 32]
 	  ZOrder		  58
 	  BlockMirror		  on
 	  Port			  "4"
@@ -966,18 +982,29 @@ Library {
 	  BlockType		  Inport
 	  Name			  "In1"
 	  SID			  "6"
-	  Position		  [510, 783, 540, 797]
+	  Position		  [510, 663, 540, 677]
 	  ZOrder		  80
 	  ShowName		  off
 	  Port			  "5"
 	  IconDisplay		  "Signal name"
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "Boiler\nEfficienty"
+	  SID			  "33"
+	  Position		  [865, 535, 905, 565]
+	  ZOrder		  97
+	  Gain			  "1/.8"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "Boiler controller"
 	  SID			  "7"
 	  Ports			  [1, 1]
-	  Position		  [380, 542, 420, 578]
+	  Position		  [380, 422, 420, 458]
 	  ZOrder		  71
 	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Continuous/PID Controller"
@@ -1086,7 +1113,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "8"
 	  Ports			  [1, 3]
-	  Position		  [570, 756, 575, 824]
+	  Position		  [570, 636, 575, 704]
 	  ZOrder		  92
 	  ShowName		  off
 	  OutputSignals		  "CHP Enable/Disable,CHP TempSetPoint,CHP Reset"
@@ -1113,7 +1140,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "CHP Heating Off"
 	  SID			  "9"
-	  Position		  [140, 420, 170, 450]
+	  Position		  [140, 300, 170, 330]
 	  ZOrder		  35
 	  Value			  "0"
 	  SampleTime		  "Ts"
@@ -1123,7 +1150,7 @@ Library {
 	  Name			  "CHP MIxing TC1"
 	  SID			  "10"
 	  Ports			  [1, 1]
-	  Position		  [520, 344, 560, 376]
+	  Position		  [520, 224, 560, 256]
 	  ZOrder		  96
 	  LibraryVersion	  "1.321"
 	  SourceBlock		  "dsparch4/Analog\nFilter Design"
@@ -1140,7 +1167,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "11"
-	  Position		  [120, 610, 185, 640]
+	  Position		  [120, 490, 185, 520]
 	  ZOrder		  78
 	  Value			  "SIM_HIL"
 	}
@@ -1148,7 +1175,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant1"
 	  SID			  "12"
-	  Position		  [885, 190, 950, 220]
+	  Position		  [885, 70, 950, 100]
 	  ZOrder		  79
 	  BlockMirror		  on
 	  Value			  "SIM_HIL"
@@ -1157,7 +1184,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  "13"
-	  Position		  [20, 668, 150, 692]
+	  Position		  [20, 548, 150, 572]
 	  ZOrder		  85
 	  GotoTag		  "SIM_TempSetPoint"
 	}
@@ -1165,7 +1192,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "14"
-	  Position		  [920, 290, 1045, 310]
+	  Position		  [920, 170, 1045, 190]
 	  ZOrder		  86
 	  BlockMirror		  on
 	  GotoTag		  "SIM_EnableCHP"
@@ -1174,7 +1201,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From2"
 	  SID			  "15"
-	  Position		  [610, 581, 710, 609]
+	  Position		  [610, 461, 710, 489]
 	  ZOrder		  88
 	  GotoTag		  "CHP_Reset"
 	}
@@ -1182,7 +1209,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "16"
-	  Position		  [680, 782, 810, 798]
+	  Position		  [680, 662, 810, 678]
 	  ZOrder		  82
 	  GotoTag		  "SIM_TempSetPoint"
 	}
@@ -1190,7 +1217,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "17"
-	  Position		  [675, 707, 810, 723]
+	  Position		  [675, 587, 810, 603]
 	  ZOrder		  83
 	  GotoTag		  "SIM_EnableCHP"
 	}
@@ -1198,7 +1225,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  "18"
-	  Position		  [680, 852, 815, 868]
+	  Position		  [680, 732, 815, 748]
 	  ZOrder		  87
 	  GotoTag		  "CHP_Reset"
 	}
@@ -1207,7 +1234,7 @@ Library {
 	  Name			  "Load \nThermal\n Mass\n50 deg/MBTU"
 	  SID			  "19"
 	  Ports			  [2, 1]
-	  Position		  [790, 427, 830, 463]
+	  Position		  [790, 307, 830, 343]
 	  ZOrder		  6
 	  gainval		  "50/3600"
 	  ExternalReset		  "level"
@@ -1223,11 +1250,22 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "MBtu->lbm CH4"
+	  SID			  "34"
+	  Position		  [930, 532, 1025, 568]
+	  ZOrder		  98
+	  Gain			  "1e6/20267"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  TransportDelay
 	  Name			  "Piping\nTransport\nDelay1"
 	  SID			  "20"
 	  Ports			  [1, 1]
-	  Position		  [440, 345, 470, 375]
+	  Position		  [440, 225, 470, 255]
 	  ZOrder		  94
 	  DelayTime		  "10"
 	}
@@ -1235,7 +1273,7 @@ Library {
 	  BlockType		  UnitDelay
 	  Name			  "Remove\nAlgebraic\nLoop"
 	  SID			  "21"
-	  Position		  [625, 343, 660, 377]
+	  Position		  [625, 223, 660, 257]
 	  ZOrder		  74
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "-1"
@@ -1250,7 +1288,7 @@ Library {
 	  BlockType		  UnitDelay
 	  Name			  "Remove\nAlgebraic\nLoop1"
 	  SID			  "22"
-	  Position		  [495, 543, 530, 577]
+	  Position		  [495, 423, 530, 457]
 	  ZOrder		  75
 	  InputProcessing	  "Elements as channels (sample based)"
 	  SampleTime		  "-1"
@@ -1265,7 +1303,7 @@ Library {
 	  BlockType		  Switch
 	  Name			  "SIM_HIL1"
 	  SID			  "23"
-	  Position		  [260, 605, 310, 645]
+	  Position		  [260, 485, 310, 525]
 	  ZOrder		  76
 	  Threshold		  ".5"
 	  InputSameDT		  off
@@ -1275,7 +1313,7 @@ Library {
 	  BlockType		  Switch
 	  Name			  "SIM_HIL2"
 	  SID			  "24"
-	  Position		  [755, 185, 805, 225]
+	  Position		  [755, 65, 805, 105]
 	  ZOrder		  77
 	  BlockMirror		  on
 	  Threshold		  ".5"
@@ -1287,7 +1325,7 @@ Library {
 	  Name			  "Sum1"
 	  SID			  "25"
 	  Ports			  [3, 1]
-	  Position		  [705, 420, 735, 450]
+	  Position		  [705, 300, 735, 330]
 	  ZOrder		  9
 	  ShowName		  off
 	  IconShape		  "round"
@@ -1301,7 +1339,7 @@ Library {
 	  Name			  "Sum4"
 	  SID			  "26"
 	  Ports			  [2, 1]
-	  Position		  [325, 545, 355, 575]
+	  Position		  [325, 425, 355, 455]
 	  ZOrder		  68
 	  ShowName		  off
 	  IconShape		  "round"
@@ -1314,7 +1352,7 @@ Library {
 	  BlockType		  Switch
 	  Name			  "Supply Heating\nFrom Hrec to Load"
 	  SID			  "27"
-	  Position		  [315, 340, 365, 380]
+	  Position		  [315, 220, 365, 260]
 	  ZOrder		  1
 	  NamePlacement		  "alternate"
 	  Threshold		  ".5"
@@ -1328,10 +1366,44 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "lbm CH4-> lbm CO2"
+	  SID			  "35"
+	  Position		  [1065, 530, 1110, 570]
+	  ZOrder		  99
+	  Gain			  "2.75"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Boiler lbm/hr CO2 "
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "lbm CH4->Nm^3 CH4"
+	  SID			  "36"
+	  Position		  [1060, 620, 1115, 660]
+	  ZOrder		  100
+	  Gain			  "1/1.76"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Boiler_Nm^3/hr "
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "Temp Actual"
 	  SID			  "28"
-	  Position		  [970, 445, 1095, 465]
+	  Position		  [970, 325, 1095, 345]
 	  ZOrder		  61
 	  IconDisplay		  "Port number"
 	}
@@ -1339,7 +1411,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "Boiler Heat Supplied MBtu/;hr"
 	  SID			  "29"
-	  Position		  [810, 528, 840, 542]
+	  Position		  [810, 408, 840, 422]
 	  ZOrder		  69
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1348,10 +1420,64 @@ Library {
 	  BlockType		  Outport
 	  Name			  "CHP Heat Supplied MBtu/hr"
 	  SID			  "30"
-	  Position		  [1005, 533, 1035, 547]
+	  Position		  [1005, 413, 1035, 427]
 	  ZOrder		  73
 	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Boiler_Nm^3/hr "
+	  SID			  "37"
+	  Position		  [1215, 633, 1245, 647]
+	  ZOrder		  101
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Boiler lbm/hr CO2"
+	  SID			  "38"
+	  Position		  [1205, 543, 1235, 557]
+	  ZOrder		  102
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "Boiler lbm/hr CO2 "
+	  Labels		  [1, 1]
+	  SrcBlock		  "lbm CH4-> lbm CO2"
+	  SrcPort		  1
+	  DstBlock		  "Boiler lbm/hr CO2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Boiler_Nm^3/hr "
+	  Labels		  [1, 1]
+	  SrcBlock		  "lbm CH4->Nm^3 CH4"
+	  SrcPort		  1
+	  DstBlock		  "Boiler_Nm^3/hr "
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "MBtu->lbm CH4"
+	  SrcPort		  1
+	  Points		  [9, 0]
+	  Branch {
+	    DstBlock		    "lbm CH4-> lbm CO2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 90]
+	    DstBlock		    "lbm CH4->Nm^3 CH4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Boiler\nEfficienty"
+	  SrcPort		  1
+	  DstBlock		  "MBtu->lbm CH4"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "CHP MIxing TC1"
@@ -1479,8 +1605,16 @@ Library {
 	    DstPort		    2
 	  }
 	  Branch {
-	    DstBlock		    "Boiler Heat Supplied MBtu/;hr"
-	    DstPort		    1
+	    Points		    [167, 0]
+	    Branch {
+	      Points		      [0, 135]
+	      DstBlock		      "Boiler\nEfficienty"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Boiler Heat Supplied MBtu/;hr"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Line {
@@ -1555,26 +1689,9 @@ Library {
 	Annotation {
 	  SID			  "31"
 	  Name			  "1 MW~3.4 MBtu/hr\nHrec(exhaust) ~20% of Input Energy = 1.6 MW"
-	  Position		  [385, 204]
+	  Position		  [385, 84]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
-	}
-	Annotation {
-	  SID			  "33"
-	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
-	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
-	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
-	  "ribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnished to"
-	  " do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "
-	  "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURP"
-	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
-	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
-	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [49, 16]
-	  HorizontalAlignment	  "left"
-	  ZOrder		  -9
-	  FontSize		  12
-	  FontWeight		  "bold"
 	}
       }
     }
