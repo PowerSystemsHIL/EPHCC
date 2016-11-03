@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [-8.0, 0.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Oct 20 10:00:51 2016"
-  RTWModifiedTimeStamp	  398858445
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Thu Nov 03 15:59:48 2016"
+  RTWModifiedTimeStamp	  400089576
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -939,7 +939,7 @@ Library {
   }
   System {
     Name		    "HWController_NGCHP_Genset_3p5MVA_lib"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [-8, 0, 1928, 1056]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -960,8 +960,9 @@ Library {
       SID		      "746"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [930, 413, 1200, 717]
-      ZOrder		      3219
+      ZOrder		      3352
       BackgroundColor	      "green"
+      LibraryVersion	      "*1.3"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -971,7 +972,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"HWController_3.5MVA_NGCHP"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-4, 0, 1924, 1164]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -983,16 +984,17 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"111"
 	Block {
 	  BlockType		  Inport
-	  Name			  "Heat Load"
+	  Name			  "In1"
 	  SID			  "747"
-	  Position		  [690, 342, 740, 368]
+	  Position		  [690, 342, 785, 368]
 	  ZOrder		  2960
 	  BlockMirror		  on
 	  BackgroundColor	  "yellow"
-	  IconDisplay		  "Port number"
+	  ShowName		  off
+	  IconDisplay		  "Signal name"
 	}
 	Block {
 	  BlockType		  Inport
@@ -1026,10 +1028,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
 	  SID			  "750"
-	  Ports			  [4, 1]
+	  Ports			  [6, 1]
 	  Position		  [840, 123, 845, 247]
 	  ZOrder		  2910
 	  ShowName		  off
+	  Inputs		  "6"
 	  DisplayOption		  "bar"
 	  Port {
 	    PortNumber		    1
@@ -1101,7 +1104,7 @@ Library {
 	  BlockType		  Reference
 	  Name			  "CHPThermalModel"
 	  SID			  "753"
-	  Ports			  [5, 3]
+	  Ports			  [5, 5]
 	  Position		  [335, 283, 615, 527]
 	  ZOrder		  2981
 	  BlockMirror		  on
@@ -1165,12 +1168,13 @@ Library {
 	  Position		  [330, 614, 580, 806]
 	  ZOrder		  3285
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
-	  LibraryVersion	  "1.3"
+	  LibraryVersion	  "1.4"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Generator"
 	  SourceType		  "SubSystem"
 	  Port {
 	    PortNumber		    3
 	    Name		    "Thermal data"
+	    PropagatedSignals	    "Thermal data"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1263,6 +1267,20 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  5
+	  Points		  [-137, 0; 0, -270]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  4
+	  Points		  [-123, 0; 0, -240]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  5
+	}
+	Line {
 	  SrcBlock		  "HWControllerBias"
 	  SrcPort		  1
 	  DstBlock		  "HWController_NG_Generator"
@@ -1289,7 +1307,7 @@ Library {
 	  Labels		  [3, 0]
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  1
-	  Points		  [-38, 0; 0, -185]
+	  Points		  [-38, 0; 0, -170]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  1
 	}
@@ -1302,7 +1320,7 @@ Library {
 	Line {
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  2
-	  Points		  [-68, 0; 0, -205]
+	  Points		  [-68, 0; 0, -180]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  3
 	}
@@ -1355,7 +1373,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Heat Load"
+	  SrcBlock		  "In1"
 	  SrcPort		  1
 	  DstBlock		  "CHPThermalModel"
 	  DstPort		  2
@@ -1375,7 +1393,7 @@ Library {
 	Line {
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  3
-	  Points		  [-109, 0; 0, -255]
+	  Points		  [-109, 0; 0, -210]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  4
 	}
@@ -1386,7 +1404,7 @@ Library {
 	  SrcPort		  1
 	  Points		  [-76, 0]
 	  Branch {
-	    Points		    [0, -135]
+	    Points		    [0, -150]
 	    DstBlock		    "Bus\nCreator2"
 	    DstPort		    2
 	  }
@@ -1613,7 +1631,7 @@ Library {
 	  Position		  [955, 344, 1240, 566]
 	  ZOrder		  3301
 	  BackgroundColor	  "[0.501961, 0.949020, 0.050980]"
-	  LibraryVersion	  "1.3"
+	  LibraryVersion	  "1.4"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Genset_3.5MVA"
 	  SourceType		  "Gen-Set with simulated control modes"
 	  control_mode		  "1"
