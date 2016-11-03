@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [613.0, 249.0, 1936.0, 1212.0]
+      Location		      [511.0, 51.0, 1932.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[1693.0, 1076.0]
-	ZoomFactor		[1.1399999999999997]
-	Offset			[4.5474735088646412e-13, -8.7807017543859729]
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"72"
+	Extents			[1689.0, 956.0]
+	ZoomFactor		[1.0438388625592419]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 02 12:00:06 2016"
-  RTWModifiedTimeStamp	  399988790
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  LastModifiedDate	  "Wed Nov 02 20:27:11 2016"
+  RTWModifiedTimeStamp	  400019221
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1008,8 +1008,8 @@ Library {
   }
   System {
     Name		    "NG_CHP_lib"
-    Location		    [613, 249, 2549, 1461]
-    Open		    on
+    Location		    [511, 51, 2443, 1143]
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1593,7 +1593,7 @@ Library {
       Ports		      [8, 4, 0, 0, 0, 0, 3]
       Position		      [450, 386, 720, 689]
       ZOrder		      3009
-      LibraryVersion	      "*1.14"
+      LibraryVersion	      "*1.15"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1622,8 +1622,8 @@ Library {
       }
       System {
 	Name			"NG_CHP"
-	Location		[0, 0, 1932, 1092]
-	Open			off
+	Location		[511, 51, 2443, 1143]
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1634,7 +1634,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"104"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1755,13 +1755,13 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector7"
 	  SID			  "83"
-	  Ports			  [1, 5]
+	  Ports			  [1, 7]
 	  Position		  [1165, 485, 1170, 585]
 	  ZOrder		  2912
 	  BlockMirror		  on
 	  ShowName		  off
 	  OutputSignals		  "TempActual,HeatFromBoiler MBtu/hr,CHPHeatContribution MBtu/hr,Thermal data.Heat Recovered; MBtu/h"
-	  "r,Thermal data.CO2 lbm/hr"
+	  "r,Thermal data.CO2 lbm/hr,Boiler_Nm^3/hr ,Boiler lbm/hr CO2 "
 	  Port {
 	    PortNumber		    1
 	    Name		    "<TempActual>"
@@ -1792,6 +1792,18 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	  Port {
+	    PortNumber		    6
+	    Name		    "<Boiler_Nm^3/hr >"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    7
+	    Name		    "<Boiler lbm/hr CO2 >"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -1801,7 +1813,7 @@ Library {
 	  Position		  [340, 418, 620, 592]
 	  ZOrder		  2981
 	  BlockMirror		  on
-	  LibraryVersion	  "1.3"
+	  LibraryVersion	  "1.4"
 	  SourceBlock		  "CHP_Model_lib/CHPThermalModel"
 	  SourceType		  ""
 	  SIM_HIL		  "SIM_HIL"
@@ -1898,12 +1910,12 @@ Library {
 	  BlockType		  Mux
 	  Name			  "Mux1"
 	  SID			  "94"
-	  Ports			  [5, 1]
+	  Ports			  [7, 1]
 	  Position		  [1045, 485, 1050, 585]
 	  ZOrder		  2913
 	  BlockMirror		  on
 	  ShowName		  off
-	  Inputs		  "5"
+	  Inputs		  "7"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1936,7 +1948,7 @@ Library {
 	  }
 	  System {
 	    Name		    "NG_3_5_MVA_Generator"
-	    Location		    [-8, 0, 1924, 1092]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2260,7 +2272,7 @@ Library {
 	      }
 	      System {
 		Name			"NG Genset 3.5MVA1"
-		Location		[-8, 0, 1924, 1092]
+		Location		[-8, -8, 1928, 1048]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -2362,7 +2374,7 @@ Library {
 		  MaskHideContents	  off
 		  System {
 		    Name		    "3.5MVA Generator with \nPrimary Controllers1"
-		    Location		    [-8, 0, 1924, 1092]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2524,7 +2536,7 @@ Library {
 		    }
 		    System {
 		    Name		    "NG Engine\nSpeed & Voltage\nControl\nfast"
-		    Location		    [-8, 0, 1924, 1092]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2812,7 +2824,7 @@ Library {
 		    Ports		    [3, 1]
 		    Position		    [815, 225, 895, 315]
 		    ZOrder		    98
-		    LibraryVersion	    "1.36"
+		    LibraryVersion	    "1.37"
 		    SourceBlock		    "NG_Genset_lib/NG Genset 3.5MVA/3.5MVA Generator with \nPrimary Controllers1/NG Engine\nSpeed &"
 		    " Voltage\nControl\nfast/Excitation1"
 		    SourceType		    "Excitation System"
@@ -3254,7 +3266,6 @@ Library {
 		    Line {
 		    SrcBlock		    "wref"
 		    SrcPort		    1
-		    Points		    [0, -20]
 		    DstBlock		    "Sum"
 		    DstPort		    2
 		    }
@@ -12958,6 +12969,22 @@ Library {
 	  ZOrder		  2972
 	  Port			  "4"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<Boiler lbm/hr CO2 >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  7
+	  DstBlock		  "Mux1"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "<Boiler_Nm^3/hr >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  6
+	  DstBlock		  "Mux1"
+	  DstPort		  6
 	}
 	Line {
 	  SrcBlock		  "CHPThermalModel"
