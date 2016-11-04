@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2826"
+    ComputedModelVersion    "1.2829"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 03 16:11:12 2016"
-  RTWModifiedTimeStamp	  400090197
-  ModelVersionFormat	  "1.%<AutoIncrement:2826>"
+  LastModifiedDate	  "Fri Nov 04 15:10:05 2016"
+  RTWModifiedTimeStamp	  400172998
+  ModelVersionFormat	  "1.%<AutoIncrement:2829>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1104,7 +1104,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "102"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "29124"
+    SIDHighWatermark	    "29131"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -3885,7 +3885,7 @@ Model {
       Name		      "SM_system"
       SID		      "24936"
       Ports		      [2, 2]
-      Position		      [120, 248, 370, 372]
+      Position		      [125, 248, 375, 372]
       ZOrder		      1908
       BackgroundColor	      "[0.000000, 0.819608, 0.000000]"
       MinAlgLoopOccurrences   off
@@ -4637,7 +4637,7 @@ Model {
 	  ZOrder		  3352
 	  BackgroundColor	  "green"
 	  AncestorBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_3.5MVA_NGCHP"
-	  LibraryVersion	  "*1.5"
+	  LibraryVersion	  "1.6"
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -4728,8 +4728,6 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"CHPData"
-		PropagatedSignals	"TempActual, Thermal data, HeatFromBoiler MBtu/hr, CHPHeatContribution MBtu/hr, Boiler_Nm^3/hr , B"
-		"oiler lbm/hr CO2 "
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -4755,13 +4753,13 @@ Model {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector7"
 	      SID		      "28327:752"
-	      Ports		      [1, 5]
-	      Position		      [1185, 390, 1190, 490]
+	      Ports		      [1, 7]
+	      Position		      [1185, 355, 1195, 525]
 	      ZOrder		      2912
 	      BlockMirror	      on
 	      ShowName		      off
 	      OutputSignals	      "TempActual,HeatFromBoiler MBtu/hr,CHPHeatContribution MBtu/hr,Thermal data.Heat Recovered;"
-	      " MBtu/hr,Thermal data.CO2 lbm/hr"
+	      " MBtu/hr,Thermal data.CO2 lbm/hr,Boiler_Nm^3/hr ,Boiler lbm/hr CO2 "
 	      Port {
 		PortNumber		1
 		Name			"<TempActual>"
@@ -4789,6 +4787,18 @@ Model {
 	      Port {
 		PortNumber		5
 		Name			"<CO2 lbm/hr>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		6
+		Name			"<Boiler_Nm^3/hr >"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		7
+		Name			"<Boiler lbm/hr CO2 >"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -4861,7 +4871,7 @@ Model {
 	      Position		      [330, 614, 580, 806]
 	      ZOrder		      3285
 	      BackgroundColor	      "[0.000000, 0.819608, 0.000000]"
-	      LibraryVersion	      "1.4"
+	      LibraryVersion	      "1.6"
 	      SourceBlock	      "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Generator"
 	      SourceType	      "SubSystem"
 	      Port {
@@ -4891,12 +4901,12 @@ Model {
 	      BlockType		      Mux
 	      Name		      "Mux1"
 	      SID		      "28327:759"
-	      Ports		      [5, 1]
-	      Position		      [1025, 390, 1030, 490]
+	      Ports		      [7, 1]
+	      Position		      [1020, 357, 1030, 523]
 	      ZOrder		      2913
 	      BlockMirror	      on
 	      ShowName		      off
-	      Inputs		      "5"
+	      Inputs		      "7"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -5024,13 +5034,13 @@ Model {
 	      SrcPort		      1
 	      Points		      [-76, 0]
 	      Branch {
-		DstBlock		"Bus\nSelector6"
+		Points			[0, -170]
+		DstBlock		"Bus\nCreator2"
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, -150]
-		DstBlock		"Bus\nCreator2"
-		DstPort			2
+		DstBlock		"Bus\nSelector6"
+		DstPort			1
 	      }
 	    }
 	    Line {
@@ -5124,9 +5134,9 @@ Model {
 	      Labels		      [3, 0]
 	      SrcBlock		      "CHPThermalModel"
 	      SrcPort		      1
-	      Points		      [-38, 0; 0, -170]
+	      Points		      [-9, 0; 0, -150]
 	      DstBlock		      "Bus\nCreator2"
-	      DstPort		      1
+	      DstPort		      2
 	    }
 	    Line {
 	      Name		      "<CHPHeatContribution MBtu/hr>"
@@ -5162,6 +5172,22 @@ Model {
 	      SrcPort		      5
 	      Points		      [-137, 0; 0, -270]
 	      DstBlock		      "Bus\nCreator2"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "<Boiler lbm/hr CO2 >"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector7"
+	      SrcPort		      7
+	      DstBlock		      "Mux1"
+	      DstPort		      7
+	    }
+	    Line {
+	      Name		      "<Boiler_Nm^3/hr >"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector7"
+	      SrcPort		      6
+	      DstBlock		      "Mux1"
 	      DstPort		      6
 	    }
 	    Annotation {
@@ -5241,17 +5267,6 @@ Model {
 	  ZOrder		  2973
 	  ShowName		  off
 	  Inputs		  "6"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux1"
-	  SID			  "28928"
-	  Ports			  [2, 1]
-	  Position		  [3925, 2566, 3930, 2604]
-	  ZOrder		  3366
-	  ShowName		  off
-	  Inputs		  "2"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -5613,20 +5628,178 @@ Model {
 	  XR			  "6.6"
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "kvar"
-	  SID			  "28930"
-	  Position		  [3795, 2610, 3825, 2640]
-	  ZOrder		  3368
-	  Value			  "700"
+	  BlockType		  SubSystem
+	  Name			  "demand_cb2"
+	  SID			  "29125"
+	  Ports			  [0, 1]
+	  Position		  [3980, 2690, 4030, 2720]
+	  ZOrder		  3369
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "demand_cb2"
+	    Location		    [100, 100, 900, 600]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "28928"
+	      Ports		      [2, 1]
+	      Position		      [150, 46, 155, 84]
+	      ZOrder		      3366
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "kvar"
+	      SID		      "28930"
+	      Position		      [20, 90, 50, 120]
+	      ZOrder		      3368
+	      Value		      "700"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "kw"
+	      SID		      "28929"
+	      Position		      [20, 20, 50, 50]
+	      ZOrder		      3367
+	      Value		      "1200"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "29126"
+	      Position		      [350, 203, 380, 217]
+	      ZOrder		      3369
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      Points		      [92, 0; 0, 145]
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "kw"
+	      SrcPort		      1
+	      Points		      [37, 0; 0, 20]
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "kvar"
+	      SrcPort		      1
+	      Points		      [45, 0; 0, -30]
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	  }
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "kw"
-	  SID			  "28929"
-	  Position		  [3795, 2540, 3825, 2570]
-	  ZOrder		  3367
-	  Value			  "1200"
+	  BlockType		  SubSystem
+	  Name			  "demand_cb3"
+	  SID			  "29127"
+	  Ports			  [0, 1]
+	  Position		  [4115, 3135, 4165, 3165]
+	  ZOrder		  3370
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "demand_cb3"
+	    Location		    [-4, 0, 1924, 1164]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "29128"
+	      Ports		      [2, 1]
+	      Position		      [150, 46, 155, 84]
+	      ZOrder		      3366
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "kvar"
+	      SID		      "29129"
+	      Position		      [20, 90, 50, 120]
+	      ZOrder		      3368
+	      Value		      "700"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "kw"
+	      SID		      "29130"
+	      Position		      [20, 20, 50, 50]
+	      ZOrder		      3367
+	      Value		      "1200"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "29131"
+	      Position		      [350, 203, 380, 217]
+	      ZOrder		      3369
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      Points		      [92, 0; 0, 145]
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "kw"
+	      SrcPort		      1
+	      Points		      [37, 0; 0, 20]
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "kvar"
+	      SrcPort		      1
+	      Points		      [45, 0; 0, -30]
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  Outport
@@ -6565,35 +6738,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Mux1"
-	  SrcPort		  1
-	  Points		  [103, 0]
-	  Branch {
-	    Points		    [0, 145]
-	    DstBlock		    "Dynamic_Load"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [166, 0; 0, 585]
-	    DstBlock		    "Dynamic_Load1"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "kw"
-	  SrcPort		  1
-	  Points		  [37, 0; 0, 20]
-	  DstBlock		  "Mux1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "kvar"
-	  SrcPort		  1
-	  Points		  [45, 0; 0, -30]
-	  DstBlock		  "Mux1"
-	  DstPort		  2
-	}
-	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "XFR DYg-30 HIL1"
 	  SrcPort		  RConn1
@@ -6613,6 +6757,20 @@ Model {
 	  SrcPort		  RConn3
 	  DstBlock		  "Dynamic_Load"
 	  DstPort		  LConn3
+	}
+	Line {
+	  SrcBlock		  "demand_cb2"
+	  SrcPort		  1
+	  Points		  [10, 0; 0, 25]
+	  DstBlock		  "Dynamic_Load"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "demand_cb3"
+	  SrcPort		  1
+	  Points		  [30, 0; 0, 20]
+	  DstBlock		  "Dynamic_Load1"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "27190"
@@ -10811,7 +10969,7 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "48"
+	    ZoomFactor		    "80"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "MS"
@@ -15778,7 +15936,7 @@ Model {
     Line {
       SrcBlock		      "SM_system"
       SrcPort		      1
-      Points		      [110, 0]
+      Points		      [105, 0]
       Branch {
 	DstBlock		"SC_ctrl"
 	DstPort			1
@@ -15792,7 +15950,7 @@ Model {
     Line {
       SrcBlock		      "SM_system"
       SrcPort		      2
-      Points		      [64, 0; 0, 165]
+      Points		      [59, 0; 0, 165]
       DstBlock		      "SS_Relays_and_Woodward"
       DstPort		      2
     }
