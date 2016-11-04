@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2643"
+    ComputedModelVersion    "1.2644"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, 0.0, 1936.0, 1176.0]
+      Location		      [1912.0, -8.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -58,9 +58,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1002.0]
+	Extents			[1693.0, 1042.0]
 	ZoomFactor		[1.5460317460317461]
-	Offset			[-62.905800821355221, 4.944558521560575]
+	Offset			[-62.905800821355228, 4.9445585215605092]
       }
     }
   }
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 07 13:43:24 2016"
-  RTWModifiedTimeStamp	  395156597
-  ModelVersionFormat	  "1.%<AutoIncrement:2643>"
+  LastModifiedDate	  "Thu Nov 03 15:25:21 2016"
+  RTWModifiedTimeStamp	  400087514
+  ModelVersionFormat	  "1.%<AutoIncrement:2644>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -952,7 +952,7 @@ Model {
   }
   System {
     Name		    "UnitTest_relay_R25SyncCheck"
-    Location		    [-8, 0, 1928, 1176]
+    Location		    [1912, -8, 3848, 1208]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
@@ -966,7 +966,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "155"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "27527"
+    SIDHighWatermark	    "27531"
     Block {
       BlockType		      BusCreator
       Name		      "Bus\nCreator"
@@ -1109,16 +1109,6 @@ Model {
       SID		      "27380"
       Position		      [355, 265, 385, 285]
       ZOrder		      3150
-      BackgroundColor	      "green"
-      ShowName		      off
-      Value		      "0"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "Constant8"
-      SID		      "27381"
-      Position		      [355, 295, 385, 315]
-      ZOrder		      3151
       BackgroundColor	      "green"
       ShowName		      off
       Value		      "0"
@@ -1306,11 +1296,11 @@ Model {
       Position		      [185, 543, 240, 627]
       ZOrder		      3013
       BackgroundColor	      "lightBlue"
-      LibraryVersion	      "1.465"
+      LibraryVersion	      "1.472"
       SourceBlock	      "breaker_lib/Breaker"
       SourceType	      "Breaker"
       Ts		      "Ts"
-      mech_delays	      "[5 5] ./ 60"
+      mech_delay	      "cb_mech_delay"
     }
     Block {
       BlockType		      SubSystem
@@ -1414,7 +1404,7 @@ Model {
       Position		      [540, 199, 740, 351]
       ZOrder		      3171
       BackgroundColor	      "gray"
-      LibraryVersion	      "1.7"
+      LibraryVersion	      "1.8"
       SourceBlock	      "relay_ANSI_F25_lib/R25 - Sync Check v0.1"
       SourceType	      "Relay synch check"
       Ts		      "Ts"
@@ -1463,6 +1453,20 @@ Model {
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Sequence"
+      SID		      "27529"
+      Ports		      [0, 1]
+      Position		      [250, 384, 465, 436]
+      ZOrder		      3380
+      BackgroundColor	      "green"
+      LibraryVersion	      "1.274"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence"
+      SourceType	      "Repeating table"
+      rep_seq_t		      "[0\n2\n2\n4\n4\n6\n6\n8\n8\n10\n10\n12\n12\n14\n14\n16]"
+      rep_seq_y		      "[0\n0\n1\n1\n0\n0\n2\n2\n1\n1\n0\n0\n2\n2\n0\n0]"
     }
     Block {
       BlockType		      Reference
@@ -2038,8 +2042,9 @@ Model {
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Constant8"
+      SrcBlock		      "Sequence"
       SrcPort		      1
+      Points		      [32, 0; 0, -105]
       DstBlock		      "R25 - Sync Check v0.1"
       DstPort		      4
     }

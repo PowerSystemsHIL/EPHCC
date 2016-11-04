@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 04 15:28:43 2016"
-  RTWModifiedTimeStamp	  392225318
-  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+  LastModifiedDate	  "Wed Nov 02 17:02:06 2016"
+  RTWModifiedTimeStamp	  400006923
+  ModelVersionFormat	  "1.%<AutoIncrement:15>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -842,8 +842,9 @@ Library {
       SID		      "1"
       Ports		      [1, 3]
       Position		      [705, 125, 845, 175]
-      ZOrder		      1903
+      ZOrder		      1904
       BackgroundColor	      "[0.254902, 0.678431, 0.388235]"
+      LibraryVersion	      "*1.14"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1042,12 +1043,6 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
-	  Port {
-	    PortNumber		    2
-	    Name		    "mode"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -1173,45 +1168,161 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Demux2"
+	  Name			  "51P_pickup"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
 	  SrcPort		  3
-	  DstBlock		  "Goto"
-	  DstPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  10
 	}
 	Line {
-	  Name			  "mode"
-	  SrcBlock		  "Demux2"
+	  Name			  "27P_pickup"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  6
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  13
+	}
+	Line {
+	  Name			  "59P_pickup"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  7
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  14
+	}
+	Line {
+	  Name			  "50P_pickup"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "50P_tripDelay"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
 	  SrcPort		  2
-	  Points		  [95, 0]
-	  Branch {
-	    DstBlock		    "cb_op_mode"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Labels		    [2, 0]
-	    Points		    [0, -35]
-	    DstBlock		    "Logical\nOperator1"
-	    DstPort		    2
-	  }
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  9
 	}
 	Line {
-	  SrcBlock		  "MODBUS"
-	  SrcPort		  1
-	  DstBlock		  "Demux2"
+	  Name			  "51P_curveType"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  4
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  11
+	}
+	Line {
+	  Name			  "51P_timeDial"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  5
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  12
+	}
+	Line {
+	  Name			  "VRMSLL"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "reset"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Demux2"
+	  Name			  "dV_threshold"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Initial_status"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  8
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "angle_threshold"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  4
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "dF_threshold"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  5
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "CT_primary"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  7
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "27P_59P_tripDelay"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  6
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "group#2 - islanded parameters"
 	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator1"
+	  Points		  [25, 0; 0, 70]
+	  DstBlock		  "Switch"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Logical\nOperator1"
+	  SrcBlock		  "group#1 - gridtied parameters"
 	  SrcPort		  1
-	  DstBlock		  "Detect\nChange"
+	  Points		  [30, 0; 0, -55]
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  Points		  [0, -5]
+	  DstBlock		  "relay_param"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "VRMSLL"
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "base parameters"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
 	  DstPort		  1
 	}
 	Line {
@@ -1223,174 +1334,44 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Switch"
+	  SrcBlock		  "Logical\nOperator1"
 	  SrcPort		  1
-	  DstBlock		  "Demux"
+	  DstBlock		  "Detect\nChange"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "base parameters"
+	  Name			  "reset"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux2"
 	  SrcPort		  1
-	  DstBlock		  "Demux1"
+	  DstBlock		  "Logical\nOperator1"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "VRMSLL"
-	  SrcBlock		  "Demux1"
+	  SrcBlock		  "MODBUS"
 	  SrcPort		  1
-	  DstBlock		  "Terminator1"
+	  DstBlock		  "Demux2"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "Switch"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Bus\nCreator1"
-	  SrcPort		  1
-	  Points		  [0, -5]
-	  DstBlock		  "relay_param"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "group#1 - gridtied parameters"
-	  SrcPort		  1
-	  Points		  [30, 0; 0, -55]
-	  DstBlock		  "Switch"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "group#2 - islanded parameters"
-	  SrcPort		  1
-	  Points		  [25, 0; 0, 70]
-	  DstBlock		  "Switch"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "27P_59P_tripDelay"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  6
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "CT_primary"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  7
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  6
-	}
-	Line {
-	  Name			  "dF_threshold"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  5
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "angle_threshold"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  4
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "Initial_status"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  8
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  7
-	}
-	Line {
-	  Name			  "dV_threshold"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
-	  SrcPort		  3
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "VRMSLL"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux1"
+	  SrcBlock		  "Demux2"
 	  SrcPort		  2
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  1
+	  Points		  [125, 0]
+	  Branch {
+	    DstBlock		    "cb_op_mode"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
+	    DstBlock		    "Logical\nOperator1"
+	    DstPort		    2
+	  }
 	}
 	Line {
-	  Name			  "51P_timeDial"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  5
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  12
-	}
-	Line {
-	  Name			  "51P_curveType"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  4
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  11
-	}
-	Line {
-	  Name			  "50P_tripDelay"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  2
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  9
-	}
-	Line {
-	  Name			  "50P_pickup"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  8
-	}
-	Line {
-	  Name			  "59P_pickup"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  7
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  14
-	}
-	Line {
-	  Name			  "27P_pickup"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  6
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  13
-	}
-	Line {
-	  Name			  "51P_pickup"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
+	  SrcBlock		  "Demux2"
 	  SrcPort		  3
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  10
-	}
-	Annotation {
-	  SID			  "18"
-	  Name			  "Procedure to reclose a breaker:\n1) reset all relay functions\n2) set cb_op_mode==1 to force breaker to c"
-	  "lose\n   --> The relay function 25 will automatically activate\n3) change cb_op_mode==0 for logic based operation\n"
-	  "\n\nNotes:\n1) Assuming PT sized at nominal VRMSLL primary to 120 V secondary\n"
-	  Position		  [1025, 660]
-	  HorizontalAlignment	  "left"
-	  DropShadow		  on
-	  ZOrder		  -1
-	  FontName		  "Courier New"
-	  FontWeight		  "bold"
+	  DstBlock		  "Goto"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "31"
@@ -1407,7 +1388,19 @@ Library {
 	  "FTWARE.\n%\n%\n%%"
 	  Position		  [1006, 377]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -14
+	  ZOrder		  -1
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "18"
+	  Name			  "Procedure to reclose a breaker:\n1) reset all relay functions\n2) set cb_op_mode==1 to force breaker to c"
+	  "lose\n   --> The relay function 25 will automatically activate\n3) change cb_op_mode==0 for logic based operation\n"
+	  "\n\nNotes:\n1) Assuming PT sized at nominal VRMSLL primary to 120 V secondary\n"
+	  Position		  [1025, 660]
+	  HorizontalAlignment	  "left"
+	  DropShadow		  on
+	  ZOrder		  -2
+	  FontName		  "Courier New"
 	  FontWeight		  "bold"
 	}
       }
