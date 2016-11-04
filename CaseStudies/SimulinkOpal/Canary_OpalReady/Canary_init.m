@@ -19,7 +19,6 @@
 %
 %
 %%
-clear; 
 
 components_path_init;
 
