@@ -19,7 +19,6 @@
 %
 %
 %%
-clear; 
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
