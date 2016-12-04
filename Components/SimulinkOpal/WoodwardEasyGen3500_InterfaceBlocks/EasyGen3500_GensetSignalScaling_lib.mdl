@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [960.0, 0.0, 960.0, 1036.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 890.0]
-	ZoomFactor		[1.8572225320691578]
-	Offset			[266.46186186186185, 118.39489489489489]
+	Extents			[721.0, 884.0]
+	ZoomFactor		[1.0]
+	Offset			[242.25499785499778, 203.34989274989277]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Oct 05 19:21:13 2016"
-  RTWModifiedTimeStamp	  397596071
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Fri Dec 02 19:02:44 2016"
+  RTWModifiedTimeStamp	  402606161
+  ModelVersionFormat	  "1.%<AutoIncrement:3>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -720,6 +720,17 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -751,6 +762,15 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Outport
@@ -812,7 +832,7 @@ Library {
   }
   System {
     Name		    "EasyGen3500_GensetSignalScaling_lib"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [960, 0, 1920, 1036]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -824,16 +844,16 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "186"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "58"
+    SIDHighWatermark	    "90"
     Block {
       BlockType		      SubSystem
-      Name		      "Genset_signal_scaling - 3.5MVA"
-      SID		      "29"
-      Ports		      [3, 1]
-      Position		      [790, 366, 955, 474]
-      ZOrder		      3290
+      Name		      "2X MCB - Genset_signal_scaling - 3.5MVA"
+      SID		      "59"
+      Ports		      [4, 1]
+      Position		      [780, 552, 950, 693]
+      ZOrder		      3349
       BackgroundColor	      "magenta"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -891,6 +911,743 @@ Library {
 	  }
 	  Object {
 	    $ObjectID		    23
+	    Type		    "edit"
+	    Name		    "wm_noise_bias"
+	    Prompt		    "Speed Noise Bias [0-1]"
+	    Value		    "0.02"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"2X MCB - Genset_signal_scaling - 3.5MVA"
+	Location		[960, 0, 1920, 1036]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"110"
+	Block {
+	  BlockType		  Inport
+	  Name			  "GCB_MS"
+	  SID			  "60"
+	  Position		  [90, 238, 120, 252]
+	  ZOrder		  3271
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "MCB_1_MS"
+	  SID			  "61"
+	  Position		  [20, 438, 50, 452]
+	  ZOrder		  3272
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "MachineSpeedWm [pu]"
+	  SID			  "62"
+	  Position		  [205, 558, 235, 572]
+	  ZOrder		  3273
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    PropagatedSignals	    "Rotor speed  wm (pu)"
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "MCB_2_MS"
+	  SID			  "63"
+	  Position		  [20, 738, 50, 752]
+	  ZOrder		  3297
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Add"
+	  SID			  "64"
+	  Ports			  [2, 1]
+	  Position		  [370, 557, 400, 588]
+	  ZOrder		  3264
+	  ShowName		  off
+	  Inputs		  "+-"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator4"
+	  SID			  "65"
+	  Ports			  [6, 1]
+	  Position		  [690, 145, 700, 720]
+	  ZOrder		  3265
+	  ShowName		  off
+	  Inputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "66"
+	  Ports			  [1, 1]
+	  Position		  [180, 661, 185, 699]
+	  ZOrder		  3276
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "67"
+	  Ports			  [1, 2]
+	  Position		  [255, 176, 260, 314]
+	  ZOrder		  3257
+	  ShowName		  off
+	  OutputSignals		  "Vabc_bus,Iabc"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "68"
+	  Ports			  [1, 1]
+	  Position		  [180, 726, 185, 764]
+	  ZOrder		  3298
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector4"
+	  SID			  "69"
+	  Ports			  [1, 2]
+	  Position		  [255, 369, 260, 516]
+	  ZOrder		  3258
+	  ShowName		  off
+	  OutputSignals		  "Vabc_line,Iabc"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "90"
+	  Position		  [405, 660, 450, 680]
+	  ZOrder		  3300
+	  ShowName		  off
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "70"
+	  Position		  [320, 192, 485, 228]
+	  ZOrder		  3266
+	  ShowName		  off
+	  Gain			  "15/Vpk_gcb"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "scaled_gcb_voltage"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "71"
+	  Position		  [320, 262, 485, 298]
+	  ZOrder		  3268
+	  ShowName		  off
+	  Gain			  "15/(watt_gcb/Vpk_gcb)"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "scaled_gcb_current"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "72"
+	  Position		  [320, 395, 490, 415]
+	  ZOrder		  3269
+	  ShowName		  off
+	  Gain			  "15/Vpk_mcb"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "scaled_mcb_voltage"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain3"
+	  SID			  "73"
+	  Position		  [315, 462, 495, 498]
+	  ZOrder		  3270
+	  ShowName		  off
+	  Gain			  "15/(watt_mcb/Vpk_mcb)"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "scaled_mcb_current"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain4"
+	  SID			  "74"
+	  Position		  [500, 655, 530, 685]
+	  ZOrder		  3296
+	  ShowName		  off
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "MCB_CB_Status"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "75"
+	  Ports			  [2, 1]
+	  Position		  [305, 697, 335, 728]
+	  ZOrder		  3299
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Speed_System"
+	  SID			  "76"
+	  Ports			  [1, 1]
+	  Position		  [455, 565, 530, 585]
+	  ZOrder		  3267
+	  BackgroundColor	  "cyan"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    24
+	    $ClassName		    "Simulink.Mask"
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      25
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "rated_rpm"
+	      Prompt		      "Machine Rated Speed [RPM]"
+	      Value		      "rated_rpm"
+	    }
+	  }
+	  Port {
+	    PortNumber		    1
+	    Name		    "scaled_speed"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Speed_System"
+	    Location		    [1912, 0, 3848, 1092]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "326"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wm"
+	      SID		      "77"
+	      Position		      [20, 193, 50, 207]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Duty"
+	      SID		      "78"
+	      Position		      [105, 255, 165, 285]
+	      ZOrder		      -9
+	      DisableCoverage	      on
+	      Value		      "0.5"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain1"
+	      SID		      "79"
+	      Position		      [425, 245, 455, 275]
+	      ZOrder		      -8
+	      Gain		      "5"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain4"
+	      SID		      "80"
+	      Position		      [85, 185, 190, 215]
+	      ZOrder		      -8
+	      Gain		      "rated_rpm"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "RTE Conversion"
+	      SID		      "81"
+	      Ports		      [1, 1]
+	      Position		      [310, 241, 350, 279]
+	      ZOrder		      -16
+	      LibraryVersion	      "1.201"
+	      SourceBlock	      "rteventslib/Signal\nAttributes/RTE Conversion"
+	      SourceType	      "RTE Conversion"
+	      inputdatatype	      "RTE Boolean"
+	      outputdatatype	      "Double"
+	      compensation	      "Disabled"
+	      nbMaxEvents	      "10"
+	      sampleTime	      "Ts"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "RTE SPWM"
+	      SID		      "82"
+	      Ports		      [2, 1]
+	      Position		      [215, 240, 255, 280]
+	      ZOrder		      -17
+	      LibraryVersion	      "1.201"
+	      SourceBlock	      "rteventslib/Sources/RTE SPWM"
+	      SourceType	      "RTE SPWM"
+	      NumberPhases	      "1-ph"
+	      CenterAlignmentMode     "On"
+	      MaxFreq		      "inf"
+	      MinFreq		      "0"
+	      EnablingPort	      off
+	      ComplementaryMode	      off
+	      SpaceVector	      off
+	      RiseTimeDelay	      "0"
+	      MaxEvents		      "10"
+	      SampleTime	      "Ts"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "rpm"
+	      SID		      "83"
+	      Position		      [500, 253, 530, 267]
+	      ZOrder		      -19
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Gain4"
+	      SrcPort		      1
+	      Points		      [12, 0; 0, 50]
+	      DstBlock		      "RTE SPWM"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wm"
+	      SrcPort		      1
+	      DstBlock		      "Gain4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "RTE SPWM"
+	      SrcPort		      1
+	      DstBlock		      "RTE Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Duty"
+	      SrcPort		      1
+	      DstBlock		      "RTE SPWM"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "RTE Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Gain1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain1"
+	      SrcPort		      1
+	      DstBlock		      "rpm"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "This value is added due to\nthe noise in the signal\nor the model speed6"
+	  SID			  "84"
+	  Position		  [180, 607, 305, 623]
+	  ZOrder		  3263
+	  BackgroundColor	  "cyan"
+	  Value			  "wm_noise_bias"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ScaledSignals"
+	  SID			  "85"
+	  Position		  [770, 428, 800, 442]
+	  ZOrder		  3274
+	  ForegroundColor	  "blue"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [40, 0; 0, -45]
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  Points		  [17, 0; 0, 25]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  Points		  [17, 0; 0, -25]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "MCB_2_MS"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "MCB_CB_Status"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Gain4"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "scaled_gcb_voltage"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  Points		  [9, 0; 0, -15]
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "scaled_gcb_current"
+	  Labels		  [2, 1]
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  Points		  [97, 0; 0, 10]
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "scaled_speed"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Speed_System"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "scaled_mcb_voltage"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [0, -20]
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator4"
+	  SrcPort		  1
+	  DstBlock		  "ScaledSignals"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  1
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  2
+	  DstBlock		  "Gain3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "scaled_mcb_current"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  DstBlock		  "Gain1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Add"
+	  SrcPort		  1
+	  DstBlock		  "Speed_System"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "MCB_1_MS"
+	  SrcPort		  1
+	  Points		  [34, 0]
+	  Branch {
+	    Points		    [0, 235]
+	    DstBlock		    "Bus\nSelector"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "GCB_MS"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "MachineSpeedWm [pu]"
+	  SrcPort		  1
+	  DstBlock		  "Add"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "This value is added due to\nthe noise in the signal\nor the model speed6"
+	  SrcPort		  1
+	  Points		  [7, 0; 0, -35]
+	  DstBlock		  "Add"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Gain4"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "89"
+	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
+	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
+	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
+	  "ribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnished to"
+	  " do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "
+	  "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURP"
+	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
+	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
+	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
+	  Position		  [74, 16]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -1
+	  FontSize		  12
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "88"
+	  Name			  "Scaling for voltages:\nFor 120 => 12Vout / 170Vpk\nFor 480 => 12Vout / 391Vpk\nFor 13.8kv => 12Vout / 112"
+	  "68Vpk\n\nScaling for currents - used in the 1 MVA genset:\n15Vout / ( 900,000W / 391Vpk)\n\nScaling for currents - "
+	  "used in the 3.5 MVA NG/CHP:\n15Vout/( 3,150,000W / 11268Vpk)\n--- Current scale factors chosen to match easYgen set"
+	  "tings for 3.5 MVA gas engine CT ratio of 1500/x made on 20160508\n"
+	  Position		  [793, 201]
+	  HorizontalAlignment	  "left"
+	  ForegroundColor	  "red"
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "87"
+	  Name			  "MCB V(line) and I"
+	  Position		  [254, 362]
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "86"
+	  Name			  "GCB V(bus) and I"
+	  Position		  [259, 162]
+	  ZOrder		  -4
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Genset_signal_scaling - 3.5MVA"
+      SID		      "29"
+      Ports		      [3, 1]
+      Position		      [790, 366, 955, 474]
+      ZOrder		      3290
+      BackgroundColor	      "magenta"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		26
+	$ClassName		"Simulink.Mask"
+	Type			"Genset Signal Scaling for Opal-RT/Woodward"
+	Description		"Scaling for voltages:\nFor 120 => 12Vout / 170Vpk\nFor 480 => 12Vout / 391Vpk\nFor 13.8kv => 12Vout / 1"
+	"1268Vpk\n\nScaling for currents - used in the 1 MVA genset:\n15Vout / ( 900000W / 391Vpk)\n\nScaling for currents - u"
+	"sed in the 3.5 MVA NG/CHP:\n15Vout / ( 3150000W / 11268Vpk)\n- Current scale factors chosen to match easYgen settings"
+	" for 3.5 MVA gas engine CT ratio of 1500/x made on 20160508\n"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  6
+	  Object {
+	    $ObjectID		    27
+	    Type		    "edit"
+	    Name		    "Vpk_mcb"
+	    Prompt		    "MCB Nominal Voltage [Vpk]"
+	    Value		    "11268"
+	  }
+	  Object {
+	    $ObjectID		    28
+	    Type		    "edit"
+	    Name		    "watt_mcb"
+	    Prompt		    "MCB Watts [W]"
+	    Value		    "3150000"
+	  }
+	  Object {
+	    $ObjectID		    29
+	    Type		    "edit"
+	    Name		    "Vpk_gcb"
+	    Prompt		    "GCB Nominal Voltage [ Vpk]"
+	    Value		    "11268"
+	  }
+	  Object {
+	    $ObjectID		    30
+	    Type		    "edit"
+	    Name		    "watt_gcb"
+	    Prompt		    "GCB Watts [W]"
+	    Value		    "3150000"
+	  }
+	  Object {
+	    $ObjectID		    31
+	    Type		    "edit"
+	    Name		    "rated_rpm"
+	    Prompt		    "Machine Rated Speed [RPM]"
+	    Value		    "1800"
+	  }
+	  Object {
+	    $ObjectID		    32
 	    Type		    "edit"
 	    Name		    "wm_noise_bias"
 	    Prompt		    "Speed Noise Bias [0-1]"
@@ -1137,11 +1894,11 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    24
+	    $ObjectID		    33
 	    $ClassName		    "Simulink.Mask"
 	    Object {
 	      $PropName		      "Parameters"
-	      $ObjectID		      25
+	      $ObjectID		      34
 	      $ClassName	      "Simulink.MaskParameter"
 	      Type		      "edit"
 	      Name		      "rated_rpm"
@@ -1507,7 +2264,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		26
+	$ObjectID		35
 	$ClassName		"Simulink.Mask"
 	Type			"Genset Signal Scaling for Opal-RT/Woodward"
 	Description		"Scaling for voltages:\nFor 120 => 12Vout / 170Vpk\nFor 480 => 12Vout / 391Vpk\nFor 13.8kv => 12Vout / 1"
@@ -1518,42 +2275,42 @@ Library {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  6
 	  Object {
-	    $ObjectID		    27
+	    $ObjectID		    36
 	    Type		    "edit"
 	    Name		    "Vpk_mcb"
 	    Prompt		    "MCB Nominal Voltage [Vpk]"
 	    Value		    "11268"
 	  }
 	  Object {
-	    $ObjectID		    28
+	    $ObjectID		    37
 	    Type		    "edit"
 	    Name		    "watt_mcb"
 	    Prompt		    "MCB Watts [W]"
 	    Value		    "3600000"
 	  }
 	  Object {
-	    $ObjectID		    29
+	    $ObjectID		    38
 	    Type		    "edit"
 	    Name		    "Vpk_gcb"
 	    Prompt		    "GCB Nominal Voltage [ Vpk]"
 	    Value		    "11268"
 	  }
 	  Object {
-	    $ObjectID		    30
+	    $ObjectID		    39
 	    Type		    "edit"
 	    Name		    "watt_gcb"
 	    Prompt		    "GCB Watts [W]"
 	    Value		    "3600000"
 	  }
 	  Object {
-	    $ObjectID		    31
+	    $ObjectID		    40
 	    Type		    "edit"
 	    Name		    "rated_rpm"
 	    Prompt		    "Machine Rated Speed [RPM]"
 	    Value		    "1800"
 	  }
 	  Object {
-	    $ObjectID		    32
+	    $ObjectID		    41
 	    Type		    "edit"
 	    Name		    "wm_noise_bias"
 	    Prompt		    "Speed Noise Bias [0-1]"
@@ -1800,11 +2557,11 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    33
+	    $ObjectID		    42
 	    $ClassName		    "Simulink.Mask"
 	    Object {
 	      $PropName		      "Parameters"
-	      $ObjectID		      34
+	      $ObjectID		      43
 	      $ClassName	      "Simulink.MaskParameter"
 	      Type		      "edit"
 	      Name		      "rated_rpm"
@@ -2157,6 +2914,7 @@ Library {
       SID		      "58"
       Name		      "Watts currently sized at 0.9 power factor"
       Position		      [527, 526]
+      ZOrder		      -1
     }
     Annotation {
       SID		      "57"
