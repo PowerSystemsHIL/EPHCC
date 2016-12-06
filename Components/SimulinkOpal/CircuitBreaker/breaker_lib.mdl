@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1176.0]
+      Location		      [-8.0, 0.0, 1936.0, 1176.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1010.0]
+	Extents			[1697.0, 1024.0]
 	ZoomFactor		[1.2711442786069651]
-	Offset			[-118.68542074363995, -121.01369863013701]
+	Offset			[-118.68542074363961, -121.01369863013701]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 21 16:45:49 2016"
-  RTWModifiedTimeStamp	  398969136
-  ModelVersionFormat	  "1.%<AutoIncrement:472>"
+  LastModifiedDate	  "Tue Dec 06 10:45:02 2016"
+  RTWModifiedTimeStamp	  402921883
+  ModelVersionFormat	  "1.%<AutoIncrement:473>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -929,7 +929,7 @@ Library {
   }
   System {
     Name		    "breaker_lib"
-    Location		    [-8, -8, 1928, 1168]
+    Location		    [-8, 0, 1928, 1176]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -1005,7 +1005,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"102"
 	Block {
 	  BlockType		  Inport
 	  Name			  "From"
@@ -1427,26 +1427,6 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "Three-Phase\nSeries RLC Branch2"
-	  SID			  "82430"
-	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [840, 627, 910, 673]
-	  ZOrder		  3172
-	  ShowName		  off
-	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2191"
-	  SourceBlock		  "powerlib/Elements/Three-Phase\nSeries RLC Branch"
-	  SourceType		  "Three-Phase Series RLC Branch"
-	  LConnTagsString	  "A|B|C"
-	  RConnTagsString	  "A|B|C"
-	  BranchType		  "R"
-	  Resistance		  "100E6"
-	  Inductance		  "1e-3"
-	  Capacitance		  "1e-6"
-	  Measurements		  "None"
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "Three-Phase\nV-I Measurement"
 	  SID			  "52462"
 	  Ports			  [0, 2, 0, 0, 0, 3, 3]
@@ -1541,7 +1521,7 @@ Library {
 	  Position		  [1330, 526, 1375, 594]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.471"
+	  LibraryVersion	  "1.472"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1555,7 +1535,7 @@ Library {
 	  Position		  [360, 491, 405, 559]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.471"
+	  LibraryVersion	  "1.472"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1921,160 +1901,106 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  LConn1
-	  Points		  [-70, 0]
+	  Points		  [755, 535; 0, 195]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn1
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [755, 535; 0, 100]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      Points		      [-195, 0]
-	      DstBlock		      "Three-Phase\nV-I Measurement"
-	      DstPort		      RConn1
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      LConn1
-	      Points		      [-70, 0]
-	    }
+	    ConnectType		    "SRC_SRC"
+	    Points		    [-195, 0]
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn1
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn1
+	    Points		    [-70, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [770, 550; 0, 180]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn2
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    Points		    [-210, 0]
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn2
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn2
+	    Points		    [-55, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [785, 565; 0, 165]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  DstPort		  LConn3
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement"
+	    DstPort		    RConn3
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    LConn3
+	    Points		    [-40, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [960, 520; 0, 210]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn1
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
 	    DstPort		    LConn1
 	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn1
+	    Points		    [0, -5; 50, 0]
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  LConn2
-	  Points		  [-55, 0]
+	  Points		  [975, 545; 0, 185]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn2
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [770, 550; 0, 100]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      Points		      [-210, 0]
-	      DstBlock		      "Three-Phase\nV-I Measurement"
-	      DstPort		      RConn2
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      LConn2
-	      Points		      [-55, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
 	    DstPort		    LConn2
 	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn2
+	    Points		    [65, 0]
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  LConn3
-	  Points		  [-40, 0]
+	  Points		  [990, 570; 0, 160]
+	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
+	  DstPort		  LConn3
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [785, 565; 0, 100]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      DstBlock		      "Three-Phase\nV-I Measurement"
-	      DstPort		      RConn3
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      LConn3
-	      Points		      [-40, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch"
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nV-I Measurement1"
 	    DstPort		    LConn3
 	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  RConn1
-	  Points		  [35, 0]
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [960, 520; 0, 115]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      DstBlock		      "Three-Phase\nV-I Measurement1"
-	      DstPort		      LConn1
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      RConn1
-	      Points		      [0, -5; 50, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn1
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  RConn2
-	  Points		  [50, 0]
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [975, 545; 0, 105]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      DstBlock		      "Three-Phase\nV-I Measurement1"
-	      DstPort		      LConn2
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      RConn2
-	      Points		      [65, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn2
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Three-Phase\nSeries RLC Branch2"
-	  SrcPort		  RConn3
-	  Points		  [65, 0]
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [990, 570; 0, 95]
-	    Branch {
-	      ConnectType	      "SRC_SRC"
-	      DstBlock		      "Three-Phase\nV-I Measurement1"
-	      DstPort		      LConn3
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "Three-Phase Breaker"
-	      SrcPort		      RConn3
-	      Points		      [0, 5; 80, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "Three-Phase\nSeries RLC Branch1"
-	    DstPort		    LConn3
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase Breaker"
+	    SrcPort		    RConn3
+	    Points		    [0, 5; 80, 0]
 	  }
 	}
 	Line {
@@ -3774,7 +3700,7 @@ Library {
 	  Position		  [265, 381, 310, 449]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.471"
+	  LibraryVersion	  "1.472"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "1"
@@ -3788,7 +3714,7 @@ Library {
 	  Position		  [665, 401, 710, 469]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.471"
+	  LibraryVersion	  "1.472"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "1"
