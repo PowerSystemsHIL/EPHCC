@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1216.0]
+      Location		      [-4.0, -4.0, 1928.0, 1164.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1050.0]
-	ZoomFactor		[2.2606924643584518]
-	Offset			[13.807207207207208, 72.770270270270231]
+	Extents			[1689.0, 1012.0]
+	ZoomFactor		[2.2552613713509841]
+	Offset			[13.792293798916315, 80.635761589403955]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ed12083"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 04 16:55:29 2016"
-  RTWModifiedTimeStamp	  397500856
-  ModelVersionFormat	  "1.%<AutoIncrement:22>"
+  LastModifiedDate	  "Tue Dec 06 13:19:33 2016"
+  RTWModifiedTimeStamp	  402931170
+  ModelVersionFormat	  "1.%<AutoIncrement:24>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -720,6 +720,28 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Fcn
+      Expr		      "sin(u[1])"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -765,6 +787,15 @@ Library {
       Interpolate	      on
     }
     Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -787,6 +818,36 @@ Library {
     }
     Block {
       BlockType		      PMIOPort
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Sqrt
+      Operator		      "sqrt"
+      OutputSignalType	      "auto"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      IntermediateResultsDataTypeStr "Inherit: Inherit via internal rule"
+      AlgorithmType	      "Exact"
+      Iterations	      "3"
     }
     Block {
       BlockType		      SubSystem
@@ -827,10 +888,13 @@ Library {
       SampleTime	      "-1"
       AllowDiffInputSizes     off
     }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "Motor_InductionMachine_lib"
-    Location		    [1912, -8, 3848, 1208]
+    Location		    [-4, -4, 1924, 1160]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -844,7 +908,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "226"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "144"
+    SIDHighWatermark	    "163"
     Block {
       BlockType		      SubSystem
       Name		      "InstrumentedMotor - DO NOT USE"
@@ -1996,7 +2060,7 @@ Library {
 	  Position		  [485, 368, 565, 482]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.469"
+	  LibraryVersion	  "1.473"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2270,7 +2334,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Motor"
-	Location		[1912, -8, 3848, 1208]
+	Location		[-4, -4, 1924, 1160]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2282,7 +2346,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"168"
+	ZoomFactor		"139"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Mechanical Load [Nm]"
@@ -2295,7 +2359,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "CB Trip Signal"
 	  SID			  "129"
-	  Position		  [260, 343, 290, 357]
+	  Position		  [125, 353, 155, 367]
 	  ZOrder		  2960
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -2658,7 +2722,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "116"
-	    SIDHighWatermark	    "372"
+	    SIDHighWatermark	    "388"
 	    SIDPrevWatermark	    "339"
 	    Block {
 	      BlockType		      Inport
@@ -2753,7 +2817,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"33011"
+		SIDHighWatermark	"33017"
 		Block {
 		  BlockType		  Inport
 		  Name			  "v"
@@ -2896,7 +2960,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"33011"
+		SIDHighWatermark	"33015"
 		Block {
 		  BlockType		  Inport
 		  Name			  "electric"
@@ -2989,7 +3053,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"33011"
+		SIDHighWatermark	"33017"
 		Block {
 		  BlockType		  Inport
 		  Name			  "input"
@@ -3393,6 +3457,333 @@ Library {
 	  Measurements		  "None"
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "Voltage_check"
+	  SID			  "157"
+	  Ports			  [2, 1]
+	  Position		  [200, 324, 315, 371]
+	  ZOrder		  3180
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Voltage_check"
+	    Location		    [-4, -4, 1924, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "226"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Vabc"
+	      SID		      "159"
+	      Position		      [99, 225, 129, 240]
+	      ZOrder		      3181
+	      BlockRotation	      270
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "CB Trip Signal"
+	      SID		      "158"
+	      Position		      [300, 118, 330, 132]
+	      ZOrder		      3180
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "152"
+	      Position		      [545, 170, 590, 190]
+	      ZOrder		      3175
+	      ShowName		      off
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "163"
+	      Position		      [390, 115, 435, 135]
+	      ZOrder		      3183
+	      ShowName		      off
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux5"
+	      SID		      "146"
+	      Ports		      [1, 3]
+	      Position		      [300, 172, 315, 258]
+	      ZOrder		      3174
+	      ShowName		      off
+	      Outputs		      "3"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn"
+	      SID		      "156"
+	      Position		      [350, 170, 435, 200]
+	      ZOrder		      3179
+	      Expr		      "u(1)>100"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator"
+	      SID		      "153"
+	      Ports		      [2, 1]
+	      Position		      [480, 162, 510, 193]
+	      ZOrder		      3176
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "RMS_Calculator1"
+	      SID		      "145"
+	      Ports		      [1, 1]
+	      Position		      [175, 199, 260, 231]
+	      ZOrder		      3173
+	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
+	      ShowName		      off
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"RMS_Calculator1"
+		Location		[-8, 0, 1928, 1176]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"337"
+		Block {
+		  BlockType		  Inport
+		  Name			  "Signal"
+		  SID			  "147"
+		  Position		  [45, 93, 75, 107]
+		  ZOrder		  -1
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "Discrete \nMean value6"
+		  SID			  "148"
+		  Ports			  [1, 1]
+		  Position		  [270, 85, 340, 135]
+		  ZOrder		  -7
+		  LibraryVersion	  "1.664"
+		  FontName		  "Verdana"
+		  FontSize		  11
+		  SourceBlock		  "powerlib_extras/Discrete\nMeasurements/Discrete \nMean value"
+		  SourceType		  "Discrete Mean value"
+		  Freq			  "60"
+		  Vinit			  "0"
+		  Ts			  "Ts"
+		}
+		Block {
+		  BlockType		  Product
+		  Name			  "Product3"
+		  SID			  "149"
+		  Ports			  [2, 1]
+		  Position		  [200, 92, 230, 123]
+		  ZOrder		  -19
+		  InputSameDT		  off
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Sqrt
+		  Name			  "Signed\nSqrt"
+		  SID			  "150"
+		  Position		  [370, 95, 400, 125]
+		  ZOrder		  -26
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "RMS_Signal"
+		  SID			  "151"
+		  Position		  [495, 103, 525, 117]
+		  ZOrder		  -2
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "Signed\nSqrt"
+		  SrcPort		  1
+		  DstBlock		  "RMS_Signal"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Discrete \nMean value6"
+		  SrcPort		  1
+		  DstBlock		  "Signed\nSqrt"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Product3"
+		  SrcPort		  1
+		  DstBlock		  "Discrete \nMean value6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Signal"
+		  SrcPort		  1
+		  Points		  [50, 0]
+		  Branch {
+		    Points		    [0, 15]
+		    DstBlock		    "Product3"
+		    DstPort		    2
+		  }
+		  Branch {
+		    DstBlock		    "Product3"
+		    DstPort		    1
+		  }
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "154"
+	      Position		      [335, 207, 350, 223]
+	      ZOrder		      3177
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator1"
+	      SID		      "155"
+	      Position		      [335, 237, 350, 253]
+	      ZOrder		      3178
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "On_Off"
+	      SID		      "160"
+	      Position		      [630, 173, 660, 187]
+	      ZOrder		      3182
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Demux5"
+	      SrcPort		      1
+	      DstBlock		      "Fcn"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "CB Trip Signal"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Vabc"
+	      SrcPort		      1
+	      Points		      [0, -5]
+	      DstBlock		      "RMS_Calculator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Fcn"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "On_Off"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux5"
+	      SrcPort		      3
+	      DstBlock		      "Terminator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux5"
+	      SrcPort		      2
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "RMS_Calculator1"
+	      SrcPort		      1
+	      DstBlock		      "Demux5"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, 45]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "162"
+	      Name		      "This block aims to limit the operation of the motor to energized terminals - to avoid numerical is"
+	      "sues"
+	      Position		      [454, 289]
+	    }
+	    Annotation {
+	      SID		      "161"
+	      Name		      "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of ch"
+	      "arge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to"
+	      " deal\nin the Software without restriction, including without limitation the rights to use, copy, modify, merge"
+	      ", publish, distribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Softw"
+	      "are is furnished to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT"
+	      " WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FI"
+	      "TNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIA"
+	      "BLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING F"
+	      "ROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n "
+	      Position		      [20, 17]
+	      HorizontalAlignment     "left"
+	      ZOrder		      -1
+	      FontWeight	      "bold"
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "motor_cb"
 	  SID			  "137"
@@ -3400,7 +3791,7 @@ Library {
 	  Position		  [435, 403, 490, 487]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.469"
+	  LibraryVersion	  "1.473"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -3464,9 +3855,17 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  3
-	  Points		  [185, 0]
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  2
+	  Points		  [139, 0]
+	  Branch {
+	    Points		    [0, -129; -971, 0; 0, 159]
+	    DstBlock		    "Voltage_check"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [46, 0]
+	    DstBlock		    "Bus\nCreator1"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator1"
@@ -3603,8 +4002,8 @@ Library {
 	}
 	Line {
 	  Name			  "Logic_trip"
-	  Labels		  [1, 0]
-	  SrcBlock		  "CB Trip Signal"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Voltage_check"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
@@ -3632,6 +4031,13 @@ Library {
 	    DstPort		    LConn1
 	  }
 	}
+	Line {
+	  Name			  "Logic_trip"
+	  SrcBlock		  "CB Trip Signal"
+	  SrcPort		  1
+	  DstBlock		  "Voltage_check"
+	  DstPort		  2
+	}
 	Annotation {
 	  SID			  "143"
 	  Name			  "Ballast load"
@@ -3649,7 +4055,7 @@ Library {
 	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
 	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
 	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n "
-	  Position		  [280, 122]
+	  Position		  [200, 12]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -2
 	  FontWeight		  "bold"
