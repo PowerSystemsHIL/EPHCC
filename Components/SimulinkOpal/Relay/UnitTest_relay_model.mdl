@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2892"
+    ComputedModelVersion    "1.2923"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,7 +34,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [0.0, 0.0, 960.0, 1040.0]
+      Location		      [-8.0, 0.0, 1936.0, 1176.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -56,27 +56,27 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[717.0, 866.0]
-	ZoomFactor		[2.05]
-	Offset			[289.75609756097555, 0.0]
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"29126"
+	Extents			[1693.0, 1002.0]
+	ZoomFactor		[0.39865916437208188]
+	Offset			[-15.117717717717717, -343.71261261261259]
       }
     }
   }
-  PhysicalModelingChecksum "1145514202"
-  PhysicalModelingParameterChecksum "3228599266"
+  PhysicalModelingChecksum "3929057347"
+  PhysicalModelingParameterChecksum "3697885727"
   PhysicalModelingProducts "Power_System_Blocks"
   ARTEMISmethode_block_infos "$$__separator__$$UnitTest_relay_model/ARTEMIS Guide$$__separator__$$"
   Created		  "Tue Jun 07 15:01:07 2016"
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 06 20:50:40 2016"
-  RTWModifiedTimeStamp	  402958185
-  ModelVersionFormat	  "1.%<AutoIncrement:2892>"
+  LastModifiedDate	  "Wed Dec 07 17:36:04 2016"
+  RTWModifiedTimeStamp	  403032959
+  ModelVersionFormat	  "1.%<AutoIncrement:2923>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -180,7 +180,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
-	  StopTime		  "2"
+	  StopTime		  "1"
 	  AbsTol		  "auto"
 	  FixedStep		  "Ts"
 	  InitialStep		  "auto"
@@ -825,11 +825,6 @@ Model {
       SampleTime	      "1"
     }
     Block {
-      BlockType		      Fcn
-      Expr		      "sin(u[1])"
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -948,11 +943,12 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      S-Function
-      FunctionName	      "system"
-      SFunctionModules	      "''"
-      PortCounts	      "[]"
-      SFunctionDeploymentMode off
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      InputSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      ZeroCross		      on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Scope
@@ -1033,8 +1029,8 @@ Model {
   }
   System {
     Name		    "UnitTest_relay_model"
-    Location		    [0, 0, 960, 1040]
-    Open		    on
+    Location		    [-8, 0, 1928, 1176]
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    317
     ScreenColor		    "white"
@@ -1045,9 +1041,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "205"
+    ZoomFactor		    "234"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "29219"
+    SIDHighWatermark	    "29229"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1215,7 +1211,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"SC_ctrl"
-	Location		[0, 0, 960, 1040]
+	Location		[-8, 0, 1928, 1176]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1227,12 +1223,12 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"77"
+	ZoomFactor		"142"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MS"
 	  SID			  "24949"
-	  Position		  [85, 168, 115, 182]
+	  Position		  [295, 168, 325, 182]
 	  ZOrder		  5
 	  NamePlacement		  "alternate"
 	  IconDisplay		  "Port number"
@@ -1242,13 +1238,13 @@ Model {
 	  Name			  "Bus\nSelector"
 	  SID			  "27917"
 	  Ports			  [1, 5]
-	  Position		  [570, 137, 575, 293]
+	  Position		  [780, 137, 785, 293]
 	  ZOrder		  2075
 	  ShowName		  off
-	  OutputSignals		  "relay_cmd.op_mode,relay_cmd.Logic_trip,CB.Status,relay_cmd.m.status,relay_cmd.m.kw"
+	  OutputSignals		  "relay_cmd.m.Vpu,relay_cmd.Logic_trip,CB.Status,relay_cmd.m.status,relay_cmd.m.kw"
 	  Port {
 	    PortNumber		    1
-	    Name		    "<op_mode>"
+	    Name		    "<Vpu>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1282,7 +1278,7 @@ Model {
 	  Name			  "Bus\nSelector1"
 	  SID			  "29175"
 	  Ports			  [1, 3]
-	  Position		  [570, 347, 575, 463]
+	  Position		  [780, 347, 785, 463]
 	  ZOrder		  2088
 	  ShowName		  off
 	  OutputSignals		  "CB.Vabc_bus,CB.Vabc_line,CB.Iabc"
@@ -1310,12 +1306,12 @@ Model {
 	  Name			  "CB_statusflags"
 	  SID			  "27923"
 	  Ports			  [5]
-	  Position		  [720, 136, 785, 294]
+	  Position		  [930, 136, 995, 294]
 	  ZOrder		  2074
 	  BackgroundColor	  "magenta"
 	  Floating		  off
-	  Location		  [9, 56, 467, 1031]
-	  Open			  off
+	  Location		  [1929, 56, 2873, 1191]
+	  Open			  on
 	  NumInputPorts		  "5"
 	  List {
 	    ListType		    AxesTitles
@@ -1336,12 +1332,12 @@ Model {
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
 	  ShowLegends		  on
-	  LegendLocations	  "0.84675     0.94978     0.24891    0.020855\n0.84463     0.75771     0.25328    0.020855\n0.8668"
-	  "8     0.56652     0.20742    0.020855\n 0.8637     0.37533     0.21397    0.020855\n0.87853     0.18326     0.18341"
-	  "    0.020855"
-	  TimeRange		  "16"
-	  YMin			  "-1~0~0~0~0"
-	  YMax			  "1~1~1~70~2000"
+	  LegendLocations	  "0.84675     0.94978     0.09428    0.017915\n0.84463     0.75771     0.12288    0.017915\n0.8668"
+	  "8     0.56652     0.10064    0.017915\n 0.8637     0.37533     0.10381    0.017915\n0.87853     0.18326    0.088983"
+	  "    0.017915"
+	  TimeRange		  "0.35"
+	  YMin			  "-0.01~-0.5~0~0~0"
+	  YMax			  "0.01~3~2~10~2500"
 	  SaveName		  "ScopeData6"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
@@ -1352,11 +1348,11 @@ Model {
 	  Name			  "CB_voltage-current"
 	  SID			  "29176"
 	  Ports			  [3]
-	  Position		  [720, 345, 780, 465]
+	  Position		  [930, 345, 990, 465]
 	  ZOrder		  2089
 	  BackgroundColor	  "lightBlue"
 	  Floating		  off
-	  Location		  [969, 56, 1458, 1031]
+	  Location		  [2889, 56, 3833, 1191]
 	  Open			  on
 	  NumInputPorts		  "3"
 	  List {
@@ -1376,11 +1372,11 @@ Model {
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
 	  ShowLegends		  on
-	  LegendLocations	  "0.89696     0.92507     0.25971    0.052991\n0.89752     0.60525     0.25767    0.052991\n0.9119"
-	  "6     0.28631      0.2045    0.052991"
-	  TimeRange		  "1"
-	  YMin			  "-15000~-60000~-60"
-	  YMax			  "15000~60000~60"
+	  LegendLocations	  "0.83298     0.92217     0.13453    0.045521\n0.83404     0.60235     0.13347    0.045521\n0.8615"
+	  "8     0.28341     0.10593    0.045521"
+	  TimeRange		  "0.4983012457531144"
+	  YMin			  "-30000~-8000000~-58.91238670694872"
+	  YMax			  "20000~8000000~63.44410876132918"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
 	  SampleTime		  "0"
@@ -1389,7 +1385,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "27922"
-	  Position		  [410, 301, 495, 319]
+	  Position		  [620, 301, 705, 319]
 	  ZOrder		  2078
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -1400,7 +1396,7 @@ Model {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "29169"
-	  Position		  [630, 205, 660, 225]
+	  Position		  [840, 205, 870, 225]
 	  ZOrder		  2087
 	  ShowName		  off
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1417,17 +1413,31 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto6"
 	  SID			  "24950"
-	  Position		  [295, 168, 365, 182]
+	  Position		  [505, 168, 575, 182]
 	  ZOrder		  4
 	  ShowName		  off
 	  GotoTag		  "MS"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Mode-Sequence"
+	  SID			  "29220"
+	  Ports			  [0, 1]
+	  Position		  [20, 449, 235, 501]
+	  ZOrder		  3381
+	  BackgroundColor	  "green"
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Sources/Repeating\nSequence"
+	  SourceType		  "Repeating table"
+	  rep_seq_t		  "[0\n2\n2\n4\n4\n6\n6\n8\n8\n10\n10\n12\n12\n14\n14\n16]"
+	  rep_seq_y		  "[0\n0\n1\n1\n0\n0\n2\n2\n1\n1\n0\n0\n2\n2\n0\n0]"
 	}
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux"
 	  SID			  "29187"
 	  Ports			  [3, 1]
-	  Position		  [230, 368, 240, 582]
+	  Position		  [440, 368, 450, 582]
 	  ZOrder		  2090
 	  ShowName		  off
 	  Inputs		  "3"
@@ -1438,7 +1448,7 @@ Model {
 	  Name			  "OpComm"
 	  SID			  "24951"
 	  Ports			  [1, 1]
-	  Position		  [165, 153, 270, 197]
+	  Position		  [375, 153, 480, 197]
 	  ZOrder		  3
 	  LibraryVersion	  "1.471"
 	  SourceBlock		  "rtlab/OpComm"
@@ -1461,17 +1471,17 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "op_mode"
-	  SID			  "29190"
-	  Position		  [135, 460, 165, 490]
-	  ZOrder		  2093
+	  Name			  "mode"
+	  SID			  "29223"
+	  Position		  [345, 460, 375, 490]
+	  ZOrder		  3382
 	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "protection_group"
 	  SID			  "29191"
-	  Position		  [135, 530, 165, 560]
+	  Position		  [345, 530, 375, 560]
 	  ZOrder		  2094
 	  Value			  "0"
 	}
@@ -1479,7 +1489,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "reset"
 	  SID			  "29188"
-	  Position		  [135, 390, 165, 420]
+	  Position		  [345, 390, 375, 420]
 	  ZOrder		  2091
 	  Value			  "0"
 	}
@@ -1487,7 +1497,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "TO_SM"
 	  SID			  "29189"
-	  Position		  [325, 468, 355, 482]
+	  Position		  [535, 468, 565, 482]
 	  ZOrder		  2092
 	  IconDisplay		  "Port number"
 	}
@@ -1527,7 +1537,7 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  Name			  "<op_mode>"
+	  Name			  "<Vpu>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector"
 	  SrcPort		  1
@@ -1603,21 +1613,21 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "op_mode"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "protection_group"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
 	  DstPort		  3
 	}
+	Line {
+	  SrcBlock		  "mode"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
 	Annotation {
 	  SID			  "29192"
 	  Name			  "op_mode:\n0: logic\n1: force closed\n2: force open"
-	  Position		  [130, 302]
+	  Position		  [340, 302]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
 	  FontSize		  12
@@ -1633,7 +1643,7 @@ Model {
 	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
 	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
 	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [89, 16]
+	  Position		  [299, 16]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
 	  FontSize		  12
@@ -1663,7 +1673,7 @@ Model {
       }
       System {
 	Name			"SM_system"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-8, 0, 1928, 1176]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1675,7 +1685,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"138"
+	ZoomFactor		"149"
 	Block {
 	  BlockType		  Inport
 	  Name			  "FROM_SC"
@@ -1686,12 +1696,38 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "500kcmil-Mutual"
+	  SID			  "29229"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [3005, 2347, 3045, 2413]
+	  ZOrder		  3401
+	  BackgroundColor	  "magenta"
+	  LibraryVersion	  "1.28"
+	  SourceBlock		  "cables_lib/500kcmil-Mutual"
+	  SourceType		  "500kcmil cable"
+	  length		  "1100"
+	  par_sets		  "1"
+	  ratio			  "3"
+	}
+	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
 	  SID			  "27516"
 	  Ports			  [2, 1]
 	  Position		  [3800, 2323, 3805, 2427]
 	  ZOrder		  3319
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator1"
+	  SID			  "29227"
+	  Ports			  [2, 1]
+	  Position		  [2800, 2276, 2805, 2314]
+	  ZOrder		  3399
 	  ShowName		  off
 	  Inputs		  "2"
 	  DisplayOption		  "bar"
@@ -1712,17 +1748,31 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "Dynamic_Load"
-	  SID			  "29177"
-	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3420, 2326, 3480, 2414]
-	  ZOrder		  3384
-	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.98"
-	  SourceBlock		  "Load_lib/Dynamic_Load"
-	  SourceType		  "Dynamic load"
-	  V			  "480"
+	  Name			  "CB1"
+	  SID			  "29226"
+	  Ports			  [1, 1, 0, 0, 0, 3, 3]
+	  Position		  [2855, 2328, 2910, 2412]
+	  ZOrder		  3398
+	  BackgroundColor	  "lightBlue"
+	  LibraryVersion	  "1.473"
+	  SourceBlock		  "breaker_lib/Breaker"
+	  SourceType		  "Breaker"
 	  Ts			  "Ts"
+	  mech_delay		  "cb_mech_delay"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "29228"
+	  Position		  [2700, 2220, 2730, 2250]
+	  ZOrder		  3400
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -1801,7 +1851,7 @@ Model {
 	  Name			  "GRID"
 	  SID			  "24233"
 	  Ports			  [0, 0, 0, 0, 0, 0, 3]
-	  Position		  [2845, 2351, 2930, 2409]
+	  Position		  [2615, 2351, 2700, 2409]
 	  ZOrder		  -8
 	  BackgroundColor	  "yellow"
 	  LibraryVersion	  "1.2191"
@@ -1830,7 +1880,7 @@ Model {
 	  Name			  "Generic_Relay_v2_1"
 	  SID			  "29126"
 	  Ports			  [2, 2]
-	  Position		  [3225, 2551, 3405, 2604]
+	  Position		  [3220, 2551, 3400, 2604]
 	  ZOrder		  3370
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
 	  AncestorBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
@@ -1889,8 +1939,8 @@ Model {
 	  }
 	  System {
 	    Name		    "Generic_Relay_v2_1"
-	    Location		    [-8, -8, 1928, 1048]
-	    Open		    off
+	    Location		    [-8, 0, 1928, 1176]
+	    Open		    on
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -1901,14 +1951,14 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "41"
-	    SIDHighWatermark	    "82685"
+	    ZoomFactor		    "40"
+	    SIDHighWatermark	    "82691"
 	    SIDPrevWatermark	    "82674"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "MEASUREMENTS"
 	      SID		      "29126:82310"
-	      Position		      [505, 383, 535, 397]
+	      Position		      [535, 383, 565, 397]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	    }
@@ -1916,7 +1966,7 @@ Model {
 	      BlockType		      Inport
 	      Name		      "FROM_MODBUS"
 	      SID		      "29126:82311"
-	      Position		      [2020, 368, 2050, 382]
+	      Position		      [2050, 368, 2080, 382]
 	      ZOrder		      -1
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -1925,7 +1975,7 @@ Model {
 	      BlockType		      From
 	      Name		      " "
 	      SID		      "29126:82312"
-	      Position		      [960, 941, 1000, 969]
+	      Position		      [990, 941, 1030, 969]
 	      ZOrder		      -9
 	      GotoTag		      "P"
 	    }
@@ -1933,7 +1983,7 @@ Model {
 	      BlockType		      From
 	      Name		      "   "
 	      SID		      "29126:82313"
-	      Position		      [960, 981, 1000, 1009]
+	      Position		      [990, 981, 1030, 1009]
 	      ZOrder		      -9
 	      GotoTag		      "Q"
 	    }
@@ -1942,7 +1992,7 @@ Model {
 	      Name		      "Bus\nCreator"
 	      SID		      "29126:82314"
 	      Ports		      [10, 1]
-	      Position		      [3570, 898, 3580, 1392]
+	      Position		      [3600, 898, 3610, 1392]
 	      ZOrder		      -2
 	      ShowName		      off
 	      Inputs		      "10"
@@ -1953,7 +2003,7 @@ Model {
 	      Name		      "Bus\nCreator1"
 	      SID		      "29126:82315"
 	      Ports		      [25, 1]
-	      Position		      [1740, 305, 1760, 1295]
+	      Position		      [1770, 305, 1790, 1295]
 	      ZOrder		      -2
 	      ShowName		      off
 	      Inputs		      "25"
@@ -1971,7 +2021,7 @@ Model {
 	      Name		      "Bus\nCreator2"
 	      SID		      "29126:82316"
 	      Ports		      [3, 1]
-	      Position		      [4005, 778, 4010, 872]
+	      Position		      [4105, 795, 4115, 915]
 	      ZOrder		      -2
 	      ShowName		      off
 	      Inputs		      "3"
@@ -1982,7 +2032,7 @@ Model {
 	      Name		      "Bus\nSelector"
 	      SID		      "29126:82568"
 	      Ports		      [1, 3]
-	      Position		      [2355, 253, 2360, 337]
+	      Position		      [2385, 253, 2390, 337]
 	      ZOrder		      1595
 	      ShowName		      off
 	      OutputSignals	      "VRMSLL,CT_primary,Initial_status"
@@ -2010,7 +2060,7 @@ Model {
 	      Name		      "Bus\nSelector1"
 	      SID		      "29126:82317"
 	      Ports		      [1, 4]
-	      Position		      [600, 329, 605, 451]
+	      Position		      [630, 329, 635, 451]
 	      ZOrder		      -3
 	      ShowName		      off
 	      OutputSignals	      "Iabc,Vabc_bus,Vabc_line,Status"
@@ -2044,7 +2094,7 @@ Model {
 	      Name		      "CS Modified PLL"
 	      SID		      "29126:82318"
 	      Ports		      [1, 3]
-	      Position		      [1065, 307, 1140, 383]
+	      Position		      [1095, 307, 1170, 383]
 	      ZOrder		      -5
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      LibraryVersion	      "1.3"
@@ -2063,7 +2113,7 @@ Model {
 	      Name		      "CS Modified PLL1"
 	      SID		      "29126:82319"
 	      Ports		      [1, 3]
-	      Position		      [1065, 442, 1140, 518]
+	      Position		      [1095, 442, 1170, 518]
 	      ZOrder		      -5
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      LibraryVersion	      "1.3"
@@ -2082,7 +2132,7 @@ Model {
 	      Name		      "Complex Power and Power Factor"
 	      SID		      "29126:82320"
 	      Ports		      [2, 4]
-	      Position		      [1045, 936, 1225, 1014]
+	      Position		      [1075, 936, 1255, 1014]
 	      ZOrder		      1
 	      BackgroundColor	      "magenta"
 	      LibraryVersion	      "1.4"
@@ -2090,19 +2140,10 @@ Model {
 	      SourceType	      "SubSystem"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant2"
-	      SID		      "29126:82630"
-	      Position		      [2735, 365, 2765, 385]
-	      ZOrder		      1935
-	      ShowName		      off
-	      Value		      "0.2"
-	    }
-	    Block {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion2"
 	      SID		      "29126:82326"
-	      Position		      [1050, 1415, 1100, 1435]
+	      Position		      [1080, 1415, 1130, 1435]
 	      ZOrder		      -5
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -2112,7 +2153,7 @@ Model {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion3"
 	      SID		      "29126:82327"
-	      Position		      [3335, 1604, 3375, 1626]
+	      Position		      [3365, 1604, 3405, 1626]
 	      ZOrder		      -7
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -2122,7 +2163,7 @@ Model {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion4"
 	      SID		      "29126:82328"
-	      Position		      [1115, 1230, 1165, 1250]
+	      Position		      [1145, 1230, 1195, 1250]
 	      ZOrder		      -5
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -2132,7 +2173,7 @@ Model {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion5"
 	      SID		      "29126:82329"
-	      Position		      [3010, 1544, 3065, 1566]
+	      Position		      [3040, 1544, 3095, 1566]
 	      ZOrder		      -7
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -2148,7 +2189,7 @@ Model {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion6"
 	      SID		      "29126:82330"
-	      Position		      [3040, 1324, 3090, 1346]
+	      Position		      [3070, 1324, 3120, 1346]
 	      ZOrder		      -7
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -2165,7 +2206,7 @@ Model {
 	      Name		      "Demux"
 	      SID		      "29126:82332"
 	      Ports		      [1, 5]
-	      Position		      [1200, 1156, 1210, 1324]
+	      Position		      [1230, 1156, 1240, 1324]
 	      ZOrder		      -6
 	      ShowName		      off
 	      Outputs		      "5"
@@ -2176,7 +2217,7 @@ Model {
 	      Name		      "Demux1"
 	      SID		      "29126:82661"
 	      Ports		      [1, 2]
-	      Position		      [1135, 1376, 1145, 1474]
+	      Position		      [1165, 1376, 1175, 1474]
 	      ZOrder		      3110
 	      ShowName		      off
 	      Outputs		      "2"
@@ -2187,7 +2228,7 @@ Model {
 	      Name		      "Demux2"
 	      SID		      "29126:82679"
 	      Ports		      [1, 3]
-	      Position		      [330, 697, 345, 783]
+	      Position		      [330, 647, 335, 843]
 	      ZOrder		      3178
 	      ShowName		      off
 	      Outputs		      "[3 3 3]"
@@ -2198,7 +2239,7 @@ Model {
 	      Name		      "Demux3"
 	      SID		      "29126:82680"
 	      Ports		      [1, 3]
-	      Position		      [430, 762, 445, 848]
+	      Position		      [410, 767, 425, 853]
 	      ZOrder		      3180
 	      ShowName		      off
 	      Outputs		      "3"
@@ -2209,7 +2250,7 @@ Model {
 	      Name		      "Demux4"
 	      SID		      "29126:82334"
 	      Ports		      [1, 3]
-	      Position		      [785, 652, 800, 738]
+	      Position		      [590, 582, 605, 668]
 	      ZOrder		      -6
 	      ShowName		      off
 	      Outputs		      "3"
@@ -2220,7 +2261,7 @@ Model {
 	      Name		      "Demux5"
 	      SID		      "29126:82335"
 	      Ports		      [1, 3]
-	      Position		      [785, 762, 800, 848]
+	      Position		      [590, 702, 605, 788]
 	      ZOrder		      -6
 	      ShowName		      off
 	      Outputs		      "3"
@@ -2230,7 +2271,7 @@ Model {
 	      BlockType		      DigitalClock
 	      Name		      "Digital Clock"
 	      SID		      "29126:82625"
-	      Position		      [2735, 317, 2780, 333]
+	      Position		      [2750, 184, 2800, 206]
 	      ZOrder		      1931
 	      SampleTime	      "Ts"
 	    }
@@ -2239,7 +2280,7 @@ Model {
 	      Name		      "Divide"
 	      SID		      "29126:82337"
 	      Ports		      [2, 1]
-	      Position		      [1000, 462, 1030, 493]
+	      Position		      [1030, 462, 1060, 493]
 	      ZOrder		      -8
 	      Inputs		      "*/"
 	      InputSameDT	      off
@@ -2252,7 +2293,7 @@ Model {
 	      Name		      "Divide1"
 	      SID		      "29126:82586"
 	      Ports		      [2, 1]
-	      Position		      [965, 327, 995, 358]
+	      Position		      [995, 327, 1025, 358]
 	      ZOrder		      1607
 	      Inputs		      "*/"
 	      InputSameDT	      off
@@ -2265,7 +2306,7 @@ Model {
 	      Name		      "Divide2"
 	      SID		      "29126:82588"
 	      Ports		      [2, 1]
-	      Position		      [3465, 1252, 3495, 1283]
+	      Position		      [3460, 1252, 3490, 1283]
 	      ZOrder		      1609
 	      ShowName		      off
 	      Inputs		      "*/"
@@ -2284,7 +2325,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From"
 	      SID		      "29126:82573"
-	      Position		      [750, 511, 835, 529]
+	      Position		      [780, 511, 865, 529]
 	      ZOrder		      1600
 	      ShowName		      off
 	      GotoTag		      "CT_Primary"
@@ -2293,7 +2334,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From1"
 	      SID		      "29126:82338"
-	      Position		      [1525, 346, 1605, 374]
+	      Position		      [1555, 346, 1635, 374]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ia_phase"
@@ -2302,7 +2343,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From10"
 	      SID		      "29126:82339"
-	      Position		      [1930, 612, 1995, 628]
+	      Position		      [1960, 612, 2025, 628]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -2311,7 +2352,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From11"
 	      SID		      "29126:82340"
-	      Position		      [1525, 306, 1605, 334]
+	      Position		      [1555, 306, 1635, 334]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ia_mag"
@@ -2320,7 +2361,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From12"
 	      SID		      "29126:82341"
-	      Position		      [1525, 386, 1605, 414]
+	      Position		      [1555, 386, 1635, 414]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ib_mag"
@@ -2329,7 +2370,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From13"
 	      SID		      "29126:82342"
-	      Position		      [1525, 466, 1605, 494]
+	      Position		      [1555, 466, 1635, 494]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ic_mag"
@@ -2338,7 +2379,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From14"
 	      SID		      "29126:82343"
-	      Position		      [1525, 426, 1605, 454]
+	      Position		      [1555, 426, 1635, 454]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ib_phase"
@@ -2347,7 +2388,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From15"
 	      SID		      "29126:82344"
-	      Position		      [1525, 506, 1605, 534]
+	      Position		      [1555, 506, 1635, 534]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ic_phase"
@@ -2356,7 +2397,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From16"
 	      SID		      "29126:82345"
-	      Position		      [1525, 826, 1605, 854]
+	      Position		      [1555, 826, 1635, 854]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Va_phase"
@@ -2365,7 +2406,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From17"
 	      SID		      "29126:82346"
-	      Position		      [1525, 786, 1605, 814]
+	      Position		      [1555, 786, 1635, 814]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Va_mag"
@@ -2374,7 +2415,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From18"
 	      SID		      "29126:82347"
-	      Position		      [1525, 866, 1605, 894]
+	      Position		      [1555, 866, 1635, 894]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vb_mag"
@@ -2383,7 +2424,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From19"
 	      SID		      "29126:82348"
-	      Position		      [1525, 946, 1605, 974]
+	      Position		      [1555, 946, 1635, 974]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vc_mag"
@@ -2392,7 +2433,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From2"
 	      SID		      "29126:82349"
-	      Position		      [20, 671, 75, 699]
+	      Position		      [20, 676, 75, 704]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -2401,7 +2442,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From20"
 	      SID		      "29126:82350"
-	      Position		      [1525, 1031, 1565, 1049]
+	      Position		      [1555, 1031, 1595, 1049]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "P"
@@ -2410,7 +2451,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From21"
 	      SID		      "29126:82351"
-	      Position		      [1525, 1072, 1565, 1088]
+	      Position		      [1555, 1072, 1595, 1088]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Q"
@@ -2419,7 +2460,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From22"
 	      SID		      "29126:82352"
-	      Position		      [1525, 1151, 1565, 1169]
+	      Position		      [1555, 1151, 1595, 1169]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "pf"
@@ -2428,7 +2469,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From23"
 	      SID		      "29126:82353"
-	      Position		      [1525, 1112, 1565, 1128]
+	      Position		      [1555, 1112, 1595, 1128]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "S"
@@ -2437,7 +2478,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From24"
 	      SID		      "29126:82354"
-	      Position		      [1525, 591, 1585, 609]
+	      Position		      [1555, 591, 1615, 609]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ib_rms"
@@ -2446,7 +2487,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From25"
 	      SID		      "29126:82355"
-	      Position		      [1525, 906, 1605, 934]
+	      Position		      [1555, 906, 1635, 934]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vb_phase"
@@ -2455,7 +2496,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From26"
 	      SID		      "29126:82356"
-	      Position		      [1525, 631, 1585, 649]
+	      Position		      [1555, 631, 1615, 649]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ic_rms"
@@ -2464,7 +2505,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From27"
 	      SID		      "29126:82357"
-	      Position		      [1525, 986, 1605, 1014]
+	      Position		      [1555, 986, 1635, 1014]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vc_phase"
@@ -2473,7 +2514,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From28"
 	      SID		      "29126:82358"
-	      Position		      [1525, 1191, 1565, 1209]
+	      Position		      [1555, 1191, 1595, 1209]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "freq"
@@ -2482,7 +2523,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From29"
 	      SID		      "29126:82359"
-	      Position		      [1525, 671, 1585, 689]
+	      Position		      [1555, 671, 1615, 689]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Va_rms"
@@ -2491,7 +2532,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From3"
 	      SID		      "29126:82360"
-	      Position		      [20, 727, 80, 753]
+	      Position		      [20, 732, 80, 758]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -2500,7 +2541,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From30"
 	      SID		      "29126:82361"
-	      Position		      [1525, 751, 1585, 769]
+	      Position		      [1555, 751, 1615, 769]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vc_rms"
@@ -2509,7 +2550,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From31"
 	      SID		      "29126:82362"
-	      Position		      [1525, 711, 1585, 729]
+	      Position		      [1555, 711, 1615, 729]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vb_rms"
@@ -2518,7 +2559,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From32"
 	      SID		      "29126:82363"
-	      Position		      [3430, 1111, 3500, 1129]
+	      Position		      [3460, 1111, 3530, 1129]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "freq"
@@ -2533,7 +2574,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From33"
 	      SID		      "29126:82364"
-	      Position		      [3430, 910, 3500, 930]
+	      Position		      [3460, 910, 3530, 930]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -2549,40 +2590,25 @@ Model {
 	      BlockType		      From
 	      Name		      "From34"
 	      SID		      "29126:82365"
-	      Position		      [3315, 1251, 3385, 1269]
+	      Position		      [3280, 1251, 3360, 1269]
 	      ZOrder		      -9
 	      ShowName		      off
-	      GotoTag		      "Va_bus_rms"
+	      GotoTag		      "Va_line_rms"
 	    }
 	    Block {
 	      BlockType		      From
 	      Name		      "From35"
 	      SID		      "29126:82366"
-	      Position		      [2895, 1324, 2975, 1346]
+	      Position		      [2925, 1324, 3005, 1346]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "trip_cmd"
 	    }
 	    Block {
 	      BlockType		      From
-	      Name		      "From36"
-	      SID		      "29126:82367"
-	      Position		      [3430, 1161, 3500, 1179]
-	      ZOrder		      -9
-	      ShowName		      off
-	      GotoTag		      "Va_rms"
-	      Port {
-		PortNumber		1
-		Name			"Va_rms"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      From
 	      Name		      "From37"
 	      SID		      "29126:82368"
-	      Position		      [3430, 1011, 3500, 1029]
+	      Position		      [3460, 1011, 3530, 1029]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "P"
@@ -2598,7 +2624,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From38"
 	      SID		      "29126:82369"
-	      Position		      [3430, 1061, 3500, 1079]
+	      Position		      [3460, 1061, 3530, 1079]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Q"
@@ -2614,7 +2640,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From39"
 	      SID		      "29126:82370"
-	      Position		      [950, 1191, 1010, 1209]
+	      Position		      [980, 1191, 1040, 1209]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R50"
@@ -2623,7 +2649,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From4"
 	      SID		      "29126:82371"
-	      Position		      [510, 987, 550, 1013]
+	      Position		      [490, 997, 530, 1023]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -2632,7 +2658,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From40"
 	      SID		      "29126:82372"
-	      Position		      [1930, 653, 1995, 667]
+	      Position		      [1960, 653, 2025, 667]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc_rms"
@@ -2641,7 +2667,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From41"
 	      SID		      "29126:82373"
-	      Position		      [950, 1231, 1010, 1249]
+	      Position		      [980, 1231, 1040, 1249]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R51"
@@ -2650,7 +2676,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From42"
 	      SID		      "29126:82374"
-	      Position		      [2895, 1364, 2975, 1386]
+	      Position		      [2925, 1364, 3005, 1386]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R25"
@@ -2666,7 +2692,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From43"
 	      SID		      "29126:82375"
-	      Position		      [950, 1271, 1010, 1289]
+	      Position		      [980, 1271, 1040, 1289]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R27"
@@ -2675,7 +2701,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From44"
 	      SID		      "29126:82376"
-	      Position		      [1930, 632, 2000, 648]
+	      Position		      [1960, 632, 2030, 648]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc_rms"
@@ -2684,7 +2710,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From45"
 	      SID		      "29126:82377"
-	      Position		      [3720, 784, 3800, 806]
+	      Position		      [3820, 804, 3900, 826]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "op_mode"
@@ -2693,7 +2719,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From46"
 	      SID		      "29126:82378"
-	      Position		      [3325, 644, 3405, 666]
+	      Position		      [3350, 639, 3430, 661]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "op_mode"
@@ -2708,7 +2734,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From47"
 	      SID		      "29126:82379"
-	      Position		      [2790, 596, 2870, 614]
+	      Position		      [2820, 596, 2900, 614]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "op_mode"
@@ -2717,7 +2743,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From48"
 	      SID		      "29126:82380"
-	      Position		      [3430, 1211, 3500, 1229]
+	      Position		      [3460, 1211, 3530, 1229]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "pf"
@@ -2732,7 +2758,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From49"
 	      SID		      "29126:82381"
-	      Position		      [880, 1391, 940, 1409]
+	      Position		      [910, 1391, 970, 1409]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "trip_cmd"
@@ -2741,7 +2767,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From5"
 	      SID		      "29126:82382"
-	      Position		      [510, 956, 550, 984]
+	      Position		      [490, 966, 530, 994]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -2750,7 +2776,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From50"
 	      SID		      "29126:82383"
-	      Position		      [1050, 656, 1110, 674]
+	      Position		      [1080, 656, 1140, 674]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ib_rms"
@@ -2759,7 +2785,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From51"
 	      SID		      "29126:82384"
-	      Position		      [1050, 696, 1110, 714]
+	      Position		      [1080, 696, 1140, 714]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ic_rms"
@@ -2768,7 +2794,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From52"
 	      SID		      "29126:82385"
-	      Position		      [1050, 736, 1110, 754]
+	      Position		      [1080, 736, 1140, 754]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Va_rms"
@@ -2777,7 +2803,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From53"
 	      SID		      "29126:82386"
-	      Position		      [1050, 816, 1110, 834]
+	      Position		      [1080, 816, 1140, 834]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vc_rms"
@@ -2786,7 +2812,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From54"
 	      SID		      "29126:82387"
-	      Position		      [1050, 776, 1110, 794]
+	      Position		      [1080, 776, 1140, 794]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vb_rms"
@@ -2795,7 +2821,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From55"
 	      SID		      "29126:82388"
-	      Position		      [1050, 616, 1110, 634]
+	      Position		      [1080, 616, 1140, 634]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ia_rms"
@@ -2804,7 +2830,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From56"
 	      SID		      "29126:82389"
-	      Position		      [2895, 1399, 2975, 1421]
+	      Position		      [2925, 1399, 3005, 1421]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R27"
@@ -2820,7 +2846,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From57"
 	      SID		      "29126:82390"
-	      Position		      [2895, 1434, 2975, 1456]
+	      Position		      [2925, 1434, 3005, 1456]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R50"
@@ -2836,7 +2862,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From58"
 	      SID		      "29126:82391"
-	      Position		      [2895, 1469, 2975, 1491]
+	      Position		      [2925, 1469, 3005, 1491]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R51"
@@ -2852,7 +2878,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From59"
 	      SID		      "29126:82392"
-	      Position		      [2895, 1504, 2975, 1526]
+	      Position		      [2925, 1504, 3005, 1526]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R59"
@@ -2868,7 +2894,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From6"
 	      SID		      "29126:82393"
-	      Position		      [865, 321, 905, 349]
+	      Position		      [870, 326, 935, 344]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -2877,7 +2903,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From60"
 	      SID		      "29126:82394"
-	      Position		      [2895, 1544, 2975, 1566]
+	      Position		      [2925, 1544, 3005, 1566]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "reset"
@@ -2886,7 +2912,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From61"
 	      SID		      "29126:82395"
-	      Position		      [950, 1311, 1010, 1329]
+	      Position		      [980, 1311, 1040, 1329]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "R59"
@@ -2895,7 +2921,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From62"
 	      SID		      "29126:82396"
-	      Position		      [1930, 673, 2010, 687]
+	      Position		      [1960, 673, 2040, 687]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "reset"
@@ -2904,7 +2930,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From63"
 	      SID		      "29126:82576"
-	      Position		      [1930, 693, 2035, 707]
+	      Position		      [1960, 693, 2065, 707]
 	      ZOrder		      1603
 	      ShowName		      off
 	      GotoTag		      "RELAY_PARAM"
@@ -2913,7 +2939,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From64"
 	      SID		      "29126:82397"
-	      Position		      [3200, 1591, 3260, 1609]
+	      Position		      [3230, 1591, 3290, 1609]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "exp_imp"
@@ -2922,7 +2948,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From65"
 	      SID		      "29126:82398"
-	      Position		      [3200, 1616, 3260, 1634]
+	      Position		      [3230, 1616, 3290, 1634]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "lag_lead"
@@ -2931,7 +2957,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From66"
 	      SID		      "29126:82578"
-	      Position		      [2790, 628, 2895, 642]
+	      Position		      [2820, 628, 2925, 642]
 	      ZOrder		      1605
 	      ShowName		      off
 	      GotoTag		      "RELAY_PARAM"
@@ -2940,7 +2966,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From67"
 	      SID		      "29126:82587"
-	      Position		      [840, 361, 905, 379]
+	      Position		      [870, 361, 935, 379]
 	      ZOrder		      1608
 	      ShowName		      off
 	      GotoTag		      "VRMSLL"
@@ -2949,7 +2975,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From68"
 	      SID		      "29126:82589"
-	      Position		      [3295, 1291, 3360, 1309]
+	      Position		      [3270, 1296, 3335, 1314]
 	      ZOrder		      1610
 	      ShowName		      off
 	      GotoTag		      "VRMSLL"
@@ -2958,16 +2984,16 @@ Model {
 	      BlockType		      From
 	      Name		      "From69"
 	      SID		      "29126:82629"
-	      Position		      [3325, 705, 3395, 725]
+	      Position		      [3350, 710, 3420, 730]
 	      ZOrder		      1934
 	      ShowName		      off
-	      GotoTag		      "clock_time"
+	      GotoTag		      "time_flag"
 	    }
 	    Block {
 	      BlockType		      From
 	      Name		      "From7"
 	      SID		      "29126:82399"
-	      Position		      [1525, 551, 1585, 569]
+	      Position		      [1555, 551, 1615, 569]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Ia_rms"
@@ -2975,17 +3001,23 @@ Model {
 	    Block {
 	      BlockType		      From
 	      Name		      "From70"
-	      SID		      "29126:82632"
-	      Position		      [3325, 735, 3395, 755]
-	      ZOrder		      1937
+	      SID		      "29126:82690"
+	      Position		      [3460, 1161, 3530, 1179]
+	      ZOrder		      3188
 	      ShowName		      off
-	      GotoTag		      "time_delay"
+	      GotoTag		      "Va_line_rms"
+	      Port {
+		PortNumber		1
+		Name			"Va_rms"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      From
 	      Name		      "From71"
 	      SID		      "29126:82635"
-	      Position		      [1930, 712, 1995, 728]
+	      Position		      [1960, 712, 2025, 728]
 	      ZOrder		      1940
 	      ShowName		      off
 	      GotoTag		      "clock_time"
@@ -2994,7 +3026,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From72"
 	      SID		      "29126:82636"
-	      Position		      [1930, 732, 2000, 748]
+	      Position		      [1960, 732, 2030, 748]
 	      ZOrder		      1941
 	      ShowName		      off
 	      GotoTag		      "time_delay"
@@ -3003,7 +3035,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From73"
 	      SID		      "29126:82655"
-	      Position		      [950, 1151, 1010, 1169]
+	      Position		      [980, 1151, 1040, 1169]
 	      ZOrder		      3104
 	      ShowName		      off
 	      GotoTag		      "R25"
@@ -3012,7 +3044,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From74"
 	      SID		      "29126:82659"
-	      Position		      [880, 1441, 940, 1459]
+	      Position		      [910, 1441, 970, 1459]
 	      ZOrder		      3108
 	      ShowName		      off
 	      GotoTag		      "cb_state"
@@ -3021,7 +3053,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From76"
 	      SID		      "29126:82652"
-	      Position		      [3325, 764, 3405, 786]
+	      Position		      [3350, 746, 3430, 764]
 	      ZOrder		      2045
 	      ShowName		      off
 	      GotoTag		      "Initial_status"
@@ -3037,7 +3069,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From8"
 	      SID		      "29126:82400"
-	      Position		      [875, 457, 945, 483]
+	      Position		      [905, 457, 975, 483]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -3046,7 +3078,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From9"
 	      SID		      "29126:82401"
-	      Position		      [3430, 961, 3500, 979]
+	      Position		      [3460, 961, 3530, 979]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -3062,7 +3094,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain"
 	      SID		      "29126:82402"
-	      Position		      [1260, 1225, 1290, 1255]
+	      Position		      [1290, 1225, 1320, 1255]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "2^2"
@@ -3074,7 +3106,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain1"
 	      SID		      "29126:82403"
-	      Position		      [1615, 1148, 1640, 1172]
+	      Position		      [1645, 1148, 1670, 1172]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "100"
@@ -3086,7 +3118,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain11"
 	      SID		      "29126:82405"
-	      Position		      [1630, 428, 1655, 452]
+	      Position		      [1660, 428, 1685, 452]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3098,7 +3130,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain12"
 	      SID		      "29126:82406"
-	      Position		      [1635, 348, 1660, 372]
+	      Position		      [1665, 348, 1690, 372]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3110,7 +3142,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain13"
 	      SID		      "29126:82407"
-	      Position		      [1260, 1435, 1290, 1465]
+	      Position		      [1290, 1435, 1320, 1465]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "2"
@@ -3128,7 +3160,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain14"
 	      SID		      "29126:82662"
-	      Position		      [1260, 1295, 1290, 1325]
+	      Position		      [1290, 1295, 1320, 1325]
 	      ZOrder		      3111
 	      ShowName		      off
 	      Gain		      "2^4"
@@ -3140,7 +3172,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain15"
 	      SID		      "29126:82409"
-	      Position		      [1170, 615, 1200, 635]
+	      Position		      [1200, 615, 1230, 635]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3152,7 +3184,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain16"
 	      SID		      "29126:82410"
-	      Position		      [1170, 655, 1200, 675]
+	      Position		      [1200, 655, 1230, 675]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3164,7 +3196,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain17"
 	      SID		      "29126:82411"
-	      Position		      [1170, 695, 1200, 715]
+	      Position		      [1200, 695, 1230, 715]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3176,7 +3208,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain18"
 	      SID		      "29126:82412"
-	      Position		      [1170, 735, 1200, 755]
+	      Position		      [1200, 735, 1230, 755]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3188,7 +3220,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain19"
 	      SID		      "29126:82413"
-	      Position		      [1170, 775, 1200, 795]
+	      Position		      [1200, 775, 1230, 795]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3200,7 +3232,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain2"
 	      SID		      "29126:82590"
-	      Position		      [3395, 1290, 3430, 1310]
+	      Position		      [3370, 1285, 3425, 1325]
 	      ZOrder		      1611
 	      ShowName		      off
 	      Gain		      "1/1.732"
@@ -3212,7 +3244,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain20"
 	      SID		      "29126:82415"
-	      Position		      [1170, 815, 1200, 835]
+	      Position		      [1200, 815, 1230, 835]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "1.4142"
@@ -3224,7 +3256,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain21"
 	      SID		      "29126:82606"
-	      Position		      [865, 502, 920, 538]
+	      Position		      [895, 502, 950, 538]
 	      ZOrder		      1905
 	      ShowName		      off
 	      Gain		      "1.414"
@@ -3236,7 +3268,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain22"
 	      SID		      "29126:82656"
-	      Position		      [1260, 1260, 1290, 1290]
+	      Position		      [1290, 1260, 1320, 1290]
 	      ZOrder		      3105
 	      ShowName		      off
 	      Gain		      "2^3"
@@ -3248,7 +3280,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain23"
 	      SID		      "29126:82657"
-	      Position		      [1260, 1190, 1290, 1220]
+	      Position		      [1290, 1190, 1320, 1220]
 	      ZOrder		      3106
 	      ShowName		      off
 	      Gain		      "2"
@@ -3260,7 +3292,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain24"
 	      SID		      "29126:82666"
-	      Position		      [1260, 1485, 1290, 1515]
+	      Position		      [1290, 1485, 1320, 1515]
 	      ZOrder		      3115
 	      ShowName		      off
 	      Gain		      "2^2"
@@ -3278,7 +3310,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain3"
 	      SID		      "29126:82417"
-	      Position		      [1625, 988, 1650, 1012]
+	      Position		      [1655, 988, 1680, 1012]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3290,7 +3322,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain4"
 	      SID		      "29126:82418"
-	      Position		      [1615, 1188, 1640, 1212]
+	      Position		      [1645, 1188, 1670, 1212]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3302,7 +3334,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain5"
 	      SID		      "29126:82419"
-	      Position		      [1625, 908, 1650, 932]
+	      Position		      [1655, 908, 1680, 932]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3314,7 +3346,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain8"
 	      SID		      "29126:82422"
-	      Position		      [1635, 828, 1660, 852]
+	      Position		      [1665, 828, 1690, 852]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3326,7 +3358,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain9"
 	      SID		      "29126:82423"
-	      Position		      [1635, 508, 1660, 532]
+	      Position		      [1665, 508, 1690, 532]
 	      ZOrder		      -8
 	      ShowName		      off
 	      Gain		      "10"
@@ -3338,7 +3370,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto"
 	      SID		      "29126:82424"
-	      Position		      [680, 364, 730, 386]
+	      Position		      [710, 364, 760, 386]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -3347,7 +3379,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto1"
 	      SID		      "29126:82425"
-	      Position		      [675, 335, 730, 355]
+	      Position		      [705, 335, 760, 355]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Iabc"
@@ -3356,7 +3388,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto10"
 	      SID		      "29126:82426"
-	      Position		      [2340, 566, 2400, 584]
+	      Position		      [2370, 566, 2430, 584]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "R50"
@@ -3365,7 +3397,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto11"
 	      SID		      "29126:82427"
-	      Position		      [1420, 356, 1500, 374]
+	      Position		      [1450, 356, 1530, 374]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vc_phase"
@@ -3374,7 +3406,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto12"
 	      SID		      "29126:82428"
-	      Position		      [2415, 596, 2475, 614]
+	      Position		      [2445, 596, 2505, 614]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "R51"
@@ -3383,7 +3415,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto13"
 	      SID		      "29126:82429"
-	      Position		      [1415, 451, 1495, 469]
+	      Position		      [1445, 451, 1525, 469]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ia_phase"
@@ -3392,7 +3424,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto14"
 	      SID		      "29126:82430"
-	      Position		      [1270, 956, 1320, 974]
+	      Position		      [1300, 956, 1350, 974]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "pf"
@@ -3401,7 +3433,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto15"
 	      SID		      "29126:82431"
-	      Position		      [1270, 936, 1320, 954]
+	      Position		      [1300, 936, 1350, 954]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "S"
@@ -3410,7 +3442,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto16"
 	      SID		      "29126:82432"
-	      Position		      [840, 656, 920, 674]
+	      Position		      [645, 586, 725, 604]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ia_rms"
@@ -3419,7 +3451,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto17"
 	      SID		      "29126:82433"
-	      Position		      [840, 686, 920, 704]
+	      Position		      [645, 616, 725, 634]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ib_rms"
@@ -3428,7 +3460,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto18"
 	      SID		      "29126:82434"
-	      Position		      [840, 716, 920, 734]
+	      Position		      [645, 646, 725, 664]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ic_rms"
@@ -3437,7 +3469,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto19"
 	      SID		      "29126:82435"
-	      Position		      [840, 766, 920, 784]
+	      Position		      [645, 706, 725, 724]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Va_rms"
@@ -3446,7 +3478,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto2"
 	      SID		      "29126:82436"
-	      Position		      [1195, 312, 1245, 328]
+	      Position		      [1225, 312, 1275, 328]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "freq"
@@ -3455,7 +3487,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto20"
 	      SID		      "29126:82437"
-	      Position		      [840, 796, 920, 814]
+	      Position		      [645, 736, 725, 754]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vb_rms"
@@ -3464,7 +3496,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto21"
 	      SID		      "29126:82438"
-	      Position		      [840, 826, 920, 844]
+	      Position		      [645, 766, 725, 784]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vc_rms"
@@ -3473,7 +3505,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto22"
 	      SID		      "29126:82439"
-	      Position		      [1415, 471, 1495, 489]
+	      Position		      [1445, 471, 1525, 489]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ib_phase"
@@ -3482,7 +3514,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto23"
 	      SID		      "29126:82440"
-	      Position		      [2535, 806, 2595, 824]
+	      Position		      [2565, 806, 2625, 824]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "R27"
@@ -3491,7 +3523,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto24"
 	      SID		      "29126:82441"
-	      Position		      [2535, 841, 2595, 859]
+	      Position		      [2565, 841, 2625, 859]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "R59"
@@ -3500,7 +3532,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto25"
 	      SID		      "29126:82442"
-	      Position		      [840, 616, 920, 634]
+	      Position		      [600, 526, 680, 544]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Iabc_rms"
@@ -3509,7 +3541,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto26"
 	      SID		      "29126:82443"
-	      Position		      [3960, 691, 4020, 709]
+	      Position		      [3990, 676, 4050, 694]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "trip_cmd"
@@ -3518,7 +3550,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto27"
 	      SID		      "29126:82444"
-	      Position		      [2315, 396, 2375, 414]
+	      Position		      [2340, 381, 2400, 399]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "reset"
@@ -3527,7 +3559,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto28"
 	      SID		      "29126:82445"
-	      Position		      [3220, 566, 3280, 584]
+	      Position		      [3250, 566, 3310, 584]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "R25"
@@ -3536,7 +3568,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto29"
 	      SID		      "29126:82446"
-	      Position		      [665, 395, 730, 415]
+	      Position		      [695, 395, 760, 415]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vabc_line"
@@ -3545,7 +3577,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto3"
 	      SID		      "29126:82447"
-	      Position		      [1420, 316, 1500, 334]
+	      Position		      [1450, 316, 1530, 334]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Va_phase"
@@ -3554,7 +3586,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto30"
 	      SID		      "29126:82448"
-	      Position		      [1270, 996, 1320, 1014]
+	      Position		      [1300, 996, 1350, 1014]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "lag_lead"
@@ -3563,7 +3595,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto31"
 	      SID		      "29126:82449"
-	      Position		      [1315, 816, 1395, 834]
+	      Position		      [1345, 816, 1425, 834]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vc_mag"
@@ -3572,7 +3604,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto32"
 	      SID		      "29126:82450"
-	      Position		      [1315, 736, 1395, 754]
+	      Position		      [1345, 736, 1425, 754]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Va_mag"
@@ -3581,7 +3613,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto33"
 	      SID		      "29126:82451"
-	      Position		      [1315, 776, 1395, 794]
+	      Position		      [1345, 776, 1425, 794]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vb_mag"
@@ -3590,7 +3622,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto34"
 	      SID		      "29126:82452"
-	      Position		      [1315, 696, 1395, 714]
+	      Position		      [1345, 696, 1425, 714]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ic_mag"
@@ -3599,7 +3631,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto35"
 	      SID		      "29126:82453"
-	      Position		      [1315, 616, 1395, 634]
+	      Position		      [1345, 616, 1425, 634]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ia_mag"
@@ -3608,7 +3640,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto36"
 	      SID		      "29126:82454"
-	      Position		      [1315, 656, 1395, 674]
+	      Position		      [1345, 656, 1425, 674]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ib_mag"
@@ -3617,7 +3649,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto37"
 	      SID		      "29126:82455"
-	      Position		      [1270, 976, 1320, 994]
+	      Position		      [1300, 976, 1350, 994]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "exp_imp"
@@ -3626,7 +3658,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto38"
 	      SID		      "29126:82569"
-	      Position		      [2435, 287, 2535, 303]
+	      Position		      [2465, 287, 2565, 303]
 	      ZOrder		      1596
 	      ShowName		      off
 	      GotoTag		      "CT_Primary"
@@ -3635,7 +3667,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto39"
 	      SID		      "29126:82574"
-	      Position		      [2370, 217, 2470, 233]
+	      Position		      [2400, 217, 2500, 233]
 	      ZOrder		      1601
 	      ShowName		      off
 	      GotoTag		      "RELAY_PARAM"
@@ -3644,7 +3676,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto4"
 	      SID		      "29126:82456"
-	      Position		      [750, 962, 800, 978]
+	      Position		      [730, 972, 780, 988]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "P"
@@ -3653,7 +3685,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto40"
 	      SID		      "29126:82585"
-	      Position		      [2435, 257, 2535, 273]
+	      Position		      [2465, 257, 2565, 273]
 	      ZOrder		      1606
 	      ShowName		      off
 	      GotoTag		      "VRMSLL"
@@ -3662,7 +3694,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto41"
 	      SID		      "29126:82628"
-	      Position		      [2825, 316, 2900, 334]
+	      Position		      [2845, 186, 2920, 204]
 	      ZOrder		      1933
 	      BackgroundColor	      "yellow"
 	      ShowName		      off
@@ -3672,7 +3704,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto42"
 	      SID		      "29126:82631"
-	      Position		      [2825, 366, 2900, 384]
+	      Position		      [2845, 236, 2920, 254]
 	      ZOrder		      1936
 	      BackgroundColor	      "yellow"
 	      ShowName		      off
@@ -3682,7 +3714,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto43"
 	      SID		      "29126:82640"
-	      Position		      [2435, 317, 2535, 333]
+	      Position		      [2465, 317, 2565, 333]
 	      ZOrder		      1945
 	      ShowName		      off
 	      GotoTag		      "Initial_status"
@@ -3691,7 +3723,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto44"
 	      SID		      "29126:82654"
-	      Position		      [665, 425, 730, 445]
+	      Position		      [695, 425, 760, 445]
 	      ZOrder		      3103
 	      ShowName		      off
 	      GotoTag		      "cb_state"
@@ -3700,16 +3732,26 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto45"
 	      SID		      "29126:82681"
-	      Position		      [485, 766, 565, 784]
+	      Position		      [465, 771, 545, 789]
 	      ZOrder		      3179
 	      ShowName		      off
-	      GotoTag		      "Va_bus_rms"
+	      GotoTag		      "Va_line_rms"
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "Goto46"
+	      SID		      "29126:82689"
+	      Position		      [2945, 301, 3020, 319]
+	      ZOrder		      3187
+	      BackgroundColor	      "yellow"
+	      ShowName		      off
+	      GotoTag		      "time_flag"
 	    }
 	    Block {
 	      BlockType		      Goto
 	      Name		      "Goto5"
 	      SID		      "29126:82457"
-	      Position		      [750, 992, 800, 1008]
+	      Position		      [730, 1002, 780, 1018]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Q"
@@ -3718,7 +3760,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto6"
 	      SID		      "29126:82458"
-	      Position		      [1420, 336, 1500, 354]
+	      Position		      [1450, 336, 1530, 354]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vb_phase"
@@ -3727,7 +3769,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto7"
 	      SID		      "29126:82459"
-	      Position		      [1415, 491, 1495, 509]
+	      Position		      [1445, 491, 1525, 509]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Ic_phase"
@@ -3736,7 +3778,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto8"
 	      SID		      "29126:82460"
-	      Position		      [845, 871, 925, 889]
+	      Position		      [645, 831, 725, 849]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "Vabc_rms"
@@ -3745,7 +3787,7 @@ Model {
 	      BlockType		      Goto
 	      Name		      "Goto9"
 	      SID		      "29126:82461"
-	      Position		      [2400, 366, 2460, 384]
+	      Position		      [2430, 366, 2490, 384]
 	      ZOrder		      -10
 	      ShowName		      off
 	      GotoTag		      "op_mode"
@@ -3755,7 +3797,7 @@ Model {
 	      Name		      "Logical\nOperator"
 	      SID		      "29126:82667"
 	      Ports		      [1, 1]
-	      Position		      [1200, 1494, 1230, 1506]
+	      Position		      [1230, 1494, 1260, 1506]
 	      ZOrder		      3116
 	      BackgroundColor	      "red"
 	      ShowName		      off
@@ -3768,7 +3810,7 @@ Model {
 	      Name		      "Logical\nOperator4"
 	      SID		      "29126:82464"
 	      Ports		      [4, 1]
-	      Position		      [2545, 611, 2590, 754]
+	      Position		      [2575, 611, 2620, 754]
 	      ZOrder		      -11
 	      ShowName		      off
 	      Operator		      "OR"
@@ -3786,7 +3828,7 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory1"
 	      SID		      "29126:82465"
-	      Position		      [3835, 780, 3865, 810]
+	      Position		      [3935, 800, 3965, 830]
 	      ZOrder		      -13
 	      ShowName		      off
 	      Port {
@@ -3800,7 +3842,7 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory2"
 	      SID		      "29126:82466"
-	      Position		      [1485, 1265, 1515, 1295]
+	      Position		      [1515, 1265, 1545, 1295]
 	      ZOrder		      -13
 	      ShowName		      off
 	    }
@@ -3808,7 +3850,7 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory3"
 	      SID		      "29126:82467"
-	      Position		      [3675, 1130, 3705, 1160]
+	      Position		      [3705, 1130, 3735, 1160]
 	      ZOrder		      -13
 	      ShowName		      off
 	      Port {
@@ -3823,7 +3865,7 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory8"
 	      SID		      "29126:82468"
-	      Position		      [3870, 685, 3900, 715]
+	      Position		      [3800, 670, 3830, 700]
 	      ZOrder		      -13
 	      ShowName		      off
 	      Port {
@@ -3838,7 +3880,7 @@ Model {
 	      BlockType		      Memory
 	      Name		      "Memory9"
 	      SID		      "29126:82469"
-	      Position		      [1485, 1225, 1515, 1255]
+	      Position		      [1515, 1225, 1545, 1255]
 	      ZOrder		      -13
 	      ShowName		      off
 	    }
@@ -3847,7 +3889,7 @@ Model {
 	      Name		      "Mux"
 	      SID		      "29126:82470"
 	      Ports		      [5, 1]
-	      Position		      [1070, 1140, 1075, 1340]
+	      Position		      [1100, 1140, 1105, 1340]
 	      ZOrder		      -12
 	      ShowName		      off
 	      Inputs		      "5"
@@ -3858,7 +3900,7 @@ Model {
 	      Name		      "Mux1"
 	      SID		      "29126:82471"
 	      Ports		      [7, 1]
-	      Position		      [3205, 1318, 3210, 1532]
+	      Position		      [3235, 1318, 3240, 1532]
 	      ZOrder		      -12
 	      ShowName		      off
 	      Inputs		      "7"
@@ -3869,7 +3911,7 @@ Model {
 	      Name		      "Mux2"
 	      SID		      "29126:82472"
 	      Ports		      [2, 1]
-	      Position		      [3310, 1586, 3315, 1639]
+	      Position		      [3340, 1586, 3345, 1639]
 	      ZOrder		      -12
 	      ShowName		      off
 	      Inputs		      "2"
@@ -3880,7 +3922,7 @@ Model {
 	      Name		      "Mux3"
 	      SID		      "29126:82660"
 	      Ports		      [2, 1]
-	      Position		      [1000, 1374, 1005, 1476]
+	      Position		      [1030, 1374, 1035, 1476]
 	      ZOrder		      3109
 	      ShowName		      off
 	      Inputs		      "2"
@@ -3891,7 +3933,7 @@ Model {
 	      Name		      "Mux4"
 	      SID		      "29126:82677"
 	      Ports		      [3, 1]
-	      Position		      [125, 658, 130, 822]
+	      Position		      [125, 663, 130, 827]
 	      ZOrder		      3176
 	      ShowName		      off
 	      Inputs		      "3"
@@ -3902,7 +3944,7 @@ Model {
 	      Name		      "PQ_Calculator"
 	      SID		      "29126:82473"
 	      Ports		      [2, 2]
-	      Position		      [600, 956, 655, 1014]
+	      Position		      [580, 963, 670, 1027]
 	      ZOrder		      -17
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      MinAlgLoopOccurrences   off
@@ -4026,7 +4068,7 @@ Model {
 		}
 		Block {
 		  BlockType		  Outport
-		  Name			  "P"
+		  Name			  "P - kW"
 		  SID			  "29126:82479"
 		  Position		  [660, 138, 690, 152]
 		  ZOrder		  -2
@@ -4035,7 +4077,7 @@ Model {
 		}
 		Block {
 		  BlockType		  Outport
-		  Name			  "Q"
+		  Name			  "Q - kVAR"
 		  SID			  "29126:82480"
 		  Position		  [660, 158, 690, 172]
 		  ZOrder		  -2
@@ -4047,7 +4089,7 @@ Model {
 		  Labels		  [0, 0]
 		  SrcBlock		  "Demux"
 		  SrcPort		  2
-		  DstBlock		  "Q"
+		  DstBlock		  "Q - kVAR"
 		  DstPort		  1
 		}
 		Line {
@@ -4055,7 +4097,7 @@ Model {
 		  Labels		  [0, 0]
 		  SrcBlock		  "Demux"
 		  SrcPort		  1
-		  DstBlock		  "P"
+		  DstBlock		  "P - kW"
 		  DstPort		  1
 		}
 		Line {
@@ -4112,7 +4154,7 @@ Model {
 	      Name		      "Phase_Calc"
 	      SID		      "29126:82481"
 	      Ports		      [1, 3]
-	      Position		      [1270, 312, 1375, 378]
+	      Position		      [1300, 312, 1405, 378]
 	      ZOrder		      -17
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      MinAlgLoopOccurrences   off
@@ -4337,7 +4379,7 @@ Model {
 	      Name		      "Phase_Calc1"
 	      SID		      "29126:82495"
 	      Ports		      [1, 3]
-	      Position		      [1260, 447, 1365, 513]
+	      Position		      [1290, 447, 1395, 513]
 	      ZOrder		      -17
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      MinAlgLoopOccurrences   off
@@ -4562,7 +4604,7 @@ Model {
 	      Name		      "R25 - Sync Check v0.1"
 	      SID		      "29126:82674"
 	      Ports		      [5, 1]
-	      Position		      [2925, 499, 3125, 651]
+	      Position		      [2955, 499, 3155, 651]
 	      ZOrder		      3172
 	      BackgroundColor	      "gray"
 	      LibraryVersion	      "1.9"
@@ -4582,7 +4624,7 @@ Model {
 	      Name		      "RMS_Calculator"
 	      SID		      "29126:82510"
 	      Ports		      [1, 1]
-	      Position		      [180, 726, 280, 754]
+	      Position		      [180, 731, 280, 759]
 	      ZOrder		      -17
 	      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
 	      ShowName		      off
@@ -4595,7 +4637,7 @@ Model {
 	      MaskHideContents	      off
 	      System {
 		Name			"RMS_Calculator"
-		Location		[-8, -8, 1928, 1048]
+		Location		[-8, 0, 1928, 1176]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -4607,12 +4649,12 @@ Model {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"100"
+		ZoomFactor		"337"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Signal"
 		  SID			  "29126:82511"
-		  Position		  [45, 93, 75, 107]
+		  Position		  [45, 88, 75, 102]
 		  ZOrder		  -1
 		  IconDisplay		  "Port number"
 		}
@@ -4637,7 +4679,7 @@ Model {
 		  Name			  "Product3"
 		  SID			  "29126:82513"
 		  Ports			  [2, 1]
-		  Position		  [200, 92, 230, 123]
+		  Position		  [190, 82, 225, 133]
 		  ZOrder		  -19
 		  InputSameDT		  off
 		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -4681,7 +4723,7 @@ Model {
 		  SrcPort		  1
 		  Points		  [50, 0]
 		  Branch {
-		    Points		    [0, 15]
+		    Points		    [0, 25]
 		    DstBlock		    "Product3"
 		    DstPort		    2
 		  }
@@ -4691,1007 +4733,17 @@ Model {
 		  }
 		}
 	      }
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "Relay_param"
-	      SID		      "29126:82591"
-	      Ports		      [1, 3]
-	      Position		      [2105, 350, 2245, 400]
-	      ZOrder		      1904
-	      BackgroundColor	      "[0.254902, 0.678431, 0.388235]"
-	      LibraryVersion	      "1.15"
-	      SourceBlock	      "relay_mgc_cmd_lib/Relay_param"
-	      SourceType	      "MGC Commands through MODBUS"
-	      relay_settings	      "relay_settings"
-	      Port {
-		PortNumber		3
-		Name			"reset"
-		PropagatedSignals	"reset"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "State Condition Mng"
-	      SID		      "29126:82651"
-	      Ports		      [6, 1]
-	      Position		      [3475, 611, 3645, 789]
-	      ZOrder		      2044
-	      BackgroundColor	      "[0.827451, 0.839216, 0.156863]"
-	      AncestorBlock	      "relay_tripOutMng_lib/State Condition Mng"
-	      LibraryVersion	      "*1.18"
-	      MinAlgLoopOccurrences   off
-	      PropExecContextOutsideSubsystem off
-	      RTWSystemCode	      "Auto"
-	      FunctionWithSeparateData off
-	      Opaque		      off
-	      RequestExecContextInheritance off
-	      MaskHideContents	      off
-	      Port {
-		PortNumber		1
-		Name			"trip_out"
-		PropagatedSignals	"trip_out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      System {
-		Name			"State Condition Mng"
-		Location		[0, 0, 960, 1040]
-		Open			off
-		ModelBrowserVisibility	on
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SIDHighWatermark	"85"
-		SIDPrevWatermark	"78"
-		Block {
-		  BlockType		  Inport
-		  Name			  "R25"
-		  SID			  "29126:82651:39"
-		  Position		  [135, 183, 175, 197]
-		  ZOrder		  2039
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "op_mode"
-		  SID			  "29126:82651:40"
-		  Position		  [135, 223, 175, 237]
-		  ZOrder		  2040
-		  Port			  "2"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "fault_flag"
-		  SID			  "29126:82651:41"
-		  Position		  [135, 258, 175, 272]
-		  ZOrder		  2041
-		  Port			  "3"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "clock_time"
-		  SID			  "29126:82651:42"
-		  Position		  [525, 183, 565, 197]
-		  ZOrder		  2042
-		  Port			  "4"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "init_cond_time"
-		  SID			  "29126:82651:43"
-		  Position		  [525, 218, 565, 232]
-		  ZOrder		  2043
-		  Port			  "5"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "initial_condition"
-		  SID			  "29126:82651:44"
-		  Position		  [525, 258, 560, 272]
-		  ZOrder		  2045
-		  Port			  "6"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  DataTypeConversion
-		  Name			  "Data Type Conversion1"
-		  SID			  "29126:82651:45"
-		  Position		  [365, 712, 405, 728]
-		  ZOrder		  2027
-		  ShowName		  off
-		  RndMeth		  "Floor"
-		  SaturateOnIntegerOverflow off
-		}
-		Block {
-		  BlockType		  DataTypeConversion
-		  Name			  "Data Type Conversion2"
-		  SID			  "29126:82651:72"
-		  Position		  [915, 545, 955, 565]
-		  ZOrder		  2050
-		  ShowName		  off
-		  RndMeth		  "Floor"
-		  SaturateOnIntegerOverflow off
-		}
-		Block {
-		  BlockType		  Reference
-		  Name			  "Detect\nChange1"
-		  SID			  "29126:82651:46"
-		  Ports			  [1, 1]
-		  Position		  [270, 590, 325, 610]
-		  ZOrder		  2029
-		  ShowName		  off
-		  LibraryVersion	  "1.274"
-		  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nChange"
-		  SourceType		  "Detect Change"
-		  vinit			  "0"
-		  InputProcessing	  "Inherited"
-		  OutDataTypeStr	  "boolean"
-		}
-		Block {
-		  BlockType		  Fcn
-		  Name			  "Fcn"
-		  SID			  "29126:82651:47"
-		  Position		  [195, 712, 255, 728]
-		  ZOrder		  2033
-		  ShowName		  off
-		  Expr			  "u(1)>u(2)"
-		  Port {
-		    PortNumber		    1
-		    Name		    " init_time > clock"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Fcn
-		  Name			  "Fcn1"
-		  SID			  "29126:82651:48"
-		  Position		  [610, 257, 650, 273]
-		  ZOrder		  2048
-		  ShowName		  off
-		  Expr			  "u(1)!=0"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From"
-		  SID			  "29126:82651:49"
-		  Position		  [650, 521, 815, 539]
-		  ZOrder		  1972
-		  ShowName		  off
-		  GotoTag		  "op_mode_in"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From1"
-		  SID			  "29126:82651:50"
-		  Position		  [650, 621, 815, 639]
-		  ZOrder		  2047
-		  ShowName		  off
-		  GotoTag		  "init_cond_val"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From3"
-		  SID			  "29126:82651:51"
-		  Position		  [650, 571, 815, 589]
-		  ZOrder		  1985
-		  ShowName		  off
-		  GotoTag		  "clock_time"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From4"
-		  SID			  "29126:82651:52"
-		  Position		  [90, 591, 220, 609]
-		  ZOrder		  1986
-		  ShowName		  off
-		  GotoTag		  "fault_flag"
-		  Port {
-		    PortNumber		    1
-		    Name		    "fault_flag"
-		    PropagatedSignals	    "trip_in"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From5"
-		  SID			  "29126:82651:53"
-		  Position		  [650, 546, 815, 564]
-		  ZOrder		  2032
-		  ShowName		  off
-		  GotoTag		  "fault_flag"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From6"
-		  SID			  "29126:82651:54"
-		  Position		  [650, 496, 815, 514]
-		  ZOrder		  1988
-		  ShowName		  off
-		  GotoTag		  "R25"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From7"
-		  SID			  "29126:82651:55"
-		  Position		  [20, 721, 115, 739]
-		  ZOrder		  2035
-		  ShowName		  off
-		  GotoTag		  "clock_time"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From8"
-		  SID			  "29126:82651:56"
-		  Position		  [650, 596, 815, 614]
-		  ZOrder		  2037
-		  ShowName		  off
-		  GotoTag		  "init_cond_time"
-		}
-		Block {
-		  BlockType		  From
-		  Name			  "From9"
-		  SID			  "29126:82651:57"
-		  Position		  [20, 701, 115, 719]
-		  ZOrder		  2038
-		  ShowName		  off
-		  GotoTag		  "init_cond_time"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto"
-		  SID			  "29126:82651:58"
-		  Position		  [300, 257, 380, 273]
-		  ZOrder		  1973
-		  ShowName		  off
-		  GotoTag		  "fault_flag"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto1"
-		  SID			  "29126:82651:59"
-		  Position		  [700, 257, 790, 273]
-		  ZOrder		  2046
-		  ShowName		  off
-		  GotoTag		  "init_cond_val"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto2"
-		  SID			  "29126:82651:60"
-		  Position		  [295, 182, 380, 198]
-		  ZOrder		  1975
-		  ShowName		  off
-		  GotoTag		  "R25"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto3"
-		  SID			  "29126:82651:61"
-		  Position		  [300, 222, 380, 238]
-		  ZOrder		  1976
-		  ShowName		  off
-		  GotoTag		  "op_mode_in"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto6"
-		  SID			  "29126:82651:62"
-		  Position		  [700, 182, 790, 198]
-		  ZOrder		  1982
-		  ShowName		  off
-		  GotoTag		  "clock_time"
-		}
-		Block {
-		  BlockType		  Goto
-		  Name			  "Goto7"
-		  SID			  "29126:82651:63"
-		  Position		  [700, 217, 790, 233]
-		  ZOrder		  2036
-		  ShowName		  off
-		  GotoTag		  "init_cond_time"
-		}
-		Block {
-		  BlockType		  Logic
-		  Name			  "Logical\nOperator1"
-		  SID			  "29126:82651:76"
-		  Ports			  [2, 1]
-		  Position		  [375, 602, 405, 633]
-		  ZOrder		  3119
-		  ShowName		  off
-		  Operator		  "OR"
-		  AllPortsSameDT	  off
-		  OutDataTypeStr	  "boolean"
-		  Port {
-		    PortNumber		    1
-		    Name		    "ORd"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Logic
-		  Name			  "Logical\nOperator2"
-		  SID			  "29126:82651:85"
-		  Ports			  [1, 1]
-		  Position		  [300, 647, 325, 663]
-		  ZOrder		  3178
-		  ShowName		  off
-		  Operator		  "NOT"
-		  AllPortsSameDT	  off
-		  OutDataTypeStr	  "boolean"
-		}
-		Block {
-		  BlockType		  Logic
-		  Name			  "Logical\nOperator3"
-		  SID			  "29126:82651:80"
-		  Ports			  [1, 1]
-		  Position		  [850, 547, 875, 563]
-		  ZOrder		  3175
-		  ShowName		  off
-		  Operator		  "NOT"
-		  AllPortsSameDT	  off
-		  OutDataTypeStr	  "boolean"
-		}
-		Block {
-		  BlockType		  Memory
-		  Name			  "Memory"
-		  SID			  "29126:82651:82"
-		  Position		  [285, 710, 310, 730]
-		  ZOrder		  3177
-		  ShowName		  off
-		  X0			  "1"
-		  InheritSampleTime	  on
-		}
-		Block {
-		  BlockType		  Mux
-		  Name			  "Mux"
-		  SID			  "29126:82651:64"
-		  Ports			  [2, 1]
-		  Position		  [155, 701, 160, 739]
-		  ZOrder		  2034
-		  ShowName		  off
-		  Inputs		  "2"
-		  DisplayOption		  "bar"
-		}
-		Block {
-		  BlockType		  Scope
-		  Name			  "RS"
-		  SID			  "29126:82651:79"
-		  Ports			  [5]
-		  Position		  [655, 361, 690, 449]
-		  ZOrder		  3174
-		  BackgroundColor	  "red"
-		  Floating		  off
-		  Location		  [1475, 56, 1913, 1031]
-		  Open			  on
-		  NumInputPorts		  "5"
-		  List {
-		    ListType		    AxesTitles
-		    axes1		    "%<SignalLabel>"
-		    axes2		    "%<SignalLabel>"
-		    axes3		    "%<SignalLabel>"
-		    axes4		    "%<SignalLabel>"
-		    axes5		    "%<SignalLabel>"
-		  }
-		  List {
-		    ListType		    ScopeGraphics
-		    FigureColor		    "[0.5 0.5 0.5]"
-		    AxesColor		    "[0 0 0]"
-		    AxesTickColor	    "[1 1 1]"
-		    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-		    LineStyles		    "-|-|-|-|-|-"
-		    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-		    MarkerStyles	    "none|none|none|none|none|none"
-		  }
-		  ShowLegends		  off
-		  TimeRange		  "1"
-		  YMin			  "0~-1~-1~-1~0"
-		  YMax			  "1~1~1~1~1"
-		  SaveName		  "ScopeData2"
-		  DataFormat		  "StructureWithTime"
-		  LimitDataPoints	  off
-		  SampleTime		  "0"
-		}
-		Block {
-		  BlockType		  Reference
-		  Name			  "S-R\nFlip-Flop1"
-		  SID			  "29126:82651:65"
-		  Ports			  [2, 2]
-		  Position		  [450, 635, 495, 710]
-		  ZOrder		  2025
-		  ShowName		  off
-		  LibraryVersion	  "1.44"
-		  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
-		  SourceType		  "SRFlipFlop"
-		  initial_condition	  "0"
-		  Port {
-		    PortNumber		    1
-		    Name		    "active_logic"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Terminator
-		  Name			  "Terminator"
-		  SID			  "29126:82651:66"
-		  Position		  [520, 682, 535, 698]
-		  ZOrder		  2031
-		  ShowName		  off
-		}
-		Block {
-		  BlockType		  SubSystem
-		  Name			  "trip_out mng fnc"
-		  SID			  "29126:82651:67"
-		  Ports			  [7, 1]
-		  Position		  [990, 496, 1160, 664]
-		  ZOrder		  2023
-		  ErrorFcn		  "Stateflow.Translate.translate"
-		  PermitHierarchicalResolution "ExplicitOnly"
-		  TreatAsAtomicUnit	  on
-		  MinAlgLoopOccurrences	  off
-		  PropExecContextOutsideSubsystem off
-		  RTWSystemCode		  "Auto"
-		  FunctionWithSeparateData off
-		  Opaque		  off
-		  RequestExecContextInheritance	off
-		  MaskHideContents	  off
-		  SFBlockType		  "MATLAB Function"
-		  Port {
-		    PortNumber		    1
-		    Name		    "trip_out"
-		    PropagatedSignals	    "trip_out"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  System {
-		    Name		    "trip_out mng fnc"
-		    Location		    [227, 345, 838, 789]
-		    Open		    off
-		    ModelBrowserVisibility  on
-		    ModelBrowserWidth	    200
-		    ScreenColor		    "white"
-		    PaperOrientation	    "landscape"
-		    PaperPositionMode	    "auto"
-		    PaperType		    "usletter"
-		    PaperUnits		    "inches"
-		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-		    TiledPageScale	    1
-		    ShowPageBoundaries	    off
-		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "165"
-		    SIDPrevWatermark	    "115"
-		    Block {
-		    BlockType		    Inport
-		    Name		    "bool_R25"
-		    SID			    "29126:82651:67::18"
-		    Position		    [20, 101, 40, 119]
-		    ZOrder		    -2
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "op_mode_in"
-		    SID			    "29126:82651:67::1"
-		    Position		    [20, 136, 40, 154]
-		    ZOrder		    -3
-		    Port		    "2"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "trip_in"
-		    SID			    "29126:82651:67::24"
-		    Position		    [20, 171, 40, 189]
-		    ZOrder		    -4
-		    Port		    "3"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "clock_time"
-		    SID			    "29126:82651:67::67"
-		    Position		    [20, 206, 40, 224]
-		    ZOrder		    8
-		    Port		    "4"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "init_cond_time"
-		    SID			    "29126:82651:67::68"
-		    Position		    [20, 246, 40, 264]
-		    ZOrder		    9
-		    Port		    "5"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "initial_condition"
-		    SID			    "29126:82651:67::116"
-		    Position		    [20, 281, 40, 299]
-		    ZOrder		    13
-		    Port		    "6"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Inport
-		    Name		    "activate_logic"
-		    SID			    "29126:82651:67::117"
-		    Position		    [20, 316, 40, 334]
-		    ZOrder		    14
-		    Port		    "7"
-		    IconDisplay		    "Port number"
-		    }
-		    Block {
-		    BlockType		    Demux
-		    Name		    " Demux "
-		    SID			    "29126:82651:67::164"
-		    Ports		    [1, 1]
-		    Position		    [270, 230, 320, 270]
-		    ZOrder		    28
-		    Outputs		    "1"
-		    }
-		    Block {
-		    BlockType		    S-Function
-		    Name		    " SFunction "
-		    SID			    "29126:82651:67::163"
-		    Tag			    "Stateflow S-Function UnitTest_relay_model 1"
-		    Ports		    [7, 2]
-		    Position		    [180, 100, 230, 260]
-		    ZOrder		    27
-		    FunctionName	    "sf_sfun"
-		    PortCounts		    "[7 2]"
-		    EnableBusSupport	    on
-		    Port {
-		    PortNumber		    2
-		    Name		    "trip_out"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		    }
-		    }
-		    Block {
-		    BlockType		    Terminator
-		    Name		    " Terminator "
-		    SID			    "29126:82651:67::165"
-		    Position		    [460, 241, 480, 259]
-		    ZOrder		    29
-		    }
-		    Block {
-		    BlockType		    Outport
-		    Name		    "trip_out"
-		    SID			    "29126:82651:67::23"
-		    Position		    [460, 101, 480, 119]
-		    ZOrder		    -9
-		    IconDisplay		    "Port number"
-		    }
-		    Line {
-		    SrcBlock		    "bool_R25"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "op_mode_in"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "trip_in"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    3
-		    }
-		    Line {
-		    SrcBlock		    "clock_time"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    4
-		    }
-		    Line {
-		    SrcBlock		    "init_cond_time"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    5
-		    }
-		    Line {
-		    SrcBlock		    "initial_condition"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    6
-		    }
-		    Line {
-		    SrcBlock		    "activate_logic"
-		    SrcPort		    1
-		    DstBlock		    " SFunction "
-		    DstPort		    7
-		    }
-		    Line {
-		    Name		    "trip_out"
-		    Labels		    [0, 0]
-		    SrcBlock		    " SFunction "
-		    SrcPort		    2
-		    DstBlock		    "trip_out"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    " Demux "
-		    SrcPort		    1
-		    DstBlock		    " Terminator "
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    " SFunction "
-		    SrcPort		    1
-		    DstBlock		    " Demux "
-		    DstPort		    1
-		    }
-		  }
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "trip_out"
-		  SID			  "29126:82651:68"
-		  Position		  [1200, 573, 1230, 587]
-		  ZOrder		  2044
-		  IconDisplay		  "Port number"
-		}
-		Line {
-		  SrcBlock		  "Fcn1"
-		  SrcPort		  1
-		  DstBlock		  "Goto1"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "From1"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  6
-		}
-		Line {
-		  SrcBlock		  "initial_condition"
-		  SrcPort		  1
-		  DstBlock		  "Fcn1"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "active_logic"
-		  Labels		  [0, 1]
-		  SrcBlock		  "S-R\nFlip-Flop1"
-		  SrcPort		  1
-		  Points		  [38, 0]
-		  Branch {
-		    Points		    [0, -250]
-		    DstBlock		    "RS"
-		    DstPort		    3
-		  }
-		  Branch {
-		    DstBlock		    "trip_out mng fnc"
-		    DstPort		    7
-		  }
-		}
-		Line {
-		  SrcBlock		  "From9"
-		  SrcPort		  1
-		  DstBlock		  "Mux"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "From7"
-		  SrcPort		  1
-		  DstBlock		  "Mux"
-		  DstPort		  2
-		}
-		Line {
-		  SrcBlock		  "From8"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  5
-		}
-		Line {
-		  SrcBlock		  "Memory"
-		  SrcPort		  1
-		  DstBlock		  "Data Type Conversion1"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Mux"
-		  SrcPort		  1
-		  DstBlock		  "Fcn"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Data Type Conversion1"
-		  SrcPort		  1
-		  Points		  [17, 0; 0, -30]
-		  DstBlock		  "S-R\nFlip-Flop1"
-		  DstPort		  2
-		}
-		Line {
-		  SrcBlock		  "From5"
-		  SrcPort		  1
-		  DstBlock		  "Logical\nOperator3"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "S-R\nFlip-Flop1"
-		  SrcPort		  2
-		  DstBlock		  "Terminator"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "fault_flag"
-		  SrcBlock		  "From4"
-		  SrcPort		  1
-		  Points		  [18, 0]
-		  Branch {
-		    Labels		    [2, 1]
-		    Points		    [0, -22; 282, 0; 0, -188]
-		    DstBlock		    "RS"
-		    DstPort		    2
-		  }
-		  Branch {
-		    DstBlock		    "Detect\nChange1"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  SrcBlock		  "From3"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  4
-		}
-		Line {
-		  SrcBlock		  "R25"
-		  SrcPort		  1
-		  DstBlock		  "Goto2"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "From6"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "init_cond_time"
-		  SrcPort		  1
-		  DstBlock		  "Goto7"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "From"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  2
-		}
-		Line {
-		  SrcBlock		  "clock_time"
-		  SrcPort		  1
-		  DstBlock		  "Goto6"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "op_mode"
-		  SrcPort		  1
-		  DstBlock		  "Goto3"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "trip_out"
-		  SrcBlock		  "trip_out mng fnc"
-		  SrcPort		  1
-		  Points		  [10, 0]
-		  Branch {
-		    Labels		    [2, 1]
-		    Points		    [0, 111; -540, 0; 0, -271]
-		    DstBlock		    "RS"
-		    DstPort		    4
-		  }
-		  Branch {
-		    DstBlock		    "trip_out"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  SrcBlock		  "Detect\nChange1"
-		  SrcPort		  1
-		  Points		  [20, 0; 0, 10]
-		  DstBlock		  "Logical\nOperator1"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "ORd"
-		  SrcBlock		  "Logical\nOperator1"
-		  SrcPort		  1
-		  Points		  [18, 0]
-		  Branch {
-		    Labels		    [1, 1]
-		    Points		    [159, 0; 0, -185]
-		    DstBlock		    "RS"
-		    DstPort		    5
-		  }
-		  Branch {
-		    Points		    [0, 35]
-		    DstBlock		    "S-R\nFlip-Flop1"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  SrcBlock		  "Logical\nOperator3"
-		  SrcPort		  1
-		  DstBlock		  "Data Type Conversion2"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Data Type Conversion2"
-		  SrcPort		  1
-		  DstBlock		  "trip_out mng fnc"
-		  DstPort		  3
-		}
-		Line {
-		  SrcBlock		  "fault_flag"
-		  SrcPort		  1
-		  DstBlock		  "Goto"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  " init_time > clock"
-		  SrcBlock		  "Fcn"
-		  SrcPort		  1
-		  Points		  [8, 0]
-		  Branch {
-		    Points		    [0, -65]
-		    DstBlock		    "Logical\nOperator2"
-		    DstPort		    1
-		  }
-		  Branch {
-		    DstBlock		    "Memory"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  SrcBlock		  "Logical\nOperator2"
-		  SrcPort		  1
-		  Points		  [20, 0; 0, -30]
-		  DstBlock		  "Logical\nOperator1"
-		  DstPort		  2
-		}
-		Annotation {
-		  SID			  "29126:82651:74"
-		  Name			  "negating the signal from the protection functions. \nThus, 0-open, 1-close\n-> If trip functions are not"
-		  " HI, then true"
-		  Position		  [158, 312]
-		  HorizontalAlignment	  "left"
-		  ForegroundColor	  "blue"
-		  ZOrder		  -1
-		}
-		Annotation {
-		  SID			  "29126:82651:71"
-		  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of char"
-		  "ge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to "
-		  "deal in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% mer"
-		  "ge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Sof"
-		  "tware is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and th"
-		  "is permission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTW"
-		  "ARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE "
-		  "WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUT"
-		  "HORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CON"
-		  "TRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS"
-		  " IN THE SOFTWARE.\n%\n%\n%%"
-		  Position		  [136, 17]
-		  HorizontalAlignment	  "left"
-		  ZOrder		  -2
-		  FontWeight		  "bold"
-		}
-		Annotation {
-		  SID			  "29126:82651:70"
-		  Name			  "The RS-FF is on reset until the clock time exceeds the initial condition threshold time. \nThen, the res"
-		  "et is permanently disable"
-		  Position		  [315, 769]
-		  ZOrder		  -3
-		}
-		Annotation {
-		  SID			  "29126:82651:69"
-		  Name			  "If a change in the trip_in signal is detected, the RS FF will hold active_logic high\n to enable the eff"
-		  "ect of trip_in given than init_cond_time < clock_time "
-		  Position		  [282, 557]
-		  ZOrder		  -4
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "29126:82523"
-	      Ports		      [5, 1]
-	      Position		      [1335, 1148, 1375, 1332]
-	      ZOrder		      -32
-	      ShowName		      off
-	      Inputs		      "+++++"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum1"
-	      SID		      "29126:82524"
-	      Ports		      [3, 1]
-	      Position		      [1345, 1378, 1385, 1522]
-	      ZOrder		      -32
-	      ShowName		      off
-	      Inputs		      "+++"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator"
-	      SID		      "29126:82525"
-	      Position		      [1180, 360, 1200, 380]
-	      ZOrder		      -20
-	      ShowName		      off
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator1"
-	      SID		      "29126:82526"
-	      Position		      [1180, 445, 1200, 465]
-	      ZOrder		      -20
-	      ShowName		      off
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator2"
-	      SID		      "29126:82527"
-	      Position		      [1180, 495, 1200, 515]
-	      ZOrder		      -20
-	      ShowName		      off
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator3"
-	      SID		      "29126:82682"
-	      Position		      [505, 810, 525, 830]
-	      ZOrder		      3181
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator4"
-	      SID		      "29126:82685"
-	      Position		      [500, 860, 520, 880]
-	      ZOrder		      3184
 	    }
 	    Block {
 	      BlockType		      Scope
-	      Name		      "V"
-	      SID		      "29126:82676"
+	      Name		      "RS"
+	      SID		      "29126:82686"
 	      Ports		      [5]
-	      Position		      [3305, 1026, 3340, 1114]
-	      ZOrder		      3175
+	      Position		      [2280, 881, 2365, 999]
+	      ZOrder		      3185
 	      BackgroundColor	      "red"
 	      Floating		      off
-	      Location		      [1475, 56, 1913, 1031]
+	      Location		      [971, 56, 1915, 1191]
 	      Open		      on
 	      NumInputPorts	      "5"
 	      List {
@@ -5712,20 +4764,139 @@ Model {
 		LineWidths		"[0.5 0.5 0.5 0.5 0.5 0.5]"
 		MarkerStyles		"none|none|none|none|none|none"
 	      }
-	      ShowLegends	      off
-	      TimeRange		      "1"
-	      YMin		      "0~7966.5~0~-1~-1"
-	      YMax		      "8000~7969~1.5~1~1"
+	      ShowLegends	      on
+	      LegendLocations	      "0.85576     0.94934     0.11229    0.017915\n0.85576     0.75727     0.11229    0.017915"
+	      "\n0.85576     0.56608     0.11229    0.017915\n0.85576     0.37489     0.11229    0.017915\n0.85576     0.18282"
+	      "     0.11229    0.017915"
+	      TimeRange		      "0.005152887882219712"
+	      YMin		      "0~0~-1~-1~-1"
+	      YMax		      "12000~14000~1~1~1"
 	      SaveName		      "ScopeData1"
 	      DataFormat	      "StructureWithTime"
 	      LimitDataPoints	      off
 	      SampleTime	      "0"
 	    }
 	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator"
+	      SID		      "29126:82688"
+	      Ports		      [2, 1]
+	      Position		      [2870, 292, 2900, 323]
+	      ZOrder		      3186
+	      ShowName		      off
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Relay_param"
+	      SID		      "29126:82591"
+	      Ports		      [1, 3]
+	      Position		      [2135, 350, 2275, 400]
+	      ZOrder		      1904
+	      BackgroundColor	      "[0.254902, 0.678431, 0.388235]"
+	      LibraryVersion	      "1.15"
+	      SourceBlock	      "relay_mgc_cmd_lib/Relay_param"
+	      SourceType	      "MGC Commands through MODBUS"
+	      relay_settings	      "relay_settings"
+	      Port {
+		PortNumber		3
+		Name			"reset"
+		PropagatedSignals	"reset"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "State Condition Mng"
+	      SID		      "29126:82651"
+	      Ports		      [5, 1]
+	      Position		      [3505, 596, 3675, 774]
+	      ZOrder		      2044
+	      BackgroundColor	      "[0.827451, 0.839216, 0.156863]"
+	      LibraryVersion	      "1.19"
+	      SourceBlock	      "relay_tripOutMng_lib/State Condition Mng"
+	      SourceType	      "SubSystem"
+	      Port {
+		PortNumber		1
+		Name			"trip_out"
+		PropagatedSignals	"out"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "29126:82523"
+	      Ports		      [5, 1]
+	      Position		      [1365, 1148, 1405, 1332]
+	      ZOrder		      -32
+	      ShowName		      off
+	      Inputs		      "+++++"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      SID		      "29126:82524"
+	      Ports		      [3, 1]
+	      Position		      [1375, 1378, 1415, 1522]
+	      ZOrder		      -32
+	      ShowName		      off
+	      Inputs		      "+++"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "29126:82525"
+	      Position		      [1210, 360, 1230, 380]
+	      ZOrder		      -20
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator1"
+	      SID		      "29126:82526"
+	      Position		      [1210, 445, 1230, 465]
+	      ZOrder		      -20
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator2"
+	      SID		      "29126:82527"
+	      Position		      [1210, 495, 1230, 515]
+	      ZOrder		      -20
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator3"
+	      SID		      "29126:82682"
+	      Position		      [465, 800, 485, 820]
+	      ZOrder		      3181
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator4"
+	      SID		      "29126:82685"
+	      Position		      [465, 830, 485, 850]
+	      ZOrder		      3184
+	      ShowName		      off
+	    }
+	    Block {
 	      BlockType		      From
 	      Name		      "Vabc_bus1"
 	      SID		      "29126:82528"
-	      Position		      [2790, 507, 2855, 523]
+	      Position		      [2820, 507, 2885, 523]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc"
@@ -5734,7 +4905,7 @@ Model {
 	      BlockType		      From
 	      Name		      "Vabc_bus2"
 	      SID		      "29126:82529"
-	      Position		      [2790, 537, 2855, 553]
+	      Position		      [2820, 537, 2885, 553]
 	      ZOrder		      -9
 	      ShowName		      off
 	      GotoTag		      "Vabc_line"
@@ -5743,7 +4914,7 @@ Model {
 	      BlockType		      From
 	      Name		      "Vabc_bus3"
 	      SID		      "29126:82678"
-	      Position		      [20, 787, 85, 803]
+	      Position		      [20, 792, 85, 808]
 	      ZOrder		      3177
 	      ShowName		      off
 	      GotoTag		      "Vabc_line"
@@ -5753,7 +4924,7 @@ Model {
 	      Name		      "bitwise_faults"
 	      SID		      "29126:82530"
 	      Ports		      [1, 1]
-	      Position		      [3250, 1412, 3320, 1438]
+	      Position		      [3280, 1412, 3350, 1438]
 	      ZOrder		      -184
 	      BackgroundColor	      "green"
 	      MinAlgLoopOccurrences   off
@@ -5771,7 +4942,7 @@ Model {
 	      }
 	      System {
 		Name			"bitwise_faults"
-		Location		[172, 52, 1304, 1126]
+		Location		[-8, 0, 1928, 1176]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -6036,11 +5207,20 @@ Model {
 	      }
 	    }
 	    Block {
+	      BlockType		      Constant
+	      Name		      "initial condition\ntime delay"
+	      SID		      "29126:82630"
+	      Position		      [2750, 235, 2780, 255]
+	      ZOrder		      1935
+	      BackgroundColor	      "green"
+	      Value		      "0.2"
+	    }
+	    Block {
 	      BlockType		      SubSystem
 	      Name		      "pf bitwise"
 	      SID		      "29126:82545"
 	      Ports		      [1, 1]
-	      Position		      [3395, 1602, 3465, 1628]
+	      Position		      [3425, 1602, 3495, 1628]
 	      ZOrder		      -186
 	      BackgroundColor	      "green"
 	      MinAlgLoopOccurrences   off
@@ -6199,7 +5379,7 @@ Model {
 	      Name		      "relay_protection_functions"
 	      SID		      "29126:82624"
 	      Ports		      [7, 4]
-	      Position		      [2085, 610, 2290, 750]
+	      Position		      [2115, 610, 2320, 750]
 	      ZOrder		      1930
 	      BackgroundColor	      "red"
 	      LibraryVersion	      "1.32"
@@ -6239,7 +5419,7 @@ Model {
 	      BlockType		      Outport
 	      Name		      "OUTPUT"
 	      SID		      "29126:82555"
-	      Position		      [4060, 818, 4090, 832]
+	      Position		      [4160, 848, 4190, 862]
 	      ZOrder		      -23
 	      IconDisplay	      "Port number"
 	    }
@@ -6247,7 +5427,7 @@ Model {
 	      BlockType		      Outport
 	      Name		      "TO_MODBUS"
 	      SID		      "29126:82556"
-	      Position		      [1845, 793, 1875, 807]
+	      Position		      [1875, 793, 1905, 807]
 	      ZOrder		      -23
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -6445,28 +5625,28 @@ Model {
 	    Line {
 	      SrcBlock		      "Demux2"
 	      SrcPort		      2
-	      Points		      [400, 0; 0, 65]
+	      Points		      [227, 0]
 	      Branch {
-		DstBlock		"Demux5"
+		Points			[0, 95]
+		DstBlock		"Goto8"
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 75]
-		DstBlock		"Goto8"
+		DstBlock		"Demux5"
 		DstPort			1
 	      }
 	    }
 	    Line {
 	      SrcBlock		      "Demux2"
 	      SrcPort		      1
-	      Points		      [400, 0; 0, -15]
+	      Points		      [219, 0; 0, -55]
 	      Branch {
-		DstBlock		"Demux4"
+		Points			[0, -90]
+		DstBlock		"Goto25"
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, -70]
-		DstBlock		"Goto25"
+		DstBlock		"Demux4"
 		DstPort			1
 	      }
 	    }
@@ -6742,14 +5922,14 @@ Model {
 	      Name		      "Logic_trip"
 	      SrcBlock		      "Memory8"
 	      SrcPort		      1
-	      Points		      [28, 0]
+	      Points		      [46, 0]
 	      Branch {
 		DstBlock		"Goto26"
 		DstPort			1
 	      }
 	      Branch {
-		Labels			[2, 0]
-		Points			[0, 125]
+		Labels			[4, 0]
+		Points			[0, 58; -139, 0; 0, 112]
 		DstBlock		"Bus\nCreator2"
 		DstPort			2
 	      }
@@ -6765,7 +5945,7 @@ Model {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 50]
+		Points			[0, 40]
 		DstBlock		"State Condition Mng"
 		DstPort			1
 	      }
@@ -6847,8 +6027,8 @@ Model {
 	    }
 	    Line {
 	      Name		      "Va_rms"
-	      Labels		      [1, 0]
-	      SrcBlock		      "From36"
+	      Labels		      [0, 1]
+	      SrcBlock		      "From70"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nCreator"
 	      DstPort		      6
@@ -7079,19 +6259,11 @@ Model {
 	    }
 	    Line {
 	      Name		      "Vpu"
-	      Labels		      [0, 1]
+	      Labels		      [1, 1]
 	      SrcBlock		      "Divide2"
 	      SrcPort		      1
-	      Points		      [27, 0]
-	      Branch {
-		Points			[0, 47; -246, 0; 0, -247]
-		DstBlock		"V"
-		DstPort			3
-	      }
-	      Branch {
-		DstBlock		"Bus\nCreator"
-		DstPort			8
-	      }
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      8
 	    }
 	    Line {
 	      Name		      "27"
@@ -7338,7 +6510,7 @@ Model {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Memory3"
 	      SrcPort		      1
-	      Points		      [225, 0; 0, -290]
+	      Points		      [225, 0; 0, -250]
 	      DstBlock		      "Bus\nCreator2"
 	      DstPort		      3
 	    }
@@ -7442,16 +6614,8 @@ Model {
 	    Line {
 	      SrcBlock		      "From34"
 	      SrcPort		      1
-	      Points		      [13, 0]
-	      Branch {
-		Points			[0, 20; -115, 0; 0, -240]
-		DstBlock		"V"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"Divide2"
-		DstPort			1
-	      }
+	      DstBlock		      "Divide2"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Relay_param"
@@ -7469,8 +6633,16 @@ Model {
 	    Line {
 	      SrcBlock		      "Digital Clock"
 	      SrcPort		      1
-	      DstBlock		      "Goto41"
-	      DstPort		      1
+	      Points		      [21, 0]
+	      Branch {
+		Points			[0, 105]
+		DstBlock		"Relational\nOperator"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Goto41"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "From69"
@@ -7479,23 +6651,24 @@ Model {
 	      DstPort		      4
 	    }
 	    Line {
-	      SrcBlock		      "Constant2"
+	      SrcBlock		      "initial condition\ntime delay"
 	      SrcPort		      1
-	      DstBlock		      "Goto42"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "From70"
-	      SrcPort		      1
-	      DstBlock		      "State Condition Mng"
-	      DstPort		      5
+	      Points		      [24, 0]
+	      Branch {
+		Points			[0, 70]
+		DstBlock		"Relational\nOperator"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Goto42"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      Name		      "reset"
-	      Labels		      [3, 1]
+	      Labels		      [1, 1]
 	      SrcBlock		      "Relay_param"
 	      SrcPort		      3
-	      Points		      [15, 0; 0, 15]
 	      DstBlock		      "Goto27"
 	      DstPort		      1
 	    }
@@ -7525,7 +6698,7 @@ Model {
 	      SrcBlock		      "From76"
 	      SrcPort		      1
 	      DstBlock		      "State Condition Mng"
-	      DstPort		      6
+	      DstPort		      5
 	    }
 	    Line {
 	      SrcBlock		      "Logical\nOperator"
@@ -7537,15 +6710,8 @@ Model {
 	      SrcBlock		      "Gain2"
 	      SrcPort		      1
 	      Points		      [15, 0]
-	      Branch {
-		DstBlock		"Divide2"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, 25; -176, 0; 0, -270]
-		DstBlock		"V"
-		DstPort			2
-	      }
+	      DstBlock		      "Divide2"
+	      DstPort		      2
 	    }
 	    Line {
 	      SrcBlock		      "Vabc_bus3"
@@ -7574,40 +6740,44 @@ Model {
 	    Line {
 	      SrcBlock		      "Demux2"
 	      SrcPort		      3
-	      Points		      [37, 0; 0, 35]
 	      DstBlock		      "Demux3"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Demux3"
 	      SrcPort		      2
-	      Points		      [25, 0; 0, 15]
 	      DstBlock		      "Terminator3"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Demux3"
 	      SrcPort		      3
-	      Points		      [18, 0; 0, 35]
 	      DstBlock		      "Terminator4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Goto46"
 	      DstPort		      1
 	    }
 	    Annotation {
 	      SID		      "29126:82627"
-	      Name		      "\ntime delay [sec] to activate logic. Forces the trip_out signal to the initial condition \n(speci"
-	      "fied in the settings file) until the simulation clock exceeds the threshold"
-	      Position		      [2716, 276]
+	      Name		      "time delay [sec] to activate logic. Forces the trip_out signal to the initial condition \n(specifi"
+	      "ed in the settings file) until the simulation clock exceeds the threshold\n\ntime_flag is used to activate logi"
+	      "c and enable protection functions"
+	      Position		      [2751, 116]
 	      HorizontalAlignment     "left"
 	      ZOrder		      -1
 	    }
 	    Annotation {
 	      SID		      "29126:82566"
-	      Position		      [1738, 523]
+	      Position		      [1768, 523]
 	      ZOrder		      -2
 	    }
 	    Annotation {
 	      SID		      "29126:82563"
-	      Position		      [3563, 1103]
+	      Position		      [3593, 1103]
 	      ZOrder		      -3
 	    }
 	    Annotation {
@@ -7618,7 +6788,7 @@ Model {
 	      "C37.2-2008\n\nProcedure to reclose a breaker:\n1) reset all relay functions\n2) set op_mode==1 to force breaker"
 	      " to close\n   --> The relay function 25 will automatically activate\n3) change op_mode==0 for logic based opera"
 	      "tion"
-	      Position		      [1890, 1425]
+	      Position		      [1920, 1425]
 	      HorizontalAlignment     "left"
 	      DropShadow	      on
 	      ZOrder		      -4
@@ -7631,7 +6801,7 @@ Model {
 	      " not trip)\nBit 2 = 51P (1: trip, 0: not trip)\nBit 3 = 27P (1: trip, 0: not trip)\nBit 4 = 59P (1: trip, 0: no"
 	      "t trip)\n\nTRIP STATUS HI - Register Num.: 24\nBit 0 = trip_cmd  (1: close, 0: open)\nBit 1 = 52A (1: close, 0:"
 	      " open)\nBit 2 = 52B (1: open, 0: close)"
-	      Position		      [918, 1648]
+	      Position		      [948, 1648]
 	      HorizontalAlignment     "left"
 	      DropShadow	      on
 	      ZOrder		      -5
@@ -7642,7 +6812,7 @@ Model {
 	    Annotation {
 	      SID		      "29126:82560"
 	      Name		      "Using CT primary to normalize the current. "
-	      Position		      [897, 561]
+	      Position		      [927, 561]
 	      BackgroundColor	      "red"
 	      DropShadow	      on
 	      ZOrder		      -6
@@ -7653,13 +6823,13 @@ Model {
 	    Annotation {
 	      SID		      "29126:82559"
 	      Name		      "* several signals are bitwised"
-	      Position		      [3307, 1393]
+	      Position		      [3337, 1393]
 	      ZOrder		      -7
 	    }
 	    Annotation {
 	      SID		      "29126:82558"
 	      Name		      "Importing=TRUE\nExporting=FALSE\n\nLagging (Pushing VARs)=TRUE\nLeading (Pulling VARs)=FALSE"
-	      Position		      [1145, 1074]
+	      Position		      [1175, 1074]
 	      ForegroundColor	      "blue"
 	      ZOrder		      -8
 	    }
@@ -7668,7 +6838,7 @@ Model {
 	      Name		      "* during the 2015 sympoaium, it was noticed that microgrid controllers had \ndifficulties integrat"
 	      "ing when voltage protection was active\n \n-- simulations were performed by deactivating the voltage protection"
 	      ".\nHowever, the operation of the relays function  R27 and R59 are still monitored for analysis"
-	      Position		      [1982, 819]
+	      Position		      [2012, 819]
 	      HorizontalAlignment     "left"
 	      ForegroundColor	      "red"
 	      ZOrder		      -9
@@ -7686,7 +6856,7 @@ Model {
 	      ". IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, W"
 	      "HETHER IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFT"
 	      "WARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
-	      Position		      [1886, 1142]
+	      Position		      [1916, 1142]
 	      HorizontalAlignment     "left"
 	      ZOrder		      -10
 	      FontWeight	      "bold"
@@ -7763,41 +6933,42 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "PI-Section"
-	  SID			  "29174"
-	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3000, 2350, 3045, 2410]
-	  ZOrder		  3383
-	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.28"
-	  SourceBlock		  "cables_lib/PI-Section"
-	  SourceType		  "Cable Model"
-	  cable_spec		  "[cable_spec(13, :)]"
-	  line_length		  "10000"
-	  parallel_sets		  "1"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Parallel_Constant_Load"
-	  SID			  "29219"
-	  Ports			  [0, 0, 0, 0, 0, 0, 3]
-	  Position		  [3435, 2455, 3480, 2515]
-	  ZOrder		  3393
-	  BlockMirror		  on
+	  Name			  "Series_Constant_Load"
+	  SID			  "29225"
+	  Ports			  [0, 0, 0, 0, 0, 3]
+	  Position		  [3450, 2350, 3495, 2410]
+	  ZOrder		  3397
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.98"
-	  SourceBlock		  "Load_lib/Parallel_Constant_Load"
-	  SourceType		  "Static Parallel PQ Load"
+	  SourceBlock		  "Load_lib/Series_Constant_Load"
+	  SourceType		  "Static Series PQ Load"
 	  v			  "460"
-	  kVA			  "1000"
+	  kVA			  "2500"
 	  pf			  "0.90"
 	}
 	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator"
-	  SID			  "29183"
-	  Position		  [3530, 2360, 3550, 2380]
-	  ZOrder		  3389
+	  BlockType		  Reference
+	  Name			  "Three-Phase Fault"
+	  SID			  "29222"
+	  Ports			  [0, 0, 0, 0, 0, 3]
+	  Position		  [3450, 2450, 3490, 2510]
+	  ZOrder		  3395
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Elements/Three-Phase Fault"
+	  SourceType		  "Three-Phase Fault"
+	  FaultA		  on
+	  FaultB		  on
+	  FaultC		  on
+	  FaultResistance	  "0.001"
+	  GroundFault		  on
+	  GroundResistance	  "0.001"
+	  External		  off
+	  SwitchStatus		  "[1 0]"
+	  SwitchTimes		  "[ 2.2 9]"
+	  InitialStates		  "[0 0 1]"
+	  SnubberResistance	  "1e6"
+	  SnubberCapacitance	  "inf"
+	  Measurements		  "None"
 	}
 	Block {
 	  BlockType		  Reference
@@ -7815,92 +6986,6 @@ Model {
 	  Vs			  "480"
 	  Z			  "5.75"
 	  XR			  "6.6"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "demand"
-	  SID			  "29181"
-	  Ports			  [0, 1]
-	  Position		  [3350, 2295, 3390, 2315]
-	  ZOrder		  3388
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "demand"
-	    Location		    [-8, -8, 1928, 1168]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "946"
-	    Block {
-	      BlockType		      Mux
-	      Name		      "Mux"
-	      SID		      "29178"
-	      Ports		      [2, 1]
-	      Position		      [95, 41, 100, 79]
-	      ZOrder		      3385
-	      ShowName		      off
-	      Inputs		      "2"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "kvar"
-	      SID		      "29180"
-	      Position		      [20, 75, 50, 105]
-	      ZOrder		      3387
-	      Value		      "800"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "kw"
-	      SID		      "29179"
-	      Position		      [20, 20, 50, 50]
-	      ZOrder		      3386
-	      Value		      "1600"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "o"
-	      SID		      "29182"
-	      Position		      [120, 53, 150, 67]
-	      ZOrder		      3388
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "kw"
-	      SrcPort		      1
-	      Points		      [17, 0; 0, 15]
-	      DstBlock		      "Mux"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "kvar"
-	      SrcPort		      1
-	      Points		      [12, 0; 0, -20]
-	      DstBlock		      "Mux"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Mux"
-	      SrcPort		      1
-	      DstBlock		      "o"
-	      DstPort		      1
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Outport
@@ -7968,45 +7053,24 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
-	  SrcPort		  RConn3
-	  DstBlock		  "PI-Section"
-	  DstPort		  LConn3
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
+	  SrcBlock		  "500kcmil-Mutual"
 	  SrcPort		  RConn2
-	  DstBlock		  "PI-Section"
+	  DstBlock		  "CB"
 	  DstPort		  LConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
+	  SrcBlock		  "500kcmil-Mutual"
 	  SrcPort		  RConn1
-	  DstBlock		  "PI-Section"
+	  DstBlock		  "CB"
 	  DstPort		  LConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "CB"
-	  SrcPort		  LConn2
-	  DstBlock		  "PI-Section"
-	  DstPort		  RConn2
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "CB"
-	  SrcPort		  LConn1
-	  DstBlock		  "PI-Section"
-	  DstPort		  RConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "CB"
-	  SrcPort		  LConn3
-	  DstBlock		  "PI-Section"
-	  DstPort		  RConn3
+	  SrcBlock		  "500kcmil-Mutual"
+	  SrcPort		  RConn3
+	  DstBlock		  "CB"
+	  DstPort		  LConn3
 	}
 	Line {
 	  LineType		  "Connection"
@@ -8028,19 +7092,6 @@ Model {
 	  SrcPort		  RConn3
 	  DstBlock		  "XFR DYg-30 HIL1"
 	  DstPort		  LConn3
-	}
-	Line {
-	  SrcBlock		  "demand"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  DstBlock		  "Dynamic_Load"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Dynamic_Load"
-	  SrcPort		  1
-	  DstBlock		  "Terminator"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "OpComm"
@@ -8057,33 +7108,88 @@ Model {
 	Line {
 	  SrcBlock		  "Generic_Relay_v2_1"
 	  SrcPort		  2
-	  Points		  [9, 0; 0, 85]
+	  Points		  [14, 0; 0, 85]
 	  DstBlock		  "Modbus device"
 	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Parallel_Constant_Load"
-	  SrcPort		  RConn3
-	  Points		  [-35, 0; 0, -105]
-	  DstBlock		  "XFR DYg-30 HIL1"
-	  DstPort		  RConn3
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "Parallel_Constant_Load"
-	  SrcPort		  RConn2
-	  Points		  [-18, 0; 0, -105]
+	  SrcBlock		  "Series_Constant_Load"
+	  SrcPort		  LConn2
 	  DstBlock		  "XFR DYg-30 HIL1"
 	  DstPort		  RConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "Parallel_Constant_Load"
-	  SrcPort		  RConn1
-	  Points		  [-9, 0; 0, -105]
+	  SrcBlock		  "Series_Constant_Load"
+	  SrcPort		  LConn3
+	  DstBlock		  "XFR DYg-30 HIL1"
+	  DstPort		  RConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Series_Constant_Load"
+	  SrcPort		  LConn1
 	  DstBlock		  "XFR DYg-30 HIL1"
 	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "GRID"
+	  SrcPort		  RConn2
+	  DstBlock		  "CB1"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "GRID"
+	  SrcPort		  RConn1
+	  DstBlock		  "CB1"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "GRID"
+	  SrcPort		  RConn3
+	  DstBlock		  "CB1"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual"
+	  SrcPort		  LConn2
+	  DstBlock		  "CB1"
+	  DstPort		  RConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual"
+	  SrcPort		  LConn1
+	  DstBlock		  "CB1"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual"
+	  SrcPort		  LConn3
+	  DstBlock		  "CB1"
+	  DstPort		  RConn3
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  Labels		  [2, 1]
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  Points		  [37, 0; 0, 50]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, 45]
+	  DstBlock		  "CB1"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "27190"
@@ -8309,292 +7415,11 @@ Stateflow {
     name		    "UnitTest_relay_model"
     created		    "25-Mar-2013 15:31:22"
     isLibrary		    0
-    firstTarget		    15
+    firstTarget		    2
     sfVersion		    76014001.0015
   }
-  chart {
-    id			    2
-    name		    "SM_system/Generic_Relay_v2_1/State Condition Mng/trip_out mng fnc"
-    windowPosition	    [661 458.75 213 385]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 3 0 0]
-    firstTransition	    13
-    firstJunction	    12
-    viewObj		    2
-    machine		    1
-    ssIdHighWaterMark	    25
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    4
-    chartFileNumber	    1
-    disableImplicitCasting  1
-    eml {
-      name		      "opModeChk"
-    }
-  }
-  state {
-    id			    3
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 0 0 0]
-    superState		    SUBCHART
-    subviewer		    2
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
-      "of charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software"
-      "\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modif"
-      "y,\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to wh"
-      "om the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright noti"
-      "ce and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% "
-      "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMIT"
-      "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
-      "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
-      "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
-      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction trip_out = opModeChk(bool_R25, op_mode_in, trip_in, clock_ti"
-      "me, init_cond_time, initial_condition, activate_logic)\n%#codegen\n\n% PARAMETERS:\n% bool_R25 - synch-check: in"
-      "dication of CB terminal being in synch as per the specified relay settings.\n% op_mode_in: signal from MGC on ho"
-      "w to operate the relay/CB\n% op_mode_in = [0-close/logic, 1-close/no-logic, 2-open]\n% trip_in: signal from prot"
-      "ection elements depending on system conditions\n% trip_in = (0-trip cb, 1-close cb)\n% clock_time: simulation cl"
-      "ock time\n% init_cond_time[s]: predefined time to hold the initial condition\n% initial_condition: relay setting"
-      " indicating the initial state of the CB\n% initial_condition = [0-open, 1-close]\n% activate_logic: bool signal "
-      "indicating to switch from initial condition\n% to the actual logic (0-init_cond, 1-logic)\n% trip_out: 0-open th"
-      "e cb, 1-close the cb\n\n% the trip_out signal will equal the initial_condition until the simulation\n% clock tim"
-      "e exceeds the initial condition time requierements and\n% active_logic is true\ntrip_out = initial_condition;\n\n"
-      "if (clock_time > init_cond_time) && activate_logic\n    \n    if op_mode_in == 0\n        % if conditions to app"
-      "ly the trip_in signal are met, and the\n        % operation mode dictated by the MGC is 0-logic, and the termina"
-      "ls\n        % of the CB are in synch (under specified conditions). Then, CB\n        % will receive a close sign"
-      "al while allowing the protection\n        % functions to operate and open the CB if necessary\n        trip_out "
-      "= trip_in * bool_R25;\n    elseif op_mode_in == 1\n        % if conditions to apply the trip_in signal are met, "
-      "and the\n        % operation mode dictated by the MGC is 0-close, and the terminals\n        % of the CB are in "
-      "synch (under specified conditions).  Then, CB\n        % will receive a close signal while disabling the protect"
-      "ion\n        % functions. The CB will remain closed as long as the synch-check\n        % verifies synchronism b"
-      "etween terminals\n        trip_out = 1 * bool_R25;\n    elseif op_mode_in == 2\n        % if the operation mode "
-      "dictated by the MGC is 2-open, the CB will\n        % receive an open command\n        trip_out = 0;\n    end\ne"
-      "nd\n"
-      editorLayout	      "100 M4x1[10 5 700 500]"
-    }
-  }
-  data {
-    id			    4
-    ssIdNumber		    6
-    name		    "bool_R25"
-    linkNode		    [2 0 5]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    5
-    ssIdNumber		    4
-    name		    "op_mode_in"
-    linkNode		    [2 4 6]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    6
-    ssIdNumber		    8
-    name		    "trip_out"
-    linkNode		    [2 5 7]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    7
-    ssIdNumber		    11
-    name		    "trip_in"
-    linkNode		    [2 6 8]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    8
-    ssIdNumber		    22
-    name		    "clock_time"
-    linkNode		    [2 7 9]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    9
-    ssIdNumber		    23
-    name		    "init_cond_time"
-    linkNode		    [2 8 10]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    10
-    ssIdNumber		    24
-    name		    "initial_condition"
-    linkNode		    [2 9 11]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    11
-    ssIdNumber		    25
-    name		    "activate_logic"
-    linkNode		    [2 10 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  junction {
-    id			    12
-    position		    [23.5747 49.5747 7]
-    chart		    2
-    linkNode		    [2 0 0]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    13
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      12
-      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    2
-    linkNode		    [2 0 0]
-    dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  instance {
-    id			    14
-    name		    "SM_system/Generic_Relay_v2_1/State Condition Mng/trip_out mng fnc"
-    machine		    1
-    chart		    2
-  }
   target {
-    id			    15
+    id			    2
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
