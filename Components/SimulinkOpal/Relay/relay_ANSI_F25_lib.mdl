@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-4.0, -4.0, 1928.0, 1164.0]
+      Location		      [1912.0, -8.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1012.0]
+	Extents			[1693.0, 1050.0]
 	ZoomFactor		[1.4642857142857144]
-	Offset			[68.768292682926869, 87.4390243902439]
+	Offset			[68.768292682927154, 87.4390243902439]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "g73labuser"
+  LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 06 13:29:42 2016"
-  RTWModifiedTimeStamp	  402931723
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Thu Dec 08 13:57:20 2016"
+  RTWModifiedTimeStamp	  403106196
+  ModelVersionFormat	  "1.%<AutoIncrement:10>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -724,10 +724,45 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
       BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      DiscreteIntegrator
+      IntegratorMethod	      "Integration: Forward Euler"
+      gainval		      "1.0"
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      InitialConditionMode    "State and output"
+      SampleTime	      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      IgnoreLimit	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Fcn
@@ -844,6 +879,14 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      InputSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      S-Function
       FunctionName	      "system"
       SFunctionModules	      "''"
@@ -895,7 +938,7 @@ Library {
   }
   System {
     Name		    "relay_ANSI_F25_lib"
-    Location		    [-4, -4, 1924, 1160]
+    Location		    [1912, -8, 3848, 1208]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -909,16 +952,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "146"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "273"
+    SIDHighWatermark	    "324"
     Block {
       BlockType		      SubSystem
       Name		      "R25 - Sync Check v0.1"
       SID		      "176"
       Ports		      [5, 1]
       Position		      [845, 234, 1045, 386]
-      ZOrder		      3172
+      ZOrder		      3171
       BackgroundColor	      "gray"
-      LibraryVersion	      "*1.7"
+      LibraryVersion	      "*1.9"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -947,7 +990,7 @@ Library {
       }
       System {
 	Name			"R25 - Sync Check v0.1"
-	Location		[-4, -4, 1924, 1160]
+	Location		[-8, -8, 1928, 1168]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -959,7 +1002,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"118"
+	ZoomFactor		"106"
 	Block {
 	  BlockType		  Inport
 	  Name			  "VPKLN_bus"
@@ -981,8 +1024,9 @@ Library {
 	  BlockType		  Inport
 	  Name			  "trip_or"
 	  SID			  "179"
-	  Position		  [1195, 493, 1225, 507]
+	  Position		  [1130, 538, 1160, 552]
 	  ZOrder		  -1
+	  NamePlacement		  "alternate"
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
@@ -990,7 +1034,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "mode_in"
 	  SID			  "180"
-	  Position		  [1160, 543, 1190, 557]
+	  Position		  [1130, 578, 1160, 592]
 	  ZOrder		  -1
 	  Port			  "4"
 	  IconDisplay		  "Port number"
@@ -1095,7 +1139,7 @@ Library {
 	  BlockType		  Fcn
 	  Name			  "Fcn"
 	  SID			  "186"
-	  Position		  [1215, 540, 1255, 560]
+	  Position		  [1185, 575, 1235, 595]
 	  ZOrder		  -1
 	  ShowName		  off
 	  Expr			  "u(1)==2"
@@ -1232,7 +1276,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  "195"
-	  Position		  [620, 211, 685, 229]
+	  Position		  [650, 221, 715, 239]
 	  ZOrder		  1595
 	  ShowName		  off
 	  GotoTag		  "VRMSLL"
@@ -1283,6 +1327,16 @@ Library {
 	  GotoTag		  "dV_threshold"
 	}
 	Block {
+	  BlockType		  From
+	  Name			  "From6"
+	  SID			  "287"
+	  Position		  [1120, 356, 1185, 374]
+	  ZOrder		  3399
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "201"
@@ -1319,6 +1373,16 @@ Library {
 	  GotoTag		  "dF_threshold"
 	}
 	Block {
+	  BlockType		  Goto
+	  Name			  "Goto4"
+	  SID			  "281"
+	  Position		  [1350, 548, 1420, 562]
+	  ZOrder		  3393
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator"
 	  SID			  "205"
@@ -1341,7 +1405,7 @@ Library {
 	  Name			  "Logical\nOperator1"
 	  SID			  "206"
 	  Ports			  [2, 1]
-	  Position		  [1310, 518, 1350, 562]
+	  Position		  [1270, 533, 1310, 577]
 	  ZOrder		  -11
 	  ShowName		  off
 	  Operator		  "OR"
@@ -1371,7 +1435,7 @@ Library {
 	  Name			  "Mux1"
 	  SID			  "208"
 	  Ports			  [2, 1]
-	  Position		  [340, 375, 345, 415]
+	  Position		  [330, 375, 335, 415]
 	  ZOrder		  -12
 	  ShowName		  off
 	  Inputs		  "2"
@@ -1755,7 +1819,7 @@ Library {
 	  Name			  "S-R\nFlip-Flop1"
 	  SID			  "229"
 	  Ports			  [2, 2]
-	  Position		  [1240, 315, 1285, 390]
+	  Position		  [1460, 330, 1505, 405]
 	  ZOrder		  1441
 	  LibraryVersion	  "1.44"
 	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
@@ -1772,7 +1836,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator1"
 	  SID			  "230"
-	  Position		  [1310, 360, 1330, 380]
+	  Position		  [1530, 375, 1550, 395]
 	  ZOrder		  -20
 	  ShowName		  off
 	}
@@ -1832,7 +1896,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Voltage_Comparator"
-	    Location		    [1912, -8, 3848, 1208]
+	    Location		    [-8, -8, 1928, 1168]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2028,7 +2092,7 @@ Library {
 	  Name			  "deadbus fcn"
 	  SID			  "247"
 	  Ports			  [3, 1]
-	  Position		  [725, 180, 825, 230]
+	  Position		  [755, 190, 855, 240]
 	  ZOrder		  -4
 	  LibraryVersion	  "1.32"
 	  ErrorFcn		  "Stateflow.Translate.translate"
@@ -2064,7 +2128,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "76"
+	    SIDHighWatermark	    "89"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -2094,20 +2158,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "247::68"
+	      SID		      "247::88"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      17
+	      ZOrder		      23
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "247::67"
+	      SID		      "247::87"
 	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 2"
 	      Ports		      [3, 2]
 	      Position		      [180, 100, 230, 180]
-	      ZOrder		      16
+	      ZOrder		      22
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[3 2]"
 	      EnableBusSupport	      off
@@ -2121,9 +2185,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "247::69"
+	      SID		      "247::89"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      18
+	      ZOrder		      24
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -2418,10 +2482,278 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "signal time check-counter"
+	  SID			  "290"
+	  Ports			  [2, 1]
+	  Position		  [1235, 320, 1395, 380]
+	  ZOrder		  3410
+	  BackgroundColor	  "lightBlue"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    19
+	    $ClassName		    "Simulink.Mask"
+	    Type		    "Signal check-counter"
+	    Description		    "check_counter_time [s]: minimum time of synchronism between buses before setting R25 signal HI."
+	    "\nTs[s]: simulation time step in seconds "
+	    Array {
+	      Type		      "Simulink.MaskParameter"
+	      Dimension		      2
+	      Object {
+		$ObjectID		20
+		Type			"edit"
+		Name			"check_counter_time"
+		Prompt			"Check Counter Time [s]"
+		Value			"2/60"
+	      }
+	      Object {
+		$ObjectID		21
+		Type			"edit"
+		Name			"Ts"
+		Prompt			"Ts [s]"
+		Value			"Ts"
+	      }
+	      PropName		      "Parameters"
+	    }
+	  }
+	  Port {
+	    PortNumber		    1
+	    Name		    "SR-FF"
+	    PropagatedSignals	    "SR-FF"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "signal time check-counter"
+	    Location		    [-8, -8, 1928, 1168]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "195"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "logic_signal"
+	      SID		      "291"
+	      Position		      [105, 193, 135, 207]
+	      ZOrder		      3408
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "reset"
+	      SID		      "292"
+	      Position		      [200, 213, 230, 227]
+	      ZOrder		      3409
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "293"
+	      Position		      [350, 200, 390, 220]
+	      ZOrder		      3405
+	      ShowName		      off
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DiscreteIntegrator
+	      Name		      "Discrete-Time\nIntegrator"
+	      SID		      "294"
+	      Ports		      [2, 1]
+	      Position		      [530, 189, 630, 276]
+	      ZOrder		      3382
+	      BackgroundColor	      "yellow"
+	      ExternalReset	      "either"
+	      InitialConditionMode    "State only (most efficient)"
+	      SampleTime	      "Ts"
+	      LimitOutput	      on
+	      UpperSaturationLimit    "1"
+	      LowerSaturationLimit    "0"
+	      ICPrevOutput	      "DiscIntNeverNeededParam"
+	      ICPrevScaledInput	      "DiscIntNeverNeededParam"
+	    }
+	    Block {
+	      BlockType		      Fcn
+	      Name		      "Fcn"
+	      SID		      "295"
+	      Position		      [415, 200, 500, 220]
+	      ZOrder		      3406
+	      ShowName		      off
+	      Expr		      "u(1) * (u(2)==0)"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator3"
+	      SID		      "296"
+	      Ports		      [2, 1]
+	      Position		      [790, 292, 820, 323]
+	      ZOrder		      3389
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	      Port {
+		PortNumber		1
+		Name			"SR-FF"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      SID		      "297"
+	      Ports		      [2, 1]
+	      Position		      [310, 191, 315, 229]
+	      ZOrder		      3407
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator"
+	      SID		      "298"
+	      Ports		      [2, 1]
+	      Position		      [685, 214, 730, 241]
+	      ZOrder		      3386
+	      Operator		      "<="
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "check-counter time"
+	      SID		      "299"
+	      Position		      [530, 145, 630, 165]
+	      ZOrder		      3103
+	      BackgroundColor	      "[0.901961, 0.000000, 0.000000]"
+	      ShowName		      off
+	      Value		      "check_counter_time"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "SR-FF"
+	      SID		      "300"
+	      Position		      [915, 303, 945, 317]
+	      ZOrder		      3410
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Fcn"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Fcn"
+	      SrcPort		      1
+	      DstBlock		      "Discrete-Time\nIntegrator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "logic_signal"
+	      SrcPort		      1
+	      Points		      [35, 0]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 115]
+		DstBlock		"Logical\nOperator3"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Discrete-Time\nIntegrator"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "check-counter time"
+	      SrcPort		      1
+	      Points		      [26, 0; 0, 65]
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reset"
+	      SrcPort		      1
+	      Points		      [34, 0]
+	      Branch {
+		Points			[0, 35]
+		DstBlock		"Discrete-Time\nIntegrator"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      Name		      "SR-FF"
+	      Labels		      [1, 0]
+	      SrcBlock		      "Logical\nOperator3"
+	      SrcPort		      1
+	      DstBlock		      "SR-FF"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator"
+	      SrcPort		      1
+	      Points		      [24, 0; 0, 70]
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "301"
+	      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free o"
+	      "f charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
+	      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, mod"
+	      "ify, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons "
+	      "to whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyr"
+	      "ight notice and this permission notice shall be included in \n% all copies or substantial portions of the Softw"
+	      "are.\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING"
+	      " BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT"
+	      ". IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, W"
+	      "HETHER IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFT"
+	      "WARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
+	      Position		      [131, 17]
+	      HorizontalAlignment     "left"
+	      ZOrder		      -1
+	      FontWeight	      "bold"
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "sqrt3"
 	  SID			  "262"
-	  Position		  [430, 380, 460, 410]
+	  Position		  [425, 380, 460, 410]
 	  ZOrder		  -8
 	  Gain			  "1.7321"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -2438,9 +2770,37 @@ Library {
 	  BlockType		  Outport
 	  Name			  "R25"
 	  SID			  "263"
-	  Position		  [1365, 328, 1395, 342]
+	  Position		  [1590, 343, 1620, 357]
 	  ZOrder		  -2
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "From6"
+	  SrcPort		  1
+	  Points		  [8, 0]
+	  Branch {
+	    DstBlock		    "signal time check-counter"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 42; 224, 0; 0, -22]
+	    DstBlock		    "S-R\nFlip-Flop1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "SR-FF"
+	  Labels		  [1, 1]
+	  SrcBlock		  "signal time check-counter"
+	  SrcPort		  1
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "signal time check-counter"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From5"
@@ -2513,6 +2873,7 @@ Library {
 	Line {
 	  SrcBlock		  "Fcn"
 	  SrcPort		  1
+	  Points		  [12, 0; 0, -20]
 	  DstBlock		  "Logical\nOperator1"
 	  DstPort		  2
 	}
@@ -2525,7 +2886,6 @@ Library {
 	Line {
 	  SrcBlock		  "trip_or"
 	  SrcPort		  1
-	  Points		  [50, 0; 0, 30]
 	  DstBlock		  "Logical\nOperator1"
 	  DstPort		  1
 	}
@@ -2534,9 +2894,8 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "Logical\nOperator1"
 	  SrcPort		  1
-	  Points		  [48, 0; 0, 94; -314, 0; 0, -264]
-	  DstBlock		  "S-R\nFlip-Flop1"
-	  DstPort		  2
+	  DstBlock		  "Goto4"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "S-R\nFlip-Flop1"
@@ -2603,7 +2962,7 @@ Library {
 	  SrcPort		  2
 	  Points		  [80, 0]
 	  Branch {
-	    Points		    [0, -200]
+	    Points		    [0, -190]
 	    DstBlock		    "deadbus fcn"
 	    DstPort		    2
 	  }
@@ -2647,7 +3006,7 @@ Library {
 	  SrcPort		  1
 	  Points		  [60, 0]
 	  Branch {
-	    Points		    [0, -195]
+	    Points		    [0, -185]
 	    DstBlock		    "deadbus fcn"
 	    DstPort		    1
 	  }
@@ -2728,7 +3087,7 @@ Library {
 	  Labels		  [1, 1]
 	  SrcBlock		  "deadbus fcn"
 	  SrcPort		  1
-	  Points		  [197, 0; 0, 120]
+	  Points		  [167, 0; 0, 110]
 	  DstBlock		  "Logical\nOperator3"
 	  DstPort		  1
 	}
@@ -2741,12 +3100,6 @@ Library {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Logical\nOperator3"
-	  SrcPort		  1
-	  DstBlock		  "S-R\nFlip-Flop1"
-	  DstPort		  1
-	}
-	Line {
 	  Name			  "R25"
 	  Labels		  [1, 1]
 	  SrcBlock		  "S-R\nFlip-Flop1"
@@ -2757,8 +3110,9 @@ Library {
 	Annotation {
 	  SID			  "264"
 	  Name			  "If any protection elements give a trip indication \nor the MGC requests the CB to open, reset the RS FF"
-	  Position		  [1103, 464]
+	  Position		  [1123, 494]
 	  HorizontalAlignment	  "left"
+	  ForegroundColor	  "blue"
 	  ZOrder		  -1
 	}
 	Annotation {
@@ -2789,7 +3143,7 @@ Library {
 	  SID			  "269"
 	  Name			  "true: If the life bus has voltage > 0.9pu and the other bus has voltage < threshold\ntrue: both sides of "
 	  "the breaker are deadbuses"
-	  Position		  [747, 162]
+	  Position		  [777, 172]
 	  ZOrder		  -6
 	}
 	Annotation {
@@ -2829,41 +3183,41 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		19
+	$ObjectID		22
 	$ClassName		"Simulink.Mask"
 	Array {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  5
 	  Object {
-	    $ObjectID		    20
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "VRMSLL"
 	    Prompt		    "Nominal Voltage [VRMSLL]"
 	    Value		    "VRMSLL"
 	  }
 	  Object {
-	    $ObjectID		    21
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "Ts"
 	    Prompt		    "Sampling Time [Sec]"
 	    Value		    "Ts"
 	  }
 	  Object {
-	    $ObjectID		    22
+	    $ObjectID		    25
 	    Type		    "edit"
 	    Name		    "dV_threshold"
 	    Prompt		    "Percent Voltage Threshold [%]"
 	    Value		    "dV_threshold"
 	  }
 	  Object {
-	    $ObjectID		    23
+	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "angle_threshold"
 	    Prompt		    "Angle Threshold [degress]"
 	    Value		    "angle_threshold"
 	  }
 	  Object {
-	    $ObjectID		    24
+	    $ObjectID		    27
 	    Type		    "edit"
 	    Name		    "dF_threshold"
 	    Prompt		    "Frequency Threshold [Hz]"
@@ -4453,7 +4807,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		25
+	$ObjectID		28
 	$ClassName		"Simulink.Mask"
 	Type			"Relay synch check"
 	Description		"This block checks if the the specified conditions for breaker reclosing \nare met at both terminals of "
@@ -4462,7 +4816,7 @@ Library {
 	"F_threshold"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  26
+	  $ObjectID		  29
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
@@ -6537,9 +6891,7 @@ Stateflow {
     firstTransition	    18
     firstJunction	    17
     viewObj		    11
-    visible		    1
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
     subviewS {
     }
     ssIdHighWaterMark	    7
