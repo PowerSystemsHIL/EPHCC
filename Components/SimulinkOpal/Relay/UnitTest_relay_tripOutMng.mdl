@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.75"
+    ComputedModelVersion    "1.78"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -33,7 +33,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [0.0, 0.0, 1268.0, 1160.0]
+      Location		      [-8.0, -8.0, 1936.0, 1176.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,9 +57,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1025.0, 986.0]
-	ZoomFactor		[1.5725552050473186]
-	Offset			[202.09729187562689, -58.502507522567711]
+	Extents			[1693.0, 1002.0]
+	ZoomFactor		[1.5100775193798452]
+	Offset			[-120.06724845995888, -9.2710472279260756]
       }
     }
   }
@@ -69,9 +69,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 31 14:07:33 2016"
-  RTWModifiedTimeStamp	  394553216
-  ModelVersionFormat	  "1.%<AutoIncrement:75>"
+  LastModifiedDate	  "Thu Dec 08 09:00:47 2016"
+  RTWModifiedTimeStamp	  403088443
+  ModelVersionFormat	  "1.%<AutoIncrement:78>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -174,7 +174,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
-	  StopTime		  "7"
+	  StopTime		  "16"
 	  AbsTol		  "auto"
 	  FixedStep		  "Ts"
 	  InitialStep		  "auto"
@@ -766,9 +766,29 @@ Model {
       SampleTime	      "1"
     }
     Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
+    }
+    Block {
       BlockType		      ManualSwitch
       CurrentSetting	      "1"
       varsize		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      InputSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      ZeroCross		      on
       SampleTime	      "-1"
     }
     Block {
@@ -792,7 +812,7 @@ Model {
   }
   System {
     Name		    "UnitTest_relay_tripOutMng"
-    Location		    [0, 0, 1268, 1160]
+    Location		    [-8, -8, 1928, 1168]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -804,48 +824,68 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "157"
+    ZoomFactor		    "151"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "115"
+    SIDHighWatermark	    "124"
     Block {
       BlockType		      Constant
       Name		      "Constant1"
       SID		      "112"
-      Position		      [450, 429, 485, 441]
+      Position		      [365, 529, 400, 541]
       ZOrder		      2043
       BackgroundColor	      "red"
       ShowName		      off
       Value		      "0"
     }
     Block {
-      BlockType		      Constant
-      Name		      "Constant2"
-      SID		      "26"
-      Position		      [450, 399, 485, 411]
-      ZOrder		      1970
-      ShowName		      off
-      Value		      "0.2"
+      BlockType		      DigitalClock
+      Name		      "Digital Clock1"
+      SID		      "117"
+      Position		      [590, 19, 640, 41]
+      ZOrder		      3383
+      SampleTime	      "Ts"
     }
     Block {
-      BlockType		      DigitalClock
-      Name		      "Digital Clock"
-      SID		      "8"
-      Position		      [450, 368, 485, 382]
-      ZOrder		      1955
+      BlockType		      Goto
+      Name		      "Goto46"
+      SID		      "120"
+      Position		      [790, 51, 865, 69]
+      ZOrder		      3388
+      BackgroundColor	      "yellow"
       ShowName		      off
-      SampleTime	      "100e-6"
+      GotoTag		      "time_flag"
     }
     Block {
       BlockType		      ManualSwitch
       Name		      "Manual Switch"
       SID		      "20"
-      Position		      [300, 437, 330, 473]
+      Position		      [230, 542, 260, 578]
       ZOrder		      1964
       ShowName		      off
       CurrentSetting	      "0"
       Port {
 	PortNumber		1
-	Name			"trip_in"
+	Name			"fault_flag"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Mode-Sequence"
+      SID		      "116"
+      Ports		      [0, 1]
+      Position		      [70, 404, 285, 456]
+      ZOrder		      3382
+      BackgroundColor	      "green"
+      LibraryVersion	      "1.274"
+      SourceBlock	      "simulink/Sources/Repeating\nSequence"
+      SourceType	      "Repeating table"
+      rep_seq_t		      "[0\n2\n2\n4\n4\n6\n6\n8\n8\n10\n10\n12\n12\n14\n14\n16]"
+      rep_seq_y		      "[0\n0\n1\n1\n0\n0\n2\n2\n1\n1\n0\n0\n2\n2\n0\n0]"
+      Port {
+	PortNumber		1
+	Name			"op_mode"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
@@ -854,18 +894,20 @@ Model {
       BlockType		      Scope
       Name		      "Probe"
       SID		      "2"
-      Ports		      [2]
-      Position		      [785, 254, 845, 396]
+      Ports		      [4]
+      Position		      [770, 376, 830, 519]
       ZOrder		      1949
       BackgroundColor	      "[0.901961, 0.000000, 0.000000]"
       Floating		      off
-      Location		      [1286, 56, 1913, 1151]
-      Open		      on
-      NumInputPorts	      "2"
+      Location		      [1977, 86, 2604, 1182]
+      Open		      off
+      NumInputPorts	      "4"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
 	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
       }
       List {
 	ListType		ScopeGraphics
@@ -878,10 +920,11 @@ Model {
 	MarkerStyles		"none|none|none|none|none|none"
       }
       ShowLegends	      on
-      LegendLocations	      "0.80966     0.94775     0.13716    0.018569\n0.79829     0.46977     0.14833    0.018569"
-      TimeRange		      "7"
-      YMin		      "-1~-1"
-      YMax		      "1.5~1.5"
+      LegendLocations	      "0.78921     0.94754     0.16268    0.018552\n 0.7908     0.70849     0.16108    0.018552\n"
+      "0.80356     0.46943     0.14833    0.018552\n 0.7924     0.23038     0.15949    0.018552"
+      TimeRange		      "16"
+      YMin		      "-1~-1~-5~0"
+      YMax		      "3~1.5~5~1"
       DataFormat	      "StructureWithTime"
       LimitDataPoints	      off
       SampleTime	      "0"
@@ -890,8 +933,9 @@ Model {
       BlockType		      Constant
       Name		      "R25"
       SID		      "24"
-      Position		      [395, 275, 425, 295]
+      Position		      [380, 387, 410, 403]
       ZOrder		      1968
+      NamePlacement	      "alternate"
       Port {
 	PortNumber		1
 	Name			"R25"
@@ -900,11 +944,22 @@ Model {
       }
     }
     Block {
+      BlockType		      RelationalOperator
+      Name		      "Relational\nOperator"
+      SID		      "121"
+      Ports		      [2, 1]
+      Position		      [715, 42, 745, 73]
+      ZOrder		      3387
+      ShowName		      off
+      InputSameDT	      off
+      OutDataTypeStr	      "boolean"
+    }
+    Block {
       BlockType		      Reference
       Name		      "Sequence\n0-1-0"
       SID		      "19"
       Ports		      [0, 1]
-      Position		      [220, 400, 250, 430]
+      Position		      [150, 505, 180, 535]
       ZOrder		      1963
       LibraryVersion	      "1.274"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -917,7 +972,7 @@ Model {
       Name		      "Sequence\n1-0-1"
       SID		      "9"
       Ports		      [0, 1]
-      Position		      [220, 480, 250, 510]
+      Position		      [150, 585, 180, 615]
       ZOrder		      1956
       LibraryVersion	      "1.274"
       SourceBlock	      "simulink/Sources/Repeating\nSequence"
@@ -935,25 +990,59 @@ Model {
       BlockType		      Reference
       Name		      "State Condition Mng"
       SID		      "115"
-      Ports		      [6, 1]
-      Position		      [530, 271, 700, 449]
+      Ports		      [5, 1]
+      Position		      [460, 376, 630, 554]
       ZOrder		      2045
       BackgroundColor	      "[0.827451, 0.839216, 0.156863]"
-      LibraryVersion	      "1.17"
+      LibraryVersion	      "1.19"
       SourceBlock	      "relay_tripOutMng_lib/State Condition Mng"
       SourceType	      "SubSystem"
       Port {
 	PortNumber		1
 	Name			"trip_out"
+	PropagatedSignals	"out"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
       }
     }
     Block {
+      BlockType		      From
+      Name		      "Vabc_bus1"
+      SID		      "124"
+      Position		      [650, 492, 715, 508]
+      ZOrder		      3390
+      ShowName		      off
+      GotoTag		      "time_flag"
+      Port {
+	PortNumber		1
+	Name			"time_flag"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      From
+      Name		      "Vabc_bus3"
+      SID		      "123"
+      Position		      [365, 492, 430, 508]
+      ZOrder		      3389
+      ShowName		      off
+      GotoTag		      "time_flag"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "initial condition\ntime delay"
+      SID		      "122"
+      Position		      [590, 80, 620, 100]
+      ZOrder		      3385
+      BackgroundColor	      "green"
+      Value		      "0.2"
+    }
+    Block {
       BlockType		      Constant
       Name		      "logic & closed: 0\nforced closed: 1\nforce open: 2"
       SID		      "5"
-      Position		      [300, 300, 330, 330]
+      Position		      [160, 320, 190, 350]
       ZOrder		      1952
       Value		      "0"
     }
@@ -973,44 +1062,25 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Digital Clock"
-      SrcPort		      1
-      DstBlock		      "State Condition Mng"
-      DstPort		      4
-    }
-    Line {
-      SrcBlock		      "Constant2"
+      SrcBlock		      "Constant1"
       SrcPort		      1
       DstBlock		      "State Condition Mng"
       DstPort		      5
     }
     Line {
-      SrcBlock		      "Constant1"
+      Name		      "op_mode"
+      SrcBlock		      "Mode-Sequence"
       SrcPort		      1
-      DstBlock		      "State Condition Mng"
-      DstPort		      6
-    }
-    Line {
-      SrcBlock		      "logic & closed: 0\nforced closed: 1\nforce open: 2"
-      SrcPort		      1
-      DstBlock		      "State Condition Mng"
-      DstPort		      2
-    }
-    Line {
-      Name		      "trip_in"
-      Labels		      [3, 1]
-      SrcBlock		      "Manual Switch"
-      SrcPort		      1
-      Points		      [63, 0; 0, -110; 111, 0]
+      Points		      [52, 0]
       Branch {
-	DstBlock		"State Condition Mng"
-	DstPort			3
-      }
-      Branch {
-	Labels			[-1, 0]
-	Points			[0, -89; 231, 0; 0, 34]
+	Labels			[2, 0]
+	Points			[0, -70; 318, 0; 0, 35]
 	DstBlock		"Probe"
 	DstPort			1
+      }
+      Branch {
+	DstBlock		"State Condition Mng"
+	DstPort			2
       }
     }
     Line {
@@ -1021,12 +1091,63 @@ Model {
       DstPort		      1
     }
     Line {
+      SrcBlock		      "Digital Clock1"
+      SrcPort		      1
+      Points		      [26, 0; 0, 20]
+      DstBlock		      "Relational\nOperator"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "initial condition\ntime delay"
+      SrcPort		      1
+      Points		      [47, 0; 0, -25]
+      DstBlock		      "Relational\nOperator"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Relational\nOperator"
+      SrcPort		      1
+      DstBlock		      "Goto46"
+      DstPort		      1
+    }
+    Line {
+      Name		      "fault_flag"
+      SrcBlock		      "Manual Switch"
+      SrcPort		      1
+      Points		      [63, 0; 0, -95]
+      Branch {
+	Labels			[1, 1]
+	DstBlock		"State Condition Mng"
+	DstPort			3
+      }
+      Branch {
+	Labels			[2, 1]
+	Points			[0, -138; 353, 0; 0, 103]
+	DstBlock		"Probe"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "Vabc_bus3"
+      SrcPort		      1
+      DstBlock		      "State Condition Mng"
+      DstPort		      4
+    }
+    Line {
       Name		      "trip_out"
-      Labels		      [-1, 0]
+      Labels		      [1, 1]
       SrcBlock		      "State Condition Mng"
       SrcPort		      1
       DstBlock		      "Probe"
-      DstPort		      2
+      DstPort		      3
+    }
+    Line {
+      Name		      "time_flag"
+      Labels		      [1, 1]
+      SrcBlock		      "Vabc_bus1"
+      SrcPort		      1
+      DstBlock		      "Probe"
+      DstPort		      4
     }
     Annotation {
       SID		      "114"
@@ -1041,7 +1162,7 @@ Model {
       "VENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN "
       "AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE"
       " USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
-      Position		      [211, 97]
+      Position		      [16, 127]
       HorizontalAlignment     "left"
       ZOrder		      -4
       FontWeight	      "bold"
