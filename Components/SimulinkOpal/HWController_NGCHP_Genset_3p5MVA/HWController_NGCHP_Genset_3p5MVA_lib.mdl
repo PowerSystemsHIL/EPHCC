@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, -4.0, 1928.0, 1208.0]
+      Location		      [-8.0, -8.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1056.0]
+	Extents			[1693.0, 890.0]
 	ZoomFactor		[1.5479962721342031]
-	Offset			[125.95605057194462, 112.16390728476819]
+	Offset			[125.95605057194462, 112.16390728476813]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "g73labuser"
+  LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 08 16:58:17 2016"
-  RTWModifiedTimeStamp	  403100897
-  ModelVersionFormat	  "1.%<AutoIncrement:8>"
+  LastModifiedDate	  "Thu Dec 08 20:52:02 2016"
+  RTWModifiedTimeStamp	  403131100
+  ModelVersionFormat	  "1.%<AutoIncrement:9>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -740,6 +740,18 @@ Library {
       BusSelectionMode	      off
     }
     Block {
+      BlockType		      DiscreteStateSpace
+      A			      "1"
+      B			      "1"
+      C			      "1"
+      D			      "1"
+      X0		      "0"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+      Realization	      "auto"
+    }
+    Block {
       BlockType		      Fcn
       Expr		      "sin(u[1])"
       SampleTime	      "-1"
@@ -927,7 +939,7 @@ Library {
   }
   System {
     Name		    "HWController_NGCHP_Genset_3p5MVA_lib"
-    Location		    [1916, -4, 3844, 1204]
+    Location		    [-8, -8, 1928, 1048]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -941,14 +953,14 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "155"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "775"
+    SIDHighWatermark	    "853"
     Block {
       BlockType		      SubSystem
       Name		      "HWController_3.5MVA_NGCHP"
       SID		      "746"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [930, 413, 1200, 717]
-      ZOrder		      3352
+      ZOrder		      3475
       BackgroundColor	      "green"
       LibraryVersion	      "*1.6"
       MinAlgLoopOccurrences   off
@@ -960,7 +972,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"HWController_3.5MVA_NGCHP"
-	Location		[-4, 0, 1288, 1036]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -972,7 +984,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"86"
+	ZoomFactor		"113"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1165,7 +1177,7 @@ Library {
 	  Name			  "HWController_NG_Generator"
 	  SID			  "757"
 	  Ports			  [1, 3, 0, 0, 0, 0, 3]
-	  Position		  [320, 614, 570, 806]
+	  Position		  [330, 614, 580, 806]
 	  ZOrder		  3285
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  LibraryVersion	  "1.8"
@@ -1267,56 +1279,164 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  Name			  "<Boiler_Nm^3/hr >"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  6
-	  DstBlock		  "Mux1"
-	  DstPort		  6
-	}
-	Line {
-	  Name			  "<Boiler lbm/hr CO2 >"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  7
-	  DstBlock		  "Mux1"
-	  DstPort		  7
-	}
-	Line {
-	  SrcBlock		  "CHPThermalModel"
-	  SrcPort		  5
-	  Points		  [-137, 0; 0, -270]
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "CHPThermalModel"
-	  SrcPort		  4
-	  Points		  [-123, 0; 0, -240]
-	  DstBlock		  "Bus\nCreator2"
+	  Name			  "CHP_SIM_Cmds"
+	  Labels		  [1, 0]
+	  SrcBlock		  "In2"
+	  SrcPort		  1
+	  DstBlock		  "CHPThermalModel"
 	  DstPort		  5
 	}
 	Line {
-	  SrcBlock		  "HWControllerBias"
+	  LineType		  "Connection"
+	  Labels		  [-1, 1]
+	  SrcBlock		  "HWController_NG_Generator"
+	  SrcPort		  RConn1
+	  DstBlock		  "A"
+	  DstPort		  RConn1
+	}
+	Line {
+	  Name			  "CHPData"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nCreator2"
 	  SrcPort		  1
-	  DstBlock		  "HWController_NG_Generator"
+	  Points		  [376, 0]
+	  Branch {
+	    Points		    [0, 255]
+	    DstBlock		    "Bus\nSelector7"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Out1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "<Heat Recovered; MBtu/hr>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector6"
+	  SrcPort		  1
+	  DstBlock		  "CHPThermalModel"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "HWController_NG_Generator"
+	  SrcPort		  2
+	  DstBlock		  "GCB Control"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "HWController_NG_Generator"
+	  SrcPort		  1
+	  DstBlock		  "Generator Data"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Modbus device"
+	  SrcPort		  2
+	  DstBlock		  "Demux"
 	  DstPort		  1
 	}
 	Line {
 	  Name			  "Thermal data"
 	  Labels		  [0, 0]
-	  SrcBlock		  "HWController_NG_Generator"
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  Points		  [-76, 0]
+	  Branch {
+	    Points		    [0, -170]
+	    DstBlock		    "Bus\nCreator2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector6"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  3
-	  DstBlock		  "Goto1"
+	  Points		  [-109, 0; 0, -210]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "CHPThermalModel"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "Modbus device"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "CHPThermalModel"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<TempActual>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<CHPHeatContribution MBtu/hr>"
+	  Name			  "<Heat Recovered; MBtu/hr>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  3
+	  SrcPort		  4
 	  DstBlock		  "Mux1"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<CO2 lbm/hr>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  5
+	  DstBlock		  "Mux1"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "<HeatFromBoiler MBtu/hr>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  2
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  LineType		  "Connection"
+	  Labels		  [0, 0]
+	  SrcBlock		  "HWController_NG_Generator"
+	  SrcPort		  RConn2
+	  DstBlock		  "B"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  Labels		  [0, 0]
+	  SrcBlock		  "HWController_NG_Generator"
+	  SrcPort		  RConn3
+	  DstBlock		  "C"
+	  DstPort		  RConn1
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  2
+	  Points		  [-68, 0; 0, -180]
+	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "CHPThermalModel"
+	  DstPort		  4
 	}
 	Line {
 	  Name			  "TempActual"
@@ -1328,164 +1448,56 @@ Library {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  2
-	  DstBlock		  "CHPThermalModel"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "CHPThermalModel"
-	  SrcPort		  2
-	  Points		  [-68, 0; 0, -180]
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  3
-	}
-	Line {
-	  LineType		  "Connection"
-	  Labels		  [0, 0]
-	  SrcBlock		  "HWController_NG_Generator"
-	  SrcPort		  RConn3
-	  DstBlock		  "C"
-	  DstPort		  RConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  Labels		  [0, 0]
-	  SrcBlock		  "HWController_NG_Generator"
-	  SrcPort		  RConn2
-	  DstBlock		  "B"
-	  DstPort		  RConn1
-	}
-	Line {
-	  Name			  "<HeatFromBoiler MBtu/hr>"
+	  Name			  "<CHPHeatContribution MBtu/hr>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  2
-	  DstBlock		  "Mux1"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "<CO2 lbm/hr>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  5
-	  DstBlock		  "Mux1"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "<Heat Recovered; MBtu/hr>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  4
-	  DstBlock		  "Mux1"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "<TempActual>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector7"
-	  SrcPort		  1
-	  DstBlock		  "Mux1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "In1"
-	  SrcPort		  1
-	  DstBlock		  "CHPThermalModel"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Mux1"
-	  SrcPort		  1
-	  DstBlock		  "Modbus device"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  1
-	  DstBlock		  "CHPThermalModel"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  3
-	  Points		  [-109, 0; 0, -210]
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  4
+	  DstBlock		  "Mux1"
+	  DstPort		  3
 	}
 	Line {
 	  Name			  "Thermal data"
 	  Labels		  [0, 0]
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  Points		  [-76, 0]
-	  Branch {
-	    DstBlock		    "Bus\nSelector6"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -170]
-	    DstBlock		    "Bus\nCreator2"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Modbus device"
-	  SrcPort		  2
-	  DstBlock		  "Demux"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "HWController_NG_Generator"
-	  SrcPort		  1
-	  DstBlock		  "Generator Data"
+	  SrcPort		  3
+	  DstBlock		  "Goto1"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "HWController_NG_Generator"
-	  SrcPort		  2
-	  DstBlock		  "GCB Control"
+	  SrcBlock		  "HWControllerBias"
+	  SrcPort		  1
+	  DstBlock		  "HWController_NG_Generator"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<Heat Recovered; MBtu/hr>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector6"
-	  SrcPort		  1
-	  DstBlock		  "CHPThermalModel"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "CHPData"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nCreator2"
-	  SrcPort		  1
-	  Points		  [376, 0]
-	  Branch {
-	    DstBlock		    "Out1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 255]
-	    DstBlock		    "Bus\nSelector7"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Labels		  [-1, 1]
-	  SrcBlock		  "HWController_NG_Generator"
-	  SrcPort		  RConn1
-	  DstBlock		  "A"
-	  DstPort		  RConn1
-	}
-	Line {
-	  Name			  "CHP_SIM_Cmds"
-	  Labels		  [1, 0]
-	  SrcBlock		  "In2"
-	  SrcPort		  1
-	  DstBlock		  "CHPThermalModel"
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  4
+	  Points		  [-123, 0; 0, -240]
+	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  5
+	  Points		  [-137, 0; 0, -270]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "<Boiler lbm/hr CO2 >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  7
+	  DstBlock		  "Mux1"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "<Boiler_Nm^3/hr >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  6
+	  DstBlock		  "Mux1"
+	  DstPort		  6
 	}
 	Annotation {
 	  SID			  "766"
@@ -1885,7 +1897,7 @@ Library {
       Position		      [140, 414, 425, 636]
       ZOrder		      3301
       BackgroundColor	      "[0.501961, 0.949020, 0.050980]"
-      LibraryVersion	      "*1.7"
+      LibraryVersion	      "*1.8"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1914,7 +1926,7 @@ Library {
       }
       System {
 	Name			"HWController_NG_Genset_3.5MVA"
-	Location		[-4, -4, 1284, 984]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2007,7 +2019,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "3.5MVA Generator with \nPrimary Controllers"
-	    Location		    [-4, 0, 1288, 1036]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2169,7 +2181,7 @@ Library {
 	      }
 	      System {
 		Name			"NG Engine\nSpeed & Voltage\nControl\nfast"
-		Location		[-4, 0, 1288, 1036]
+		Location		[-8, -8, 1928, 1048]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -2181,7 +2193,7 @@ Library {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"83"
+		ZoomFactor		"122"
 		Block {
 		  BlockType		  Inport
 		  Name			  "wref"
@@ -2458,10 +2470,10 @@ Library {
 		Block {
 		  BlockType		  SubSystem
 		  Name			  "Excitation1"
-		  SID			  "36"
+		  SID			  "784"
 		  Ports			  [3, 1]
 		  Position		  [815, 335, 895, 425]
-		  ZOrder		  95
+		  ZOrder		  99
 		  MinAlgLoopOccurrences	  off
 		  PropExecContextOutsideSubsystem off
 		  RTWSystemCode		  "Auto"
@@ -2550,7 +2562,7 @@ Library {
 		  }
 		  System {
 		    Name		    "Excitation1"
-		    Location		    [1912, -8, 3848, 1088]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2566,7 +2578,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "vref"
-		    SID			    "37"
+		    SID			    "785"
 		    Position		    [25, 25, 45, 45]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -2574,7 +2586,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "v"
-		    SID			    "38"
+		    SID			    "786"
 		    Position		    [170, 100, 190, 120]
 		    ZOrder		    -2
 		    Port		    "2"
@@ -2583,7 +2595,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "vstab"
-		    SID			    "39"
+		    SID			    "787"
 		    Position		    [25, 165, 45, 185]
 		    ZOrder		    -3
 		    Port		    "3"
@@ -2592,7 +2604,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Damping\nkf.s / (tf.s +1)"
-		    SID			    "40"
+		    SID			    "788"
 		    Ports		    [1, 1]
 		    Position		    [655, 214, 705, 256]
 		    ZOrder		    -4
@@ -2606,7 +2618,7 @@ Library {
 		    MaskHideContents	    off
 		    System {
 		    Name		    "Damping\nkf.s / (tf.s +1)"
-		    Location		    [761, 347, 1155, 668]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2622,42 +2634,186 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
-		    SID			    "41"
+		    SID			    "789"
 		    Position		    [270, 38, 300, 52]
 		    ZOrder		    -1
 		    BlockMirror		    on
 		    IconDisplay		    "Port number"
 		    }
 		    Block {
-		    BlockType		    Reference
+		    BlockType		    SubSystem
 		    Name		    "1st-Order\nDiscrete Filter"
-		    SID			    "42"
+		    SID			    "790"
 		    Ports		    [1, 1]
 		    Position		    [85, 25, 130, 65]
 		    ZOrder		    -2
 		    BlockMirror		    on
 		    BackgroundColor	    "yellow"
 		    DropShadow		    on
-		    SourceBlock		    "powerlib_extras/Discrete \nControl Blocks/Discrete\n1st-Order\nDiscrete Filter"
-		    SourceType		    "Discrete 1st-Order Filter"
-		    FilterType		    "Highpass"
-		    Tc			    "damp(2)"
-		    Ts			    "Ts"
-		    Initialize		    on
-		    Vac_Init		    "[0 0 60]"
-		    Vdc_Init		    "damp(1)*v0(2)/damp(2)"
-		    PlotResponse	    off
-		    param1		    "[1 500 0.1]"
-		    RTWMemSecFuncInitTerm   "Inherit from model"
-		    RTWMemSecFuncExecute    "Inherit from model"
-		    RTWMemSecDataConstants  "Inherit from model"
-		    RTWMemSecDataInternal   "Inherit from model"
-		    RTWMemSecDataParameters "Inherit from model"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    28
+		    $ClassName		    "Simulink.Mask"
+		    Type		    "Discrete 1st-Order Filter"
+		    Initialization	    "switch FilterType\ncase 1, % Lowpass\n    X=[0 1 2 3 4];\n    Y=[-2 -2 -3 -4 -4];\n    numc="
+		    "1;\n    denc=[Tc 1];\ncase 2,   % Highpass\n    X=[0 1 2 3 4];\n    Y=[-4 -4 -3 -2 -2];\n    numc=[1 0];\n    de"
+		    "nc=[1 1/Tc];\nend\n%\n[Ac,Bc,Cc,Dc]=tf2ss(numc,denc);\n%\n%  Conversion to discrete transfer function\nnstates ="
+		    " size(Ac,1);\ninvexp = inv(eye(nstates) - (Ts/2)*Ac);\nAd = invexp*(eye(nstates) + (Ts/2)*Ac);\nBd = invexp*Bc;\n"
+		    "Cd = Cc*invexp*Ts;\nDd = Cc*invexp*Bc*(Ts/2) + Dc;\n%\nif Initialize==1  % Compute initial conditions on states\n"
+		    "    u1=Vac_Init(1)*exp(j*Vac_Init(2)*pi/180);\n    u2=Vdc_Init*exp(j*90*pi/180);\n    u=u1+u2;\n    u0=imag(u); "
+		    "% input at  t=0;\n    I=eye(size(Ac));\n    sI1=I*j*(2*pi*Vac_Init(3));\n    sI2=I*j*0;\n    x=inv(sI1-Ac)*Bc*u1"
+		    " + inv(sI2-Ac)*Bc*u2;\n    x0c=imag(x);\n    x0d=(I-Ac*Ts/2)*x0c/Ts - Bc/2*u0;\nelse\n    x0d=0;\nend\n\n%\nif P"
+		    "lotResponse==1 % Plot frequency and step response\n    figure(1)\n    sys=ss(Ad,Bd,Cd,Dd,Ts);\n    f=param1(1):p"
+		    "aram1(3):param1(2);\n    w=2*pi*f;\n    [mag phase]=bode(sys,w);\n    subplot(2,1,1)\n    plot(f,squeeze(mag))\n"
+		    "    title('Magnitude')\n    grid\n    subplot(2,1,2)\n    plot(f,squeeze(phase))\n    title('Phase (degrees)')\n"
+		    "    xlabel('Hz')\n    grid\n    figure(2)\n    step(sys)\nend\n\n\n"
+		    Display		    "plot(X,Y);"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    8
+		    Object {
+		    $ObjectID		    29
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Lowpass"
+		    Cell		    "Highpass"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "FilterType"
+		    Prompt		    "Filter Type:"
+		    Value		    "Highpass"
+		    }
+		    Object {
+		    $ObjectID		    30
+		    Type		    "edit"
+		    Name		    "Tc"
+		    Prompt		    "Time constant (s):"
+		    Value		    "damp(2)"
+		    }
+		    Object {
+		    $ObjectID		    31
+		    Type		    "edit"
+		    Name		    "Ts"
+		    Prompt		    "Sample time:"
+		    Value		    "Ts"
+		    }
+		    Object {
+		    $ObjectID		    32
+		    Type		    "checkbox"
+		    Name		    "Initialize"
+		    Prompt		    "Initialize filter states"
+		    Value		    "on"
+		    Callback		    "p4=get_param(gcb,'Initialize');if strcmp(p4,'on');visible={'on','on','on','on','on','on','on',get"
+		    "_param(gcb,'PlotResponse')};else;visible={'on','on','on','on','off','off','on',get_param(gcb,'PlotResponse')};en"
+		    "d;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    33
+		    Type		    "edit"
+		    Name		    "Vac_Init"
+		    Prompt		    "AC initial input: [ Mag  Phase(degrees)  Freq(Hz) ]"
+		    Value		    "[0 0 60]"
+		    }
+		    Object {
+		    $ObjectID		    34
+		    Type		    "edit"
+		    Name		    "Vdc_Init"
+		    Prompt		    "DC Initial input:"
+		    Value		    "damp(1)*v0(2)/damp(2)"
+		    }
+		    Object {
+		    $ObjectID		    35
+		    Type		    "checkbox"
+		    Name		    "PlotResponse"
+		    Prompt		    "Plot filter response"
+		    Value		    "off"
+		    Callback		    "p7=get_param(gcb,'PlotResponse');if strcmp(p7,'on');visible={'on','on','on','on',get_param(gcb,'I"
+		    "nitialize'),get_param(gcb,'Initialize'),'on','on'};else;visible={'on','on','on','on',get_param(gcb,'Initialize')"
+		    ",get_param(gcb,'Initialize'),'on','off'};end;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    36
+		    Type		    "edit"
+		    Name		    "param1"
+		    Prompt		    "Frequency range(Hz) : [Start  End  Inc.]"
+		    Value		    "[1 500 0.1]"
+		    Visible		    "off"
+		    }
+		    PropName		    "Parameters"
+		    }
+		    }
+		    System {
+		    Name		    "1st-Order\nDiscrete Filter"
+		    Location		    [502, 59, 901, 402]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "In"
+		    SID			    "851"
+		    Position		    [25, 53, 55, 67]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    DiscreteStateSpace
+		    Name		    "Discrete State-Space"
+		    SID			    "852"
+		    Position		    [105, 30, 225, 90]
+		    ZOrder		    -2
+		    A			    "Ad"
+		    B			    "Bd"
+		    C			    "Cd"
+		    D			    "Dd"
+		    X0			    "x0d"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Out"
+		    SID			    "853"
+		    Position		    [270, 53, 300, 67]
+		    ZOrder		    -3
+		    IconDisplay		    "Port number"
+		    InitialOutput	    "0"
+		    }
+		    Line {
+		    SrcBlock		    "In"
+		    SrcPort		    1
+		    DstBlock		    "Discrete State-Space"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete State-Space"
+		    SrcPort		    1
+		    DstBlock		    "Out"
+		    DstPort		    1
+		    }
+		    }
 		    }
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain"
-		    SID			    "43"
+		    SID			    "791"
 		    Position		    [165, 30, 220, 60]
 		    ZOrder		    -3
 		    BlockMirror		    on
@@ -2666,16 +2822,16 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out"
-		    SID			    "44"
+		    SID			    "792"
 		    Position		    [15, 38, 45, 52]
 		    ZOrder		    -4
 		    BlockMirror		    on
 		    IconDisplay		    "Port number"
 		    }
 		    Line {
-		    SrcBlock		    "In"
+		    SrcBlock		    "1st-Order\nDiscrete Filter"
 		    SrcPort		    1
-		    DstBlock		    "Gain"
+		    DstBlock		    "Out"
 		    DstPort		    1
 		    }
 		    Line {
@@ -2685,13 +2841,13 @@ Library {
 		    DstPort		    1
 		    }
 		    Line {
-		    SrcBlock		    "1st-Order\nDiscrete Filter"
+		    SrcBlock		    "In"
 		    SrcPort		    1
-		    DstBlock		    "Out"
+		    DstBlock		    "Gain"
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "45"
+		    SID			    "793"
 		    Name		    "link disabled"
 		    Position		    [140, 26]
 		    ForegroundColor	    "red"
@@ -2702,7 +2858,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Exciter\n 1 / (te.s + ke)"
-		    SID			    "46"
+		    SID			    "794"
 		    Ports		    [1, 1]
 		    Position		    [765, 105, 815, 145]
 		    ZOrder		    -5
@@ -2715,7 +2871,7 @@ Library {
 		    MaskHideContents	    off
 		    System {
 		    Name		    "Exciter\n 1 / (te.s + ke)"
-		    Location		    [285, 288, 2217, 1380]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2731,40 +2887,184 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
-		    SID			    "47"
+		    SID			    "795"
 		    Position		    [25, 38, 55, 52]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
 		    }
 		    Block {
-		    BlockType		    Reference
+		    BlockType		    SubSystem
 		    Name		    "1st order\nLowpass"
-		    SID			    "48"
+		    SID			    "796"
 		    Ports		    [1, 1]
 		    Position		    [170, 28, 205, 62]
 		    ZOrder		    -2
 		    BackgroundColor	    "yellow"
 		    DropShadow		    on
-		    SourceBlock		    "powerlib_extras/Discrete \nControl Blocks/Discrete\n1st-Order\nDiscrete Filter"
-		    SourceType		    "Discrete 1st-Order Filter"
-		    FilterType		    "Lowpass"
-		    Tc			    "exc(2)/exc(1)"
-		    Ts			    "Ts"
-		    Initialize		    on
-		    Vac_Init		    "[0.0 0 60]"
-		    Vdc_Init		    "v0(2)"
-		    PlotResponse	    off
-		    param1		    "[1 500 0.1]"
-		    RTWMemSecFuncInitTerm   "Inherit from model"
-		    RTWMemSecFuncExecute    "Inherit from model"
-		    RTWMemSecDataConstants  "Inherit from model"
-		    RTWMemSecDataInternal   "Inherit from model"
-		    RTWMemSecDataParameters "Inherit from model"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    37
+		    $ClassName		    "Simulink.Mask"
+		    Type		    "Discrete 1st-Order Filter"
+		    Initialization	    "switch FilterType\ncase 1, % Lowpass\n    X=[0 1 2 3 4];\n    Y=[-2 -2 -3 -4 -4];\n    numc="
+		    "1;\n    denc=[Tc 1];\ncase 2,   % Highpass\n    X=[0 1 2 3 4];\n    Y=[-4 -4 -3 -2 -2];\n    numc=[1 0];\n    de"
+		    "nc=[1 1/Tc];\nend\n%\n[Ac,Bc,Cc,Dc]=tf2ss(numc,denc);\n%\n%  Conversion to discrete transfer function\nnstates ="
+		    " size(Ac,1);\ninvexp = inv(eye(nstates) - (Ts/2)*Ac);\nAd = invexp*(eye(nstates) + (Ts/2)*Ac);\nBd = invexp*Bc;\n"
+		    "Cd = Cc*invexp*Ts;\nDd = Cc*invexp*Bc*(Ts/2) + Dc;\n%\nif Initialize==1  % Compute initial conditions on states\n"
+		    "    u1=Vac_Init(1)*exp(j*Vac_Init(2)*pi/180);\n    u2=Vdc_Init*exp(j*90*pi/180);\n    u=u1+u2;\n    u0=imag(u); "
+		    "% input at  t=0;\n    I=eye(size(Ac));\n    sI1=I*j*(2*pi*Vac_Init(3));\n    sI2=I*j*0;\n    x=inv(sI1-Ac)*Bc*u1"
+		    " + inv(sI2-Ac)*Bc*u2;\n    x0c=imag(x);\n    x0d=(I-Ac*Ts/2)*x0c/Ts - Bc/2*u0;\nelse\n    x0d=0;\nend\n\n%\nif P"
+		    "lotResponse==1 % Plot frequency and step response\n    figure(1)\n    sys=ss(Ad,Bd,Cd,Dd,Ts);\n    f=param1(1):p"
+		    "aram1(3):param1(2);\n    w=2*pi*f;\n    [mag phase]=bode(sys,w);\n    subplot(2,1,1)\n    plot(f,squeeze(mag))\n"
+		    "    title('Magnitude')\n    grid\n    subplot(2,1,2)\n    plot(f,squeeze(phase))\n    title('Phase (degrees)')\n"
+		    "    xlabel('Hz')\n    grid\n    figure(2)\n    step(sys)\nend\n\n\n"
+		    Display		    "plot(X,Y);"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    8
+		    Object {
+		    $ObjectID		    38
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Lowpass"
+		    Cell		    "Highpass"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "FilterType"
+		    Prompt		    "Filter Type:"
+		    Value		    "Lowpass"
+		    }
+		    Object {
+		    $ObjectID		    39
+		    Type		    "edit"
+		    Name		    "Tc"
+		    Prompt		    "Time constant (s):"
+		    Value		    "exc(2)/exc(1)"
+		    }
+		    Object {
+		    $ObjectID		    40
+		    Type		    "edit"
+		    Name		    "Ts"
+		    Prompt		    "Sample time:"
+		    Value		    "Ts"
+		    }
+		    Object {
+		    $ObjectID		    41
+		    Type		    "checkbox"
+		    Name		    "Initialize"
+		    Prompt		    "Initialize filter states"
+		    Value		    "on"
+		    Callback		    "p4=get_param(gcb,'Initialize');if strcmp(p4,'on');visible={'on','on','on','on','on','on','on',get"
+		    "_param(gcb,'PlotResponse')};else;visible={'on','on','on','on','off','off','on',get_param(gcb,'PlotResponse')};en"
+		    "d;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    42
+		    Type		    "edit"
+		    Name		    "Vac_Init"
+		    Prompt		    "AC initial input: [ Mag  Phase(degrees)  Freq(Hz) ]"
+		    Value		    "[0.0 0 60]"
+		    }
+		    Object {
+		    $ObjectID		    43
+		    Type		    "edit"
+		    Name		    "Vdc_Init"
+		    Prompt		    "DC Initial input:"
+		    Value		    "v0(2)"
+		    }
+		    Object {
+		    $ObjectID		    44
+		    Type		    "checkbox"
+		    Name		    "PlotResponse"
+		    Prompt		    "Plot filter response"
+		    Value		    "off"
+		    Callback		    "p7=get_param(gcb,'PlotResponse');if strcmp(p7,'on');visible={'on','on','on','on',get_param(gcb,'I"
+		    "nitialize'),get_param(gcb,'Initialize'),'on','on'};else;visible={'on','on','on','on',get_param(gcb,'Initialize')"
+		    ",get_param(gcb,'Initialize'),'on','off'};end;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    45
+		    Type		    "edit"
+		    Name		    "param1"
+		    Prompt		    "Frequency range(Hz) : [Start  End  Inc.]"
+		    Value		    "[1 500 0.1]"
+		    Visible		    "off"
+		    }
+		    PropName		    "Parameters"
+		    }
+		    }
+		    System {
+		    Name		    "1st order\nLowpass"
+		    Location		    [-8, -8, 1928, 1048]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "In"
+		    SID			    "848"
+		    Position		    [25, 53, 55, 67]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    DiscreteStateSpace
+		    Name		    "Discrete State-Space"
+		    SID			    "849"
+		    Position		    [105, 30, 225, 90]
+		    ZOrder		    -2
+		    A			    "Ad"
+		    B			    "Bd"
+		    C			    "Cd"
+		    D			    "Dd"
+		    X0			    "x0d"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Out"
+		    SID			    "850"
+		    Position		    [270, 53, 300, 67]
+		    ZOrder		    -3
+		    IconDisplay		    "Port number"
+		    InitialOutput	    "0"
+		    }
+		    Line {
+		    SrcBlock		    "In"
+		    SrcPort		    1
+		    DstBlock		    "Discrete State-Space"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete State-Space"
+		    SrcPort		    1
+		    DstBlock		    "Out"
+		    DstPort		    1
+		    }
+		    }
 		    }
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain"
-		    SID			    "49"
+		    SID			    "797"
 		    Position		    [95, 30, 125, 60]
 		    ZOrder		    -3
 		    Gain		    "1/exc(1)"
@@ -2772,15 +3072,15 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out"
-		    SID			    "50"
+		    SID			    "798"
 		    Position		    [255, 38, 285, 52]
 		    ZOrder		    -4
 		    IconDisplay		    "Port number"
 		    }
 		    Line {
-		    SrcBlock		    "1st order\nLowpass"
+		    SrcBlock		    "Gain"
 		    SrcPort		    1
-		    DstBlock		    "Out"
+		    DstBlock		    "1st order\nLowpass"
 		    DstPort		    1
 		    }
 		    Line {
@@ -2790,13 +3090,13 @@ Library {
 		    DstPort		    1
 		    }
 		    Line {
-		    SrcBlock		    "Gain"
+		    SrcBlock		    "1st order\nLowpass"
 		    SrcPort		    1
-		    DstBlock		    "1st order\nLowpass"
+		    DstBlock		    "Out"
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "51"
+		    SID			    "799"
 		    Name		    "link disabled"
 		    Position		    [218, 33]
 		    ForegroundColor	    "red"
@@ -2805,51 +3105,299 @@ Library {
 		    }
 		    }
 		    Block {
-		    BlockType		    Reference
+		    BlockType		    SubSystem
 		    Name		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
-		    SID			    "52"
+		    SID			    "800"
 		    Ports		    [1, 1]
 		    Position		    [470, 88, 520, 132]
 		    ZOrder		    -6
 		    BackgroundColor	    "yellow"
 		    DropShadow		    on
-		    LibraryVersion	    "1.664"
-		    SourceBlock		    "powerlib_extras/Discrete \nControl Blocks/Discrete\nLead-Lag"
-		    SourceType		    "Discrete Lead-Lag Controller"
-		    T1			    "tgr(2)"
-		    T2			    "tgr(1)"
-		    V_Init		    "exc(1)*v0(2)/reg(1)"
-		    Ts			    "Ts"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    46
+		    $ClassName		    "Simulink.Mask"
+		    Type		    "Discrete Lead-Lag Controller"
+		    Description		    "This block implements a discrete lead-lag controller:\n\n         1+T1s\nH(s)= ------\n       "
+		    "  1+T2s\n\nStates are initialized according to initial input anf output value so that simulation starts in stead"
+		    "y state."
+		    Initialization	    "numc=[T1 1];\ndenc=[T2 1];\n[Ac,Bc,Cc,Dc]=tf2ss(numc,denc);\n\n%  Conversion to discrete tra"
+		    "nsfer function\nnstates = size(Ac,1);\ninvexp = inv(eye(nstates) - (Ts/2)*Ac);\nAd = invexp*(eye(nstates) + (Ts/"
+		    "2)*Ac);\nBd = invexp*Bc;\nCd = Cc*invexp*Ts;\nDd = Cc*invexp*Bc*(Ts/2) + Dc;\n%\n% Compute Initial states\nI=eye"
+		    "(size(Ac));\nx0c=inv(-Ac)*Bc*V_Init;\nx0d=(I-Ac*Ts/2)*x0c/Ts - Bc/2*V_Init;\n\nif T1==0 & T2==0, Dd=1; end\n"
+		    Display		    "disp('1+T1s\\n---\\n1+T2s')"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    4
+		    Object {
+		    $ObjectID		    47
+		    Type		    "edit"
+		    Name		    "T1"
+		    Prompt		    "Time constant T1 (s):"
+		    Value		    "tgr(2)"
+		    }
+		    Object {
+		    $ObjectID		    48
+		    Type		    "edit"
+		    Name		    "T2"
+		    Prompt		    "Time constant T2 (s):"
+		    Value		    "tgr(1)"
+		    }
+		    Object {
+		    $ObjectID		    49
+		    Type		    "edit"
+		    Name		    "V_Init"
+		    Prompt		    "Initial input and output:"
+		    Value		    "exc(1)*v0(2)/reg(1)"
+		    }
+		    Object {
+		    $ObjectID		    50
+		    Type		    "edit"
+		    Name		    "Ts"
+		    Prompt		    "Sample time (s):"
+		    Value		    "Ts"
+		    }
+		    PropName		    "Parameters"
+		    }
+		    }
+		    System {
+		    Name		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
+		    Location		    [404, 414, 2336, 1506]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "In1"
+		    SID			    "842"
+		    Position		    [25, 38, 55, 52]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
 		    }
 		    Block {
-		    BlockType		    Reference
+		    BlockType		    DiscreteStateSpace
+		    Name		    "Discrete State-Space"
+		    SID			    "843"
+		    Position		    [80, 27, 200, 63]
+		    ZOrder		    -2
+		    A			    "Ad"
+		    B			    "Bd"
+		    C			    "Cd"
+		    D			    "Dd"
+		    X0			    "x0d"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Out1"
+		    SID			    "844"
+		    Position		    [260, 38, 290, 52]
+		    ZOrder		    -3
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    SrcBlock		    "In1"
+		    SrcPort		    1
+		    DstBlock		    "Discrete State-Space"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete State-Space"
+		    SrcPort		    1
+		    DstBlock		    "Out1"
+		    DstPort		    1
+		    }
+		    }
+		    }
+		    Block {
+		    BlockType		    SubSystem
 		    Name		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
-		    SID			    "53"
+		    SID			    "801"
 		    Ports		    [1, 1]
 		    Position		    [265, 89, 310, 131]
 		    ZOrder		    -7
 		    BackgroundColor	    "yellow"
 		    DropShadow		    on
-		    SourceBlock		    "powerlib_extras/Discrete \nControl Blocks/Discrete\n1st-Order\nDiscrete Filter"
-		    SourceType		    "Discrete 1st-Order Filter"
-		    FilterType		    "Lowpass"
-		    Tc			    "tr"
-		    Ts			    "Ts"
-		    Initialize		    on
-		    Vac_Init		    "[0 0 60]"
-		    Vdc_Init		    "v0(1)"
-		    PlotResponse	    off
-		    param1		    "[1 500 0.1]"
-		    RTWMemSecFuncInitTerm   "Inherit from model"
-		    RTWMemSecFuncExecute    "Inherit from model"
-		    RTWMemSecDataConstants  "Inherit from model"
-		    RTWMemSecDataInternal   "Inherit from model"
-		    RTWMemSecDataParameters "Inherit from model"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    51
+		    $ClassName		    "Simulink.Mask"
+		    Type		    "Discrete 1st-Order Filter"
+		    Initialization	    "switch FilterType\ncase 1, % Lowpass\n    X=[0 1 2 3 4];\n    Y=[-2 -2 -3 -4 -4];\n    numc="
+		    "1;\n    denc=[Tc 1];\ncase 2,   % Highpass\n    X=[0 1 2 3 4];\n    Y=[-4 -4 -3 -2 -2];\n    numc=[1 0];\n    de"
+		    "nc=[1 1/Tc];\nend\n%\n[Ac,Bc,Cc,Dc]=tf2ss(numc,denc);\n%\n%  Conversion to discrete transfer function\nnstates ="
+		    " size(Ac,1);\ninvexp = inv(eye(nstates) - (Ts/2)*Ac);\nAd = invexp*(eye(nstates) + (Ts/2)*Ac);\nBd = invexp*Bc;\n"
+		    "Cd = Cc*invexp*Ts;\nDd = Cc*invexp*Bc*(Ts/2) + Dc;\n%\nif Initialize==1  % Compute initial conditions on states\n"
+		    "    u1=Vac_Init(1)*exp(j*Vac_Init(2)*pi/180);\n    u2=Vdc_Init*exp(j*90*pi/180);\n    u=u1+u2;\n    u0=imag(u); "
+		    "% input at  t=0;\n    I=eye(size(Ac));\n    sI1=I*j*(2*pi*Vac_Init(3));\n    sI2=I*j*0;\n    x=inv(sI1-Ac)*Bc*u1"
+		    " + inv(sI2-Ac)*Bc*u2;\n    x0c=imag(x);\n    x0d=(I-Ac*Ts/2)*x0c/Ts - Bc/2*u0;\nelse\n    x0d=0;\nend\n\n%\nif P"
+		    "lotResponse==1 % Plot frequency and step response\n    figure(1)\n    sys=ss(Ad,Bd,Cd,Dd,Ts);\n    f=param1(1):p"
+		    "aram1(3):param1(2);\n    w=2*pi*f;\n    [mag phase]=bode(sys,w);\n    subplot(2,1,1)\n    plot(f,squeeze(mag))\n"
+		    "    title('Magnitude')\n    grid\n    subplot(2,1,2)\n    plot(f,squeeze(phase))\n    title('Phase (degrees)')\n"
+		    "    xlabel('Hz')\n    grid\n    figure(2)\n    step(sys)\nend\n\n\n"
+		    Display		    "plot(X,Y);"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    8
+		    Object {
+		    $ObjectID		    52
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Lowpass"
+		    Cell		    "Highpass"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "FilterType"
+		    Prompt		    "Filter Type:"
+		    Value		    "Lowpass"
+		    }
+		    Object {
+		    $ObjectID		    53
+		    Type		    "edit"
+		    Name		    "Tc"
+		    Prompt		    "Time constant (s):"
+		    Value		    "tr"
+		    }
+		    Object {
+		    $ObjectID		    54
+		    Type		    "edit"
+		    Name		    "Ts"
+		    Prompt		    "Sample time:"
+		    Value		    "Ts"
+		    }
+		    Object {
+		    $ObjectID		    55
+		    Type		    "checkbox"
+		    Name		    "Initialize"
+		    Prompt		    "Initialize filter states"
+		    Value		    "on"
+		    Callback		    "p4=get_param(gcb,'Initialize');if strcmp(p4,'on');visible={'on','on','on','on','on','on','on',get"
+		    "_param(gcb,'PlotResponse')};else;visible={'on','on','on','on','off','off','on',get_param(gcb,'PlotResponse')};en"
+		    "d;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    56
+		    Type		    "edit"
+		    Name		    "Vac_Init"
+		    Prompt		    "AC initial input: [ Mag  Phase(degrees)  Freq(Hz) ]"
+		    Value		    "[0 0 60]"
+		    }
+		    Object {
+		    $ObjectID		    57
+		    Type		    "edit"
+		    Name		    "Vdc_Init"
+		    Prompt		    "DC Initial input:"
+		    Value		    "v0(1)"
+		    }
+		    Object {
+		    $ObjectID		    58
+		    Type		    "checkbox"
+		    Name		    "PlotResponse"
+		    Prompt		    "Plot filter response"
+		    Value		    "off"
+		    Callback		    "p7=get_param(gcb,'PlotResponse');if strcmp(p7,'on');visible={'on','on','on','on',get_param(gcb,'I"
+		    "nitialize'),get_param(gcb,'Initialize'),'on','on'};else;visible={'on','on','on','on',get_param(gcb,'Initialize')"
+		    ",get_param(gcb,'Initialize'),'on','off'};end;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    59
+		    Type		    "edit"
+		    Name		    "param1"
+		    Prompt		    "Frequency range(Hz) : [Start  End  Inc.]"
+		    Value		    "[1 500 0.1]"
+		    Visible		    "off"
+		    }
+		    PropName		    "Parameters"
+		    }
+		    }
+		    System {
+		    Name		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
+		    Location		    [502, 59, 901, 402]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "In"
+		    SID			    "839"
+		    Position		    [25, 53, 55, 67]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    DiscreteStateSpace
+		    Name		    "Discrete State-Space"
+		    SID			    "840"
+		    Position		    [105, 30, 225, 90]
+		    ZOrder		    -2
+		    A			    "Ad"
+		    B			    "Bd"
+		    C			    "Cd"
+		    D			    "Dd"
+		    X0			    "x0d"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Out"
+		    SID			    "841"
+		    Position		    [270, 53, 300, 67]
+		    ZOrder		    -3
+		    IconDisplay		    "Port number"
+		    InitialOutput	    "0"
+		    }
+		    Line {
+		    SrcBlock		    "In"
+		    SrcPort		    1
+		    DstBlock		    "Discrete State-Space"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete State-Space"
+		    SrcPort		    1
+		    DstBlock		    "Out"
+		    DstPort		    1
+		    }
+		    }
 		    }
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "Main Regulator\nka / (ta.s +1)"
-		    SID			    "54"
+		    SID			    "802"
 		    Ports		    [1, 1]
 		    Position		    [585, 90, 635, 130]
 		    ZOrder		    -8
@@ -2862,7 +3410,7 @@ Library {
 		    MaskHideContents	    off
 		    System {
 		    Name		    "Main Regulator\nka / (ta.s +1)"
-		    Location		    [-8, -8, 1928, 1168]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -2878,41 +3426,184 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
-		    SID			    "55"
+		    SID			    "803"
 		    Position		    [25, 38, 55, 52]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
 		    }
 		    Block {
-		    BlockType		    Reference
+		    BlockType		    SubSystem
 		    Name		    "1st order\nLowpass"
-		    SID			    "56"
+		    SID			    "804"
 		    Ports		    [1, 1]
 		    Position		    [170, 28, 205, 62]
 		    ZOrder		    1
 		    BackgroundColor	    "yellow"
 		    DropShadow		    on
-		    SourceBlock		    "generator_lib/Generator_09222015/GenSet_4MVA_09212015/4MVA Generator with \nPrimary Controller"
-		    "s1/Diesel Engine\nSpeed & Voltage\nControl\nfast/Excitation/Main Regulator\nka // (ta.s +1)/1st order\nLowpass"
-		    SourceType		    "Discrete 1st-Order Filter"
-		    FilterType		    "Lowpass"
-		    Tc			    "reg(2)"
-		    Ts			    "Ts"
-		    Initialize		    on
-		    Vac_Init		    "[0.0 0 60]"
-		    Vdc_Init		    "exc(1)*v0(2)"
-		    PlotResponse	    off
-		    param1		    "[1 500 0.1]"
-		    RTWMemSecFuncInitTerm   "Inherit from model"
-		    RTWMemSecFuncExecute    "Inherit from model"
-		    RTWMemSecDataConstants  "Inherit from model"
-		    RTWMemSecDataInternal   "Inherit from model"
-		    RTWMemSecDataParameters "Inherit from model"
+		    MinAlgLoopOccurrences   off
+		    PropExecContextOutsideSubsystem off
+		    RTWSystemCode	    "Auto"
+		    FunctionWithSeparateData off
+		    Opaque		    off
+		    RequestExecContextInheritance off
+		    MaskHideContents	    off
+		    Object {
+		    $PropName		    "MaskObject"
+		    $ObjectID		    60
+		    $ClassName		    "Simulink.Mask"
+		    Type		    "Discrete 1st-Order Filter"
+		    Initialization	    "switch FilterType\ncase 1, % Lowpass\n    X=[0 1 2 3 4];\n    Y=[-2 -2 -3 -4 -4];\n    numc="
+		    "1;\n    denc=[Tc 1];\ncase 2,   % Highpass\n    X=[0 1 2 3 4];\n    Y=[-4 -4 -3 -2 -2];\n    numc=[1 0];\n    de"
+		    "nc=[1 1/Tc];\nend\n%\n[Ac,Bc,Cc,Dc]=tf2ss(numc,denc);\n%\n%  Conversion to discrete transfer function\nnstates ="
+		    " size(Ac,1);\ninvexp = inv(eye(nstates) - (Ts/2)*Ac);\nAd = invexp*(eye(nstates) + (Ts/2)*Ac);\nBd = invexp*Bc;\n"
+		    "Cd = Cc*invexp*Ts;\nDd = Cc*invexp*Bc*(Ts/2) + Dc;\n%\nif Initialize==1  % Compute initial conditions on states\n"
+		    "    u1=Vac_Init(1)*exp(j*Vac_Init(2)*pi/180);\n    u2=Vdc_Init*exp(j*90*pi/180);\n    u=u1+u2;\n    u0=imag(u); "
+		    "% input at  t=0;\n    I=eye(size(Ac));\n    sI1=I*j*(2*pi*Vac_Init(3));\n    sI2=I*j*0;\n    x=inv(sI1-Ac)*Bc*u1"
+		    " + inv(sI2-Ac)*Bc*u2;\n    x0c=imag(x);\n    x0d=(I-Ac*Ts/2)*x0c/Ts - Bc/2*u0;\nelse\n    x0d=0;\nend\n\n%\nif P"
+		    "lotResponse==1 % Plot frequency and step response\n    figure(1)\n    sys=ss(Ad,Bd,Cd,Dd,Ts);\n    f=param1(1):p"
+		    "aram1(3):param1(2);\n    w=2*pi*f;\n    [mag phase]=bode(sys,w);\n    subplot(2,1,1)\n    plot(f,squeeze(mag))\n"
+		    "    title('Magnitude')\n    grid\n    subplot(2,1,2)\n    plot(f,squeeze(phase))\n    title('Phase (degrees)')\n"
+		    "    xlabel('Hz')\n    grid\n    figure(2)\n    step(sys)\nend\n\n\n"
+		    Display		    "plot(X,Y);"
+		    Array {
+		    Type		    "Simulink.MaskParameter"
+		    Dimension		    8
+		    Object {
+		    $ObjectID		    61
+		    Type		    "popup"
+		    Array {
+		    Type		    "Cell"
+		    Dimension		    2
+		    Cell		    "Lowpass"
+		    Cell		    "Highpass"
+		    PropName		    "TypeOptions"
+		    }
+		    Name		    "FilterType"
+		    Prompt		    "Filter Type:"
+		    Value		    "Lowpass"
+		    }
+		    Object {
+		    $ObjectID		    62
+		    Type		    "edit"
+		    Name		    "Tc"
+		    Prompt		    "Time constant (s):"
+		    Value		    "reg(2)"
+		    }
+		    Object {
+		    $ObjectID		    63
+		    Type		    "edit"
+		    Name		    "Ts"
+		    Prompt		    "Sample time:"
+		    Value		    "Ts"
+		    }
+		    Object {
+		    $ObjectID		    64
+		    Type		    "checkbox"
+		    Name		    "Initialize"
+		    Prompt		    "Initialize filter states"
+		    Value		    "on"
+		    Callback		    "p4=get_param(gcb,'Initialize');if strcmp(p4,'on');visible={'on','on','on','on','on','on','on',get"
+		    "_param(gcb,'PlotResponse')};else;visible={'on','on','on','on','off','off','on',get_param(gcb,'PlotResponse')};en"
+		    "d;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    65
+		    Type		    "edit"
+		    Name		    "Vac_Init"
+		    Prompt		    "AC initial input: [ Mag  Phase(degrees)  Freq(Hz) ]"
+		    Value		    "[0.0 0 60]"
+		    }
+		    Object {
+		    $ObjectID		    66
+		    Type		    "edit"
+		    Name		    "Vdc_Init"
+		    Prompt		    "DC Initial input:"
+		    Value		    "exc(1)*v0(2)"
+		    }
+		    Object {
+		    $ObjectID		    67
+		    Type		    "checkbox"
+		    Name		    "PlotResponse"
+		    Prompt		    "Plot filter response"
+		    Value		    "off"
+		    Callback		    "p7=get_param(gcb,'PlotResponse');if strcmp(p7,'on');visible={'on','on','on','on',get_param(gcb,'I"
+		    "nitialize'),get_param(gcb,'Initialize'),'on','on'};else;visible={'on','on','on','on',get_param(gcb,'Initialize')"
+		    ",get_param(gcb,'Initialize'),'on','off'};end;set_param(gcb,'MaskVisibilities',visible)"
+		    }
+		    Object {
+		    $ObjectID		    68
+		    Type		    "edit"
+		    Name		    "param1"
+		    Prompt		    "Frequency range(Hz) : [Start  End  Inc.]"
+		    Value		    "[1 500 0.1]"
+		    Visible		    "off"
+		    }
+		    PropName		    "Parameters"
+		    }
+		    }
+		    System {
+		    Name		    "1st order\nLowpass"
+		    Location		    [502, 59, 901, 402]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "In"
+		    SID			    "845"
+		    Position		    [25, 53, 55, 67]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    DiscreteStateSpace
+		    Name		    "Discrete State-Space"
+		    SID			    "846"
+		    Position		    [105, 30, 225, 90]
+		    ZOrder		    -2
+		    A			    "Ad"
+		    B			    "Bd"
+		    C			    "Cd"
+		    D			    "Dd"
+		    X0			    "x0d"
+		    SampleTime		    "Ts"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Out"
+		    SID			    "847"
+		    Position		    [270, 53, 300, 67]
+		    ZOrder		    -3
+		    IconDisplay		    "Port number"
+		    InitialOutput	    "0"
+		    }
+		    Line {
+		    SrcBlock		    "In"
+		    SrcPort		    1
+		    DstBlock		    "Discrete State-Space"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Discrete State-Space"
+		    SrcPort		    1
+		    DstBlock		    "Out"
+		    DstPort		    1
+		    }
+		    }
 		    }
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain"
-		    SID			    "57"
+		    SID			    "805"
 		    Position		    [95, 30, 125, 60]
 		    ZOrder		    -3
 		    Gain		    "reg(1)"
@@ -2920,15 +3611,15 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Out"
-		    SID			    "58"
+		    SID			    "806"
 		    Position		    [285, 38, 315, 52]
 		    ZOrder		    -4
 		    IconDisplay		    "Port number"
 		    }
 		    Line {
-		    SrcBlock		    "Gain"
+		    SrcBlock		    "1st order\nLowpass"
 		    SrcPort		    1
-		    DstBlock		    "1st order\nLowpass"
+		    DstBlock		    "Out"
 		    DstPort		    1
 		    }
 		    Line {
@@ -2938,13 +3629,13 @@ Library {
 		    DstPort		    1
 		    }
 		    Line {
-		    SrcBlock		    "1st order\nLowpass"
+		    SrcBlock		    "Gain"
 		    SrcPort		    1
-		    DstBlock		    "Out"
+		    DstBlock		    "1st order\nLowpass"
 		    DstPort		    1
 		    }
 		    Annotation {
-		    SID			    "59"
+		    SID			    "807"
 		    Name		    "link disabled"
 		    Position		    [218, 33]
 		    ForegroundColor	    "red"
@@ -2955,7 +3646,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum"
-		    SID			    "60"
+		    SID			    "808"
 		    Ports		    [5, 1]
 		    Position		    [395, 75, 425, 145]
 		    ZOrder		    -9
@@ -2965,7 +3656,7 @@ Library {
 		    Block {
 		    BlockType		    UnitDelay
 		    Name		    "Unit Delay1"
-		    SID			    "61"
+		    SID			    "809"
 		    Position		    [565, 223, 585, 247]
 		    ZOrder		    -10
 		    BlockMirror		    on
@@ -2975,7 +3666,7 @@ Library {
 		    Block {
 		    BlockType		    UnitDelay
 		    Name		    "Unit Delay2"
-		    SID			    "62"
+		    SID			    "810"
 		    Position		    [865, 113, 885, 137]
 		    ZOrder		    -11
 		    ShowName		    off
@@ -2985,7 +3676,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Vf0 / ka"
-		    SID			    "63"
+		    SID			    "811"
 		    Position		    [180, 48, 240, 72]
 		    ZOrder		    -12
 		    Value		    "v0(2)/reg(1)"
@@ -2993,7 +3684,7 @@ Library {
 		    Block {
 		    BlockType		    SubSystem
 		    Name		    "proportional\nsaturation"
-		    SID			    "64"
+		    SID			    "812"
 		    Ports		    [2, 1]
 		    Position		    [685, 97, 725, 153]
 		    ZOrder		    -13
@@ -3006,7 +3697,7 @@ Library {
 		    MaskHideContents	    off
 		    System {
 		    Name		    "proportional\nsaturation"
-		    Location		    [2256, 682, 3013, 1173]
+		    Location		    [-8, -8, 1928, 1048]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -3022,7 +3713,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Efd"
-		    SID			    "65"
+		    SID			    "813"
 		    Position		    [25, 43, 55, 57]
 		    ZOrder		    -1
 		    IconDisplay		    "Port number"
@@ -3030,7 +3721,7 @@ Library {
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Vtf"
-		    SID			    "66"
+		    SID			    "814"
 		    Position		    [25, 83, 55, 97]
 		    ZOrder		    -2
 		    Port		    "2"
@@ -3039,7 +3730,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant"
-		    SID			    "67"
+		    SID			    "815"
 		    Position		    [65, 115, 85, 135]
 		    ZOrder		    -3
 		    ShowName		    off
@@ -3048,7 +3739,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant1"
-		    SID			    "68"
+		    SID			    "816"
 		    Position		    [215, 56, 255, 74]
 		    ZOrder		    -4
 		    ShowName		    off
@@ -3057,7 +3748,7 @@ Library {
 		    Block {
 		    BlockType		    Constant
 		    Name		    "Constant3"
-		    SID			    "69"
+		    SID			    "817"
 		    Position		    [65, 145, 85, 165]
 		    ZOrder		    -5
 		    ShowName		    off
@@ -3066,7 +3757,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type \nConversion"
-		    SID			    "70"
+		    SID			    "818"
 		    Position		    [425, 54, 450, 76]
 		    ZOrder		    -6
 		    BackgroundColor	    "cyan"
@@ -3076,7 +3767,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type \nConversion1"
-		    SID			    "71"
+		    SID			    "819"
 		    Position		    [425, 99, 450, 121]
 		    ZOrder		    -7
 		    BackgroundColor	    "cyan"
@@ -3086,7 +3777,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type \nConversion2"
-		    SID			    "72"
+		    SID			    "820"
 		    Position		    [425, 129, 450, 151]
 		    ZOrder		    -8
 		    BackgroundColor	    "cyan"
@@ -3096,7 +3787,7 @@ Library {
 		    Block {
 		    BlockType		    DataTypeConversion
 		    Name		    "Data Type \nConversion3"
-		    SID			    "73"
+		    SID			    "821"
 		    Position		    [155, 139, 170, 161]
 		    ZOrder		    -9
 		    BackgroundColor	    "cyan"
@@ -3106,7 +3797,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator"
-		    SID			    "74"
+		    SID			    "822"
 		    Ports		    [2, 1]
 		    Position		    [375, 53, 405, 77]
 		    ZOrder		    -10
@@ -3115,7 +3806,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator1"
-		    SID			    "75"
+		    SID			    "823"
 		    Ports		    [1, 1]
 		    Position		    [375, 98, 405, 122]
 		    ZOrder		    -11
@@ -3126,7 +3817,7 @@ Library {
 		    Block {
 		    BlockType		    Logic
 		    Name		    "Logical\nOperator2"
-		    SID			    "76"
+		    SID			    "824"
 		    Ports		    [1, 1]
 		    Position		    [375, 128, 405, 152]
 		    ZOrder		    -12
@@ -3137,7 +3828,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product"
-		    SID			    "77"
+		    SID			    "825"
 		    Ports		    [2, 1]
 		    Position		    [480, 48, 510, 72]
 		    ZOrder		    -13
@@ -3147,7 +3838,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product1"
-		    SID			    "78"
+		    SID			    "826"
 		    Ports		    [2, 1]
 		    Position		    [480, 85, 510, 120]
 		    ZOrder		    -14
@@ -3157,7 +3848,7 @@ Library {
 		    Block {
 		    BlockType		    Product
 		    Name		    "Product2"
-		    SID			    "79"
+		    SID			    "827"
 		    Ports		    [2, 1]
 		    Position		    [480, 130, 510, 165]
 		    ZOrder		    -15
@@ -3167,7 +3858,7 @@ Library {
 		    Block {
 		    BlockType		    RelationalOperator
 		    Name		    "Relational\nOperator"
-		    SID			    "80"
+		    SID			    "828"
 		    Ports		    [2, 1]
 		    Position		    [105, 138, 135, 162]
 		    ZOrder		    -16
@@ -3177,7 +3868,7 @@ Library {
 		    Block {
 		    BlockType		    RelationalOperator
 		    Name		    "Relational\nOperator1"
-		    SID			    "81"
+		    SID			    "829"
 		    Ports		    [2, 1]
 		    Position		    [305, 128, 330, 152]
 		    ZOrder		    -17
@@ -3187,7 +3878,7 @@ Library {
 		    Block {
 		    BlockType		    RelationalOperator
 		    Name		    "Relational\nOperator2"
-		    SID			    "82"
+		    SID			    "830"
 		    Ports		    [2, 1]
 		    Position		    [305, 41, 330, 74]
 		    ZOrder		    -18
@@ -3197,7 +3888,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum"
-		    SID			    "83"
+		    SID			    "831"
 		    Ports		    [2, 1]
 		    Position		    [255, 135, 275, 155]
 		    ZOrder		    -19
@@ -3206,7 +3897,7 @@ Library {
 		    Block {
 		    BlockType		    Sum
 		    Name		    "Sum1"
-		    SID			    "84"
+		    SID			    "832"
 		    Ports		    [3, 1]
 		    Position		    [540, 38, 555, 172]
 		    ZOrder		    -20
@@ -3216,7 +3907,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Vfdmax"
-		    SID			    "85"
+		    SID			    "833"
 		    Position		    [190, 129, 235, 171]
 		    ZOrder		    -21
 		    ShowName		    off
@@ -3225,7 +3916,7 @@ Library {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Vfdmax1"
-		    SID			    "86"
+		    SID			    "834"
 		    Position		    [80, 77, 105, 103]
 		    ZOrder		    -22
 		    ShowName		    off
@@ -3234,176 +3925,16 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Ef"
-		    SID			    "87"
+		    SID			    "835"
 		    Position		    [580, 98, 610, 112]
 		    ZOrder		    -23
 		    IconDisplay		    "Port number"
 		    InitialOutput	    "0"
 		    }
 		    Line {
-		    SrcBlock		    "Vtf"
+		    SrcBlock		    "Data Type \nConversion3"
 		    SrcPort		    1
-		    DstBlock		    "Vfdmax1"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Constant"
-		    SrcPort		    1
-		    DstBlock		    "Relational\nOperator"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Constant3"
-		    SrcPort		    1
-		    DstBlock		    "Relational\nOperator"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Vfdmax"
-		    SrcPort		    1
-		    DstBlock		    "Sum"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Vfdmax1"
-		    SrcPort		    1
-		    Points		    [130, 0]
-		    DstBlock		    "Sum"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Sum"
-		    SrcPort		    1
-		    Points		    [0, 0]
-		    Branch {
-		    Points		    [0, 10]
-		    DstBlock		    "Product2"
-		    DstPort		    2
-		    }
-		    Branch {
-		    DstBlock		    "Relational\nOperator1"
-		    DstPort		    2
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Relational\nOperator2"
-		    SrcPort		    1
-		    Points		    [0, 0]
-		    Branch {
-		    Points		    [0, 50]
-		    DstBlock		    "Logical\nOperator1"
-		    DstPort		    1
-		    }
-		    Branch {
-		    DstBlock		    "Logical\nOperator"
-		    DstPort		    1
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Relational\nOperator1"
-		    SrcPort		    1
-		    Points		    [0, 0]
-		    Branch {
-		    DstBlock		    "Logical\nOperator2"
-		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [5, 0; 0, -70]
-		    DstBlock		    "Logical\nOperator"
-		    DstPort		    2
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Constant1"
-		    SrcPort		    1
-		    Points		    [15, 0]
-		    Branch {
-		    DstBlock		    "Relational\nOperator2"
-		    DstPort		    2
-		    }
-		    Branch {
-		    Points		    [0, 30]
-		    DstBlock		    "Product1"
-		    DstPort		    1
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Efd"
-		    SrcPort		    1
-		    Points		    [225, 0]
-		    Branch {
-		    DstBlock		    "Relational\nOperator2"
-		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [0, 85]
-		    DstBlock		    "Relational\nOperator1"
-		    DstPort		    1
-		    }
-		    Branch {
-		    Points		    [0, -20; 180, 0]
-		    DstBlock		    "Product"
-		    DstPort		    1
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Sum1"
-		    SrcPort		    1
-		    DstBlock		    "Ef"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Product"
-		    SrcPort		    1
-		    DstBlock		    "Sum1"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Product2"
-		    SrcPort		    1
-		    DstBlock		    "Sum1"
-		    DstPort		    3
-		    }
-		    Line {
-		    SrcBlock		    "Product1"
-		    SrcPort		    1
-		    DstBlock		    "Sum1"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Logical\nOperator"
-		    SrcPort		    1
-		    DstBlock		    "Data Type \nConversion"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Data Type \nConversion"
-		    SrcPort		    1
-		    DstBlock		    "Product"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Logical\nOperator1"
-		    SrcPort		    1
-		    DstBlock		    "Data Type \nConversion1"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Data Type \nConversion1"
-		    SrcPort		    1
-		    DstBlock		    "Product1"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Logical\nOperator2"
-		    SrcPort		    1
-		    DstBlock		    "Data Type \nConversion2"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Data Type \nConversion2"
-		    SrcPort		    1
-		    DstBlock		    "Product2"
+		    DstBlock		    "Vfdmax"
 		    DstPort		    1
 		    }
 		    Line {
@@ -3413,9 +3944,169 @@ Library {
 		    DstPort		    1
 		    }
 		    Line {
-		    SrcBlock		    "Data Type \nConversion3"
+		    SrcBlock		    "Data Type \nConversion2"
 		    SrcPort		    1
-		    DstBlock		    "Vfdmax"
+		    DstBlock		    "Product2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Logical\nOperator2"
+		    SrcPort		    1
+		    DstBlock		    "Data Type \nConversion2"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Data Type \nConversion1"
+		    SrcPort		    1
+		    DstBlock		    "Product1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Logical\nOperator1"
+		    SrcPort		    1
+		    DstBlock		    "Data Type \nConversion1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Data Type \nConversion"
+		    SrcPort		    1
+		    DstBlock		    "Product"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Logical\nOperator"
+		    SrcPort		    1
+		    DstBlock		    "Data Type \nConversion"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Product1"
+		    SrcPort		    1
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Product2"
+		    SrcPort		    1
+		    DstBlock		    "Sum1"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Product"
+		    SrcPort		    1
+		    DstBlock		    "Sum1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Sum1"
+		    SrcPort		    1
+		    DstBlock		    "Ef"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Efd"
+		    SrcPort		    1
+		    Points		    [225, 0]
+		    Branch {
+		    Points		    [0, -20; 180, 0]
+		    DstBlock		    "Product"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 85]
+		    DstBlock		    "Relational\nOperator1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Relational\nOperator2"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Constant1"
+		    SrcPort		    1
+		    Points		    [15, 0]
+		    Branch {
+		    Points		    [0, 30]
+		    DstBlock		    "Product1"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Relational\nOperator2"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Relational\nOperator1"
+		    SrcPort		    1
+		    Points		    [5, 0]
+		    Branch {
+		    Points		    [0, -70]
+		    DstBlock		    "Logical\nOperator"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "Logical\nOperator2"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Relational\nOperator2"
+		    SrcPort		    1
+		    Points		    [0, 0]
+		    Branch {
+		    DstBlock		    "Logical\nOperator"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 50]
+		    DstBlock		    "Logical\nOperator1"
+		    DstPort		    1
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Sum"
+		    SrcPort		    1
+		    Points		    [0, 0]
+		    Branch {
+		    DstBlock		    "Relational\nOperator1"
+		    DstPort		    2
+		    }
+		    Branch {
+		    Points		    [0, 10]
+		    DstBlock		    "Product2"
+		    DstPort		    2
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Vfdmax1"
+		    SrcPort		    1
+		    Points		    [130, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Vfdmax"
+		    SrcPort		    1
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Constant3"
+		    SrcPort		    1
+		    DstBlock		    "Relational\nOperator"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Constant"
+		    SrcPort		    1
+		    DstBlock		    "Relational\nOperator"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Vtf"
+		    SrcPort		    1
+		    DstBlock		    "Vfdmax1"
 		    DstPort		    1
 		    }
 		    }
@@ -3423,95 +4114,16 @@ Library {
 		    Block {
 		    BlockType		    Outport
 		    Name		    "Vf1"
-		    SID			    "88"
+		    SID			    "836"
 		    Position		    [910, 115, 930, 135]
 		    ZOrder		    -14
 		    IconDisplay		    "Port number"
 		    InitialOutput	    "0"
 		    }
 		    Line {
-		    SrcBlock		    "Exciter\n 1 / (te.s + ke)"
+		    SrcBlock		    "Unit Delay2"
 		    SrcPort		    1
-		    Points		    [20, 0]
-		    Branch {
-		    Points		    [0, 110]
-		    DstBlock		    "Damping\nkf.s / (tf.s +1)"
-		    DstPort		    1
-		    }
-		    Branch {
-		    DstBlock		    "Unit Delay2"
-		    DstPort		    1
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "Damping\nkf.s / (tf.s +1)"
-		    SrcPort		    1
-		    DstBlock		    "Unit Delay1"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Main Regulator\nka / (ta.s +1)"
-		    SrcPort		    1
-		    DstBlock		    "proportional\nsaturation"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Vf0 / ka"
-		    SrcPort		    1
-		    Points		    [135, 0]
-		    DstBlock		    "Sum"
-		    DstPort		    2
-		    }
-		    Line {
-		    SrcBlock		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
-		    SrcPort		    1
-		    Points		    [50, 0]
-		    Branch {
-		    DstBlock		    "Sum"
-		    DstPort		    3
-		    }
-		    Branch {
-		    Points		    [0, 70; 305, 0]
-		    DstBlock		    "proportional\nsaturation"
-		    DstPort		    2
-		    }
-		    }
-		    Line {
-		    SrcBlock		    "vstab"
-		    SrcPort		    1
-		    Points		    [300, 0; 0, -50]
-		    DstBlock		    "Sum"
-		    DstPort		    4
-		    }
-		    Line {
-		    SrcBlock		    "vref"
-		    SrcPort		    1
-		    Points		    [330, 0]
-		    DstBlock		    "Sum"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "v"
-		    SrcPort		    1
-		    DstBlock		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Sum"
-		    SrcPort		    1
-		    DstBlock		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
-		    SrcPort		    1
-		    DstBlock		    "Main Regulator\nka / (ta.s +1)"
-		    DstPort		    1
-		    }
-		    Line {
-		    SrcBlock		    "proportional\nsaturation"
-		    SrcPort		    1
-		    DstBlock		    "Exciter\n 1 / (te.s + ke)"
+		    DstBlock		    "Vf1"
 		    DstPort		    1
 		    }
 		    Line {
@@ -3522,22 +4134,101 @@ Library {
 		    DstPort		    5
 		    }
 		    Line {
-		    SrcBlock		    "Unit Delay2"
+		    SrcBlock		    "proportional\nsaturation"
 		    SrcPort		    1
-		    DstBlock		    "Vf1"
+		    DstBlock		    "Exciter\n 1 / (te.s + ke)"
 		    DstPort		    1
 		    }
+		    Line {
+		    SrcBlock		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
+		    SrcPort		    1
+		    DstBlock		    "Main Regulator\nka / (ta.s +1)"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Sum"
+		    SrcPort		    1
+		    DstBlock		    "Lead Lag Compensator\ntc.s+1 / tb.s+1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "v"
+		    SrcPort		    1
+		    DstBlock		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "vref"
+		    SrcPort		    1
+		    Points		    [330, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "vstab"
+		    SrcPort		    1
+		    Points		    [300, 0; 0, -50]
+		    DstBlock		    "Sum"
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "Low Pass Filter\n1 / (tr.s +1)\n(with IC)"
+		    SrcPort		    1
+		    Points		    [50, 0]
+		    Branch {
+		    Points		    [0, 70; 305, 0]
+		    DstBlock		    "proportional\nsaturation"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "Sum"
+		    DstPort		    3
+		    }
+		    }
+		    Line {
+		    SrcBlock		    "Vf0 / ka"
+		    SrcPort		    1
+		    Points		    [135, 0]
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Main Regulator\nka / (ta.s +1)"
+		    SrcPort		    1
+		    DstBlock		    "proportional\nsaturation"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Damping\nkf.s / (tf.s +1)"
+		    SrcPort		    1
+		    DstBlock		    "Unit Delay1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Exciter\n 1 / (te.s + ke)"
+		    SrcPort		    1
+		    Points		    [20, 0]
+		    Branch {
+		    DstBlock		    "Unit Delay2"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 110]
+		    DstBlock		    "Damping\nkf.s / (tf.s +1)"
+		    DstPort		    1
+		    }
+		    }
 		    Annotation {
-		    SID			    "90"
+		    SID			    "837"
 		    Name		    "link disabled"
-		    Position		    [523, 88]
+		    Position		    [323, 88]
 		    ForegroundColor	    "red"
 		    ZOrder		    -1
 		    }
 		    Annotation {
-		    SID			    "89"
+		    SID			    "838"
 		    Name		    "link disabled"
-		    Position		    [323, 88]
+		    Position		    [523, 88]
 		    ForegroundColor	    "red"
 		    ZOrder		    -2
 		    }
@@ -3745,7 +4436,7 @@ Library {
 		Line {
 		  SrcBlock		  "Sum1"
 		  SrcPort		  1
-		  Points		  [20, 0; 0, -100]
+		  Points		  [27, 0; 0, -100]
 		  DstBlock		  "Excitation1"
 		  DstPort		  1
 		}
@@ -3887,13 +4578,13 @@ Library {
 		  SrcPort		  1
 		  Points		  [39, 0]
 		  Branch {
-		    Points		    [244, 0; 0, -165]
-		    DstBlock		    "Excitation1"
+		    Points		    [0, -35]
+		    DstBlock		    "Bus\nCreator1"
 		    DstPort		    2
 		  }
 		  Branch {
-		    Points		    [0, -35]
-		    DstBlock		    "Bus\nCreator1"
+		    Points		    [247, 0; 0, -165]
+		    DstBlock		    "Excitation1"
 		    DstPort		    2
 		  }
 		}
@@ -4708,27 +5399,27 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    28
+	    $ObjectID		    69
 	    $ClassName		    "Simulink.Mask"
 	    Array {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      3
 	      Object {
-		$ObjectID		29
+		$ObjectID		70
 		Type			"edit"
 		Name			"v"
 		Prompt			"v"
 		Value			"13800"
 	      }
 	      Object {
-		$ObjectID		30
+		$ObjectID		71
 		Type			"edit"
 		Name			"kVA"
 		Prompt			"kVA"
 		Value			"320"
 	      }
 	      Object {
-		$ObjectID		31
+		$ObjectID		72
 		Type			"edit"
 		Name			"pf"
 		Prompt			"PF"
@@ -4885,12 +5576,12 @@ Library {
 	  Expr			  "RATING*(14.827*u^4-27.253*u^3+15.553*u^2+7.9033*u+2.5)"
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    32
+	    $ObjectID		    73
 	    $ClassName		    "Simulink.Mask"
 	    Description		    "This block computes the gal/hr vs Pm[pu] of a generator of a given rating [MW]."
 	    Object {
 	      $PropName		      "Parameters"
-	      $ObjectID		      33
+	      $ObjectID		      74
 	      $ClassName	      "Simulink.MaskParameter"
 	      Type		      "edit"
 	      Name		      "RATING"
