@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1856.0, 0.0, 1936.0, 1212.0]
+      Location		      [1920.0, 0.0, 960.0, 1200.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1046.0]
+	Extents			[717.0, 1034.0]
 	ZoomFactor		[2.3896713615023475]
-	Offset			[88.017190569744571, -115.85854616895871]
+	Offset			[88.017190569744571, -22.732809430255344]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 08 15:08:12 2016"
-  RTWModifiedTimeStamp	  403110461
-  ModelVersionFormat	  "1.%<AutoIncrement:514>"
+  LastModifiedDate	  "Fri Dec 09 14:11:46 2016"
+  RTWModifiedTimeStamp	  403193462
+  ModelVersionFormat	  "1.%<AutoIncrement:515>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -688,6 +688,17 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Abs
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
       BlockType		      ArithShift
       BitShiftNumberSource    "Dialog"
       BitShiftNumber	      "0"
@@ -929,7 +940,7 @@ Library {
   }
   System {
     Name		    "relay_modbus_lib"
-    Location		    [1856, 0, 3792, 1212]
+    Location		    [1920, 0, 2880, 1200]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -943,7 +954,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "239"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82691"
+    SIDHighWatermark	    "82695"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
@@ -952,7 +963,7 @@ Library {
       Position		      [225, 246, 405, 299]
       ZOrder		      3370
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.513"
+      LibraryVersion	      "*1.514"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1000,14 +1011,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[relay_par(1,:)]"
+	    Value		    "[relay_par(2,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[-8, 0, 1928, 1176]
+	Location		[-4, 0, 1924, 1164]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1019,7 +1030,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"60"
+	ZoomFactor		"40"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -3033,7 +3044,7 @@ Library {
 	  }
 	  System {
 	    Name		    "PQ_Calculator"
-	    Location		    [-8, 0, 1928, 1176]
+	    Location		    [-4, 0, 1924, 1164]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3454,7 +3465,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Phase_Calc1"
-	    Location		    [-8, 0, 1928, 1176]
+	    Location		    [-4, 0, 1924, 1164]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3700,7 +3711,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "RMS_Calculator"
-	    Location		    [-8, 0, 1928, 1176]
+	    Location		    [1912, -8, 3848, 1208]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3712,21 +3723,29 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "337"
+	    ZoomFactor		    "270"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Signal"
 	      SID		      "82511"
-	      Position		      [45, 88, 75, 102]
+	      Position		      [45, 188, 75, 202]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Abs
+	      Name		      "Abs"
+	      SID		      "82694"
+	      Position		      [365, 195, 395, 225]
+	      ZOrder		      3
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Discrete \nMean value6"
 	      SID		      "82512"
 	      Ports		      [1, 1]
-	      Position		      [270, 85, 340, 135]
+	      Position		      [255, 185, 325, 235]
 	      ZOrder		      -7
 	      LibraryVersion	      "1.664"
 	      FontName		      "Verdana"
@@ -3742,7 +3761,7 @@ Library {
 	      Name		      "Product3"
 	      SID		      "82513"
 	      Ports		      [2, 1]
-	      Position		      [190, 82, 225, 133]
+	      Position		      [170, 182, 205, 233]
 	      ZOrder		      -19
 	      InputSameDT	      off
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -3752,16 +3771,28 @@ Library {
 	      BlockType		      Sqrt
 	      Name		      "Signed\nSqrt"
 	      SID		      "82514"
-	      Position		      [370, 95, 400, 125]
+	      Position		      [430, 195, 460, 225]
 	      ZOrder		      -26
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "RMS_Signal"
 	      SID		      "82515"
-	      Position		      [495, 103, 525, 117]
+	      Position		      [495, 203, 525, 217]
 	      ZOrder		      -2
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Abs"
+	      SrcPort		      1
+	      DstBlock		      "Signed\nSqrt"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product3"
+	      SrcPort		      1
+	      DstBlock		      "Discrete \nMean value6"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Signal"
@@ -3778,15 +3809,9 @@ Library {
 	      }
 	    }
 	    Line {
-	      SrcBlock		      "Product3"
-	      SrcPort		      1
-	      DstBlock		      "Discrete \nMean value6"
-	      DstPort		      1
-	    }
-	    Line {
 	      SrcBlock		      "Discrete \nMean value6"
 	      SrcPort		      1
-	      DstBlock		      "Signed\nSqrt"
+	      DstBlock		      "Abs"
 	      DstPort		      1
 	    }
 	    Line {
@@ -3794,6 +3819,24 @@ Library {
 	      SrcPort		      1
 	      DstBlock		      "RMS_Signal"
 	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "82695"
+	      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free o"
+	      "f charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
+	      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, mod"
+	      "ify, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons "
+	      "to whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyr"
+	      "ight notice and this permission notice shall be included in \n% all copies or substantial portions of the Softw"
+	      "are.\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING"
+	      " BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT"
+	      ". IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, W"
+	      "HETHER IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFT"
+	      "WARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
+	      Position		      [31, 17]
+	      HorizontalAlignment     "left"
+	      ZOrder		      -1
+	      FontWeight	      "bold"
 	    }
 	  }
 	}
@@ -5795,7 +5838,7 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [1916, 1142]
+	  Position		  [1916, 1117]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
 	  FontWeight		  "bold"

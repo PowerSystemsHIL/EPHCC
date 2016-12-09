@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.2924"
+    ComputedModelVersion    "1.2927"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -59,12 +59,12 @@ Model {
 	ViewObjType		"SimulinkSubsys"
 	LoadSaveID		"24946"
 	Extents			[1693.0, 1002.0]
-	ZoomFactor		[1.4164185452998721]
-	Offset			[10.115915915915915, -88.959009009009122]
+	ZoomFactor		[1.282422646477946]
+	Offset			[-52.328798767967, -63.416837782340863]
       }
     }
   }
-  PhysicalModelingChecksum "3929057347"
+  PhysicalModelingChecksum "939236862"
   PhysicalModelingParameterChecksum "3697885727"
   PhysicalModelingProducts "Power_System_Blocks"
   ARTEMISmethode_block_infos "$$__separator__$$UnitTest_relay_model/ARTEMIS Guide$$__separator__$$"
@@ -74,9 +74,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 08 15:10:27 2016"
-  RTWModifiedTimeStamp	  403110531
-  ModelVersionFormat	  "1.%<AutoIncrement:2924>"
+  LastModifiedDate	  "Fri Dec 09 13:39:13 2016"
+  RTWModifiedTimeStamp	  403191477
+  ModelVersionFormat	  "1.%<AutoIncrement:2927>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -180,7 +180,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
-	  StopTime		  "16"
+	  StopTime		  "inf"
 	  AbsTol		  "auto"
 	  FixedStep		  "Ts"
 	  InitialStep		  "auto"
@@ -932,7 +932,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "234"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "29229"
+    SIDHighWatermark	    "29234"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1112,7 +1112,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"142"
+	ZoomFactor		"128"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MS"
@@ -1121,6 +1121,35 @@ Model {
 	  ZOrder		  5
 	  NamePlacement		  "alternate"
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator1"
+	  SID			  "29230"
+	  Ports			  [1, 1]
+	  Position		  [445, 656, 450, 694]
+	  ZOrder		  3401
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CB1"
+	    PropagatedSignals	    "Logic_trip"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator2"
+	  SID			  "29232"
+	  Ports			  [2, 1]
+	  Position		  [525, 556, 530, 594]
+	  ZOrder		  3403
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  BusSelector
@@ -1166,11 +1195,11 @@ Model {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "29175"
-	  Ports			  [1, 3]
+	  Ports			  [1, 5]
 	  Position		  [780, 347, 785, 463]
 	  ZOrder		  2088
 	  ShowName		  off
-	  OutputSignals		  "CB.Vabc_bus,CB.Vabc_line,CB.Iabc"
+	  OutputSignals		  "CB.Vabc_bus,CB.Vabc_line,CB.Iabc,relay_cmd.m.Va_rms,relay_cmd.m.Vpu"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<Vabc_bus>"
@@ -1186,6 +1215,32 @@ Model {
 	  Port {
 	    PortNumber		    3
 	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Va_rms>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    5
+	    Name		    "<Vpu>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "CB1"
+	  SID			  "29231"
+	  Position		  [345, 660, 375, 690]
+	  ZOrder		  3402
+	  BackgroundColor	  "red"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1236,19 +1291,21 @@ Model {
 	  BlockType		  Scope
 	  Name			  "CB_voltage-current"
 	  SID			  "29176"
-	  Ports			  [3]
+	  Ports			  [5]
 	  Position		  [930, 345, 990, 465]
 	  ZOrder		  2089
 	  BackgroundColor	  "lightBlue"
 	  Floating		  off
 	  Location		  [1929, 56, 2873, 1191]
 	  Open			  on
-	  NumInputPorts		  "3"
+	  NumInputPorts		  "5"
 	  List {
 	    ListType		    AxesTitles
 	    axes1		    "%<SignalLabel>"
 	    axes2		    "%<SignalLabel>"
 	    axes3		    "%<SignalLabel>"
+	    axes4		    "%<SignalLabel>"
+	    axes5		    "%<SignalLabel>"
 	  }
 	  List {
 	    ListType		    ScopeGraphics
@@ -1261,11 +1318,12 @@ Model {
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
 	  ShowLegends		  on
-	  LegendLocations	  "0.83298     0.92217     0.13453    0.045521\n0.83404     0.60235     0.13347    0.045521\n0.8615"
-	  "8     0.28341     0.10593    0.045521"
-	  TimeRange		  "0.4983012457531144"
-	  YMin			  "-30000~-8000000~-58.91238670694872"
-	  YMax			  "20000~8000000~63.44410876132918"
+	  LegendLocations	  "0.83298     0.92217     0.13453    0.045521\n0.83404      0.7301     0.13347    0.045521\n0.8615"
+	  "8     0.53891     0.10593    0.045521\n0.85629     0.37533     0.11123    0.017915\n0.87323     0.18326     0.09428"
+	  "    0.017915"
+	  TimeRange		  "3"
+	  YMin			  "-12500~-12500~-175~0~0"
+	  YMax			  "12500~12500~175~10000~1.2"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
 	  SampleTime		  "0"
@@ -1331,6 +1389,13 @@ Model {
 	  ShowName		  off
 	  Inputs		  "3"
 	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Relay"
+	    PropagatedSignals	    ", , "
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -1378,7 +1443,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "TO_SM"
 	  SID			  "29189"
-	  Position		  [535, 468, 565, 482]
+	  Position		  [565, 568, 595, 582]
 	  ZOrder		  2092
 	  IconDisplay		  "Port number"
 	}
@@ -1482,16 +1547,27 @@ Model {
 	  DstPort		  3
 	}
 	Line {
+	  Name			  "Relay"
+	  Labels		  [2, 1]
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
-	  DstBlock		  "TO_SM"
+	  Points		  [32, 0; 0, 90]
+	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "reset"
 	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  1
+	  Points		  [18, 0]
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "Mux"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "Mux"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "protection_group"
@@ -1500,10 +1576,43 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  SrcBlock		  "Mode-Sequence"
+	  Name			  "<Va_rms>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  4
+	  DstBlock		  "CB_voltage-current"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Vpu>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  5
+	  DstBlock		  "CB_voltage-current"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "CB1"
 	  SrcPort		  1
-	  DstBlock		  "Mux"
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CB1"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  Points		  [32, 0; 0, -90]
+	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator2"
+	  SrcPort		  1
+	  DstBlock		  "TO_SM"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "29192"
@@ -1566,12 +1675,12 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"124"
+	ZoomFactor		"116"
 	Block {
 	  BlockType		  Inport
 	  Name			  "FROM_SC"
 	  SID			  "29184"
-	  Position		  [2865, 2583, 2895, 2597]
+	  Position		  [2535, 2518, 2565, 2532]
 	  ZOrder		  3392
 	  NamePlacement		  "alternate"
 	  IconDisplay		  "Port number"
@@ -1592,6 +1701,21 @@ Model {
 	  ratio			  "3"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "500kcmil-Mutual1"
+	  SID			  "29234"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [2760, 2347, 2800, 2413]
+	  ZOrder		  3403
+	  BackgroundColor	  "magenta"
+	  LibraryVersion	  "1.28"
+	  SourceBlock		  "cables_lib/500kcmil-Mutual"
+	  SourceType		  "500kcmil cable"
+	  length		  "1100"
+	  par_sets		  "1"
+	  ratio			  "3"
+	}
+	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
 	  SID			  "27516"
@@ -1603,15 +1727,26 @@ Model {
 	  DisplayOption		  "bar"
 	}
 	Block {
-	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator1"
-	  SID			  "29227"
-	  Ports			  [2, 1]
-	  Position		  [2800, 2276, 2805, 2314]
-	  ZOrder		  3399
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "29233"
+	  Ports			  [1, 2]
+	  Position		  [2760, 2447, 2765, 2603]
+	  ZOrder		  3402
 	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "bar"
+	  OutputSignals		  "CB1,Relay"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<CB1>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Relay>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -1640,19 +1775,6 @@ Model {
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
 	  mech_delay		  "cb_mech_delay"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant"
-	  SID			  "29228"
-	  Position		  [2700, 2220, 2730, 2250]
-	  ZOrder		  3400
-	  Port {
-	    PortNumber		    1
-	    Name		    "Logic_trip"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  From
@@ -1816,7 +1938,7 @@ Model {
 	  Name			  "OpComm"
 	  SID			  "29186"
 	  Ports			  [1, 1]
-	  Position		  [2945, 2568, 3050, 2612]
+	  Position		  [2615, 2503, 2720, 2547]
 	  ZOrder		  3390
 	  LibraryVersion	  "1.471"
 	  SourceBlock		  "rtlab/OpComm"
@@ -2000,18 +2122,6 @@ Model {
 	  DstPort		  LConn3
 	}
 	Line {
-	  SrcBlock		  "OpComm"
-	  SrcPort		  1
-	  DstBlock		  "Generic_Relay_v2_1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "FROM_SC"
-	  SrcPort		  1
-	  DstBlock		  "OpComm"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Generic_Relay_v2_1"
 	  SrcPort		  2
 	  Points		  [14, 0; 0, 85]
@@ -2041,27 +2151,6 @@ Model {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
-	  SrcPort		  RConn2
-	  DstBlock		  "CB1"
-	  DstPort		  LConn2
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
-	  SrcPort		  RConn1
-	  DstBlock		  "CB1"
-	  DstPort		  LConn1
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "GRID"
-	  SrcPort		  RConn3
-	  DstBlock		  "CB1"
-	  DstPort		  LConn3
-	}
-	Line {
-	  LineType		  "Connection"
 	  SrcBlock		  "500kcmil-Mutual"
 	  SrcPort		  LConn2
 	  DstBlock		  "CB1"
@@ -2082,20 +2171,76 @@ Model {
 	  DstPort		  RConn3
 	}
 	Line {
-	  Name			  "Logic_trip"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Constant"
+	  SrcBlock		  "FROM_SC"
 	  SrcPort		  1
-	  Points		  [37, 0; 0, 50]
-	  DstBlock		  "Bus\nCreator1"
+	  DstBlock		  "OpComm"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Bus\nCreator1"
+	  SrcBlock		  "OpComm"
 	  SrcPort		  1
-	  Points		  [20, 0; 0, 45]
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Relay>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  Points		  [180, 0; 0, 25]
+	  DstBlock		  "Generic_Relay_v2_1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<CB1>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  Points		  [53, 0; 0, -145]
 	  DstBlock		  "CB1"
 	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  RConn3
+	  DstBlock		  "CB1"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  RConn2
+	  DstBlock		  "CB1"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  RConn1
+	  DstBlock		  "CB1"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  LConn2
+	  DstBlock		  "GRID"
+	  DstPort		  RConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  LConn1
+	  DstBlock		  "GRID"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "500kcmil-Mutual1"
+	  SrcPort		  LConn3
+	  DstBlock		  "GRID"
+	  DstPort		  RConn3
 	}
 	Annotation {
 	  SID			  "27190"
