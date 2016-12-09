@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, 0.0, 1936.0, 1056.0]
+      Location		      [1912.0, -8.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 890.0]
+	Extents			[1693.0, 1050.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 16 10:14:23 2016"
-  RTWModifiedTimeStamp	  401192062
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Fri Dec 09 14:21:35 2016"
+  RTWModifiedTimeStamp	  403194089
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,17 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Abs
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
       BlockType		      BusCreator
       Inputs		      "4"
       DisplayOption	      "none"
@@ -856,7 +867,7 @@ Library {
   }
   System {
     Name		    "PQFV_lib"
-    Location		    [-8, 0, 1928, 1056]
+    Location		    [1912, -8, 3848, 1208]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -870,7 +881,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "93"
+    SIDHighWatermark	    "95"
     Block {
       BlockType		      SubSystem
       Name		      "Genset_PQFV"
@@ -1145,7 +1156,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "RMS"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [1912, -8, 3848, 1208]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1165,6 +1176,14 @@ Library {
 	      Position		      [45, 93, 75, 107]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Abs
+	      Name		      "Abs"
+	      SID		      "94"
+	      Position		      [375, 95, 405, 125]
+	      ZOrder		      1
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
 	      BlockType		      Reference
@@ -1197,7 +1216,7 @@ Library {
 	      BlockType		      Sqrt
 	      Name		      "Signed\nSqrt"
 	      SID		      "46"
-	      Position		      [370, 95, 400, 125]
+	      Position		      [435, 95, 465, 125]
 	      ZOrder		      -26
 	    }
 	    Block {
@@ -1231,13 +1250,19 @@ Library {
 	    Line {
 	      SrcBlock		      "Discrete \nMean value6"
 	      SrcPort		      1
-	      DstBlock		      "Signed\nSqrt"
+	      DstBlock		      "Abs"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Signed\nSqrt"
 	      SrcPort		      1
 	      DstBlock		      "S"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Abs"
+	      SrcPort		      1
+	      DstBlock		      "Signed\nSqrt"
 	      DstPort		      1
 	    }
 	  }
@@ -1540,7 +1565,7 @@ Library {
       }
       System {
 	Name			"PQFV"
-	Location		[-8, -8, 1928, 1168]
+	Location		[1912, -8, 3848, 1208]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1779,7 +1804,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "RMS"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [1912, -8, 3848, 1208]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1791,7 +1816,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
+	    ZoomFactor		    "347"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "s"
@@ -1799,6 +1824,14 @@ Library {
 	      Position		      [45, 93, 75, 107]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Abs
+	      Name		      "Abs"
+	      SID		      "95"
+	      Position		      [370, 95, 400, 125]
+	      ZOrder		      1
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
 	      BlockType		      Reference
@@ -1831,7 +1864,7 @@ Library {
 	      BlockType		      Sqrt
 	      Name		      "Signed\nSqrt"
 	      SID		      "19"
-	      Position		      [370, 95, 400, 125]
+	      Position		      [425, 95, 455, 125]
 	      ZOrder		      -26
 	    }
 	    Block {
@@ -1865,13 +1898,19 @@ Library {
 	    Line {
 	      SrcBlock		      "Discrete \nMean value6"
 	      SrcPort		      1
-	      DstBlock		      "Signed\nSqrt"
+	      DstBlock		      "Abs"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Signed\nSqrt"
 	      SrcPort		      1
 	      DstBlock		      "S"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Abs"
+	      SrcPort		      1
+	      DstBlock		      "Signed\nSqrt"
 	      DstPort		      1
 	    }
 	  }
