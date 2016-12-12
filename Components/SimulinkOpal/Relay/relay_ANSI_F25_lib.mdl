@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1216.0]
+      Location		      [1912.0, 0.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[1693.0, 1050.0]
 	ZoomFactor		[1.5208333333333335]
-	Offset			[88.897260273972591, 87.794520547945211]
+	Offset			[88.89726027397262, 87.79452054794524]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Dec 10 11:30:07 2016"
-  RTWModifiedTimeStamp	  403270199
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  LastModifiedDate	  "Mon Dec 12 08:51:25 2016"
+  RTWModifiedTimeStamp	  403433468
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -938,7 +938,7 @@ Library {
   }
   System {
     Name		    "relay_ANSI_F25_lib"
-    Location		    [1912, -8, 3848, 1208]
+    Location		    [1912, 0, 3848, 1216]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -990,7 +990,7 @@ Library {
       }
       System {
 	Name			"R25 - Sync Check v0.1"
-	Location		[1912, -8, 3848, 1208]
+	Location		[1912, 0, 3848, 1216]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2027,7 +2027,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "109"
+	    SIDHighWatermark	    "116"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -6791,7 +6791,11 @@ Stateflow {
     firstTransition	    18
     firstJunction	    17
     viewObj		    11
+    visible		    1
     machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -6827,7 +6831,7 @@ Stateflow {
       "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
       "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
       "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction y = fcn(Vbus, Vline, VRMSLL)\n%#codegen\nif isnan(Vbus)\n   "
-      " Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% voltage threshold for deadbus\nif VRMSLL > 400\n    thre"
+      " Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% voltage threshold for deadbus\nif VRMSLL > 520\n    thre"
       "shold = VRMSLL * 0.003; % @ 0.3%\nelse\n    threshold = VRMSLL * 0.05; % @ 5%\nend\n\n% bounding open-circuit vo"
       "ltage at 120%\na = (Vbus>(VRMSLL*0.90)) && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline>(VRMSLL*0.90"
       ")) && (Vline<(VRMSLL*1.20)) && (Vbus < threshold);\nc = (Vline < threshold) && (Vbus < threshold);\ny = a||b||c;"
