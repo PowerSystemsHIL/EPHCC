@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, 0.0, 1936.0, 1216.0]
+      Location		      [1916.0, -4.0, 1928.0, 1208.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[1693.0, 1050.0]
-	ZoomFactor		[1.5208333333333335]
-	Offset			[88.89726027397262, 87.79452054794524]
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"176"
+	Extents			[1689.0, 1056.0]
+	ZoomFactor		[1.0]
+	Offset			[-7.0, 0.0]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 12 08:51:25 2016"
-  RTWModifiedTimeStamp	  403433468
-  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+  LastModifiedDate	  "Mon Dec 19 12:38:09 2016"
+  RTWModifiedTimeStamp	  404051749
+  ModelVersionFormat	  "1.%<AutoIncrement:14>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -938,8 +938,8 @@ Library {
   }
   System {
     Name		    "relay_ANSI_F25_lib"
-    Location		    [1912, 0, 3848, 1216]
-    Open		    on
+    Location		    [1856, 0, 3792, 1212]
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -952,7 +952,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "152"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "327"
+    SIDHighWatermark	    "329"
     Block {
       BlockType		      SubSystem
       Name		      "R25 - Sync Check v0.1"
@@ -990,8 +990,8 @@ Library {
       }
       System {
 	Name			"R25 - Sync Check v0.1"
-	Location		[1912, 0, 3848, 1216]
-	Open			off
+	Location		[1916, -4, 3844, 1204]
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1276,7 +1276,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  "195"
-	  Position		  [705, 221, 770, 239]
+	  Position		  [670, 246, 735, 264]
 	  ZOrder		  1595
 	  ShowName		  off
 	  GotoTag		  "VRMSLL"
@@ -1991,7 +1991,7 @@ Library {
 	  Name			  "deadbus fcn"
 	  SID			  "247"
 	  Ports			  [3, 1]
-	  Position		  [810, 190, 910, 240]
+	  Position		  [775, 190, 930, 270]
 	  ZOrder		  -4
 	  LibraryVersion	  "1.32"
 	  ErrorFcn		  "Stateflow.Translate.translate"
@@ -2027,7 +2027,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "116"
+	    SIDHighWatermark	    "123"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -2862,7 +2862,7 @@ Library {
 	  SrcPort		  2
 	  Points		  [80, 0]
 	  Branch {
-	    Points		    [0, -190]
+	    Points		    [0, -175]
 	    DstBlock		    "deadbus fcn"
 	    DstPort		    2
 	  }
@@ -2906,7 +2906,7 @@ Library {
 	  SrcPort		  1
 	  Points		  [60, 0]
 	  Branch {
-	    Points		    [0, -185]
+	    Points		    [0, -180]
 	    DstBlock		    "deadbus fcn"
 	    DstPort		    1
 	  }
@@ -2987,7 +2987,7 @@ Library {
 	  Labels		  [1, 1]
 	  SrcBlock		  "deadbus fcn"
 	  SrcPort		  1
-	  Points		  [167, 0; 0, 110]
+	  Points		  [147, 0; 0, 95]
 	  DstBlock		  "Logical\nOperator3"
 	  DstPort		  1
 	}
@@ -6832,10 +6832,9 @@ Stateflow {
       "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
       "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction y = fcn(Vbus, Vline, VRMSLL)\n%#codegen\nif isnan(Vbus)\n   "
       " Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% voltage threshold for deadbus\nif VRMSLL > 520\n    thre"
-      "shold = VRMSLL * 0.003; % @ 0.3%\nelse\n    threshold = VRMSLL * 0.05; % @ 5%\nend\n\n% bounding open-circuit vo"
-      "ltage at 120%\na = (Vbus>(VRMSLL*0.90)) && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline>(VRMSLL*0.90"
-      ")) && (Vline<(VRMSLL*1.20)) && (Vbus < threshold);\nc = (Vline < threshold) && (Vbus < threshold);\ny = a||b||c;"
-      "\n"
+      "shold = VRMSLL * 0.03; % @ 3%\nelse\n    threshold = VRMSLL * 0.05; % @ 5%\nend\n\n% bounding open-circuit volta"
+      "ge at 120%\na = (Vbus>(VRMSLL*0.70)) && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline>(VRMSLL*0.70)) "
+      "&& (Vline<(VRMSLL*1.20)) && (Vbus < threshold);\nc = (Vline < threshold) && (Vbus < threshold);\ny = a||b||c;\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
