@@ -5,43 +5,54 @@ feederLoads; % bring in load data and plot it
 %%
 load('irradiance.mat'); % TODO: note this doesn't change too fast and needs to be stronger in the second half
 solar = irradiance;
-export = 1e3*pulse(0,          60,      120,        tStop) + 4e3*pulse(0,          4*60,      120,        tStop);
+export = 1e3*pulse(0,          5.5*60,      1.5*60,        tStop) + 4e3*pulse(0,          7.5*60,      1.5*60,        tStop);
 % export = [zeros(1,60) linspace(1e3,3e3,4*60) 3e3*ones(1,6.5*60-5*60) zeros(1,tStop-6.5*60)]; % export request
-import = 8e3*pulse(0, 13*60, 120, tStop);
-power_needed = power_req(solar*0.95*-5 + f1_tot.kw + f2_tot.kw + f3_tot.kw, export, import); % this can be met by shedding load or sending generator commands
+import = 8e3*pulse(0, 17.5*60, 1*60, tStop);
 % TODO: shift loads or export to get a reasonable power_needed profile
-vars = 500*pulse(0, 30, 29.5*60, tStop);
-island = pulse(0, 7*60, 6*60, tStop) + pulse(0, 15*60, 13*60, tStop); 
+vars = 500*pulse(0, 6.5*60, 2.5*60, tStop);
+island = pulse(0, 9*60, 8*60, tStop); % DMS request
 
 %               startState, faultTime,  duration,   tStop
-faults = [pulse(0,          17*60,      120,        tStop); % POI 3 disconnect
-          pulse(0,          17*60+132,  120,        tStop); % BUS103
-          pulse(0,          17*60+132*2,120,        tStop); % BUS201
-          pulse(0,          17*60+132*3,120,        tStop); % BUS208
-          pulse(0,          17*60+132*4,120,        tStop); % BUS302
+faults = [pulse(0,          20*60+132,  2*60,        tStop); % BUS103
+          pulse(0,          20*60+132*2,2*60,        tStop); % BUS204
+          pulse(0,          14*60,      120,        tStop); % POI3 Fault
+          pulse(0,          20*60,      8.5*60,      tStop) + pulse(0, 2*60, 3*60, tStop); % cut grid power
+          pulse(0,          10*60,      1*60,      tStop) + pulse(0, 18*60, 1*60, tStop); % motor1
+          pulse(0,          12*60,      1*60,      tStop) + pulse(0, 4*60, 1.5*60, tStop); % motor2
           ];
+power_needed = power_req(solar*0.95*-5 + f1_tot.kw + f2_tot.kw + f3_tot.kw, export, import,island | faults(4,:)); % this can be met by shedding load or sending generator commands
 %faults = mirror(faults);
 
+timeMin = linspace(0,tStop/60,tStop);
 
 figure;
 s(1) = subplot(4,1,1);
-plot(solar);
+plot(timeMin, solar, 'LineWidth',2);
 s(2) = subplot(4,1,2);
-plot(export); hold on;
-plot(-import); 
-plot(vars);
+plot(timeMin, export, 'LineWidth',2); hold on;
+plot(timeMin, -import, 'LineWidth',2); 
+plot(timeMin, vars, 'LineWidth',2);
 legend('Export Req','Import Lim','Export Vars');
 s(3) = subplot(4,1,3);
-plot(island);
+plot(timeMin, island, 'LineWidth',2);
 s(4) = subplot(4,1,4);
-plot(faults');
-legend('POI3 disconnect', 'BUS103', 'BUS201', 'BUS208', 'BUS302'); 
+p = plot(timeMin, faults','LineWidth',2);
+set(p(5),'LineStyle','--');
+set(p(6),'LineStyle','--');
+legend('BUS103 Fault', 'BUS204 Fault', 'POI3 Fault', 'Dead Grid', 'Motor1', 'Motor2'); 
 linkaxes(s,'x');
-xlim([0 1800]);
+for i = 1:4
+    s(i).XTick = 1:30;
+    grid(s(i),'minor')
+end
+
+%xlim([0 1800]);
 
 title(s(1), 'Solar Irradiance (W/m^3)');
 title(s(2), 'Power Export/Import');
-title(s(3), 'POI Disconnected');
-title(s(4), 'Fault Occurances');
+title(s(3), 'POI Disconnect Request');
+title(s(4), 'Stimuli Occurances');
 
-figure; plot(power_needed); title('kW power from gen or load shed');
+figure; plot(timeMin, power_needed); title('kW power from gen or load shed');
+hold on
+line([0 30],[10.5e3 10.5e3],'Color','r','LineStyle','--')

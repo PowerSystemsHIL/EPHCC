@@ -1,4 +1,4 @@
-function out = power_req(loads, exportReq, importLim)
+function out = power_req(loads, exportReq, importLim, islanded)
 % calculate output power required given loads, export, and import
 
 tLen = length(loads);
@@ -12,6 +12,9 @@ out = zeros(1,tLen); % no req if either case below isn't needed
          if (loads(t) - importLim(t)) > 0
             out(t) = loads(t) - importLim(t);
          end
+     end
+     if islanded(t)
+         out(t) = loads(t);
      end
  end
      
