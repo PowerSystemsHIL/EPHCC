@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, -8.0, 1936.0, 1056.0]
+      Location		      [1916.0, -4.0, 1928.0, 1208.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 890.0]
+	Extents			[1689.0, 1056.0]
 	ZoomFactor		[1.25]
 	Offset			[-70.174961330239853, 50.509474091260927]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "RE25624"
+  LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Oct 20 10:00:51 2016"
-  RTWModifiedTimeStamp	  398858445
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Tue Nov 15 14:16:23 2016"
+  RTWModifiedTimeStamp	  401120166
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -939,7 +939,7 @@ Library {
   }
   System {
     Name		    "HWController_NGCHP_Genset_3p5MVA_lib"
-    Location		    [-8, -8, 1928, 1048]
+    Location		    [1916, -4, 3844, 1204]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -953,15 +953,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "767"
+    SIDHighWatermark	    "771"
     Block {
       BlockType		      SubSystem
       Name		      "HWController_3.5MVA_NGCHP"
       SID		      "746"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [930, 413, 1200, 717]
-      ZOrder		      3219
+      ZOrder		      3352
       BackgroundColor	      "green"
+      LibraryVersion	      "*1.6"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -971,7 +972,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"HWController_3.5MVA_NGCHP"
-	Location		[-8, -8, 1928, 1048]
+	Location		[1856, 0, 3784, 1208]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -983,16 +984,17 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"118"
 	Block {
 	  BlockType		  Inport
-	  Name			  "Heat Load"
+	  Name			  "In1"
 	  SID			  "747"
-	  Position		  [690, 342, 740, 368]
+	  Position		  [690, 342, 785, 368]
 	  ZOrder		  2960
 	  BlockMirror		  on
 	  BackgroundColor	  "yellow"
-	  IconDisplay		  "Port number"
+	  ShowName		  off
+	  IconDisplay		  "Signal name"
 	}
 	Block {
 	  BlockType		  Inport
@@ -1026,10 +1028,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
 	  SID			  "750"
-	  Ports			  [4, 1]
+	  Ports			  [6, 1]
 	  Position		  [840, 123, 845, 247]
 	  ZOrder		  2910
 	  ShowName		  off
+	  Inputs		  "6"
 	  DisplayOption		  "bar"
 	  Port {
 	    PortNumber		    1
@@ -1059,13 +1062,13 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector7"
 	  SID			  "752"
-	  Ports			  [1, 5]
-	  Position		  [1185, 390, 1190, 490]
+	  Ports			  [1, 8]
+	  Position		  [1190, 335, 1200, 540]
 	  ZOrder		  2912
 	  BlockMirror		  on
 	  ShowName		  off
 	  OutputSignals		  "TempActual,HeatFromBoiler MBtu/hr,CHPHeatContribution MBtu/hr,Thermal data.Heat Recovered; MBtu/h"
-	  "r,Thermal data.CO2 lbm/hr"
+	  "r,Thermal data.CO2 lbm/hr,Boiler_Nm^3/hr ,Boiler lbm/hr CO2 ,Thermal data.Nm^3 per hour NG fuel usage"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<TempActual>"
@@ -1096,12 +1099,30 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	  Port {
+	    PortNumber		    6
+	    Name		    "<Boiler_Nm^3/hr >"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    7
+	    Name		    "<Boiler lbm/hr CO2 >"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    8
+	    Name		    "<Nm^3 per hour NG fuel usage>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "CHPThermalModel"
 	  SID			  "753"
-	  Ports			  [5, 3]
+	  Ports			  [5, 5]
 	  Position		  [335, 283, 615, 527]
 	  ZOrder		  2981
 	  BlockMirror		  on
@@ -1165,12 +1186,13 @@ Library {
 	  Position		  [330, 614, 580, 806]
 	  ZOrder		  3285
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
-	  LibraryVersion	  "1.3"
+	  LibraryVersion	  "1.6"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Generator"
 	  SourceType		  "SubSystem"
 	  Port {
 	    PortNumber		    3
 	    Name		    "Thermal data"
+	    PropagatedSignals	    "Thermal data"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1194,12 +1216,12 @@ Library {
 	  BlockType		  Mux
 	  Name			  "Mux1"
 	  SID			  "759"
-	  Ports			  [5, 1]
-	  Position		  [1025, 390, 1030, 490]
+	  Ports			  [8, 1]
+	  Position		  [1025, 339, 1035, 536]
 	  ZOrder		  2913
 	  BlockMirror		  on
 	  ShowName		  off
-	  Inputs		  "5"
+	  Inputs		  "8"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1263,6 +1285,44 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "<Nm^3 per hour NG fuel usage>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  8
+	  DstBlock		  "Mux1"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "<Boiler_Nm^3/hr >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  6
+	  DstBlock		  "Mux1"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "<Boiler lbm/hr CO2 >"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  7
+	  DstBlock		  "Mux1"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  5
+	  Points		  [-137, 0; 0, -270]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "CHPThermalModel"
+	  SrcPort		  4
+	  Points		  [-123, 0; 0, -240]
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  5
+	}
+	Line {
 	  SrcBlock		  "HWControllerBias"
 	  SrcPort		  1
 	  DstBlock		  "HWController_NG_Generator"
@@ -1289,9 +1349,9 @@ Library {
 	  Labels		  [3, 0]
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  1
-	  Points		  [-38, 0; 0, -185]
+	  Points		  [-9, 0; 0, -150]
 	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  1
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Demux"
@@ -1302,7 +1362,7 @@ Library {
 	Line {
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  2
-	  Points		  [-68, 0; 0, -205]
+	  Points		  [-68, 0; 0, -180]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  3
 	}
@@ -1355,7 +1415,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Heat Load"
+	  SrcBlock		  "In1"
 	  SrcPort		  1
 	  DstBlock		  "CHPThermalModel"
 	  DstPort		  2
@@ -1375,7 +1435,7 @@ Library {
 	Line {
 	  SrcBlock		  "CHPThermalModel"
 	  SrcPort		  3
-	  Points		  [-109, 0; 0, -255]
+	  Points		  [-109, 0; 0, -210]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  4
 	}
@@ -1386,12 +1446,12 @@ Library {
 	  SrcPort		  1
 	  Points		  [-76, 0]
 	  Branch {
-	    Points		    [0, -135]
-	    DstBlock		    "Bus\nCreator2"
-	    DstPort		    2
+	    DstBlock		    "Bus\nSelector6"
+	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "Bus\nSelector6"
+	    Points		    [0, -170]
+	    DstBlock		    "Bus\nCreator2"
 	    DstPort		    1
 	  }
 	}
@@ -1426,7 +1486,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nCreator2"
 	  SrcPort		  1
-	  Points		  [376, 0]
+	  Points		  [395, 0]
 	  Branch {
 	    DstBlock		    "Out1"
 	    DstPort		    1
@@ -1613,7 +1673,7 @@ Library {
 	  Position		  [955, 344, 1240, 566]
 	  ZOrder		  3301
 	  BackgroundColor	  "[0.501961, 0.949020, 0.050980]"
-	  LibraryVersion	  "1.3"
+	  LibraryVersion	  "1.6"
 	  SourceBlock		  "HWController_NGCHP_Genset_3p5MVA_lib/HWController_NG_Genset_3.5MVA"
 	  SourceType		  "Gen-Set with simulated control modes"
 	  control_mode		  "1"
@@ -2721,7 +2781,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "15"
+		    SIDHighWatermark	    "18"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -2975,7 +3035,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "15"
+		    SIDHighWatermark	    "18"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -3143,7 +3203,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "15"
+		    SIDHighWatermark	    "18"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In1"
@@ -3314,7 +3374,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "15"
+		    SIDHighWatermark	    "18"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "In"
@@ -3524,7 +3584,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "15"
+		    SIDHighWatermark	    "18"
 		    SIDPrevWatermark	    "3"
 		    Block {
 		    BlockType		    Inport
