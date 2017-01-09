@@ -16,6 +16,8 @@ island = pulse(0, 9*60, 8*60, tStop); % DMS request
 faults = [pulse(0,          20*60+132,  2*60,        tStop); % BUS103
           pulse(0,          20*60+132*2,2*60,        tStop); % BUS204
           pulse(0,          14*60,      120,        tStop); % POI3 Fault
+          pulse(0,          25*60,      120,        tStop); % ? Fault
+          pulse(0,          26*60,      120,        tStop); % ? Fault
           pulse(0,          20*60,      8.5*60,      tStop) + pulse(0, 2*60, 3*60, tStop); % cut grid power
           pulse(0,          10*60,      1*60,      tStop) + pulse(0, 18*60, 1*60, tStop); % motor1
           pulse(0,          12*60,      1*60,      tStop) + pulse(0, 4*60, 1.5*60, tStop); % motor2
