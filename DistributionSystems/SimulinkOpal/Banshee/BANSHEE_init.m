@@ -23,6 +23,7 @@
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
+EPC_Ts = 50E-6; % integration time for BESS and PV 
 SIM_HIL = 1; % Selects Opal-RT(1) or Simulink(0)
 
 %% read relay settings
@@ -36,7 +37,7 @@ cable_impedance_init;
 
 %% adds the component folders to the path
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development
-% components_path_init;
+components_path_init;
 
 
 %% circuit breaker delays
