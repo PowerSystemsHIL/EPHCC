@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, 0.0, 1936.0, 1056.0]
+      Location		      [1912.0, -8.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 890.0]
+	Extents			[1693.0, 1050.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 07 17:02:36 2016"
-  RTWModifiedTimeStamp	  397760553
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Fri Jan 13 10:18:53 2017"
+  RTWModifiedTimeStamp	  406203531
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -828,7 +828,7 @@ Library {
   }
   System {
     Name		    "SEL751_SignalScaling_lib"
-    Location		    [-8, 0, 1928, 1056]
+    Location		    [1912, -8, 3848, 1208]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -842,16 +842,15 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "22"
+    SIDHighWatermark	    "124"
     Block {
       BlockType		      SubSystem
       Name		      "SEL751 - SignalScaling"
-      SID		      "1"
-      Ports		      [1, 1]
-      Position		      [755, 314, 915, 376]
-      ZOrder		      3351
-      BackgroundColor	      "lightBlue"
-      LibraryVersion	      "*1.1"
+      SID		      "74"
+      Ports		      [3, 1]
+      Position		      [720, 324, 885, 396]
+      ZOrder		      3521
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -899,19 +898,37 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"126"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
-	  Name			  "CB_Meas"
-	  SID			  "2"
+	  Name			  "Relay_F1"
+	  SID			  "75"
 	  Position		  [20, 543, 50, 557]
 	  ZOrder		  3275
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "Relay_F2"
+	  SID			  "76"
+	  Position		  [30, 988, 60, 1002]
+	  ZOrder		  3312
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Relay_F3"
+	  SID			  "77"
+	  Position		  [55, 1443, 85, 1457]
+	  ZOrder		  3313
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "5V/1A"
-	  SID			  "21"
+	  SID			  "78"
 	  Position		  [385, 425, 415, 455]
 	  ZOrder		  3283
 	  Gain			  "5"
@@ -920,20 +937,109 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "5V/1A1"
+	  SID			  "79"
+	  Position		  [390, 870, 420, 900]
+	  ZOrder		  3297
+	  Gain			  "5"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "5V/1A2"
+	  SID			  "80"
+	  Position		  [405, 1325, 435, 1355]
+	  ZOrder		  3311
+	  Gain			  "5"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
-	  SID			  "3"
-	  Ports			  [2, 1]
-	  Position		  [865, 346, 870, 464]
+	  SID			  "81"
+	  Ports			  [4, 1]
+	  Position		  [1210, 845, 1215, 1190]
 	  ZOrder		  3282
 	  ShowName		  off
-	  Inputs		  "2"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "82"
+	  Ports			  [1, 4]
+	  Position		  [110, 911, 115, 1079]
+	  ZOrder		  3284
+	  ShowName		  off
+	  OutputSignals		  "Status,Iabc,Vabc_line,Vabc_bus"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "83"
+	  Ports			  [1, 4]
+	  Position		  [125, 1366, 130, 1534]
+	  ZOrder		  3298
+	  ShowName		  off
+	  OutputSignals		  "Status,Iabc,Vabc_line,Vabc_bus"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<Vabc_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector4"
-	  SID			  "4"
+	  SID			  "84"
 	  Ports			  [1, 4]
 	  Position		  [105, 466, 110, 634]
 	  ZOrder		  3171
@@ -967,7 +1073,7 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "CT Ratio"
-	  SID			  "5"
+	  SID			  "85"
 	  Position		  [265, 425, 330, 455]
 	  ZOrder		  3264
 	  Gain			  "ct_ratio"
@@ -976,9 +1082,31 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "CT Ratio1"
+	  SID			  "86"
+	  Position		  [270, 870, 335, 900]
+	  ZOrder		  3291
+	  Gain			  "ct_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "CT Ratio2"
+	  SID			  "87"
+	  Position		  [285, 1325, 350, 1355]
+	  ZOrder		  3305
+	  Gain			  "ct_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Calibration"
-	  SID			  "6"
+	  SID			  "88"
 	  Position		  [560, 665, 590, 695]
 	  ZOrder		  3176
 	  BackgroundColor	  "orange"
@@ -991,9 +1119,39 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "Calibration1"
+	  SID			  "89"
+	  Position		  [565, 1110, 595, 1140]
+	  ZOrder		  3289
+	  BackgroundColor	  "orange"
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "calibration"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Calibration2"
+	  SID			  "90"
+	  Position		  [580, 1565, 610, 1595]
+	  ZOrder		  3303
+	  BackgroundColor	  "orange"
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "calibration"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
-	  SID			  "7"
+	  SID			  "91"
 	  Ports			  [1, 3]
 	  Position		  [580, 381, 585, 499]
 	  ZOrder		  3173
@@ -1021,8 +1179,83 @@ Library {
 	}
 	Block {
 	  BlockType		  Demux
+	  Name			  "Demux1"
+	  SID			  "92"
+	  Ports			  [1, 3]
+	  Position		  [585, 826, 590, 944]
+	  ZOrder		  3286
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Ia"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Ib"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Ic"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux2"
+	  SID			  "93"
+	  Ports			  [1, 3]
+	  Position		  [565, 945, 570, 1065]
+	  ZOrder		  3287
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Va"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Vb"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Vc"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux3"
+	  SID			  "94"
+	  Ports			  [1, 3]
+	  Position		  [395, 1066, 400, 1164]
+	  ZOrder		  3288
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Vs"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
 	  Name			  "Demux4"
-	  SID			  "8"
+	  SID			  "95"
 	  Ports			  [1, 3]
 	  Position		  [560, 500, 565, 620]
 	  ZOrder		  3174
@@ -1051,7 +1284,7 @@ Library {
 	Block {
 	  BlockType		  Demux
 	  Name			  "Demux5"
-	  SID			  "9"
+	  SID			  "96"
 	  Ports			  [1, 3]
 	  Position		  [390, 621, 395, 719]
 	  ZOrder		  3175
@@ -1066,9 +1299,84 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Demux
+	  Name			  "Demux6"
+	  SID			  "97"
+	  Ports			  [1, 3]
+	  Position		  [600, 1281, 605, 1399]
+	  ZOrder		  3300
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Ia"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Ib"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Ic"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux7"
+	  SID			  "98"
+	  Ports			  [1, 3]
+	  Position		  [580, 1400, 585, 1520]
+	  ZOrder		  3301
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Va"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Vb"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "Vc"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux8"
+	  SID			  "99"
+	  Ports			  [1, 3]
+	  Position		  [410, 1521, 415, 1619]
+	  ZOrder		  3302
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Vs"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Mux
 	  Name			  "Mux1"
-	  SID			  "10"
+	  SID			  "100"
 	  Ports			  [8, 1]
 	  Position		  [690, 379, 700, 701]
 	  ZOrder		  3172
@@ -1077,7 +1385,24 @@ Library {
 	  DisplayOption		  "bar"
 	  Port {
 	    PortNumber		    1
-	    Name		    "To AnalogOut_to_SEL-751"
+	    Name		    "To AnalogOut_to_SEL-751_F1"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  SID			  "101"
+	  Ports			  [8, 1]
+	  Position		  [695, 824, 705, 1146]
+	  ZOrder		  3285
+	  ShowName		  off
+	  Inputs		  "8"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "To AnalogOut_to_SEL-751_F2"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1085,7 +1410,7 @@ Library {
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux4"
-	  SID			  "11"
+	  SID			  "102"
 	  Ports			  [8, 1]
 	  Position		  [555, 152, 565, 353]
 	  ZOrder		  3185
@@ -1100,9 +1425,26 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Mux
+	  Name			  "Mux5"
+	  SID			  "103"
+	  Ports			  [8, 1]
+	  Position		  [710, 1279, 720, 1601]
+	  ZOrder		  3299
+	  ShowName		  off
+	  Inputs		  "8"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "To AnalogOut_to_SEL-751_F3"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "PT Ratio1"
-	  SID			  "12"
+	  SID			  "104"
 	  Position		  [320, 539, 405, 581]
 	  ZOrder		  3265
 	  Gain			  "pt_ratio"
@@ -1113,7 +1455,7 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "PT Ratio2"
-	  SID			  "13"
+	  SID			  "105"
 	  Position		  [255, 651, 340, 689]
 	  ZOrder		  3266
 	  Gain			  "pt_ratio"
@@ -1122,9 +1464,53 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "PT Ratio3"
+	  SID			  "106"
+	  Position		  [325, 984, 410, 1026]
+	  ZOrder		  3292
+	  Gain			  "pt_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "PT Ratio4"
+	  SID			  "107"
+	  Position		  [260, 1096, 345, 1134]
+	  ZOrder		  3293
+	  Gain			  "pt_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "PT Ratio5"
+	  SID			  "108"
+	  Position		  [340, 1439, 425, 1481]
+	  ZOrder		  3306
+	  Gain			  "pt_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "PT Ratio6"
+	  SID			  "109"
+	  Position		  [275, 1551, 360, 1589]
+	  ZOrder		  3307
+	  Gain			  "pt_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator"
-	  SID			  "14"
+	  SID			  "110"
 	  Position		  [445, 660, 465, 680]
 	  ZOrder		  3280
 	  ShowName		  off
@@ -1132,15 +1518,47 @@ Library {
 	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator1"
-	  SID			  "15"
+	  SID			  "111"
 	  Position		  [445, 690, 465, 710]
 	  ZOrder		  3281
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator2"
+	  SID			  "112"
+	  Position		  [450, 1105, 470, 1125]
+	  ZOrder		  3295
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator3"
+	  SID			  "113"
+	  Position		  [450, 1135, 470, 1155]
+	  ZOrder		  3296
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator4"
+	  SID			  "114"
+	  Position		  [465, 1560, 485, 1580]
+	  ZOrder		  3309
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator5"
+	  SID			  "115"
+	  Position		  [465, 1590, 485, 1610]
+	  ZOrder		  3310
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Saturate
 	  Name			  "Thermal\nProtection for\nTransconductance Amp"
-	  SID			  "16"
+	  SID			  "116"
 	  Ports			  [1, 1]
 	  Position		  [500, 425, 530, 455]
 	  ZOrder		  3267
@@ -1149,10 +1567,32 @@ Library {
 	  LowerLimit		  "-5"
 	}
 	Block {
+	  BlockType		  Saturate
+	  Name			  "Thermal\nProtection for\nTransconductance Amp1"
+	  SID			  "117"
+	  Ports			  [1, 1]
+	  Position		  [505, 870, 535, 900]
+	  ZOrder		  3294
+	  InputPortMap		  "u0"
+	  UpperLimit		  "5"
+	  LowerLimit		  "-5"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Thermal\nProtection for\nTransconductance Amp2"
+	  SID			  "118"
+	  Ports			  [1, 1]
+	  Position		  [520, 1325, 550, 1355]
+	  ZOrder		  3308
+	  InputPortMap		  "u0"
+	  UpperLimit		  "5"
+	  LowerLimit		  "-5"
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "ScaledSignals"
-	  SID			  "17"
-	  Position		  [930, 398, 960, 412]
+	  SID			  "119"
+	  Position		  [1325, 1013, 1355, 1027]
 	  ZOrder		  3276
 	  ForegroundColor	  "blue"
 	  IconDisplay		  "Port number"
@@ -1206,7 +1646,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "CB_Meas"
+	  SrcBlock		  "Relay_F1"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector4"
 	  DstPort		  1
@@ -1236,11 +1676,11 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "To AnalogOut_to_SEL-751"
+	  Name			  "To AnalogOut_to_SEL-751_F1"
 	  Labels		  [2, 1]
 	  SrcBlock		  "Mux1"
 	  SrcPort		  1
-	  Points		  [70, 0; 0, -105]
+	  Points		  [298, 0; 0, 435]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  2
 	}
@@ -1249,7 +1689,7 @@ Library {
 	  Labels		  [2, 1]
 	  SrcBlock		  "Mux4"
 	  SrcPort		  1
-	  Points		  [196, 0; 0, 120]
+	  Points		  [544, 0; 0, 635]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
 	}
@@ -1329,8 +1769,323 @@ Library {
 	  DstBlock		  "CT Ratio"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "5V/1A1"
+	  SrcPort		  1
+	  DstBlock		  "Thermal\nProtection for\nTransconductance Amp1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux3"
+	  SrcPort		  3
+	  DstBlock		  "Terminator3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux3"
+	  SrcPort		  2
+	  DstBlock		  "Terminator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Thermal\nProtection for\nTransconductance Amp1"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PT Ratio4"
+	  SrcPort		  1
+	  DstBlock		  "Demux3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PT Ratio3"
+	  SrcPort		  1
+	  DstBlock		  "Demux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "CT Ratio1"
+	  SrcPort		  1
+	  DstBlock		  "5V/1A1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Ib"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Ic"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "Mux2"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "Ia"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "To AnalogOut_to_SEL-751_F2"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  Points		  [187, 0; 0, 75]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [2, 1]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  Points		  [88, 0; 0, -720]
+	  DstBlock		  "Mux4"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "calibration"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Calibration1"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [2, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  3
+	  Points		  [190, 0]
+	  DstBlock		  "PT Ratio3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Vs"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux3"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  4
+	  Points		  [88, 0; 0, 60]
+	  DstBlock		  "PT Ratio4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Vc"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux2"
+	  SrcPort		  3
+	  DstBlock		  "Mux2"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "Vb"
+	  Labels		  [2, 0]
+	  SrcBlock		  "Demux2"
+	  SrcPort		  2
+	  Points		  [0, -16; 105, 0]
+	  DstBlock		  "Mux2"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Va"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Demux2"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  Points		  [108, 0; 0, -90]
+	  DstBlock		  "CT Ratio1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "5V/1A2"
+	  SrcPort		  1
+	  DstBlock		  "Thermal\nProtection for\nTransconductance Amp2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux8"
+	  SrcPort		  3
+	  DstBlock		  "Terminator5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux8"
+	  SrcPort		  2
+	  DstBlock		  "Terminator4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Thermal\nProtection for\nTransconductance Amp2"
+	  SrcPort		  1
+	  DstBlock		  "Demux6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PT Ratio6"
+	  SrcPort		  1
+	  DstBlock		  "Demux8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PT Ratio5"
+	  SrcPort		  1
+	  DstBlock		  "Demux7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "CT Ratio2"
+	  SrcPort		  1
+	  DstBlock		  "5V/1A2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Ib"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux6"
+	  SrcPort		  2
+	  DstBlock		  "Mux5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Ic"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux6"
+	  SrcPort		  3
+	  DstBlock		  "Mux5"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "Ia"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux6"
+	  SrcPort		  1
+	  DstBlock		  "Mux5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "To AnalogOut_to_SEL-751_F3"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Mux5"
+	  SrcPort		  1
+	  Points		  [185, 0; 0, -295]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  Points		  [83, 0; 0, -1125]
+	  DstBlock		  "Mux4"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "calibration"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Calibration2"
+	  SrcPort		  1
+	  DstBlock		  "Mux5"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [2, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  3
+	  Points		  [190, 0]
+	  DstBlock		  "PT Ratio5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Vs"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux8"
+	  SrcPort		  1
+	  DstBlock		  "Mux5"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "<Vabc_bus>"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  4
+	  Points		  [88, 0; 0, 60]
+	  DstBlock		  "PT Ratio6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Vc"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux7"
+	  SrcPort		  3
+	  DstBlock		  "Mux5"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "Vb"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Demux7"
+	  SrcPort		  2
+	  DstBlock		  "Mux5"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "Va"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Demux7"
+	  SrcPort		  1
+	  DstBlock		  "Mux5"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  2
+	  Points		  [108, 0; 0, -90]
+	  DstBlock		  "CT Ratio2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relay_F2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relay_F3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
 	Annotation {
-	  SID			  "19"
+	  SID			  "124"
 	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
 	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
 	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
@@ -1347,7 +2102,7 @@ Library {
 	  FontWeight		  "bold"
 	}
 	Annotation {
-	  SID			  "18"
+	  SID			  "123"
 	  Name			  "This signals will be connected to the assigned slot in opal-rt"
 	  Position		  [795, 173]
 	  ForegroundColor	  "red"
@@ -1355,10 +2110,22 @@ Library {
 	  FontSize		  14
 	}
 	Annotation {
-	  SID			  "22"
+	  SID			  "122"
 	  Name			  "5V/1A for the transconductor \namplifier in the interface box"
 	  Position		  [413, 395]
 	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "121"
+	  Name			  "5V/1A for the transconductor \namplifier in the interface box"
+	  Position		  [418, 840]
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "120"
+	  Name			  "5V/1A for the transconductor \namplifier in the interface box"
+	  Position		  [433, 1295]
+	  ZOrder		  -5
 	}
       }
     }

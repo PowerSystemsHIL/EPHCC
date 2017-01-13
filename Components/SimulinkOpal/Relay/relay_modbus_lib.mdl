@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, -4.0, 1928.0, 1208.0]
+      Location		      [831.0, 0.0, 960.0, 1040.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1056.0]
-	ZoomFactor		[2.3896713615023475]
-	Offset			[88.017190569744571, -22.732809430255344]
+	Extents			[717.0, 874.0]
+	ZoomFactor		[2.39]
+	Offset			[0.0, 24.192468619246881]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "g73labuser"
+  LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Dec 10 09:41:30 2016"
-  RTWModifiedTimeStamp	  403263671
-  ModelVersionFormat	  "1.%<AutoIncrement:516>"
+  LastModifiedDate	  "Thu Jan 05 21:59:03 2017"
+  RTWModifiedTimeStamp	  405554332
+  ModelVersionFormat	  "1.%<AutoIncrement:518>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -733,6 +733,23 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Delay
+      DelayLengthSource	      "Dialog"
+      DelayLength	      "2"
+      DelayLengthUpperLimit   "100"
+      InitialConditionSource  "Dialog"
+      InitialCondition	      "0.0"
+      ExternalReset	      "None"
+      PreventDirectFeedthrough off
+      DiagnosticForOutOfRangeDelayLength "None"
+      RemoveProtectionDelayLength off
+      InputProcessing	      "Elements as channels (sample based)"
+      UseCircularBuffer	      off
+      SampleTime	      "-1"
+      StateMustResolveToSignalObject off
+      CodeGenStateStorageClass "Auto"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -914,7 +931,7 @@ Library {
   }
   System {
     Name		    "relay_modbus_lib"
-    Location		    [1916, -4, 3844, 1204]
+    Location		    [831, 0, 1791, 1040]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -928,16 +945,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "239"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82714"
+    SIDHighWatermark	    "82727"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      3370
-      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.515"
+      ZOrder		      2431
+      BackgroundColor	      "yellow"
+      LibraryVersion	      "*1.517"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -985,14 +1002,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[relay_par(2,:)]"
+	    Value		    "[F3(1,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[1916, -4, 3844, 1204]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1004,7 +1021,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"40"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -1017,7 +1034,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "FROM_MODBUS"
 	  SID			  "82311"
-	  Position		  [2050, 368, 2080, 382]
+	  Position		  [2830, 323, 2860, 337]
 	  ZOrder		  -1
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1082,7 +1099,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "82568"
 	  Ports			  [1, 3]
-	  Position		  [2385, 253, 2390, 337]
+	  Position		  [3165, 208, 3170, 292]
 	  ZOrder		  1595
 	  ShowName		  off
 	  OutputSignals		  "VRMSLL,CT_primary,Initial_status"
@@ -1252,6 +1269,17 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Delay
+	  Name			  "Delay"
+	  SID			  "82718"
+	  Ports			  [1, 1]
+	  Position		  [2960, 563, 2985, 587]
+	  ZOrder		  3524
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  InitialCondition	  "0"
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "82332"
@@ -1310,7 +1338,7 @@ Library {
 	  BlockType		  DigitalClock
 	  Name			  "Digital Clock"
 	  SID			  "82625"
-	  Position		  [2750, 184, 2800, 206]
+	  Position		  [3515, 229, 3565, 251]
 	  ZOrder		  1931
 	  SampleTime		  "Ts"
 	}
@@ -1645,6 +1673,15 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From36"
+	  SID			  "82715"
+	  Position		  [2585, 711, 2650, 729]
+	  ZOrder		  3523
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From37"
 	  SID			  "82368"
 	  Position		  [3460, 1011, 3530, 1029]
@@ -1773,7 +1810,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From47"
 	  SID			  "82379"
-	  Position		  [2820, 596, 2900, 614]
+	  Position		  [2905, 596, 2985, 614]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "op_mode"
@@ -1996,7 +2033,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From66"
 	  SID			  "82578"
-	  Position		  [2820, 625, 2925, 645]
+	  Position		  [2905, 625, 3010, 645]
 	  ZOrder		  1605
 	  ShowName		  off
 	  GotoTag		  "RELAY_PARAM"
@@ -2087,6 +2124,15 @@ Library {
 	  ZOrder		  3108
 	  ShowName		  off
 	  GotoTag		  "cb_state"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From75"
+	  SID			  "82719"
+	  Position		  [2280, 881, 2345, 899]
+	  ZOrder		  3527
+	  ShowName		  off
+	  GotoTag		  "reset"
 	}
 	Block {
 	  BlockType		  From
@@ -2427,7 +2473,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto10"
 	  SID			  "82426"
-	  Position		  [2370, 566, 2430, 584]
+	  Position		  [2630, 846, 2690, 864]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "R50"
@@ -2445,7 +2491,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto12"
 	  SID			  "82428"
-	  Position		  [2445, 596, 2505, 614]
+	  Position		  [2630, 941, 2690, 959]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "R51"
@@ -2553,7 +2599,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto23"
 	  SID			  "82440"
-	  Position		  [2565, 806, 2625, 824]
+	  Position		  [2630, 1031, 2690, 1049]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "R27"
@@ -2562,7 +2608,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto24"
 	  SID			  "82441"
-	  Position		  [2565, 841, 2625, 859]
+	  Position		  [2630, 1121, 2690, 1139]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "R59"
@@ -2589,7 +2635,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto27"
 	  SID			  "82444"
-	  Position		  [2340, 381, 2400, 399]
+	  Position		  [3120, 336, 3180, 354]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "reset"
@@ -2598,7 +2644,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto28"
 	  SID			  "82445"
-	  Position		  [3250, 566, 3310, 584]
+	  Position		  [3335, 566, 3395, 584]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "R25"
@@ -2697,7 +2743,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto38"
 	  SID			  "82569"
-	  Position		  [2465, 287, 2565, 303]
+	  Position		  [3245, 242, 3345, 258]
 	  ZOrder		  1596
 	  ShowName		  off
 	  GotoTag		  "CT_Primary"
@@ -2706,7 +2752,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto39"
 	  SID			  "82574"
-	  Position		  [2400, 217, 2500, 233]
+	  Position		  [3180, 172, 3280, 188]
 	  ZOrder		  1601
 	  ShowName		  off
 	  GotoTag		  "RELAY_PARAM"
@@ -2724,7 +2770,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto40"
 	  SID			  "82585"
-	  Position		  [2465, 257, 2565, 273]
+	  Position		  [3245, 212, 3345, 228]
 	  ZOrder		  1606
 	  ShowName		  off
 	  GotoTag		  "VRMSLL"
@@ -2733,7 +2779,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto41"
 	  SID			  "82628"
-	  Position		  [2845, 186, 2920, 204]
+	  Position		  [3610, 231, 3685, 249]
 	  ZOrder		  1933
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
@@ -2743,7 +2789,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto42"
 	  SID			  "82631"
-	  Position		  [2845, 236, 2920, 254]
+	  Position		  [3610, 281, 3685, 299]
 	  ZOrder		  1936
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
@@ -2753,7 +2799,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto43"
 	  SID			  "82640"
-	  Position		  [2465, 317, 2565, 333]
+	  Position		  [3245, 272, 3345, 288]
 	  ZOrder		  1945
 	  ShowName		  off
 	  GotoTag		  "Initial_status"
@@ -2780,7 +2826,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto46"
 	  SID			  "82689"
-	  Position		  [2945, 301, 3020, 319]
+	  Position		  [3710, 346, 3785, 364]
 	  ZOrder		  3187
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
@@ -2826,7 +2872,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto9"
 	  SID			  "82461"
-	  Position		  [2430, 366, 2490, 384]
+	  Position		  [3210, 321, 3270, 339]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "op_mode"
@@ -2849,7 +2895,7 @@ Library {
 	  Name			  "Logical\nOperator4"
 	  SID			  "82464"
 	  Ports			  [4, 1]
-	  Position		  [2575, 611, 2620, 754]
+	  Position		  [2495, 611, 2540, 754]
 	  ZOrder		  -11
 	  ShowName		  off
 	  Operator		  "OR"
@@ -3630,10 +3676,10 @@ Library {
 	  Name			  "R25 - Sync Check v0.1"
 	  SID			  "82674"
 	  Ports			  [5, 1]
-	  Position		  [2955, 499, 3155, 651]
+	  Position		  [3040, 499, 3240, 651]
 	  ZOrder		  3172
 	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.14"
+	  LibraryVersion	  "1.15"
 	  SourceBlock		  "relay_ANSI_F25_lib/R25 - Sync Check v0.1"
 	  SourceType		  "Relay synch check"
 	  Ts			  "Ts"
@@ -3689,7 +3735,7 @@ Library {
 	  Name			  "Relational\nOperator"
 	  SID			  "82688"
 	  Ports			  [2, 1]
-	  Position		  [2870, 292, 2900, 323]
+	  Position		  [3635, 337, 3665, 368]
 	  ZOrder		  3186
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3700,10 +3746,10 @@ Library {
 	  Name			  "Relay_param"
 	  SID			  "82591"
 	  Ports			  [1, 3]
-	  Position		  [2135, 350, 2275, 400]
+	  Position		  [2915, 305, 3055, 355]
 	  ZOrder		  1904
 	  BackgroundColor	  "[0.254902, 0.678431, 0.388235]"
-	  LibraryVersion	  "1.15"
+	  LibraryVersion	  "1.16"
 	  SourceBlock		  "relay_mgc_cmd_lib/Relay_param"
 	  SourceType		  "MGC Commands through MODBUS"
 	  relay_settings	  "relay_settings"
@@ -3714,6 +3760,77 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop1"
+	  SID			  "82716"
+	  Ports			  [2, 2]
+	  Position		  [2685, 665, 2730, 740]
+	  ZOrder		  3521
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "fault_flag"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop2"
+	  SID			  "82720"
+	  Ports			  [2, 2]
+	  Position		  [2495, 835, 2540, 910]
+	  ZOrder		  3525
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop3"
+	  SID			  "82722"
+	  Ports			  [2, 2]
+	  Position		  [2495, 930, 2540, 1005]
+	  ZOrder		  3528
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop4"
+	  SID			  "82724"
+	  Ports			  [2, 2]
+	  Position		  [2495, 1020, 2540, 1095]
+	  ZOrder		  3530
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop5"
+	  SID			  "82726"
+	  Ports			  [2, 2]
+	  Position		  [2495, 1110, 2540, 1185]
+	  ZOrder		  3532
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
 	}
 	Block {
 	  BlockType		  Reference
@@ -3801,10 +3918,50 @@ Library {
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator5"
+	  SID			  "82717"
+	  Position		  [2755, 710, 2775, 730]
+	  ZOrder		  3522
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator6"
+	  SID			  "82721"
+	  Position		  [2565, 880, 2585, 900]
+	  ZOrder		  3526
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator7"
+	  SID			  "82723"
+	  Position		  [2565, 975, 2585, 995]
+	  ZOrder		  3529
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator8"
+	  SID			  "82725"
+	  Position		  [2565, 1065, 2585, 1085]
+	  ZOrder		  3531
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator9"
+	  SID			  "82727"
+	  Position		  [2565, 1155, 2585, 1175]
+	  ZOrder		  3533
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  From
 	  Name			  "Vabc_bus1"
 	  SID			  "82528"
-	  Position		  [2820, 507, 2885, 523]
+	  Position		  [2905, 507, 2970, 523]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Vabc"
@@ -3813,7 +3970,7 @@ Library {
 	  BlockType		  From
 	  Name			  "Vabc_bus2"
 	  SID			  "82529"
-	  Position		  [2820, 537, 2885, 553]
+	  Position		  [2905, 537, 2970, 553]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Vabc_line"
@@ -4118,7 +4275,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "initial condition\ntime delay"
 	  SID			  "82630"
-	  Position		  [2750, 235, 2780, 255]
+	  Position		  [3515, 280, 3545, 300]
 	  ZOrder		  1935
 	  BackgroundColor	  "green"
 	  Value			  "0.2"
@@ -4289,18 +4446,12 @@ Library {
 	  Ports			  [7, 4]
 	  Position		  [2115, 610, 2320, 750]
 	  ZOrder		  1930
+	  ForegroundColor	  "blue"
 	  BackgroundColor	  "red"
-	  LibraryVersion	  "1.32"
+	  LibraryVersion	  "1.33"
 	  SourceBlock		  "relay_ANSI_functions_lib/relay_protection_functions"
 	  SourceType		  "Relays 50-51-27-59"
 	  Ts			  "Ts"
-	  Port {
-	    PortNumber		    1
-	    Name		    "50"
-	    PropagatedSignals	    "t50"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	  Port {
 	    PortNumber		    2
 	    Name		    "51"
@@ -4339,6 +4490,82 @@ Library {
 	  ZOrder		  -23
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop2"
+	  SrcPort		  1
+	  DstBlock		  "Goto10"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop3"
+	  SrcPort		  1
+	  DstBlock		  "Goto12"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop4"
+	  SrcPort		  1
+	  DstBlock		  "Goto23"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop5"
+	  SrcPort		  1
+	  DstBlock		  "Goto24"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop5"
+	  SrcPort		  2
+	  DstBlock		  "Terminator9"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop4"
+	  SrcPort		  2
+	  DstBlock		  "Terminator8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop3"
+	  SrcPort		  2
+	  DstBlock		  "Terminator7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop2"
+	  SrcPort		  2
+	  DstBlock		  "Terminator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From75"
+	  SrcPort		  1
+	  Points		  [22, 0]
+	  Branch {
+	    Points		    [0, 95]
+	    Branch {
+	      Points		      [0, 90]
+	      Branch {
+		Points			[0, 90]
+		DstBlock		"S-R\nFlip-Flop5"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"S-R\nFlip-Flop4"
+		DstPort			2
+	      }
+	    }
+	    Branch {
+	      DstBlock		      "S-R\nFlip-Flop3"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "S-R\nFlip-Flop2"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  SrcBlock		  "RMS_Calculator3"
@@ -4797,15 +5024,15 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  4
-	  Points		  [151, 0]
-	  Branch {
-	    Points		    [0, 115]
-	    DstBlock		    "Goto24"
-	    DstPort		    1
-	  }
+	  Points		  [99, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    4
+	  }
+	  Branch {
+	    Points		    [0, 395]
+	    DstBlock		    "S-R\nFlip-Flop5"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -4813,15 +5040,15 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  3
-	  Points		  [176, 0]
-	  Branch {
-	    Points		    [0, 115]
-	    DstBlock		    "Goto23"
-	    DstPort		    1
-	  }
+	  Points		  [114, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, 340]
+	    DstBlock		    "S-R\nFlip-Flop4"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -5115,11 +5342,11 @@ Library {
 	  DstPort		  4
 	}
 	Line {
-	  Name			  "trip_in"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Logical\nOperator4"
+	  Name			  "fault_flag"
+	  Labels		  [0, 1]
+	  SrcBlock		  "S-R\nFlip-Flop1"
 	  SrcPort		  1
-	  Points		  [119, 0]
+	  Points		  [113, 0]
 	  Branch {
 	    Labels		    [1, 1]
 	    DstBlock		    "State Condition Mng"
@@ -5127,8 +5354,8 @@ Library {
 	  }
 	  Branch {
 	    Points		    [0, -110]
-	    DstBlock		    "R25 - Sync Check v0.1"
-	    DstPort		    3
+	    DstBlock		    "Delay"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -5212,15 +5439,15 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  2
-	  Points		  [100, 0]
-	  Branch {
-	    Points		    [0, -60]
-	    DstBlock		    "Goto12"
-	    DstPort		    1
-	  }
+	  Points		  [129, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 285]
+	    DstBlock		    "S-R\nFlip-Flop3"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -5237,17 +5464,16 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "50"
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  1
-	  Points		  [30, 0]
+	  Points		  [146, 0]
 	  Branch {
-	    Labels		    [1, 0]
-	    DstBlock		    "Goto10"
+	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "Logical\nOperator4"
+	    Points		    [0, 225]
+	    DstBlock		    "S-R\nFlip-Flop2"
 	    DstPort		    1
 	  }
 	}
@@ -5657,6 +5883,31 @@ Library {
 	    DstPort		    1
 	  }
 	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From36"
+	  SrcPort		  1
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "trip_in"
+	  SrcBlock		  "Logical\nOperator4"
+	  SrcPort		  1
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Delay"
+	  SrcPort		  1
+	  DstBlock		  "R25 - Sync Check v0.1"
+	  DstPort		  3
+	}
 	Annotation {
 	  SID			  "82644"
 	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
@@ -5670,33 +5921,23 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [1916, 1117]
+	  Position		  [2031, 277]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
 	  FontWeight		  "bold"
-	}
-	Annotation {
-	  SID			  "82557"
-	  Name			  "* during the 2015 sympoaium, it was noticed that microgrid controllers had \ndifficulties integrating whe"
-	  "n voltage protection was active\n \n-- simulations were performed by deactivating the voltage protection.\nHowever,"
-	  " the operation of the relays function  R27 and R59 are still monitored for analysis"
-	  Position		  [2012, 819]
-	  HorizontalAlignment	  "left"
-	  ForegroundColor	  "red"
-	  ZOrder		  -2
 	}
 	Annotation {
 	  SID			  "82558"
 	  Name			  "Importing=TRUE\nExporting=FALSE\n\nLagging (Pushing VARs)=TRUE\nLeading (Pulling VARs)=FALSE"
 	  Position		  [1175, 1074]
 	  ForegroundColor	  "blue"
-	  ZOrder		  -3
+	  ZOrder		  -2
 	}
 	Annotation {
 	  SID			  "82559"
 	  Name			  "* several signals are bitwised"
 	  Position		  [3337, 1393]
-	  ZOrder		  -4
+	  ZOrder		  -3
 	}
 	Annotation {
 	  SID			  "82560"
@@ -5704,7 +5945,7 @@ Library {
 	  Position		  [927, 561]
 	  BackgroundColor	  "red"
 	  DropShadow		  on
-	  ZOrder		  -5
+	  ZOrder		  -4
 	  FontName		  "Arial Black"
 	  FontSize		  12
 	  FontWeight		  "bold"
@@ -5718,7 +5959,7 @@ Library {
 	  Position		  [948, 1648]
 	  HorizontalAlignment	  "left"
 	  DropShadow		  on
-	  ZOrder		  -6
+	  ZOrder		  -5
 	  FontName		  "Courier New"
 	  FontSize		  12
 	  FontWeight		  "bold"
@@ -5733,28 +5974,28 @@ Library {
 	  Position		  [1920, 1425]
 	  HorizontalAlignment	  "left"
 	  DropShadow		  on
-	  ZOrder		  -7
+	  ZOrder		  -6
 	  FontName		  "Courier New"
 	  FontWeight		  "bold"
 	}
 	Annotation {
 	  SID			  "82563"
 	  Position		  [3593, 1103]
-	  ZOrder		  -8
+	  ZOrder		  -7
 	}
 	Annotation {
 	  SID			  "82566"
 	  Position		  [1768, 523]
-	  ZOrder		  -9
+	  ZOrder		  -8
 	}
 	Annotation {
 	  SID			  "82627"
 	  Name			  "time delay [sec] to activate logic. Forces the trip_out signal to the initial condition \n(specified in t"
 	  "he settings file) until the simulation clock exceeds the threshold\n\ntime_flag is used to activate logic and enabl"
 	  "e protection functions"
-	  Position		  [2751, 116]
+	  Position		  [3516, 161]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -10
+	  ZOrder		  -9
 	}
       }
     }

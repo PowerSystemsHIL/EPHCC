@@ -47,5 +47,5 @@ bool_27 = sum(ratio <= UV_pickup) > 0;
 n27 = n27 .* bool_27;
 % increase count by Ts at signal out of threshold
 n27 = n27 + bool_27 .* Ts;
-% check trip signal
-trip27 = n27 > t27;
+% check trip signal 
+trip27 = (n27 > t27);

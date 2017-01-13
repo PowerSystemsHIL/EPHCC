@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1010.0]
+	Extents			[1693.0, 1009.0]
 	ZoomFactor		[1.889629734714144]
-	Offset			[8.5911411411411223, -140.24812312312307]
+	Offset			[8.5911411411411223, -140.248123123123]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "re25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 02 17:02:06 2016"
-  RTWModifiedTimeStamp	  400006923
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  LastModifiedDate	  "Thu Dec 22 14:12:31 2016"
+  RTWModifiedTimeStamp	  404316741
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -715,6 +715,17 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -835,7 +846,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "189"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "31"
+    SIDHighWatermark	    "40"
     Block {
       BlockType		      SubSystem
       Name		      "Relay_param"
@@ -844,7 +855,7 @@ Library {
       Position		      [705, 125, 845, 175]
       ZOrder		      1904
       BackgroundColor	      "[0.254902, 0.678431, 0.388235]"
-      LibraryVersion	      "*1.14"
+      LibraryVersion	      "*1.15"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -883,7 +894,7 @@ Library {
       }
       System {
 	Name			"Relay_param"
-	Location		[-8, 0, 1928, 1176]
+	Location		[1912, -8, 3848, 1208]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -895,7 +906,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"108"
+	ZoomFactor		"111"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MODBUS"
@@ -914,6 +925,16 @@ Library {
 	  ShowName		  off
 	  Inputs		  "14"
 	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "40"
+	  Position		  [490, 730, 540, 750]
+	  ZOrder		  3597
+	  ShowName		  off
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Demux
@@ -1043,14 +1064,20 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "mode"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Detect\nChange"
-	  SID			  "8"
+	  SID			  "37"
 	  Ports			  [1, 1]
-	  Position		  [430, 760, 490, 790]
-	  ZOrder		  1913
+	  Position		  [305, 760, 365, 790]
+	  ZOrder		  3595
 	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nChange"
 	  SourceType		  "Detect Change"
@@ -1063,6 +1090,20 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive"
+	  SID			  "38"
+	  Ports			  [1, 1]
+	  Position		  [305, 670, 365, 720]
+	  ZOrder		  3596
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  vinit			  "0"
+	  InputProcessing	  "Inherited"
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  From
@@ -1085,10 +1126,10 @@ Library {
 	Block {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator1"
-	  SID			  "11"
+	  SID			  "39"
 	  Ports			  [2, 1]
-	  Position		  [340, 739, 380, 806]
-	  ZOrder		  1910
+	  Position		  [425, 704, 465, 771]
+	  ZOrder		  3594
 	  ShowName		  off
 	  Operator		  "OR"
 	  AllPortsSameDT	  off
@@ -1153,7 +1194,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "cb_op_mode"
 	  SID			  "15"
-	  Position		  [560, 818, 590, 832]
+	  Position		  [535, 818, 565, 832]
 	  ZOrder		  1916
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1162,10 +1203,63 @@ Library {
 	  BlockType		  Outport
 	  Name			  "reset"
 	  SID			  "16"
-	  Position		  [560, 768, 590, 782]
+	  Position		  [565, 733, 595, 747]
 	  ZOrder		  1915
 	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "reset"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "reset"
+	  SrcBlock		  "Detect\nChange"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -20]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 25]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "mode"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux2"
+	  SrcPort		  2
+	  Points		  [135, 0]
+	  Branch {
+	    DstBlock		    "cb_op_mode"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [1, 0]
+	    Points		    [0, -50]
+	    DstBlock		    "Detect\nChange"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "reset"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux2"
+	  SrcPort		  1
+	  Points		  [87, 0; 0, -60]
+	  DstBlock		  "Detect Rise\nPositive"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "51P_pickup"
@@ -1326,46 +1420,10 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "reset"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Detect\nChange"
-	  SrcPort		  1
-	  DstBlock		  "reset"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Logical\nOperator1"
-	  SrcPort		  1
-	  DstBlock		  "Detect\nChange"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "reset"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Demux2"
-	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "MODBUS"
 	  SrcPort		  1
 	  DstBlock		  "Demux2"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  2
-	  Points		  [125, 0]
-	  Branch {
-	    DstBlock		    "cb_op_mode"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, -35]
-	    DstBlock		    "Logical\nOperator1"
-	    DstPort		    2
-	  }
 	}
 	Line {
 	  SrcBlock		  "Demux2"
