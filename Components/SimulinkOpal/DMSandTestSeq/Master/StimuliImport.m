@@ -13,14 +13,16 @@ vars = 500*pulse(0, 6.5*60, 2.5*60, tStop);
 island = pulse(0, 9*60, 8*60, tStop); % DMS request
 
 %               startState, faultTime,  duration,   tStop
-faults = [pulse(0,          20*60+132,  2*60,        tStop); % BUS103
-          pulse(0,          20*60+132*2,2*60,        tStop); % BUS204
-          pulse(0,          14*60,      120,        tStop); % POI3 Fault
+faults = [pulse(0,          20*60+132,  2*60,        tStop); % BUS204
+          zeros(1,tStop); %pulse(0,          20*60+132*2,2*60,        tStop); % BUS103
+          pulse(0,          14*60,      120,        tStop); % BUS106
+          zeros(1,tStop); %pulse(0,          25*60,      120,        tStop); % BUS301
+          pulse(0,          26*60,      120,        tStop); % BUS208
           pulse(0,          20*60,      8.5*60,      tStop) + pulse(0, 2*60, 3*60, tStop); % cut grid power
           pulse(0,          10*60,      1*60,      tStop) + pulse(0, 18*60, 1*60, tStop); % motor1
           pulse(0,          12*60,      1*60,      tStop) + pulse(0, 4*60, 1.5*60, tStop); % motor2
           ];
-power_needed = power_req(solar*0.95*-5 + f1_tot.kw + f2_tot.kw + f3_tot.kw, export, import,island | faults(4,:)); % this can be met by shedding load or sending generator commands
+power_needed = power_req(solar*0.95*-5 + f1_tot.kw + f2_tot.kw + f3_tot.kw, export, import,island | faults(6,:)); % this can be met by shedding load or sending generator commands
 %faults = mirror(faults);
 
 timeMin = linspace(0,tStop/60,tStop);
@@ -37,9 +39,9 @@ s(3) = subplot(4,1,3);
 plot(timeMin, island, 'LineWidth',2);
 s(4) = subplot(4,1,4);
 p = plot(timeMin, faults','LineWidth',2);
-set(p(5),'LineStyle','--');
-set(p(6),'LineStyle','--');
-legend('BUS103 Fault', 'BUS204 Fault', 'POI3 Fault', 'Dead Grid', 'Motor1', 'Motor2'); 
+set(p(7),'LineStyle','--');
+set(p(8),'LineStyle','--');
+legend('BUS204 Fault', 'BUS103 Fault', 'BUS106 Fault', 'BUS301 Fault', 'BUS208 Fault', 'Cut Grid Power','motor1','motor2'); 
 linkaxes(s,'x');
 for i = 1:4
     s(i).XTick = 1:30;
