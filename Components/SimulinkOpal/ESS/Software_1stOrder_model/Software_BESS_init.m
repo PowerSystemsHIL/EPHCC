@@ -1,5 +1,6 @@
 Ts = 100e-6; % simulation time step
 Tc = Ts; %*5; % controller time step 
+%Tc = Ts*5; % controller time step 
 f = 60; % nominal grid freq
 s = tf('s');
 
@@ -13,6 +14,7 @@ Lgrid = (Zgrid/2)/(2*pi*f);
 H = 2;
 tau_mech = 0.3; % time constant on prime mover
 sys_mech = ss(1/(tau_mech*s+1));
+dPer = 0.05; % droop percent
 
 loadCmds = [0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0;  % time
             0   1   0   0   0   0   0   0   0   0   0  ;  % additional R
@@ -53,10 +55,10 @@ PLLFreqCutOff = 10; %200
 
 %% Cross coupling in droop for mixed microgrids
 
-paramDroopVolts2Real = 0.5*(1/0.05); % 10
-paramDroopVolts2Reac = 0*(1/0.05);
-paramDroopFreq2Real = 0*(1/0.05);
-paramDroopFreq2Reac = 0.5*(1/0.05); %10
+paramDroopVolts2Real = 1*(1/dPer); % 10
+paramDroopVolts2Reac = 0*(1/dPer);
+paramDroopFreq2Real = 0*(1/dPer);
+paramDroopFreq2Reac = 1*(1/dPer); %10
 
 filt = firstOrderDig(50e-3, Tc, 'low');
 
