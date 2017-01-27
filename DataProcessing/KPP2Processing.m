@@ -3,7 +3,9 @@
 load powerreal.dat;
 time=powerreal(:,1);
 DieselKW=abs(powerreal(:,48));
-DieselCO2lbmcum=cumsum(DieselKW)*1425*(time(11)-time(10))/1e6/3600;
+DieselCO2lbmcum=cumsum(DieselKW)/1000*1425*(time(11)-time(10))/1000/3600;
+UtilityKW=powerreal(:,44)+powerreal(:,45)+powerreal(:,46);
+UtilityCO2lbmcum=cumsum(UtilityKW)/1000*457*(time(11)-time(10))/1000/3600;
 clear powerreal*;
 %
 load ngchpGenerator_ChpC02.dat;
@@ -22,10 +24,11 @@ plot(time,BoilerCO2lbmcum);
 hold on;
 plot(time,CHPCO2lbmcum,'r');
 plot(time,DieselCO2lbmcum,'g');
+plot(time,UtilityCO2lbmcum,'c');
 xlabel('Hours');
 ylabel('lbm');
 title('GHG Emission (CO2)');
-legend ('Boiler', 'CHP', 'Diesel')
+legend ('Boiler', 'CHP', 'Diesel', 'PG&E')
 %
 clear
 

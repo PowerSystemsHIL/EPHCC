@@ -16,7 +16,7 @@ deltaT=(ngchpGenerator_boilerNM(11,1)-ngchpGenerator_boilerNM(10,1))/1000;
 %
 %% Loop through entire file
 for n=1:length(ngchpGenerator_boilerNM)
-    if (breaker(n,44) | breaker(n,45) | breaker(n,46))==0   %outage
+    if (breaker(n,44) | breaker(n,45) | breaker(n,46))==0   % islanded
         Boiler_NMcum=Boiler_NMcum+ngchpGenerator_boilerNM(n,2);
         NG_NMcum=NG_NMcum+ngchpGenerator_fuelUsage(n,2);
         Diesel_GALcum=Diesel_GALcum+abs(powerreal(n,48));   %KW from diesel
