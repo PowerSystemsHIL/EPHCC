@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-4.0, -4.0, 1928.0, 1164.0]
+      Location		      [1916.0, -4.0, 1928.0, 1208.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1012.0]
-	ZoomFactor		[2.9908814589665651]
-	Offset			[114.89176829268285, -89.6808943089431]
+	Extents			[1689.0, 1053.0]
+	ZoomFactor		[3.115501519756839]
+	Offset			[126.18609756097561, -89.493658536585372]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Dec 10 10:07:25 2016"
-  RTWModifiedTimeStamp	  403265240
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Thu Jan 26 16:12:18 2017"
+  RTWModifiedTimeStamp	  407347888
+  ModelVersionFormat	  "1.%<AutoIncrement:10>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -820,7 +820,7 @@ Library {
   }
   System {
     Name		    "PQFV_lib"
-    Location		    [-4, -4, 1924, 1160]
+    Location		    [1916, -4, 3844, 1204]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -832,7 +832,7 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "299"
+    ZoomFactor		    "312"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "97"
     Block {
@@ -858,14 +858,24 @@ Library {
 	Type			"PQFV"
 	Description		"Block inputs: circuit breaker measurements\nBlock outputs: kW, kVAR, Hz, VRMSLL, Vpu, cb-status\n-volta"
 	"ge as seem at the entry-point of the circuit breaker"
-	Object {
-	  $PropName		  "Parameters"
-	  $ObjectID		  18
-	  $ClassName		  "Simulink.MaskParameter"
-	  Type			  "edit"
-	  Name			  "VRMSLL"
-	  Prompt		  "Nominal VRMSLL"
-	  Value			  "13800"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    18
+	    Type		    "edit"
+	    Name		    "VRMSLL"
+	    Prompt		    "Nominal VRMSLL"
+	    Value		    "13800"
+	  }
+	  Object {
+	    $ObjectID		    19
+	    Type		    "edit"
+	    Name		    "Ts"
+	    Prompt		    "Sample Time [Sec]"
+	    Value		    "Ts"
+	  }
+	  PropName		  "Parameters"
 	}
       }
       System {
@@ -1369,7 +1379,7 @@ Library {
       Name		      "PQFV"
       SID		      "1"
       Ports		      [1, 1]
-      Position		      [195, 203, 295, 227]
+      Position		      [210, 203, 310, 227]
       ZOrder		      3468
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
@@ -1383,24 +1393,34 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		19
+	$ObjectID		20
 	$ClassName		"Simulink.Mask"
 	Type			"PQFV"
 	Description		"Block inputs: circuit breaker measurements\nBlock outputs: kW, kVAR, Hz, VRMSLL, Vpu, cb-status\n-volta"
 	"ge as seem at the entry-point of the circuit breaker"
-	Object {
-	  $PropName		  "Parameters"
-	  $ObjectID		  20
-	  $ClassName		  "Simulink.MaskParameter"
-	  Type			  "edit"
-	  Name			  "VRMSLL"
-	  Prompt		  "Nominal VRMSLL"
-	  Value			  "13800"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    21
+	    Type		    "edit"
+	    Name		    "VRMSLL"
+	    Prompt		    "Nominal VRMSLL"
+	    Value		    "13800"
+	  }
+	  Object {
+	    $ObjectID		    22
+	    Type		    "edit"
+	    Name		    "Ts"
+	    Prompt		    "Sample Time [Sec]"
+	    Value		    "Ts"
+	  }
+	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"PQFV"
-	Location		[-4, -4, 1924, 1160]
+	Location		[1916, -4, 3844, 1204]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1412,7 +1432,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"128"
+	ZoomFactor		"133"
 	Block {
 	  BlockType		  Inport
 	  Name			  "CB_MS"
@@ -1631,9 +1651,10 @@ Library {
 	  ZOrder		  3505
 	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
 	  ShowName		  off
-	  LibraryVersion	  "1.9"
+	  LibraryVersion	  "1.10"
 	  SourceBlock		  "RMS_lib/RMS_Calculator"
-	  SourceType		  "SubSystem"
+	  SourceType		  ""
+	  Ts			  "Ts"
 	}
 	Block {
 	  BlockType		  Terminator
