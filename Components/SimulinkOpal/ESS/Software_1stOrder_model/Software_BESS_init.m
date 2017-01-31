@@ -4,6 +4,11 @@ Tc = Ts; %*5; % controller time step
 f = 60; % nominal grid freq
 s = tf('s');
 
+% Battery parameters
+batt_kWh = 1000;
+batt_esr = 0.1;
+Vdc_nom = 1000;
+
 % Voltage Source Impedance
 Pgrid = 3e6; % changed from 1MW to 3 MW - R.S[2017-01-26] 
 Vgrid = 480/sqrt(3);
@@ -15,6 +20,7 @@ H = 2;
 tau_mech = 0.3; % time constant on prime mover
 sys_mech = ss(1/(tau_mech*s+1));
 dPer = 0.05; % droop percent
+PUIMax = 1.2; % max current output
 
 loadCmds = [0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0;  % time
             0   1   0   0   0   0   0   0   0   0   0  ;  % additional R
@@ -55,10 +61,10 @@ PLLFreqCutOff = 10; %200
 
 %% Cross coupling in droop for mixed microgrids
 
-paramDroopVolts2Real = 1*(1/dPer); % 10
+paramDroopVolts2Real = 0.5*(1/dPer); % 10
 paramDroopVolts2Reac = 0*(1/dPer);
 paramDroopFreq2Real = 0*(1/dPer);
-paramDroopFreq2Reac = 1*(1/dPer); %10
+paramDroopFreq2Reac = 0.5*(1/dPer); %10
 
 filt = firstOrderDig(50e-3, Tc, 'low');
 
