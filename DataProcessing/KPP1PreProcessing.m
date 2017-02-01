@@ -1,4 +1,4 @@
-%%% PowerProfilePreProcessing %%%
+%%% KPP#1 preprocessing script PowerProfilePreProcessing %%%
 
 %%% Rename variables after importing "misc_1.dat"
 load misc_1.dat%
