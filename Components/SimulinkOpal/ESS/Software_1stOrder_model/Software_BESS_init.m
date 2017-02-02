@@ -38,7 +38,7 @@ paramPLLControlD = 1;
 paramPLLControlSatFreq = 10; % Hz delta from nominal 60
 paramPLLDVoltsTol = 0.85;
 paramPLLQVoltsTol = 0.15;
-paramPLLQFEDebounceTime = 0.010;
+paramPLLQFEDebounceTime = 0.007;
 sampdT = Tc;
 dT = Ts;
 PLLFreqChangeRateMax = 10; %100
@@ -59,20 +59,20 @@ Resrvir = Rgrid;
 % %% Inductive droop for higher voltage microgrids
 % 
 paramDroopVolts2Real = 0*(1/dPer); % 10
-paramDroopVolts2Reac = 0.5*(1/dPer);
-paramDroopFreq2Real = 0.5*(1/dPer);
+paramDroopVolts2Reac = 1*(1/dPer);
+paramDroopFreq2Real = 1*(1/dPer);
 paramDroopFreq2Reac = 0*(1/dPer); %10
 
 filt = firstOrderDig(50e-3, Tc, 'low');
 
 %% Cross coupling in droop for mixed microgrids
 
-paramDroopVolts2Real = 0.5*(1/dPer); % 10
-paramDroopVolts2Reac = 0*(1/dPer);
-paramDroopFreq2Real = 0*(1/dPer);
-paramDroopFreq2Reac = 0.5*(1/dPer); %10
-
-filt = firstOrderDig(50e-3, Tc, 'low');
+% paramDroopVolts2Real = 0.5*(1/dPer); % 10
+% paramDroopVolts2Reac = 0*(1/dPer);
+% paramDroopFreq2Real = 0*(1/dPer);
+% paramDroopFreq2Reac = 0.5*(1/dPer); %10
+% 
+% filt = firstOrderDig(50e-3, Tc, 'low');
 
 %[mag_num, mag_den] = firstOrderDig(500e-6, Tc, 'low');
 
