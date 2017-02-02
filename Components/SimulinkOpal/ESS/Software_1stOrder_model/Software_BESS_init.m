@@ -13,7 +13,8 @@ Vdc_nom = 1000;
 Pgrid = 3e6; % changed from 1MW to 3 MW - R.S[2017-01-26] 
 Vgrid = 480/sqrt(3);
 Igrid = Pgrid/Vgrid/3;
-Zgrid = Vgrid*0.01/(Pgrid/Vgrid/3); % 1% is reasonable for a large 1MW generator but should be higher ~5% for 10s of kw machine 
+GridPct = 0.01; % 1% is reasonable for a large 1MW generator but should be higher ~5% for 10s of kw machine 
+Zgrid = Vgrid*GridPct/(Pgrid/Vgrid/3); 
 Rgrid = Zgrid/2;
 Lgrid = (Zgrid/2)/(2*pi*f);
 H = 2;
@@ -44,6 +45,9 @@ PLLFreqChangeRateMax = 10; %100
 PLLFreqCutOff = 10; %200
 %PLLFreqChangeRateMax = 100;
 %PLLFreqCutOff = 200;
+Lvir = Lgrid*100;
+Rpvir = (Vgrid^2)/(0.001*Pgrid/3);
+Resrvir = Rgrid;
 
 %% Resistive droop for low voltage microgrids
 
@@ -54,10 +58,12 @@ PLLFreqCutOff = 10; %200
 % 
 % %% Inductive droop for higher voltage microgrids
 % 
-% paramDroopVolts2Real = 0;
-% paramDroopVolts2Reac = 100;
-% paramDroopFreq2Real = 100;
-% paramDroopFreq2Reac = 0;
+paramDroopVolts2Real = 0*(1/dPer); % 10
+paramDroopVolts2Reac = 0.5*(1/dPer);
+paramDroopFreq2Real = 0.5*(1/dPer);
+paramDroopFreq2Reac = 0*(1/dPer); %10
+
+filt = firstOrderDig(50e-3, Tc, 'low');
 
 %% Cross coupling in droop for mixed microgrids
 
