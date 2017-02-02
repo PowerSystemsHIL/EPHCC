@@ -23,7 +23,7 @@
 
 %% model configuration parameters
 Ts = 100E-6; % integration time
-EPC_Ts = 50E-6; % integration time for BESS and PV 
+Ts_EPC = 100E-6; % integration time for BESS and PV 
 SIM_HIL = 1; % Selects Opal-RT(1) or Simulink(0)
 
 %% read relay settings
@@ -46,3 +46,5 @@ components_path_init;
 % for convenience it is assumed all breaker have the same delay
 cb_mech_delay = 5/60;
 
+%% Initialization file for software BESS
+Software_BESS_init;

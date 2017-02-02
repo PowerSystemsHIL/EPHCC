@@ -11,13 +11,16 @@ import = 8e3*pulse(0, 17.5*60, 1*60, tStop);
 % TODO: shift loads or export to get a reasonable power_needed profile
 vars = 500*pulse(0, 6.5*60, 2.5*60, tStop);
 island = pulse(0, 9*60, 8*60, tStop); % DMS request
+autosynch= pulse(0, 5*60, 4*60, tStop)+ pulse(0, 17*60, 3*60, tStop);; % DMS request
+microgridcontrollerstart= pulse(0, 3*60, 27*60, tStop); % DMS request
+blackstart= pulse(0, 3*60, 27*60, tStop); % DMS request
 
 %               startState, faultTime,  duration,   tStop
-faults = [pulse(0,          20*60+132,  2*60,        tStop); % BUS204
+faults = [pulse(0,          20*60+132,  2,        tStop); % BUS204
           zeros(1,tStop); %pulse(0,          20*60+132*2,2*60,        tStop); % BUS103
-          pulse(0,          14*60,      120,        tStop); % BUS106
+          pulse(0,          14*60,      2,        tStop); % BUS106
           zeros(1,tStop); %pulse(0,          25*60,      120,        tStop); % BUS301
-          pulse(0,          26*60,      120,        tStop); % BUS208
+          pulse(0,          26*60,      2,        tStop); % BUS208
           pulse(0,          20*60,      8.5*60,      tStop) + pulse(0, 2*60, 3*60, tStop); % cut grid power
           pulse(0,          10*60,      1*60,      tStop) + pulse(0, 18*60, 1*60, tStop); % motor1
           pulse(0,          12*60,      1*60,      tStop) + pulse(0, 4*60, 1.5*60, tStop); % motor2
