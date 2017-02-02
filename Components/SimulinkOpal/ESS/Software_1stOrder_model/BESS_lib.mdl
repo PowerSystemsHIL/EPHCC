@@ -82,9 +82,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ch24070"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jan 31 14:15:23 2017"
-  RTWModifiedTimeStamp	  407772919
-  ModelVersionFormat	  "1.%<AutoIncrement:21>"
+  LastModifiedDate	  "Thu Feb 02 11:51:16 2017"
+  RTWModifiedTimeStamp	  407937073
+  ModelVersionFormat	  "1.%<AutoIncrement:23>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -951,18 +951,6 @@ Library {
       RTWStateStorageClass    "Auto"
     }
     Block {
-      BlockType		      DiscreteStateSpace
-      A			      "1"
-      B			      "1"
-      C			      "1"
-      D			      "1"
-      X0		      "0"
-      SampleTime	      "1"
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-      Realization	      "auto"
-    }
-    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -1180,7 +1168,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "144"
+    SIDHighWatermark	    "151"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -1190,7 +1178,7 @@ Library {
       ZOrder		      3748
       BlockMirror	      on
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.20"
+      LibraryVersion	      "*1.22"
       RequestExecContextInheritance off
       Variant		      off
       System {
@@ -1207,7 +1195,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"91"
 	Block {
 	  BlockType		  Inport
 	  Name			  "cmds"
@@ -1753,7 +1741,7 @@ Library {
 	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
-	  SID			  "141"
+	  SID			  "147"
 	  Ports			  [1, 2]
 	  Position		  [215, 81, 220, 119]
 	  ZOrder		  3748
@@ -1775,376 +1763,16 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  SubSystem
+	  BlockType		  Reference
 	  Name			  "Droop"
-	  SID			  "8"
+	  SID			  "151"
 	  Ports			  [4, 2]
 	  Position		  [445, -26, 570, 151]
-	  ZOrder		  2589
-	  RequestExecContextInheritance	off
-	  Variant		  off
-	  System {
-	    Name		    "Droop"
-	    Location		    [1928, 8, 3578, 962]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "172"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Freq"
-	      SID		      "9"
-	      Position		      [180, 28, 210, 42]
-	      ZOrder		      1738
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "FreqNominal"
-	      SID		      "10"
-	      Position		      [250, 83, 280, 97]
-	      ZOrder		      1762
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "V_Mag"
-	      SID		      "11"
-	      Position		      [180, 193, 210, 207]
-	      ZOrder		      1739
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "V_Nominal"
-	      SID		      "12"
-	      Position		      [250, 248, 280, 262]
-	      ZOrder		      1763
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      DiscreteStateSpace
-	      Name		      "Low Pass"
-	      SID		      "14"
-	      Position		      [345, 183, 385, 217]
-	      ZOrder		      1774
-	      A			      "filt.A"
-	      B			      "filt.B"
-	      C			      "filt.C"
-	      D			      "filt.D"
-	      X0		      "1/filt.C"
-	      SampleTime	      "-1"
-	    }
-	    Block {
-	      BlockType		      DiscreteStateSpace
-	      Name		      "Low Pass2"
-	      SID		      "15"
-	      Position		      [315, 18, 355, 52]
-	      ZOrder		      1775
-	      A			      "filt.A"
-	      B			      "filt.B"
-	      C			      "filt.C"
-	      D			      "filt.D"
-	      SampleTime	      "-1"
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Normalize2PUPower"
-	      SID		      "16"
-	      Position		      [875, 20, 905, 50]
-	      ZOrder		      1771
-	      Gain		      "Igrid"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Normalize2PUPower1"
-	      SID		      "17"
-	      Position		      [875, 185, 905, 215]
-	      ZOrder		      1772
-	      Gain		      "Igrid"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "19"
-	      Ports		      [2, 1]
-	      Position		      [810, 25, 830, 45]
-	      ZOrder		      1751
-	      ShowName		      off
-	      IconShape		      "round"
-	      Inputs		      "|++"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum1"
-	      SID		      "20"
-	      Ports		      [2, 1]
-	      Position		      [685, 190, 705, 210]
-	      ZOrder		      1746
-	      ShowName		      off
-	      IconShape		      "round"
-	      Inputs		      "++|"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum2"
-	      SID		      "21"
-	      Ports		      [2, 1]
-	      Position		      [430, 190, 450, 210]
-	      ZOrder		      1758
-	      ShowName		      off
-	      IconShape		      "round"
-	      Inputs		      "|-+"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum3"
-	      SID		      "22"
-	      Ports		      [2, 1]
-	      Position		      [430, 25, 450, 45]
-	      ZOrder		      1761
-	      ShowName		      off
-	      IconShape		      "round"
-	      Inputs		      "|-+"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "paramDroopFreq2Reac"
-	      SID		      "23"
-	      Position		      [550, 75, 580, 105]
-	      ZOrder		      1744
-	      Gain		      "paramDroopFreq2Reac"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "paramDroopFreq2Real"
-	      SID		      "24"
-	      Position		      [540, 20, 590, 50]
-	      ZOrder		      1736
-	      Gain		      "paramDroopFreq2Real"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "paramDroopVolts2Reac"
-	      SID		      "25"
-	      Position		      [540, 185, 590, 215]
-	      ZOrder		      1720
-	      Gain		      "paramDroopVolts2Reac"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "paramDroopVolts2Real"
-	      SID		      "26"
-	      Position		      [550, 130, 580, 160]
-	      ZOrder		      1743
-	      Gain		      "paramDroopVolts2Real"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Real"
-	      SID		      "27"
-	      Position		      [950, 28, 980, 42]
-	      ZOrder		      1742
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Reac"
-	      SID		      "28"
-	      Position		      [950, 193, 980, 207]
-	      ZOrder		      1741
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "Normalize2PUPower1"
-	      SrcPort		      1
-	      DstBlock		      "Reac"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "Normalize2PUPower"
-	      SrcPort		      1
-	      DstBlock		      "Real"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      3
-	      SrcBlock		      "Freq"
-	      SrcPort		      1
-	      DstBlock		      "Low Pass2"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      4
-	      SrcBlock		      "FreqNominal"
-	      SrcPort		      1
-	      Points		      [155, 0]
-	      DstBlock		      "Sum3"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      5
-	      SrcBlock		      "Low Pass"
-	      SrcPort		      1
-	      DstBlock		      "Sum2"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      6
-	      SrcBlock		      "paramDroopVolts2Real"
-	      SrcPort		      1
-	      Points		      [235, 0]
-	      DstBlock		      "Sum"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      7
-	      SrcBlock		      "Sum2"
-	      SrcPort		      1
-	      Points		      [58, 0]
-	      Branch {
-		ZOrder			8
-		DstBlock		"paramDroopVolts2Reac"
-		DstPort			1
-	      }
-	      Branch {
-		ZOrder			9
-		Points			[0, -55]
-		DstBlock		"paramDroopVolts2Real"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      ZOrder		      10
-	      SrcBlock		      "paramDroopFreq2Reac"
-	      SrcPort		      1
-	      Points		      [110, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      11
-	      SrcBlock		      "paramDroopVolts2Reac"
-	      SrcPort		      1
-	      DstBlock		      "Sum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      12
-	      SrcBlock		      "Sum3"
-	      SrcPort		      1
-	      Points		      [51, 0]
-	      Branch {
-		ZOrder			13
-		DstBlock		"paramDroopFreq2Real"
-		DstPort			1
-	      }
-	      Branch {
-		ZOrder			14
-		Points			[0, 55]
-		DstBlock		"paramDroopFreq2Reac"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      ZOrder		      15
-	      SrcBlock		      "paramDroopFreq2Real"
-	      SrcPort		      1
-	      DstBlock		      "Sum"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      16
-	      SrcBlock		      "V_Nominal"
-	      SrcPort		      1
-	      Points		      [155, 0]
-	      DstBlock		      "Sum2"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      17
-	      SrcBlock		      "Sum1"
-	      SrcPort		      1
-	      DstBlock		      "Normalize2PUPower1"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      18
-	      SrcBlock		      "Sum"
-	      SrcPort		      1
-	      DstBlock		      "Normalize2PUPower"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      19
-	      SrcBlock		      "Low Pass2"
-	      SrcPort		      1
-	      DstBlock		      "Sum3"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      20
-	      SrcBlock		      "V_Mag"
-	      SrcPort		      1
-	      DstBlock		      "Low Pass"
-	      DstPort		      1
-	    }
-	    Annotation {
-	      SID		      "29"
-	      Name		      "Need initial condition = 1 or center around 0"
-	      Position		      [272, 159, 467, 174]
-	      InternalMargins	      [0, 0, 0, 0]
-	      FixedHeight	      off
-	      FixedWidth	      off
-	      HorizontalAlignment     "left"
-	      VerticalAlignment	      "top"
-	      ZOrder		      -1
-	    }
-	  }
+	  ZOrder		  3755
+	  LibraryVersion	  "1.22"
+	  SourceBlock		  "BESS_lib/BESS/Droop"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
 	}
 	Block {
 	  BlockType		  Constant
@@ -2276,7 +1904,7 @@ Library {
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux1"
-	  SID			  "140"
+	  SID			  "146"
 	  Ports			  [2, 1]
 	  Position		  [80, 26, 85, 84]
 	  ZOrder		  3747
@@ -2287,7 +1915,7 @@ Library {
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux2"
-	  SID			  "142"
+	  SID			  "148"
 	  Ports			  [2, 1]
 	  Position		  [80, 116, 85, 174]
 	  ZOrder		  3749
@@ -2466,7 +2094,7 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "QGain1"
-	  SID			  "143"
+	  SID			  "149"
 	  Position		  [-25, 25, 5, 55]
 	  ZOrder		  3753
 	  Gain			  "sqrt(2)*dPer/(Pgrid/1e3)"
@@ -2477,7 +2105,7 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "QGain2"
-	  SID			  "144"
+	  SID			  "150"
 	  Position		  [-5, 55, 25, 85]
 	  ZOrder		  3754
 	  Gain			  "-sqrt(2)*dPer/(Pgrid/1e3)"
@@ -2574,7 +2202,7 @@ Library {
 	Block {
 	  BlockType		  Switch
 	  Name			  "Switch"
-	  SID			  "139"
+	  SID			  "145"
 	  Position		  [150, 80, 200, 120]
 	  ZOrder		  3746
 	  Criteria		  "u2 > Threshold"
@@ -2953,7 +2581,7 @@ Library {
 	  ZOrder		  38
 	  SrcBlock		  "NormalizeFreq2Zero"
 	  SrcPort		  1
-	  Points		  [16, 0; 0, 35]
+	  Points		  [16, 0; 0, 7; 9, 0]
 	  DstBlock		  "Droop"
 	  DstPort		  1
 	}
@@ -3279,7 +2907,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.20"
+	  LibraryVersion	  "1.22"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	  ContentPreviewEnabled	  off
