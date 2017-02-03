@@ -1,12 +1,11 @@
 %%% This script processes data for KPP#6, Amount of PV Production      %%%
 
-% This script fnds outage percentages (KW and sec) for C, P, I loads on  %
-% feeders F1F2 and F3 as well as total demands and aggregate outage      %
-% summaries                                                              %
-%
+% This script fnds the amount of PV production (Actual KWh produced      %
+% divided by maximum possible KWh based on irradiance.                   %
+
 %
 %% Demands
-I1Demand=300;
+Irradiance=misc(:,
 I2Demand=250;
 I3Demand=300;
 I4Demand=600;
