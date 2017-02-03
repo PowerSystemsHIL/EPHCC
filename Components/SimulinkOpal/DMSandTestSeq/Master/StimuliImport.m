@@ -9,7 +9,7 @@ export = 1e3*pulse(0,          5.5*60,      1.5*60,        tStop) + 4e3*pulse(0,
 % export = [zeros(1,60) linspace(1e3,3e3,4*60) 3e3*ones(1,6.5*60-5*60) zeros(1,tStop-6.5*60)]; % export request
 import = 8e3*pulse(0, 17.5*60, 1*60, tStop);
 % TODO: shift loads or export to get a reasonable power_needed profile
-vars = 500*pulse(0, 6.5*60, 2.5*60, tStop);
+KWexport = 500*pulse(0, 6.5*60, 2.5*60, tStop);
 island = pulse(0, 9*60, 8*60, tStop); % DMS request
 autosynch= pulse(0, 5*60, 4*60, tStop)+ pulse(0, 17*60, 3*60, tStop);; % DMS request
 microgridcontrollerstart= pulse(0, 3*60, 27*60, tStop); % DMS request
