@@ -9,9 +9,9 @@ export = 1e3*pulse(0,          5.5*60,      1.5*60,        tStop) + 4e3*pulse(0,
 % export = [zeros(1,60) linspace(1e3,3e3,4*60) 3e3*ones(1,6.5*60-5*60) zeros(1,tStop-6.5*60)]; % export request
 import = 8e3*pulse(0, 17.5*60, 1*60, tStop);
 % TODO: shift loads or export to get a reasonable power_needed profile
-vars = 500*pulse(0, 6.5*60, 2.5*60, tStop);
+PFReq = 1-0.5*pulse(0, 6.5*60, 2.5*60, tStop);
 island = pulse(0, 9*60, 8*60, tStop); % DMS request
-autosynch= pulse(0, 5*60, 4*60, tStop)+ pulse(0, 17*60, 3*60, tStop);; % DMS request
+autosynch= pulse(0, 5*60, 4*60, tStop)+ pulse(0, 17*60, 3*60, tStop); % DMS request
 microgridcontrollerstart= pulse(0, 3*60, 27*60, tStop); % DMS request
 blackstart= pulse(0, 3*60, 27*60, tStop); % DMS request
 
@@ -33,15 +33,25 @@ timeMin = linspace(0,tStop/60,tStop);
 figure;
 s(1) = subplot(4,1,1);
 plot(timeMin, solar, 'LineWidth',2);
+ylabel('W/m^3');
 s(2) = subplot(4,1,2);
 plot(timeMin, export, 'LineWidth',2); hold on;
-plot(timeMin, -import, 'LineWidth',2); 
-plot(timeMin, vars, 'LineWidth',2);
-legend('Export Req','Import Lim','Export Vars');
+plot(timeMin, import, 'LineWidth',2); 
+ylabel('kW');
+yyaxis right; plot(timeMin, PFReq, 'LineWidth',2);
+ylim([-1.2 1.2])
+ylabel('PF');
+legend('Export Req','Import Lim','PF Request');
 s(3) = subplot(4,1,3);
-plot(timeMin, island, 'LineWidth',2);
+plot(timeMin, island, 'LineWidth',2); hold on;
+plot(timeMin, autosynch*0.9, 'LineWidth',2);
+plot(timeMin, microgridcontrollerstart*0.93, 'LineWidth',2);
+plot(timeMin, blackstart*0.97, 'LineWidth',2);
+s(3).YTickLabel = {'False', '', '', '', '', 'True'};
+legend('POI Disconnect Request', 'Request to Sync with POI', 'MGC Start', 'BS Enabled');
 s(4) = subplot(4,1,4);
 p = plot(timeMin, faults','LineWidth',2);
+s(4).YTickLabel = {'False', '', '', '', '', 'True'};
 set(p(7),'LineStyle','--');
 set(p(8),'LineStyle','--');
 legend('BUS204 Fault', 'BUS103 Fault', 'BUS106 Fault', 'BUS301 Fault', 'BUS208 Fault', 'Cut Grid Power','motor1','motor2'); 
@@ -53,9 +63,9 @@ end
 
 %xlim([0 1800]);
 
-title(s(1), 'Solar Irradiance (W/m^3)');
+title(s(1), 'Solar Irradiance');
 title(s(2), 'Power Export/Import');
-title(s(3), 'POI Disconnect Request');
+title(s(3), 'Control Signals');
 title(s(4), 'Stimuli Occurances');
 
 figure; plot(timeMin, power_needed); title('kW power from gen or load shed');
