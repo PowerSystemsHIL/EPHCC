@@ -1,4 +1,4 @@
-%%% PowerProcessing %%%
+%%% This script processes data for KPP#6, Amount of PV Production      %%%
 
 % This script fnds outage percentages (KW and sec) for C, P, I loads on  %
 % feeders F1F2 and F3 as well as total demands and aggregate outage      %

@@ -1,5 +1,5 @@
 Library {
-  Name			  "droop_lib"
+  Name			  "droop_lib_new"
   Version		  8.1
   LibraryType		  "BlockLibrary"
   SavedCharacterEncoding  "windows-1252"
@@ -53,9 +53,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ch24070"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 26 13:53:41 2017"
-  RTWModifiedTimeStamp	  407339621
-  ModelVersionFormat	  "1.%<AutoIncrement:2>"
+  LastModifiedDate	  "Thu Feb 02 14:49:31 2017"
+  RTWModifiedTimeStamp	  407947771
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -150,8 +150,8 @@ Library {
 	  SolverMode		  "SingleTasking"
 	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
-	  Solver		  ode45
-	  SolverName		  ode45
+	  Solver		  "ode45"
+	  SolverName		  "ode45"
 	  SolverJacobianMethodControl "auto"
 	  ShapePreserveControl	  "DisableAll"
 	  ZeroCrossControl	  "UseLocalSettings"
@@ -677,6 +677,19 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
       BlockType		      DiscreteStateSpace
       A			      "1"
       B			      "1"
@@ -687,6 +700,12 @@ Library {
       StateMustResolveToSignalObject off
       RTWStateStorageClass    "Auto"
       Realization	      "auto"
+    }
+    Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Gain
@@ -702,6 +721,12 @@ Library {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Goto
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Inport
@@ -739,8 +764,19 @@ Library {
       InitialOutput	      "[]"
     }
     Block {
-      BlockType		      Scope
-      Floating		      off
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      SubSystem
@@ -782,9 +818,24 @@ Library {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
   }
   System {
-    Name		    "droop_lib"
+    Name		    "droop_lib_new"
     Location		    [8, 8, 808, 530]
     Open		    off
     ModelBrowserVisibility  off
@@ -799,19 +850,20 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "22"
+    SIDHighWatermark	    "63"
     Block {
       BlockType		      SubSystem
       Name		      "Droop"
-      SID		      "1"
-      Ports		      [4, 2]
-      Position		      [265, 49, 390, 226]
-      ZOrder		      2590
+      SID		      "24"
+      Ports		      [5, 2]
+      Position		      [270, 45, 395, 225]
+      ZOrder		      3755
+      LibraryVersion	      "*1.4"
       RequestExecContextInheritance off
       Variant		      off
       System {
 	Name			"Droop"
-	Location		[2037, 534, 2837, 1056]
+	Location		[2024, 77, 3812, 1031]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -823,20 +875,20 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"90"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Freq"
-	  SID			  "2"
-	  Position		  [180, -17, 210, -3]
+	  SID			  "25"
+	  Position		  [195, 193, 225, 207]
 	  ZOrder		  1738
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "FreqNominal"
-	  SID			  "3"
-	  Position		  [250, 38, 280, 52]
+	  SID			  "26"
+	  Position		  [265, 248, 295, 262]
 	  ZOrder		  1762
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -844,8 +896,8 @@ Library {
 	Block {
 	  BlockType		  Inport
 	  Name			  "V_Mag"
-	  SID			  "4"
-	  Position		  [180, 148, 210, 162]
+	  SID			  "27"
+	  Position		  [195, 358, 225, 372]
 	  ZOrder		  1739
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -853,28 +905,153 @@ Library {
 	Block {
 	  BlockType		  Inport
 	  Name			  "V_Nominal"
-	  SID			  "5"
-	  Position		  [250, 203, 280, 217]
+	  SID			  "28"
+	  Position		  [265, 413, 295, 427]
 	  ZOrder		  1763
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "Iso"
+	  SID			  "29"
+	  Position		  [575, 153, 605, 167]
+	  ZOrder		  1799
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "30"
+	  Position		  [810, -25, 840, 5]
+	  ZOrder		  1777
+	  Value			  "Pgrid"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "31"
+	  Position		  [810, 65, 840, 95]
+	  ZOrder		  1778
+	  Value			  "3"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "32"
+	  Position		  [730, -35, 760, -5]
+	  ZOrder		  1795
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  "33"
+	  Position		  [810, 415, 840, 445]
+	  ZOrder		  1784
+	  Value			  "Pgrid"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant5"
+	  SID			  "34"
+	  Position		  [810, 505, 840, 535]
+	  ZOrder		  1785
+	  Value			  "3"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant6"
+	  SID			  "35"
+	  Position		  [720, 515, 750, 545]
+	  ZOrder		  1797
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant7"
+	  SID			  "63"
+	  Position		  [840, 322, 860, 348]
+	  ZOrder		  1804
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide"
+	  SID			  "36"
+	  Ports			  [3, 1]
+	  Position		  [895, -31, 930, 101]
+	  ZOrder		  1779
+	  Inputs		  "*//"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide1"
+	  SID			  "37"
+	  Ports			  [3, 1]
+	  Position		  [895, 409, 930, 541]
+	  ZOrder		  1786
+	  Inputs		  "*//"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "38"
+	  Position		  [695, 457, 765, 493]
+	  ZOrder		  1790
+	  GotoTag		  "Vmag_raw"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "39"
+	  Position		  [710, 17, 780, 53]
+	  ZOrder		  1791
+	  GotoTag		  "Vmag_raw"
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "Gain"
-	  SID			  "6"
-	  Position		  [340, 195, 370, 225]
-	  ZOrder		  1764
-	  Gain			  "sqrt(3)"
+	  SID			  "40"
+	  Position		  [800, 15, 870, 55]
+	  ZOrder		  1792
+	  Gain			  "Vgrid"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "41"
+	  Position		  [790, 455, 860, 495]
+	  ZOrder		  1793
+	  Gain			  "Vgrid"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "42"
+	  Position		  [435, 527, 505, 563]
+	  ZOrder		  1789
+	  GotoTag		  "Vmag_raw"
+	}
+	Block {
 	  BlockType		  DiscreteStateSpace
 	  Name			  "Low Pass"
-	  SID			  "7"
-	  Position		  [345, 138, 385, 172]
+	  SID			  "43"
+	  Position		  [360, 348, 400, 382]
 	  ZOrder		  1774
 	  A			  "filt.A"
 	  B			  "filt.B"
@@ -886,8 +1063,8 @@ Library {
 	Block {
 	  BlockType		  DiscreteStateSpace
 	  Name			  "Low Pass2"
-	  SID			  "8"
-	  Position		  [315, -27, 355, 7]
+	  SID			  "44"
+	  Position		  [330, 183, 370, 217]
 	  ZOrder		  1775
 	  A			  "filt.A"
 	  B			  "filt.B"
@@ -896,75 +1073,158 @@ Library {
 	  SampleTime		  "-1"
 	}
 	Block {
-	  BlockType		  Gain
+	  BlockType		  Product
 	  Name			  "Normalize2PUPower"
-	  SID			  "9"
-	  Position		  [875, -25, 905, 5]
-	  ZOrder		  1771
-	  Gain			  "Igrid"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SID			  "45"
+	  Ports			  [2, 1]
+	  Position		  [965, 177, 995, 208]
+	  ZOrder		  1781
+	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Gain
+	  BlockType		  Product
 	  Name			  "Normalize2PUPower1"
-	  SID			  "10"
-	  Position		  [875, 140, 905, 170]
-	  ZOrder		  1772
-	  Gain			  "Igrid"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SID			  "46"
+	  Ports			  [2, 1]
+	  Position		  [970, 342, 1000, 373]
+	  ZOrder		  1782
+	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Scope
-	  Name			  "Scope"
-	  SID			  "11"
-	  Ports			  [3]
-	  Position		  [560, 243, 590, 277]
-	  ZOrder		  1769
-	  NumInputPorts		  "3"
-	  Open			  on
-	  TimeRange		  auto
-	  TickLabels		  OneTimeTick
-	  ShowLegends		  off
-	  LimitDataPoints	  off
-	  MaxDataPoints		  5000
-	  SaveToWorkspace	  off
-	  SaveName		  ScopeData3
-	  YMin			  -0.12091~-5~-5
-	  YMax			  0.05079~5~5
-	  SampleInput		  off
-	  SampleTime		  -1
-	  ZoomMode		  on
-	  Grid			  on
-	  DataFormat		  StructureWithTime
-	  Decimation		  1
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	    axes2		    "%<SignalLabel>"
-	    axes3		    "%<SignalLabel>"
-	  }
-	  List {
-	    ListType		    ScopeGraphics
-	    FigureColor		    "[0.156862745098039 0.156862745098039 0.156862745098039]"
-	    AxesColor		    "[0 0 0]"
-	    AxesTickColor	    "[0.686274509803922 0.686274509803922 0.686274509803922]"
-	    LineColors		    "[1 1 0;1 0 1;0 1 1;1 0 0;0 1 0;0 0 1]"
-	    LineStyles		    "-|-|-|-|-|-"
-	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
-	    MarkerStyles	    "none|none|none|none|none|none"
-	  }
-	  Location		  [934 703 1494 1123]
+	  BlockType		  Reference
+	  Name			  "PID Controller"
+	  SID			  "47"
+	  Ports			  [2, 1]
+	  Position		  [655, 102, 695, 138]
+	  ZOrder		  1798
+	  LibraryVersion	  "1.388"
+	  SourceBlock		  "simulink/Continuous/PID Controller"
+	  SourceType		  "PID 1dof"
+	  Controller		  "PID"
+	  TimeDomain		  "Discrete-time"
+	  SampleTime		  "-1"
+	  IntegratorMethod	  "Forward Euler"
+	  FilterMethod		  "Forward Euler"
+	  Form			  "Parallel"
+	  UseFilter		  on
+	  ControllerParametersSource "internal"
+	  P			  "10"
+	  I			  "1"
+	  D			  "0"
+	  N			  "100"
+	  InitialConditionSource  "internal"
+	  InitialConditionForIntegrator	"0"
+	  InitialConditionForFilter "0"
+	  ExternalReset		  "level"
+	  IgnoreLimit		  off
+	  ZeroCross		  on
+	  LimitOutput		  off
+	  UpperSaturationLimit	  "inf"
+	  LowerSaturationLimit	  "-inf"
+	  LinearizeAsGain	  on
+	  AntiWindupMode	  "none"
+	  Kb			  "1"
+	  TrackingMode		  off
+	  Kt			  "1"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	  LockScale		  off
+	  PParamMin		  "[]"
+	  PParamMax		  "[]"
+	  PParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  IParamMin		  "[]"
+	  IParamMax		  "[]"
+	  IParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  DParamMin		  "[]"
+	  DParamMax		  "[]"
+	  DParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  NParamMin		  "[]"
+	  NParamMax		  "[]"
+	  NParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  KbParamMin		  "[]"
+	  KbParamMax		  "[]"
+	  KbParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  KtParamMin		  "[]"
+	  KtParamMax		  "[]"
+	  KtParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  POutMin		  "[]"
+	  POutMax		  "[]"
+	  POutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  PGainOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  PProdOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  IOutMin		  "[]"
+	  IOutMax		  "[]"
+	  IOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  IGainOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  IProdOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  DOutMin		  "[]"
+	  DOutMax		  "[]"
+	  DOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  DGainOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  DProdOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  NOutMin		  "[]"
+	  NOutMax		  "[]"
+	  NOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  NGainOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  NProdOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  KbOutMin		  "[]"
+	  KbOutMax		  "[]"
+	  KbOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  KtOutMin		  "[]"
+	  KtOutMax		  "[]"
+	  KtOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  IntegratorOutMin	  "[]"
+	  IntegratorOutMax	  "[]"
+	  IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
+	  FilterOutMin		  "[]"
+	  FilterOutMax		  "[]"
+	  FilterOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumOutMin		  "[]"
+	  SumOutMax		  "[]"
+	  SumOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI1OutMin		  "[]"
+	  SumI1OutMax		  "[]"
+	  SumI1OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI2OutMin		  "[]"
+	  SumI2OutMax		  "[]"
+	  SumI2OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI3OutMin		  "[]"
+	  SumI3OutMax		  "[]"
+	  SumI3OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumDOutMin		  "[]"
+	  SumDOutMax		  "[]"
+	  SumDOutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumAccumDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI1AccumDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI2AccumDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumI3AccumDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SumDAccumDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturationOutMin	  "[]"
+	  SaturationOutMax	  "[]"
+	  SaturationOutDataTypeStr "Inherit: Same as input"
+	  IntegratorContinuousStateAttributes "''"
+	  IntegratorStateMustResolveToSignalObject off
+	  IntegratorRTWStateStorageClass "Auto"
+	  FilterContinuousStateAttributes "''"
+	  FilterStateMustResolveToSignalObject off
+	  FilterRTWStateStorageClass "Auto"
+	  DifferentiatorICPrevScaledInput "0"
+	  DifferentiatorOutMin	  "[]"
+	  DifferentiatorOutMax	  "[]"
+	  DifferentiatorOutDataTypeStr "Inherit: Inherit via internal rule"
 	}
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum"
-	  SID			  "12"
+	  SID			  "50"
 	  Ports			  [2, 1]
-	  Position		  [810, -20, 830, 0]
+	  Position		  [740, 190, 760, 210]
 	  ZOrder		  1751
 	  ShowName		  off
 	  IconShape		  "round"
@@ -976,9 +1236,9 @@ Library {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum1"
-	  SID			  "13"
+	  SID			  "51"
 	  Ports			  [2, 1]
-	  Position		  [685, 145, 705, 165]
+	  Position		  [775, 355, 795, 375]
 	  ZOrder		  1746
 	  ShowName		  off
 	  IconShape		  "round"
@@ -990,9 +1250,9 @@ Library {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum2"
-	  SID			  "14"
+	  SID			  "52"
 	  Ports			  [2, 1]
-	  Position		  [430, 145, 450, 165]
+	  Position		  [445, 355, 465, 375]
 	  ZOrder		  1758
 	  ShowName		  off
 	  IconShape		  "round"
@@ -1004,9 +1264,9 @@ Library {
 	Block {
 	  BlockType		  Sum
 	  Name			  "Sum3"
-	  SID			  "15"
+	  SID			  "53"
 	  Ports			  [2, 1]
-	  Position		  [430, -20, 450, 0]
+	  Position		  [445, 190, 465, 210]
 	  ZOrder		  1761
 	  ShowName		  off
 	  IconShape		  "round"
@@ -1016,10 +1276,30 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  SID			  "54"
+	  Position		  [840, 165, 890, 205]
+	  ZOrder		  1800
+	  Criteria		  "u2 > Threshold"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch1"
+	  SID			  "62"
+	  Position		  [875, 330, 925, 370]
+	  ZOrder		  1803
+	  Criteria		  "u2 > Threshold"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "paramDroopFreq2Reac"
-	  SID			  "16"
-	  Position		  [550, 30, 580, 60]
+	  SID			  "55"
+	  Position		  [640, 240, 670, 270]
 	  ZOrder		  1744
 	  Gain			  "paramDroopFreq2Reac"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1029,8 +1309,8 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "paramDroopFreq2Real"
-	  SID			  "17"
-	  Position		  [540, -25, 590, 5]
+	  SID			  "56"
+	  Position		  [630, 185, 680, 215]
 	  ZOrder		  1736
 	  Gain			  "paramDroopFreq2Real"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1040,8 +1320,8 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "paramDroopVolts2Reac"
-	  SID			  "18"
-	  Position		  [540, 140, 590, 170]
+	  SID			  "57"
+	  Position		  [630, 350, 680, 380]
 	  ZOrder		  1720
 	  Gain			  "paramDroopVolts2Reac"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1051,8 +1331,8 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "paramDroopVolts2Real"
-	  SID			  "19"
-	  Position		  [550, 85, 580, 115]
+	  SID			  "58"
+	  Position		  [640, 295, 670, 325]
 	  ZOrder		  1743
 	  Gain			  "paramDroopVolts2Real"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1062,19 +1342,121 @@ Library {
 	Block {
 	  BlockType		  Outport
 	  Name			  "Real"
-	  SID			  "20"
-	  Position		  [950, -17, 980, -3]
+	  SID			  "59"
+	  Position		  [1045, 188, 1075, 202]
 	  ZOrder		  1742
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "Reac"
-	  SID			  "21"
-	  Position		  [950, 148, 980, 162]
+	  SID			  "60"
+	  Position		  [1045, 353, 1075, 367]
 	  ZOrder		  1741
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Constant7"
+	  SrcPort		  1
+	  DstBlock		  "Switch1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum1"
+	  SrcPort		  1
+	  DstBlock		  "Switch1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Switch1"
+	  SrcPort		  1
+	  Points		  [0, 15]
+	  DstBlock		  "Normalize2PUPower1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Sum2"
+	  SrcPort		  1
+	  Points		  [31, 0]
+	  Branch {
+	    Points		    [102, 0]
+	    Branch {
+	      DstBlock		      "paramDroopVolts2Reac"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, -55]
+	      DstBlock		      "paramDroopVolts2Real"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -255]
+	    DstBlock		    "PID Controller"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "PID Controller"
+	  SrcPort		  1
+	  Points		  [111, 0; 0, 50]
+	  DstBlock		  "Switch"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  Points		  [2, 0; 0, 15]
+	  DstBlock		  "Normalize2PUPower"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "paramDroopFreq2Real"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Iso"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  Branch {
+	    Points		    [0, 14; 149, 0; 0, 11; 32, 0]
+	    Branch {
+	      DstBlock		      "Switch"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 165]
+	      DstBlock		      "Switch1"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    Points		    [0, -30]
+	    DstBlock		    "PID Controller"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Divide"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Normalize2PUPower1"
@@ -1104,51 +1486,15 @@ Library {
 	Line {
 	  SrcBlock		  "Low Pass"
 	  SrcPort		  1
-	  Points		  [22, 0]
-	  Branch {
-	    DstBlock		    "Sum2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 115]
-	    DstBlock		    "Scope"
-	    DstPort		    3
-	  }
-	}
-	Line {
-	  SrcBlock		  "V_Nominal"
-	  SrcPort		  1
-	  DstBlock		  "Gain"
+	  DstBlock		  "Sum2"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "paramDroopVolts2Real"
 	  SrcPort		  1
-	  Points		  [235, 0]
+	  Points		  [75, 0]
 	  DstBlock		  "Sum"
 	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Sum2"
-	  SrcPort		  1
-	  Points		  [24, 0]
-	  Branch {
-	    Points		    [34, 0]
-	    Branch {
-	      DstBlock		      "paramDroopVolts2Reac"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, -55]
-	      DstBlock		      "paramDroopVolts2Real"
-	      DstPort		      1
-	    }
-	  }
-	  Branch {
-	    Points		    [0, 105]
-	    DstBlock		    "Scope"
-	    DstPort		    2
-	  }
 	}
 	Line {
 	  SrcBlock		  "paramDroopFreq2Reac"
@@ -1166,49 +1512,23 @@ Library {
 	Line {
 	  SrcBlock		  "Sum3"
 	  SrcPort		  1
-	  Points		  [36, 0]
+	  Points		  [126, 0]
 	  Branch {
-	    Points		    [15, 0]
-	    Branch {
-	      DstBlock		      "paramDroopFreq2Real"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 55]
-	      DstBlock		      "paramDroopFreq2Reac"
-	      DstPort		      1
-	    }
+	    DstBlock		    "paramDroopFreq2Real"
+	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 260]
-	    DstBlock		    "Scope"
+	    Points		    [0, 55]
+	    DstBlock		    "paramDroopFreq2Reac"
 	    DstPort		    1
 	  }
 	}
 	Line {
-	  SrcBlock		  "paramDroopFreq2Real"
+	  SrcBlock		  "V_Nominal"
 	  SrcPort		  1
-	  DstBlock		  "Sum"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Gain"
-	  SrcPort		  1
-	  Points		  [65, 0]
+	  Points		  [155, 0]
 	  DstBlock		  "Sum2"
 	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Sum1"
-	  SrcPort		  1
-	  DstBlock		  "Normalize2PUPower1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Sum"
-	  SrcPort		  1
-	  DstBlock		  "Normalize2PUPower"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Low Pass2"
@@ -1219,13 +1539,72 @@ Library {
 	Line {
 	  SrcBlock		  "V_Mag"
 	  SrcPort		  1
-	  DstBlock		  "Low Pass"
+	  Points		  [7, 0]
+	  Branch {
+	    DstBlock		    "Low Pass"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 180]
+	    DstBlock		    "Goto"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Divide"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Divide"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Divide"
+	  SrcPort		  1
+	  Points		  [8, 0; 0, 150]
+	  DstBlock		  "Normalize2PUPower"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "Divide1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant5"
+	  SrcPort		  1
+	  DstBlock		  "Divide1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Divide1"
+	  SrcPort		  1
+	  Points		  [12, 0; 0, -125]
+	  DstBlock		  "Normalize2PUPower1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant6"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, -55]
+	  DstBlock		  "Gain1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Divide1"
+	  DstPort		  2
+	}
 	Annotation {
-	  SID			  "22"
+	  SID			  "61"
 	  Name			  "Need initial condition = 1 or center around 0"
-	  Position		  [272, 114]
+	  Position		  [287, 324]
 	  HorizontalAlignment	  "left"
 	  VerticalAlignment	  "top"
 	  ZOrder		  -1
