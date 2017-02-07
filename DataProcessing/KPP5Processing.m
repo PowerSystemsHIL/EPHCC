@@ -19,6 +19,8 @@ for n=1:length(powerreal);
         end
     end
 end
-%%
-percentTimeKW=timeKW_cum/deltaT/length(powerreal);
-%
+%% Calculate Percent Time Dispatched power is within 100 KW of contract
+percentTimeKW=timeKW_cum/deltaT/length(powerreal)*100;
+%% Display Result
+disp('Percent of time that exported power is within 100 KW of contract...')
+disp(percentTimeKW);

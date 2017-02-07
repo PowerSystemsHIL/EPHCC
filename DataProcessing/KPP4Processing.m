@@ -27,7 +27,13 @@ for n=1:length(powerreal);
     end
     end
 end
-%%
+%% Calculate Percent Time 
 percentTimeKW=timeKW_cum/deltaT/length(powerreal);  % pct of time in bounds
 percentTimePf=timePf_cum/deltaT/length(powerreal);  % pct of time in bounds
 %
+%% Display R esults
+disp('Percent of time that exported power exceeds 100 KW of contract...')
+disp(percentTimeKW);
+disp('')
+disp('Percent of time that PF exceeds .05 of contract...')
+disp(percentTimePf);
