@@ -32,6 +32,6 @@ Boiler_UsagePerMin=Boiler_NMcum*(deltaT/3600)/(time_cum/60);  %average Nm^3/min
 Diesel_UsagePerMin=Diesel_GALcum*(deltaT/3600)/(time_cum/60)/15.5;...
                                                               %average gal/min
 %% Display
-disp('Diesel gpm = '); disp(Diesel_UsagePerMin)
-disp('CHP NG usage Nm^3 per min = '); disp(NG_UsagePerMin)
-disp('Boiler NG usage Nm^3 per min = '); disp(Boiler_UsagePerMin)
+disp('Diesel gpm during island = '); disp(Diesel_UsagePerMin)
+disp('CHP NG usage Nm^3 per min during island = '); disp(NG_UsagePerMin)
+disp('Boiler NG usage Nm^3 per min during island = '); disp(Boiler_UsagePerMin)
