@@ -4,6 +4,7 @@ Library {
   MdlSubVersion		  0
   SavedCharacterEncoding  "windows-1252"
   LibraryType		  "BlockLibrary"
+  SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
   DisableAllScopes	  on
@@ -18,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [344.0, 340.0, 816.0, 537.0]
+      Location		      [-8.0, -8.0, 1874.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -27,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[11]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -42,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[961.0, 471.0]
-	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
+	Extents			[1824.0, 1049.0]
+	ZoomFactor		[3.2515923566878979]
+	Offset			[429.27203721841329, 36.694417238001961]
       }
     }
   }
@@ -52,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "ch24070"
+  LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Feb 03 17:56:06 2017"
-  RTWModifiedTimeStamp	  408045366
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Wed Feb 08 10:04:17 2017"
+  RTWModifiedTimeStamp	  408449046
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -216,6 +217,7 @@ Library {
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
+	  UseIntDivNetSlope	  off
 	  UseFloatMulNetSlope	  off
 	  UseSpecifiedMinMax	  off
 	  InlineInvariantSignals  off
@@ -230,10 +232,13 @@ Library {
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
 	  ExpressionDepthLimit	  128
+	  FoldNonRolledExpr	  on
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
 	  StateBitsets		  off
 	  DataBitsets		  off
+	  UseTempVars		  off
 	  ZeroExternalMemoryAtStartup on
 	  ZeroInternalMemoryAtStartup on
 	  InitFltsAndDblsToZero	  off
@@ -246,7 +251,7 @@ Library {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
-	  UseIntDivNetSlope	  off
+	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  10
@@ -277,6 +282,7 @@ Library {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "none"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -309,10 +315,12 @@ Library {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
 	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
 	  ModelReferenceSymbolNameMessage "warning"
@@ -324,6 +332,7 @@ Library {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -333,7 +342,6 @@ Library {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  11
@@ -369,6 +377,7 @@ Library {
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
 	  TargetHWDeviceType	  "Specified"
@@ -393,8 +402,12 @@ Library {
 	Simulink.SFSimCC {
 	  $ObjectID		  13
 	  Version		  "1.13.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
+	  SimBlas		  on
 	  SimCtrlC		  on
+	  SimExtrinsic		  on
 	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimParseCustomCode	  on
@@ -426,14 +439,11 @@ Library {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
 	  TemplateMakefile	  "grt_default_tmf"
-	  PostCodeGenCommand	  ""
-	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -442,11 +452,15 @@ Library {
 	  TLCDebug		  off
 	  TLCCoverage		  off
 	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
 	  IncludeHyperlinkInReport off
 	  LaunchReport		  off
 	  PortableWordSizes	  off
+	  GenerateErtSFunction	  off
 	  CreateSILPILBlock	  "None"
 	  CodeExecutionProfiling  off
 	  CodeExecutionProfileVariable "executionProfile"
@@ -455,17 +469,19 @@ Library {
 	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
 	  GenerateTraceInfo	  off
 	  GenerateTraceReport	  off
 	  GenerateTraceReportSl	  off
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
 	  RTWCompilerOptimization "Off"
-	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
 	  Array {
 	    Type		    "Handle"
 	    Dimension		    2
@@ -576,6 +592,7 @@ Library {
 	      GenerateFullHeader      on
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
 	      ModelReferenceCompliant on
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
@@ -598,6 +615,7 @@ Library {
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
 	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
 	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
 	      ModelStepFunctionPrototypeControlCompliant off
@@ -621,13 +639,12 @@ Library {
 	    }
 	    PropName		    "Components"
 	  }
-	  GenerateErtSFunction	  off
 	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    [ 420, 280, 1500, 920 ]  
+      ConfigPrmDlgPosition     [ 420, 280, 1500, 920 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -801,13 +818,14 @@ Library {
       DataTypeOverrideAppliesTo	"AllNumericTypes"
       MinMaxOverflowLogging   "UseLocalSettings"
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
     }
   }
   System {
     Name		    "Word2Bytes_lib"
-    Location		    [344, 340, 1160, 877]
-    Open		    off
+    Location		    [-8, -8, 1866, 1208]
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -818,21 +836,26 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "325"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "11"
+    SIDHighWatermark	    "13"
     Block {
       BlockType		      SubSystem
       Name		      "Word2Bytes"
       SID		      "1"
       Ports		      [1, 1]
-      Position		      [120, 77, 185, 103]
+      Position		      [630, 312, 695, 338]
       ZOrder		      3399
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
-      Variant		      off
+      MaskHideContents	      off
       System {
 	Name			"Word2Bytes"
-	Location		[344, 341, 1160, 879]
+	Location		[-8, -8, 1866, 1208]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -844,12 +867,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"197"
 	Block {
 	  BlockType		  Inport
-	  Name			  "In1"
+	  Name			  "i"
 	  SID			  "2"
-	  Position		  [30, 28, 60, 42]
+	  Position		  [40, 228, 70, 242]
 	  ZOrder		  3354
 	  IconDisplay		  "Port number"
 	}
@@ -857,7 +880,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "3"
-	  Position		  [110, 110, 140, 140]
+	  Position		  [135, 310, 165, 340]
 	  ZOrder		  3361
 	  Value			  "256"
 	  OutDataTypeStr	  "uint16"
@@ -866,7 +889,7 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion"
 	  SID			  "4"
-	  Position		  [265, 18, 340, 52]
+	  Position		  [290, 218, 365, 252]
 	  ZOrder		  3358
 	  OutDataTypeStr	  "uint8"
 	  RndMeth		  "Floor"
@@ -876,7 +899,7 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion1"
 	  SID			  "5"
-	  Position		  [265, 103, 340, 137]
+	  Position		  [290, 303, 365, 337]
 	  ZOrder		  3359
 	  OutDataTypeStr	  "uint8"
 	  RndMeth		  "Floor"
@@ -886,7 +909,7 @@ Library {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion2"
 	  SID			  "11"
-	  Position		  [90, 23, 140, 47]
+	  Position		  [115, 223, 165, 247]
 	  ZOrder		  3363
 	  OutDataTypeStr	  "uint16"
 	  RndMeth		  "Floor"
@@ -896,7 +919,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "6"
-	  Position		  [190, 20, 220, 50]
+	  Position		  [215, 220, 245, 250]
 	  ZOrder		  3353
 	  Gain			  "1/256"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -908,7 +931,7 @@ Library {
 	  Name			  "Math\nFunction"
 	  SID			  "7"
 	  Ports			  [2, 1]
-	  Position		  [210, 102, 240, 133]
+	  Position		  [235, 302, 265, 333]
 	  ZOrder		  3360
 	  Operator		  "mod"
 	}
@@ -917,7 +940,7 @@ Library {
 	  Name			  "Mux"
 	  SID			  "8"
 	  Ports			  [2, 1]
-	  Position		  [410, 26, 415, 64]
+	  Position		  [435, 226, 440, 264]
 	  ZOrder		  3362
 	  ShowName		  off
 	  Inputs		  "2"
@@ -925,9 +948,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "Out1"
+	  Name			  "o"
 	  SID			  "9"
-	  Position		  [440, 38, 470, 52]
+	  Position		  [485, 238, 515, 252]
 	  ZOrder		  3356
 	  IconDisplay		  "Port number"
 	}
@@ -947,7 +970,7 @@ Library {
 	Line {
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
-	  DstBlock		  "Out1"
+	  DstBlock		  "o"
 	  DstPort		  1
 	}
 	Line {
@@ -957,7 +980,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "In1"
+	  SrcBlock		  "i"
 	  SrcPort		  1
 	  DstBlock		  "Data Type Conversion2"
 	  DstPort		  1
@@ -991,18 +1014,47 @@ Library {
 	Annotation {
 	  SID			  "10"
 	  Name			  "Big Endian"
-	  Position		  [265, 193]
+	  Position		  [290, 393]
 	  HorizontalAlignment	  "left"
 	  VerticalAlignment	  "top"
 	  ZOrder		  -1
 	}
+	Annotation {
+	  SID			  "13"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software\"), to dea"
+	  "l in the Software\n% without restriction, including without limitation the rights to use, copy, modify,\n% merge, p"
+	  "ublish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to whom the Software i"
+	  "s furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright notice and this permissi"
+	  "on notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% THE SOFTWARE IS PROVIDE"
+	  "D \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF ME"
+	  "RCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n"
+	  "% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n% OF CONTRACT, TORT OR OTHERWI"
+	  "SE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n"
+	  Position		  [16, 18]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -2
+	  FontWeight		  "bold"
+	}
       }
-      RTWSystemCode	      "Auto"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      FunctionWithSeparateData off
-      Opaque		      off
-      MaskHideContents	      off
+    }
+    Annotation {
+      SID		      "12"
+      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of"
+      " charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software\""
+      "), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modify,"
+      "\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to whom"
+      " the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright notice"
+      " and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% TH"
+      "E SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMITED"
+      " TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHAL"
+      "L THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n"
+      "% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OTHER"
+      " DEALINGS IN THE SOFTWARE.\n%\n%\n"
+      Position		      [446, 168]
+      HorizontalAlignment     "left"
+      ZOrder		      -1
+      FontWeight	      "bold"
     }
   }
 }
