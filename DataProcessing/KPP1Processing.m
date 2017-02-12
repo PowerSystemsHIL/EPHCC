@@ -55,9 +55,9 @@ C6Demand=800;
 %
 %% TotalDemaand
 F1TotalDemand=I1Demand+I2Demand+P1Demand+C1Demand+C2Demand;
-F2TotalDemand=I3Demand+I4Demand+I5Demand+P2Demand+P3Demand+C3Demand+...
-    C4Demand;
-F3TotalDemand=I6Demand+P4Demand+C5Demand+C6Demand;
+F2TotalDemand=I3Demand+I4Demand+I5Demand+P2Demand+P3Demand+...
+    P5Demand+C3Demand+C4Demand;
+F3TotalDemand=I6Demand+P4Demand+C5Demand+C6Demand+P6Demand;
 %
 %% TotalMilliseconds, TotalHours, deltaTSecs- Time parameters
 TotalMilliseconds=time(length(time))-time(1);
