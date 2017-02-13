@@ -1,0 +1,5124 @@
+version = 4.2
+
+
+//
+// Saved by sw version: 2016.4
+// Save timestamp: 31-Jan-2017 @ 08:27:47 PM
+//
+
+model "SEL751 x3 Grid tie BL02" {
+    configuration {
+        hil_device = "HIL603"
+        hil_configuration_id = 2
+        simulation_method = exact
+        simulation_time_step = 2e-6
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem "Root" {
+
+        
+        component src_voltage_3ph "Vs1" {
+            
+	    
+        }
+        [
+            position = 4824, 7632
+        ]
+        
+        component src_digital_input "Digital Input Trip" {
+            
+            addr = "6"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6016, 7480
+        ]
+        
+        component gen_sr_ff "SR Flip Flop1" {
+            
+	    
+        }
+        [
+            position = 6136, 7432
+        ]
+        
+        component src_digital_input "Digital Input Close" {
+            
+            addr = "5"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6016, 7416
+        ]
+        
+        component gen_digital_probe "mid command" {
+            
+	    
+        }
+        [
+            position = 6288, 7456
+        ]
+        
+        component gen_digital_probe "set input" {
+            
+	    
+        }
+        [
+            position = 6176, 7360
+        ]
+        
+        component ctc_spst "Phase to Phase Fault" {
+            
+	    
+        }
+        [
+            position = 6808, 7584
+            rotation = right
+        ]
+        
+        component src_digital_input "Digital Input Close1" {
+            
+            addr = "8"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6040, 7936
+        ]
+        
+        component src_digital_input "Digital Input Trip1" {
+            
+            addr = "9"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6040, 8000
+        ]
+        
+        component gen_sr_ff "SR Flip Flop2" {
+            
+	    
+        }
+        [
+            position = 6136, 7952
+        ]
+        
+        component ctc_tpst "MID2" {
+            
+            Sa = "2"
+            Sa_logic = "active low"
+            ctc_nb = "3"
+            ctrl_src = "Model"
+            spc_nb = "2"
+	    
+        }
+        [
+            position = 6232, 8152
+        ]
+        
+        component ctc_tpst "MID1" {
+            
+            Sa = "2"
+            Sa_logic = "active low"
+            ctc_nb = "3"
+            ctrl_src = "Model"
+            spc_nb = "2"
+	    
+        }
+        [
+            position = 6232, 7632
+        ]
+        
+        component gen_sr_ff "SR Flip Flop3" {
+            
+	    
+        }
+        [
+            position = 6304, 8504
+        ]
+        
+        component src_digital_input "Digital Input Close2" {
+            
+            addr = "11"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6208, 8488
+        ]
+        
+        component src_digital_input "Digital Input Trip2" {
+            
+            addr = "12"
+            execution_rate = "Ts"
+            invert = "true"
+	    
+        }
+        [
+            position = 6208, 8552
+        ]
+        
+        component ctc_tpst "MID3" {
+            
+            Sa = "2"
+            Sa_logic = "active low"
+            ctc_nb = "3"
+            ctrl_src = "Model"
+            spc_nb = "2"
+	    
+        }
+        [
+            position = 6400, 8704
+        ]
+        
+        component pas_inductor "L1" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5560, 7536
+        ]
+        
+        component pas_inductor "L2" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5560, 7632
+        ]
+        
+        component pas_inductor "L3" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5560, 7728
+        ]
+        
+        component pas_inductor "L4" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5712, 8152
+        ]
+        
+        component pas_inductor "L5" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5712, 8056
+        ]
+        
+        component pas_inductor "L6" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5712, 8248
+        ]
+        
+        component pas_inductor "L7" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5776, 8608
+        ]
+        
+        component pas_inductor "L8" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5776, 8800
+        ]
+        
+        component pas_inductor "L9" {
+            
+            inductance = "0.1"
+	    
+        }
+        [
+            position = 5776, 8704
+        ]
+        
+        component ctc_spst "Phase to Phase Fault1" {
+            
+	    
+        }
+        [
+            position = 6832, 8104
+            rotation = right
+        ]
+        
+        component ctc_spst "Phase to Phase Fault2" {
+            
+	    
+        }
+        [
+            position = 6848, 8656
+            rotation = right
+        ]
+        
+        component sys_spc_marker "Core Marker1" {
+            
+            marker_id = "id2"
+	    
+        }
+        [
+            position = 5888, 8560
+        ]
+        
+        component sys_spc_marker "Core Marker2" {
+            
+            marker_id = "id1"
+	    
+        }
+        [
+            position = 5824, 7984
+        ]
+        
+        component sys_spc_marker "Core Marker3" {
+            
+	    
+        }
+        [
+            position = 5664, 7472
+        ]
+        
+        component src_voltage_3ph "Vp2" {
+            
+	    
+        }
+        [
+            position = 7216, 8152
+            scale = -1, 1
+        ]
+        
+        component src_voltage_3ph "Vp1" {
+            
+	    
+        }
+        [
+            position = 7200, 7632
+            scale = -1, 1
+        ]
+        
+        component src_voltage_3ph "Vp3" {
+            
+	    
+        }
+        [
+            position = 7232, 8704
+            scale = -1, 1
+        ]
+        
+        component cpl_spc_3ph "Core Coupling 1" {
+            
+	    
+        }
+        [
+            position = 5592, 8704
+        ]
+        
+        component cpl_spc_3ph "Core Coupling 2" {
+            
+	    
+        }
+        [
+            position = 5512, 8152
+        ]
+        
+        component ctc_tpst "S1" {
+            
+	    
+        }
+        [
+            position = 5344, 8152
+        ]
+        
+        component ctc_tpst "S2" {
+            
+	    
+        }
+        [
+            position = 5360, 8704
+        ]
+        
+        component pas_resistor "R63" {
+            
+	    
+        }
+        [
+            position = 5464, 7536
+            rotation = down
+        ]
+        
+        component pas_resistor "R64" {
+            
+	    
+        }
+        [
+            position = 5464, 7632
+            rotation = down
+        ]
+        
+        component pas_resistor "R65" {
+            
+	    
+        }
+        [
+            position = 5464, 7728
+            rotation = down
+        ]
+        
+        component pas_resistor "R66" {
+            
+	    
+        }
+        [
+            position = 5592, 8056
+            rotation = down
+        ]
+        
+        component pas_resistor "R67" {
+            
+	    
+        }
+        [
+            position = 5592, 8152
+            rotation = down
+        ]
+        
+        component pas_resistor "R68" {
+            
+	    
+        }
+        [
+            position = 5600, 8248
+            rotation = down
+        ]
+        
+        component pas_resistor "R69" {
+            
+	    
+        }
+        [
+            position = 5672, 8608
+            rotation = down
+        ]
+        
+        component pas_resistor "R70" {
+            
+	    
+        }
+        [
+            position = 5672, 8704
+            rotation = down
+        ]
+        
+        component pas_resistor "R71" {
+            
+	    
+        }
+        [
+            position = 5672, 8800
+            rotation = down
+        ]
+        
+        component Subsystem "PCC_meas" {
+            layout = dynamic
+    
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto10" {
+                value = "Va_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto8" {
+                value = "Vc_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            tag "Goto9" {
+                value = "Vb_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            tag "Goto12" {
+                value = "Ia_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                label = "c"
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7104, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7104, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7104, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1482 as Connection360
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection363
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1484 as Connection366
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            [
+                breakpoints =8280, 8456
+            ]
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            [
+                breakpoints =8200, 8456
+            ]
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            [
+                breakpoints =8200, 8120
+            ]
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            [
+                breakpoints =7904, 7928
+            ]
+            
+            connect Junction1475 Junction1482 as Connection358
+            [
+                breakpoints =7904, 7928
+            ]
+            
+            connect Junction1476 Junction1467 as Connection295
+            [
+                breakpoints =8000, 8024
+            ]
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            [
+                breakpoints =8096, 8120
+            ]
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            [
+                breakpoints =7784, 8456
+            ]
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 "VArms.p_node" as Connection359
+            [
+                breakpoints =7784, 7928
+            ]
+            
+            connect Junction1483 Junction1476 as Connection362
+            [
+                breakpoints =7688, 8024
+            ]
+            
+            connect Junction1484 Junction1477 as Connection365
+            [
+                breakpoints =7584, 8120
+            ]
+            
+            connect P4 "IArms.p_node" as Connection355
+            
+            
+            connect P5 "IBrms.p_node" as Connection356
+            
+            
+            connect P6 "ICrms.p_node" as Connection357
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            [
+                breakpoints =8360, 8456
+            ]
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            [
+                breakpoints =8280, 8216;8280, 8216
+            ]
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VBrms.p_node" Junction1483 as Connection361
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            [
+                breakpoints =8200, 8280;8200, 8280
+            ]
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            [
+                breakpoints =7584, 8456
+            ]
+            
+            connect "VCrms.p_node" Junction1484 as Connection364
+            
+            
+    
+            
+        }
+        [
+            position = 6424, 7632
+            size = 56, 232
+        ]
+        
+        component Subsystem "B2_meas" {
+            layout = dynamic
+    
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto10" {
+                value = "Va_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto9" {
+                value = "Vb_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto8" {
+                value = "Vc_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            tag "Goto12" {
+                value = "Ia_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7128, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7128, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7128, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1484 as Connection351
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection348
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1482 as Connection345
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            
+            
+            connect Junction1475 Junction1484 as Connection349
+            [
+                breakpoints =7904, 7928
+            ]
+            
+            connect Junction1476 Junction1467 as Connection295
+            
+            
+            connect Junction1476 Junction1483 as Connection346
+            [
+                breakpoints =8000, 8024
+            ]
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 Junction1477 as Connection344
+            [
+                breakpoints =7584, 8120
+            ]
+            
+            connect Junction1483 "VBrms.p_node" as Connection347
+            [
+                breakpoints =7688, 8024
+            ]
+            
+            connect Junction1484 "VArms.p_node" as Connection350
+            [
+                breakpoints =7784, 7928
+            ]
+            
+            connect P4 "IArms.p_node" as Connection337
+            
+            
+            connect P5 "IBrms.p_node" as Connection338
+            
+            
+            connect P6 "ICrms.p_node" as Connection339
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            
+            
+            connect "VCrms.p_node" Junction1482 as Connection343
+            
+            
+    
+            
+        }
+        [
+            position = 5864, 7632
+            size = 56, 232
+        ]
+        
+        component Subsystem "PCC_meas1" {
+            layout = dynamic
+    
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto8" {
+                value = "Vc_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            tag "Goto10" {
+                value = "Va_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto9" {
+                value = "Vb_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            tag "Goto12" {
+                value = "Ia_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                label = "c"
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7104, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7104, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7104, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1482 as Connection360
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection363
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1484 as Connection366
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            
+            
+            connect Junction1475 Junction1482 as Connection358
+            
+            
+            connect Junction1476 Junction1467 as Connection295
+            
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 "VArms.p_node" as Connection359
+            
+            
+            connect Junction1483 Junction1476 as Connection362
+            
+            
+            connect Junction1484 Junction1477 as Connection365
+            
+            
+            connect P4 "IArms.p_node" as Connection355
+            
+            
+            connect P5 "IBrms.p_node" as Connection356
+            
+            
+            connect P6 "ICrms.p_node" as Connection357
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VBrms.p_node" Junction1483 as Connection361
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            
+            
+            connect "VCrms.p_node" Junction1484 as Connection364
+            
+            
+    
+            
+        }
+        [
+            position = 6584, 8152
+            size = 56, 232
+        ]
+        
+        component Subsystem "PCC_meas2" {
+            layout = dynamic
+    
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e4"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto12" {
+                value = "Ia_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            tag "Goto10" {
+                value = "Va_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto9" {
+                value = "Vb_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            tag "Goto8" {
+                value = "Vc_PCC"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                label = "c"
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7104, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7104, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7104, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1482 as Connection360
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection363
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1484 as Connection366
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            
+            
+            connect Junction1475 Junction1482 as Connection358
+            
+            
+            connect Junction1476 Junction1467 as Connection295
+            
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 "VArms.p_node" as Connection359
+            
+            
+            connect Junction1483 Junction1476 as Connection362
+            
+            
+            connect Junction1484 Junction1477 as Connection365
+            
+            
+            connect P4 "IArms.p_node" as Connection355
+            
+            
+            connect P5 "IBrms.p_node" as Connection356
+            
+            
+            connect P6 "ICrms.p_node" as Connection357
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VBrms.p_node" Junction1483 as Connection361
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            
+            
+            connect "VCrms.p_node" Junction1484 as Connection364
+            
+            
+    
+            
+        }
+        [
+            position = 6592, 8704
+            size = 56, 232
+        ]
+        
+        component Subsystem "B2_meas1" {
+            layout = dynamic
+    
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto9" {
+                value = "Vb_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto12" {
+                value = "Ia_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            tag "Goto10" {
+                value = "Va_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto8" {
+                value = "Vc_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7128, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7128, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7128, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1484 as Connection351
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection348
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1482 as Connection345
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            
+            
+            connect Junction1475 Junction1484 as Connection349
+            
+            
+            connect Junction1476 Junction1467 as Connection295
+            
+            
+            connect Junction1476 Junction1483 as Connection346
+            
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 Junction1477 as Connection344
+            
+            
+            connect Junction1483 "VBrms.p_node" as Connection347
+            
+            
+            connect Junction1484 "VArms.p_node" as Connection350
+            
+            
+            connect P4 "IArms.p_node" as Connection337
+            
+            
+            connect P5 "IBrms.p_node" as Connection338
+            
+            
+            connect P6 "ICrms.p_node" as Connection339
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            
+            
+            connect "VCrms.p_node" Junction1482 as Connection343
+            
+            
+    
+            
+        }
+        [
+            position = 5904, 8152
+            size = 56, 232
+        ]
+        
+        component Subsystem "B2_meas2" {
+            layout = dynamic
+    
+            
+            component msr_current "IB" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7408, 8024
+            ]
+            
+            component msr_voltage "VC" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8200, 8344
+                rotation = right
+            ]
+            
+            component pas_resistor "R63" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 7904, 8304
+                rotation = right
+            ]
+            
+            component msr_voltage "VB" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8280, 8280
+                rotation = right
+            ]
+            
+            component msr_current "IC" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7496, 8120
+            ]
+            
+            component msr_voltage "VA" {
+                
+                addr = "267"
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 8360, 8216
+                rotation = right
+            ]
+            
+            component pas_resistor "R65" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8096, 8304
+                rotation = right
+            ]
+            
+            component pas_resistor "R64" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8000, 8304
+                rotation = right
+            ]
+            
+            component msr_current "IA" {
+                
+                execution_rate = "Ts"
+                sig_output = "True"
+    	    
+            }
+            [
+                position = 7328, 7928
+            ]
+            component "core/Current RMS" "IArms"{
+                
+            }
+            [
+                position = 7224, 7928
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "IBrms"{
+                
+            }
+            [
+                position = 7224, 8024
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VCrms"{
+                
+            }
+            [
+                position = 7584, 8320
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Current RMS" "ICrms"{
+                
+            }
+            [
+                position = 7224, 8120
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VArms"{
+                
+            }
+            [
+                position = 7784, 8208
+                rotation = right
+                size = 64, 32
+            ]
+            
+            component "core/Voltage RMS" "VBrms"{
+                
+            }
+            [
+                position = 7688, 8280
+                rotation = right
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            tag "Goto9" {
+                value = "Vb_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8280
+                size = 60, 20
+            ]
+            
+            tag "Goto12" {
+                value = "Ia_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7760
+                size = 60, 20
+            ]
+            
+            tag "Goto10" {
+                value = "Va_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8216
+                size = 60, 20
+            ]
+            
+            tag "Goto8" {
+                value = "Vc_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 8480, 8344
+                size = 60, 20
+            ]
+            
+            tag "Goto13" {
+                value = "Ib_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7824
+                size = 60, 20
+            ]
+            
+            tag "Goto11" {
+                value = "Ic_B2"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 7552, 7888
+                size = 60, 20
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                label = "a"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8432, 7928
+                rotation = down
+            ]
+            port "P2" {
+                label = "b"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8432, 8024
+                rotation = down
+            ]
+            port "P3" {
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8432, 8120
+                rotation = down
+            ]
+            port "P4" {
+                label = "A"
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 7128, 7928
+            ]
+            port "P5" {
+                label = "B"
+                
+                position = left:2
+                kind = pe
+            }
+            [
+                position = 7128, 8024
+            ]
+            port "P6" {
+                label = "C"
+                
+                position = left:3
+                kind = pe
+            }
+            [
+                position = 7128, 8120
+            ]
+            
+            junction "Junction1421" pe
+            [
+                position = 8280, 8456
+            ]
+            
+            junction "Junction1463" pe
+            [
+                position = 8200, 8456
+            ]
+            
+            junction "Junction1464" pe
+            [
+                position = 8096, 8456
+            ]
+            
+            junction "Junction1465" pe
+            [
+                position = 8000, 8456
+            ]
+            
+            junction "Junction1466" pe
+            [
+                position = 8360, 7928
+            ]
+            
+            junction "Junction1467" pe
+            [
+                position = 8280, 8024
+            ]
+            
+            junction "Junction1468" pe
+            [
+                position = 8200, 8120
+            ]
+            
+            junction "Junction1475" pe
+            [
+                position = 7904, 7928
+            ]
+            
+            junction "Junction1476" pe
+            [
+                position = 8000, 8024
+            ]
+            
+            junction "Junction1477" pe
+            [
+                position = 8096, 8120
+            ]
+            
+            junction "Junction1479" pe
+            [
+                position = 7784, 8456
+            ]
+            
+            junction "Junction1480" pe
+            [
+                position = 7904, 8456
+            ]
+            
+            junction "Junction1481" pe
+            [
+                position = 7688, 8456
+            ]
+            
+            junction "Junction1482" pe
+            [
+                position = 7584, 8120
+            ]
+            
+            junction "Junction1483" pe
+            [
+                position = 7688, 8024
+            ]
+            
+            junction "Junction1484" pe
+            [
+                position = 7784, 7928
+            ]
+            
+            connect Goto10 "VA.out" as Connection32
+            
+            
+            connect Goto11 "IC.out" as Connection352
+            
+            
+            connect Goto12 "IA.out" as Connection354
+            
+            
+            connect Goto13 "IB.out" as Connection353
+            
+            
+            connect Goto8 "VC.out" as Connection45
+            
+            
+            connect Goto9 "VB.out" as Connection46
+            
+            
+            connect "IA.n_node" Junction1484 as Connection351
+            
+            
+            connect "IArms.n_node" "IA.p_node" as Connection340
+            
+            
+            connect "IB.n_node" Junction1483 as Connection348
+            
+            
+            connect "IBrms.n_node" "IB.p_node" as Connection341
+            
+            
+            connect "IC.n_node" Junction1482 as Connection345
+            
+            
+            connect "ICrms.n_node" "IC.p_node" as Connection342
+            
+            
+            connect Junction1421 Junction1463 as Connection224
+            
+            
+            connect Junction1463 "VC.n_node" as Connection225
+            
+            
+            connect Junction1464 Junction1463 as Connection228
+            
+            
+            connect Junction1465 Junction1464 as Connection231
+            
+            
+            connect Junction1466 P1 as Connection299
+            
+            
+            connect Junction1467 P2 as Connection301
+            
+            
+            connect Junction1468 Junction1477 as Connection297
+            
+            
+            connect Junction1468 P3 as Connection302
+            
+            
+            connect Junction1475 Junction1466 as Connection292
+            
+            
+            connect Junction1475 Junction1484 as Connection349
+            
+            
+            connect Junction1476 Junction1467 as Connection295
+            
+            
+            connect Junction1476 Junction1483 as Connection346
+            
+            
+            connect Junction1477 "R65.p_node" as Connection298
+            
+            
+            connect Junction1479 Junction1480 as Connection313
+            
+            
+            connect Junction1479 "VArms.n_node" as Connection310
+            
+            
+            connect Junction1480 Junction1465 as Connection312
+            
+            
+            connect Junction1481 Junction1479 as Connection315
+            
+            
+            connect Junction1482 Junction1477 as Connection344
+            
+            
+            connect Junction1483 "VBrms.p_node" as Connection347
+            
+            
+            connect Junction1484 "VArms.p_node" as Connection350
+            
+            
+            connect P4 "IArms.p_node" as Connection337
+            
+            
+            connect P5 "IBrms.p_node" as Connection338
+            
+            
+            connect P6 "ICrms.p_node" as Connection339
+            
+            
+            connect "R63.p_node" Junction1475 as Connection291
+            
+            
+            connect "R63.n_node" Junction1480 as Connection311
+            
+            
+            connect "R64.n_node" Junction1465 as Connection230
+            
+            
+            connect "R64.p_node" Junction1476 as Connection294
+            
+            
+            connect "R65.n_node" Junction1464 as Connection227
+            
+            
+            connect "VA.n_node" Junction1421 as Connection237
+            
+            
+            connect "VA.p_node" Junction1466 as Connection240
+            
+            
+            connect "VB.n_node" Junction1421 as Connection203
+            
+            
+            connect "VB.p_node" Junction1467 as Connection243
+            
+            
+            connect "VBrms.n_node" Junction1481 as Connection316
+            
+            
+            connect "VC.p_node" Junction1468 as Connection246
+            
+            
+            connect "VCrms.n_node" Junction1481 as Connection314
+            
+            
+            connect "VCrms.p_node" Junction1482 as Connection343
+            
+            
+    
+            
+        }
+        [
+            position = 5968, 8704
+            size = 56, 232
+        ]
+        
+        component Subsystem "Subsystem1" {
+            layout = dynamic
+    
+            
+            component pas_resistor "R2" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8192, 8192
+                rotation = right
+            ]
+            
+            component pas_resistor "R3" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8240, 8192
+                rotation = right
+            ]
+            
+            component pas_resistor "R1" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8144, 8192
+                rotation = right
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                
+                position = top:1
+                kind = pe
+            }
+            [
+                position = 8144, 8112
+                rotation = right
+            ]
+            port "P2" {
+                
+                position = top:2
+                kind = pe
+            }
+            [
+                position = 8192, 8112
+                rotation = right
+            ]
+            port "P3" {
+                
+                position = top:3
+                kind = pe
+            }
+            [
+                position = 8240, 8112
+                rotation = right
+            ]
+            
+            junction "Junction1" pe
+            [
+                position = 8192, 8232
+            ]
+            
+            connect Junction1 "R2.n_node" as Connection9
+            
+            
+            connect "R1.n_node" Junction1 as Connection8
+            
+            
+            connect "R1.p_node" P1 as Connection4
+            
+            
+            connect "R2.p_node" P2 as Connection6
+            
+            
+            connect "R3.n_node" Junction1 as Connection10
+            
+            
+            connect "R3.p_node" P3 as Connection1
+            
+            
+    
+            
+        }
+        [
+            position = 5440, 8336
+            size = 64, 48
+        ]
+        
+        component Subsystem "Subsystem2" {
+            layout = dynamic
+    
+            
+            component pas_resistor "R2" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8192, 8192
+                rotation = right
+            ]
+            
+            component pas_resistor "R3" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8240, 8192
+                rotation = right
+            ]
+            
+            component pas_resistor "R1" {
+                
+                resistance = "1e5"
+    	    
+            }
+            [
+                position = 8144, 8192
+                rotation = right
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port "P1" {
+                
+                position = top:1
+                kind = pe
+            }
+            [
+                position = 8144, 8112
+                rotation = right
+            ]
+            port "P2" {
+                
+                position = top:2
+                kind = pe
+            }
+            [
+                position = 8192, 8112
+                rotation = right
+            ]
+            port "P3" {
+                
+                position = top:3
+                kind = pe
+            }
+            [
+                position = 8240, 8112
+                rotation = right
+            ]
+            
+            junction "Junction1" pe
+            [
+                position = 8192, 8232
+            ]
+            
+            connect Junction1 "R2.n_node" as Connection9
+            
+            
+            connect "R1.n_node" Junction1 as Connection8
+            
+            
+            connect "R1.p_node" P1 as Connection4
+            
+            
+            connect "R2.p_node" P2 as Connection6
+            
+            
+            connect "R3.n_node" Junction1 as Connection10
+            
+            
+            connect "R3.p_node" P3 as Connection1
+            
+            
+    
+            
+        }
+        [
+            position = 5472, 8896
+            size = 64, 48
+        ]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        junction "Junction1499" sp
+        [
+            position = 6232, 7456
+        ]
+        
+        junction "Junction1504" sp
+        [
+            position = 6088, 7416
+        ]
+        
+        junction "Junction1522" pe
+        [
+            position = 6808, 7632
+        ]
+        
+        junction "Junction1523" pe
+        [
+            position = 6808, 7536
+        ]
+        
+        junction "Junction1524" pe
+        [
+            position = 6832, 8056
+        ]
+        
+        junction "Junction1525" pe
+        [
+            position = 6832, 8152
+        ]
+        
+        junction "Junction1528" pe
+        [
+            position = 5888, 8608
+        ]
+        
+        junction "Junction1529" pe
+        [
+            position = 5824, 8056
+        ]
+        
+        junction "Junction1530" pe
+        [
+            position = 5664, 7536
+        ]
+        
+        junction "Junction1531" pe
+        [
+            position = 6848, 8704
+        ]
+        
+        junction "Junction1532" pe
+        [
+            position = 6848, 8608
+        ]
+        
+        junction "Junction1534" pe
+        [
+            position = 5256, 8056
+        ]
+        
+        junction "Junction1535" pe
+        [
+            position = 5256, 7536
+        ]
+        
+        junction "Junction1537" pe
+        [
+            position = 5192, 8152
+        ]
+        
+        junction "Junction1538" pe
+        [
+            position = 5192, 7632
+        ]
+        
+        junction "Junction1541" pe
+        [
+            position = 5120, 8248
+        ]
+        
+        junction "Junction1542" pe
+        [
+            position = 5120, 7728
+        ]
+        
+        junction "Junction1543" pe
+        [
+            position = 5424, 8056
+        ]
+        
+        junction "Junction1544" pe
+        [
+            position = 5440, 8152
+        ]
+        
+        junction "Junction1545" pe
+        [
+            position = 5456, 8248
+        ]
+        
+        junction "Junction1546" pe
+        [
+            position = 5456, 8608
+        ]
+        
+        junction "Junction1547" pe
+        [
+            position = 5472, 8704
+        ]
+        
+        junction "Junction1548" pe
+        [
+            position = 5488, 8800
+        ]
+        
+        connect "B2_meas.P5" "L2.n_node" as Connection1196
+        
+        
+        connect "B2_meas.P2" "MID1.b_in" as Connection1272
+        [
+            breakpoints =5968, 7632
+        ]
+        
+        connect "B2_meas1.P5" "L4.n_node" as Connection1284
+        
+        
+        connect "B2_meas1.P1" "MID2.a_in" as Connection1296
+        
+        
+        connect "B2_meas1.P2" "MID2.b_in" as Connection1297
+        
+        
+        connect "B2_meas2.P5" "L9.n_node" as Connection1287
+        
+        
+        connect "B2_meas2.P1" "MID3.a_in" as Connection1300
+        
+        
+        connect "B2_meas2.P2" "MID3.b_in" as Connection1301
+        
+        
+        connect "B2_meas2.P3" "MID3.c_in" as Connection1302
+        
+        
+        connect "Core Coupling 1.b_out" "R70.n_node" as Connection1430
+        
+        
+        connect "Core Coupling 2.b_out" "R67.n_node" as Connection1424
+        
+        
+        connect "Core Coupling 2.c_out" "R68.n_node" as Connection1426
+        
+        
+        connect "Core Marker1.node" Junction1528 as Connection1319
+        
+        
+        connect "Core Marker2.node" Junction1529 as Connection1322
+        
+        
+        connect "Core Marker3.node" Junction1530 as Connection1325
+        
+        
+        connect "Digital Input Close.out" Junction1504 as Connection1070
+        
+        
+        connect "Digital Input Close1.out" "SR Flip Flop2.s_in" as Connection1124
+        [
+            breakpoints =6088, 7936
+        ]
+        
+        connect "Digital Input Close2.out" "SR Flip Flop3.s_in" as Connection1133
+        [
+            breakpoints =6256, 8488
+        ]
+        
+        connect "Digital Input Trip.out" "SR Flip Flop1.r_in" as Connection1066
+        
+        
+        connect "Digital Input Trip1.out" "SR Flip Flop2.r_in" as Connection1098
+        
+        
+        connect "Digital Input Trip2.out" "SR Flip Flop3.r_in" as Connection1132
+        
+        
+        connect Junction1499 "SR Flip Flop1.out" as Connection1019
+        [
+            breakpoints =6232, 7448
+        ]
+        
+        connect Junction1504 "set input.in" as Connection1069
+        [
+            breakpoints =6088, 7416
+        ]
+        
+        connect Junction1522 "PCC_meas.P2" as Connection1264
+        [
+            breakpoints =6808, 7632
+        ]
+        
+        connect Junction1523 "PCC_meas.P1" as Connection1304
+        [
+            breakpoints =6808, 7536;6720, 7536;6720, 7536;6600, 7536;6472, 7536
+        ]
+        
+        connect Junction1523 "Phase to Phase Fault.a_in" as Connection1267
+        [
+            breakpoints =6808, 7536
+        ]
+        
+        connect Junction1524 "PCC_meas1.P1" as Connection1306
+        
+        
+        connect Junction1525 "Vp2.b_node" as Connection1309
+        
+        
+        connect Junction1528 "B2_meas2.P4" as Connection1318
+        
+        
+        connect Junction1529 "B2_meas1.P4" as Connection1321
+        
+        
+        connect Junction1530 "B2_meas.P4" as Connection1324
+        
+        
+        connect Junction1531 "PCC_meas2.P2" as Connection1330
+        [
+            breakpoints =6848, 8704
+        ]
+        
+        connect Junction1532 "Phase to Phase Fault2.a_in" as Connection1333
+        [
+            breakpoints =6848, 8608
+        ]
+        
+        connect Junction1534 Junction1535 as Connection1365
+        
+        
+        connect Junction1534 "S1.a_in" as Connection1390
+        
+        
+        connect Junction1534 "S2.a_in" as Connection1396
+        
+        
+        connect Junction1535 "R63.n_node" as Connection1416
+        
+        
+        connect Junction1537 "S1.b_in" as Connection1388
+        
+        
+        connect Junction1537 "S2.b_in" as Connection1394
+        
+        
+        connect Junction1538 Junction1537 as Connection1382
+        [
+            breakpoints =5192, 7632;5192, 7632
+        ]
+        
+        connect Junction1538 "Vs1.b_node" as Connection1371
+        
+        
+        connect Junction1541 Junction1542 as Connection1381
+        
+        
+        connect Junction1541 "S1.c_in" as Connection1386
+        
+        
+        connect Junction1541 "S2.c_in" as Connection1392
+        
+        
+        connect Junction1542 "Vs1.c_node" as Connection1380
+        
+        
+        connect Junction1543 "Core Coupling 2.a_in" as Connection1399
+        
+        
+        connect Junction1544 "Core Coupling 2.b_in" as Connection1402
+        
+        
+        connect Junction1545 "Core Coupling 2.c_in" as Connection1405
+        
+        
+        connect Junction1546 "Core Coupling 1.a_in" as Connection1408
+        
+        
+        connect Junction1547 "Core Coupling 1.b_in" as Connection1411
+        
+        
+        connect Junction1548 "Core Coupling 1.c_in" as Connection1414
+        
+        
+        connect "L1.n_node" Junction1530 as Connection1323
+        
+        
+        connect "L2.p_node" "R64.p_node" as Connection1418
+        
+        
+        connect "L3.n_node" "B2_meas.P6" as Connection1197
+        
+        
+        connect "L3.p_node" "R65.p_node" as Connection1420
+        
+        
+        connect "L5.n_node" Junction1529 as Connection1320
+        
+        
+        connect "L5.p_node" "R66.p_node" as Connection1422
+        
+        
+        connect "L6.n_node" "B2_meas1.P6" as Connection1278
+        
+        
+        connect "L7.n_node" Junction1528 as Connection1317
+        
+        
+        connect "L7.p_node" "R69.p_node" as Connection1428
+        
+        
+        connect "L8.n_node" "B2_meas2.P6" as Connection1291
+        
+        
+        connect "L8.p_node" "R71.p_node" as Connection1432
+        
+        
+        connect "MID1.c_in" "B2_meas.P3" as Connection1274
+        
+        
+        connect "MID1.a_in" "B2_meas.P1" as Connection1269
+        [
+            breakpoints =6064, 7536
+        ]
+        
+        connect "MID1.ctrl_in" Junction1499 as Connection1018
+        
+        
+        connect "MID1.c_out" "PCC_meas.P6" as Connection875
+        
+        
+        connect "MID1.a_out" "PCC_meas.P4" as Connection877
+        
+        
+        connect "MID2.c_in" "B2_meas1.P3" as Connection1298
+        
+        
+        connect "MID2.c_out" "PCC_meas1.P6" as Connection1085
+        
+        
+        connect "MID2.a_out" "PCC_meas1.P4" as Connection1105
+        
+        
+        connect "MID3.c_out" "PCC_meas2.P6" as Connection1131
+        
+        
+        connect "MID3.a_out" "PCC_meas2.P4" as Connection1140
+        
+        
+        connect "PCC_meas.P5" "MID1.b_out" as Connection874
+        
+        
+        connect "PCC_meas1.P2" Junction1525 as Connection1308
+        
+        
+        connect "PCC_meas1.P5" "MID2.b_out" as Connection1100
+        
+        
+        connect "PCC_meas2.P1" Junction1532 as Connection1332
+        
+        
+        connect "PCC_meas2.P5" "MID3.b_out" as Connection1142
+        
+        
+        connect "PCC_meas2.P3" "Vp3.c_node" as Connection1328
+        
+        
+        connect "Phase to Phase Fault.a_out" Junction1522 as Connection1263
+        
+        
+        connect "Phase to Phase Fault1.a_in" Junction1524 as Connection1307
+        
+        
+        connect "Phase to Phase Fault1.a_out" Junction1525 as Connection1310
+        
+        
+        connect "Phase to Phase Fault2.a_out" Junction1531 as Connection1329
+        
+        
+        connect "R63.p_node" "L1.p_node" as Connection1417
+        
+        
+        connect "R64.n_node" Junction1538 as Connection1419
+        
+        
+        connect "R65.n_node" Junction1542 as Connection1421
+        
+        
+        connect "R66.n_node" "Core Coupling 2.a_out" as Connection1423
+        
+        
+        connect "R67.p_node" "L4.p_node" as Connection1425
+        
+        
+        connect "R68.p_node" "L6.p_node" as Connection1427
+        
+        
+        connect "R69.n_node" "Core Coupling 1.a_out" as Connection1429
+        
+        
+        connect "R70.p_node" "L9.p_node" as Connection1431
+        
+        
+        connect "R71.n_node" "Core Coupling 1.c_out" as Connection1433
+        
+        
+        connect "S1.a_out" Junction1543 as Connection1398
+        
+        
+        connect "S1.b_out" Junction1544 as Connection1401
+        
+        
+        connect "S1.c_out" Junction1545 as Connection1404
+        
+        
+        connect "S2.a_out" Junction1546 as Connection1407
+        
+        
+        connect "S2.b_out" Junction1547 as Connection1410
+        
+        
+        connect "S2.c_out" Junction1548 as Connection1413
+        
+        
+        connect "SR Flip Flop1.s_in" Junction1504 as Connection1068
+        
+        
+        connect "SR Flip Flop2.out" "MID2.ctrl_in" as Connection1125
+        [
+            breakpoints =6232, 7968;6232, 7976
+        ]
+        
+        connect "SR Flip Flop3.out" "MID3.ctrl_in" as Connection1135
+        [
+            breakpoints =6400, 8520;6400, 8528
+        ]
+        
+        connect "Subsystem1.P1" Junction1543 as Connection1400
+        
+        
+        connect "Subsystem1.P2" Junction1544 as Connection1403
+        
+        
+        connect "Subsystem1.P3" Junction1545 as Connection1406
+        
+        
+        connect "Subsystem2.P1" Junction1546 as Connection1409
+        
+        
+        connect "Subsystem2.P2" Junction1547 as Connection1412
+        
+        
+        connect "Subsystem2.P3" Junction1548 as Connection1415
+        
+        
+        connect "Vp1.b_node" Junction1522 as Connection1265
+        
+        
+        connect "Vp1.a_node" Junction1523 as Connection1268
+        
+        
+        connect "Vp1.c_node" "PCC_meas.P3" as Connection1262
+        
+        
+        connect "Vp2.a_node" Junction1524 as Connection1305
+        
+        
+        connect "Vp2.c_node" "PCC_meas1.P3" as Connection1275
+        
+        
+        connect "Vp3.b_node" Junction1531 as Connection1331
+        
+        
+        connect "Vp3.a_node" Junction1532 as Connection1334
+        
+        
+        connect "Vs1.a_node" Junction1535 as Connection1363
+        
+        
+        connect "mid command.in" Junction1499 as Connection1020
+        [
+            breakpoints =6232, 7456
+        ]
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        cpl_spc_3ph {
+            snb_type_i = "none"
+            R1 = "100e3"
+            C1 = "1e-06"
+            C2 = "1e-06"
+            fixed_snb_i = "false"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            L2 = "0.1"
+            fixed_snb_u = "false"
+            cpl_connection = "star"
+        }
+        
+        ctc_spst {
+            ctrl_src = "Digital input"
+            Sa = "1"
+            Sa_logic = "active high"
+            execution_rate = "inherit"
+            on_delay = "0"
+            off_delay = "0"
+            initial_state = "off"
+            switching = "any current"
+            spc_nb = "0"
+            ctc_nb = "0"
+            pe_connection = "not_defined"
+            ctc_name = "not_defined"
+            enb_sw_ctrl = "True"
+        }
+        
+        ctc_tpst {
+            ctrl_src = "Digital input"
+            Sa = "1"
+            Sa_logic = "active high"
+            execution_rate = "inherit"
+            initial_state = "off"
+            on_delay = "0"
+            off_delay = "0"
+            spc_nb = "0"
+            ctc_nb = "0"
+            pe_connection = "not_defined"
+            ctc_name = "not_defined"
+        }
+        
+        gen_digital_probe {
+            override_signal_name = "False"
+            signal_name = ""
+            addr = "0"
+            execution_rate = "inherit"
+        }
+        
+        gen_sr_ff {
+            init_value = "0"
+            execution_rate = "inherit"
+        }
+        
+        msr_current {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        msr_voltage {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        pas_inductor {
+            inductance = "1e-3"
+            initial_current = "0.0"
+        }
+        
+        pas_resistor {
+            resistance = "1"
+        }
+        
+        src_digital_input {
+            addr = "1"
+            invert = "false"
+            signal_type = "uint"
+            execution_rate = "100e-6"
+        }
+        
+        sys_spc_marker {
+            marker_id = "id0"
+        }
+        
+        "core/Current RMS" {
+            op_mode = "PLL based"
+            frequency = "50"
+            feed_forward = "false"
+        }
+        
+        "core/Voltage RMS" {
+            op_mode = "PLL based"
+            frequency = "50"
+            feed_forward = "false"
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        
+        # DSP Execution Rate
+        
+        Ts = 100e-6
+        Tsec = 2*Ts
+        
+        # Relay settings
+        
+        IOC_MID=7000.0;
+        TOC_MID=600.0;
+        VRMSLL_MID=13800.0
+        
+        IOC_CB3=7000.0;
+        TOC_CB3=150.0;
+        VRMSLL_CB3=13800.0
+        
+        IOC_CB4=7000.0;
+        TOC_CB4=150.0;
+        VRMSLL_CB4=13800.0
+        
+        freq = 60.0;
+        bkr_cntrl_enable = 0
+        bkr_cntrl_status = 1.0
+        dV_threshold=0.05
+        dF_threshold=0.5
+        angle_threshold=12.0
+        
+        # Modbus Settings
+        
+        config4 = {
+            "port": 502,
+            "ip_addr": '192.168.10.51',
+            "netmask": '255.255.255.0',
+            "slave_id": 1,
+            "coil_input_addresses": '',
+            "coil_output_addresses": '27,28',
+            "discrete_input_addresses": '',
+            "holding_register_input_addresses": '',
+            "holding_register_output_addresses": '',
+            "input_register_adresses": ''
+        }
+    ENDCODE
+}

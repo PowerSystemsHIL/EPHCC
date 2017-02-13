@@ -1,0 +1,53 @@
+Procedure to test the Relay (works for models with and without modbus)
+
+1 - Start the simulation with the given settings. (Vs1 = 7947.5V @ 60Hz, Vs2 = Vs1, all contactors are software
+controlled and open, except for MCB contactor, which is controlled by the relay. Enable is 1, op_mode, reset and
+protection mode are 0). If by the start, with the correct settings, MCB opens, start the simulation with Enable equal to
+0 and once it started change it back to 1.
+
+2 - Start testing the protection modes of the relay.
+
+	2.1 - Test instant over current protection R50 IOC. To check if it's working close the HSC contactor. The short circuit
+level will cross the limit defined in the relay mask by "R50 IOC pickup" (the current here is referred to the secundary of the
+current transformer). The relay has to open the contactor within "IOC time delay" + 1/4 of a 60Hz cycle. Once the relay opens,
+it will remain open until Reset is set to 1 and the fault is cleared. Change Reset back to 0 once the relay reconnects.
+
+	2.2 - Test time over current protection R51 TOC. To check if it's working close the LSC contactor. The short circuit level
+will cross the limit defined in the relay mask by "R51 TOC pickup", but will not cross the IOC limit. The relay has to open according
+to the trip curve. There are four types of curves that can be selected by "TOC curve type". All of them follow the equation:
+
+		timeDelay = timeDial*(B+(A/(M^P-1)))
+
+where, A, B and P are the parameters that change with the curve type selection, timeDial is set in the mask by "TOC time dial", and
+M is the ratio between measured current and the current limit (all referred to the CT secundary). When:
+		"TOC curve type" = 1 -> A = 0.0104, B = 0.0226 and P = 0.02;
+		"TOC curve type" = 2 -> A = 5.95, B = 0.180 and P = 2;
+		"TOC curve type" = 3 -> A = 3.88, B = 0.0923 and P = 2;
+		"TOC curve type" = 4 -> A = 5.67, B = 0.0352 and P = 2;
+The relay has to open within the time defined by timeDelay. Clear the fault and reset the relay. Check if the MCB is closed.
+
+	2.3 - Test over voltage protection R59 OV. To check if it's working change VS1 voltage to 1.2 times the nominal value. The
+relay has to open within 1/4 of a 60Hz cycle + "OV trip delay" that is defined in the relay mask. Change VS1 back to it's nominal 
+value and reset the relay if needed. Check if MCB is closed.
+
+	2.4 - Test under voltage protection R27 UV. To check if it's working change VS1 voltage to 0.8 times the nominal value. The
+relay has to open within 1/4 of a 60Hz cycle + "UV trip delay" that is defined in the relay mask. Change VS1 back to it's nominal 
+value and reset the relay if needed. Check if MCB is closed.
+
+	2.5 - Test syncronism check protection R25. To check if it's working, cause an high short circuit to make the relay trip.
+Once it is open, clear the fault and close the grid2 contactor. Change the Vs2 frequency to 61Hz and back to 60Hz. Reset the Relay.
+You will be able to see in the scope that the phases between the grid side and the load side are not matching anymore.
+The relay should never close under this condition. In fact, the relay will only close if voltage, frequency and phase are matching.
+You can try changing any of those parameters to check if the relay will connect or not. Now change the Vs2 frequency to 60.01Hz and
+wait for the phases to synch,once synched, move the frequency back to 60Hz. Synce now, phase, voltage and frequency are the same on
+both sides of the relay, MCB should close.
+
+3 - Few notes:
+	when op_mode = 0, the MCB will only close when both sides of the contactor are in synch and there's no command to open from
+the other protective functions.
+	when op_mode = 1, the MCB will only close when both sides of the contactor are in synch. The other protective functions
+will be disabled.
+	when op_mode = 2, the MCB will receive a command to open and will stay open until op_mode is changed.
+
+	when protection_mode = 0, the relay will use the Grid Tied parameters defined on the Grid Tied tab.
+	when protection_mode = 1, the relay will use the Islanded parameters defined on the Islanded tab.
