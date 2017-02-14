@@ -20,6 +20,11 @@ BoilerCO2lbmcum=cumsum(BoilerCO2lbmperhour)*(time(11)-time(10))/1000/3600;
 clear ngch*;
 %%
 load ngchpGenerator_CHPHeatContribution.dat;
+for n=1:length(time)
+    if (ngchpGenerator_CHPHeatContribution(n,2)<0)
+        ngchpGenerator_CHPHeatContribution(n,2)=0;
+    end
+end
 CHPHeatContribution=ngchpGenerator_CHPHeatContribution(:,2);  %MBtu per hr
 %%
 load breaker.dat;

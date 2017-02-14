@@ -23,6 +23,6 @@ PVMaxKWh=sum(Irradiance)*deltaTSecs/3600;
 PVProducedKWh=sum(solar_kW(:,2))*deltaTSecs/3600;
 %
 %% Amount of PV Production
-PercentPVProduction=PVProducedKWh/PVMaxKWh;
+PercentPVProduction=PVProducedKWh/PVMaxKWh*100;
 disp ('Amount of PV Production, Percent');
 disp(PercentPVProduction);
