@@ -32,3 +32,4 @@ F1 = xlsread('F1_relay_banshee.xlsx');
 F2 = xlsread('F2_relay_banshee.xlsx');
 F3 = xlsread('F3_relay_banshee.xlsx');
 
+SUBSTATION = xlsread('Substation_relay_banshee.xlsx');
