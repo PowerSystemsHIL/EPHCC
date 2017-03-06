@@ -18,14 +18,14 @@ for n=1:length(powerreal);
     power(n)=powerreal(n,44)+powerreal(n,45)+powerreal(n,46);
     vars(n)=reactivepower(n,44)+reactivepower(n,45)+reactivepower(n,46);
     pf(n)=sign(vars(n))*abs(cos(power(n)/sqrt(power(n)^2+vars(n)^2)));
-    if (misc_2(n,5)==1)                   % PF contract active?
+    if (misc_2(n,6)==1)                   % PF contract active?
         PFreqTotalTime=PFreqTotalTime+deltaT;
-        if (pf(n)>misc_2(n,6)-.05 && pf(n)<misc_2(n,6)+.05) % PF in bounds?
+        if (pf(n)>misc_2(n,7)/100-.05 && pf(n)<misc_2(n,7)/100+.05) % PF in bounds?
             timePf_cum=timePf_cum+deltaT;
         end
-    if (misc_2(n,7)==1)                    % KW export limit active?
+    if (misc_2(n,8)==1)                    % KW export limit active?
         ExportreqTotalTime=ExportreqTotalTime+deltaT;
-        if (power(n)>misc_2(n,8)-1e5 && power(n)<misc_2(n,8)+1e5) %in
+        if (power(n)>misc_2(n,9)-1e5 && power(n)<misc_2(n,9)+1e5) %in
             timeKW_cum=timeKW_cum+deltaT;                         %bounds?
         end
     end
