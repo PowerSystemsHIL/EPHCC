@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, -4.0, 1928.0, 1208.0]
+      Location		      [960.0, 0.0, 960.0, 1036.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1053.0]
-	ZoomFactor		[3.115501519756839]
-	Offset			[126.18609756097561, -89.493658536585372]
+	Extents			[721.0, 884.0]
+	ZoomFactor		[1.3112582781456954]
+	Offset			[114.32323232323232, -252.58080808080808]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "g73labuser"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 26 16:12:18 2017"
-  RTWModifiedTimeStamp	  407347888
-  ModelVersionFormat	  "1.%<AutoIncrement:10>"
+  LastModifiedDate	  "Tue Feb 14 16:36:57 2017"
+  RTWModifiedTimeStamp	  408991011
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -820,7 +820,7 @@ Library {
   }
   System {
     Name		    "PQFV_lib"
-    Location		    [1916, -4, 3844, 1204]
+    Location		    [960, 0, 1920, 1036]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -832,18 +832,18 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "312"
+    ZoomFactor		    "131"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "97"
+    SIDHighWatermark	    "119"
     Block {
       BlockType		      SubSystem
-      Name		      "Genset_PQFV"
-      SID		      "28"
+      Name		      "EPC_PQFV"
+      SID		      "98"
       Ports		      [1, 1]
-      Position		      [450, 203, 550, 227]
-      ZOrder		      3469
+      Position		      [480, 213, 580, 237]
+      ZOrder		      3816
       ForegroundColor	      "blue"
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      BackgroundColor	      "green"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -866,10 +866,557 @@ Library {
 	    Type		    "edit"
 	    Name		    "VRMSLL"
 	    Prompt		    "Nominal VRMSLL"
-	    Value		    "13800"
+	    Value		    "480"
 	  }
 	  Object {
 	    $ObjectID		    19
+	    Type		    "edit"
+	    Name		    "Ts"
+	    Prompt		    "Sample Time [Sec]"
+	    Value		    "Ts"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"EPC_PQFV"
+	Location		[0, 0, 960, 1036]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"66"
+	Block {
+	  BlockType		  Inport
+	  Name			  "CB_MS"
+	  SID			  "99"
+	  Position		  [85, 318, 115, 332]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "cb_ms"
+	    PropagatedSignals	    "m"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "3-phase \nInstantaneous \nActive & Reactive Power"
+	  SID			  "100"
+	  Ports			  [2, 1]
+	  Position		  [285, 295, 370, 335]
+	  ZOrder		  -3
+	  ShowName		  off
+	  LibraryVersion	  "1.664"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib_extras/Measurements/3-phase \nInstantaneous \nActive & Reactive Power"
+	  SourceType		  "3-phase instantaneous active and reactive power"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator"
+	  SID			  "101"
+	  Ports			  [6, 1]
+	  Position		  [1030, 18, 1035, 527]
+	  ZOrder		  3440
+	  ShowName		  off
+	  Inputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "102"
+	  Ports			  [1, 2]
+	  Position		  [180, 285, 185, 360]
+	  ZOrder		  3439
+	  ShowName		  off
+	  OutputSignals		  "Vabc_line,Iabc"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Vabc_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "103"
+	  Position		  [290, 235, 365, 255]
+	  ZOrder		  3434
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  Value			  "VRMSLL"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "104"
+	  Ports			  [1, 2]
+	  Position		  [800, 185, 805, 360]
+	  ZOrder		  -6
+	  ShowName		  off
+	  Outputs		  "2"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "kw"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "kvar"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  SID			  "105"
+	  Ports			  [1, 3]
+	  Position		  [290, 134, 295, 206]
+	  ZOrder		  3420
+	  ForegroundColor	  "orange"
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Discrete\n1-phase PLL"
+	  SID			  "106"
+	  Ports			  [1, 3]
+	  Position		  [500, 118, 565, 192]
+	  ZOrder		  7
+	  ShowName		  off
+	  LibraryVersion	  "1.664"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib_extras/Discrete \nControl Blocks/Discrete\n1-phase PLL"
+	  SourceType		  "Discrete 1-phase PLL"
+	  Fmin			  "45"
+	  Par_Init		  "[0 60]"
+	  ParK			  "[ 180 3200 1]"
+	  Ts			  "Ts"
+	  AGC			  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "Freq"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Discrete \nMean value2"
+	  SID			  "107"
+	  Ports			  [1, 1]
+	  Position		  [405, 290, 475, 340]
+	  ZOrder		  -7
+	  LibraryVersion	  "1.664"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib_extras/Discrete\nMeasurements/Discrete \nMean value"
+	  SourceType		  "Discrete Mean value"
+	  Freq			  "60"
+	  Vinit			  "0"
+	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide"
+	  SID			  "108"
+	  Ports			  [2, 1]
+	  Position		  [420, 137, 450, 168]
+	  ZOrder		  8
+	  Inputs		  "*/"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide1"
+	  SID			  "109"
+	  Ports			  [2, 1]
+	  Position		  [810, 382, 840, 413]
+	  ZOrder		  3441
+	  Inputs		  "*/"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Vpu"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "110"
+	  Position		  [515, 300, 635, 330]
+	  ZOrder		  3
+	  Gain			  "(1/1000)"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "111"
+	  Position		  [850, 300, 880, 330]
+	  ZOrder		  3506
+	  ShowName		  off
+	  Gain			  "-1"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "kvar"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "112"
+	  Position		  [555, 40, 630, 70]
+	  ZOrder		  3436
+	  ShowName		  off
+	  Gain			  "1.732"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "VRMSLL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "RMS_Calculator"
+	  SID			  "113"
+	  Ports			  [1, 1]
+	  Position		  [410, 43, 480, 67]
+	  ZOrder		  3505
+	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
+	  ShowName		  off
+	  LibraryVersion	  "1.10"
+	  SourceBlock		  "RMS_lib/RMS_Calculator"
+	  SourceType		  ""
+	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "114"
+	  Position		  [600, 170, 620, 190]
+	  ZOrder		  4
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator1"
+	  SID			  "115"
+	  Position		  [630, 145, 650, 165]
+	  ZOrder		  9
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator7"
+	  SID			  "116"
+	  Position		  [330, 160, 350, 180]
+	  ZOrder		  3421
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator8"
+	  SID			  "117"
+	  Position		  [330, 185, 350, 205]
+	  ZOrder		  3422
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "out"
+	  SID			  "118"
+	  Position		  [1100, 268, 1130, 282]
+	  ZOrder		  5
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "kvar"
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Gain1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "cb_ms"
+	  SrcBlock		  "CB_MS"
+	  SrcPort		  1
+	  Points		  [27, 0]
+	  Branch {
+	    DstBlock		    "Bus\nSelector"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [-1, 0; 2, 0]
+	    Points		    [0, 160]
+	    DstBlock		    "Bus\nCreator"
+	    DstPort		    6
+	  }
+	}
+	Line {
+	  Name			  "Vpu"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Divide1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "VRMSLL"
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [98, 0]
+	  Branch {
+	    Points		    [0, 335]
+	    DstBlock		    "Divide1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [1, 1]
+	    Points		    [282, 0]
+	    DstBlock		    "Bus\nCreator"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  DstBlock		  "out"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Iabc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  Points		  [45, 0; 0, -15]
+	  DstBlock		  "3-phase \nInstantaneous \nActive & Reactive Power"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Vabc_line>"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  Points		  [68, 0]
+	  Branch {
+	    DstBlock		    "3-phase \nInstantaneous \nActive & Reactive Power"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -135]
+	    DstBlock		    "Demux1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "kvar"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "kw"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Discrete \nMean value2"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "3-phase \nInstantaneous \nActive & Reactive Power"
+	  SrcPort		  1
+	  DstBlock		  "Discrete \nMean value2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  Points		  [127, 0; 0, -40]
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Freq"
+	  Labels		  [1, 0]
+	  SrcBlock		  "Discrete\n1-phase PLL"
+	  SrcPort		  1
+	  Points		  [445, 0]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Discrete\n1-phase PLL"
+	  SrcPort		  3
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Divide"
+	  SrcPort		  1
+	  DstBlock		  "Discrete\n1-phase PLL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Discrete\n1-phase PLL"
+	  SrcPort		  2
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  Points		  [24, 0]
+	  Branch {
+	    Points		    [0, -90]
+	    DstBlock		    "RMS_Calculator"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Divide"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "Terminator8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  Points		  [22, 0]
+	  Branch {
+	    Points		    [0, -85]
+	    DstBlock		    "Divide"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [304, 0; 0, 160]
+	    DstBlock		    "Divide1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "RMS_Calculator"
+	  SrcPort		  1
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "119"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
+	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
+	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
+	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
+	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
+	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
+	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
+	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
+	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
+	  "FTWARE.\n%\n%\n%%"
+	  Position		  [206, 662]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -1
+	  FontWeight		  "bold"
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Genset_PQFV"
+      SID		      "28"
+      Ports		      [1, 1]
+      Position		      [305, 213, 405, 237]
+      ZOrder		      3469
+      ForegroundColor	      "blue"
+      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		20
+	$ClassName		"Simulink.Mask"
+	Type			"PQFV"
+	Description		"Block inputs: circuit breaker measurements\nBlock outputs: kW, kVAR, Hz, VRMSLL, Vpu, cb-status\n-volta"
+	"ge as seem at the entry-point of the circuit breaker"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    21
+	    Type		    "edit"
+	    Name		    "VRMSLL"
+	    Prompt		    "Nominal VRMSLL"
+	    Value		    "13800"
+	  }
+	  Object {
+	    $ObjectID		    22
 	    Type		    "edit"
 	    Name		    "Ts"
 	    Prompt		    "Sample Time [Sec]"
@@ -1379,7 +1926,7 @@ Library {
       Name		      "PQFV"
       SID		      "1"
       Ports		      [1, 1]
-      Position		      [210, 203, 310, 227]
+      Position		      [130, 213, 230, 237]
       ZOrder		      3468
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
@@ -1393,7 +1940,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		20
+	$ObjectID		23
 	$ClassName		"Simulink.Mask"
 	Type			"PQFV"
 	Description		"Block inputs: circuit breaker measurements\nBlock outputs: kW, kVAR, Hz, VRMSLL, Vpu, cb-status\n-volta"
@@ -1402,14 +1949,14 @@ Library {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    21
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "VRMSLL"
 	    Prompt		    "Nominal VRMSLL"
 	    Value		    "13800"
 	  }
 	  Object {
-	    $ObjectID		    22
+	    $ObjectID		    25
 	    Type		    "edit"
 	    Name		    "Ts"
 	    Prompt		    "Sample Time [Sec]"

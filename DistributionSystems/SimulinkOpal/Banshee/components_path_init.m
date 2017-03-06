@@ -16,7 +16,7 @@ addpath('WoodwardEasyGen3500_InterfaceBlocks');
 addpath('Fault');
 addpath('DMSandTestSeq');
 addpath('HWCtrl_IO_InterfaceBlocks');
-addpath('ESS\Software_1stOrder_model');
+addpath('Software_1stOrder_model');
 addpath('EPC_BESS_PV');
 
 

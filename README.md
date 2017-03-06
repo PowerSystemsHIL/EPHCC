@@ -1,6 +1,6 @@
 # Electric Power HIL Controls Consortium Repository README
 
-Copyright (c) 2016 Massachusetts Institute of Technology
+Copyright (c) 2017 Massachusetts Institute of Technology
 
 ## Overview
 This code base contains Mathworks Simulink Opal-RT models used to simulate power systems in a small test microgrid. The test system used several actual controllers from hardware vendors in a hardware-in-the-loop setup.
