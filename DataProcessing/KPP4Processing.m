@@ -25,7 +25,7 @@ for n=1:length(powerreal);
         end
     if (misc_2(n,8)==1)                    % KW export limit active?
         ExportreqTotalTime=ExportreqTotalTime+deltaT;
-        if (power(n)<misc_2(n,9)+1e2)                              %in
+        if (-(power(n))>misc_2(n,9)+1e2)                          %out of
             timeKW_cum=timeKW_cum+deltaT;                         %bounds?
         end
     end
@@ -37,7 +37,7 @@ percentTimePf=timePf_cum/PFreqTotalTime*100;  % pct of time in bounds
 %
 %% Display R esults
 disp('Percent of time that exported power exceeds 100 KW of contract...')
-disp(100-percentTimeKW);
+disp(percentTimeKW);
 disp('')
 disp('Percent of time that PF exceeds .05 of contract...')
 disp(100-percentTimePf);
