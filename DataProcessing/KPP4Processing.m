@@ -25,7 +25,7 @@ for n=1:length(powerreal);
         end
     if (misc_2(n,8)==1)                    % KW export limit active?
         ExportreqTotalTime=ExportreqTotalTime+deltaT;
-        if (power(n)>misc_2(n,9)-1e5 && power(n)<misc_2(n,9)+1e5) %in
+        if (power(n)<misc_2(n,9)+1e2)                              %in
             timeKW_cum=timeKW_cum+deltaT;                         %bounds?
         end
     end
