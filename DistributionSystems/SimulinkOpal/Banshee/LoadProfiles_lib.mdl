@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-8.0, 0.0, 1936.0, 1176.0]
+      Location		      [-8.0, 0.0, 1936.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1010.0]
+	Extents			[1690.0, 906.0]
 	ZoomFactor		[1.8051470588235297]
-	Offset			[129.06313645621182, -87.75560081466395]
+	Offset			[129.06313645621179, -87.7556008146639]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 04 15:03:19 2016"
-  RTWModifiedTimeStamp	  392223794
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Tue Mar 14 16:55:46 2017"
+  RTWModifiedTimeStamp	  411411344
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -772,7 +772,7 @@ Library {
   }
   System {
     Name		    "LoadProfiles_lib"
-    Location		    [-8, 0, 1928, 1176]
+    Location		    [-8, 0, 1928, 1092]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -786,15 +786,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "181"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "95"
+    SIDHighWatermark	    "98"
     Block {
       BlockType		      SubSystem
       Name		      "Load_Profiles"
       SID		      "47"
       Ports		      [0, 1]
       Position		      [745, 243, 1005, 447]
-      ZOrder		      194
+      ZOrder		      2654
       BackgroundColor	      "cyan"
+      LibraryVersion	      "*1.5"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -804,7 +805,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Load_Profiles"
-	Location		[-8, 0, 1928, 1176]
+	Location		[1916, 0, 3834, 1092]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -816,16 +817,16 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"43"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
 	  SID			  "48"
-	  Ports			  [18, 1]
-	  Position		  [1040, 97, 1045, 2253]
+	  Ports			  [21, 1]
+	  Position		  [1040, 109, 1050, 2601]
 	  ZOrder		  33
 	  ShowName		  off
-	  Inputs		  "18"
+	  Inputs		  "21"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1503,6 +1504,51 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
+	  Name			  "State 1"
+	  SID			  "96"
+	  Position		  [845, 2305, 890, 2325]
+	  ZOrder		  86
+	  ShowName		  off
+	  Value			  "[25 5]"
+	  Port {
+	    PortNumber		    1
+	    Name		    "C7"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "State 2"
+	  SID			  "97"
+	  Position		  [845, 2425, 890, 2445]
+	  ZOrder		  87
+	  ShowName		  off
+	  Value			  "[20 5]"
+	  Port {
+	    PortNumber		    1
+	    Name		    "C8"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "State 3"
+	  SID			  "98"
+	  Position		  [845, 2545, 890, 2565]
+	  ZOrder		  88
+	  ShowName		  off
+	  Value			  "[3 0.1]"
+	  Port {
+	    PortNumber		    1
+	    Name		    "C9"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
 	  Name			  "Stop_Index "
 	  SID			  "90"
 	  Position		  [20, 170, 65, 190]
@@ -1525,6 +1571,30 @@ Library {
 	  Position		  [1170, 1168, 1200, 1182]
 	  ZOrder		  85
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "C9"
+	  Labels		  [1, 1]
+	  SrcBlock		  "State 3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  21
+	}
+	Line {
+	  Name			  "C8"
+	  Labels		  [1, 1]
+	  SrcBlock		  "State 2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  20
+	}
+	Line {
+	  Name			  "C7"
+	  Labels		  [1, 1]
+	  SrcBlock		  "State 1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator2"
+	  DstPort		  19
 	}
 	Line {
 	  SrcBlock		  "Demux10"
@@ -2009,6 +2079,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator2"
 	  SrcPort		  1
+	  Points		  [51, 0; 0, -180]
 	  DstBlock		  "LOAD_OUT"
 	  DstPort		  1
 	}
@@ -2509,7 +2580,7 @@ Library {
 	  "FTWARE.\n%\n%\n%%"
 	  Position		  [1241, 227]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -3
+	  ZOrder		  -2
 	  FontWeight		  "bold"
 	}
       }
