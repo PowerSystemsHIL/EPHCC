@@ -2,7 +2,7 @@ Ts = 100e-6; % simulation time step
 Tc = Ts; %*5; % controller time step 
 %Tc = Ts*5; % controller time step 
 f = 60; % nominal grid freq
-s = tf('s');
+% s = tf('s');
 
 % Battery parameters
 batt_kWh = 1000;
@@ -19,7 +19,7 @@ Rgrid = Zgrid/2;
 Lgrid = (Zgrid/2)/(2*pi*f);
 H = 2;
 tau_mech = 0.3; % time constant on prime mover
-sys_mech = ss(1/(tau_mech*s+1));
+% sys_mech = ss(1/(tau_mech*s+1));
 dPer = 0.05; % droop percent
 PUIMax = 1.2; % max current output
 
@@ -29,8 +29,8 @@ loadCmds = [0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0;  % time
             0   0   0   0   0   1   0   0   0   0   0  ;  % C
             ];
         
-paramPLLControlP = 18; 
-paramPLLControlI = 320;
+paramPLLControlP = 180; 
+paramPLLControlI = 3200;
 paramPLLControlD = 1;
 % paramPLLControlP = 180; % default settings
 % paramPLLControlI = 3200;
@@ -39,10 +39,11 @@ paramPLLControlSatFreq = 10; % Hz delta from nominal 60
 paramPLLDVoltsTol = 0.85;
 paramPLLQVoltsTol = 0.15;
 paramPLLQFEDebounceTime = 0.007;
+paramPLLQREDebounceTime = 0.1;
 sampdT = Tc;
 dT = Ts;
-PLLFreqChangeRateMax = 10; %100
-PLLFreqCutOff = 10; %200
+PLLFreqChangeRateMax = 12; %100
+PLLFreqCutOff = 25; %200
 %PLLFreqChangeRateMax = 100;
 %PLLFreqCutOff = 200;
 Lvir = Lgrid*100;
@@ -84,3 +85,18 @@ filt = firstOrderDig(50e-3, Tc, 'low');
 % paramDroopFreq2Reac = 1;
 % 
 % [mag_num, mag_den] = firstOrderDig(50e-3, Tc, 'low');
+
+%% Current source inverter - voltage source based
+
+% Inverter filter parameters
+Sn_ess = 250e3;   %[VA]
+fn_ess = 60;    %[Hz]
+Us_ess = 480;        %[V]; nap. RMS p-p stojana
+Rs_ess_base = Us_ess^2/Sn_ess;        %[ohm]
+Ls_ess_base = Rs_ess_base/2/pi/fn_ess;     
+
+Rs_ess_PU = 5.4e-3;     %[PU]
+Ls_ess_PU = 10.2e-2;     %[PU]
+
+Rs_ess = Rs_ess_PU*Rs_ess_base;     %[ohm]; rezystancja stojana
+Ls_ess = Ls_ess_PU*Ls_ess_base;     %[H]; indukcyjnosc stojana
