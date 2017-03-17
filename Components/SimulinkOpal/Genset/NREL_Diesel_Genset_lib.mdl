@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 14 16:54:52 2017"
-  RTWModifiedTimeStamp	  411411286
-  ModelVersionFormat	  "1.%<AutoIncrement:22>"
+  LastModifiedDate	  "Fri Mar 17 17:02:35 2017"
+  RTWModifiedTimeStamp	  411670935
+  ModelVersionFormat	  "1.%<AutoIncrement:23>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -967,6 +967,19 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      SignalSpecification
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Dimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+    }
+    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -1056,7 +1069,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "4148"
+    SIDHighWatermark	    "4151"
     Block {
       BlockType		      SubSystem
       Name		      "80kW_Diesel_Generator_2nd_Control"
@@ -1065,7 +1078,7 @@ Library {
       Position		      [475, 131, 730, 369]
       ZOrder		      3660
       BackgroundColor	      "[0.000000, 0.819608, 0.000000]"
-      LibraryVersion	      "*1.21"
+      LibraryVersion	      "*1.22"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1075,7 +1088,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"80kW_Diesel_Generator_2nd_Control"
-	Location		[1916, 0, 3834, 1092]
+	Location		[0, 0, 1918, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1207,7 +1220,7 @@ Library {
 	  Position		  [940, 518, 1215, 657]
 	  ZOrder		  2882
 	  BackgroundColor	  "[0.501961, 0.949020, 0.050980]"
-	  LibraryVersion	  "1.21"
+	  LibraryVersion	  "1.22"
 	  SourceBlock		  "NREL_Diesel_Genset_lib/GenSet_80kW"
 	  SourceType		  "Gen-Set with simulated control modes"
 	}
@@ -1227,7 +1240,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Simulated\nGenerator Controller 80kW"
-	    Location		    [1916, 0, 3834, 1092]
+	    Location		    [0, 0, 1918, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1239,7 +1252,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "modbus_in"
@@ -1404,6 +1417,15 @@ Library {
 	      Value		      "3"
 	    }
 	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant5"
+	      SID		      "4150"
+	      Position		      [900, 437, 940, 453]
+	      ZOrder		      2930
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
 	      BlockType		      Demux
 	      Name		      "Demux"
 	      SID		      "3883"
@@ -1422,7 +1444,7 @@ Library {
 	      Position		      [950, 203, 955, 287]
 	      ZOrder		      5
 	      ShowName		      off
-	      Outputs		      "2"
+	      Outputs		      "[1 1]"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -2442,6 +2464,15 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      SignalSpecification
+	      Name		      "Signal Specification"
+	      SID		      "4151"
+	      Position		      [855, 235, 880, 255]
+	      ZOrder		      2931
+	      ShowName		      off
+	      Dimensions	      "2"
+	    }
+	    Block {
 	      BlockType		      Sum
 	      Name		      "Sum"
 	      SID		      "3922"
@@ -2609,10 +2640,30 @@ Library {
 	      BlockType		      Outport
 	      Name		      "modbus_out"
 	      SID		      "3938"
-	      Position		      [1005, 428, 1035, 442]
+	      Position		      [1005, 438, 1035, 452]
 	      ZOrder		      14
 	      Port		      "8"
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Signal Specification"
+	      SrcPort		      1
+	      Points		      [8, 0]
+	      Branch {
+		DstBlock		"Demux1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 190]
+		DstBlock		"Unit Delay"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant5"
+	      SrcPort		      1
+	      DstBlock		      "modbus_out"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "meas_p"
@@ -2656,16 +2707,8 @@ Library {
 	    Line {
 	      SrcBlock		      "Multiport\nSwitch"
 	      SrcPort		      1
-	      Points		      [51, 0]
-	      Branch {
-		DstBlock		"Demux1"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 192; 0, -2]
-		DstBlock		"Unit Delay"
-		DstPort			1
-	      }
+	      DstBlock		      "Signal Specification"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "m3"
@@ -2895,7 +2938,6 @@ Library {
 	    Line {
 	      SrcBlock		      "Constant3"
 	      SrcPort		      1
-	      Points		      [0, 20]
 	      DstBlock		      "Sum"
 	      DstPort		      1
 	    }
@@ -3160,7 +3202,7 @@ Library {
       Position		      [75, 253, 350, 367]
       ZOrder		      2882
       BackgroundColor	      "[0.501961, 0.949020, 0.050980]"
-      LibraryVersion	      "*1.19"
+      LibraryVersion	      "*1.22"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3180,7 +3222,7 @@ Library {
       }
       System {
 	Name			"GenSet_80kW"
-	Location		[1911, 0, 3849, 1092]
+	Location		[0, 0, 1918, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -3192,7 +3234,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "w_ref"
@@ -3262,7 +3304,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "80kVA Generator with \nPrimary Controllers"
-	    Location		    [1911, 0, 3849, 1092]
+	    Location		    [0, 0, 1918, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3274,7 +3316,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
+	    ZoomFactor		    "175"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "w_ref"
@@ -3473,7 +3515,7 @@ Library {
 	      }
 	      System {
 		Name			"Diesel Engine\nSpeed & Voltage\nControl\nfast"
-		Location		[1911, 0, 3849, 1092]
+		Location		[0, 0, 1918, 1032]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -3485,7 +3527,7 @@ Library {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"125"
+		ZoomFactor		"175"
 		Block {
 		  BlockType		  Inport
 		  Name			  "wref"
@@ -5067,15 +5109,9 @@ Library {
 		    PropName		    "Parameters"
 		    }
 		  }
-		  Port {
-		    PortNumber		    1
-		    Name		    "Pmec_gov"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
 		  System {
 		    Name		    "GOVERNOR\n& DIESEL ENGINE1"
-		    Location		    [1911, 0, 3849, 1092]
+		    Location		    [0, 0, 1918, 1032]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -5662,6 +5698,21 @@ Library {
 		  SampleTime		  "0"
 		}
 		Block {
+		  BlockType		  SignalSpecification
+		  Name			  "Signal Specification"
+		  SID			  "4149"
+		  Position		  [980, 78, 1005, 102]
+		  ZOrder		  120
+		  ShowName		  off
+		  Dimensions		  "1"
+		  Port {
+		    PortNumber		    1
+		    Name		    "Pmec_gov"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
 		  BlockType		  Sum
 		  Name			  "Sum"
 		  SID			  "3722"
@@ -5772,6 +5823,14 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
+		  Name			  "Pmec_gov"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Signal Specification"
+		  SrcPort		  1
+		  DstBlock		  "Pm"
+		  DstPort		  1
+		}
+		Line {
 		  Name			  "wms"
 		  Labels		  [0, 0]
 		  SrcBlock		  "Sum"
@@ -5783,7 +5842,6 @@ Library {
 		Line {
 		  SrcBlock		  "wref"
 		  SrcPort		  1
-		  Points		  [0, -20]
 		  DstBlock		  "Sum"
 		  DstPort		  2
 		}
@@ -5827,7 +5885,7 @@ Library {
 		    DstPort		    1
 		  }
 		  Branch {
-		    Points		    [130, 0; 0, 25]
+		    Points		    [130, 0]
 		    DstBlock		    "Sum"
 		    DstPort		    1
 		  }
@@ -5973,11 +6031,9 @@ Library {
 		  }
 		}
 		Line {
-		  Name			  "Pmec_gov"
-		  Labels		  [0, 0]
 		  SrcBlock		  "GOVERNOR\n& DIESEL ENGINE1"
 		  SrcPort		  1
-		  DstBlock		  "Pm"
+		  DstBlock		  "Signal Specification"
 		  DstPort		  1
 		}
 		Line {

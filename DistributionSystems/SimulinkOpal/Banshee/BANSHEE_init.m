@@ -47,7 +47,7 @@ components_path_init;
 cb_mech_delay = 5/60;
 
 %% Initialization file for software BESS
-%Software_BESS_init;
+Software_BESS_init;
 
 %% Temp
 
