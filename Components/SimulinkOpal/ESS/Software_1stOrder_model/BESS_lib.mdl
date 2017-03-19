@@ -1,8 +1,10 @@
 Library {
-  Name			  "BESS_lib_new"
+  Name			  "BESS_lib"
   Version		  8.1
-  LibraryType		  "BlockLibrary"
+  MdlSubVersion		  0
   SavedCharacterEncoding  "windows-1252"
+  LibraryType		  "BlockLibrary"
+  SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
   DisableAllScopes	  off
@@ -17,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1216.0]
+      Location		      [-8.0, -8.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -26,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -41,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1886.0, 1045.0]
-	ZoomFactor		[1.0]
-	Offset			[0.0, 0.0]
+	Extents			[1886.0, 890.0]
+	ZoomFactor		[1.7920997920997919]
+	Offset			[-253.94837587006964, -32.812064965197216]
       }
     }
   }
@@ -51,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "ch24070"
+  LastModifiedBy	  "RE25624"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 02 14:49:09 2017"
-  RTWModifiedTimeStamp	  407947749
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Mon Mar 06 12:51:57 2017"
+  RTWModifiedTimeStamp	  410705509
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -90,7 +92,7 @@ Library {
   CovNameIncrementing	  off
   CovHtmlReporting	  off
   CovForceBlockReductionOff on
-  CovSaveCumulativeToWorkspaceVar off
+  covSaveCumulativeToWorkspaceVar off
   CovSaveSingleToWorkspaceVar off
   CovCumulativeReport	  off
   CovReportOnPause	  on
@@ -123,13 +125,13 @@ Library {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      7
+      $ObjectID		      6
       Version		      "1.13.0"
       Array {
 	Type			"Handle"
 	Dimension		8
 	Simulink.SolverCC {
-	  $ObjectID		  8
+	  $ObjectID		  7
 	  Version		  "1.13.0"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
@@ -164,7 +166,7 @@ Library {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  9
+	  $ObjectID		  8
 	  Version		  "1.13.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -196,7 +198,7 @@ Library {
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  10
+	  $ObjectID		  9
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -230,10 +232,13 @@ Library {
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
 	  ExpressionDepthLimit	  128
+	  FoldNonRolledExpr	  on
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
 	  StateBitsets		  off
 	  DataBitsets		  off
+	  UseTempVars		  off
 	  ZeroExternalMemoryAtStartup on
 	  ZeroInternalMemoryAtStartup on
 	  InitFltsAndDblsToZero	  off
@@ -246,9 +251,10 @@ Library {
 	  BufferReusableBoundary  on
 	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
+	  ParallelExecutionInRapidAccelerator on
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  11
+	  $ObjectID		  10
 	  Version		  "1.13.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -276,6 +282,7 @@ Library {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "none"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -308,10 +315,12 @@ Library {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
 	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
 	  UnknownTsInhSupMsg	  "warning"
 	  ModelReferenceDataLoggingMessage "warning"
 	  ModelReferenceSymbolNameMessage "warning"
@@ -323,6 +332,7 @@ Library {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "error"
@@ -332,10 +342,9 @@ Library {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  12
+	  $ObjectID		  11
 	  Version		  "1.13.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -368,6 +377,7 @@ Library {
 	  TargetIntDivRoundTo	  "Undefined"
 	  TargetEndianess	  "Unspecified"
 	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
 	  TargetHWDeviceType	  "Specified"
@@ -375,7 +385,7 @@ Library {
 	  ProdEqTarget		  on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  13
+	  $ObjectID		  12
 	  Version		  "1.13.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
@@ -390,10 +400,14 @@ Library {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  14
+	  $ObjectID		  13
 	  Version		  "1.13.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
+	  SimBlas		  on
 	  SimCtrlC		  on
+	  SimExtrinsic		  on
 	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimParseCustomCode	  on
@@ -401,7 +415,7 @@ Library {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  15
+	  $ObjectID		  14
 	  Version		  "1.13.0"
 	  Array {
 	    Type		    "Cell"
@@ -422,13 +436,11 @@ Library {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
 	  TemplateMakefile	  "grt_default_tmf"
-	  PostCodeGenCommand	  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -437,6 +449,9 @@ Library {
 	  TLCDebug		  off
 	  TLCCoverage		  off
 	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
 	  IncludeHyperlinkInReport off
@@ -451,22 +466,24 @@ Library {
 	  SILDebugging		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
 	  GenerateTraceInfo	  off
 	  GenerateTraceReport	  off
 	  GenerateTraceReportSl	  off
 	  GenerateTraceReportSf	  off
 	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
 	  RTWCompilerOptimization "Off"
-	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
 	  Array {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      16
+	      $ObjectID		      15
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -537,7 +554,7 @@ Library {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      17
+	      $ObjectID		      16
 	      Version		      "1.13.0"
 	      Array {
 		Type			"Cell"
@@ -570,6 +587,7 @@ Library {
 	      GenerateFullHeader      on
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
 	      ModelReferenceCompliant on
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
@@ -592,6 +610,7 @@ Library {
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
 	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
 	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
 	      ModelStepFunctionPrototypeControlCompliant off
@@ -620,7 +639,7 @@ Library {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    [ 195, 142, 1085, 882 ]  
+      ConfigPrmDlgPosition     [ 195, 142, 1085, 882 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -683,6 +702,7 @@ Library {
     }
     Block {
       BlockType		      BusCreator
+      Inputs		      "4"
       DisplayOption	      "none"
       OutDataTypeStr	      "Inherit: auto"
       NonVirtualBus	      off
@@ -885,7 +905,21 @@ Library {
     }
     Block {
       BlockType		      Scope
-      Floating		      off
+      ModelBased	      off
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-5"
+      YMax		      "5"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      DataFormat	      "Array"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Selector
@@ -900,6 +934,7 @@ Library {
       Permissions	      "ReadWrite"
       PermitHierarchicalResolution "All"
       TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
       RTWFcnNameOpts	      "Auto"
       RTWFileNameOpts	      "Auto"
@@ -914,9 +949,8 @@ Library {
       DataTypeOverrideAppliesTo	"AllNumericTypes"
       MinMaxOverflowLogging   "UseLocalSettings"
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
-      PropagateVariantConditions off
-      TreatAsGroupedWhenPropagatingVariantConditions on
     }
     Block {
       BlockType		      Sum
@@ -954,9 +988,9 @@ Library {
     }
   }
   System {
-    Name		    "BESS_lib_new"
-    Location		    [1912, -8, 3848, 1208]
-    Open		    off
+    Name		    "BESS_lib"
+    Location		    [-8, -8, 1928, 1048]
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -967,24 +1001,29 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "179"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "235"
+    SIDHighWatermark	    "238"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
       SID		      "1"
       Ports		      [1, 1, 0, 0, 0, 0, 3]
-      Position		      [240, 69, 320, 206]
+      Position		      [45, 319, 125, 456]
       ZOrder		      3748
       BlockMirror	      on
       NamePlacement	      "alternate"
       LibraryVersion	      "*1.23"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
-      Variant		      off
+      MaskHideContents	      off
       System {
 	Name			"BESS"
-	Location		[1912, -8, 3848, 1208]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -996,12 +1035,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "cmds"
 	  SID			  "159"
-	  Position		  [-130, 218, -100, 232]
+	  Position		  [20, 493, 50, 507]
 	  ZOrder		  2619
 	  IconDisplay		  "Port number"
 	}
@@ -1010,13 +1049,18 @@ Library {
 	  Name			  "Battery"
 	  SID			  "160"
 	  Ports			  [1, 3]
-	  Position		  [485, 320, 595, 380]
+	  Position		  [635, 595, 745, 655]
 	  ZOrder		  3733
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
 	  RequestExecContextInheritance	off
-	  Variant		  off
+	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    19
+	    $ObjectID		    17
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "Very simple battery model.  "
 	    Description		    "Model integrates charge and stops at the rated capacity.  When charge is all removed the curren"
@@ -1027,21 +1071,21 @@ Library {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      3
 	      Object {
-		$ObjectID		20
+		$ObjectID		18
 		Type			"edit"
 		Name			"kWh"
 		Prompt			"Capacity  (kWh)"
 		Value			"batt_kWh"
 	      }
 	      Object {
-		$ObjectID		21
+		$ObjectID		19
 		Type			"edit"
 		Name			"esr"
 		Prompt			"Output Resistance (Ohms)"
 		Value			"batt_esr"
 	      }
 	      Object {
-		$ObjectID		22
+		$ObjectID		20
 		Type			"edit"
 		Name			"Vdc_nom"
 		Prompt			"Open Circuit Voltage"
@@ -1333,18 +1377,12 @@ Library {
 	      ZOrder		      -2
 	    }
 	  }
-	  RTWSystemCode		  "Auto"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  MaskHideContents	  off
 	}
 	Block {
 	  BlockType		  Bias
 	  Name			  "Bias"
 	  SID			  "178"
-	  Position		  [65, 310, 105, 340]
+	  Position		  [215, 585, 255, 615]
 	  ZOrder		  3760
 	  Bias			  "f"
 	  SaturateOnIntegerOverflow off
@@ -1354,7 +1392,7 @@ Library {
 	  Name			  "Bus\nCreator"
 	  SID			  "179"
 	  Ports			  [2, 1]
-	  Position		  [1205, 106, 1210, 144]
+	  Position		  [1355, 381, 1360, 419]
 	  ZOrder		  3740
 	  ShowName		  off
 	  Inputs		  "2"
@@ -1365,7 +1403,7 @@ Library {
 	  Name			  "Bus\nCreator1"
 	  SID			  "180"
 	  Ports			  [3, 1]
-	  Position		  [745, 421, 750, 489]
+	  Position		  [895, 696, 900, 764]
 	  ZOrder		  3741
 	  ShowName		  off
 	  Inputs		  "3"
@@ -1382,7 +1420,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "181"
 	  Ports			  [1, 3]
-	  Position		  [1020, -12, 1025, 92]
+	  Position		  [1170, 263, 1175, 367]
 	  ZOrder		  2627
 	  ShowName		  off
 	  OutputSignals		  "Vdq0_meas,Freq,kw"
@@ -1410,7 +1448,7 @@ Library {
 	  Name			  "Bus\nSelector1"
 	  SID			  "182"
 	  Ports			  [1, 5]
-	  Position		  [-50, 26, -45, 174]
+	  Position		  [100, 301, 105, 449]
 	  ZOrder		  2612
 	  ShowName		  off
 	  OutputSignals		  "PCmd,QCmd,GridBreaker,FreqCmd,VoltCmd"
@@ -1450,7 +1488,7 @@ Library {
 	  Name			  "Bus\nSelector2"
 	  SID			  "183"
 	  Ports			  [1, 2]
-	  Position		  [630, 205, 635, 245]
+	  Position		  [780, 480, 785, 520]
 	  ZOrder		  2616
 	  ShowName		  off
 	  OutputSignals		  "ModbusEnable,Enable"
@@ -1471,7 +1509,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "CapOffset"
 	  SID			  "184"
-	  Position		  [485, -135, 515, -105]
+	  Position		  [635, 140, 665, 170]
 	  ZOrder		  3730
 	  Value			  "14"
 	}
@@ -1480,9 +1518,9 @@ Library {
 	  Name			  "Compare\nTo Constant"
 	  SID			  "185"
 	  Ports			  [1, 1]
-	  Position		  [650, 440, 680, 470]
+	  Position		  [800, 715, 830, 745]
 	  ZOrder		  3743
-	  LibraryVersion	  "1.388"
+	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  relop			  "=="
@@ -1501,9 +1539,9 @@ Library {
 	  Name			  "Compare\nTo Constant1"
 	  SID			  "186"
 	  Ports			  [1, 1]
-	  Position		  [650, 510, 680, 540]
+	  Position		  [800, 785, 830, 815]
 	  ZOrder		  3744
-	  LibraryVersion	  "1.388"
+	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  relop			  "=="
@@ -1521,7 +1559,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant2"
 	  SID			  "187"
-	  Position		  [655, 135, 685, 165]
+	  Position		  [805, 410, 835, 440]
 	  ZOrder		  26
 	  ForegroundColor	  "magenta"
 	  Value			  "0"
@@ -1531,7 +1569,7 @@ Library {
 	  Name			  "Demux"
 	  SID			  "188"
 	  Ports			  [1, 2]
-	  Position		  [215, 81, 220, 119]
+	  Position		  [365, 356, 370, 394]
 	  ZOrder		  3748
 	  ShowName		  off
 	  Outputs		  "2"
@@ -1542,7 +1580,7 @@ Library {
 	  Name			  "Divide"
 	  SID			  "189"
 	  Ports			  [2, 1]
-	  Position		  [405, 332, 435, 363]
+	  Position		  [555, 607, 585, 638]
 	  ZOrder		  3737
 	  Inputs		  "*/"
 	  InputSameDT		  off
@@ -1555,9 +1593,9 @@ Library {
 	  Name			  "Droop"
 	  SID			  "190"
 	  Ports			  [5, 2]
-	  Position		  [445, -65, 575, 205]
+	  Position		  [595, 210, 725, 480]
 	  ZOrder		  3755
-	  LibraryVersion	  "1.5"
+	  LibraryVersion	  "1.7"
 	  SourceBlock		  "droop_lib/Droop"
 	  SourceType		  "SubSystem"
 	}
@@ -1565,7 +1603,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "FreqNominal"
 	  SID			  "191"
-	  Position		  [280, -10, 310, 20]
+	  Position		  [430, 265, 460, 295]
 	  ZOrder		  25
 	  Value			  "0"
 	}
@@ -1573,7 +1611,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  "192"
-	  Position		  [275, -55, 315, -25]
+	  Position		  [425, 220, 465, 250]
 	  ZOrder		  2591
 	  GotoTag		  "Freq"
 	}
@@ -1581,7 +1619,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "193"
-	  Position		  [270, 80, 310, 110]
+	  Position		  [420, 355, 460, 385]
 	  ZOrder		  2594
 	  GotoTag		  "Vmag"
 	}
@@ -1589,7 +1627,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From2"
 	  SID			  "194"
-	  Position		  [310, 330, 385, 350]
+	  Position		  [460, 605, 535, 625]
 	  ZOrder		  3735
 	  GotoTag		  "PMeaskW"
 	}
@@ -1597,7 +1635,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "195"
-	  Position		  [715, 335, 785, 365]
+	  Position		  [865, 610, 935, 640]
 	  ZOrder		  3759
 	  GotoTag		  "FreqSet"
 	}
@@ -1605,7 +1643,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "196"
-	  Position		  [640, 335, 670, 365]
+	  Position		  [790, 610, 820, 640]
 	  ZOrder		  3742
 	  Gain			  "100"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1622,7 +1660,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "197"
-	  Position		  [1065, 30, 1105, 50]
+	  Position		  [1215, 305, 1255, 325]
 	  ZOrder		  2626
 	  GotoTag		  "Freq"
 	}
@@ -1630,7 +1668,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "198"
-	  Position		  [1270, -10, 1310, 20]
+	  Position		  [1420, 265, 1460, 295]
 	  ZOrder		  2624
 	  GotoTag		  "Vmag"
 	}
@@ -1638,7 +1676,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  "199"
-	  Position		  [1065, 65, 1135, 85]
+	  Position		  [1215, 340, 1285, 360]
 	  ZOrder		  3734
 	  GotoTag		  "PMeaskW"
 	}
@@ -1646,7 +1684,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto3"
 	  SID			  "200"
-	  Position		  [150, 310, 220, 340]
+	  Position		  [300, 585, 370, 615]
 	  ZOrder		  3758
 	  GotoTag		  "FreqSet"
 	}
@@ -1655,12 +1693,12 @@ Library {
 	  Name			  "Ground"
 	  SID			  "201"
 	  Ports			  [0, 0, 0, 0, 0, 1]
-	  Position		  [989, 485, 1011, 510]
+	  Position		  [1139, 760, 1161, 785]
 	  ZOrder		  2630
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  ShowName		  off
-	  LibraryVersion	  "1.2729"
+	  LibraryVersion	  "1.2191"
 	  SourceBlock		  "powerlib/Elements/Ground"
 	  SourceType		  "Ground"
 	  LConnTagsString	  "a"
@@ -1670,9 +1708,9 @@ Library {
 	  Name			  "ISource"
 	  SID			  "202"
 	  Ports			  [5, 1, 0, 0, 0, 0, 3]
-	  Position		  [805, 79, 930, 381]
+	  Position		  [955, 354, 1080, 656]
 	  ZOrder		  2640
-	  LibraryVersion	  "1.9"
+	  LibraryVersion	  "1.11"
 	  SourceBlock		  "IsourcePower_lib/ISource"
 	  SourceType		  "SubSystem"
 	  Port {
@@ -1687,7 +1725,7 @@ Library {
 	  Name			  "Logical\nOperator"
 	  SID			  "203"
 	  Ports			  [2, 1]
-	  Position		  [675, 212, 705, 243]
+	  Position		  [825, 487, 855, 518]
 	  ZOrder		  3731
 	  AllPortsSameDT	  off
 	  OutDataTypeStr	  "boolean"
@@ -1697,7 +1735,7 @@ Library {
 	  Name			  "Logical\nOperator1"
 	  SID			  "204"
 	  Ports			  [1, 1]
-	  Position		  [125, 204, 155, 236]
+	  Position		  [275, 479, 305, 511]
 	  ZOrder		  3757
 	  Operator		  "NOT"
 	  AllPortsSameDT	  off
@@ -1708,7 +1746,7 @@ Library {
 	  Name			  "Mux"
 	  SID			  "205"
 	  Ports			  [3, 1]
-	  Position		  [760, -12, 765, 92]
+	  Position		  [910, 263, 915, 367]
 	  ZOrder		  24
 	  ShowName		  off
 	  Inputs		  "3"
@@ -1719,7 +1757,7 @@ Library {
 	  Name			  "Mux1"
 	  SID			  "206"
 	  Ports			  [2, 1]
-	  Position		  [80, 26, 85, 84]
+	  Position		  [230, 301, 235, 359]
 	  ZOrder		  3747
 	  ShowName		  off
 	  Inputs		  "2"
@@ -1730,7 +1768,7 @@ Library {
 	  Name			  "Mux2"
 	  SID			  "207"
 	  Ports			  [2, 1]
-	  Position		  [80, 116, 85, 174]
+	  Position		  [230, 391, 235, 449]
 	  ZOrder		  3749
 	  ShowName		  off
 	  Inputs		  "2"
@@ -1741,10 +1779,15 @@ Library {
 	  Name			  "NormalizeFreq2Zero"
 	  SID			  "208"
 	  Ports			  [1, 1]
-	  Position		  [350, -53, 400, -27]
+	  Position		  [500, 222, 550, 248]
 	  ZOrder		  -52
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
 	  RequestExecContextInheritance	off
-	  Variant		  off
+	  MaskHideContents	  off
 	  System {
 	    Name		    "NormalizeFreq2Zero"
 	    Location		    [-8, -8, 1374, 736]
@@ -1815,22 +1858,21 @@ Library {
 	      DstPort		      1
 	    }
 	  }
-	  RTWSystemCode		  "Auto"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  MaskHideContents	  off
 	}
 	Block {
 	  BlockType		  SubSystem
 	  Name			  "NormalizeVolts2One"
 	  SID			  "213"
 	  Ports			  [1, 1]
-	  Position		  [375, 57, 425, 83]
+	  Position		  [525, 332, 575, 358]
 	  ZOrder		  2636
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
 	  RequestExecContextInheritance	off
-	  Variant		  off
+	  MaskHideContents	  off
 	  System {
 	    Name		    "NormalizeVolts2One"
 	    Location		    [0, 4, 1936, 1060]
@@ -1886,25 +1928,19 @@ Library {
 	      DstPort		      1
 	    }
 	  }
-	  RTWSystemCode		  "Auto"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  MaskHideContents	  off
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  "PUVoltage"
 	  SID			  "217"
-	  Position		  [270, 170, 295, 200]
+	  Position		  [420, 445, 445, 475]
 	  ZOrder		  23
 	}
 	Block {
 	  BlockType		  Gain
 	  Name			  "QGain"
 	  SID			  "218"
-	  Position		  [555, -135, 585, -105]
+	  Position		  [705, 140, 735, 170]
 	  ZOrder		  3729
 	  Gain			  "-sqrt(2)*dPer/(Pgrid/1e3)"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1915,7 +1951,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "QGain1"
 	  SID			  "219"
-	  Position		  [-25, 25, 5, 55]
+	  Position		  [125, 300, 155, 330]
 	  ZOrder		  3753
 	  Gain			  "-sqrt(2)*dPer/(Pgrid/1e3)"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1926,7 +1962,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "QGain2"
 	  SID			  "220"
-	  Position		  [-5, 55, 25, 85]
+	  Position		  [145, 330, 175, 360]
 	  ZOrder		  3754
 	  Gain			  "sqrt(2)*dPer/(Pgrid/1e3)"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1937,7 +1973,7 @@ Library {
 	  BlockType		  RateTransition
 	  Name			  "Rate Transition"
 	  SID			  "221"
-	  Position		  [1140, -16, 1180, 26]
+	  Position		  [1290, 259, 1330, 301]
 	  ZOrder		  2631
 	  OutPortSampleTime	  "Tc"
 	}
@@ -1946,25 +1982,12 @@ Library {
 	  Name			  "Scope"
 	  SID			  "222"
 	  Ports			  [1]
-	  Position		  [465, 459, 495, 491]
+	  Position		  [615, 734, 645, 766]
 	  ZOrder		  3745
-	  NumInputPorts		  "1"
+	  Floating		  off
+	  Location		  [680, 390, 1240, 810]
 	  Open			  off
-	  TimeRange		  auto
-	  TickLabels		  OneTimeTick
-	  ShowLegends		  off
-	  LimitDataPoints	  off
-	  MaxDataPoints		  5000
-	  SaveToWorkspace	  off
-	  SaveName		  ScopeData1
-	  YMin			  957.41961
-	  YMax			  1043.92796
-	  SampleInput		  off
-	  SampleTime		  -1
-	  ZoomMode		  on
-	  Grid			  on
-	  DataFormat		  StructureWithTime
-	  Decimation		  1
+	  NumInputPorts		  "1"
 	  List {
 	    ListType		    AxesTitles
 	    axes1		    "%<SignalLabel>"
@@ -1979,14 +2002,19 @@ Library {
 	    LineWidths		    "[0.5 0.5 0.5 0.5 0.5 0.5]"
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
-	  Location		  [680 390 1240 810]
+	  ShowLegends		  off
+	  YMin			  "957.41961"
+	  YMax			  "1043.92796"
+	  SaveName		  "ScopeData1"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
 	}
 	Block {
 	  BlockType		  Selector
 	  Name			  "Selector"
 	  SID			  "223"
 	  Ports			  [1, 1]
-	  Position		  [1205, -14, 1245, 24]
+	  Position		  [1355, 261, 1395, 299]
 	  ZOrder		  2625
 	  InputPortWidth	  "3"
 	  IndexOptions		  "Index vector (dialog)"
@@ -1998,7 +2026,7 @@ Library {
 	  Name			  "Sum"
 	  SID			  "224"
 	  Ports			  [2, 1]
-	  Position		  [320, 140, 340, 160]
+	  Position		  [470, 415, 490, 435]
 	  ZOrder		  2617
 	  ShowName		  off
 	  IconShape		  "round"
@@ -2012,7 +2040,7 @@ Library {
 	  Name			  "Sum1"
 	  SID			  "225"
 	  Ports			  [2, 1]
-	  Position		  [350, 20, 370, 40]
+	  Position		  [500, 295, 520, 315]
 	  ZOrder		  2618
 	  ShowName		  off
 	  IconShape		  "round"
@@ -2025,7 +2053,7 @@ Library {
 	  Name			  "Sum2"
 	  SID			  "226"
 	  Ports			  [2, 1]
-	  Position		  [695, 30, 715, 50]
+	  Position		  [845, 305, 865, 325]
 	  ZOrder		  3761
 	  ShowName		  off
 	  IconShape		  "round"
@@ -2038,7 +2066,7 @@ Library {
 	  BlockType		  Switch
 	  Name			  "Switch"
 	  SID			  "227"
-	  Position		  [150, 80, 200, 120]
+	  Position		  [300, 355, 350, 395]
 	  ZOrder		  3746
 	  Criteria		  "u2 > Threshold"
 	  InputSameDT		  off
@@ -2049,13 +2077,13 @@ Library {
 	  Name			  "Three-Phase\nSeries RLC Branch"
 	  SID			  "228"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [977, 380, 1023, 450]
+	  Position		  [1127, 655, 1173, 725]
 	  ZOrder		  2632
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2729"
+	  LibraryVersion	  "1.2191"
 	  SourceBlock		  "powerlib/Elements/Three-Phase\nSeries RLC Branch"
 	  SourceType		  "Three-Phase Series RLC Branch"
 	  LConnTagsString	  "A|B|C"
@@ -2071,13 +2099,13 @@ Library {
 	  Name			  "Three-Phase\nSeries RLC Branch1"
 	  SID			  "229"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [1062, 380, 1108, 450]
+	  Position		  [1212, 655, 1258, 725]
 	  ZOrder		  2633
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.2729"
+	  LibraryVersion	  "1.2191"
 	  SourceBlock		  "powerlib/Elements/Three-Phase\nSeries RLC Branch"
 	  SourceType		  "Three-Phase Series RLC Branch"
 	  LConnTagsString	  "A|B|C"
@@ -2092,7 +2120,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "asdf"
 	  SID			  "230"
-	  Position		  [610, -135, 640, -105]
+	  Position		  [760, 140, 790, 170]
 	  ZOrder		  3762
 	  Gain			  "Igrid"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -2103,7 +2131,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A"
 	  SID			  "231"
-	  Position		  [1125, 175, 1140, 205]
+	  Position		  [1275, 450, 1290, 480]
 	  ZOrder		  2621
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2114,7 +2142,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B"
 	  SID			  "232"
-	  Position		  [1125, 250, 1140, 280]
+	  Position		  [1275, 525, 1290, 555]
 	  ZOrder		  2622
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2125,7 +2153,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C"
 	  SID			  "233"
-	  Position		  [1125, 325, 1140, 355]
+	  Position		  [1275, 600, 1290, 630]
 	  ZOrder		  2623
 	  BlockMirror		  on
 	  Port			  "3"
@@ -2135,7 +2163,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "meas"
 	  SID			  "234"
-	  Position		  [1255, 118, 1285, 132]
+	  Position		  [1405, 393, 1435, 407]
 	  ZOrder		  2620
 	  IconDisplay		  "Port number"
 	}
@@ -2473,7 +2501,7 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    Points		    [1015, 467; 0, 1; -15, 0]
+	    Points		    [1165, 742; 0, 1; -15, 0]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
 	      SrcBlock		      "Three-Phase\nSeries RLC Branch"
@@ -2482,7 +2510,7 @@ Library {
 	    }
 	    Branch {
 	      ConnectType	      "SRC_DEST"
-	      Points		      [1070, 466; 0, 1; -55, 0]
+	      Points		      [1220, 741; 0, 1; -55, 0]
 	      Branch {
 		ConnectType		"SRC_DEST"
 		SrcBlock		"Three-Phase\nSeries RLC Branch1"
@@ -2491,7 +2519,7 @@ Library {
 	      }
 	      Branch {
 		ConnectType		"SRC_DEST"
-		Points			[1085, 465; 0, 1; -15, 0]
+		Points			[1235, 740; 0, 1; -15, 0]
 		Branch {
 		  ConnectType		  "SRC_DEST"
 		  SrcBlock		  "Three-Phase\nSeries RLC Branch1"
@@ -2698,32 +2726,49 @@ Library {
 	Annotation {
 	  SID			  "235"
 	  Name			  "This bias should cancel \nthe capacitive reactance."
-	  Position		  [493, -178]
+	  Position		  [643, 97]
 	  HorizontalAlignment	  "left"
 	  VerticalAlignment	  "top"
 	  ZOrder		  -1
 	}
+	Annotation {
+	  SID			  "237"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
+	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
+	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
+	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
+	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
+	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
+	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
+	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
+	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
+	  "FTWARE.\n%\n%\n%%"
+	  Position		  [51, 17]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -2
+	  FontWeight		  "bold"
+	}
       }
-      RTWSystemCode	      "Auto"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      FunctionWithSeparateData off
-      Opaque		      off
-      MaskHideContents	      off
     }
     Block {
       BlockType		      SubSystem
       Name		      "BESS_wComms"
       SID		      "61"
       Ports		      [0, 1, 0, 0, 0, 0, 3]
-      Position		      [305, 301, 400, 404]
+      Position		      [275, 316, 370, 419]
       ZOrder		      3736
       BackgroundColor	      "lightBlue"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
       RequestExecContextInheritance off
-      Variant		      off
+      MaskHideContents	      off
       System {
 	Name			"BESS_wComms"
-	Location		[1912, -8, 3848, 1208]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2743,7 +2788,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -2823,11 +2868,16 @@ Library {
 	  Ports			  [1, 1]
 	  Position		  [230, 394, 330, 436]
 	  ZOrder		  3740
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
 	  RequestExecContextInheritance	off
-	  Variant		  off
+	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus"
-	    Location		    [1912, -8, 3848, 1208]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2979,12 +3029,6 @@ Library {
 	      ZOrder		      -1
 	    }
 	  }
-	  RTWSystemCode		  "Auto"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  MaskHideContents	  off
 	}
 	Block {
 	  BlockType		  Mux
@@ -3008,24 +3052,29 @@ Library {
 	  ZOrder		  3746
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
 	  RequestExecContextInheritance	off
-	  Variant		  off
+	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    23
+	    $ObjectID		    21
 	    $ClassName		    "Simulink.Mask"
 	    Array {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      2
 	      Object {
-		$ObjectID		24
+		$ObjectID		22
 		Type			"edit"
 		Name			"SampleTime"
 		Prompt			"Sample Time"
 		Value			"Ts"
 	      }
 	      Object {
-		$ObjectID		25
+		$ObjectID		23
 		Type			"edit"
 		Name			"NumSamples"
 		Prompt			"Number of Samples"
@@ -3178,12 +3227,6 @@ Library {
 	      ZOrder		      -1
 	    }
 	  }
-	  RTWSystemCode		  "Auto"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  MaskHideContents	  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -3194,7 +3237,7 @@ Library {
 	  ZOrder		  3747
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS_wComms/One Shot Pulse"
 	  SourceType		  ""
 	  SampleTime		  "Ts"
@@ -3209,7 +3252,7 @@ Library {
 	  ZOrder		  3748
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS_wComms/One Shot Pulse"
 	  SourceType		  ""
 	  SampleTime		  "Ts"
@@ -3224,7 +3267,7 @@ Library {
 	  ZOrder		  3749
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS_wComms/One Shot Pulse"
 	  SourceType		  ""
 	  SampleTime		  "Ts"
@@ -3239,7 +3282,7 @@ Library {
 	  ZOrder		  3750
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS_wComms/One Shot Pulse"
 	  SourceType		  ""
 	  SampleTime		  "Ts"
@@ -3254,7 +3297,7 @@ Library {
 	  ZOrder		  3751
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.25"
+	  LibraryVersion	  "1.26"
 	  SourceBlock		  "BESS_lib/BESS_wComms/One Shot Pulse"
 	  SourceType		  ""
 	  SampleTime		  "Ts"
@@ -3450,13 +3493,43 @@ Library {
 	  DstBlock		  "Bit Concat2"
 	  DstPort		  1
 	}
+	Annotation {
+	  SID			  "238"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
+	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
+	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
+	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
+	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
+	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
+	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
+	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
+	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
+	  "FTWARE.\n%\n%\n%%"
+	  Position		  [591, 107]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -7
+	  FontWeight		  "bold"
+	}
       }
-      RTWSystemCode	      "Auto"
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      FunctionWithSeparateData off
-      Opaque		      off
-      MaskHideContents	      off
+    }
+    Annotation {
+      SID		      "236"
+      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of"
+      " charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\""
+      "), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modify,"
+      " \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to wh"
+      "om the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright n"
+      "otice and this permission notice shall be included in \n% all copies or substantial portions of the Software.\n%"
+      " \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT"
+      " LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO E"
+      "VENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN "
+      "AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE"
+      " USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
+      Position		      [16, 102]
+      HorizontalAlignment     "left"
+      ZOrder		      -1
+      FontWeight	      "bold"
     }
   }
 }
