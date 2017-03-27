@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1205.0, 567.0]
+	Extents			[1207.0, 587.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Mar 17 15:16:39 2017"
-  RTWModifiedTimeStamp	  411664595
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  LastModifiedDate	  "Wed Mar 22 12:29:50 2017"
+  RTWModifiedTimeStamp	  412086587
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -4692,7 +4692,7 @@ Library {
       Ports		      [7, 2, 0, 0, 0, 0, 3]
       Position		      [610, 191, 780, 489]
       ZOrder		      3763
-      LibraryVersion	      "*1.14"
+      LibraryVersion	      "*1.15"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -4702,7 +4702,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Inverter"
-	Location		[0, 0, 1918, 1032]
+	Location		[0, 0, 1884, 1032]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4795,7 +4795,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "CVS"
-	    Location		    [0, 0, 1918, 1032]
+	    Location		    [0, 0, 1884, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -4807,7 +4807,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "175"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "cb_meas"
@@ -5540,17 +5540,6 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Goto
-	      Name		      "Goto13"
-	      SID		      "167"
-	      Position		      [2275, 539, 2345, 551]
-	      ZOrder		      -25
-	      BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
-	      ShowName		      off
-	      GotoTag		      "PQ_WMG_mean"
-	      TagVisibility	      "global"
-	    }
-	    Block {
-	      BlockType		      Goto
 	      Name		      "Goto2"
 	      SID		      "168"
 	      Position		      [1335, 552, 1415, 578]
@@ -5580,17 +5569,6 @@ Library {
 	      Position		      [1285, 692, 1365, 718]
 	      ZOrder		      3818
 	      GotoTag		      "V_cmd"
-	    }
-	    Block {
-	      BlockType		      Goto
-	      Name		      "Goto7"
-	      SID		      "173"
-	      Position		      [2455, 194, 2525, 206]
-	      ZOrder		      17
-	      BackgroundColor	      "[0.752941, 0.752941, 0.752941]"
-	      ShowName		      off
-	      GotoTag		      "E_abc"
-	      TagVisibility	      "global"
 	    }
 	    Block {
 	      BlockType		      Reference
@@ -6665,7 +6643,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"246"
+		SIDHighWatermark	"306"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -7097,7 +7075,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "36"
+		    SIDHighWatermark	    "43"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
@@ -8281,7 +8259,7 @@ Library {
 	      Position		      [2650, 570, 2690, 630]
 	      ZOrder		      3837
 	      ShowName		      off
-	      LibraryVersion	      "1.14"
+	      LibraryVersion	      "1.15"
 	      SourceBlock	      "IsourcePower_lib/ISource/Power"
 	      SourceType	      "SubSystem"
 	    }
@@ -9879,16 +9857,8 @@ Library {
 	    Line {
 	      SrcBlock		      "Discrete \nMean value"
 	      SrcPort		      1
-	      Points		      [10, 0]
-	      Branch {
-		Points			[0, 45]
-		DstBlock		"Goto13"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"Mux1"
-		DstPort			2
-	      }
+	      DstBlock		      "Mux1"
+	      DstPort		      2
 	    }
 	    Line {
 	      SrcBlock		      "From24"
@@ -9937,16 +9907,9 @@ Library {
 	    Line {
 	      SrcBlock		      "dq0_to_abc\nTransformation"
 	      SrcPort		      1
-	      Points		      [25, 0; 0, 10; 200, 0]
-	      Branch {
-		Points			[0, -30]
-		DstBlock		"Goto7"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"uabc"
-		DstPort			1
-	      }
+	      Points		      [25, 0; 0, 10]
+	      DstBlock		      "uabc"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Mux3"
