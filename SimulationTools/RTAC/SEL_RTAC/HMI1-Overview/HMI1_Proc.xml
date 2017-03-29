@@ -9,7 +9,7 @@
     <Content>
       <Interface><![CDATA[PROGRAM HMI1_Proc
 VAR
-	aCB   : ARRAY [1..47] OF CB := 
+	aCB   : ARRAY [1..60] OF CB := 
 			   [
 (ID:=1,CBID:=301,Flow:=ADR(HMI1.Flow_301),Status:=ADR(HMI1.CB301_Closed),IOCCmd:=ADR(HMI1.CB301_Cmd),MBCmd:=ADR(CB301_MODBUS.CMD),MBRst:=ADR(CB301_MODBUS.RST)),
 (ID:=2,CBID:=302,Flow:=ADR(HMI1.Flow_302),Status:=ADR(HMI1.CB302_Closed),IOCCmd:=ADR(HMI1.CB302_Cmd),MBCmd:=ADR(CB302_MODBUS.CMD),MBRst:=ADR(CB302_MODBUS.RST)),
@@ -57,22 +57,42 @@ VAR
 (ID:=44,CBID:=200,Flow:=ADR(HMI1.Flow_200),Status:=ADR(HMI1.CB200_Closed)),
 (ID:=45,CBID:=100,Flow:=ADR(HMI1.Flow_100),Status:=ADR(HMI1.CB100_Closed)),
 (ID:=46,CBID:=351,Flow:=ADR(HMI1.Flow_351),Status:=ADR(HMI1.CB351_Closed)),
-(ID:=47,CBID:=151,Flow:=ADR(HMI1.Flow_151),Status:=ADR(HMI1.CB151_Closed))
-
+(ID:=47,CBID:=151,Flow:=ADR(HMI1.Flow_151),Status:=ADR(HMI1.CB151_Closed)),
+(ID:=48,CBID:=401,Flow:=ADR(HMI1.Flow_401),Status:=ADR(HMI1.CB401_Closed)),
+(ID:=49,CBID:=402,Flow:=ADR(HMI1.Flow_402),Status:=ADR(HMI1.CB402_Closed)),
+(ID:=50,CBID:=403,Flow:=ADR(HMI1.Flow_403),Status:=ADR(HMI1.CB403_Closed)),
+(ID:=51,CBID:=404,Flow:=ADR(HMI1.Flow_404),Status:=ADR(HMI1.CB404_Closed)),
+(ID:=52,CBID:=405,Flow:=ADR(HMI1.Flow_405),Status:=ADR(HMI1.CB405_Closed)),
+(ID:=53,CBID:=406,Flow:=ADR(HMI1.Flow_406),Status:=ADR(HMI1.CB406_Closed)),
+(ID:=54,CBID:=407,Flow:=ADR(HMI1.Flow_407),Status:=ADR(HMI1.CB407_Closed)),
+(ID:=55,CBID:=408,Flow:=ADR(HMI1.Flow_408),Status:=ADR(HMI1.CB408_Closed)),
+(ID:=56,CBID:=409,Flow:=ADR(HMI1.Flow_409),Status:=ADR(HMI1.CB409_Closed)),
+(ID:=57,CBID:=410,Flow:=ADR(HMI1.Flow_410),Status:=ADR(HMI1.CB410_Closed)),
+(ID:=58,CBID:=411,Flow:=ADR(HMI1.Flow_411),Status:=ADR(HMI1.CB411_Closed)),
+(ID:=59,CBID:=412,Flow:=ADR(HMI1.Flow_412),Status:=ADR(HMI1.CB412_Closed)),
+(ID:=60,CBID:=413,Flow:=ADR(HMI1.Flow_413),Status:=ADR(HMI1.CB413_Closed))
 ];
 	kWMax : REAL := 30000/100;
 	ii : UINT;
 	CB_cmd : UINT;
 	CB_rst : UINT;
-	MBUS_ENA : BOOL := TRUE;
+	MBUS_ENA : BOOL := FALSE;
 	
 END_VAR
 ]]></Interface>
-      <Implementation><![CDATA[FOR ii:=1 TO 47 BY 1 DO
-	aCB[ii].Flow^.instMag := INT_TO_REAL(UDPOpalRead.i16_Raw[UDPOpalRead.REAL_ID + aCB[ii].ID - 1])/kWMax;
-	aCB[ii].Flow^.q.validity := UDPOpalRead.bWdgDataValid;
-	aCB[ii].Status^.stVal := INT_TO_BOOL(UDPOpalRead.i16_Raw[UDPOpalRead.STATUS_ID + aCB[ii].ID - 1]);
-	aCB[ii].Status^.q.validity := UDPOpalRead.bWdgDataValid;
+      <Implementation><![CDATA[FOR ii:=1 TO 60 BY 1 DO
+	IF ii<48 THEN
+		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.REAL_ID + aCB[ii].ID - 1])/kWMax;
+		aCB[ii].Flow^.q.validity := UDPBansheeRead.bWdgDataValid;
+		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPBansheeRead.i16_Raw[UDPBansheeRead.STATUS_ID + aCB[ii].ID - 1]);
+		aCB[ii].Status^.q.validity := UDPBansheeRead.bWdgDataValid;
+	ELSE
+		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPPHILRead.i16_Raw[UDPPHILRead.REAL_ID + aCB[ii].ID - 1])/kWMax;
+		aCB[ii].Flow^.q.validity := UDPPHILRead.bWdgDataValid;
+		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPPHILRead.i16_Raw[UDPPHILRead.STATUS_ID + aCB[ii].ID - 1]);
+		aCB[ii].Status^.q.validity := UDPPHILRead.bWdgDataValid;
+	END_IF
+	
 	IF aCB[ii].IOCCmd <> 0 THEN
 		IF aCB[ii].IOCCmd^.operPulse.ctlVal = TRUE THEN
 			IF aCB[ii].Status^.stVal = TRUE THEN

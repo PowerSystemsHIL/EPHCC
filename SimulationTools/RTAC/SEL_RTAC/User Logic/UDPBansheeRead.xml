@@ -4,10 +4,10 @@
       <Schema>20</Schema>
       <DeviceMOT>3530</DeviceMOT>
     </ExportSource>
-    <Name>UDPOpalRead</Name>
+    <Name>UDPBansheeRead</Name>
     <POUKind>Program</POUKind>
     <Content>
-      <Interface><![CDATA[PROGRAM UDPOpalRead
+      <Interface><![CDATA[PROGRAM UDPBansheeRead
 VAR
 // Configuration Information
 LocalIPAddress : STRING(15) := '0.0.0.0'; // Uses any available interface.
@@ -34,9 +34,10 @@ pTempSwap : POINTER TO ARRAY[1..4] OF BYTE;
 uWdg : UINT := 0;
 bWdgDataValid : SEL_IEC_TYPES.validity_t := invalid;
 
+BRK_CNT : UINT := 47;
 REAL_ID : UINT := 38;
-REACT_ID : UINT := 84;
-STATUS_ID : UINT := 226;
+REACT_ID : UINT := 85; //REAL_ID + BRK_CNT;
+STATUS_ID : UINT := 226; //REAL_ID + 4*BRK_CNT;
 END_VAR]]></Interface>
       <Implementation><![CDATA[IF NOT SocketInitialized THEN
 fun_StringToInaddr(LocalIPAddress, ipAddr => LocalIP);
