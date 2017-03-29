@@ -82,14 +82,14 @@ END_VAR
 ]]></Interface>
       <Implementation><![CDATA[FOR ii:=1 TO 60 BY 1 DO
 	IF ii<48 THEN
-		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.REAL_ID + aCB[ii].ID - 1])/kWMax;
+		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.REAL_ID + ii - 1])/kWMax;
 		aCB[ii].Flow^.q.validity := UDPBansheeRead.bWdgDataValid;
-		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPBansheeRead.i16_Raw[UDPBansheeRead.STATUS_ID + aCB[ii].ID - 1]);
+		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPBansheeRead.i16_Raw[UDPBansheeRead.STATUS_ID + ii - 1]);
 		aCB[ii].Status^.q.validity := UDPBansheeRead.bWdgDataValid;
 	ELSE
-		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPPHILRead.i16_Raw[UDPPHILRead.REAL_ID + aCB[ii].ID - 1])/kWMax;
+		aCB[ii].Flow^.instMag := INT_TO_REAL(UDPPHILRead.i16_Raw[UDPPHILRead.REAL_ID + ii - 48])/kWMax;
 		aCB[ii].Flow^.q.validity := UDPPHILRead.bWdgDataValid;
-		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPPHILRead.i16_Raw[UDPPHILRead.STATUS_ID + aCB[ii].ID - 1]);
+		aCB[ii].Status^.stVal := INT_TO_BOOL(UDPPHILRead.i16_Raw[UDPPHILRead.STATUS_ID + ii - 48]);
 		aCB[ii].Status^.q.validity := UDPPHILRead.bWdgDataValid;
 	END_IF
 	
