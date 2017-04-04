@@ -1560,8 +1560,7 @@ static int init_udp (void *p_arg)
 		OpalPrint("%s[%d] -> UDP broadcast communication successfully initialized\n", PROGNAME, p_cfg->ctrl_id);
 		p_cfg->servaddr.sin_addr.s_addr = htonl(INADDR_BROADCAST);
 	}
-
-
+	
 	/* Initialize control and status variables. */
 	p_cfg->rx_status   = 0;
 	p_cfg->tx_status   = 0;
@@ -1647,7 +1646,7 @@ static int receive_packet (void *p_arg)
 			if (FD_ISSET(p_cfg->sock_id_data, &read_fd))
 			{
 			  memset((char *)p_cfg->p_buf_rx, 0, p_cfg->nbr_byte_from_remote_endpoint);
-			  rx_len = recvfrom(p_cfg->sock_id_data, (char *)p_cfg->p_buf_rx, p_cfg->nbr_byte_from_remote_endpoint, 0, (struct sockaddr *)&p_cfg->hostaddr, &p_cfg->hostaddr_size);
+			  rx_len = recvfrom(p_cfg->sock_id_data, (char *)p_cfg->p_buf_rx, p_cfg->nbr_byte_from_remote_endpoint+4, 0, (struct sockaddr *)&p_cfg->hostaddr, &p_cfg->hostaddr_size);
 			}
 		}
 
@@ -1660,9 +1659,11 @@ static int receive_packet (void *p_arg)
 			return -1;
 		}
 	}
-
+	
+	
 	if (rx_len == p_cfg->nbr_byte_from_remote_endpoint)
 	{
+		
 	    p_cfg->rx_status = 1;
 
 		/* Acquire transmission lock. */
