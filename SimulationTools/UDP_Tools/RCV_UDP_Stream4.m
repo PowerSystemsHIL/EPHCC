@@ -8,7 +8,7 @@ BANSHEEUDP = PHIL_Frame();
 %    u8data((i+1)/2) = uint8(hex2dec(datastring(i:i+1)));
 % end
 
-udp=pnet('udpsocket',7200)
+udp=pnet('udpsocket',7201)
 len=pnet(udp,'readpacket');
 while(len>0)
     u8data=pnet(udp,'read',2000,'uint8');
@@ -19,7 +19,7 @@ try
     i = 1;
     T0 = now;
     timestamp = 0;
-    while timestamp < 120000
+    while timestamp < 180000
         len=pnet(udp,'readpacket');
         if len>0
             u8data=pnet(udp,'read',2000,'uint8');
@@ -34,7 +34,7 @@ try
                     eval([filenames{jj} '= newrow;']);
                 end
             end
-            disp([num2str(i) ':' num2str(datastruct.powerreal4)]);
+            disp([num2str(timestamp) ':' num2str(datastruct.powerreal4) '||' num2str(datastruct.voltage4)]);
         end
         pause(0.01);
         i = i+1;
@@ -47,7 +47,7 @@ catch
     pnet(udp, 'close');
 end;
 %% Store data to .dat files
-save header.mat header;
+save header4.mat header;
 for jj=1:length(filenames)
     if exist(filenames{jj},'var')
         dlmwrite([filenames{jj} '.dat'],eval(filenames{jj}),'newline','pc');

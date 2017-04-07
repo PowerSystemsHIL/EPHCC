@@ -1,6 +1,6 @@
 function [dataout header] = UDP_decode(FrameStruct, u8data)
 
-u32data = typecast(u8data, 'uint32');
+i32data = typecast(u8data, 'int32');
             
 header = [];
 data = [];
@@ -15,10 +15,10 @@ for i=1:length(FrameStruct)
     
     % header extraction
     if isfield(FrameStruct{i}, 'Header')
-        eval(['header.' FrameStruct{i}.Header ' = u32data(ptr:ptr-1+' num2str(FrameStruct{i}.Size) ');']);
+        eval(['header.' FrameStruct{i}.Header ' = i32data(ptr:ptr-1+' num2str(FrameStruct{i}.Size) ');']);
         if strcmp(FrameStruct{i}.Header,'Misc')
             for i=1:header.Misc(1)
-                misccfg = u32data(ptr+1:ptr+2);
+                misccfg = i32data(ptr+1:ptr+2);
                 eval(['header.Misc_' num2str(i) ' = misccfg;']);
                 ptr = ptr+2;
             end
@@ -30,7 +30,7 @@ for i=1:length(FrameStruct)
     % extract data that shall be stored in files and put them in a struct
     % with name of the file as fieldname
     if isfield(FrameStruct{i}, 'File')
-        eval(['dataout.' FrameStruct{i}.Name ' = u32data(ptr:ptr-1+' num2str(ItemSize) ');']);
+        eval(['dataout.' FrameStruct{i}.Name ' = i32data(ptr:ptr-1+' num2str(ItemSize) ');']);
         
         
     end
