@@ -133,8 +133,26 @@ if exist('OpenLinks', 'var')  % only run when in opal - keep link resolved when 
                 disp(['###link already open: ' LinkPath]);
             end;
         end;
+    elseif (strncmp(gcb, 'UrbanCHIL', length('UrbanCHIL')))
+        LinkPath = { 'UrbanCHIL/SS_F1_RELAY_HOUSING' ... 
+            'UrbanCHIL/SS_F2_RELAY_HOUSING' ...
+            'UrbanCHIL/SS_F3_RELAY_HOUSING' ...
+            'UrbanCHIL/SS_Feeder1' ...
+            'UrbanCHIL/SS_Feeder2' ...
+            'UrbanCHIL/SS_Feeder3' ...
+            'UrbanCHIL/SM_UtilityService'};
+        for ii = 1:length(LinkPath)
+            if (length(find_system(LinkPath{ii}, 'SearchDepth', 0)) == 1)
+                if strcmp(get_param(LinkPath{ii}, 'LinkStatus'), 'inactive') == 0
+                    disp(['###openning link: ' LinkPath{ii}]);
+                    set_param(LinkPath{ii}, 'LinkStatus', 'inactive');
+                else
+                    disp(['###link already open: ' LinkPath{ii}]);
+                end;
+            end;
+        end;
     else
-        disp('###skipping openning links');
+        disp(['###skipping openning links for model ' gcb]);
     end;
 else
     disp('###skipping openning links - not an Rtlab environment');
