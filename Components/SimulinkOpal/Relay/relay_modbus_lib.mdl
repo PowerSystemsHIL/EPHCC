@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [831.0, 0.0, 960.0, 1040.0]
+      Location		      [480.0, 0.0, 960.0, 984.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[717.0, 874.0]
-	ZoomFactor		[2.39]
-	Offset			[0.0, 24.192468619246881]
+	Extents			[717.0, 818.0]
+	ZoomFactor		[1.3443902439024389]
+	Offset			[175.58635703918719, -222.05442670537013]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 04 14:40:38 2017"
-  RTWModifiedTimeStamp	  413217634
-  ModelVersionFormat	  "1.%<AutoIncrement:521>"
+  LastModifiedDate	  "Tue Apr 11 09:05:35 2017"
+  RTWModifiedTimeStamp	  413802328
+  ModelVersionFormat	  "1.%<AutoIncrement:524>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -709,6 +709,9 @@ Library {
       OutputAsBus	      off
     }
     Block {
+      BlockType		      BusToVector
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -886,6 +889,19 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      SignalSpecification
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Dimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+    }
+    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -931,7 +947,7 @@ Library {
   }
   System {
     Name		    "relay_modbus_lib"
-    Location		    [831, 0, 1791, 1040]
+    Location		    [480, 0, 1440, 984]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -943,18 +959,19 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "239"
+    ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82728"
+    SIDHighWatermark	    "82738"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      2431
+      ZOrder		      2653
+      ForegroundColor	      "red"
       BackgroundColor	      "yellow"
-      LibraryVersion	      "1.520"
+      LibraryVersion	      "*1.523"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1002,14 +1019,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[F4(1,:)]"
+	    Value		    "[F1(14,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[0, 0, 1872, 1032]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1021,7 +1038,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"175"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -1226,6 +1243,7 @@ Library {
 	  Position		  [1080, 1415, 1130, 1435]
 	  ZOrder		  -5
 	  ShowName		  off
+	  OutDataTypeStr	  "double"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
@@ -1246,6 +1264,7 @@ Library {
 	  Position		  [1145, 1230, 1195, 1250]
 	  ZOrder		  -5
 	  ShowName		  off
+	  OutDataTypeStr	  "double"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
@@ -4320,7 +4339,7 @@ Library {
 	  }
 	  System {
 	    Name		    "pf bitwise"
-	    Location		    [0, 0, 1918, 1032]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -6020,6 +6039,161 @@ Library {
 	  Position		  [3516, 161]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -9
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "ModbusMockup"
+      SID		      "82729"
+      Ports		      [1, 1]
+      Position		      [270, 342, 365, 378]
+      ZOrder		      3888
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"ModbusMockup"
+	Location		[0, 0, 1872, 1032]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"150"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "82730"
+	  Position		  [80, 78, 110, 92]
+	  ZOrder		  3726
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusToVector
+	  Name			  "Bus to Vector2"
+	  SID			  "82731"
+	  Position		  [145, 63, 185, 107]
+	  ZOrder		  3724
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "82732"
+	  Ports			  [3, 1]
+	  Position		  [285, 166, 290, 204]
+	  ZOrder		  3728
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "ProtSet"
+	  SID			  "82733"
+	  Position		  [215, 196, 250, 214]
+	  ZOrder		  3729
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "ProtSet1"
+	  SID			  "82734"
+	  Position		  [215, 151, 250, 169]
+	  ZOrder		  3731
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "ProtSet2"
+	  SID			  "82735"
+	  Position		  [125, 176, 160, 194]
+	  ZOrder		  3732
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  SignalSpecification
+	  Name			  "Signal Specification2"
+	  SID			  "82736"
+	  Position		  [230, 73, 310, 97]
+	  ZOrder		  3725
+	  ShowName		  off
+	  OutDataTypeStr	  "double"
+	  Dimensions		  "25"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "82737"
+	  Position		  [355, 75, 375, 95]
+	  ZOrder		  3733
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "82738"
+	  Position		  [340, 178, 370, 192]
+	  ZOrder		  3727
+	  NamePlacement		  "alternate"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Bus to Vector2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus to Vector2"
+	  SrcPort		  1
+	  DstBlock		  "Signal Specification2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ProtSet2"
+	  SrcPort		  1
+	  Points		  [33, 0; 0, 4; 68, 0; 0, -4]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "ProtSet1"
+	  SrcPort		  1
+	  Points		  [12, 0; 0, 15]
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ProtSet"
+	  SrcPort		  1
+	  Points		  [12, 0; 0, -10]
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Signal Specification2"
+	  SrcPort		  1
+	  DstBlock		  "Terminator"
+	  DstPort		  1
 	}
       }
     }
