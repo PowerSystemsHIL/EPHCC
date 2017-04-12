@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[717.0, 818.0]
 	ZoomFactor		[1.3443902439024389]
-	Offset			[175.58635703918719, -222.05442670537013]
+	Offset			[175.58635703918719, -200.36502177068223]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 11 09:05:35 2017"
-  RTWModifiedTimeStamp	  413802328
-  ModelVersionFormat	  "1.%<AutoIncrement:524>"
+  LastModifiedDate	  "Wed Apr 12 11:18:05 2017"
+  RTWModifiedTimeStamp	  413896683
+  ModelVersionFormat	  "1.%<AutoIncrement:525>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -841,6 +841,24 @@ Library {
       RTWStateStorageClass    "Auto"
     }
     Block {
+      BlockType		      MultiPortSwitch
+      DataPortOrder	      "One-based contiguous"
+      Inputs		      "3"
+      DataPortIndices	      "{1,2,3}"
+      DataPortForDefault      "Last data port"
+      DiagnosticForDefault    "Error"
+      zeroidx		      off
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -886,6 +904,13 @@ Library {
       InputSameDT	      on
       OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
       ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Selector
+      NumberOfDimensions      "1"
+      IndexMode		      "One-based"
+      InputPortWidth	      "-1"
       SampleTime	      "-1"
     }
     Block {
@@ -961,7 +986,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82738"
+    SIDHighWatermark	    "82745"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
@@ -6047,7 +6072,7 @@ Library {
       Name		      "ModbusMockup"
       SID		      "82729"
       Ports		      [1, 1]
-      Position		      [270, 342, 365, 378]
+      Position		      [340, 342, 435, 378]
       ZOrder		      3888
       BlockMirror	      on
       NamePlacement	      "alternate"
@@ -6194,6 +6219,176 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Terminator"
 	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "SelectMockup"
+      SID		      "82739"
+      Ports		      [1, 1]
+      Position		      [210, 342, 275, 378]
+      ZOrder		      3955
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		20
+	$ClassName		"Simulink.Mask"
+	Display			"disp(['Select signal\\n' num2str(sigID) '/' num2str(sigN)]);"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    21
+	    Type		    "edit"
+	    Name		    "sigID"
+	    Prompt		    "Signal ID"
+	    Value		    "1"
+	  }
+	  Object {
+	    $ObjectID		    22
+	    Type		    "edit"
+	    Name		    "sigN"
+	    Prompt		    "Signals count"
+	    Value		    "15"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"SelectMockup"
+	Location		[-8, 0, 1924, 1056]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"150"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "82740"
+	  Position		  [150, 53, 180, 67]
+	  ZOrder		  3954
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From4"
+	  SID			  "82741"
+	  Position		  [60, 26, 125, 44]
+	  ZOrder		  3957
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "SignalsAll"
+	}
+	Block {
+	  BlockType		  MultiPortSwitch
+	  Name			  "Multiport\nSwitch"
+	  SID			  "82742"
+	  Ports			  [3, 1]
+	  Position		  [345, 23, 380, 97]
+	  ZOrder		  3958
+	  ShowName		  off
+	  DataPortOrder		  "Zero-based contiguous"
+	  Inputs		  "2"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector"
+	  SID			  "82743"
+	  Ports			  [1, 1]
+	  Position		  [165, 23, 195, 47]
+	  ZOrder		  3959
+	  ShowName		  off
+	  InputPortWidth	  "sigN+3"
+	  IndexOptions		  "Index vector (dialog)"
+	  Indices		  "[1]"
+	  OutputSizes		  "1"
+	  Port {
+	    PortNumber		    1
+	    Name		    "MockEna"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector1"
+	  SID			  "82744"
+	  Ports			  [1, 1]
+	  Position		  [170, 105, 270, 345]
+	  ZOrder		  3960
+	  ShowName		  off
+	  InputPortWidth	  "sigN+3"
+	  IndexOptions		  "Index vector (dialog)"
+	  Indices		  "[2  sigID+3 3]"
+	  OutputSizes		  "1"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "82745"
+	  Position		  [420, 53, 450, 67]
+	  ZOrder		  3955
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Multiport\nSwitch"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Multiport\nSwitch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  Points		  [7, 0]
+	  Branch {
+	    Points		    [0, 190]
+	    DstBlock		    "Selector1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Selector"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "MockEna"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Selector"
+	  SrcPort		  1
+	  DstBlock		  "Multiport\nSwitch"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Selector1"
+	  SrcPort		  1
+	  Points		  [30, 0; 0, -140]
+	  DstBlock		  "Multiport\nSwitch"
+	  DstPort		  3
 	}
       }
     }

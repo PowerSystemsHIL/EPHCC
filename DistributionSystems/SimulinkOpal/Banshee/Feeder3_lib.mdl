@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 11 09:52:28 2017"
-  RTWModifiedTimeStamp	  413804148
-  ModelVersionFormat	  "1.%<AutoIncrement:35>"
+  LastModifiedDate	  "Wed Apr 12 11:34:01 2017"
+  RTWModifiedTimeStamp	  413897593
+  ModelVersionFormat	  "1.%<AutoIncrement:36>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -845,7 +845,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "749"
+    SIDHighWatermark	    "751"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -854,7 +854,7 @@ Library {
       Position		      [145, 248, 440, 632]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.34"
+      LibraryVersion	      "*1.35"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -864,7 +864,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[-8, 0, 1909, 1056]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -876,7 +876,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"80"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1587,6 +1587,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector21"
+	  SID			  "750"
+	  Ports			  [1, 1]
+	  Position		  [1055, 2503, 1060, 2527]
+	  ZOrder		  3660
+	  ShowName		  off
+	  OutputSignals		  "F3_PCC"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<F3_PCC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector3"
 	  SID			  "88"
 	  Ports			  [1, 1]
@@ -2049,12 +2065,12 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From10"
-	  SID			  "206"
-	  Position		  [990, 2510, 1125, 2530]
-	  ZOrder		  2463
-	  BackgroundColor	  "lightBlue"
+	  SID			  "751"
+	  Position		  [940, 2505, 1015, 2525]
+	  ZOrder		  3661
+	  BackgroundColor	  "red"
 	  ShowName		  off
-	  GotoTag		  "SEL751_F3_LogicTrip"
+	  GotoTag		  "RELAY_IN"
 	}
 	Block {
 	  BlockType		  From
@@ -2958,7 +2974,7 @@ Library {
 	  }
 	  System {
 	    Name		    "HWController_3.5MVA_NGCHP"
-	    Location		    [-8, 0, 1909, 1056]
+	    Location		    [-8, 0, 1924, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2970,8 +2986,8 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "250"
-	    SIDHighWatermark	    "894"
+	    ZoomFactor		    "98"
+	    SIDHighWatermark	    "914"
 	    SIDPrevWatermark	    "854"
 	    Block {
 	      BlockType		      Inport
@@ -4122,6 +4138,21 @@ Library {
 	  Position		  [4565, 523, 4595, 537]
 	  ZOrder		  2447
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "From10"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector21"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<F3_PCC>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector21"
+	  SrcPort		  1
+	  Points		  [85, 0; 0, 55]
+	  DstBlock		  "F3_PCC"
+	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"
@@ -5541,13 +5572,6 @@ Library {
 	      Points		      [-298, 0; 0, -225]
 	    }
 	  }
-	}
-	Line {
-	  SrcBlock		  "From10"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 50]
-	  DstBlock		  "F3_PCC"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From13"

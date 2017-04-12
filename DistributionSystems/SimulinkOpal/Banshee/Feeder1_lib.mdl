@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1928.0, 98.0, 1928.0, 1092.0]
+      Location		      [277.0, 295.0, 1928.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[11]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1682.0, 906.0]
+	Extents			[1685.0, 926.0]
 	ZoomFactor		[1.5029239766081874]
-	Offset			[180.34533073930015, -119.31517509727627]
+	Offset			[180.34533073930072, -119.31517509727627]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 14 11:24:43 2017"
-  RTWModifiedTimeStamp	  411391478
-  ModelVersionFormat	  "1.%<AutoIncrement:34>"
+  LastModifiedDate	  "Wed Apr 12 15:31:19 2017"
+  RTWModifiedTimeStamp	  413911876
+  ModelVersionFormat	  "1.%<AutoIncrement:37>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -811,10 +811,13 @@ Library {
       Variant		      off
       GeneratePreprocessorConditionals off
     }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "Feeder1_lib"
-    Location		    [1928, 98, 3856, 1190]
+    Location		    [277, 295, 2205, 1387]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -828,7 +831,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "150"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "566"
+    SIDHighWatermark	    "572"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder1"
@@ -837,7 +840,7 @@ Library {
       Position		      [575, 213, 865, 557]
       ZOrder		      2334
       ForegroundColor	      "orange"
-      LibraryVersion	      "*1.33"
+      LibraryVersion	      "*1.36"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -847,7 +850,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder1"
-	Location		[1916, -4, 3844, 1204]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -859,7 +862,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"28"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1463,7 +1466,7 @@ Library {
 	  Position		  [2815, 6, 2820, 144]
 	  ZOrder		  3174
 	  ShowName		  off
-	  OutputSignals		  "fault_cmd,motor_ONOFF.F1_motor_ONOFF,GridStatusCtrl.Grid_F1.Logic_trip"
+	  OutputSignals		  "fault_cmd,motor_ONOFF.F1_motor_ONOFF,Gen1"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<fault_cmd>"
@@ -1478,7 +1481,7 @@ Library {
 	  }
 	  Port {
 	    PortNumber		    3
-	    Name		    "<Logic_trip>"
+	    Name		    "<Gen1>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1577,6 +1580,22 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<CB114>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector26"
+	  SID			  "567"
+	  Ports			  [1, 1]
+	  Position		  [610, 1538, 615, 1562]
+	  ZOrder		  3673
+	  ShowName		  off
+	  OutputSignals		  "F1_PCC"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<F1_PCC>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1889,6 +1908,33 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "Diesel_Generator"
+	  SID			  "569"
+	  Ports			  [3, 3, 0, 0, 0, 0, 3]
+	  Position		  [1335, 673, 1640, 992]
+	  ZOrder		  3675
+	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
+	  LibraryVersion	  "1.30"
+	  SourceBlock		  "NREL_Diesel_Genset_lib/Diesel_Generator_2nd_Control"
+	  SourceType		  ""
+	  GenSel		  "4MVA diesel generator"
+	  Port {
+	    PortNumber		    1
+	    Name		    "ModbusOut"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Gen2_meas"
+	    PropagatedSignals	    "gal_per_hr, Pm, Vf, w, Vt, Stator current, dq0 components, Mechanical, Load angle   delta "
+	    " (deg), Output active power   Peo (pu), Output reactive power  Qeo (pu)"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "F1-GCB"
 	  SID			  "372"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
@@ -2153,12 +2199,12 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From10"
-	  SID			  "399"
-	  Position		  [520, 1522, 660, 1538]
-	  ZOrder		  3486
+	  SID			  "572"
+	  Position		  [1185, 825, 1260, 845]
+	  ZOrder		  3678
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
-	  GotoTag		  "SEL751_F1_LogicTrip"
+	  GotoTag		  "F1_PCC"
 	}
 	Block {
 	  BlockType		  From
@@ -2779,14 +2825,23 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From54"
+	  SID			  "568"
+	  Position		  [495, 1540, 570, 1560]
+	  ZOrder		  3674
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  GotoTag		  "RELAY_IN"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From6"
-	  SID			  "373"
-	  Position		  [1220, 850, 1355, 870]
-	  ZOrder		  3311
-	  BackgroundColor	  "[0.247059, 0.298039, 0.729412]"
+	  SID			  "571"
+	  Position		  [1140, 720, 1235, 740]
+	  ZOrder		  3677
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "Diesel_Gen2"
+	  GotoTag		  "Gen1"
 	}
 	Block {
 	  BlockType		  From
@@ -3195,7 +3250,7 @@ Library {
 	  Position		  [2910, 110, 2990, 130]
 	  ZOrder		  3561
 	  ShowName		  off
-	  GotoTag		  "feeder_cb"
+	  GotoTag		  "Gen1"
 	}
 	Block {
 	  BlockType		  Goto
@@ -3206,25 +3261,6 @@ Library {
 	  BackgroundColor	  "[0.247059, 0.298039, 0.729412]"
 	  ShowName		  off
 	  GotoTag		  "Diesel_Gen2"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "HWController_4MVA_DieselGenset"
-	  SID			  "376"
-	  Ports			  [1, 2, 0, 0, 0, 0, 3]
-	  Position		  [1405, 723, 1655, 997]
-	  ZOrder		  3312
-	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.5"
-	  SourceBlock		  "HWController_Diesel_GenSet_4MVA_lib/HWController_4MVA_DieselGenset"
-	  SourceType		  "SubSystem"
-	  Port {
-	    PortNumber		    1
-	    Name		    "Gen2_meas"
-	    PropagatedSignals	    "Pm, Vf, Vt, w, gal_per_hr"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -3351,7 +3387,7 @@ Library {
 	  writeOpCommFile	  off
 	  Port {
 	    PortNumber		    1
-	    PropagatedSignals	    "C1, C2, C3, C4, C5, C6, P1, P2, P3, P4, P5, P6, I1, I2, I3, I4, I5, I6"
+	    PropagatedSignals	    "C1, C2, C3, C4, C5, C6, P1, P2, P3, P4, P5, P6, I1, I2, I3, I4, I5, I6, C7, C8, C9"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -3578,6 +3614,13 @@ Library {
 	  p15_type		  "V-type(Left)"
 	  p16_type		  "V-type(Left)"
 	  I_port_shunt_resistance "1e9"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "570"
+	  Position		  [1740, 685, 1760, 705]
+	  ZOrder		  3676
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -4016,6 +4059,41 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "From10"
+	  SrcPort		  1
+	  DstBlock		  "Diesel_Generator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From6"
+	  SrcPort		  1
+	  DstBlock		  "Diesel_Generator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "ModbusOut"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  1
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From54"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector26"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<F1_PCC>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector26"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, 25]
+	  DstBlock		  "F1_PCC"
+	  DstPort		  1
+	}
+	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "C2"
 	  SrcPort		  LConn2
@@ -4312,7 +4390,7 @@ Library {
 	  }
 	}
 	Line {
-	  Name			  "<Logic_trip>"
+	  Name			  "<Gen1>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector20"
 	  SrcPort		  3
@@ -4576,13 +4654,6 @@ Library {
 	  }
 	}
 	Line {
-	  SrcBlock		  "From10"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, 45]
-	  DstBlock		  "F1_PCC"
-	  DstPort		  1
-	}
-	Line {
 	  Name			  "<Logic_trip>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector21"
@@ -4666,9 +4737,9 @@ Library {
 	}
 	Line {
 	  Name			  "Gen2_meas"
-	  Labels		  [1, 1]
-	  SrcBlock		  "HWController_4MVA_DieselGenset"
-	  SrcPort		  1
+	  Labels		  [0, 0]
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  2
 	  DstBlock		  "Bus\nCreator6"
 	  DstPort		  1
 	}
@@ -4677,8 +4748,16 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Genset_PQFV"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator6"
-	  DstPort		  2
+	  Points		  [66, 0]
+	  Branch {
+	    DstBlock		    "Bus\nCreator6"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 194; -906, 0; 0, -79]
+	    DstBlock		    "Diesel_Generator"
+	    DstPort		    3
+	  }
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator6"
@@ -4715,41 +4794,35 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "HWController_4MVA_DieselGenset"
-	  SrcPort		  2
-	  Points		  [137, 0; 0, 65]
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  3
+	  Points		  [142, 0; 0, 65]
 	  DstBlock		  "F1-GCB"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  DstBlock		  "HWController_4MVA_DieselGenset"
-	  DstPort		  1
+	  LineType		  "Connection"
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  RConn3
+	  Points		  [28, 0; 0, -40]
+	  DstBlock		  "4/0AWG-Mutual1"
+	  DstPort		  LConn3
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "4/0AWG-Mutual1"
-	  SrcPort		  LConn3
-	  Points		  [-30, 0; 0, 40]
-	  DstBlock		  "HWController_4MVA_DieselGenset"
-	  DstPort		  RConn3
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  RConn2
+	  Points		  [52, 0; 0, -5]
+	  DstBlock		  "4/0AWG-Mutual1"
+	  DstPort		  LConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "4/0AWG-Mutual1"
-	  SrcPort		  LConn2
-	  Points		  [-23, 0; 0, 5]
-	  DstBlock		  "HWController_4MVA_DieselGenset"
-	  DstPort		  RConn2
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "4/0AWG-Mutual1"
-	  SrcPort		  LConn1
-	  Points		  [-23, 0; 0, -30]
-	  DstBlock		  "HWController_4MVA_DieselGenset"
-	  DstPort		  RConn1
+	  SrcBlock		  "Diesel_Generator"
+	  SrcPort		  RConn1
+	  Points		  [35, 0; 0, 30]
+	  DstBlock		  "4/0AWG-Mutual1"
+	  DstPort		  LConn1
 	}
 	Line {
 	  LineType		  "Connection"

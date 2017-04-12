@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1932.0, 7.0, 1928.0, 1092.0]
+      Location		      [227.0, 280.0, 1928.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1682.0, 906.0]
+	Extents			[1685.0, 926.0]
 	ZoomFactor		[1.2598039215686274]
 	Offset			[-398.09241245136161, -126.11284046692606]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 14 11:24:48 2017"
-  RTWModifiedTimeStamp	  411391472
-  ModelVersionFormat	  "1.%<AutoIncrement:48>"
+  LastModifiedDate	  "Wed Apr 12 11:34:17 2017"
+  RTWModifiedTimeStamp	  413897600
+  ModelVersionFormat	  "1.%<AutoIncrement:49>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -801,7 +801,7 @@ Library {
   }
   System {
     Name		    "Feeder2_lib"
-    Location		    [1932, 7, 3860, 1099]
+    Location		    [227, 280, 2155, 1372]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -815,7 +815,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "126"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "591"
+    SIDHighWatermark	    "593"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder2"
@@ -824,7 +824,7 @@ Library {
       Position		      [105, 206, 395, 684]
       ZOrder		      2330
       ForegroundColor	      "magenta"
-      LibraryVersion	      "*1.47"
+      LibraryVersion	      "*1.48"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -834,7 +834,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder2"
-	Location		[1916, -4, 3844, 1204]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -846,7 +846,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"23"
+	ZoomFactor		"19"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1789,6 +1789,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector36"
+	  SID			  "592"
+	  Ports			  [1, 1]
+	  Position		  [1030, 1908, 1035, 1932]
+	  ZOrder		  3670
+	  ShowName		  off
+	  OutputSignals		  "F2_PCC"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<F2_PCC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector4"
 	  SID			  "141"
 	  Ports			  [1, 1]
@@ -2437,12 +2453,12 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From16"
-	  SID			  "504"
-	  Position		  [925, 1900, 1060, 1920]
-	  ZOrder		  3529
-	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
+	  SID			  "593"
+	  Position		  [915, 1910, 990, 1930]
+	  ZOrder		  3671
+	  BackgroundColor	  "red"
 	  ShowName		  off
-	  GotoTag		  "SEL751_F2_LogicTrip"
+	  GotoTag		  "RELAY_IN"
 	}
 	Block {
 	  BlockType		  From
@@ -3692,7 +3708,7 @@ Library {
 	  writeOpCommFile	  off
 	  Port {
 	    PortNumber		    1
-	    PropagatedSignals	    "C1, C2, C3, C4, C5, C6, P1, P2, P3, P4, P5, P6, I1, I2, I3, I4, I5, I6"
+	    PropagatedSignals	    "C1, C2, C3, C4, C5, C6, P1, P2, P3, P4, P5, P6, I1, I2, I3, I4, I5, I6, C7, C8, C9"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -4543,6 +4559,21 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "<F2_PCC>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector36"
+	  SrcPort		  1
+	  Points		  [65, 0]
+	  DstBlock		  "F2_PCC"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From16"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector36"
+	  DstPort		  1
+	}
+	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "C2"
 	  SrcPort		  RConn1
@@ -5311,13 +5342,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "OpComm1"
 	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From16"
-	  SrcPort		  1
-	  Points		  [45, 0; 0, 60]
-	  DstBlock		  "F2_PCC"
-	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"

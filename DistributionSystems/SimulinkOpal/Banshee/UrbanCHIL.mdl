@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3202"
+    ComputedModelVersion    "1.3239"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -43,7 +43,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[11]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -56,27 +56,27 @@ Model {
 	Dimension		2
 	Object {
 	  $ObjectID		  5
-	  IsActive		  [0]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "25333"
-	  Extents		  [1932.0, 1056.0]
-	  ZoomFactor		  [0.38264388489208628]
-	  Offset		  [-316.51292596944796, -21.587544065804934]
-	}
-	Object {
-	  $ObjectID		  6
 	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1689.0, 879.0]
-	  ZoomFactor		  [0.30956711531465986]
-	  Offset		  [-957.0029377203291, 388.77555816686254]
+	  ZoomFactor		  [0.8]
+	  Offset		  [1131.7887779083435, 2117.7379553466512]
+	}
+	Object {
+	  $ObjectID		  6
+	  IsActive		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "25019"
+	  Extents		  [1932.0, 1056.0]
+	  ZoomFactor		  [1.25]
+	  Offset		  [990.67824128476309, 601.64298864081468]
 	}
 	PropName		"EditorsInfo"
       }
     }
   }
-  PhysicalModelingChecksum "2756963828"
+  PhysicalModelingChecksum "3812347291"
   PhysicalModelingParameterChecksum "1581221278"
   PhysicalModelingProducts "Power_System_Blocks"
   ARTEMISmethode_block_infos "$$__separator__$$UrbanCHIL/ARTEMIS Guide$$__separator__$$"
@@ -86,9 +86,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 11 16:57:41 2017"
-  RTWModifiedTimeStamp	  413830611
-  ModelVersionFormat	  "1.%<AutoIncrement:3202>"
+  LastModifiedDate	  "Wed Apr 12 15:31:28 2017"
+  RTWModifiedTimeStamp	  413911876
+  ModelVersionFormat	  "1.%<AutoIncrement:3239>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -814,6 +814,17 @@ Model {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DiscretePulseGenerator
+      PulseType		      "Sample based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Period		      "2"
+      PulseWidth	      "1"
+      PhaseDelay	      "0"
+      SampleTime	      "1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      Display
       Format		      "short"
       Decimation	      "10"
@@ -825,6 +836,21 @@ Model {
       GotoTag		      "A"
       IconDisplay	      "Tag"
       TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Goto
@@ -930,9 +956,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "31"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "28562"
+    SIDHighWatermark	    "28866"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1152,11 +1178,11 @@ Model {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "25773"
-	  Ports			  [7, 1]
-	  Position		  [665, 558, 670, 1112]
+	  Ports			  [9, 1]
+	  Position		  [670, 562, 675, 1268]
 	  ZOrder		  2704
 	  ShowName		  off
-	  Inputs		  "7"
+	  Inputs		  "9"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1319,6 +1345,3504 @@ Model {
 	  }
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "CB_modbus_mock"
+	  SID			  "28579"
+	  Ports			  [0, 1]
+	  Position		  [230, 1137, 375, 1173]
+	  ZOrder		  3768
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "CBStimuli"
+	    PropagatedSignals	    "F1, F2, F3, F4, ResetAll, GroupSel, MockEna"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "CB_modbus_mock"
+	    Location		    [-8, 0, 1924, 1056]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "106"
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator1"
+	      SID		      "28673"
+	      Ports		      [7, 1]
+	      Position		      [755, 608, 760, 1412]
+	      ZOrder		      2054
+	      ShowName		      off
+	      Inputs		      "7"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Enabled"
+	      SID		      "28841"
+	      Position		      [435, 1350, 465, 1380]
+	      ZOrder		      3526
+	      BackgroundColor	      "red"
+	      Port {
+		PortNumber		1
+		Name			"record_rms_signals"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "F1"
+	      SID		      "28744"
+	      Ports		      [0, 1]
+	      Position		      [370, 630, 575, 700]
+	      ZOrder		      2058
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		1
+		Name			"F1"
+		PropagatedSignals	"F4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"F1"
+		Location		[-8, 0, 1924, 1056]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator3"
+		  SID			  "28745"
+		  Ports			  [15, 1]
+		  Position		  [605, 148, 610, 1052]
+		  ZOrder		  2070
+		  ShowName		  off
+		  Inputs		  "15"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "F4"
+		    PropagatedSignals	    "CB101, CB102, CB103, CB104, CB105, CB106, CB107, CB108, CB109, CB110, CB111, CB112, CB113"
+		    ", CB114, CB100"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB01"
+		  SID			  "28747"
+		  Ports			  [0, 1]
+		  Position		  [20, 155, 290, 185]
+		  ZOrder		  2018
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB402"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB02"
+		  SID			  "28748"
+		  Ports			  [0, 1]
+		  Position		  [20, 215, 290, 245]
+		  ZOrder		  2022
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB405"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB03"
+		  SID			  "28749"
+		  Ports			  [0, 1]
+		  Position		  [20, 275, 290, 305]
+		  ZOrder		  2017
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB406"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB04"
+		  SID			  "28750"
+		  Ports			  [0, 1]
+		  Position		  [20, 335, 290, 365]
+		  ZOrder		  2023
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB407"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB05"
+		  SID			  "28751"
+		  Ports			  [0, 1]
+		  Position		  [20, 395, 290, 425]
+		  ZOrder		  2024
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB408"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB06"
+		  SID			  "28752"
+		  Ports			  [0, 1]
+		  Position		  [20, 455, 290, 485]
+		  ZOrder		  2025
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB409"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB07"
+		  SID			  "28753"
+		  Ports			  [0, 1]
+		  Position		  [20, 515, 290, 545]
+		  ZOrder		  2016
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB410"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB08"
+		  SID			  "28754"
+		  Ports			  [0, 1]
+		  Position		  [20, 575, 290, 605]
+		  ZOrder		  2026
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB411"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB09"
+		  SID			  "28755"
+		  Ports			  [0, 1]
+		  Position		  [20, 635, 290, 665]
+		  ZOrder		  2027
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB10"
+		  SID			  "28778"
+		  Ports			  [0, 1]
+		  Position		  [20, 695, 290, 725]
+		  ZOrder		  2055
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB11"
+		  SID			  "28781"
+		  Ports			  [0, 1]
+		  Position		  [20, 755, 290, 785]
+		  ZOrder		  2058
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB12"
+		  SID			  "28784"
+		  Ports			  [0, 1]
+		  Position		  [20, 815, 290, 845]
+		  ZOrder		  2061
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB13"
+		  SID			  "28785"
+		  Ports			  [0, 1]
+		  Position		  [20, 875, 290, 905]
+		  ZOrder		  2064
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB14"
+		  SID			  "28790"
+		  Ports			  [0, 1]
+		  Position		  [20, 935, 290, 965]
+		  ZOrder		  2067
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CBPCC"
+		  SID			  "28746"
+		  Ports			  [0, 1]
+		  Position		  [20, 995, 290, 1025]
+		  ZOrder		  2015
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB401"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  "28756"
+		  Position		  [325, 1020, 375, 1040]
+		  ZOrder		  2019
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  "28757"
+		  Position		  [325, 180, 375, 200]
+		  ZOrder		  2037
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant10"
+		  SID			  "28779"
+		  Position		  [320, 720, 370, 740]
+		  ZOrder		  2057
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant11"
+		  SID			  "28782"
+		  Position		  [320, 780, 370, 800]
+		  ZOrder		  2060
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant12"
+		  SID			  "28786"
+		  Position		  [320, 840, 370, 860]
+		  ZOrder		  2063
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant13"
+		  SID			  "28787"
+		  Position		  [320, 900, 370, 920]
+		  ZOrder		  2066
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant14"
+		  SID			  "28791"
+		  Position		  [320, 960, 370, 980]
+		  ZOrder		  2069
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant2"
+		  SID			  "28758"
+		  Position		  [320, 240, 370, 260]
+		  ZOrder		  2039
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant3"
+		  SID			  "28759"
+		  Position		  [320, 300, 370, 320]
+		  ZOrder		  2041
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "28760"
+		  Position		  [320, 360, 370, 380]
+		  ZOrder		  2043
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "28761"
+		  Position		  [320, 420, 370, 440]
+		  ZOrder		  2045
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "28762"
+		  Position		  [320, 480, 370, 500]
+		  ZOrder		  2047
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant7"
+		  SID			  "28763"
+		  Position		  [320, 540, 370, 560]
+		  ZOrder		  2049
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant8"
+		  SID			  "28764"
+		  Position		  [320, 600, 370, 620]
+		  ZOrder		  2051
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant9"
+		  SID			  "28765"
+		  Position		  [320, 660, 370, 680]
+		  ZOrder		  2053
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch1"
+		  SID			  "28766"
+		  Position		  [395, 162, 425, 198]
+		  ZOrder		  2036
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB101"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch10"
+		  SID			  "28767"
+		  Position		  [390, 642, 420, 678]
+		  ZOrder		  2052
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB109"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch11"
+		  SID			  "28780"
+		  Position		  [390, 702, 420, 738]
+		  ZOrder		  2056
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB110"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch12"
+		  SID			  "28783"
+		  Position		  [390, 762, 420, 798]
+		  ZOrder		  2059
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB111"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch13"
+		  SID			  "28788"
+		  Position		  [390, 822, 420, 858]
+		  ZOrder		  2062
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB112"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch14"
+		  SID			  "28789"
+		  Position		  [390, 882, 420, 918]
+		  ZOrder		  2065
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB113"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch15"
+		  SID			  "28792"
+		  Position		  [390, 942, 420, 978]
+		  ZOrder		  2068
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB114"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch2"
+		  SID			  "28768"
+		  Position		  [395, 1002, 425, 1038]
+		  ZOrder		  1994
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB100"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch3"
+		  SID			  "28769"
+		  Position		  [390, 282, 420, 318]
+		  ZOrder		  2040
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB103"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch4"
+		  SID			  "28770"
+		  Position		  [390, 222, 420, 258]
+		  ZOrder		  2038
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB102"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch5"
+		  SID			  "28771"
+		  Position		  [390, 402, 420, 438]
+		  ZOrder		  2044
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB105"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch6"
+		  SID			  "28772"
+		  Position		  [390, 342, 420, 378]
+		  ZOrder		  2042
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB104"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch7"
+		  SID			  "28773"
+		  Position		  [390, 522, 420, 558]
+		  ZOrder		  2048
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB107"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch8"
+		  SID			  "28774"
+		  Position		  [390, 462, 420, 498]
+		  ZOrder		  2046
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB106"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch9"
+		  SID			  "28775"
+		  Position		  [390, 582, 420, 618]
+		  ZOrder		  2050
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB108"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Out1"
+		  SID			  "28776"
+		  Position		  [775, 593, 805, 607]
+		  ZOrder		  2054
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "CB08"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant8"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant9"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB108"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch9"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  8
+		}
+		Line {
+		  SrcBlock		  "CB02"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant7"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB07"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB09"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant2"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB06"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB05"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB04"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB109"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch10"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  9
+		}
+		Line {
+		  Name			  "CB106"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch8"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "CB105"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  5
+		}
+		Line {
+		  Name			  "CB104"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  4
+		}
+		Line {
+		  Name			  "CB102"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch4"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB101"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch1"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB103"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch3"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "CB107"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch7"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  7
+		}
+		Line {
+		  Name			  "CB100"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch2"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  15
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CBPCC"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB01"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "F4"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator3"
+		  SrcPort		  1
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB03"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant3"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant10"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch11"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB10"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch11"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB110"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch11"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  10
+		}
+		Line {
+		  SrcBlock		  "Constant11"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch12"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB11"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch12"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB111"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch12"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  11
+		}
+		Line {
+		  SrcBlock		  "Constant12"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch13"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB12"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch13"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB112"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch13"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  12
+		}
+		Line {
+		  SrcBlock		  "Constant13"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch14"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB13"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch14"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB113"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch14"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  13
+		}
+		Line {
+		  SrcBlock		  "Constant14"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch15"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB14"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch15"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB114"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch15"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  14
+		}
+		Annotation {
+		  SID			  "28777"
+		  Name			  "Op_Mode:\n0 = Relay Functions\n1 = Close Breaker\n2 = Open Breaker"
+		  Position		  [446, 24]
+		  ZOrder		  -1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "F2"
+	      SID		      "28710"
+	      Ports		      [0, 1]
+	      Position		      [370, 745, 575, 815]
+	      ZOrder		      2057
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		1
+		Name			"F2"
+		PropagatedSignals	"F4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"F2"
+		Location		[-8, 0, 1924, 1056]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"175"
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator3"
+		  SID			  "28711"
+		  Ports			  [10, 1]
+		  Position		  [610, 86, 615, 694]
+		  ZOrder		  -33
+		  ShowName		  off
+		  Inputs		  "10"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "F4"
+		    PropagatedSignals	    "CB200, CB402, CB405, CB406, CB407, CB408, CB409, CB410, CB411, CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB402"
+		  SID			  "28713"
+		  Ports			  [0, 1]
+		  Position		  [20, 155, 290, 185]
+		  ZOrder		  2018
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB402"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB405"
+		  SID			  "28714"
+		  Ports			  [0, 1]
+		  Position		  [20, 215, 290, 245]
+		  ZOrder		  2022
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB405"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB406"
+		  SID			  "28715"
+		  Ports			  [0, 1]
+		  Position		  [20, 275, 290, 305]
+		  ZOrder		  2017
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB406"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB407"
+		  SID			  "28716"
+		  Ports			  [0, 1]
+		  Position		  [20, 335, 290, 365]
+		  ZOrder		  2023
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB407"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB408"
+		  SID			  "28717"
+		  Ports			  [0, 1]
+		  Position		  [20, 395, 290, 425]
+		  ZOrder		  2024
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB408"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB409"
+		  SID			  "28718"
+		  Ports			  [0, 1]
+		  Position		  [20, 455, 290, 485]
+		  ZOrder		  2025
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB409"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB410"
+		  SID			  "28719"
+		  Ports			  [0, 1]
+		  Position		  [20, 515, 290, 545]
+		  ZOrder		  2016
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB410"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB411"
+		  SID			  "28720"
+		  Ports			  [0, 1]
+		  Position		  [20, 575, 290, 605]
+		  ZOrder		  2026
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB411"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB412"
+		  SID			  "28721"
+		  Ports			  [0, 1]
+		  Position		  [20, 635, 290, 665]
+		  ZOrder		  2027
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CBPCC"
+		  SID			  "28712"
+		  Ports			  [0, 1]
+		  Position		  [20, 95, 290, 125]
+		  ZOrder		  2015
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB401"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  "28722"
+		  Position		  [325, 120, 375, 140]
+		  ZOrder		  2019
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  "28723"
+		  Position		  [325, 180, 375, 200]
+		  ZOrder		  2037
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant2"
+		  SID			  "28724"
+		  Position		  [320, 240, 370, 260]
+		  ZOrder		  2039
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant3"
+		  SID			  "28725"
+		  Position		  [320, 300, 370, 320]
+		  ZOrder		  2041
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "28726"
+		  Position		  [320, 360, 370, 380]
+		  ZOrder		  2043
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "28727"
+		  Position		  [320, 420, 370, 440]
+		  ZOrder		  2045
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "28728"
+		  Position		  [320, 480, 370, 500]
+		  ZOrder		  2047
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant7"
+		  SID			  "28729"
+		  Position		  [320, 540, 370, 560]
+		  ZOrder		  2049
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant8"
+		  SID			  "28730"
+		  Position		  [320, 600, 370, 620]
+		  ZOrder		  2051
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant9"
+		  SID			  "28731"
+		  Position		  [320, 660, 370, 680]
+		  ZOrder		  2053
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch1"
+		  SID			  "28732"
+		  Position		  [395, 162, 425, 198]
+		  ZOrder		  2036
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB402"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch10"
+		  SID			  "28733"
+		  Position		  [390, 642, 420, 678]
+		  ZOrder		  2052
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch2"
+		  SID			  "28734"
+		  Position		  [395, 102, 425, 138]
+		  ZOrder		  1994
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB200"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch3"
+		  SID			  "28735"
+		  Position		  [390, 282, 420, 318]
+		  ZOrder		  2040
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB406"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch4"
+		  SID			  "28736"
+		  Position		  [390, 222, 420, 258]
+		  ZOrder		  2038
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB405"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch5"
+		  SID			  "28737"
+		  Position		  [390, 402, 420, 438]
+		  ZOrder		  2044
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB408"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch6"
+		  SID			  "28738"
+		  Position		  [390, 342, 420, 378]
+		  ZOrder		  2042
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB407"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch7"
+		  SID			  "28739"
+		  Position		  [390, 522, 420, 558]
+		  ZOrder		  2048
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB410"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch8"
+		  SID			  "28740"
+		  Position		  [390, 462, 420, 498]
+		  ZOrder		  2046
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB409"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch9"
+		  SID			  "28741"
+		  Position		  [390, 582, 420, 618]
+		  ZOrder		  2050
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB411"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Out1"
+		  SID			  "28742"
+		  Position		  [765, 878, 795, 892]
+		  ZOrder		  2054
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "Constant3"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB406"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "F4"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator3"
+		  SrcPort		  1
+		  Points		  [70, 0; 0, 495]
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB402"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CBPCC"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB200"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch2"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB410"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch7"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  8
+		}
+		Line {
+		  Name			  "CB406"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch3"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  4
+		}
+		Line {
+		  Name			  "CB402"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch1"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB405"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch4"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "CB407"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  5
+		}
+		Line {
+		  Name			  "CB408"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "CB409"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch8"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  7
+		}
+		Line {
+		  Name			  "CB412"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch10"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  10
+		}
+		Line {
+		  SrcBlock		  "CB407"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB408"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB409"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant2"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB412"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB410"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant7"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB405"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB411"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch9"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  9
+		}
+		Line {
+		  SrcBlock		  "Constant9"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant8"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB411"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  1
+		}
+		Annotation {
+		  SID			  "28743"
+		  Name			  "Op_Mode:\n0 = Relay Functions\n1 = Close Breaker\n2 = Open Breaker"
+		  Position		  [446, 24]
+		  ZOrder		  -1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "F3"
+	      SID		      "28676"
+	      Ports		      [0, 1]
+	      Position		      [370, 860, 575, 930]
+	      ZOrder		      2056
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		1
+		Name			"F3"
+		PropagatedSignals	"F4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"F3"
+		Location		[-8, 0, 1924, 1056]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"175"
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator3"
+		  SID			  "28677"
+		  Ports			  [10, 1]
+		  Position		  [610, 86, 615, 694]
+		  ZOrder		  -33
+		  ShowName		  off
+		  Inputs		  "10"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "F4"
+		    PropagatedSignals	    "CB300, CB402, CB405, CB406, CB407, CB408, CB409, CB410, CB411, CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB402"
+		  SID			  "28679"
+		  Ports			  [0, 1]
+		  Position		  [20, 155, 290, 185]
+		  ZOrder		  2018
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB402"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB405"
+		  SID			  "28680"
+		  Ports			  [0, 1]
+		  Position		  [20, 215, 290, 245]
+		  ZOrder		  2022
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB405"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB406"
+		  SID			  "28681"
+		  Ports			  [0, 1]
+		  Position		  [20, 275, 290, 305]
+		  ZOrder		  2017
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB406"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB407"
+		  SID			  "28682"
+		  Ports			  [0, 1]
+		  Position		  [20, 335, 290, 365]
+		  ZOrder		  2023
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB407"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB408"
+		  SID			  "28683"
+		  Ports			  [0, 1]
+		  Position		  [20, 395, 290, 425]
+		  ZOrder		  2024
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB408"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB409"
+		  SID			  "28684"
+		  Ports			  [0, 1]
+		  Position		  [20, 455, 290, 485]
+		  ZOrder		  2025
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB409"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB410"
+		  SID			  "28685"
+		  Ports			  [0, 1]
+		  Position		  [20, 515, 290, 545]
+		  ZOrder		  2016
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB410"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB411"
+		  SID			  "28686"
+		  Ports			  [0, 1]
+		  Position		  [20, 575, 290, 605]
+		  ZOrder		  2026
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB411"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB412"
+		  SID			  "28687"
+		  Ports			  [0, 1]
+		  Position		  [20, 635, 290, 665]
+		  ZOrder		  2027
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CBPCC"
+		  SID			  "28678"
+		  Ports			  [0, 1]
+		  Position		  [20, 95, 290, 125]
+		  ZOrder		  2015
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB401"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  "28688"
+		  Position		  [325, 120, 375, 140]
+		  ZOrder		  2019
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  "28689"
+		  Position		  [325, 180, 375, 200]
+		  ZOrder		  2037
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant2"
+		  SID			  "28690"
+		  Position		  [320, 240, 370, 260]
+		  ZOrder		  2039
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant3"
+		  SID			  "28691"
+		  Position		  [320, 300, 370, 320]
+		  ZOrder		  2041
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "28692"
+		  Position		  [320, 360, 370, 380]
+		  ZOrder		  2043
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "28693"
+		  Position		  [320, 420, 370, 440]
+		  ZOrder		  2045
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "28694"
+		  Position		  [320, 480, 370, 500]
+		  ZOrder		  2047
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant7"
+		  SID			  "28695"
+		  Position		  [320, 540, 370, 560]
+		  ZOrder		  2049
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant8"
+		  SID			  "28696"
+		  Position		  [320, 600, 370, 620]
+		  ZOrder		  2051
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant9"
+		  SID			  "28697"
+		  Position		  [320, 660, 370, 680]
+		  ZOrder		  2053
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch1"
+		  SID			  "28698"
+		  Position		  [395, 162, 425, 198]
+		  ZOrder		  2036
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB402"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch10"
+		  SID			  "28699"
+		  Position		  [390, 642, 420, 678]
+		  ZOrder		  2052
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch2"
+		  SID			  "28700"
+		  Position		  [395, 102, 425, 138]
+		  ZOrder		  1994
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB300"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch3"
+		  SID			  "28701"
+		  Position		  [390, 282, 420, 318]
+		  ZOrder		  2040
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB406"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch4"
+		  SID			  "28702"
+		  Position		  [390, 222, 420, 258]
+		  ZOrder		  2038
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB405"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch5"
+		  SID			  "28703"
+		  Position		  [390, 402, 420, 438]
+		  ZOrder		  2044
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB408"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch6"
+		  SID			  "28704"
+		  Position		  [390, 342, 420, 378]
+		  ZOrder		  2042
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB407"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch7"
+		  SID			  "28705"
+		  Position		  [390, 522, 420, 558]
+		  ZOrder		  2048
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB410"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch8"
+		  SID			  "28706"
+		  Position		  [390, 462, 420, 498]
+		  ZOrder		  2046
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB409"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch9"
+		  SID			  "28707"
+		  Position		  [390, 582, 420, 618]
+		  ZOrder		  2050
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB411"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Out1"
+		  SID			  "28708"
+		  Position		  [765, 878, 795, 892]
+		  ZOrder		  2054
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "CB411"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant8"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant9"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB411"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch9"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  9
+		}
+		Line {
+		  SrcBlock		  "CB405"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant7"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB410"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB412"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant2"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB409"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB408"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB407"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB412"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch10"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  10
+		}
+		Line {
+		  Name			  "CB409"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch8"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  7
+		}
+		Line {
+		  Name			  "CB408"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "CB407"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  5
+		}
+		Line {
+		  Name			  "CB405"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch4"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "CB402"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch1"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB406"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch3"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  4
+		}
+		Line {
+		  Name			  "CB410"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch7"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  8
+		}
+		Line {
+		  Name			  "CB300"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch2"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CBPCC"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB402"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "F4"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator3"
+		  SrcPort		  1
+		  Points		  [70, 0; 0, 495]
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB406"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant3"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  2
+		}
+		Annotation {
+		  SID			  "28709"
+		  Name			  "Op_Mode:\n0 = Relay Functions\n1 = Close Breaker\n2 = Open Breaker"
+		  Position		  [446, 24]
+		  ZOrder		  -1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "F4"
+	      SID		      "28674"
+	      Ports		      [0, 1]
+	      Position		      [370, 975, 575, 1045]
+	      ZOrder		      2055
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		1
+		Name			"F4"
+		PropagatedSignals	"F4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"F4"
+		Location		[-8, 0, 1924, 1056]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"80"
+		Block {
+		  BlockType		  BusCreator
+		  Name			  "Bus\nCreator3"
+		  SID			  "28580"
+		  Ports			  [10, 1]
+		  Position		  [610, 86, 615, 694]
+		  ZOrder		  -33
+		  ShowName		  off
+		  Inputs		  "10"
+		  DisplayOption		  "bar"
+		  Port {
+		    PortNumber		    1
+		    Name		    "F4"
+		    PropagatedSignals	    "CB401, CB402, CB405, CB406, CB407, CB408, CB409, CB410, CB411, CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB401"
+		  SID			  "28581"
+		  Ports			  [0, 1]
+		  Position		  [20, 95, 290, 125]
+		  ZOrder		  2015
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB401"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB402"
+		  SID			  "28582"
+		  Ports			  [0, 1]
+		  Position		  [20, 155, 290, 185]
+		  ZOrder		  2018
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB402"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB405"
+		  SID			  "28583"
+		  Ports			  [0, 1]
+		  Position		  [20, 215, 290, 245]
+		  ZOrder		  2022
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB405"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB406"
+		  SID			  "28584"
+		  Ports			  [0, 1]
+		  Position		  [20, 275, 290, 305]
+		  ZOrder		  2017
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB406"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB407"
+		  SID			  "28585"
+		  Ports			  [0, 1]
+		  Position		  [20, 335, 290, 365]
+		  ZOrder		  2023
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB407"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB408"
+		  SID			  "28586"
+		  Ports			  [0, 1]
+		  Position		  [20, 395, 290, 425]
+		  ZOrder		  2024
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB408"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB409"
+		  SID			  "28587"
+		  Ports			  [0, 1]
+		  Position		  [20, 455, 290, 485]
+		  ZOrder		  2025
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB409"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB410"
+		  SID			  "28588"
+		  Ports			  [0, 1]
+		  Position		  [20, 515, 290, 545]
+		  ZOrder		  2016
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB410"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB411"
+		  SID			  "28589"
+		  Ports			  [0, 1]
+		  Position		  [20, 575, 290, 605]
+		  ZOrder		  2026
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB411"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "CB412"
+		  SID			  "28590"
+		  Ports			  [0, 1]
+		  Position		  [20, 635, 290, 665]
+		  ZOrder		  2027
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Sources/Repeating\nSequence\nStair"
+		  SourceType		  "Repeating Sequence Stair"
+		  OutValues		  "Stim.CB.CB412"
+		  tsamp			  "[Stim.Ts Ts]"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Inherit via back propagation"
+		  OutputDataTypeScalingMode "Inherit via back propagation"
+		  OutDataType		  "fixdt(0,8)"
+		  ConRadixGroup		  "Best Precision: Vector-wise"
+		  OutScaling		  "2^-12"
+		  LockScale		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  "28591"
+		  Position		  [325, 120, 375, 140]
+		  ZOrder		  2019
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  "28656"
+		  Position		  [325, 180, 375, 200]
+		  ZOrder		  2037
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant2"
+		  SID			  "28657"
+		  Position		  [320, 240, 370, 260]
+		  ZOrder		  2039
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant3"
+		  SID			  "28658"
+		  Position		  [320, 300, 370, 320]
+		  ZOrder		  2041
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "28661"
+		  Position		  [320, 360, 370, 380]
+		  ZOrder		  2043
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "28662"
+		  Position		  [320, 420, 370, 440]
+		  ZOrder		  2045
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "28663"
+		  Position		  [320, 480, 370, 500]
+		  ZOrder		  2047
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant7"
+		  SID			  "28664"
+		  Position		  [320, 540, 370, 560]
+		  ZOrder		  2049
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant8"
+		  SID			  "28669"
+		  Position		  [320, 600, 370, 620]
+		  ZOrder		  2051
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant9"
+		  SID			  "28671"
+		  Position		  [320, 660, 370, 680]
+		  ZOrder		  2053
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch1"
+		  SID			  "28592"
+		  Position		  [395, 162, 425, 198]
+		  ZOrder		  2036
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB402"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch10"
+		  SID			  "28672"
+		  Position		  [390, 642, 420, 678]
+		  ZOrder		  2052
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB412"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch2"
+		  SID			  "28593"
+		  Position		  [395, 102, 425, 138]
+		  ZOrder		  1994
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB401"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch3"
+		  SID			  "28659"
+		  Position		  [390, 282, 420, 318]
+		  ZOrder		  2040
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB406"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch4"
+		  SID			  "28660"
+		  Position		  [390, 222, 420, 258]
+		  ZOrder		  2038
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB405"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch5"
+		  SID			  "28665"
+		  Position		  [390, 402, 420, 438]
+		  ZOrder		  2044
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB408"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch6"
+		  SID			  "28666"
+		  Position		  [390, 342, 420, 378]
+		  ZOrder		  2042
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB407"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch7"
+		  SID			  "28667"
+		  Position		  [390, 522, 420, 558]
+		  ZOrder		  2048
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB410"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch8"
+		  SID			  "28668"
+		  Position		  [390, 462, 420, 498]
+		  ZOrder		  2046
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB409"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  ManualSwitch
+		  Name			  "Manual Switch9"
+		  SID			  "28670"
+		  Position		  [390, 582, 420, 618]
+		  ZOrder		  2050
+		  ShowName		  off
+		  Port {
+		    PortNumber		    1
+		    Name		    "CB411"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Out1"
+		  SID			  "28675"
+		  Position		  [765, 878, 795, 892]
+		  ZOrder		  2054
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "Constant3"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB406"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "F4"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Bus\nCreator3"
+		  SrcPort		  1
+		  Points		  [70, 0; 0, 495]
+		  DstBlock		  "Out1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB402"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB401"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch2"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB401"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch2"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB410"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch7"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  8
+		}
+		Line {
+		  Name			  "CB406"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch3"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  4
+		}
+		Line {
+		  Name			  "CB402"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch1"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  2
+		}
+		Line {
+		  Name			  "CB405"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch4"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "CB407"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  5
+		}
+		Line {
+		  Name			  "CB408"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "CB409"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch8"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  7
+		}
+		Line {
+		  Name			  "CB412"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch10"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  10
+		}
+		Line {
+		  SrcBlock		  "CB407"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch6"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB408"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch5"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB409"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant2"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB412"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "CB410"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch8"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant7"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch7"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch1"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB405"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch4"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "CB411"
+		  Labels		  [0, 0]
+		  SrcBlock		  "Manual Switch9"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator3"
+		  DstPort		  9
+		}
+		Line {
+		  SrcBlock		  "Constant9"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch10"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Constant8"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "CB411"
+		  SrcPort		  1
+		  DstBlock		  "Manual Switch9"
+		  DstPort		  1
+		}
+		Annotation {
+		  SID			  "28655"
+		  Name			  "Op_Mode:\n0 = Relay Functions\n1 = Close Breaker\n2 = Open Breaker"
+		  Position		  [446, 24]
+		  ZOrder		  -1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch"
+	      SID		      "28828"
+	      Position		      [655, 1107, 685, 1143]
+	      ZOrder		      2061
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"ResetAll"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch1"
+	      SID		      "28829"
+	      Position		      [580, 1117, 610, 1153]
+	      ZOrder		      2062
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch2"
+	      SID		      "28832"
+	      Position		      [670, 1222, 700, 1258]
+	      ZOrder		      3520
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"GroupSel"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch3"
+	      SID		      "28833"
+	      Position		      [595, 1232, 625, 1268]
+	      ZOrder		      3521
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch4"
+	      SID		      "28839"
+	      Position		      [605, 1337, 635, 1373]
+	      ZOrder		      3525
+	      ShowName		      off
+	      CurrentSetting	      "0"
+	      Port {
+		PortNumber		1
+		Name			"MockEna"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "NO FAULT"
+	      SID		      "28831"
+	      Position		      [290, 1110, 320, 1140]
+	      ZOrder		      3518
+	      BackgroundColor	      "green"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "NO FAULT2"
+	      SID		      "28837"
+	      Position		      [540, 1195, 570, 1225]
+	      ZOrder		      3524
+	      BackgroundColor	      "magenta"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "NO FAULT3"
+	      SID		      "28840"
+	      Position		      [315, 1330, 345, 1360]
+	      ZOrder		      3527
+	      BackgroundColor	      "green"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      DiscretePulseGenerator
+	      Name		      "Pulse\nGenerator"
+	      SID		      "28827"
+	      Ports		      [0, 1]
+	      Position		      [495, 1084, 575, 1106]
+	      ZOrder		      2060
+	      ShowName		      off
+	      Period		      "1000"
+	      PulseWidth	      "500"
+	      SampleTime	      "Ts"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "RST"
+	      SID		      "28830"
+	      Position		      [410, 1130, 440, 1160]
+	      ZOrder		      3517
+	      BackgroundColor	      "red"
+	      Port {
+		PortNumber		1
+		Name			"record_rms_signals"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "setting #1"
+	      SID		      "28834"
+	      Position		      [305, 1225, 335, 1255]
+	      ZOrder		      3523
+	      BackgroundColor	      "green"
+	      NamePlacement	      "alternate"
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "setting #2"
+	      SID		      "28836"
+	      Position		      [425, 1245, 455, 1275]
+	      ZOrder		      3522
+	      BackgroundColor	      "red"
+	      Port {
+		PortNumber		1
+		Name			"record_rms_signals"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "28654"
+	      Position		      [890, 1003, 920, 1017]
+	      ZOrder		      -49
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator1"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "F4"
+	      Labels		      [1, 1]
+	      SrcBlock		      "F4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "F3"
+	      Labels		      [1, 1]
+	      SrcBlock		      "F3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "F2"
+	      Labels		      [1, 1]
+	      SrcBlock		      "F2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "F1"
+	      Labels		      [1, 1]
+	      SrcBlock		      "F1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "ResetAll"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Manual Switch"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "Manual Switch1"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Pulse\nGenerator"
+	      SrcPort		      1
+	      Points		      [52, 0; 0, 20]
+	      DstBlock		      "Manual Switch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "NO FAULT"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "record_rms_signals"
+	      SrcBlock		      "RST"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Manual Switch3"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "NO FAULT2"
+	      SrcPort		      1
+	      Points		      [72, 0; 0, 20]
+	      DstBlock		      "Manual Switch2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "setting #1"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "record_rms_signals"
+	      SrcBlock		      "setting #2"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch3"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "GroupSel"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Manual Switch2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "MockEna"
+	      Labels		      [-1, 0]
+	      SrcBlock		      "Manual Switch4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "NO FAULT3"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "record_rms_signals"
+	      SrcBlock		      "Enabled"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch4"
+	      DstPort		      2
+	    }
+	    Annotation {
+	      SID		      "28838"
+	      Name		      "Should be from pattern generator"
+	      Position		      [553, 1182]
+	      BackgroundColor	      "magenta"
+	      ZOrder		      -1
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "CLOSED"
 	  SID			  "26631"
@@ -1364,7 +4888,7 @@ Model {
 	  }
 	  System {
 	    Name		    "EPC Inverter"
-	    Location		    [-4, -4, 1924, 1160]
+	    Location		    [-8, 0, 1924, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -5803,6 +9327,517 @@ Model {
 	  }
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "Gen_Modbus_Stimuli1"
+	  SID			  "28842"
+	  Ports			  [0, 1]
+	  Position		  [395, 1214, 540, 1256]
+	  ZOrder		  3769
+	  BackgroundColor	  "orange"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Gen1"
+	    PropagatedSignals	    "P, Q, V, F, Mode, Enable, GCB_Open"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Gen_Modbus_Stimuli1"
+	    Location		    [-8, 0, 1924, 1056]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "125"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "1 - PQ\n2 - PV\n3 - VF"
+	      SID		      "28843"
+	      Position		      [255, 360, 285, 390]
+	      ZOrder		      1984
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "28844"
+	      Ports		      [7, 1]
+	      Position		      [700, 81, 705, 249]
+	      ZOrder		      -2
+	      ShowName		      off
+	      Inputs		      "7"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Closed 3 - 26 s1"
+	      SID		      "28845"
+	      Ports		      [0, 1]
+	      Position		      [20, 515, 235, 545]
+	      ZOrder		      1994
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+	      SourceType	      "Repeating Sequence Stair"
+	      OutValues		      "Stim.Gen3.GCBo\n"
+	      tsamp		      "[Stim.Ts Ts]"
+	      OutMin		      "[]"
+	      OutMax		      "[]"
+	      OutDataTypeStr	      "double"
+	      OutputDataTypeScalingMode	"double"
+	      OutDataType	      "fixdt(0,8)"
+	      ConRadixGroup	      "Best Precision: Vector-wise"
+	      OutScaling	      "2^-12"
+	      LockScale		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Fcmd pu"
+	      SID		      "28846"
+	      Position		      [450, 195, 480, 225]
+	      ZOrder		      1976
+	      Value		      "1.0"
+	      Port {
+		PortNumber		1
+		Name			"F"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch"
+	      SID		      "28847"
+	      Position		      [400, 337, 430, 373]
+	      ZOrder		      1987
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"Mode"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch1"
+	      SID		      "28848"
+	      Position		      [515, 32, 545, 68]
+	      ZOrder		      1989
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"P"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch2"
+	      SID		      "28858"
+	      Position		      [495, 437, 525, 473]
+	      ZOrder		      1997
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"Enable"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch3"
+	      SID		      "28860"
+	      Position		      [495, 522, 525, 558]
+	      ZOrder		      1999
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"GCB_Open"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch4"
+	      SID		      "28861"
+	      Position		      [395, 462, 425, 498]
+	      ZOrder		      3519
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      ManualSwitch
+	      Name		      "Manual Switch5"
+	      SID		      "28864"
+	      Position		      [405, 557, 435, 593]
+	      ZOrder		      3522
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "NO FAULT"
+	      SID		      "28862"
+	      Position		      [280, 450, 310, 480]
+	      ZOrder		      3521
+	      BackgroundColor	      "green"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "NO FAULT1"
+	      SID		      "28865"
+	      Position		      [290, 545, 320, 575]
+	      ZOrder		      3524
+	      BackgroundColor	      "green"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Pfactor"
+	      SID		      "28849"
+	      Position		      [595, 35, 625, 65]
+	      ZOrder		      1979
+	      Gain		      ".9"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"P"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Qfactor"
+	      SID		      "28850"
+	      Position		      [585, 87, 640, 123]
+	      ZOrder		      1980
+	      Gain		      ".43"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Q"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "RST"
+	      SID		      "28863"
+	      Position		      [325, 475, 355, 505]
+	      ZOrder		      3520
+	      BackgroundColor	      "red"
+	      Port {
+		PortNumber		1
+		Name			"record_rms_signals"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "RST1"
+	      SID		      "28866"
+	      Position		      [335, 570, 365, 600]
+	      ZOrder		      3523
+	      BackgroundColor	      "red"
+	      Port {
+		PortNumber		1
+		Name			"record_rms_signals"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "S Profile1"
+	      SID		      "28851"
+	      Ports		      [0, 1]
+	      Position		      [20, 25, 235, 55]
+	      ZOrder		      1985
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+	      SourceType	      "Repeating Sequence Stair"
+	      OutValues		      "Stim.Gen3.s"
+	      tsamp		      "[Stim.Ts Ts]"
+	      OutMin		      "[]"
+	      OutMax		      "[]"
+	      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+	      OutputDataTypeScalingMode	"Inherit via back propagation"
+	      OutDataType	      "fixdt(0,8)"
+	      ConRadixGroup	      "Best Precision: Vector-wise"
+	      OutScaling	      "2^-12"
+	      LockScale		      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "S Profile2"
+	      SID		      "28852"
+	      Ports		      [0, 1]
+	      Position		      [20, 430, 235, 460]
+	      ZOrder		      1996
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+	      SourceType	      "Repeating Sequence Stair"
+	      OutValues		      "Stim.Gen3.Ena\n"
+	      tsamp		      "[Stim.Ts Ts]"
+	      OutMin		      "[]"
+	      OutMax		      "[]"
+	      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+	      OutputDataTypeScalingMode	"Inherit via back propagation"
+	      OutDataType	      "fixdt(0,8)"
+	      ConRadixGroup	      "Best Precision: Vector-wise"
+	      OutScaling	      "2^-12"
+	      LockScale		      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "VF - to 50s\nPQ 50 to 110\nVF 110 to end"
+	      SID		      "28853"
+	      Ports		      [0, 1]
+	      Position		      [20, 330, 235, 360]
+	      ZOrder		      1981
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Sources/Repeating\nSequence\nStair"
+	      SourceType	      "Repeating Sequence Stair"
+	      OutValues		      "Stim.Gen3.Mode"
+	      tsamp		      "[Stim.Ts Ts]"
+	      OutMin		      "[]"
+	      OutMax		      "[]"
+	      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+	      OutputDataTypeScalingMode	"Inherit via back propagation"
+	      OutDataType	      "fixdt(0,8)"
+	      ConRadixGroup	      "Best Precision: Vector-wise"
+	      OutScaling	      "2^-12"
+	      LockScale		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Vcmd pu"
+	      SID		      "28854"
+	      Position		      [440, 140, 470, 170]
+	      ZOrder		      1975
+	      Port {
+		PortNumber		1
+		Name			"V"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Vcmd pu1"
+	      SID		      "28855"
+	      Position		      [450, 70, 480, 100]
+	      ZOrder		      1995
+	      Value		      "0.2"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "S"
+	      SID		      "28856"
+	      Position		      [775, 158, 805, 172]
+	      ZOrder		      -32
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      DstBlock		      "S"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "P"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Manual Switch1"
+	      SrcPort		      1
+	      Points		      [17, 0]
+	      Branch {
+		Points			[0, 55]
+		DstBlock		"Qfactor"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Pfactor"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      Name		      "Q"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Qfactor"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 10]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "V"
+	      Labels		      [2, 0]
+	      SrcBlock		      "Vcmd pu"
+	      SrcPort		      1
+	      Points		      [17, 0; 0, -15]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "Mode"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Manual Switch"
+	      SrcPort		      1
+	      Points		      [107, 0; 0, -165]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "S Profile2"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "F"
+	      SrcBlock		      "Fcmd pu"
+	      SrcPort		      1
+	      Points		      [18, 0; 0, -45]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "P"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Pfactor"
+	      SrcPort		      1
+	      Points		      [34, 0; 0, 40]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "1 - PQ\n2 - PV\n3 - VF"
+	      SrcPort		      1
+	      Points		      [95, 0]
+	      DstBlock		      "Manual Switch"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "VF - to 50s\nPQ 50 to 110\nVF 110 to end"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Vcmd pu1"
+	      SrcPort		      1
+	      Points		      [14, 0; 0, -25]
+	      DstBlock		      "Manual Switch1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "S Profile1"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "Enable"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Manual Switch2"
+	      SrcPort		      1
+	      Points		      [61, 0; 0, -240]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "GCB_Open"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Manual Switch3"
+	      SrcPort		      1
+	      Points		      [95, 0; 0, -300]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "Closed 3 - 26 s1"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Manual Switch4"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -15]
+	      DstBlock		      "Manual Switch2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "NO FAULT"
+	      SrcPort		      1
+	      Points		      [60, 0; 0, 5]
+	      DstBlock		      "Manual Switch4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "record_rms_signals"
+	      SrcBlock		      "RST"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch4"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "NO FAULT1"
+	      SrcPort		      1
+	      Points		      [60, 0; 0, 5]
+	      DstBlock		      "Manual Switch5"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "record_rms_signals"
+	      SrcBlock		      "RST1"
+	      SrcPort		      1
+	      DstBlock		      "Manual Switch5"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Manual Switch5"
+	      SrcPort		      1
+	      Points		      [0, -25]
+	      DstBlock		      "Manual Switch3"
+	      DstPort		      2
+	    }
+	    Annotation {
+	      SID		      "28857"
+	      Name		      "This will need to be handled from\ncontroller State Machine"
+	      Position		      [728, 520]
+	      BackgroundColor	      "magenta"
+	      ZOrder		      -1
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "25796"
@@ -6710,7 +10745,7 @@ Model {
 	      Position		      [500, 638, 510, 682]
 	      ZOrder		      3510
 	      ShowName		      off
-	      OutputSignals	      "PCC_DATA_OUT.F3_PCC"
+	      OutputSignals	      "F3_RELAY_OUT.F3_PCC"
 	      Port {
 		PortNumber		1
 		Name			"<F3_PCC>"
@@ -8441,7 +12476,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "SC_CMD"
 	  SID			  "25792"
-	  Position		  [720, 828, 750, 842]
+	  Position		  [735, 868, 765, 882]
 	  ZOrder		  2703
 	  IconDisplay		  "Port number"
 	}
@@ -8454,6 +12489,7 @@ Model {
 	Line {
 	  SrcBlock		  "Bus\nCreator1"
 	  SrcPort		  1
+	  Points		  [23, 0; 0, -40]
 	  DstBlock		  "SC_CMD"
 	  DstPort		  1
 	}
@@ -8462,6 +12498,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "From"
 	  SrcPort		  1
+	  Points		  [80, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  3
 	}
@@ -8484,6 +12521,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Bus\nCreator"
 	  SrcPort		  1
+	  Points		  [175, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  2
 	}
@@ -8508,6 +12546,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "From2"
 	  SrcPort		  1
+	  Points		  [65, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  4
 	}
@@ -8886,6 +12925,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "From3"
 	  SrcPort		  1
+	  Points		  [65, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  5
 	}
@@ -8902,6 +12942,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "From4"
 	  SrcPort		  1
+	  Points		  [65, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  6
 	}
@@ -8940,6 +12981,7 @@ Model {
 	  Labels		  [1, 1]
 	  SrcBlock		  "From5"
 	  SrcPort		  1
+	  Points		  [65, 0]
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  7
 	}
@@ -8974,6 +13016,23 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator9"
 	  DstPort		  7
+	}
+	Line {
+	  Name			  "CBStimuli"
+	  Labels		  [1, 1]
+	  SrcBlock		  "CB_modbus_mock"
+	  SrcPort		  1
+	  Points		  [275, 0]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "Gen1"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gen_Modbus_Stimuli1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  9
 	}
 	Annotation {
 	  SID			  "26639"
@@ -9018,13 +13077,13 @@ Model {
       BlockType		      Reference
       Name		      "SS_F1_RELAY_HOUSING"
       SID		      "25330"
-      Ports		      [1, 1]
-      Position		      [2395, 2695, 2600, 2785]
+      Ports		      [2, 1]
+      Position		      [2395, 2701, 2600, 2794]
       ZOrder		      2597
       BlockMirror	      on
-      ForegroundColor	      "orange"
-      BackgroundColor	      "orange"
-      LibraryVersion	      "1.60"
+      ForegroundColor	      "[1.000000, 0.501961, 0.000000]"
+      BackgroundColor	      "[1.000000, 0.501961, 0.000000]"
+      LibraryVersion	      "1.61"
       SourceBlock	      "relay_housing_lib/SS_F1_RELAY_HOUSING"
       SourceType	      "SubSystem"
     }
@@ -9038,7 +13097,7 @@ Model {
       BlockMirror	      on
       ForegroundColor	      "magenta"
       BackgroundColor	      "magenta"
-      LibraryVersion	      "1.60"
+      LibraryVersion	      "1.61"
       SourceBlock	      "relay_housing_lib/SS_F2_RELAY_HOUSING"
       SourceType	      "SubSystem"
     }
@@ -9052,7 +13111,7 @@ Model {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "1.60"
+      LibraryVersion	      "1.61"
       SourceBlock	      "relay_housing_lib/SS_F3_RELAY_HOUSING"
       SourceType	      "SubSystem"
     }
@@ -9064,7 +13123,7 @@ Model {
       Position		      [2355, 2824, 2640, 3166]
       ZOrder		      2334
       ForegroundColor	      "orange"
-      LibraryVersion	      "1.34"
+      LibraryVersion	      "1.37"
       SourceBlock	      "Feeder1_lib/SS_Feeder1"
       SourceType	      "SubSystem"
     }
@@ -9076,7 +13135,7 @@ Model {
       Position		      [2365, 1677, 2645, 2543]
       ZOrder		      2330
       ForegroundColor	      "magenta"
-      LibraryVersion	      "1.48"
+      LibraryVersion	      "1.49"
       SourceBlock	      "Feeder2_lib/SS_Feeder2"
       SourceType	      "SubSystem"
     }
@@ -9088,7 +13147,7 @@ Model {
       Position		      [2350, 1063, 2650, 1377]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "1.35"
+      LibraryVersion	      "1.36"
       SourceBlock	      "Feeder3_lib/SS_Feeder3"
       SourceType	      "SubSystem"
     }
@@ -9750,7 +13809,7 @@ Model {
     Line {
       SrcBlock		      "SS_F1_RELAY_HOUSING"
       SrcPort		      1
-      Points		      [-96, 0]
+      Points		      [-9, 0; 0, -10; -87, 0]
       Branch {
 	Points			[0, -107; 486, 0; 0, -1818]
 	DstBlock		"SS_F3_RELAY_HOUSING"
@@ -9787,6 +13846,7 @@ Model {
 	DstPort			3
       }
       Branch {
+	Points			[-73, 0]
 	DstBlock		"SS_F1_RELAY_HOUSING"
 	DstPort			1
       }
@@ -9891,9 +13951,17 @@ Model {
 	Branch {
 	  Points		  [0, 675]
 	  Branch {
-	    Points		    [0, 1095]
-	    DstBlock		    "SS_Feeder1"
-	    DstPort		    3
+	    Points		    [0, 962]
+	    Branch {
+	      Points		      [477, 0; 0, -42]
+	      DstBlock		      "SS_F1_RELAY_HOUSING"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 133]
+	      DstBlock		      "SS_Feeder1"
+	      DstPort		      3
+	    }
 	  }
 	  Branch {
 	    DstBlock		    "SS_Feeder2"
