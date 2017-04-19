@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [858.0, 86.0, 1932.0, 1092.0]
+      Location		      [752.0, 99.0, 1932.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Apr 04 13:27:46 2017"
-  RTWModifiedTimeStamp	  413213264
-  ModelVersionFormat	  "1.%<AutoIncrement:29>"
+  LastModifiedDate	  "Tue Apr 18 15:23:53 2017"
+  RTWModifiedTimeStamp	  414429829
+  ModelVersionFormat	  "1.%<AutoIncrement:37>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1041,7 +1041,7 @@ Library {
   }
   System {
     Name		    "BESS_lib"
-    Location		    [858, 86, 2790, 1178]
+    Location		    [752, 99, 2684, 1191]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1055,7 +1055,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "342"
+    SIDHighWatermark	    "357"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -1762,7 +1762,7 @@ Library {
 	  Ports			  [5, 1, 0, 0, 0, 0, 3]
 	  Position		  [955, 274, 1080, 576]
 	  ZOrder		  2640
-	  LibraryVersion	  "1.20"
+	  LibraryVersion	  "1.24"
 	  SourceBlock		  "IsourcePower_lib/ISource"
 	  SourceType		  "SubSystem"
 	  Port {
@@ -2822,7 +2822,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.28"
+	  LibraryVersion	  "1.36"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3535,9 +3535,9 @@ Library {
       SID		      "236"
       Ports		      [2, 2, 0, 0, 0, 0, 3]
       Position		      [405, 68, 485, 212]
-      ZOrder		      3849
+      ZOrder		      3852
       NamePlacement	      "alternate"
-      LibraryVersion	      "1.28"
+      LibraryVersion	      "*1.36"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3549,9 +3549,10 @@ Library {
 	$PropName		"MaskObject"
 	$ObjectID		24
 	$ClassName		"Simulink.Mask"
-	Initialization		"In = Sn*1000/(Vn/sqrt(3))/3;\nImax = In*r_I_max;\n\ndstr = 'Inverter data:\\n';\ndstr = [ dstr 'Sn='"
-	" num2str(Sn) 'kW\\n'];\ndstr = [ dstr 'Vn=' num2str(Vn/1000) 'kV\\n'];\ndstr = [ dstr 'In=' num2str(In) 'A\\n'];\ndst"
-	"r = [ dstr 'Imax=' num2str(Imax) 'A\\n'];"
+	Initialization		"CFG.Sn = Sn*1000;\nCFG.Vn = Vn;\nCFG.fn = 60;\nCFG.r_I_max = r_I_max;\n\n% get bess internal params "
+	"(BP)\nBP = BESS_init_mask(CFG);\n\n\ndstr = 'Inverter data:\\n';\ndstr = [ dstr 'Sn=' num2str(Sn) 'kW\\n'];\ndstr = ["
+	" dstr 'Vn=' num2str(Vn/1000) 'kV\\n'];\ndstr = [ dstr 'In=' num2str(BP.In) 'A\\n'];\ndstr = [ dstr 'Imax=' num2str(BP"
+	".Imax) 'A\\n'];"
 	Display			"disp(dstr);"
 	IconOpaque		"off"
 	Array {
@@ -3562,7 +3563,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "Sn"
 	    Prompt		    "Nominal power [kVA]"
-	    Value		    "100"
+	    Value		    "3000"
 	  }
 	  Object {
 	    $ObjectID		    26
@@ -3583,28 +3584,28 @@ Library {
 	    Type		    "edit"
 	    Name		    "b_kWh"
 	    Prompt		    "Battery capacity [kWh]"
-	    Value		    "1"
+	    Value		    "10"
 	  }
 	  Object {
 	    $ObjectID		    29
 	    Type		    "edit"
 	    Name		    "b_esr"
 	    Prompt		    "Battery ESR [Ohm]"
-	    Value		    "0.1"
+	    Value		    "0.001"
 	  }
 	  Object {
 	    $ObjectID		    30
 	    Type		    "edit"
 	    Name		    "r_I_max"
 	    Prompt		    "Max Current Ratio"
-	    Value		    "1.2"
+	    Value		    "3"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"NREL_BESS"
-	Location		[0, 0, 1872, 1032]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3616,7 +3617,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"175"
 	Block {
 	  BlockType		  Inport
 	  Name			  "cb_meas"
@@ -3635,7 +3636,7 @@ Library {
 	  IconDisplay		  "Port number"
 	  Port {
 	    PortNumber		    1
-	    PropagatedSignals	    "PV_ctrl"
+	    PropagatedSignals	    "ESS_ctrl"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -3693,7 +3694,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Battery"
-	    Location		    [0, 0, 1918, 1032]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -3705,7 +3706,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "211"
+	    ZoomFactor		    "200"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Iout"
@@ -3725,21 +3726,6 @@ Library {
 	      InputSameDT	      off
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "Compare\nTo Constant"
-	      SID		      "242"
-	      Ports		      [1, 1]
-	      Position		      [535, 60, 565, 90]
-	      ZOrder		      181
-	      LibraryVersion	      "1.274"
-	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
-	      SourceType	      "Compare To Constant"
-	      relop		      ">"
-	      const		      "0"
-	      OutDataTypeStr	      "uint8"
-	      ZeroCross		      on
 	    }
 	    Block {
 	      BlockType		      Constant
@@ -3803,7 +3789,7 @@ Library {
 	      BlockType		      InitialCondition
 	      Name		      "IC1"
 	      SID		      "248"
-	      Position		      [685, 128, 725, 172]
+	      Position		      [550, 133, 590, 177]
 	      ZOrder		      191
 	      Value		      "Vdc_nom"
 	    }
@@ -3815,25 +3801,12 @@ Library {
 	      ZOrder		      240
 	    }
 	    Block {
-	      BlockType		      Product
-	      Name		      "Mult"
-	      SID		      "250"
-	      Ports		      [2, 1]
-	      Position		      [595, 132, 625, 163]
-	      ZOrder		      180
-	      Inputs		      "**"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      RndMeth		      "Floor"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
 	      BlockType		      Gain
 	      Name		      "Resr"
 	      SID		      "251"
-	      Position		      [260, 185, 290, 215]
+	      Position		      [230, 185, 260, 215]
 	      ZOrder		      239
-	      Gain		      "-1/esr"
+	      Gain		      "esr"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -3842,7 +3815,7 @@ Library {
 	      BlockType		      Outport
 	      Name		      "Vout"
 	      SID		      "252"
-	      Position		      [765, 143, 795, 157]
+	      Position		      [630, 148, 660, 162]
 	      ZOrder		      187
 	      IconDisplay	      "Port number"
 	    }
@@ -3871,14 +3844,7 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Compare\nTo Constant"
-	      SrcPort		      1
-	      Points		      [5, 0; 0, 65]
-	      DstBlock		      "Mult"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Mult"
+	      SrcBlock		      "Memory"
 	      SrcPort		      1
 	      DstBlock		      "IC1"
 	      DstPort		      1
@@ -3901,15 +3867,8 @@ Library {
 	    Line {
 	      SrcBlock		      "Gain2"
 	      SrcPort		      1
-	      Points		      [5, 0]
-	      Branch {
-		DstBlock		"Capacity"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"Compare\nTo Constant"
-		DstPort			1
-	      }
+	      DstBlock		      "Capacity"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Discrete-Time\nIntegrator"
@@ -3945,7 +3904,7 @@ Library {
 	    Line {
 	      SrcBlock		      "Resr"
 	      SrcPort		      1
-	      Points		      [9, 0; 0, -40]
+	      Points		      [39, 0; 0, -40]
 	      DstBlock		      "Add"
 	      DstPort		      2
 	    }
@@ -3954,12 +3913,6 @@ Library {
 	      SrcPort		      1
 	      DstBlock		      "Memory"
 	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Memory"
-	      SrcPort		      1
-	      DstBlock		      "Mult"
-	      DstPort		      2
 	    }
 	    Annotation {
 	      SID		      "256"
@@ -3979,11 +3932,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
 	  SID			  "257"
-	  Ports			  [2, 1]
-	  Position		  [1465, 346, 1470, 384]
+	  Ports			  [3, 1]
+	  Position		  [1510, 341, 1515, 419]
 	  ZOrder		  3740
 	  ShowName		  off
-	  Inputs		  "2"
+	  Inputs		  "3"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -4063,7 +4016,7 @@ Library {
 	  Name			  "Bus\nSelector4"
 	  SID			  "262"
 	  Ports			  [1, 1]
-	  Position		  [595, 558, 600, 592]
+	  Position		  [535, 558, 540, 592]
 	  ZOrder		  3890
 	  ShowName		  off
 	  OutputSignals		  "kw"
@@ -4100,9 +4053,25 @@ Library {
 	  ShowName		  off
 	  OutputSignals		  "Freq,Vdq_meas.Vd,kw,kvar"
 	  OutputAsBus		  on
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector7"
+	  SID			  "347"
+	  Ports			  [1, 2]
+	  Position		  [1005, 94, 1010, 141]
+	  ZOrder		  3924
+	  ShowName		  off
+	  OutputSignals		  "Vdq_meas.Vd,Vdq_meas.Vq"
 	  Port {
 	    PortNumber		    1
-	    Name		    "FVPQ"
+	    Name		    "<Vd>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<Vq>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -4136,6 +4105,15 @@ Library {
 	  const			  "-1"
 	  OutDataTypeStr	  "boolean"
 	  ZeroCross		  on
+	}
+	Block {
+	  BlockType		  ComplexToMagnitudeAngle
+	  Name			  "Complex to\nMagnitude-Angle"
+	  SID			  "349"
+	  Ports			  [1, 2]
+	  Position		  [1120, 93, 1150, 137]
+	  ZOrder		  3926
+	  ShowName		  off
 	}
 	Block {
 	  BlockType		  Constant
@@ -4258,7 +4236,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Droop"
-	    Location		    [0, 0, 1918, 1032]
+	    Location		    [960, 0, 1918, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -4270,7 +4248,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "150"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "dfvpq"
@@ -4630,7 +4608,7 @@ Library {
 	  Position		  [20, 310, 160, 330]
 	  ZOrder		  3919
 	  BackgroundColor	  "magenta"
-	  Value			  "[0.01 0.01 0.01 0.01]"
+	  Value			  "[0.0001 0.0001 0.0001 0.0001]"
 	}
 	Block {
 	  BlockType		  From
@@ -4654,7 +4632,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "295"
-	  Position		  [1315, 367, 1375, 383]
+	  Position		  [1315, 372, 1375, 388]
 	  ZOrder		  3781
 	  ShowName		  off
 	  GotoTag		  "Battery"
@@ -4679,7 +4657,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "297"
-	  Position		  [505, 568, 575, 582]
+	  Position		  [445, 568, 515, 582]
 	  ZOrder		  3889
 	  ShowName		  off
 	  GotoTag		  "meas_inv"
@@ -4692,6 +4670,30 @@ Library {
 	  ZOrder		  3886
 	  ShowName		  off
 	  GotoTag		  "Battery"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From7"
+	  SID			  "344"
+	  Position		  [1320, 398, 1390, 412]
+	  ZOrder		  3921
+	  ShowName		  off
+	  GotoTag		  "V_PU"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_PU"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From8"
+	  SID			  "346"
+	  Position		  [880, 108, 950, 122]
+	  ZOrder		  3923
+	  ShowName		  off
+	  GotoTag		  "meas_inv"
 	}
 	Block {
 	  BlockType		  Gain
@@ -4709,6 +4711,38 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "351"
+	  Position		  [1215, 90, 1330, 120]
+	  ZOrder		  3928
+	  ShowName		  off
+	  Gain			  "sqrt(3/2)/Vn"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "357"
+	  Position		  [590, 560, 620, 590]
+	  ZOrder		  3934
+	  Gain			  "1000"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto1"
+	  SID			  "343"
+	  Position		  [1355, 97, 1435, 113]
+	  ZOrder		  3920
+	  ShowName		  off
+	  GotoTag		  "V_PU"
 	}
 	Block {
 	  BlockType		  Goto
@@ -4767,7 +4801,7 @@ Library {
 	  Ports			  [7, 2, 0, 0, 0, 0, 3]
 	  Position		  [1085, 333, 1255, 577]
 	  ZOrder		  3763
-	  LibraryVersion	  "1.20"
+	  LibraryVersion	  "1.24"
 	  SourceBlock		  "IsourcePower_lib/Inverter"
 	  SourceType		  "SubSystem"
 	  Port {
@@ -4834,9 +4868,26 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Pu2SI"
 	  SID			  "310"
-	  Position		  [670, 297, 895, 313]
-	  ZOrder		  3860
+	  Position		  [670, 252, 895, 268]
+	  ZOrder		  3933
+	  Value			  "[60 1 [1 -1]]"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Pu2SI1"
+	  SID			  "355"
+	  Position		  [670, 292, 895, 308]
+	  ZOrder		  3932
 	  Value			  "[60 Vn/sqrt(3/2) [1 -1]*Sn*1e3/Vn/sqrt(3/2)]"
+	}
+	Block {
+	  BlockType		  RealImagToComplex
+	  Name			  "Real-Imag to\nComplex"
+	  SID			  "348"
+	  Ports			  [2, 1]
+	  Position		  [1050, 95, 1080, 135]
+	  ZOrder		  3925
+	  ShowName		  off
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -4861,7 +4912,7 @@ Library {
 	  }
 	  System {
 	    Name		    "RefLimiting"
-	    Location		    [0, 0, 1918, 1032]
+	    Location		    [-8, 0, 1923, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -5255,6 +5306,14 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "350"
+	  Position		  [1175, 115, 1195, 135]
+	  ZOrder		  3927
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "Three-Phase\nSeries RLC Branch1"
 	  SID			  "335"
@@ -5312,7 +5371,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "meas"
 	  SID			  "339"
-	  Position		  [1515, 358, 1545, 372]
+	  Position		  [1560, 373, 1590, 387]
 	  ZOrder		  2620
 	  IconDisplay		  "Port number"
 	}
@@ -5324,6 +5383,75 @@ Library {
 	  ZOrder		  3769
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  DstBlock		  "Divide"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Pu2SI"
+	  SrcPort		  1
+	  Points		  [43, 0; 0, 70; -66, 0; 0, 25]
+	  DstBlock		  "Product"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Goto1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Complex to\nMagnitude-Angle"
+	  SrcPort		  1
+	  DstBlock		  "Gain1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Complex to\nMagnitude-Angle"
+	  SrcPort		  2
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Real-Imag to\nComplex"
+	  SrcPort		  1
+	  DstBlock		  "Complex to\nMagnitude-Angle"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Vq>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  2
+	  Points		  [0, -5]
+	  DstBlock		  "Real-Imag to\nComplex"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Vd>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector7"
+	  SrcPort		  1
+	  DstBlock		  "Real-Imag to\nComplex"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From8"
+	  SrcPort		  1
+	  Points		  [35, 0]
+	  DstBlock		  "Bus\nSelector7"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "V_PU"
+	  Labels		  [-1, 1]
+	  SrcBlock		  "From7"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
 	}
 	Line {
 	  Name			  "Inverter"
@@ -5442,7 +5570,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector4"
 	  SrcPort		  1
-	  DstBlock		  "Divide"
+	  DstBlock		  "Gain2"
 	  DstPort		  1
 	}
 	Line {
@@ -5584,13 +5712,6 @@ Library {
 	  Points		  [22, 0; 0, -10]
 	  DstBlock		  "Mux1"
 	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Pu2SI"
-	  SrcPort		  1
-	  Points		  [14, 0; 0, 33; -31, 0; 0, 17]
-	  DstBlock		  "Product"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Bus\nSelector3"
@@ -5746,8 +5867,6 @@ Library {
 	  DstPort		  2
 	}
 	Line {
-	  Name			  "FVPQ"
-	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector6"
 	  SrcPort		  1
 	  DstBlock		  "Divide1"
