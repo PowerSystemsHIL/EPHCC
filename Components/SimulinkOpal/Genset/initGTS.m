@@ -24,18 +24,22 @@ T3numd = [ 0    0.0087 ];
 T3dend = [ 1.0000   -0.9913 ];
 
 %% Initialise test system depending on generator model to be tested
-
+TestSystemGenPath = 'NREL_Diesel_Genset_Test_System/SM_Master/Diesel_Generator';
 switch GenSelect
     case '80kW'
+        set_param(TestSystemGenPath, 'GenSel', '80kVA diesel generator');
         GenPN = 100e3;
         GenVN = 480;
     case '80kVA'
+        set_param(TestSystemGenPath, 'GenSel', '80kVA diesel generator');
         GenPN = 100e3;
         GenVN = 480;
     case '4MW'
+        set_param(TestSystemGenPath, 'GenSel', '4MVA diesel generator');
         GenPN = 4e6;
         GenVN = 13800;
     case '4MVA'
+        set_param(TestSystemGenPath, 'GenSel', '4MVA diesel generator');
         GenPN = 4e6;
         GenVN = 13800;    
 end;

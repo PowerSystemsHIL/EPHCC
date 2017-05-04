@@ -106,16 +106,54 @@ Stim.CB.CB408	= [	2	2	2	2	2	2	1	2	2	2	2	2	1	1	2	2	2	2	1	1	2	2	1	1	1	1	1	1	2	2	2	
 Stim.CB.CB409	= [	2	2	2	1	1	1	1	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.CB.CB410	= [	2	2	2	2	1	1	1	2	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.CB.CB411	= [	2	2	2	2	2	1	1	2	2	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	2	2	];
-Stim.CB.CB412	= [	2	2	2	2	2	2	1	2	2	2	2	2	1	1	2	2	2	2	1	1	2	2	2	1	1	1	1	1	2	2	2	2	2	2	2	2	];
+Stim.CB.CB412	= [	2	2	2	2	2	2	1	2	2	2	2	2	2	1	2	2	2	2	1	1	2	2	2	1	1	1	1	1	2	2	2	2	2	2	2	2	];
 Stim.ESS2.Ena	= [	0	1	1	1	1	1	1	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	1	1	0	0	1	1	1	0	0	];
-Stim.ESS2.p	= [	0	0	0	0	0	0	0	0	0	0	0	0	0.16	0.08	-0.08	-0.1	-0.1	-0.1	0	0.2	-0.2	-1	-1	0.2	0.2	-1	-1	-1	-1	0.16	0.16	0.1	0.2	0	0	0	];
-Stim.ESS2.q	= [	0	0	0	0	0	0	0	0	0	0	0	0	0.1	0.1	0.05	0	0	0	0	-0.2	-0.2	-0.2	-0.2	0	0	0	0	0	0	0	0	0.05	0.1	0	0	0	];
+Stim.ESS2.p	= [	0	0	0	0	0	0	0	0	0	0	0	0	0	0	-0.08	-0.1	-0.1	-0.1	0	0.2	-0.2	-1	-1	0.2	0.2	-1	-1	-1	-1	0.16	0.16	0.1	0.2	0	0	0	];
+Stim.ESS2.q	= [	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.05	0	0	0	0	-0.2	-0.2	-0.2	-0.2	0	0	0	0	0	0	0	0	0.05	0.1	0	0	0	];
 Stim.ESS2.v	= [	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.ESS2.f	= [	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.ESS2.MCB	= [	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.PV.Ena	= [	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
-Stim.PV.p	= [	0	0.05	0.3	0.7	1	0.5	0.7	0.7	0.3	0.1	0.2	0.3	0.1	0.1	0.3	0.4	0.1	0.1	0.1	0.2	0.3	0.4	1	0.4	0.3	0.1	0	0	0.3	0.6	0.1	0.2	0.1	0	0	0	];
+Stim.PV.p	= [	0	0.05	0.3	0.7	1	0.5	0.7	0.7	0.3	0.1	0	0	0	0	0.3	0.4	0.1	0.1	0.1	0.2	0.3	0.4	1	0.4	0.3	0.1	0	0	0.3	0.6	0.1	0.2	0.1	0	0	0	];
 
 Stim.N = length(Stim.Gen3.s);
 Stim.Trep = Stim.N*Stim.Ts;
 Stim.Dec = Stim.Trep/Ts/5000;
+
+
+%% Disactivate links that needs to be opened to allow proper model separation 
+if exist('OpenLinks', 'var')  % only run when in opal - keep link resolved when editing outside
+    if (strncmp(gcb, 'RemoteCHIL', length('RemoteCHIL')))
+        LinkPath = 'RemoteCHIL/SS_Feeder4';
+        if (length(find_system(LinkPath, 'SearchDepth', 0)) == 1)
+            if strcmp(get_param(LinkPath, 'LinkStatus'), 'inactive') == 0
+                disp(['###openning link: ' LinkPath]);
+                set_param(LinkPath, 'LinkStatus', 'inactive');
+            else
+                disp(['###link already open: ' LinkPath]);
+            end;
+        end;
+    elseif (strncmp(gcb, 'UrbanCHIL', length('UrbanCHIL')))
+        LinkPath = { 'UrbanCHIL/SS_F1_RELAY_HOUSING' ... 
+            'UrbanCHIL/SS_F2_RELAY_HOUSING' ...
+            'UrbanCHIL/SS_F3_RELAY_HOUSING' ...
+            'UrbanCHIL/SS_Feeder1' ...
+            'UrbanCHIL/SS_Feeder2' ...
+            'UrbanCHIL/SS_Feeder3' ...
+            'UrbanCHIL/SM_UtilityService'};
+        for ii = 1:length(LinkPath)
+            if (length(find_system(LinkPath{ii}, 'SearchDepth', 0)) == 1)
+                if strcmp(get_param(LinkPath{ii}, 'LinkStatus'), 'inactive') == 0
+                    disp(['###openning link: ' LinkPath{ii}]);
+                    set_param(LinkPath{ii}, 'LinkStatus', 'inactive');
+                else
+                    disp(['###link already open: ' LinkPath{ii}]);
+                end;
+            end;
+        end;
+    else
+        disp(['###skipping openning links for model ' gcb]);
+    end;
+else
+    disp('###skipping openning links - not an Rtlab environment');
+end;

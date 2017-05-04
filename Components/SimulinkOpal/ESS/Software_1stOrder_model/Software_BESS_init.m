@@ -85,18 +85,3 @@ filt = firstOrderDig(50e-3, Tc, 'low');
 % paramDroopFreq2Reac = 1;
 % 
 % [mag_num, mag_den] = firstOrderDig(50e-3, Tc, 'low');
-
-%% Current source inverter - voltage source based
-
-% Inverter filter parameters
-Sn_ess = 250e3;   %[VA]
-fn_ess = 60;    %[Hz]
-Us_ess = 480;        %[V]; nap. RMS p-p stojana
-Rs_ess_base = Us_ess^2/Sn_ess;        %[ohm]
-Ls_ess_base = Rs_ess_base/2/pi/fn_ess;     
-
-Rs_ess_PU = 5.4e-3;     %[PU]
-Ls_ess_PU = 10.2e-2;     %[PU]
-
-Rs_ess = Rs_ess_PU*Rs_ess_base;     %[ohm]; rezystancja stojana
-Ls_ess = Ls_ess_PU*Ls_ess_base;     %[H]; indukcyjnosc stojana
