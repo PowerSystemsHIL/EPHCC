@@ -24,5 +24,5 @@ end
 %% Calculate Percent Time Dispatched power is within 100 KW of contract
 percentTimeKW=timeKW_cum/reqTotalTime*100;
 %% Display Result
-disp('Percent of time that exported power is within 100 KW of contract...')
+disp('Percent of time that imported power is within 100 KW of contract...')
 disp(percentTimeKW);
