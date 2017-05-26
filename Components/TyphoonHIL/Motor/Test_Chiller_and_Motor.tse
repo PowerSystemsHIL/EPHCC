@@ -1,0 +1,1683 @@
+version = 4.2
+
+
+//
+// Saved by sw version: 2017.1 Dev
+// Save timestamp: 30-Jan-2017 @ 11:23:58 AM
+//
+
+model "Test_Chiller" {
+    configuration {
+        hil_device = "HIL603"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = 4e-6
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem Root {
+
+        
+        component src_ground gnd1 {
+            
+	    
+        }
+        [
+            position = 8320, 8128
+        ]
+        
+        component src_ground gnd2 {
+            
+	    
+        }
+        [
+            position = 8144, 8640
+        ]
+        
+        component Subsystem MOTOR {
+            layout = dynamic
+    
+            
+            component mchn_ind IM {
+                
+                Jm = "63.87"
+                Llr = "3.9965e-4"
+                Lls = "3.9965e-4"
+                Lm = "0.0346"
+                Rr = "0.066"
+                Rs = "0.029"
+                Rsnb_stator = "795.498829621"
+                enb_sig_out = "True"
+                execution_rate = "Ts"
+                load_src = "Model"
+    	    
+            }
+            [
+                position = 8192, 8256
+                rotation = right
+                scale = -1, 1
+            ]
+            
+            component gen_terminator Termination1 {
+                
+    	    
+            }
+            [
+                position = 8056, 8352
+                scale = -1, 1
+            ]
+            
+            component Subsystem Chiller_compressor {
+                layout = dynamic
+        
+                
+                component gen_c_function "C function1" {
+                    
+                    in_terminal_labels = "False;"
+                    in_terminal_properties = "real w;"
+                    init_fnc = "/*Begin code section*/
+                                                T = 0;
+                                                w = 0;
+                                                /*End code section*/"
+                    no_feed_inputs = "[u'']"
+                    no_feed_outputs = "[u'']"
+                    out_terminal_labels = "False;"
+                    out_terminal_properties = "real T;"
+                    output_fnc = "/*Begin code section*/
+                                                T = 0.1118*w+0.000861*powf(w,2)-3.371e-7*powf(w,3);
+                                                /*End code section*/"
+        	    
+                }
+                [
+                    position = 8192, 8192
+                ]
+                
+                component tm_delay "Unit Delay1" {
+                    
+        	    
+                }
+                [
+                    position = 8272, 8192
+                ]
+                
+                component gen_gain Gain1 {
+                    
+                    gain = "9.5493"
+        	    
+                }
+                [
+                    position = 8120, 8192
+                ]
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                port w_meas {
+                    label = "w meas"
+                    
+                    position = left:1
+                    kind = sp
+                    direction = out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 8056, 8192
+                ]
+                
+                port torque {
+                    label = "Torque"
+                    
+                    position = right:1
+                    kind = sp
+                    direction = in
+                    sp_type {
+                        default = inherit
+                        readonly = True
+                    }
+                }
+                [
+                    position = 8344, 8192
+                ]
+                connect "C function1.w" "Gain1.out" as Connection5
+                
+                connect "C function1.T" "Unit Delay1.in" as Connection3
+                
+                connect torque "Unit Delay1.out" as Connection19
+                [
+                    breakpoints =8304, 8192
+                ]
+                connect w_meas "Gain1.in" as Connection20
+                [
+                    breakpoints =8088, 8192
+                ]
+                
+        
+                
+            }
+            [
+                position = 7936, 8312
+                scale = -1, 1
+                size = 80, 48
+            ]
+            
+            component Subsystem CB {
+                layout = dynamic
+        
+                
+                component ctc_tpst S1 {
+                    
+        	    
+                }
+                [
+                    position = 8192, 8192
+                    rotation = right
+                ]
+                
+                component pas_resistor R1 {
+                    
+                    resistance = "100"
+        	    
+                }
+                [
+                    position = 7952, 8264
+                ]
+                
+                component pas_resistor R2 {
+                    
+                    resistance = "100"
+        	    
+                }
+                [
+                    position = 7952, 8312
+                ]
+                
+                component pas_resistor R3 {
+                    
+                    resistance = "100"
+        	    
+                }
+                [
+                    position = 7952, 8360
+                ]
+                
+                component pas_capacitor C1 {
+                    
+                    capacitance = "1e-3"
+        	    
+                }
+                [
+                    position = 7856, 8264
+                ]
+                
+                component pas_capacitor C2 {
+                    
+                    capacitance = "1e-3"
+        	    
+                }
+                [
+                    position = 7856, 8312
+                ]
+                
+                component pas_capacitor C3 {
+                    
+                    capacitance = "1e-3"
+        	    
+                }
+                [
+                    position = 7856, 8360
+                ]
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                port A {
+                    
+                    position = top:1
+                    kind = pe
+                }
+                [
+                    position = 8096, 8112
+                    rotation = right
+                ]
+                
+                port B {
+                    
+                    position = top:2
+                    kind = pe
+                }
+                [
+                    position = 8192, 8112
+                    rotation = right
+                ]
+                
+                port C {
+                    
+                    position = top:3
+                    kind = pe
+                }
+                [
+                    position = 8288, 8112
+                    rotation = right
+                ]
+                
+                port a {
+                    
+                    position = bottom:1
+                    kind = pe
+                }
+                [
+                    position = 8096, 8624
+                    rotation = left
+                ]
+                
+                port b {
+                    
+                    position = bottom:2
+                    kind = pe
+                }
+                [
+                    position = 8192, 8624
+                    rotation = left
+                ]
+                
+                port c {
+                    
+                    position = bottom:3
+                    kind = pe
+                }
+                [
+                    position = 8288, 8624
+                    rotation = left
+                ]
+                
+                port g {
+                    
+                    position = left:1
+                    kind = pe
+                }
+                [
+                    position = 7680, 8312
+                ]
+                
+                junction Junction1 pe
+                [
+                    position = 8096, 8264
+                ]
+                
+                junction Junction2 pe
+                [
+                    position = 8192, 8312
+                ]
+                
+                junction Junction3 pe
+                [
+                    position = 8288, 8360
+                ]
+                
+                junction Junction5 pe
+                [
+                    position = 7728, 8312
+                ]
+                
+                junction Junction6 pe
+                [
+                    position = 7728, 8312
+                ]
+                connect "C1.p_node" Junction5 as Connection46
+                
+                connect "C2.p_node" Junction5 as Connection48
+                
+                connect "C3.p_node" Junction6 as Connection52
+                
+                connect "C3.n_node" "R3.p_node" as Connection49
+                
+                connect Junction1 a as Connection44
+                [
+                    breakpoints =8096, 8264;8096, 8424
+                ]
+                connect Junction3 c as Connection42
+                [
+                    breakpoints =8288, 8360;8288, 8560
+                ]
+                connect Junction6 Junction5 as Connection51
+                
+                connect "R1.p_node" "C1.n_node" as Connection45
+                
+                connect "R1.n_node" Junction1 as Connection9
+                
+                connect "R2.p_node" "C2.n_node" as Connection47
+                
+                connect "R2.n_node" Junction2 as Connection12
+                
+                connect "R3.n_node" Junction3 as Connection15
+                
+                connect "S1.c_in" A as Connection6
+                
+                connect "S1.b_in" B as Connection2
+                
+                connect "S1.a_in" C as Connection4
+                
+                connect "S1.c_out" Junction1 as Connection7
+                
+                connect "S1.b_out" Junction2 as Connection10
+                
+                connect "S1.a_out" Junction3 as Connection13
+                
+                connect b Junction2 as Connection43
+                [
+                    breakpoints =8192, 8496
+                ]
+                connect g Junction6 as Connection50
+                
+                
+        
+                
+            }
+            [
+                position = 8192, 8024
+                size = 104, 48
+            ]
+            
+            component Subsystem Meas {
+                layout = dynamic
+        
+                
+                component msr_current Ic {
+                    
+        	    
+                }
+                [
+                    position = 8296, 8120
+                    rotation = right
+                ]
+                
+                component msr_current Ia {
+                    
+        	    
+                }
+                [
+                    position = 8096, 8120
+                    rotation = right
+                ]
+                
+                component msr_voltage Vab {
+                    
+        	    
+                }
+                [
+                    position = 8152, 8216
+                ]
+                
+                component msr_voltage Vbc {
+                    
+        	    
+                }
+                [
+                    position = 8248, 8216
+                ]
+                
+                component msr_current Ib {
+                    
+        	    
+                }
+                [
+                    position = 8200, 8120
+                    rotation = right
+                ]
+                
+                component msr_voltage Vca {
+                    
+        	    
+                }
+                [
+                    position = 8152, 8272
+                    scale = -1, 1
+                ]
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                port A {
+                    
+                    position = top:1
+                    kind = pe
+                }
+                [
+                    position = 8096, 8040
+                    rotation = right
+                ]
+                
+                port B {
+                    
+                    position = top:2
+                    kind = pe
+                }
+                [
+                    position = 8200, 8040
+                    rotation = right
+                ]
+                
+                port C {
+                    
+                    position = top:3
+                    kind = pe
+                }
+                [
+                    position = 8296, 8040
+                    rotation = right
+                ]
+                
+                port a {
+                    
+                    position = bottom:1
+                    kind = pe
+                }
+                [
+                    position = 8096, 8368
+                    rotation = left
+                ]
+                
+                port b {
+                    
+                    position = bottom:2
+                    kind = pe
+                }
+                [
+                    position = 8200, 8368
+                    rotation = left
+                ]
+                
+                port c {
+                    
+                    position = bottom:3
+                    kind = pe
+                }
+                [
+                    position = 8296, 8368
+                    rotation = left
+                ]
+                
+                junction Junction1 pe
+                [
+                    position = 8096, 8216
+                ]
+                
+                junction Junction2 pe
+                [
+                    position = 8200, 8216
+                ]
+                
+                junction Junction3 pe
+                [
+                    position = 8200, 8216
+                ]
+                
+                junction Junction4 pe
+                [
+                    position = 8296, 8216
+                ]
+                
+                junction Junction5 pe
+                [
+                    position = 8296, 8272
+                ]
+                
+                junction Junction6 pe
+                [
+                    position = 8096, 8272
+                ]
+                connect "Ia.p_node" A as Connection33
+                
+                connect "Ib.p_node" B as Connection32
+                
+                connect "Ic.p_node" C as Connection35
+                
+                connect Junction1 "Ia.n_node" as Connection26
+                
+                connect Junction2 "Ib.n_node" as Connection28
+                
+                connect Junction2 b as Connection31
+                
+                connect Junction3 Junction2 as Connection15
+                
+                connect Junction4 "Ic.n_node" as Connection30
+                
+                connect Junction5 Junction4 as Connection21
+                
+                connect Junction5 c as Connection36
+                
+                connect Junction6 Junction1 as Connection24
+                
+                connect Junction6 a as Connection34
+                
+                connect "Vab.p_node" Junction1 as Connection10
+                
+                connect "Vab.n_node" Junction3 as Connection14
+                
+                connect "Vbc.p_node" Junction3 as Connection16
+                
+                connect "Vbc.n_node" Junction4 as Connection19
+                
+                connect "Vca.p_node" Junction5 as Connection22
+                
+                connect "Vca.n_node" Junction6 as Connection25
+                
+                
+        
+                
+            }
+            [
+                position = 8192, 8112
+                size = 112, 48
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port A {
+                
+                position = top:1
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8088, 7888
+                rotation = right
+            ]
+            
+            port B {
+                
+                position = top:2
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8192, 7888
+                rotation = right
+            ]
+            
+            port C {
+                
+                position = top:3
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8288, 7888
+                rotation = right
+            ]
+            
+            port g {
+                
+                position = left:1
+                kind = pe
+            }
+            [
+                position = 8072, 8024
+            ]
+            connect B "CB.B" as Connection12
+            
+            connect C "CB.C" as Connection10
+            [
+                breakpoints =8288, 7976;8224, 7976
+            ]
+            connect "CB.A" A as Connection9
+            [
+                breakpoints =8088, 7976;8088, 7976
+            ]
+            connect "CB.b" "Meas.B" as Connection15
+            
+            connect "CB.c" "Meas.C" as Connection17
+            
+            connect "Chiller_compressor.w_meas" "IM.speed_out" as Connection4
+            
+            connect "Chiller_compressor.torque" "IM.load_in" as Connection21
+            
+            connect "IM.a_in" "Meas.a" as Connection19
+            
+            connect "Meas.A" "CB.a" as Connection20
+            
+            connect "Meas.b" "IM.b_in" as Connection16
+            
+            connect "Meas.c" "IM.c_in" as Connection18
+            
+            connect "Termination1.in" "IM.torque_out" as Connection6
+            
+            connect g "CB.g" as Connection14
+            
+            
+    
+            
+        }
+        [
+            position = 8224, 8608
+            size = 64, 128
+        ]
+        
+        component Subsystem Grid {
+            layout = dynamic
+    
+            
+            component src_voltage_3ph Vs1 {
+                
+    	    
+            }
+            [
+                position = 7560, 8192
+            ]
+            component "core/Voltage RMS" VArms {
+                
+            }
+            [
+                position = 7872, 8352
+                rotation = right
+                size = 64, 32
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port A {
+                label = "A"
+                
+                position = right:1
+                kind = pe
+            }
+            [
+                position = 8272, 8096
+                rotation = down
+            ]
+            
+            port B {
+                label = "B"
+                
+                position = right:2
+                kind = pe
+            }
+            [
+                position = 8272, 8192
+                rotation = down
+            ]
+            
+            port C {
+                label = "C"
+                
+                position = right:3
+                kind = pe
+            }
+            [
+                position = 8272, 8288
+                rotation = down
+            ]
+            
+            port Ground {
+                
+                position = bottom:2
+                kind = pe
+            }
+            [
+                position = 7368, 8192
+                rotation = down
+                scale = -1, 1
+            ]
+            
+            junction Junction1485 pe
+            [
+                position = 7872, 8096
+            ]
+            
+            junction Junction1486 pe
+            [
+                position = 7448, 8192
+            ]
+            connect Junction1485 A as Connection393
+            [
+                breakpoints =7872, 8096;7944, 8096;7944, 8096;7944, 8096;8208, 8096
+            ]
+            connect Junction1486 Ground as Connection365
+            
+            connect "VArms.p_node" Junction1485 as Connection328
+            
+            connect "VArms.n_node" Junction1486 as Connection366
+            
+            connect "Vs1.b_node" B as Connection391
+            [
+                breakpoints =7944, 8192;7944, 8192;8216, 8192
+            ]
+            connect "Vs1.c_node" C as Connection389
+            [
+                breakpoints =7952, 8288;8224, 8288
+            ]
+            connect "Vs1.a_node" Junction1485 as Connection326
+            
+            connect "Vs1.n_node" Junction1486 as Connection364
+            
+            
+            L = "Lgrid"
+            R = "Rgrid"
+    
+            
+            /*
+                Masks
+            */
+            mask {
+                R {
+                    label = "Resistance"
+                    widget = edit
+                    type = generic
+                    default_value = "0"
+        	    
+        
+                }
+                
+                L {
+                    label = "Inductance"
+                    widget = edit
+                    type = generic
+                    default_value = "0"
+        	    
+        
+                }
+                
+        	
+            CODE component_open
+                from typhoon.apps.schematic_editor.dialogs.component_property_dialogs.general import RegularComponentPropertiesDialog
+            
+                dialog = RegularComponentPropertiesDialog(
+                    component=component,
+                    property_container=component.masks[-1],
+                    current_diagram=current_diagram
+                )
+                dialog.exec_()
+                
+            ENDCODE
+            }
+        }
+        [
+            position = 8224, 8064
+            rotation = right
+            scale = -1, 1
+            size = 88, 72
+        ]
+        
+        component Subsystem Passive_load9 {
+            layout = dynamic
+    
+            
+            component pas_resistor R3 {
+                
+                resistance = "0.6221"
+    	    
+            }
+            [
+                position = 8288, 8176
+                rotation = right
+            ]
+            
+            component pas_resistor R2 {
+                
+                resistance = "0.6221"
+    	    
+            }
+            [
+                position = 8192, 8176
+                rotation = right
+            ]
+            
+            component pas_inductor L3 {
+                
+                inductance = "7.99e-4"
+    	    
+            }
+            [
+                position = 8288, 8272
+                rotation = right
+            ]
+            
+            component pas_inductor L1 {
+                
+                inductance = "7.99e-4"
+    	    
+            }
+            [
+                position = 8096, 8272
+                rotation = right
+            ]
+            
+            component pas_inductor L2 {
+                
+                inductance = "7.99e-4"
+    	    
+            }
+            [
+                position = 8192, 8272
+                rotation = right
+            ]
+            
+            component pas_resistor R1 {
+                
+                resistance = "0.6221"
+    	    
+            }
+            [
+                position = 8096, 8176
+                rotation = right
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port A {
+                
+                position = top:1
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8096, 8080
+                rotation = right
+            ]
+            
+            port B {
+                
+                position = top:2
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8192, 8080
+                rotation = right
+            ]
+            
+            port C {
+                
+                position = top:3
+                kind = pe
+                direction = out
+            }
+            [
+                position = 8288, 8080
+                rotation = right
+            ]
+            
+            junction Junction1 pe
+            [
+                position = 8192, 8336
+            ]
+            connect Junction1 "L3.n_node" as Connection9
+            
+            connect "L1.n_node" Junction1 as Connection8
+            
+            connect "L2.n_node" Junction1 as Connection10
+            
+            connect "R1.p_node" A as Connection2
+            
+            connect "R1.n_node" "L1.p_node" as Connection3
+            
+            connect "R1.n_node" "L1.p_node" as Connection5
+            
+            connect "R1.n_node" "L1.p_node" as Connection1
+            
+            connect "R2.p_node" B as Connection4
+            
+            connect "R2.n_node" "L2.p_node" as Connection11
+            
+            connect "R3.p_node" C as Connection6
+            
+            connect "R3.n_node" "L3.p_node" as Connection12
+            
+            
+    
+            
+        }
+        [
+            position = 8408, 8432
+            size = 64, 48
+        ]
+        
+        component Subsystem CB {
+            layout = dynamic
+    
+            
+            component ctc_tpst S1 {
+                
+    	    
+            }
+            [
+                position = 8192, 8192
+                rotation = right
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port A {
+                
+                position = top:1
+                kind = pe
+            }
+            [
+                position = 8096, 8112
+                rotation = right
+            ]
+            
+            port B {
+                
+                position = top:2
+                kind = pe
+            }
+            [
+                position = 8192, 8112
+                rotation = right
+            ]
+            
+            port C {
+                
+                position = top:3
+                kind = pe
+            }
+            [
+                position = 8288, 8112
+                rotation = right
+            ]
+            
+            port a {
+                
+                position = bottom:1
+                kind = pe
+            }
+            [
+                position = 8096, 8272
+                rotation = left
+            ]
+            
+            port b {
+                
+                position = bottom:2
+                kind = pe
+            }
+            [
+                position = 8192, 8272
+                rotation = left
+            ]
+            
+            port c {
+                
+                position = bottom:3
+                kind = pe
+            }
+            [
+                position = 8288, 8272
+                rotation = left
+            ]
+            connect "S1.c_in" A as Connection6
+            
+            connect "S1.b_in" B as Connection2
+            
+            connect "S1.a_in" C as Connection4
+            
+            connect "S1.c_out" a as Connection1
+            
+            connect "S1.b_out" b as Connection3
+            
+            connect "S1.a_out" c as Connection5
+            
+            
+    
+            
+        }
+        [
+            position = 8224, 8192
+            size = 64, 48
+        ]
+        
+        component Subsystem Meas {
+            layout = dynamic
+    
+            
+            component msr_current Ia {
+                
+    	    
+            }
+            [
+                position = 8096, 8120
+                rotation = right
+            ]
+            
+            component msr_current Ic {
+                
+    	    
+            }
+            [
+                position = 8296, 8120
+                rotation = right
+            ]
+            
+            component msr_voltage Vab {
+                
+    	    
+            }
+            [
+                position = 8152, 8216
+            ]
+            
+            component msr_voltage Vca {
+                
+    	    
+            }
+            [
+                position = 8152, 8272
+                scale = -1, 1
+            ]
+            
+            component msr_voltage Vbc {
+                
+    	    
+            }
+            [
+                position = 8248, 8216
+            ]
+            
+            component msr_current Ib {
+                
+    	    
+            }
+            [
+                position = 8200, 8120
+                rotation = right
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port A {
+                
+                position = top:1
+                kind = pe
+            }
+            [
+                position = 8096, 8040
+                rotation = right
+            ]
+            
+            port B {
+                
+                position = top:2
+                kind = pe
+            }
+            [
+                position = 8200, 8040
+                rotation = right
+            ]
+            
+            port C {
+                
+                position = top:3
+                kind = pe
+            }
+            [
+                position = 8296, 8040
+                rotation = right
+            ]
+            
+            port a {
+                
+                position = bottom:1
+                kind = pe
+            }
+            [
+                position = 8096, 8368
+                rotation = left
+            ]
+            
+            port b {
+                
+                position = bottom:2
+                kind = pe
+            }
+            [
+                position = 8200, 8368
+                rotation = left
+            ]
+            
+            port c {
+                
+                position = bottom:3
+                kind = pe
+            }
+            [
+                position = 8296, 8368
+                rotation = left
+            ]
+            
+            junction Junction1 pe
+            [
+                position = 8096, 8216
+            ]
+            
+            junction Junction2 pe
+            [
+                position = 8200, 8216
+            ]
+            
+            junction Junction3 pe
+            [
+                position = 8200, 8216
+            ]
+            
+            junction Junction4 pe
+            [
+                position = 8296, 8216
+            ]
+            
+            junction Junction5 pe
+            [
+                position = 8296, 8272
+            ]
+            
+            junction Junction6 pe
+            [
+                position = 8096, 8272
+            ]
+            connect "Ia.p_node" A as Connection33
+            
+            connect "Ib.p_node" B as Connection32
+            
+            connect "Ic.p_node" C as Connection35
+            
+            connect Junction1 "Ia.n_node" as Connection26
+            
+            connect Junction2 "Ib.n_node" as Connection28
+            
+            connect Junction2 b as Connection31
+            
+            connect Junction3 Junction2 as Connection15
+            
+            connect Junction4 "Ic.n_node" as Connection30
+            
+            connect Junction5 Junction4 as Connection21
+            
+            connect Junction5 c as Connection36
+            
+            connect Junction6 Junction1 as Connection24
+            
+            connect Junction6 a as Connection34
+            
+            connect "Vab.p_node" Junction1 as Connection10
+            
+            connect "Vab.n_node" Junction3 as Connection14
+            
+            connect "Vbc.p_node" Junction3 as Connection16
+            
+            connect "Vbc.n_node" Junction4 as Connection19
+            
+            connect "Vca.p_node" Junction5 as Connection22
+            
+            connect "Vca.n_node" Junction6 as Connection25
+            
+            
+    
+            
+        }
+        [
+            position = 8224, 8384
+            size = 64, 48
+        ]
+        
+        
+        
+        
+        
+        
+        
+        tag Tag1 {
+            value = "Ground"
+            scope = global
+            kind = pe
+        }
+        [
+            position = 8408, 8064
+            scale = -1, 1
+        ]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        junction Junction190 pe
+        [
+            position = 8320, 8064
+        ]
+        
+        junction Junction191 pe
+        [
+            position = 8208, 8272
+        ]
+        
+        junction Junction192 pe
+        [
+            position = 8224, 8296
+        ]
+        
+        junction Junction193 pe
+        [
+            position = 8240, 8320
+        ]
+        connect "CB.a" Junction191 as Connection1899
+        
+        connect "CB.b" Junction192 as Connection1897
+        
+        connect "CB.c" Junction193 as Connection1895
+        
+        connect "Grid.C" "CB.C" as Connection1894
+        
+        connect "Grid.B" "CB.B" as Connection1896
+        
+        connect "Grid.A" "CB.A" as Connection1898
+        
+        connect Junction190 "Grid.Ground" as Connection1880
+        
+        connect Junction191 "Meas.A" as Connection1906
+        
+        connect Junction192 "Meas.B" as Connection1908
+        
+        connect Junction193 "Meas.C" as Connection1910
+        
+        connect "Meas.a" "MOTOR.A" as Connection1911
+        
+        connect "Meas.b" "MOTOR.B" as Connection1912
+        
+        connect "Meas.c" "MOTOR.C" as Connection1913
+        
+        connect "Passive_load9.A" Junction191 as Connection1887
+        
+        connect "Passive_load9.B" Junction192 as Connection1890
+        
+        connect "Passive_load9.C" Junction193 as Connection1893
+        [
+            breakpoints =8240, 8320;8240, 8320
+        ]
+        connect Tag1 Junction190 as Connection1881
+        
+        connect "gnd1.node" Junction190 as Connection1879
+        
+        connect "gnd2.node" "MOTOR.g" as Connection1914
+        
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        ctc_tpst {
+            ctrl_src = "Digital input"
+            Sa = "1"
+            Sa_logic = "active high"
+            execution_rate = "inherit"
+            initial_state = "off"
+            on_delay = "0"
+            off_delay = "0"
+            spc_nb = "0"
+            ctc_nb = "0"
+            pe_connection = "not_defined"
+            ctc_name = "not_defined"
+        }
+        
+        gen_c_function {
+            in_terminal_properties = "real in;"
+            in_terminal_labels = ""
+            out_terminal_properties = "real out;"
+            out_terminal_labels = ""
+            no_feed_inputs = ""
+            no_feed_outputs = ""
+            output_fnc = ""
+            update_fnc = ""
+            init_fnc = ""
+            global_variables = ""
+            parameters = ""
+            execution_rate = "inherit"
+        }
+        
+        gen_gain {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            execution_rate = "inherit"
+        }
+        
+        gen_terminator {
+            execution_rate = "inherit"
+        }
+        
+        mchn_ind {
+            Rs = "13.12"
+            Rr = "11.202"
+            Lls = "0.0276"
+            Llr = "0.0194"
+            Lm = "0.3482"
+            pms = "2"
+            Jm = "10e-6"
+            friction_coeff = "0"
+            unconstrained_angle = "disabled"
+            load_src = "Control panel / external"
+            ext_mdl_load_type = "torque"
+            load_ai_pin_addr = "1"
+            load_ai_offset = "0"
+            load_ai_gain = "1"
+            enc_ppr = "1024"
+            res_pole_pairs = "1"
+            res_carr_source = "internal"
+            res_int_carr_f = "5e+3"
+            res_ai_pin_addr = "1"
+            res_ai_offset = "0"
+            res_ai_gain = "1"
+            Rsnb_stator = "20e3"
+            calculate_max_snubber = "Calculate"
+            enb_sig_out = "False"
+            execution_rate = "100e-6"
+            machine_id = "0"
+            me_speed_out_addr = "0"
+            el_torque_out_addr = "0"
+        }
+        
+        msr_current {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        msr_voltage {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        pas_capacitor {
+            capacitance = "1e-6"
+            initial_voltage = "0"
+        }
+        
+        pas_inductor {
+            inductance = "1e-3"
+            initial_current = "0.0"
+        }
+        
+        pas_resistor {
+            resistance = "1"
+        }
+        
+        tm_delay {
+            init_value = "0"
+            signal_out_type = "inherit"
+            execution_rate = "inherit"
+        }
+        
+        "core/Voltage RMS" {
+            op_mode = "PLL based"
+            frequency = "50"
+            feed_forward = "false"
+            nd_msr_estimation = "false"
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        
+        
+        Ts = 1500e-6
+        sys_f = 60.0    # Hz
+        sys_w = 2.0*np.pi*sys_f    #rad/s
+        ft2mi = 1.0/5280.0     #mi/ft
+        
+        # Grid Specs
+        
+        Vgrid = 480.0
+        SCgrid = 100.0e6
+        ratio_grid = 30.0
+        
+        Rgrid = 0.001 #((Vgrid/np.sqrt(3))**2)/(SCgrid/3)/np.sqrt(1+ratio_grid**2)
+        Lgrid = 1e-6 #ratio_grid*Rgrid/sys_w
+    ENDCODE
+}

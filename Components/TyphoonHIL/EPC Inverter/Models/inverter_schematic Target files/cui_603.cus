@@ -1,0 +1,722 @@
+<ui_settings>
+    <version>2.0</version>
+    <mode>2</mode>
+    <canvas_bg_color>#ffffff</canvas_bg_color>
+    <initialization_code><![CDATA[# NOTE: Variables and functions defined here will be
+# available for use in all Macro and Expression scripts.
+# This code is always executed after Custom UI is loaded and prior simulation start.
+
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Variable 'SETTINGS_DIR' holds directory where loaded settings .cus file is located.
+# Also you can call 'get_settings_dir_path()' function in any
+# Macro and Expression scripts to get the same directory.
+SETTINGS_DIR = get_settings_dir_path()
+
+#--------------------------------
+# Global variables initialization
+#--------------------------------
+
+#Fault paarmeters
+lvrt_pu = 0.8
+hvrt_pu = 1.2
+lfrt_pu = 0.9
+hfrt_pu = 1.1
+f_nom = 60
+
+# Variables for widget interaction
+fault_type = 'LVRT'
+fault_duration = 0.1
+
+
+]]></initialization_code>
+    <components>
+        <component_data>
+                <id>e838418f8bf811e6b10e342387ff00a2</id>
+                <name><![CDATA[Inject fault]]></name>
+                <type>MacroButton</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+delta_t = 0.2
+elapsed_time = hil.get_sim_time()
+numOfSteps = 20 # Frequency RT ramp number of steps
+# Fault parameters are defined in the CUI panel intialization script
+
+if fault_type == 'LVRT':
+    hil.set_source_scaling('Vs1', lvrt_pu , executeAt = elapsed_time + delta_t)
+    hil.set_source_scaling('Vs1', 1 , executeAt = elapsed_time + delta_t + fault_duration)
+    
+elif fault_type == 'HVRT':
+    hil.set_source_scaling('Vs1', hvrt_pu , executeAt = elapsed_time + delta_t)
+    hil.set_source_scaling('Vs1', 1 , executeAt = elapsed_time + delta_t + fault_duration) 
+    
+elif fault_type == 'LFRT':
+    freq = f_nom
+    freq_step = ((lfrt_pu - 1) * f_nom) / numOfSteps
+    # ramp down to lfrt value
+    for i in range (1,numOfSteps+1):
+        executeAtTime = (elapsed_time + delta_t) + (fault_duration/2/numOfSteps)*i
+        freq += freq_step
+        hil.set_source_sine_waveform('Vs1', frequency = freq, executeAt = executeAtTime)
+    # ramp up to nominal
+    for i in range (1,numOfSteps+1):
+        executeAtTime = (elapsed_time + delta_t + fault_duration/2) + (fault_duration/2/numOfSteps)*i
+        freq -= freq_step
+        hil.set_source_sine_waveform('Vs1', frequency = freq, executeAt = executeAtTime)
+
+elif fault_type == 'HFRT':
+    freq = f_nom
+    freq_step = ((hfrt_pu - 1) * f_nom) / numOfSteps
+    # ramp up to hfrt value
+    for i in range (1,numOfSteps+1):
+        executeAtTime = (elapsed_time + delta_t) + (fault_duration/2/numOfSteps)*i
+        freq += freq_step
+        hil.set_source_sine_waveform('Vs1', frequency = freq, executeAt = executeAtTime)
+    # ramp down to 60 Hz
+    for i in range (1,numOfSteps+1):
+        executeAtTime = (elapsed_time + delta_t + fault_duration/2) + (fault_duration/2/numOfSteps)*i
+        freq -= freq_step
+        hil.set_source_sine_waveform('Vs1', frequency = freq, executeAt = executeAtTime)
+]]></code>
+                <execute_on_load>False</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>160</x>
+                    <y>8</y>
+                    <width>120</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>e8366ccf8bf811e6861d342387ff00a2</id>
+                <name><![CDATA[Grid Faults]]></name>
+                <type>Group</type>
+                <description><![CDATA[None]]></description>
+                <components_ids><![CDATA[[u'e838418f8bf811e6b10e342387ff00a2', u'9572e2f090ba11e6b2ed3c970e5956c7', u'ccaee6b090ba11e6b2cf3c970e5956c7']]]></components_ids>
+                <hierarchy_position>1</hierarchy_position>
+                <canvas_bg_color>#ffffff</canvas_bg_color>
+                <widget_settings>
+                    <x>1536</x>
+                    <y>288</y>
+                    <width>296</width>
+                    <height>104</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                    <collapsed>False</collapsed>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ee9521c08bf811e6822a342387ff00a2</id>
+                <name><![CDATA[Q_reference]]></name>
+                <type>SliderMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+hil.set_cp_input_value('User defined', 'Power Reference', 'Q_ref', inputValue)
+]]></code>
+                <inputValue><![CDATA[18000.0]]></inputValue>
+                <min>-35000.0</min>
+                <max>35000.0</max>
+                <step>1000.0</step>
+                <execute_on_load>True</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>0</x>
+                    <y>80</y>
+                    <width>376</width>
+                    <height>64</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ee96f6808bf811e6a092342387ff00a2</id>
+                <name><![CDATA[P_reference]]></name>
+                <type>SliderMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+hil.set_cp_input_value('User defined', 'Power Reference', 'P_ref', inputValue)
+]]></code>
+                <inputValue><![CDATA[15000.0]]></inputValue>
+                <min>-35000.0</min>
+                <max>35000.0</max>
+                <step>1000.0</step>
+                <execute_on_load>True</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>0</x>
+                    <y>8</y>
+                    <width>376</width>
+                    <height>64</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ee92d7cf8bf811e697dd342387ff00a2</id>
+                <name><![CDATA[Active and Reactive Power Reference]]></name>
+                <type>Group</type>
+                <description><![CDATA[None]]></description>
+                <components_ids><![CDATA[[u'ee9521c08bf811e6822a342387ff00a2', u'ee96f6808bf811e6a092342387ff00a2']]]></components_ids>
+                <hierarchy_position>1</hierarchy_position>
+                <canvas_bg_color>#ffffff</canvas_bg_color>
+                <widget_settings>
+                    <x>1144</x>
+                    <y>592</y>
+                    <width>424</width>
+                    <height>200</height>
+                    <appearance><![CDATA[Raised]]></appearance>
+                    <collapsed>False</collapsed>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>b9130d918bf911e6aa4e342387ff00a2</id>
+                <name><![CDATA[Vab grid rms]]></name>
+                <type>Gauge</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Expression</data_type>
+                <code><![CDATA[#------------- MANDATORY IMPORT -----------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+#------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = hil.read_analog_signal(name = 'V_ab_pk')/(2.0**0.5)
+
+
+
+]]></code>
+                <signal_name><![CDATA[V_ab_pk]]></signal_name>
+                <unit><![CDATA[V]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1416</x>
+                    <y>72</y>
+                    <width>176</width>
+                    <height>136</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <min>0.0</min>
+                    <max>500.0</max>
+                    <warning_range>(0, 0, 0, 0)</warning_range>
+                    <critical_range>(0, 0, 0, 0)</critical_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>6c102ea18bff11e6af33342387ff00a2</id>
+                <name><![CDATA[DC link voltage]]></name>
+                <type>DigitalDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = 0.0
+
+]]></code>
+                <signal_name><![CDATA[C4]]></signal_name>
+                <unit><![CDATA[V]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <decimals><![CDATA[2]]></decimals>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>248</x>
+                    <y>152</y>
+                    <width>144</width>
+                    <height>48</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <green_range>(0, 0, 0, 0)</green_range>
+                    <orange_range>(0, 0, 0, 0)</orange_range>
+                    <red_range>(0, 0, 0, 0)</red_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>6d6362918bff11e687ca342387ff00a2</id>
+                <name><![CDATA[Phasor graph]]></name>
+                <type>PhasorGraphDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Expression</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+from math import atan, sqrt, pi
+# NOTE: Only read functions are available from HIL Control Panel API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ ['Phasor 1 name', Phasor 1 phase, Phasor 1 magnitude],
+#                      ['Phasor X name', Phasor X phase, Phasor X magnitude] ]
+
+P_ref=hil.read_analog_signal(name = 'Pdc')
+Q_ref=hil.read_analog_signal(name = 'Qdc')
+
+#Vd=hil.read_analog_signal(name = 'V( Vd )')
+#Vq=hil.read_analog_signal(name = 'V( Vq )')
+
+if P_ref > 0:
+    phase_P = atan(Q_ref/P_ref)
+elif P_ref < 0 and Q_ref >= 0:
+    phase_P = atan(Q_ref/P_ref)+pi
+elif P_ref < 0 and Q_ref < 0:
+    phase_P = atan(Q_ref/P_ref)-pi
+elif P_ref == 0 and Q_ref >= 0:
+    phase_P=pi/2
+elif P_ref == 0 and Q_ref >= 0:
+    phase_P=-pi/2
+else:
+    phase_P=0
+    
+magnitude_P = sqrt(P_ref**2+Q_ref**2)
+
+#phase_V = atan(Vq/Vd)
+#magnitude_V = sqrt(Vd**2+Vq**2)/(372/sqrt(3)*sqrt(2))
+
+
+#displayValue = [['Power [pu]', 180*phase_P/3.14,   magnitude_P ],
+#                ['Voltage [pu]', 180*phase_V/3.14, magnitude_V ]]
+
+displayValue = [['Power [pu]', 180*phase_P/3.14,   magnitude_P ]]
+
+
+]]></code>
+                <signals><![CDATA[]]></signals>
+                <updateRate>500</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <phasors_data>
+                    </phasors_data>
+                <widget_settings>
+                    <x>248</x>
+                    <y>376</y>
+                    <width>264</width>
+                    <height>224</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <range_max>1.0</range_max>
+                    <auto_scale_enabled>True</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>9572e2f090ba11e6b2ed3c970e5956c7</id>
+                <name><![CDATA[Fault type]]></name>
+                <type>ComboBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+global fault_type
+
+fault_type = inputValue
+]]></code>
+                <inputValue><![CDATA[LVRT]]></inputValue>
+                <availableValues>[u'LVRT', u'HVRT', u'LFRT', u'HFRT']</availableValues>
+                <unit><![CDATA[]]></unit>
+                <execute_on_load>True</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>8</x>
+                    <y>8</y>
+                    <width>136</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ccaee6b090ba11e6b2cf3c970e5956c7</id>
+                <name><![CDATA[Fault duration]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+global fault_duration
+
+fault_duration = inputValue]]></code>
+                <inputValue><![CDATA[0.5]]></inputValue>
+                <inputValueType>float</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[s]]></unit>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>8</x>
+                    <y>40</y>
+                    <width>184</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ce1a681e90bb11e69f063c970e5956c7</id>
+                <name><![CDATA[Grid settings]]></name>
+                <type>Group</type>
+                <description><![CDATA[None]]></description>
+                <components_ids><![CDATA[[u'd1e9bf9e90bb11e69f9f3c970e5956c7']]]></components_ids>
+                <hierarchy_position>1</hierarchy_position>
+                <canvas_bg_color>#ffffff</canvas_bg_color>
+                <widget_settings>
+                    <x>1536</x>
+                    <y>216</y>
+                    <width>232</width>
+                    <height>72</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                    <collapsed>False</collapsed>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>d1e9bf9e90bb11e69f9f3c970e5956c7</id>
+                <name><![CDATA[Grid Waveform]]></name>
+                <type>ComboBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if inputValue == 'Pure sine':
+    # do something when 'Case 1' is selected
+    harmonics = ()
+    hil.set_source_sine_waveform('Vs1', harmonics = harmonics)
+    pass
+elif inputValue == 'Harmonics':
+    # do something when 'Case 2' is selected
+    harmonics = [
+             (3,10.0,0.0),
+             (10,10.0,0.0),
+             (21,10.0,0.0),
+             (40,5.0,0.0),
+             (40,0.0,0.0),
+             (2,0.0,0.0),
+             (2,0.0,0.0),
+             (2,0.0,0.0),
+             (2,0.0,0.0),
+             (2,0.0,0.0),
+             ]
+    hil.set_source_sine_waveform('Vs1', harmonics = harmonics)
+    pass
+
+]]></code>
+                <inputValue><![CDATA[Pure sine]]></inputValue>
+                <availableValues>[u'Pure sine', u'Harmonics']</availableValues>
+                <unit><![CDATA[]]></unit>
+                <execute_on_load>True</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>8</x>
+                    <y>8</y>
+                    <width>208</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>c062d140913311e685b73c970e5956c7</id>
+                <name><![CDATA[Image component]]></name>
+                <type>Image</type>
+                <description><![CDATA[None]]></description>
+                <image><![CDATA[..\inverter_schematic_image.jpeg]]></image>
+                <image_scaling><![CDATA[Keep aspect ratio]]></image_scaling>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>0</x>
+                    <y>64</y>
+                    <width>1536</width>
+                    <height>640</height>
+                    <background_color><![CDATA[#f0f0f0]]></background_color>
+                    <background_type><![CDATA[Transparent]]></background_type>
+                    <is_background>True</is_background>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>d35e028f8bf911e6bab9342387ff00a2</id>
+                <name><![CDATA[Ia grid rms]]></name>
+                <type>Gauge</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#------------- MANDATORY IMPORT -----------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+#------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = 0.0
+
+]]></code>
+                <signal_name><![CDATA[I_grid_rms]]></signal_name>
+                <unit><![CDATA[A]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1000</x>
+                    <y>72</y>
+                    <width>176</width>
+                    <height>136</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <min>0.0</min>
+                    <max>400.0</max>
+                    <warning_range>(0, 0, 0, 0)</warning_range>
+                    <critical_range>(0, 0, 0, 0)</critical_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>a56f2440ac7e11e6907c5c260a3af506</id>
+                <name><![CDATA[Inverter RMS Current]]></name>
+                <type>DigitalDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = 0.0
+
+]]></code>
+                <signal_name><![CDATA[Irms_inv_a]]></signal_name>
+                <unit><![CDATA[A]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <decimals><![CDATA[2]]></decimals>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>648</x>
+                    <y>152</y>
+                    <width>160</width>
+                    <height>48</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <green_range>(0, 0, 0, 0)</green_range>
+                    <orange_range>(0, 0, 0, 0)</orange_range>
+                    <red_range>(0, 0, 0, 0)</red_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>6133d630ac7f11e6b5155c260a3af506</id>
+                <name><![CDATA[MX1]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[MX1_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Green</led_color>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1144</x>
+                    <y>392</y>
+                    <width>56</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>8100668fac7f11e6a94a5c260a3af506</id>
+                <name><![CDATA[MX2]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[MX2_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Green</led_color>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1384</x>
+                    <y>392</y>
+                    <width>56</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>973759eeac7f11e6b1f65c260a3af506</id>
+                <name><![CDATA[K2]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[K2_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Green</led_color>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>128</x>
+                    <y>256</y>
+                    <width>56</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>a3c35391ac7f11e68cd55c260a3af506</id>
+                <name><![CDATA[K1 Precharge]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[K1_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Green</led_color>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>32</x>
+                    <y>160</y>
+                    <width>120</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>beebd64fac8a11e6a52a5c260a3af506</id>
+                <name><![CDATA[P (W), Q (VAR)]]></name>
+                <type>MultiTraceDisplay</type>
+                <description><![CDATA[P, Q
+]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ [sigVal1,sigVal2,sigVal3], ["Signal 1 name","Signal 2 name","Signal 3 name"] ]
+displayValue = []
+
+]]></code>
+                <signals><![CDATA[[u'Pdc', u'Qdc']]]></signals>
+                <updateRate>250</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>512</x>
+                    <y>392</y>
+                    <width>320</width>
+                    <height>184</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <x_title><![CDATA[x axes]]></x_title>
+                    <y_title><![CDATA[y axes]]></y_title>
+                    <y_range_min>-20.0</y_range_min>
+                    <y_range_max>20.0</y_range_max>
+                    <time_window>10</time_window>
+                    <auto_scale_enabled>True</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                    <x_axis_title_enabled>False</x_axis_title_enabled>
+                    <y_axis_title_enabled>False</y_axis_title_enabled>
+                </advance_widget_settings>
+            </component_data>
+        </components>
+</ui_settings>

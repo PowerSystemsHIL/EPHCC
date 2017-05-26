@@ -1,0 +1,2032 @@
+version = 4.2
+
+
+//
+// Model name: inverter_schematic
+// Saved by sw version: 2016.3
+// Save timestamp: 01-Dec-2016 @ 08:32:30 PM
+//
+
+model "inverter_schematic" {
+    configuration {
+        hil_device = "HIL 402"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = auto
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem "Root" {
+
+        
+        component pas_inductor "L1" {
+            
+            inductance = "L_inv"
+	    
+        }
+        [
+            position = 8312, 8056
+        ]
+        
+        component pas_inductor "L2" {
+            
+            inductance = "L_inv"
+	    
+        }
+        [
+            position = 8312, 8152
+        ]
+        
+        component pas_inductor "L3" {
+            
+            inductance = "L_inv"
+	    
+        }
+        [
+            position = 8320, 8248
+        ]
+        
+        component pas_inductor "L4" {
+            
+            inductance = "L_grid"
+	    
+        }
+        [
+            position = 8784, 8152
+        ]
+        
+        component pas_inductor "L5" {
+            
+            inductance = "L_grid"
+	    
+        }
+        [
+            position = 8784, 8248
+        ]
+        
+        component pas_inductor "L6" {
+            
+            inductance = "L_grid"
+	    
+        }
+        [
+            position = 8784, 8056
+        ]
+        
+        component pas_capacitor "C1" {
+            
+            capacitance = "325e-6"
+	    
+        }
+        [
+            position = 8456, 8512
+            rotation = right
+        ]
+        
+        component pas_capacitor "C2" {
+            
+            capacitance = "325e-6"
+	    
+        }
+        [
+            position = 8520, 8512
+            rotation = right
+        ]
+        
+        component pas_capacitor "C3" {
+            
+            capacitance = "325e-6"
+	    
+        }
+        [
+            position = 8592, 8512
+            rotation = right
+        ]
+        
+        component pas_resistor "R1" {
+            
+	    
+        }
+        [
+            position = 6816, 8024
+        ]
+        
+        component ctc_spst "K1" {
+            
+            Sa = "14"
+	    
+        }
+        [
+            position = 6720, 8024
+        ]
+        
+        component ctc_spst "K2" {
+            
+            Sa = "13"
+	    
+        }
+        [
+            position = 6760, 8096
+        ]
+        
+        component pas_capacitor "C4" {
+            
+            capacitance = "1400e-6"
+	    
+        }
+        [
+            position = 6992, 8144
+            rotation = right
+        ]
+        
+        component ctc_tpst "MX1" {
+            
+            Sa = "16"
+	    
+        }
+        [
+            position = 9400, 8152
+        ]
+        
+        component ctc_tpst "MX2" {
+            
+            Sa = "15"
+	    
+        }
+        [
+            position = 10216, 8152
+        ]
+        
+        component pas_resistor "R11" {
+            
+	    
+        }
+        [
+            position = 8456, 8408
+            rotation = right
+        ]
+        
+        component pas_resistor "R12" {
+            
+	    
+        }
+        [
+            position = 8520, 8408
+            rotation = right
+        ]
+        
+        component pas_resistor "R13" {
+            
+	    
+        }
+        [
+            position = 8592, 8408
+            rotation = right
+        ]
+        
+        component msr_voltage "Va" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 9520, 8352
+            rotation = right
+        ]
+        
+        component msr_voltage "Vb" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 9608, 8416
+            rotation = right
+        ]
+        
+        component msr_voltage "Vc" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 9704, 8496
+            rotation = right
+        ]
+        
+        component pas_resistor "R14" {
+            
+            resistance = "0.001"
+	    
+        }
+        [
+            position = 6576, 8088
+            rotation = left
+        ]
+        
+        component msr_voltage "Vdc" {
+            
+	    
+        }
+        [
+            position = 7064, 8144
+            rotation = right
+        ]
+        
+        component cpl_spc_1ph "Core Coupling 1" {
+            
+	    
+        }
+        [
+            position = 7120, 8152
+        ]
+        
+        component src_voltage "Vdc_" {
+            
+	    
+        }
+        [
+            position = 6576, 8184
+            rotation = right
+        ]
+        
+        component src_voltage_3ph "Vs1" {
+            
+	    
+        }
+        [
+            position = 10488, 8152
+            rotation = down
+            scale = 1, -1
+        ]
+        
+        component pas_resistor "R15" {
+            
+	    
+        }
+        [
+            position = 9928, 7888
+            rotation = right
+        ]
+        
+        component msr_voltage "V_temp_" {
+            
+	    
+        }
+        [
+            position = 10048, 7888
+            rotation = right
+        ]
+        
+        component src_voltage "V_temp" {
+            
+	    
+        }
+        [
+            position = 9808, 7880
+            rotation = right
+        ]
+        
+        component msr_current "Iga" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 7576, 8056
+            scale = 1, -1
+        ]
+        
+        component msr_current "Igb" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 7664, 8152
+            scale = 1, -1
+        ]
+        
+        component msr_current "Igc" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 7768, 8248
+            scale = 1, -1
+        ]
+        
+        component msr_current "I_grid_side_a" {
+            
+            execution_rate = "Tfast"
+	    
+        }
+        [
+            position = 8952, 8056
+            scale = 1, -1
+        ]
+        
+        component msr_current "I_grid_side_b" {
+            
+            execution_rate = "Tfast"
+	    
+        }
+        [
+            position = 9008, 8152
+            scale = 1, -1
+        ]
+        
+        component msr_current "I_grid_side_c" {
+            
+            execution_rate = "Tfast"
+	    
+        }
+        [
+            position = 9064, 8248
+            scale = 1, -1
+        ]
+        
+        component gen_PQ_transform "Power Meter1" {
+            
+	    
+        }
+        [
+            position = 7968, 8728
+        ]
+        
+        component msr_voltage "Vg_AN" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 8000, 8472
+            rotation = right
+            scale = -1, 1
+        ]
+        
+        component msr_voltage "Vg_BN" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 8128, 8424
+            rotation = right
+            scale = -1, 1
+        ]
+        
+        component msr_voltage "Vg_CN" {
+            
+            execution_rate = "Tfast"
+            sig_output = "True"
+	    
+        }
+        [
+            position = 8280, 8384
+            rotation = right
+            scale = -1, 1
+        ]
+        
+        component gen_probe "Pdc" {
+            
+	    
+        }
+        [
+            position = 8072, 8648
+        ]
+        
+        component gen_probe "Qdc" {
+            
+	    
+        }
+        [
+            position = 8152, 8704
+        ]
+        
+        component gen_terminator "Termination1" {
+            
+	    
+        }
+        [
+            position = 8120, 8768
+            hide_name = True
+        ]
+        
+        component gen_terminator "Termination2" {
+            
+	    
+        }
+        [
+            position = 8120, 8808
+            hide_name = True
+        ]
+        
+        component gen_terminator "Termination3" {
+            
+	    
+        }
+        [
+            position = 8120, 8848
+            hide_name = True
+        ]
+        
+        component gen_terminator "Termination4" {
+            
+	    
+        }
+        [
+            position = 8120, 8888
+            hide_name = True
+        ]
+        
+        component sys_spc_marker "Core Marker1" {
+            
+	    
+        }
+        [
+            position = 6592, 7960
+        ]
+        
+        component sys_spc_marker "Core Marker2" {
+            
+            marker_id = "id1"
+	    
+        }
+        [
+            position = 7496, 7960
+        ]
+        
+        component sys_spc_marker "Core Marker4" {
+            
+	    
+        }
+        [
+            position = 9816, 7768
+        ]
+        
+        component gen_pll_three_phs "Three phase PLL1" {
+            
+	    
+        }
+        [
+            position = 7880, 7888
+        ]
+        
+        component gen_pll_three_phs "Three phase PLL2" {
+            
+	    
+        }
+        [
+            position = 9920, 8736
+        ]
+        
+        component gen_abc_to_dq "abc to dq2" {
+            
+            disable_filter = "False"
+            wn_LPFdq = "2.0*np.pi*500.0"
+	    
+        }
+        [
+            position = 8128, 7704
+        ]
+        
+        component gen_sum "Sum1" {
+            
+            signs = "++"
+	    
+        }
+        [
+            position = 8040, 7752
+        ]
+        
+        component src_cp_input "Phase_offset" {
+            
+            def_value = "-30"
+            execution_rate = "Tfast"
+            unit = "degrees"
+            widget_label = "phase_offset"
+	    
+        }
+        [
+            position = 7896, 7792
+        ]
+        
+        component gen_gain "Gain1" {
+            
+            gain = "np.pi/180"
+	    
+        }
+        [
+            position = 7968, 7792
+        ]
+        
+        component gen_probe "f_Hz_current" {
+            
+	    
+        }
+        [
+            position = 7992, 7896
+        ]
+        
+        component gen_probe "id" {
+            
+            signal_type = "current"
+	    
+        }
+        [
+            position = 8256, 7672
+        ]
+        
+        component gen_probe "iq" {
+            
+            signal_type = "current"
+	    
+        }
+        [
+            position = 8320, 7704
+        ]
+        
+        component gen_trigonometric "Trigonometric function1" {
+            
+	    
+        }
+        [
+            position = 10272, 8864
+        ]
+        
+        component gen_sum "Sum2" {
+            
+	    
+        }
+        [
+            position = 10120, 8864
+        ]
+        
+        component src_cp_input "Phase_offset1" {
+            
+            def_value = "-30"
+            execution_rate = "Tfast"
+            unit = "degrees"
+            widget_label = "phase_offset_2"
+	    
+        }
+        [
+            position = 9952, 8920
+        ]
+        
+        component gen_gain "Gain2" {
+            
+            gain = "np.pi/180"
+	    
+        }
+        [
+            position = 10024, 8920
+        ]
+        
+        component gen_probe "sin_wt_grid" {
+            
+	    
+        }
+        [
+            position = 10400, 8864
+        ]
+        
+        component pas_resistor "R16" {
+            
+            resistance = "10"
+	    
+        }
+        [
+            position = 10048, 8464
+            rotation = right
+        ]
+        
+        component pas_resistor "R17" {
+            
+            resistance = "10"
+	    
+        }
+        [
+            position = 9984, 8464
+            rotation = right
+        ]
+        
+        component pas_resistor "R18" {
+            
+            resistance = "10"
+	    
+        }
+        [
+            position = 9920, 8464
+            rotation = right
+        ]
+        component "core/Current RMS" "Irms_inv_a"{
+            
+        }
+        [
+            position = 8064, 8056
+            size = 64, 32
+        ]
+        
+        component "core/Three Phase Inverter" "Three Phase Inverter1"{
+            
+            Sa_bot = "6"
+            Sa_top = "5"
+            Sc_bot = "2"
+            Sc_top = "1"
+            ctrl_src = "Digital input per switch"
+        }
+        [
+            position = 7280, 8152
+            size = 127, 256
+        ]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        tag "From1" {
+            value = "Vg_AN"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7840, 8656
+            hide_name = True
+            size = 60, 20
+        ]
+        
+        tag "Goto1" {
+            value = "Vg_AN"
+            scope = global
+            kind = sp
+            direction = in
+        }
+        [
+            position = 7888, 8472
+            hide_name = True
+            scale = -1, 1
+            size = 60, 20
+        ]
+        
+        tag "From2" {
+            value = "Vg_BN"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7840, 8688
+            hide_name = True
+            size = 60, 20
+        ]
+        
+        tag "Goto2" {
+            value = "Vg_BN"
+            scope = global
+            kind = sp
+            direction = in
+        }
+        [
+            position = 7888, 8424
+            hide_name = True
+            scale = -1, 1
+            size = 60, 20
+        ]
+        
+        tag "Goto3" {
+            value = "Vg_CN"
+            scope = global
+            kind = sp
+            direction = in
+        }
+        [
+            position = 7888, 8384
+            hide_name = True
+            scale = -1, 1
+            size = 60, 20
+        ]
+        
+        tag "From4" {
+            value = "Vg_CN"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7840, 8720
+            hide_name = True
+            size = 60, 20
+        ]
+        
+        tag "Goto4" {
+            value = "wt_grid"
+            scope = global
+            kind = sp
+            direction = in
+        }
+        [
+            position = 10072, 8760
+            size = 60, 20
+        ]
+        
+        tag "From5" {
+            value = "wt_grid"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7888, 7744
+            size = 60, 20
+        ]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        junction "Junction2" pe
+        [
+            position = 8520, 8152
+        ]
+        
+        junction "Junction4" pe
+        [
+            position = 8520, 8592
+        ]
+        
+        junction "Junction19" pe
+        [
+            position = 7064, 8056
+        ]
+        
+        junction "Junction20" pe
+        [
+            position = 7064, 8248
+        ]
+        
+        junction "Junction21" pe
+        [
+            position = 6992, 8056
+        ]
+        
+        junction "Junction22" pe
+        [
+            position = 6912, 8024
+        ]
+        
+        junction "Junction23" pe
+        [
+            position = 6640, 8024
+        ]
+        
+        junction "Junction24" pe
+        [
+            position = 6992, 8248
+        ]
+        
+        junction "Junction35" pe
+        [
+            position = 9928, 7816
+        ]
+        
+        junction "Junction36" pe
+        [
+            position = 9928, 7968
+        ]
+        
+        junction "Junction42" pe
+        [
+            position = 8128, 8592
+        ]
+        
+        junction "Junction46" pe
+        [
+            position = 6592, 8024
+        ]
+        
+        junction "Junction49" pe
+        [
+            position = 9816, 7816
+        ]
+        
+        junction "Junction50" pe
+        [
+            position = 8592, 8248
+        ]
+        
+        junction "Junction57" pe
+        [
+            position = 8456, 8056
+        ]
+        
+        junction "Junction58" pe
+        [
+            position = 8592, 8352
+        ]
+        
+        junction "Junction59" pe
+        [
+            position = 8520, 8312
+        ]
+        
+        junction "Junction60" pe
+        [
+            position = 8456, 8288
+        ]
+        
+        junction "Junction61" pe
+        [
+            position = 8280, 8592
+        ]
+        
+        junction "Junction62" pe
+        [
+            position = 8456, 8592
+        ]
+        
+        junction "Junction63" pe
+        [
+            position = 7496, 8056
+        ]
+        
+        junction "Junction69" sp
+        [
+            position = 7576, 8104
+        ]
+        
+        junction "Junction70" sp
+        [
+            position = 7664, 8200
+        ]
+        
+        junction "Junction71" sp
+        [
+            position = 7768, 8312
+        ]
+        
+        junction "Junction72" sp
+        [
+            position = 7624, 7856
+        ]
+        
+        junction "Junction73" sp
+        [
+            position = 7712, 7888
+        ]
+        
+        junction "Junction74" sp
+        [
+            position = 7816, 7920
+        ]
+        
+        junction "Junction75" sp
+        [
+            position = 10008, 8760
+        ]
+        
+        junction "Junction79" pe
+        [
+            position = 9984, 8592
+        ]
+        
+        junction "Junction80" pe
+        [
+            position = 9520, 8056
+        ]
+        
+        junction "Junction81" pe
+        [
+            position = 9608, 8152
+        ]
+        
+        junction "Junction82" pe
+        [
+            position = 9696, 8248
+        ]
+        
+        junction "Junction87" pe
+        [
+            position = 9608, 8592
+        ]
+        
+        junction "Junction88" pe
+        [
+            position = 9920, 8592
+        ]
+        
+        junction "Junction89" pe
+        [
+            position = 9704, 8592
+        ]
+        
+        junction "Junction90" pe
+        [
+            position = 10048, 8248
+        ]
+        
+        junction "Junction91" pe
+        [
+            position = 9984, 8152
+        ]
+        
+        junction "Junction92" pe
+        [
+            position = 9920, 8056
+        ]
+        
+        connect "C1.n_node" Junction62 as Connection609
+        
+        
+        connect "C1.p_node" "R11.n_node" as Connection113
+        
+        
+        connect "C2.p_node" "R12.n_node" as Connection115
+        
+        
+        connect "C3.n_node" Junction4 as Connection566
+        [
+            breakpoints =8592, 8592
+        ]
+        
+        connect "C3.p_node" "R13.n_node" as Connection117
+        
+        
+        connect "Core Coupling 1.a_in" Junction19 as Connection146
+        
+        
+        connect "Core Coupling 1.b_out" "Three Phase Inverter1.neg_out" as Connection144
+        
+        
+        connect "Core Marker1.node" Junction46 as Connection341
+        
+        
+        connect "Core Marker2.node" Junction63 as Connection616
+        
+        
+        connect "Core Marker4.node" Junction49 as Connection350
+        
+        
+        connect From1 "Power Meter1.va" as Connection259
+        
+        
+        connect From2 "Power Meter1.vb" as Connection260
+        [
+            breakpoints =7912, 8704
+        ]
+        
+        connect From4 "Power Meter1.vc" as Connection267
+        
+        
+        connect From5 "Sum1.in" as Connection666
+        
+        
+        connect "Gain1.out" "Sum1.in1" as Connection669
+        
+        
+        connect "Gain2.out" "Sum2.in1" as Connection676
+        
+        
+        connect Goto1 "Vg_AN.out" as Connection262
+        
+        
+        connect Goto2 "Vg_BN.out" as Connection263
+        
+        
+        connect Goto3 "Vg_CN.out" as Connection264
+        
+        
+        connect "I_grid_side_a.p_node" "L6.n_node" as Connection546
+        [
+            breakpoints =8872, 8056;8872, 8056
+        ]
+        
+        connect "I_grid_side_b.p_node" "L4.n_node" as Connection545
+        [
+            breakpoints =8872, 8152
+        ]
+        
+        connect "I_grid_side_b.n_node" "MX1.b_in" as Connection298
+        [
+            breakpoints =9136, 8152;9136, 8152;9256, 8152;9256, 8152
+        ]
+        
+        connect "I_grid_side_c.p_node" "L5.n_node" as Connection547
+        [
+            breakpoints =8888, 8248
+        ]
+        
+        connect "Iga.p_node" Junction63 as Connection618
+        
+        
+        connect "Igb.n_node" "L2.p_node" as Connection549
+        
+        
+        connect "Igc.n_node" "L3.p_node" as Connection548
+        
+        
+        connect "Irms_inv_a.p_node" "Iga.n_node" as Connection221
+        
+        
+        connect "Irms_inv_a.n_node" "L1.p_node" as Connection550
+        
+        
+        connect Junction19 Junction21 as Connection131
+        [
+            breakpoints =7064, 8056
+        ]
+        
+        connect Junction2 "L4.p_node" as Connection626
+        [
+            breakpoints =8520, 8152;8520, 8152;8600, 8152;8656, 8152;8688, 8152;8704, 8152
+        ]
+        
+        connect Junction20 "Core Coupling 1.b_in" as Connection143
+        
+        
+        connect Junction20 Junction24 as Connection140
+        [
+            breakpoints =7064, 8248
+        ]
+        
+        connect Junction21 "C4.p_node" as Connection132
+        [
+            breakpoints =6992, 8056
+        ]
+        
+        connect Junction22 Junction21 as Connection135
+        [
+            breakpoints =6912, 8024;6992, 8024
+        ]
+        
+        connect Junction23 Junction46 as Connection339
+        [
+            breakpoints =6640, 8024
+        ]
+        
+        connect Junction23 "K1.a_in" as Connection138
+        
+        
+        connect Junction24 "C4.n_node" as Connection141
+        [
+            breakpoints =6992, 8248
+        ]
+        
+        connect Junction35 Junction49 as Connection348
+        [
+            breakpoints =9928, 7816
+        ]
+        
+        connect Junction35 "R15.p_node" as Connection133
+        [
+            breakpoints =9928, 7816
+        ]
+        
+        connect Junction36 "R15.n_node" as Connection155
+        [
+            breakpoints =9928, 7968
+        ]
+        
+        connect Junction4 "C2.n_node" as Connection20
+        [
+            breakpoints =8520, 8592
+        ]
+        
+        connect Junction42 "Vg_AN.n_node" as Connection603
+        [
+            breakpoints =8128, 8592;8056, 8592;8056, 8592
+        ]
+        
+        connect Junction46 "R14.n_node" as Connection340
+        [
+            breakpoints =6592, 8024
+        ]
+        
+        connect Junction49 "V_temp.p_node" as Connection349
+        [
+            breakpoints =9808, 7816;9808, 7816
+        ]
+        
+        connect Junction50 Junction58 as Connection596
+        [
+            breakpoints =8592, 8248
+        ]
+        
+        connect Junction57 "L1.n_node" as Connection586
+        [
+            breakpoints =8456, 8056;8456, 8056
+        ]
+        
+        connect Junction57 "L6.p_node" as Connection625
+        [
+            breakpoints =8456, 8056;8616, 8056;8656, 8056;8656, 8056;8656, 8056;8680, 8056;8704, 8056
+        ]
+        
+        connect Junction58 "R13.p_node" as Connection597
+        
+        
+        connect Junction59 Junction2 as Connection601
+        
+        
+        connect Junction60 Junction57 as Connection605
+        
+        
+        connect Junction61 Junction42 as Connection608
+        [
+            breakpoints =8280, 8592;8192, 8592;8192, 8592
+        ]
+        
+        connect Junction62 Junction4 as Connection610
+        [
+            breakpoints =8456, 8592
+        ]
+        
+        connect Junction62 Junction61 as Connection614
+        [
+            breakpoints =8456, 8592;8456, 8592
+        ]
+        
+        connect Junction63 "Three Phase Inverter1.a_in" as Connection617
+        [
+            breakpoints =7496, 8056;7496, 8056;7464, 8056;7464, 8056;7464, 8056;7424, 8056
+        ]
+        
+        connect Junction69 "Iga.out" as Connection644
+        
+        
+        connect Junction70 "Igb.out" as Connection647
+        
+        
+        connect Junction71 "Igc.out" as Connection650
+        
+        
+        connect Junction72 Junction69 as Connection658
+        [
+            breakpoints =7624, 7856;7624, 8104
+        ]
+        
+        connect Junction73 Junction70 as Connection661
+        [
+            breakpoints =7712, 7888;7712, 8200
+        ]
+        
+        connect Junction74 Junction71 as Connection664
+        [
+            breakpoints =7816, 7920;7816, 8312
+        ]
+        
+        connect Junction75 Goto4 as Connection673
+        
+        
+        connect Junction79 "R17.n_node" as Connection690
+        [
+            breakpoints =9984, 8584;9984, 8584
+        ]
+        
+        connect Junction80 "MX1.a_out" as Connection767
+        [
+            breakpoints =9480, 8056;9480, 8056
+        ]
+        
+        connect Junction81 Junction91 as Connection820
+        [
+            breakpoints =9608, 8152;9608, 8152;9712, 8152;9968, 8152;9968, 8152
+        ]
+        
+        connect Junction82 "MX1.c_out" as Connection773
+        [
+            breakpoints =9576, 8248;9520, 8248;9480, 8248
+        ]
+        
+        connect Junction87 "Vb.n_node" as Connection801
+        [
+            breakpoints =9608, 8592;9608, 8592;9608, 8584
+        ]
+        
+        connect Junction88 Junction79 as Connection804
+        [
+            breakpoints =9920, 8592;9920, 8592;9984, 8592
+        ]
+        
+        connect Junction88 Junction89 as Connection816
+        [
+            breakpoints =9920, 8592;9704, 8592
+        ]
+        
+        connect Junction89 Junction87 as Connection806
+        
+        
+        connect Junction90 Junction82 as Connection818
+        [
+            breakpoints =10048, 8248;9712, 8248
+        ]
+        
+        connect Junction91 "R17.p_node" as Connection821
+        [
+            breakpoints =9984, 8152
+        ]
+        
+        connect Junction92 Junction80 as Connection824
+        [
+            breakpoints =9920, 8056;9848, 8056;9832, 8056;9832, 8056;9832, 8056;9800, 8056;9712, 8056;9656, 8056;9592, 8056;9592, 8056;9576, 8056;9520, 8056
+        ]
+        
+        connect "K2.a_out" Junction22 as Connection136
+        [
+            breakpoints =6912, 8032;6912, 8032
+        ]
+        
+        connect "K2.a_in" Junction23 as Connection139
+        
+        
+        connect "L2.n_node" Junction2 as Connection12
+        
+        
+        connect "L3.n_node" Junction50 as Connection356
+        
+        
+        connect "L5.p_node" Junction50 as Connection624
+        [
+            breakpoints =8672, 8248;8672, 8248;8656, 8248;8608, 8248;8592, 8248
+        ]
+        
+        connect "MX1.a_in" "I_grid_side_a.n_node" as Connection520
+        [
+            breakpoints =9216, 8056;9216, 8056;9096, 8056;9008, 8056
+        ]
+        
+        connect "MX1.c_in" "I_grid_side_c.n_node" as Connection296
+        [
+            breakpoints =9248, 8248;9248, 8248;9144, 8248
+        ]
+        
+        connect "MX1.b_out" Junction81 as Connection769
+        [
+            breakpoints =9480, 8152;9480, 8152;9576, 8152;9576, 8152
+        ]
+        
+        connect "MX2.c_in" Junction90 as Connection819
+        
+        
+        connect "MX2.b_in" Junction91 as Connection822
+        
+        
+        connect "MX2.a_in" Junction92 as Connection825
+        
+        
+        connect "MX2.b_out" "Vs1.b_node" as Connection826
+        
+        
+        connect "MX2.c_out" "Vs1.c_node" as Connection828
+        
+        
+        connect "Phase_offset.out" "Gain1.in" as Connection668
+        
+        
+        connect "Phase_offset1.out" "Gain2.in" as Connection675
+        
+        
+        connect "Power Meter1.ia" Junction69 as Connection643
+        [
+            breakpoints =7888, 8736;7576, 8736
+        ]
+        
+        connect "Power Meter1.ib" Junction70 as Connection646
+        [
+            breakpoints =7664, 8752;7664, 8696
+        ]
+        
+        connect "Power Meter1.ic" Junction71 as Connection649
+        [
+            breakpoints =7760, 8768;7760, 8312
+        ]
+        
+        connect "Power Meter1.Pdc" "Pdc.in" as Connection265
+        
+        
+        connect "Qdc.in" "Power Meter1.Qdc" as Connection266
+        
+        
+        connect "R1.n_node" Junction22 as Connection134
+        
+        
+        connect "R1.p_node" "K1.a_out" as Connection129
+        
+        
+        connect "R11.p_node" Junction60 as Connection604
+        
+        
+        connect "R12.p_node" Junction59 as Connection600
+        
+        
+        connect "R16.n_node" Junction79 as Connection691
+        [
+            breakpoints =10048, 8592;9984, 8592
+        ]
+        
+        connect "R16.p_node" Junction90 as Connection817
+        
+        
+        connect "R18.n_node" Junction88 as Connection803
+        [
+            breakpoints =9920, 8504
+        ]
+        
+        connect "R18.p_node" Junction92 as Connection823
+        
+        
+        connect "Sum1.out" "abc to dq2.wt" as Connection667
+        
+        
+        connect "Sum2.in" Junction75 as Connection674
+        
+        
+        connect "Termination1.in" "Power Meter1.Pac" as Connection322
+        [
+            breakpoints =8088, 8768;8088, 8720
+        ]
+        
+        connect "Termination2.in" "Power Meter1.Qac" as Connection323
+        [
+            breakpoints =8080, 8736
+        ]
+        
+        connect "Termination3.in" "Power Meter1.apparent" as Connection324
+        [
+            breakpoints =8072, 8752
+        ]
+        
+        connect "Termination4.in" "Power Meter1.k_factor" as Connection325
+        [
+            breakpoints =8064, 8888;8064, 8768
+        ]
+        
+        connect "Three Phase Inverter1.pos_out" "Core Coupling 1.a_out" as Connection145
+        
+        
+        connect "Three Phase Inverter1.b_in" "Igb.p_node" as Connection521
+        
+        
+        connect "Three Phase Inverter1.c_in" "Igc.p_node" as Connection308
+        [
+            breakpoints =7600, 8248
+        ]
+        
+        connect "Three phase PLL1.va" Junction72 as Connection657
+        
+        
+        connect "Three phase PLL1.vb" Junction73 as Connection660
+        
+        
+        connect "Three phase PLL1.vc" Junction74 as Connection663
+        
+        
+        connect "Three phase PLL1.freq" "f_Hz_current.in" as Connection652
+        
+        
+        connect "Three phase PLL2.theta" Junction75 as Connection672
+        
+        
+        connect "Three phase PLL2.va" "Va.out" as Connection810
+        [
+            breakpoints =9792, 8704;9792, 8352
+        ]
+        
+        connect "Trigonometric function1.in" "Sum2.out" as Connection677
+        
+        
+        connect "Trigonometric function1.out" "sin_wt_grid.in" as Connection678
+        
+        
+        connect "V_temp.n_node" Junction36 as Connection156
+        
+        
+        connect "V_temp_.p_node" Junction35 as Connection147
+        [
+            breakpoints =10040, 7816
+        ]
+        
+        connect "V_temp_.n_node" Junction36 as Connection154
+        
+        
+        connect "Va.p_node" Junction80 as Connection768
+        
+        
+        connect "Va.n_node" Junction87 as Connection800
+        [
+            breakpoints =9520, 8592
+        ]
+        
+        connect "Vb.p_node" Junction81 as Connection771
+        
+        
+        connect "Vb.out" "Three phase PLL2.vb" as Connection811
+        
+        
+        connect "Vc.p_node" Junction82 as Connection774
+        
+        
+        connect "Vc.n_node" Junction89 as Connection805
+        
+        
+        connect "Vc.out" "Three phase PLL2.vc" as Connection812
+        [
+            breakpoints =9848, 8496;9848, 8768
+        ]
+        
+        connect "Vdc.p_node" Junction19 as Connection121
+        
+        
+        connect "Vdc.n_node" Junction20 as Connection124
+        
+        
+        connect "Vdc_.n_node" Junction24 as Connection142
+        
+        
+        connect "Vdc_.p_node" "R14.p_node" as Connection125
+        
+        
+        connect "Vg_AN.p_node" Junction60 as Connection606
+        
+        
+        connect "Vg_BN.n_node" Junction42 as Connection246
+        
+        
+        connect "Vg_BN.p_node" Junction59 as Connection602
+        
+        
+        connect "Vg_CN.p_node" Junction58 as Connection598
+        
+        
+        connect "Vg_CN.n_node" Junction61 as Connection607
+        
+        
+        connect "Vs1.a_node" "MX2.a_out" as Connection827
+        
+        
+        connect "abc to dq2.va" Junction72 as Connection659
+        
+        
+        connect "abc to dq2.vb" Junction73 as Connection662
+        
+        
+        connect "abc to dq2.vc" Junction74 as Connection665
+        
+        
+        connect "abc to dq2.d_axis" "id.in" as Connection670
+        
+        
+        connect "abc to dq2.q_axis" "iq.in" as Connection671
+        
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        cpl_spc_1ph {
+            snb_type_i = "none"
+            R1 = "100000.0"
+            C1 = "1e-06"
+            C2 = "1e-06"
+            fixed_snb_i = "false"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            L2 = "0.1"
+            fixed_snb_u = "false"
+        }
+        
+        ctc_spst {
+            ctrl_src = "Digital input"
+            Sa = "1"
+            Sa_logic = "active high"
+            execution_rate = "inherit"
+            on_delay = "0"
+            off_delay = "0"
+            initial_state = "off"
+            switching = "any current"
+            spc_nb = "0"
+            ctc_nb = "0"
+            pe_connection = "not_defined"
+            ctc_name = "not_defined"
+            enb_sw_ctrl = "True"
+        }
+        
+        ctc_tpst {
+            ctrl_src = "Digital input"
+            Sa = "1"
+            Sa_logic = "active high"
+            execution_rate = "inherit"
+            initial_state = "off"
+            on_delay = "0"
+            off_delay = "0"
+            spc_nb = "0"
+            ctc_nb = "0"
+            pe_connection = "not_defined"
+            ctc_name = "not_defined"
+        }
+        
+        gen_PQ_transform {
+            filter_order = "first order"
+            filter_cutoff_Hz = "30"
+            initial_filter_input = "0"
+            initial_filter_output = "0"
+            execution_rate = "inherit"
+        }
+        
+        gen_abc_to_dq {
+            initial_filter_output = "0"
+            wn_LPFdq = "1000"
+            disable_filter = "True"
+            execution_rate = "inherit"
+        }
+        
+        gen_gain {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            execution_rate = "inherit"
+        }
+        
+        gen_pll_three_phs {
+            initial_filter_output = "60"
+            wn = "157.0796"
+            zeta = "0.707"
+            initial_rt_lim_output = "60"
+            rate_high = "12"
+            rate_low = "-12"
+            initial_pid_output = "376.99111843"
+            kp = "100"
+            ki = "3200"
+            kd = "1"
+            N = "714.2857"
+            wn_LPFdq = "62.83185307"
+            execution_rate = "inherit"
+        }
+        
+        gen_probe {
+            addr = "0"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "generic"
+            execution_rate = "inherit"
+        }
+        
+        gen_sum {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+        
+        gen_terminator {
+            execution_rate = "inherit"
+        }
+        
+        gen_trigonometric {
+            trigonometric_fn = "sin"
+            execution_rate = "inherit"
+        }
+        
+        msr_current {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        msr_voltage {
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+        
+        pas_capacitor {
+            capacitance = "1e-6"
+            initial_voltage = "0"
+        }
+        
+        pas_inductor {
+            inductance = "1e-3"
+            initial_current = "0.0"
+        }
+        
+        pas_resistor {
+            resistance = "1"
+        }
+        
+        src_cp_input {
+            addr = "0"
+            category = "User defined"
+            group = "Example"
+            format = "real"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "real"
+            widget_type = "real"
+            widget_label = "CP_in"
+            min = "-1e6"
+            max = "1e6"
+            def_value = "0"
+            unit = " "
+            execution_rate = "100e-6"
+        }
+        
+        src_voltage {
+            dev_cpl_msr = "false"
+            host_device = "0"
+            input_from_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            fixed_snb_u = "false"
+            cpd_visible = "True"
+        }
+        
+        sys_spc_marker {
+            marker_id = "id0"
+        }
+        
+        "core/Current RMS" {
+            op_mode = "PLL based"
+            frequency = "50"
+            feed_forward = "false"
+        }
+        
+        "core/Three Phase Inverter" {
+            ctrl_src = "Digital inputs"
+            carrier_freq = "10000.0"
+            carr_ph_offset = "0.0"
+            d_time = "5e-6"
+            ref_sig_min_max = "[-1.0, 1.0]"
+            execution_rate = "inherit"
+            Sa_top = "1"
+            Sa_top_logic = "active high"
+            Sa_bot = "2"
+            Sa_bot_logic = "active high"
+            Sb_top = "3"
+            Sb_top_logic = "active high"
+            Sb_bot = "4"
+            Sb_bot_logic = "active high"
+            Sc_top = "5"
+            Sc_top_logic = "active high"
+            Sc_bot = "6"
+            Sc_bot_logic = "active high"
+            delay_enabled = "False"
+            fixed_delay = "1e-6"
+            var_delay_lut = "[-10.0, 1e-6, 10.0, 1e-6]"
+            preview_var_delay = "Preview"
+            thrm_enabled = "False"
+            number_of_thermal_models = "1"
+            cooling_input = "1"
+            thrm1 = "T1"
+            Cth_1 = "1.0"
+            Rth0_1 = "1e-2"
+            Rth_Vin_1 = "0.0"
+            sensors_enabled_1 = "False"
+            lut_data_1 = "[-50.0, -5.0, 0.0, 0.0, 50.0, 5.0]"
+            preview_sensor_1_lut = "Preview"
+            thrm2 = "T2"
+            Cth_2 = "1.0"
+            Rth0_2 = "1e-2"
+            Rth_Vin_2 = "0.0"
+            sensors_enabled_2 = "False"
+            lut_data_2 = "[-50.0, -5.0, 0.0, 0.0, 50.0, 5.0]"
+            preview_sensor_2_lut = "Preview"
+            thrm3 = "T3"
+            Cth_3 = "1.0"
+            Rth0_3 = "1e-2"
+            Rth_Vin_3 = "0.0"
+            sensors_enabled_3 = "False"
+            lut_data_3 = "[-50.0, -5.0, 0.0, 0.0, 50.0, 5.0]"
+            preview_sensor_3_lut = "Preview"
+            thrm4 = "T4"
+            Cth_4 = "1.0"
+            Rth0_4 = "1e-2"
+            Rth_Vin_4 = "0.0"
+            sensors_enabled_4 = "False"
+            lut_data_4 = "[-50.0, -5.0, 0.0, 0.0, 50.0, 5.0]"
+            preview_sensor_4_lut = "Preview"
+            thrm5 = "T5"
+            Cth_5 = "1.0"
+            Rth0_5 = "1e-2"
+            Rth_Vin_5 = "0.0"
+            sensors_enabled_5 = "False"
+            lut_data_5 = "[-50.0, -5.0, 0.0, 0.0, 50.0, 5.0]"
+            preview_sensor_5_lut = "Preview"
+            Sa_top_I = "False"
+            Sa_bot_I = "False"
+            Sb_top_I = "False"
+            Sb_bot_I = "False"
+            Sc_top_I = "False"
+            Sc_bot_I = "False"
+            _control_property = "all high"
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        Tfast = 200.0e-6
+        L_inv = 0.133e-3 #7.6573e-5 
+        L_grid = 0.08e-3 #4.5944e-5
+    ENDCODE
+}

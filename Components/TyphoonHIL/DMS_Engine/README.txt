@@ -1,0 +1,1 @@
+Init power factor request CP to be 1 at start simulation.
