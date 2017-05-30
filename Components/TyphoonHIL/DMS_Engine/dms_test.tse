@@ -1,0 +1,502 @@
+version = 4.2
+
+
+//
+// Saved by sw version: 2017.1 Dev
+// Save timestamp: 06-Feb-2017 @ 06:25:40 PM
+//
+
+model "dms_test" {
+    configuration {
+        hil_device = "HIL603"
+        hil_configuration_id = 2
+        simulation_method = exact
+        simulation_time_step = auto
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem Root {
+
+        
+        component Subsystem DMS_ENGINE {
+            layout = dynamic
+    
+            
+            component src_constant Constant1 {
+                
+    	    
+            }
+            [
+                position = 8160, 8080
+                hide_name = True
+            ]
+            
+            component src_cp_input "Import Value" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Import Value"
+    	    
+            }
+            [
+                position = 7896, 8168
+            ]
+            
+            component src_cp_input Reconnect {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Reconnect"
+    	    
+            }
+            [
+                position = 7896, 7944
+            ]
+            
+            component src_cp_input "DR Value" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "DR Value"
+    	    
+            }
+            [
+                position = 7896, 8504
+            ]
+            
+            component gen_terminator Termination2 {
+                
+    	    
+            }
+            [
+                position = 8488, 8224
+                hide_name = True
+            ]
+            
+            component src_cp_input "VAR Value" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "VAR Value"
+    	    
+            }
+            [
+                position = 7896, 8392
+            ]
+            
+            component src_cp_input "PF Request" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "PF Request"
+    	    
+            }
+            [
+                position = 7896, 8224
+            ]
+            
+            component src_cp_input "Export Request" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Export Request"
+    	    
+            }
+            [
+                position = 7896, 8000
+            ]
+            
+            component src_cp_input "DR Request" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "DR Request"
+    	    
+            }
+            [
+                position = 7896, 8448
+            ]
+            
+            component src_cp_input "VAR Request" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "VAR Request"
+    	    
+            }
+            [
+                position = 7896, 8336
+            ]
+            
+            component gen_bus_join "Bus Join1" {
+                
+                inputs = "16"
+    	    
+            }
+            [
+                position = 8080, 8208
+            ]
+            
+            component src_cp_input "Export Value" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Export Value"
+    	    
+            }
+            [
+                position = 7896, 8056
+            ]
+            
+            component src_cp_input "Import Request" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Import Request"
+    	    
+            }
+            [
+                position = 7896, 8112
+            ]
+            
+            component gen_terminator Termination1 {
+                
+    	    
+            }
+            [
+                position = 8480, 8080
+                hide_name = True
+            ]
+            
+            component src_cp_input "PF Value" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "PF Value"
+    	    
+            }
+            [
+                position = 7896, 8280
+            ]
+            
+            component src_cp_input Disconnect {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Disconnect"
+    	    
+            }
+            [
+                position = 7896, 7888
+            ]
+            
+            component src_cp_input "Black Start Enable" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Black Start Enable"
+    	    
+            }
+            [
+                position = 7896, 8568
+            ]
+            
+            component src_cp_input "MicorGrid Controler Start" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "MicorGrid Controler Start"
+    	    
+            }
+            [
+                position = 7896, 8624
+            ]
+            
+            component src_cp_input "Request To Sync To POI" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "Request To Sync To POI"
+    	    
+            }
+            [
+                position = 7896, 8680
+            ]
+            
+            component src_cp_input "BS Enabled" {
+                
+                execution_rate = "Ts"
+                group = "DMS_ENGINE"
+                min = "0"
+                unit = ""
+                widget_label = "BS Enabled"
+    	    
+            }
+            [
+                position = 7896, 8744
+            ]
+            component "core/ModBus Device" "ModBus Device1" {
+                
+                configuration = "dms_config"
+                execution_rate = "Ts"
+            }
+            [
+                position = 8320, 8152
+                size = 184, 184
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            junction Junction1 sp
+            [
+                position = 8208, 8080
+            ]
+            
+            junction Junction2 sp
+            [
+                position = 8208, 8128
+            ]
+            connect "Black Start Enable.out" "Bus Join1.in12" as Connection23
+            [
+                breakpoints =8008, 8568;8008, 8280
+            ]
+            connect "Bus Join1.in15" "BS Enabled.out" as Connection26
+            [
+                breakpoints =8040, 8328;8040, 8744
+            ]
+            connect "Bus Join1.in2" "Export Request.out" as Connection3
+            [
+                breakpoints =7976, 8120;7976, 8000
+            ]
+            connect "Bus Join1.out" "ModBus Device1.holding_in" as Connection13
+            
+            connect "Constant1.out" Junction1 as Connection15
+            
+            connect "DR Request.out" "Bus Join1.in10" as Connection11
+            [
+                breakpoints =7992, 8448;7992, 8248
+            ]
+            connect "DR Value.out" "Bus Join1.in11" as Connection12
+            [
+                breakpoints =8000, 8504;8000, 8264
+            ]
+            connect "Disconnect.out" "Bus Join1.in" as Connection1
+            [
+                breakpoints =7992, 7888;7992, 8088
+            ]
+            connect "Export Value.out" "Bus Join1.in3" as Connection4
+            [
+                breakpoints =7968, 8056;7968, 8136
+            ]
+            connect "Import Request.out" "Bus Join1.in4" as Connection5
+            [
+                breakpoints =7960, 8112;7960, 8152
+            ]
+            connect "Import Value.out" "Bus Join1.in5" as Connection6
+            
+            connect Junction1 "ModBus Device1.coil_in" as Connection16
+            
+            connect Junction2 Junction1 as Connection19
+            
+            connect "MicorGrid Controler Start.out" "Bus Join1.in13" as Connection24
+            [
+                breakpoints =8016, 8624;8016, 8296
+            ]
+            connect "ModBus Device1.discrete_in" Junction2 as Connection18
+            
+            connect "ModBus Device1.reg_in" Junction2 as Connection20
+            
+            connect "PF Request.out" "Bus Join1.in6" as Connection7
+            [
+                breakpoints =7960, 8224;7960, 8184
+            ]
+            connect "PF Value.out" "Bus Join1.in7" as Connection8
+            [
+                breakpoints =7968, 8280;7968, 8200
+            ]
+            connect "Reconnect.out" "Bus Join1.in1" as Connection2
+            [
+                breakpoints =7984, 7944;7984, 7992;7984, 7992;7984, 8104
+            ]
+            connect "Request To Sync To POI.out" "Bus Join1.in14" as Connection25
+            [
+                breakpoints =8024, 8312
+            ]
+            connect "Termination1.in" "ModBus Device1.coil_out" as Connection21
+            
+            connect "Termination2.in" "ModBus Device1.holding_out" as Connection22
+            
+            connect "VAR Request.out" "Bus Join1.in8" as Connection9
+            [
+                breakpoints =7976, 8336;7976, 8216
+            ]
+            connect "VAR Value.out" "Bus Join1.in9" as Connection10
+            [
+                breakpoints =7984, 8392;7984, 8232
+            ]
+            
+    
+            
+        }
+        [
+            position = 7864, 8320
+            size = 48, 48
+        ]
+        
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        gen_bus_join {
+            inputs = "2"
+            execution_rate = "inherit"
+        }
+        
+        gen_terminator {
+            execution_rate = "inherit"
+        }
+        
+        src_constant {
+            value = "1"
+            signal_type = "real"
+            execution_rate = "100e-6"
+        }
+        
+        src_cp_input {
+            addr = "0"
+            category = "User defined"
+            group = "Example"
+            format = "real"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "real"
+            widget_type = "real"
+            widget_label = "CP_in"
+            min = "-1e6"
+            max = "1e6"
+            def_value = "0"
+            unit = " "
+            execution_rate = "100e-6"
+        }
+        
+        "core/ModBus Device" {
+            configuration = "config1"
+            execution_rate = "inherit"
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        
+        Ts = 100e-6
+        dms_config = {
+                  'port': 502,
+                  'ip_addr': '192.168.10.54',
+                  'netmask': '255.255.255.0',
+                  'slave_id': 17,
+                  'coil_input_addresses': '',
+                  'coil_output_addresses': '',
+                  'discrete_input_addresses': '',
+                  'holding_register_input_addresses': '0,1,2,7,3,8,4,9,5,10,6,11,12,13,14,15',
+                  'holding_register_output_addresses': '',
+                  'input_register_adresses': ''
+                }
+    ENDCODE
+}
