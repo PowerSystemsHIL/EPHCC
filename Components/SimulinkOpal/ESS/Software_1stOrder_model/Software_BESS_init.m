@@ -64,8 +64,6 @@ paramDroopVolts2Reac = 1*(1/dPer);
 paramDroopFreq2Real = 1*(1/dPer);
 paramDroopFreq2Reac = 0*(1/dPer); %10
 
-filt = firstOrderDig(50e-3, Tc, 'low');
-
 %% Cross coupling in droop for mixed microgrids
 
 % paramDroopVolts2Real = 0.5*(1/dPer); % 10

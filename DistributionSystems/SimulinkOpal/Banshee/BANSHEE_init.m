@@ -39,17 +39,14 @@ cable_impedance_init;
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development
 components_path_init;
 
+%% add DER modbus interface configuration files path
+addpath('der_configuration_files');
 
 %% circuit breaker delays
 % breaker mechanical open/close delay in seconds
 % different delays may be applied to each breaker, however,
 % for convenience it is assumed all breaker have the same delay
 cb_mech_delay = 5/60;
-
-%% Initialization file for software BESS
-Software_BESS_init;
-
-%% Temp
 
 %% Precalculate governor's TF's - lack of control system toolbox on one of machine
 % st=50e-6;
