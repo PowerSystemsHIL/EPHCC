@@ -30,4 +30,11 @@ BP.I_slewrate = 1;
 %% Droop lowpass filter
 BP.filt = firstOrderDig(50e-3, CFG.Tc, 'low');
 
-
+%% Converter type flags
+if (CFG.InvType == 1)
+    BP.PV = true;
+    BP.ESS = false;
+else
+    BP.PV = false;
+    BP.ESS = true;
+end;
