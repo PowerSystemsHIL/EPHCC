@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[11]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Apr 12 11:18:05 2017"
-  RTWModifiedTimeStamp	  413896683
-  ModelVersionFormat	  "1.%<AutoIncrement:525>"
+  LastModifiedDate	  "Thu Jun 15 10:09:32 2017"
+  RTWModifiedTimeStamp	  419422169
+  ModelVersionFormat	  "1.%<AutoIncrement:527>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -986,17 +986,18 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82745"
+    SIDHighWatermark	    "82769"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      2653
-      ForegroundColor	      "red"
+      ZOrder		      3875
+      BlockMirror	      on
       BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.523"
+      NamePlacement	      "alternate"
+      LibraryVersion	      "*1.526"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1044,7 +1045,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[F1(14,:)]"
+	    Value		    "[F4(4,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
@@ -1063,7 +1064,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -1260,6 +1261,33 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "82763"
+	  Position		  [1365, 332, 1395, 348]
+	  ZOrder		  3537
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "82764"
+	  Position		  [1365, 352, 1395, 368]
+	  ZOrder		  3538
+	  ShowName		  off
+	  Value			  "-120"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "82765"
+	  Position		  [1365, 372, 1395, 388]
+	  ZOrder		  3539
+	  ShowName		  off
+	  Value			  "120"
 	}
 	Block {
 	  BlockType		  DataTypeConversion
@@ -2036,7 +2064,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From60"
 	  SID			  "82394"
-	  Position		  [2925, 1544, 3005, 1566]
+	  Position		  [2915, 1544, 2995, 1566]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "reset"
@@ -2248,10 +2276,22 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain1"
 	  SID			  "82403"
-	  Position		  [1645, 1148, 1670, 1172]
+	  Position		  [1645, 1148, 1700, 1172]
 	  ZOrder		  -8
 	  ShowName		  off
-	  Gain			  "100"
+	  Gain			  "1000"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain10"
+	  SID			  "82769"
+	  Position		  [1655, 1108, 1690, 1132]
+	  ZOrder		  3543
+	  ShowName		  off
+	  Gain			  "10"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -2260,7 +2300,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain11"
 	  SID			  "82405"
-	  Position		  [1660, 428, 1685, 452]
+	  Position		  [1660, 428, 1690, 452]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "10"
@@ -2272,7 +2312,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain12"
 	  SID			  "82406"
-	  Position		  [1665, 348, 1690, 372]
+	  Position		  [1665, 348, 1695, 372]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "10"
@@ -2464,7 +2504,19 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain4"
 	  SID			  "82418"
-	  Position		  [1645, 1188, 1670, 1212]
+	  Position		  [1645, 1190, 1700, 1210]
+	  ZOrder		  -8
+	  ShowName		  off
+	  Gain			  "100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain5"
+	  SID			  "82419"
+	  Position		  [1655, 908, 1685, 932]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "10"
@@ -2474,10 +2526,22 @@ Library {
 	}
 	Block {
 	  BlockType		  Gain
-	  Name			  "Gain5"
-	  SID			  "82419"
-	  Position		  [1655, 908, 1680, 932]
-	  ZOrder		  -8
+	  Name			  "Gain6"
+	  SID			  "82767"
+	  Position		  [1655, 1028, 1690, 1052]
+	  ZOrder		  3541
+	  ShowName		  off
+	  Gain			  "10"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain7"
+	  SID			  "82768"
+	  Position		  [1655, 1068, 1690, 1092]
+	  ZOrder		  3542
 	  ShowName		  off
 	  Gain			  "10"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -2488,7 +2552,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain8"
 	  SID			  "82422"
-	  Position		  [1665, 828, 1690, 852]
+	  Position		  [1660, 828, 1690, 852]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "10"
@@ -2500,7 +2564,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain9"
 	  SID			  "82423"
-	  Position		  [1665, 508, 1690, 532]
+	  Position		  [1660, 507, 1690, 533]
 	  ZOrder		  -8
 	  ShowName		  off
 	  Gain			  "10"
@@ -2539,7 +2603,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto11"
 	  SID			  "82427"
-	  Position		  [1450, 356, 1530, 374]
+	  Position		  [1445, 371, 1525, 389]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Vc_phase"
@@ -2719,7 +2783,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto3"
 	  SID			  "82447"
-	  Position		  [1450, 316, 1530, 334]
+	  Position		  [1445, 331, 1525, 349]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Va_phase"
@@ -2902,7 +2966,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto6"
 	  SID			  "82458"
-	  Position		  [1450, 336, 1530, 354]
+	  Position		  [1445, 351, 1525, 369]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Vb_phase"
@@ -3099,7 +3163,7 @@ Library {
 	  }
 	  System {
 	    Name		    "PQ_Calculator"
-	    Location		    [-4, 0, 1924, 1164]
+	    Location		    [-8, 0, 1924, 1092]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3280,236 +3344,11 @@ Library {
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Phase_Calc"
-	  SID			  "82481"
-	  Ports			  [1, 3]
-	  Position		  [1300, 312, 1405, 378]
-	  ZOrder		  -17
-	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "Phase_Calc"
-	    Location		    [-8, 0, 1928, 1176]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "wt"
-	      SID		      "82482"
-	      Position		      [110, 103, 140, 117]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Add2"
-	      SID		      "82483"
-	      Ports		      [2, 1]
-	      Position		      [445, 117, 475, 148]
-	      ZOrder		      -2
-	      Inputs		      "+-"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Add3"
-	      SID		      "82484"
-	      Ports		      [2, 1]
-	      Position		      [445, 167, 475, 198]
-	      ZOrder		      -2
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant5"
-	      SID		      "82485"
-	      Position		      [325, 125, 355, 155]
-	      ZOrder		      -4
-	      Value		      "120"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant6"
-	      SID		      "82486"
-	      Position		      [365, 215, 395, 245]
-	      ZOrder		      -4
-	      Value		      "120"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant7"
-	      SID		      "82487"
-	      Position		      [485, 148, 520, 172]
-	      ZOrder		      -5
-	      NamePlacement	      "alternate"
-	      ShowName		      off
-	      Value		      "2*pi"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant8"
-	      SID		      "82488"
-	      Position		      [485, 213, 520, 237]
-	      ZOrder		      -5
-	      NamePlacement	      "alternate"
-	      ShowName		      off
-	      Value		      "2*pi"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Math\nFunction"
-	      SID		      "82489"
-	      Ports		      [2, 1]
-	      Position		      [540, 121, 570, 174]
-	      ZOrder		      -9
-	      ShowName		      off
-	      Operator		      "mod"
-	    }
-	    Block {
-	      BlockType		      Math
-	      Name		      "Math\nFunction1"
-	      SID		      "82490"
-	      Ports		      [2, 1]
-	      Position		      [540, 186, 570, 239]
-	      ZOrder		      -9
-	      ShowName		      off
-	      Operator		      "mod"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Phase a"
-	      SID		      "82491"
-	      Position		      [345, 78, 375, 92]
-	      ZOrder		      -2
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Phase b"
-	      SID		      "82492"
-	      Position		      [640, 143, 670, 157]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "Phase c"
-	      SID		      "82493"
-	      Position		      [640, 208, 670, 222]
-	      ZOrder		      -2
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Math\nFunction1"
-	      SrcPort		      1
-	      DstBlock		      "Phase c"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Math\nFunction"
-	      SrcPort		      1
-	      DstBlock		      "Phase b"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Constant8"
-	      SrcPort		      1
-	      DstBlock		      "Math\nFunction1"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Add3"
-	      SrcPort		      1
-	      Points		      [20, 0; 0, 15]
-	      DstBlock		      "Math\nFunction1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Add2"
-	      SrcPort		      1
-	      DstBlock		      "Math\nFunction"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Constant7"
-	      SrcPort		      1
-	      DstBlock		      "Math\nFunction"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "wt"
-	      SrcPort		      1
-	      Points		      [145, 0]
-	      Branch {
-		Points			[0, 65]
-		DstBlock		"Add3"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[5, 0]
-		Branch {
-		  Points		  [0, -25]
-		  DstBlock		  "Phase a"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [135, 0]
-		  DstBlock		  "Add2"
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "Constant6"
-	      SrcPort		      1
-	      Points		      [30, 0]
-	      DstBlock		      "Add3"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Constant5"
-	      SrcPort		      1
-	      DstBlock		      "Add2"
-	      DstPort		      2
-	    }
-	    Annotation {
-	      SID		      "82494"
-	      Name		      "Assumes Ib and Ic are shifted 120 degrees from Ia\nFor accurate phase measurements, could use a si"
-	      "ngle-\nphase PLL for each phase"
-	      Position		      [172, 41]
-	      ZOrder		      -1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
 	  Name			  "Phase_Calc1"
-	  SID			  "82495"
+	  SID			  "82747"
 	  Ports			  [1, 3]
-	  Position		  [1290, 447, 1395, 513]
-	  ZOrder		  -17
+	  Position		  [1300, 447, 1405, 513]
+	  ZOrder		  3535
 	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
@@ -3520,7 +3359,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Phase_Calc1"
-	    Location		    [-4, 0, 1924, 1164]
+	    Location		    [-8, 0, 1924, 1092]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3532,11 +3371,11 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
+	    ZoomFactor		    "175"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "wt"
-	      SID		      "82496"
+	      SID		      "82748"
 	      Position		      [110, 103, 140, 117]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
@@ -3544,7 +3383,7 @@ Library {
 	    Block {
 	      BlockType		      Sum
 	      Name		      "Add2"
-	      SID		      "82497"
+	      SID		      "82749"
 	      Ports		      [2, 1]
 	      Position		      [445, 117, 475, 148]
 	      ZOrder		      -2
@@ -3556,7 +3395,7 @@ Library {
 	    Block {
 	      BlockType		      Sum
 	      Name		      "Add3"
-	      SID		      "82498"
+	      SID		      "82750"
 	      Ports		      [2, 1]
 	      Position		      [445, 167, 475, 198]
 	      ZOrder		      -2
@@ -3567,15 +3406,15 @@ Library {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant5"
-	      SID		      "82499"
-	      Position		      [325, 125, 355, 155]
+	      SID		      "82751"
+	      Position		      [365, 125, 395, 155]
 	      ZOrder		      -4
 	      Value		      "120"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant6"
-	      SID		      "82500"
+	      SID		      "82752"
 	      Position		      [365, 215, 395, 245]
 	      ZOrder		      -4
 	      Value		      "120"
@@ -3583,27 +3422,38 @@ Library {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant7"
-	      SID		      "82501"
+	      SID		      "82753"
 	      Position		      [485, 148, 520, 172]
 	      ZOrder		      -5
 	      NamePlacement	      "alternate"
 	      ShowName		      off
-	      Value		      "2*pi"
+	      Value		      "360"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Constant8"
-	      SID		      "82502"
+	      SID		      "82754"
 	      Position		      [485, 213, 520, 237]
 	      ZOrder		      -5
 	      NamePlacement	      "alternate"
 	      ShowName		      off
-	      Value		      "2*pi"
+	      Value		      "360"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "82755"
+	      Position		      [185, 95, 250, 125]
+	      ZOrder		      1
+	      Gain		      "180/pi"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
 	      BlockType		      Math
 	      Name		      "Math\nFunction"
-	      SID		      "82503"
+	      SID		      "82756"
 	      Ports		      [2, 1]
 	      Position		      [540, 121, 570, 174]
 	      ZOrder		      -9
@@ -3613,7 +3463,7 @@ Library {
 	    Block {
 	      BlockType		      Math
 	      Name		      "Math\nFunction1"
-	      SID		      "82504"
+	      SID		      "82757"
 	      Ports		      [2, 1]
 	      Position		      [540, 186, 570, 239]
 	      ZOrder		      -9
@@ -3623,15 +3473,15 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Phase a"
-	      SID		      "82505"
-	      Position		      [345, 78, 375, 92]
+	      SID		      "82758"
+	      Position		      [640, 78, 670, 92]
 	      ZOrder		      -2
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Phase b"
-	      SID		      "82506"
+	      SID		      "82759"
 	      Position		      [640, 143, 670, 157]
 	      ZOrder		      -2
 	      Port		      "2"
@@ -3640,7 +3490,7 @@ Library {
 	    Block {
 	      BlockType		      Outport
 	      Name		      "Phase c"
-	      SID		      "82507"
+	      SID		      "82760"
 	      Position		      [640, 208, 670, 222]
 	      ZOrder		      -2
 	      Port		      "3"
@@ -3662,25 +3512,8 @@ Library {
 	    Line {
 	      SrcBlock		      "wt"
 	      SrcPort		      1
-	      Points		      [145, 0]
-	      Branch {
-		Points			[5, 0]
-		Branch {
-		  Points		  [135, 0]
-		  DstBlock		  "Add2"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -25]
-		  DstBlock		  "Phase a"
-		  DstPort		  1
-		}
-	      }
-	      Branch {
-		Points			[0, 65]
-		DstBlock		"Add3"
-		DstPort			1
-	      }
+	      DstBlock		      "Gain"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Constant7"
@@ -3719,11 +3552,31 @@ Library {
 	      DstBlock		      "Phase c"
 	      DstPort		      1
 	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      Points		      [35, 0]
+	      Branch {
+		Points			[0, 65]
+		DstBlock		"Add3"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -25]
+		DstBlock		"Phase a"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[140, 0]
+		DstBlock		"Add2"
+		DstPort			1
+	      }
+	    }
 	    Annotation {
-	      SID		      "82508"
+	      SID		      "82761"
 	      Name		      "Assumes Ib and Ic are shifted 120 degrees from Ia\nFor accurate phase measurements, could use a si"
 	      "ngle-\nphase PLL for each phase"
-	      Position		      [172, 41]
+	      Position		      [347, 31]
 	      ZOrder		      -1
 	    }
 	  }
@@ -3933,6 +3786,20 @@ Library {
 	  ZOrder		  -32
 	  ShowName		  off
 	  Inputs		  "+++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum2"
+	  SID			  "82766"
+	  Ports			  [2, 1]
+	  Position		  [1255, 470, 1275, 490]
+	  ZOrder		  3540
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "-+|"
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -4552,6 +4419,30 @@ Library {
 	  ZOrder		  -23
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Gain10"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  21
+	}
+	Line {
+	  SrcBlock		  "Gain7"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  20
+	}
+	Line {
+	  SrcBlock		  "Gain6"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  19
+	}
+	Line {
+	  SrcBlock		  "Sum2"
+	  SrcPort		  1
+	  DstBlock		  "Phase_Calc1"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "pf_states"
@@ -5220,20 +5111,20 @@ Library {
 	Line {
 	  SrcBlock		  "From23"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  21
+	  DstBlock		  "Gain10"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From21"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  20
+	  DstBlock		  "Gain7"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From20"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator1"
-	  DstPort		  19
+	  DstBlock		  "Gain6"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Gain3"
@@ -5388,7 +5279,8 @@ Library {
 	Line {
 	  SrcBlock		  "CS Modified PLL"
 	  SrcPort		  2
-	  DstBlock		  "Phase_Calc"
+	  Points		  [90, 0]
+	  DstBlock		  "Sum2"
 	  DstPort		  1
 	}
 	Line {
@@ -5400,8 +5292,8 @@ Library {
 	Line {
 	  SrcBlock		  "CS Modified PLL1"
 	  SrcPort		  2
-	  DstBlock		  "Phase_Calc1"
-	  DstPort		  1
+	  DstBlock		  "Sum2"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "From47"
@@ -5618,19 +5510,19 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Phase_Calc"
-	  SrcPort		  3
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
 	  DstBlock		  "Goto11"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Phase_Calc"
-	  SrcPort		  2
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
 	  DstBlock		  "Goto6"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Phase_Calc"
+	  SrcBlock		  "Constant1"
 	  SrcPort		  1
 	  DstBlock		  "Goto3"
 	  DstPort		  1
