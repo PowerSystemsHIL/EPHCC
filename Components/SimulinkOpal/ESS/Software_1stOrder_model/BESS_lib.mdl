@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[11]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jun 15 12:44:05 2017"
-  RTWModifiedTimeStamp	  419431443
-  ModelVersionFormat	  "1.%<AutoIncrement:39>"
+  LastModifiedDate	  "Fri Jun 16 07:41:10 2017"
+  RTWModifiedTimeStamp	  419445226
+  ModelVersionFormat	  "1.%<AutoIncrement:40>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1134,7 +1134,7 @@ Library {
   System {
     Name		    "BESS_lib"
     Location		    [752, 99, 2684, 1191]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1147,7 +1147,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "728"
+    SIDHighWatermark	    "750"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2914,7 +2914,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.38"
+	  LibraryVersion	  "1.40"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3623,13 +3623,364 @@ Library {
     }
     Block {
       BlockType		      SubSystem
+      Name		      "Fault_Latch"
+      SID		      "730"
+      Ports		      [1, 1]
+      Position		      [90, 282, 230, 338]
+      ZOrder		      4085
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Fault_Latch"
+	Location		[100, 100, 900, 600]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "731"
+	  Position		  [20, 158, 50, 172]
+	  ZOrder		  4084
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Disab"
+	  SID			  "732"
+	  Position		  [180, 20, 210, 50]
+	  ZOrder		  4067
+	  Value			  "[0 1 1]"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Disab2"
+	  SID			  "733"
+	  Position		  [180, 65, 210, 95]
+	  ZOrder		  4076
+	  Value			  "0"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "734"
+	  Position		  [220, 186, 300, 204]
+	  ZOrder		  4069
+	  ShowName		  off
+	  GotoTag		  "ena"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "735"
+	  Position		  [145, 246, 225, 264]
+	  ZOrder		  4073
+	  ShowName		  off
+	  GotoTag		  "ena"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "736"
+	  Position		  [130, 281, 210, 299]
+	  ZOrder		  4075
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "737"
+	  Position		  [280, 25, 355, 45]
+	  ZOrder		  4068
+	  ShowName		  off
+	  GotoTag		  "ena"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto1"
+	  SID			  "738"
+	  Position		  [280, 70, 355, 90]
+	  ZOrder		  4077
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "739"
+	  Ports			  [1, 1]
+	  Position		  [255, 239, 285, 271]
+	  ZOrder		  4074
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "740"
+	  Ports			  [2, 1]
+	  Position		  [330, 239, 355, 301]
+	  ZOrder		  4072
+	  ShowName		  off
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator6"
+	  SID			  "741"
+	  Ports			  [2, 1]
+	  Position		  [330, 149, 355, 211]
+	  ZOrder		  4066
+	  ShowName		  off
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "SR_Prior_S"
+	  SID			  "742"
+	  Ports			  [2, 1]
+	  Position		  [495, 137, 535, 313]
+	  ZOrder		  4083
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "SR_Prior_S"
+	    Location		    [92, 70, 1587, 754]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "S"
+	      SID		      "743"
+	      Position		      [20, 23, 50, 37]
+	      ZOrder		      4083
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "R"
+	      SID		      "744"
+	      Position		      [20, 113, 50, 127]
+	      ZOrder		      4084
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator2"
+	      SID		      "745"
+	      Ports		      [2, 1]
+	      Position		      [320, 22, 350, 53]
+	      ZOrder		      4079
+	      ShowName		      off
+	      Operator		      "OR"
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator3"
+	      SID		      "746"
+	      Ports		      [2, 1]
+	      Position		      [255, 72, 285, 103]
+	      ZOrder		      4081
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator4"
+	      SID		      "747"
+	      Ports		      [1, 1]
+	      Position		      [180, 104, 210, 136]
+	      ZOrder		      4082
+	      ShowName		      off
+	      Operator		      "NOT"
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Memory
+	      Name		      "Memory"
+	      SID		      "748"
+	      Position		      [255, 170, 285, 200]
+	      ZOrder		      4080
+	      BlockMirror	      on
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Q"
+	      SID		      "749"
+	      Position		      [440, 33, 470, 47]
+	      ZOrder		      4085
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator2"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		Points			[0, 145]
+		DstBlock		"Memory"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Q"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "R"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator4"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, -25]
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "S"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Memory"
+	      SrcPort		      1
+	      Points		      [-102, 0; 0, -105]
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator3"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -45]
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  "750"
+	  Position		  [795, 218, 825, 232]
+	  ZOrder		  4085
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Disab"
+	  SrcPort		  1
+	  DstBlock		  "Goto"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator6"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  Points		  [19, 0; 0, -5]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Disab2"
+	  SrcPort		  1
+	  DstBlock		  "Goto1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "SR_Prior_S"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator6"
+	  SrcPort		  1
+	  DstBlock		  "SR_Prior_S"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "SR_Prior_S"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
       Name		      "NREL_BESS"
       SID		      "236"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [405, 70, 485, 215]
       ZOrder		      3887
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.38"
+      LibraryVersion	      "*1.39"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -4594,13 +4945,13 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "175"
+	    ZoomFactor		    "200"
 	    Block {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator"
 	      SID		      "440"
 	      Ports		      [1, 1]
-	      Position		      [565, 41, 570, 79]
+	      Position		      [565, 51, 570, 89]
 	      ZOrder		      4021
 	      ShowName		      off
 	      Inputs		      "1"
@@ -4617,7 +4968,7 @@ Library {
 	      Name		      "Bus\nCreator2"
 	      SID		      "389"
 	      Ports		      [2, 1]
-	      Position		      [775, 43, 780, 107]
+	      Position		      [775, 53, 780, 117]
 	      ZOrder		      4027
 	      ShowName		      off
 	      Inputs		      "2"
@@ -4703,7 +5054,7 @@ Library {
 	      BlockType		      Constant
 	      Name		      "Constant1"
 	      SID		      "390"
-	      Position		      [620, 80, 680, 100]
+	      Position		      [620, 90, 680, 110]
 	      ZOrder		      4028
 	      Value		      "zeros(1,3)"
 	      Port {
@@ -4774,11 +5125,10 @@ Library {
 	      BlockType		      Logic
 	      Name		      "Logical\nOperator10"
 	      SID		      "506"
-	      Ports		      [3, 1]
-	      Position		      [470, 23, 500, 137]
+	      Ports		      [2, 1]
+	      Position		      [470, 10, 500, 125]
 	      ZOrder		      4025
 	      ShowName		      off
-	      Inputs		      "3"
 	      AllPortsSameDT	      off
 	      OutDataTypeStr	      "boolean"
 	      Port {
@@ -4817,9 +5167,21 @@ Library {
 	      Name		      "Logical\nOperator4"
 	      SID		      "511"
 	      Ports		      [2, 1]
-	      Position		      [290, 49, 315, 111]
+	      Position		      [305, 49, 330, 111]
 	      ZOrder		      4022
 	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator5"
+	      SID		      "729"
+	      Ports		      [2, 1]
+	      Position		      [410, 64, 435, 126]
+	      ZOrder		      4038
+	      ShowName		      off
+	      Operator		      "OR"
 	      AllPortsSameDT	      off
 	      OutDataTypeStr	      "boolean"
 	    }
@@ -4827,16 +5189,22 @@ Library {
 	      BlockType		      Outport
 	      Name		      "cb_control"
 	      SID		      "700"
-	      Position		      [815, 68, 845, 82]
+	      Position		      [815, 78, 845, 92]
 	      ZOrder		      4026
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
+	      SrcBlock		      "Logical\nOperator5"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator10"
+	      DstPort		      2
+	    }
+	    Line {
 	      SrcBlock		      "Logical\nOperator2"
 	      SrcPort		      1
-	      Points		      [74, 0; 0, -55]
-	      DstBlock		      "Logical\nOperator10"
-	      DstPort		      3
+	      Points		      [32, 0; 0, -65]
+	      DstBlock		      "Logical\nOperator5"
+	      DstPort		      2
 	    }
 	    Line {
 	      Name		      "<Use_VF_Cmd>"
@@ -4946,18 +5314,17 @@ Library {
 	    }
 	    Line {
 	      Name		      "Logic_trip"
-	      Labels		      [2, 1]
+	      Labels		      [1, 1]
 	      SrcBlock		      "Logical\nOperator10"
 	      SrcPort		      1
-	      Points		      [27, 0; 0, -20]
 	      DstBlock		      "Bus\nCreator"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Logical\nOperator4"
 	      SrcPort		      1
-	      DstBlock		      "Logical\nOperator10"
-	      DstPort		      2
+	      DstBlock		      "Logical\nOperator5"
+	      DstPort		      1
 	    }
 	    Annotation {
 	      SID		      "724"
@@ -10441,7 +10808,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"677"
+		SIDHighWatermark	"779"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -10889,7 +11256,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "92"
+		    SIDHighWatermark	    "106"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
