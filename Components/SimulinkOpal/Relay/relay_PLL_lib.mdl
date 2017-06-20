@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, 0.0, 1936.0, 1216.0]
+      Location		      [1856.0, 0.0, 1936.0, 1100.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1050.0]
+	Extents			[1693.0, 934.0]
 	ZoomFactor		[1.5]
-	Offset			[9.2083333333331439, -5.96666666666664]
+	Offset			[6.6666666666666288, -9.3333333333333144]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 04 15:26:44 2016"
-  RTWModifiedTimeStamp	  392225192
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Tue Jun 20 08:50:58 2017"
+  RTWModifiedTimeStamp	  419849455
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,19 +695,6 @@ Library {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      SamplingMode	      "Sample based"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
-      LockScale		      off
-      SampleTime	      "inf"
-      FramePeriod	      "inf"
-      PreserveConstantTs      off
-    }
-    Block {
       BlockType		      DiscreteIntegrator
       IntegratorMethod	      "Integration: Forward Euler"
       gainval		      "1.0"
@@ -763,21 +750,6 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
-    }
-    Block {
-      BlockType		      Math
-      Operator		      "exp"
-      OutputSignalType	      "auto"
-      SampleTime	      "-1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      IntermediateResultsDataTypeStr "Inherit: Inherit via internal rule"
-      AlgorithmType	      "Newton-Raphson"
-      Iterations	      "3"
     }
     Block {
       BlockType		      Mux
@@ -890,7 +862,7 @@ Library {
   }
   System {
     Name		    "relay_PLL_lib"
-    Location		    [1912, 0, 3848, 1216]
+    Location		    [1856, 0, 3792, 1100]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -911,8 +883,9 @@ Library {
       SID		      "1"
       Ports		      [1, 3]
       Position		      [380, 287, 455, 363]
-      ZOrder		      1
-      BackgroundColor	      "[0.603922, 1.000000, 0.584314]"
+      ZOrder		      -5
+      BackgroundColor	      "[0.725490, 1.000000, 0.725490]"
+      LibraryVersion	      "1.3"
       DialogController	      "POWERSYS.PowerSysDialog"
       OpenFcn		      "power_openblockproxy();"
       FontName		      "Verdana"
@@ -937,7 +910,7 @@ Library {
 	"een  0 and 2*pi,\n     synchronized on zero crossings of the fundamental (positive-sequence) of phase A. \nOutput 3: "
 	"Vector [sin(wt) cos(wt)]"
 	Initialization		"Kp=ParK(1);\nKi=ParK(2);\nif length(ParK)==2\n    Kd=0;\nelse\n    Kd=ParK(3);\nend    \nPhase_Init="
-	"Par_Init(1);\nFinit=Par_Init(2);\npower_initmask();"
+	"Par_Init(1);\nFinit=Par_Init(2);\n%power_initmask();"
 	SelfModifiable		"on"
 	Display			"disp('')"
 	IconOpaque		"off"
@@ -947,9 +920,10 @@ Library {
 	  Object {
 	    $ObjectID		    18
 	    Type		    "edit"
-	    Name		    "Fmin"
-	    Prompt		    "Minimum frequency (Hz):"
-	    Value		    "50"
+	    Name		    "Flim"
+	    Prompt		    "Frequency limits (Hz):"
+	    Value		    "[55 66]"
+	    Tunable		    "off"
 	  }
 	  Object {
 	    $ObjectID		    19
@@ -957,6 +931,7 @@ Library {
 	    Name		    "Par_Init"
 	    Prompt		    "Initial inputs:[ Phase(degrees)   Frequency(Hz) ]"
 	    Value		    "[0 60]"
+	    Tunable		    "off"
 	  }
 	  Object {
 	    $ObjectID		    20
@@ -964,6 +939,7 @@ Library {
 	    Name		    "ParK"
 	    Prompt		    "Regulator gains [ Kp  Ki  Kd ]"
 	    Value		    "[ 180 3200 1 ]"
+	    Tunable		    "off"
 	  }
 	  Object {
 	    $ObjectID		    21
@@ -971,6 +947,7 @@ Library {
 	    Name		    "Ts"
 	    Prompt		    "Sample time:"
 	    Value		    "Ts"
+	    Tunable		    "off"
 	  }
 	  Object {
 	    $ObjectID		    22
@@ -978,13 +955,14 @@ Library {
 	    Name		    "AGC"
 	    Prompt		    "Enable Automatic Gain Control"
 	    Value		    "off"
+	    Tunable		    "off"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"CS Modified PLL"
-	Location		[1912, 0, 3848, 1216]
+	Location		[-8, 0, 1928, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -996,9 +974,8 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	SIDHighWatermark	"36"
-	SIDPrevWatermark	"36"
+	ZoomFactor		"150"
+	SIDHighWatermark	"62"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Vabc(pu)"
@@ -1029,21 +1006,11 @@ Library {
 	  param1		  "[1 500 0.1]"
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "Constant4"
-	  SID			  "1:14"
-	  Position		  [605, 308, 640, 332]
-	  ZOrder		  -5
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  Value			  "2*pi"
-	}
-	Block {
 	  BlockType		  SubSystem
 	  Name			  "Controller"
 	  SID			  "1:15"
 	  Ports			  [1, 1]
-	  Position		  [475, 257, 520, 303]
+	  Position		  [475, 262, 520, 308]
 	  ZOrder		  -6
 	  DropShadow		  on
 	  OpenFcn		  "power_openblockproxy();"
@@ -1092,7 +1059,7 @@ Library {
 		Type			"edit"
 		Name			"Par_Limits"
 		Prompt			"Output limits: [ Upper   Lower ]"
-		Value			"[10000 0]"
+		Value			"[Flim(2) Flim(1)]*2*pi"
 	      }
 	      Object {
 		$ObjectID		28
@@ -1119,7 +1086,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Controller"
-	    Location		    [71, 108, 894, 640]
+	    Location		    [-8, 0, 1928, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1132,7 +1099,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "14"
+	    SIDHighWatermark	    "24"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Error"
@@ -1309,16 +1276,13 @@ Library {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 0]
-		Branch {
-		  DstBlock		  "Kp5"
-		  DstPort		  1
-		}
-		Branch {
-		  Points		  [0, -50]
-		  DstBlock		  "Kp4"
-		  DstPort		  1
-		}
+		DstBlock		"Kp5"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -50]
+		DstBlock		"Kp4"
+		DstPort			1
 	      }
 	    }
 	    Annotation {
@@ -1369,7 +1333,7 @@ Library {
 	  Name			  "Discrete \nMean value"
 	  SID			  "1:32"
 	  Ports			  [1, 1]
-	  Position		  [270, 240, 345, 300]
+	  Position		  [270, 255, 345, 315]
 	  ZOrder		  -7
 	  LibraryVersion	  "1.664"
 	  FontName		  "Verdana"
@@ -1381,19 +1345,6 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
-	  BlockType		  DiscreteIntegrator
-	  Name			  "Discrete-Time\nIntegrator"
-	  SID			  "1:17"
-	  Ports			  [1, 1]
-	  Position		  [600, 262, 640, 298]
-	  ZOrder		  -8
-	  ShowName		  off
-	  InitialCondition	  "Phase_Init*pi/180"
-	  SampleTime		  "Ts"
-	  ICPrevOutput		  "DiscIntNeverNeededParam"
-	  ICPrevScaledInput	  "DiscIntNeverNeededParam"
-	}
-	Block {
 	  BlockType		  Gain
 	  Name			  "Gain10"
 	  SID			  "1:19"
@@ -1401,16 +1352,6 @@ Library {
 	  ZOrder		  -10
 	  ShowName		  off
 	  Gain			  "1/2/pi"
-	}
-	Block {
-	  BlockType		  Math
-	  Name			  "Math\nFunction"
-	  SID			  "1:20"
-	  Ports			  [2, 1]
-	  Position		  [675, 260, 705, 340]
-	  ZOrder		  -11
-	  ShowName		  off
-	  Operator		  "mod"
 	}
 	Block {
 	  BlockType		  Mux
@@ -1472,6 +1413,176 @@ Library {
 	  SampleTime		  "Ts"
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "VCO"
+	  SID			  "1:55"
+	  Ports			  [1, 1]
+	  Position		  [600, 265, 655, 305]
+	  ZOrder		  3790
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "VCO"
+	    Location		    [-8, 0, 1928, 1056]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "142"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "w"
+	      SID		      "1:56"
+	      Position		      [20, 88, 50, 102]
+	      ZOrder		      3754
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Constant"
+	      SID		      "1:57"
+	      Ports		      [1, 1]
+	      Position		      [230, 24, 270, 46]
+	      ZOrder		      3753
+	      BlockMirror	      on
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	      SourceType	      "Compare To Constant"
+	      relop		      ">="
+	      const		      "pi"
+	      OutDataTypeStr	      "uint8"
+	      ZeroCross		      on
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "1:58"
+	      Position		      [145, 20, 175, 50]
+	      ZOrder		      3752
+	      BlockMirror	      on
+	      NamePlacement	      "alternate"
+	      Gain		      "2*pi"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "double"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain2"
+	      SID		      "1:59"
+	      Position		      [95, 84, 130, 106]
+	      ZOrder		      3751
+	      ShowName		      off
+	      Gain		      "Ts"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "1:60"
+	      Ports		      [3, 1]
+	      Position		      [170, 52, 195, 138]
+	      ZOrder		      3749
+	      ShowName		      off
+	      Inputs		      "-++"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      UnitDelay
+	      Name		      "Unit Delay1"
+	      SID		      "1:61"
+	      Position		      [235, 78, 270, 112]
+	      ZOrder		      3750
+	      InputProcessing	      "Elements as channels (sample based)"
+	      SampleTime	      "-1"
+	      Port {
+		PortNumber		1
+		Name			"wt"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "theta"
+	      SID		      "1:62"
+	      Position		      [355, 88, 385, 102]
+	      ZOrder		      3755
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Unit Delay1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain2"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "wt"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Unit Delay1"
+	      SrcPort		      1
+	      Points		      [12, 0]
+	      Branch {
+		Points			[2, 0]
+		Branch {
+		  DstBlock		  "theta"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 63; -134, 0]
+		  DstBlock		  "Sum"
+		  DstPort		  3
+		}
+	      }
+	      Branch {
+		Points			[0, -60]
+		DstBlock		"Compare\nTo Constant"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Compare\nTo Constant"
+	      SrcPort		      1
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      Points		      [-34, 0; 0, 30]
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "w"
+	      SrcPort		      1
+	      DstBlock		      "Gain2"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "abc_to_dq0\nTransformation"
 	  SID			  "1:27"
@@ -1511,7 +1622,6 @@ Library {
 	Line {
 	  SrcBlock		  "Discrete \nMean value"
 	  SrcPort		  1
-	  Points		  [95, 0; 0, 10]
 	  DstBlock		  "Controller"
 	  DstPort		  1
 	}
@@ -1522,11 +1632,11 @@ Library {
 	  SrcPort		  1
 	  Points		  [35, 0]
 	  Branch {
-	    DstBlock		    "Gain10"
+	    DstBlock		    "VCO"
 	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "Discrete-Time\nIntegrator"
+	    DstBlock		    "Gain10"
 	    DstPort		    1
 	  }
 	}
@@ -1543,36 +1653,24 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Constant4"
+	  SrcBlock		  "VCO"
 	  SrcPort		  1
-	  DstBlock		  "Math\nFunction"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Discrete-Time\nIntegrator"
-	  SrcPort		  1
-	  DstBlock		  "Math\nFunction"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Math\nFunction"
-	  SrcPort		  1
-	  Points		  [0, 0; 20, 0]
+	  Points		  [70, 0]
 	  Branch {
-	    Points		    [0, 0]
+	    Points		    [0, 15]
+	    Branch {
+	      DstBlock		      "Trigonometric\nFunction"
+	      DstPort		      1
+	    }
 	    Branch {
 	      Points		      [0, 35]
 	      DstBlock		      "Trigonometric\nFunction2"
 	      DstPort		      1
 	    }
-	    Branch {
-	      Points		      [0, -55]
-	      DstBlock		      "wt"
-	      DstPort		      1
-	    }
 	  }
 	  Branch {
-	    DstBlock		    "Trigonometric\nFunction"
+	    Points		    [0, -40]
+	    DstBlock		    "wt"
 	    DstPort		    1
 	  }
 	}
@@ -1591,9 +1689,9 @@ Library {
 	Line {
 	  SrcBlock		  "Mux2"
 	  SrcPort		  1
-	  Points		  [0, 0; 15, 0]
+	  Points		  [10, 0]
 	  Branch {
-	    Points		    [-5, 0; 0, 175; -770, 0; 0, -195]
+	    Points		    [0, 175; -770, 0; 0, -195]
 	    DstBlock		    "abc_to_dq0\nTransformation"
 	    DstPort		    2
 	  }
@@ -1631,7 +1729,6 @@ Library {
 	  Labels		  [0, 0; -1, 1]
 	  SrcBlock		  "Selector"
 	  SrcPort		  1
-	  Points		  [30, 0]
 	  DstBlock		  "Discrete \nMean value"
 	  DstPort		  1
 	}
