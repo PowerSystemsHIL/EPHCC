@@ -5,7 +5,7 @@
 %CFG.r_I_max; - ratio of Imax/In
 function [BP] = BESS_init_mask(CFG)
 
-%disp([ 'Init ESS: ' num2str(CFG.Sn/1000)]);
+%% Nominal current ratings
 BP.In = CFG.Sn/(CFG.Vn/sqrt(3))/3;
 BP.Imax = BP.In*CFG.r_I_max;
 
@@ -26,3 +26,15 @@ BP.L = BP.L_PU*BP.L_base;     %[H];
 %disp([ 'L: ' num2str(BP.L) '/' num2str(BP.L_base)]);
 
 BP.I_slewrate = 1;
+
+%% Droop lowpass filter
+BP.filt = firstOrderDig(50e-3, CFG.Tc, 'low');
+
+%% Converter type flags
+if (CFG.InvType == 1)
+    BP.PV = true;
+    BP.ESS = false;
+else
+    BP.PV = false;
+    BP.ESS = true;
+end;

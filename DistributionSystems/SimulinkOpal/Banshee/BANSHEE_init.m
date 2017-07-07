@@ -39,17 +39,14 @@ cable_impedance_init;
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development
 components_path_init;
 
+%% add DER modbus interface configuration files path
+addpath('der_configuration_files');
 
 %% circuit breaker delays
 % breaker mechanical open/close delay in seconds
 % different delays may be applied to each breaker, however,
 % for convenience it is assumed all breaker have the same delay
 cb_mech_delay = 5/60;
-
-%% Initialization file for software BESS
-Software_BESS_init;
-
-%% Temp
 
 %% Precalculate governor's TF's - lack of control system toolbox on one of machine
 % st=50e-6;
@@ -112,9 +109,9 @@ Stim.ESS2.p	= [	0	0	0	0	0	0	0	0	0	0	0	0	0	0	-0.08	-0.1	-0.1	-0.1	0	0.2	-0.2	-1	-
 Stim.ESS2.q	= [	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.05	0	0	0	0	-0.2	-0.2	-0.2	-0.2	0	0	0	0	0	0	0	0	0.05	0.1	0	0	0	];
 Stim.ESS2.v	= [	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
 Stim.ESS2.f	= [	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
-Stim.ESS2.MCB	= [	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
+Stim.ESS2.VFmode	= [	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	];
 Stim.PV.Ena	= [	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	];
-Stim.PV.p	= [	0	0.05	0.3	0.7	1	0.5	0.7	0.7	0.3	0.1	0	0	0	0	0.3	0.4	0.1	0.1	0.1	0.2	0.3	0.4	1	0.4	0.3	0.1	0	0	0.3	0.6	0.1	0.2	0.1	0	0	0	];
+Stim.PV.Irradiance	= [	0	0.05	0.3	0.7	1	0.5	0.7	0.7	0.3	0.1	0	0	0	0	0.3	0.4	0.1	0.1	0.1	0.2	0.3	0.4	1	0.4	0.3	0.1	0	0	0.3	0.6	0.1	0.2	0.1	0	0	0	];
 
 Stim.N = length(Stim.Gen3.s);
 Stim.Trep = Stim.N*Stim.Ts;
