@@ -15,10 +15,6 @@ switch GenSel
         GP.Ex.Exciter = [ 1 0.00000001 ];
         GP.Ex.Damping = [0 1e-12 ];
         GP.Gov.Kp = 2;
-        GP.VCtrl.P = 0.2;
-        GP.VCtrl.I = 1.5;
-        GP.FCtrl.P = 0.025;
-        GP.FCtrl.I = 1;
     case 2
         GP.Pn = 80000;
         GP.Vn = 480;
@@ -33,8 +29,4 @@ switch GenSel
         GP.Ex.Exciter = [ 1 0.02 ];
         GP.Ex.Damping = [0.03 1 ];
         GP.Gov.Kp = 1;
-        GP.VCtrl.P = 0.02;
-        GP.VCtrl.I = 1.5;
-        GP.FCtrl.P = 0.025;
-        GP.FCtrl.I = 1;
 end
