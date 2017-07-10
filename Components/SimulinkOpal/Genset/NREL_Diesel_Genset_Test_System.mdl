@@ -6,12 +6,12 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.957"
+    ComputedModelVersion    "1.959"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "windows-1252"
-  PostLoadFcn		  "Ts=100e-6;GenSelect='4MW';initGTS;"
+  PostLoadFcn		  "Ts=100e-6;GenSelect='80kW';initGTS;"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime off
@@ -22,7 +22,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  InitFcn		  "Ts=100e-6;GenSelect='4MW';initGTS;"
+  InitFcn		  "Ts=100e-6;GenSelect='80kW';initGTS;"
   UserBdParams		  "PhysicalModelingChecksum;PhysicalModelingParameterChecksum;PhysicalModelingProducts;ARTEMISmethode_"
   "block_infos"
   Object {
@@ -79,7 +79,7 @@ Model {
 	  LoadSaveID		  "2050"
 	  Extents		  [1692.0, 846.0]
 	  ZoomFactor		  [1.5]
-	  Offset		  [-57.417332663046409, 16.8650421327996]
+	  Offset		  [-18.308993214276498, 16.8650421327996]
 	}
 	Object {
 	  $ObjectID		  8
@@ -101,16 +101,16 @@ Model {
 	}
 	Object {
 	  $ObjectID		  10
-	  IsActive		  [0]
+	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "1114"
 	  Extents		  [1692.0, 846.0]
 	  ZoomFactor		  [1.0]
-	  Offset		  [-6.1641852951458986, 187.26438467807634]
+	  Offset		  [-60.4026589242045, 162.11613691931564]
 	}
 	Object {
 	  $ObjectID		  11
-	  IsActive		  [1]
+	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "5953"
 	  Extents		  [1692.0, 846.0]
@@ -203,9 +203,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Jul 09 22:24:16 2017"
-  RTWModifiedTimeStamp	  421539775
-  ModelVersionFormat	  "1.%<AutoIncrement:957>"
+  LastModifiedDate	  "Sun Jul 09 22:52:00 2017"
+  RTWModifiedTimeStamp	  421541509
+  ModelVersionFormat	  "1.%<AutoIncrement:959>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1335,7 +1335,7 @@ Model {
 	    Type		    "edit"
 	    Name		    "InitFcnX"
 	    Prompt		    "Initialisation"
-	    Value		    "Ts=100e-6;GenSelect='4MW';initGTS;"
+	    Value		    "Ts=100e-6;GenSelect='80kW';initGTS;"
 	    Evaluate		    "off"
 	  }
 	  Object {
@@ -1951,8 +1951,8 @@ Model {
 	  "7     0.56061     0.11642    0.025463\n 0.8884     0.37042     0.14508    0.025463\n0.90663     0.18024     0.11854"
 	  "    0.025463"
 	  TimeRange		  "30"
-	  YMin			  "1~-10000~-3000~9500~59.5"
-	  YMax			  "1~10000~8000~14000~60.5"
+	  YMin			  "0~-175~-100~0~55"
+	  YMax			  "1~125~50~550~61"
 	  SaveName		  "ScopeData1"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
@@ -2002,7 +2002,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "150"
-	    SIDHighWatermark	    "2957"
+	    SIDHighWatermark	    "2958"
 	    SIDPrevWatermark	    "2904"
 	    Block {
 	      BlockType		      Inport
@@ -2035,7 +2035,7 @@ Model {
 	      Name		      "Bus\nCreator1"
 	      SID		      "2050:2925"
 	      Ports		      [2, 1]
-	      Position		      [915, 251, 920, 409]
+	      Position		      [1005, 251, 1010, 409]
 	      ZOrder		      3842
 	      ShowName		      off
 	      Inputs		      "2"
@@ -2046,7 +2046,7 @@ Model {
 	      Name		      "Bus\nCreator12"
 	      SID		      "2050:2926"
 	      Ports		      [8, 1]
-	      Position		      [715, 89, 720, 491]
+	      Position		      [810, 89, 815, 491]
 	      ZOrder		      3824
 	      ShowName		      off
 	      Inputs		      "8"
@@ -2125,9 +2125,9 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain3"
 	      SID		      "2050:2929"
-	      Position		      [565, 150, 665, 180]
+	      Position		      [565, 150, 765, 180]
 	      ZOrder		      3846
-	      Gain		      "GenPN/100"
+	      Gain		      "GenPN/1000*GenMult"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -2141,10 +2141,10 @@ Model {
 	    Block {
 	      BlockType		      Gain
 	      Name		      "Gain4"
-	      SID		      "2050:2930"
-	      Position		      [565, 200, 655, 230]
-	      ZOrder		      3847
-	      Gain		      "GenPN*10"
+	      SID		      "2050:2958"
+	      Position		      [565, 200, 765, 230]
+	      ZOrder		      3855
+	      Gain		      "GenPN/1000*GenMult"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -2159,9 +2159,9 @@ Model {
 	      BlockType		      Gain
 	      Name		      "Gain5"
 	      SID		      "2050:2931"
-	      Position		      [565, 250, 655, 280]
+	      Position		      [565, 250, 760, 280]
 	      ZOrder		      3848
-	      Gain		      "GenVN*10"
+	      Gain		      "GenVN*GenMult"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -2252,7 +2252,7 @@ Model {
 	      BlockType		      ManualSwitch
 	      Name		      "Manual Switch4"
 	      SID		      "2050:2935"
-	      Position		      [805, 352, 835, 388]
+	      Position		      [895, 352, 925, 388]
 	      ZOrder		      3843
 	      ShowName		      off
 	      Port {
@@ -2311,7 +2311,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "PCmd6"
 	      SID		      "2050:2941"
-	      Position		      [750, 315, 780, 345]
+	      Position		      [840, 315, 870, 345]
 	      ZOrder		      3844
 	      BackgroundColor	      "magenta"
 	      ShowName		      off
@@ -2321,7 +2321,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "PCmd7"
 	      SID		      "2050:2942"
-	      Position		      [750, 400, 780, 430]
+	      Position		      [840, 400, 870, 430]
 	      ZOrder		      3845
 	      BackgroundColor	      "green"
 	      ShowName		      off
@@ -2449,7 +2449,7 @@ Model {
 	      BlockType		      Outport
 	      Name		      "MbCtrl"
 	      SID		      "2050:2950"
-	      Position		      [955, 322, 985, 338]
+	      Position		      [1045, 322, 1075, 338]
 	      ZOrder		      3825
 	      IconDisplay	      "Port number"
 	    }
@@ -2632,7 +2632,7 @@ Model {
 	    }
 	    Line {
 	      Name		      "QCmd"
-	      Labels		      [1, 1]
+	      Labels		      [0, 0]
 	      SrcBlock		      "Gain4"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nCreator12"
@@ -2692,14 +2692,14 @@ Model {
 	    Annotation {
 	      SID		      "2050:2951"
 	      Name		      "Use Modbus from\nConsole"
-	      Position		      [857, 327]
+	      Position		      [947, 327]
 	      BackgroundColor	      "magenta"
 	      ZOrder		      -1
 	    }
 	    Annotation {
 	      SID		      "2050:2952"
 	      Name		      "Use Modbus TCP"
-	      Position		      [857, 417]
+	      Position		      [947, 417]
 	      BackgroundColor	      "green"
 	      ZOrder		      -2
 	    }
@@ -2819,8 +2819,8 @@ Model {
 	  }
 	  ShowLegends		  off
 	  TimeRange		  "30              "
-	  YMin			  "0~-12500~-9000~9500~59.5"
-	  YMax			  "1~7500~2000~14000~60.5"
+	  YMin			  "1~-2810~-8075~9250~58"
+	  YMax			  "1~-2787.5~-7875~10750~60.5"
 	  SaveName		  "ScopeData2"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
@@ -3021,7 +3021,7 @@ Model {
 	  Position		  [665, 667, 725, 793]
 	  ZOrder		  13
 	  Floating		  off
-	  Location		  [969, 56, 1913, 1031]
+	  Location		  [215, 62, 1913, 1037]
 	  Open			  off
 	  NumInputPorts		  "3"
 	  ZoomMode		  "yonly"
@@ -3042,8 +3042,8 @@ Model {
 	    MarkerStyles	    "none|none|none|none|none|none"
 	  }
 	  ShowLegends		  on
-	  LegendLocations	  "0.91679     0.94169     0.10982    0.025071\n0.91363     0.59262     0.11194    0.063647\n0.8219"
-	  "2     0.27565     0.26977    0.063647"
+	  LegendLocations	  "0.94117     0.94169    0.061052    0.025071\n0.93848     0.59262     0.06223    0.063647\n0.8818"
+	  "2     0.27565     0.14998    0.063647"
 	  TimeRange		  "30"
 	  YMin			  "5.55112e-17~-0.1~-1.5"
 	  YMax			  "1.6~1.1~1.25"
@@ -4119,7 +4119,7 @@ Model {
 	  BlockType		  SubSystem
 	  Name			  "Diesel_Generator"
 	  SID			  "5953"
-	  Ports			  [4, 3, 0, 0, 0, 0, 3]
+	  Ports			  [3, 3, 0, 0, 0, 0, 3]
 	  Position		  [720, 346, 975, 584]
 	  ZOrder		  3668
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
@@ -4160,20 +4160,11 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "MCB_Meas"
-	      SID		      "5972"
-	      Position		      [265, 818, 295, 832]
-	      ZOrder		      2899
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
 	      Name		      "GCB_Meas"
 	      SID		      "5973"
 	      Position		      [315, 623, 345, 637]
 	      ZOrder		      2900
-	      Port		      "3"
+	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -4182,7 +4173,7 @@ Model {
 	      SID		      "5993"
 	      Position		      [225, 418, 255, 432]
 	      ZOrder		      3892
-	      Port		      "4"
+	      Port		      "3"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -4195,22 +4186,6 @@ Model {
 	      ShowName		      off
 	      Inputs		      "1"
 	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      BusSelector
-	      Name		      "Bus\nSelector"
-	      SID		      "5975"
-	      Ports		      [1, 1]
-	      Position		      [345, 806, 350, 844]
-	      ZOrder		      2903
-	      ShowName		      off
-	      OutputSignals	      "Status"
-	      Port {
-		PortNumber		1
-		Name			"<Status>"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
 	    }
 	    Block {
 	      BlockType		      BusSelector
@@ -4345,7 +4320,7 @@ Model {
 		  }
 		  Name			  "GenSel"
 		  Prompt		  "Generator Preset"
-		  Value			  "4MVA diesel generator"
+		  Value			  "80kVA diesel generator"
 		}
 	      }
 	      System {
@@ -8834,7 +8809,7 @@ Model {
 		  }
 		  Name			  "GenSel"
 		  Prompt		  "Generator preset"
-		  Value			  "4MVA diesel generator"
+		  Value			  "80kVA diesel generator"
 		}
 	      }
 	      Port {
@@ -8859,7 +8834,7 @@ Model {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"125"
-		SIDHighWatermark	"5004"
+		SIDHighWatermark	"5005"
 		SIDPrevWatermark	"4964"
 		Block {
 		  BlockType		  Inport
@@ -9414,10 +9389,10 @@ Model {
 		    BlockType		    Gain
 		    Name		    "Gain"
 		    SID			    "5981:4984"
-		    Position		    [445, 275, 545, 305]
+		    Position		    [445, 275, 585, 305]
 		    ZOrder		    11
 		    ShowName		    off
-		    Gain		    "0.1/GP.Vn"
+		    Gain		    "1/GP.Vn/GP.Prec"
 		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
 		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
 		    SaturateOnIntegerOverflow off
@@ -9485,11 +9460,11 @@ Model {
 		    Block {
 		    BlockType		    Gain
 		    Name		    "Gain4"
-		    SID			    "5981:4988"
-		    Position		    [615, 220, 715, 250]
-		    ZOrder		    3963
+		    SID			    "5981:5005"
+		    Position		    [615, 220, 800, 250]
+		    ZOrder		    3972
 		    ShowName		    off
-		    Gain		    "0.1/GP.Pn"
+		    Gain		    "1000/GP.Pn/GP.Prec"
 		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
 		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
 		    SaturateOnIntegerOverflow off
@@ -9504,10 +9479,10 @@ Model {
 		    BlockType		    Gain
 		    Name		    "Gain5"
 		    SID			    "5981:4989"
-		    Position		    [615, 165, 710, 195]
+		    Position		    [615, 165, 800, 195]
 		    ZOrder		    3964
 		    ShowName		    off
-		    Gain		    "0.1/GP.Pn"
+		    Gain		    "1000/GP.Pn/GP.Prec"
 		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
 		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
 		    SaturateOnIntegerOverflow off
@@ -11051,12 +11026,6 @@ Model {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "MCB_Meas"
-	      SrcPort		      1
-	      DstBlock		      "Bus\nSelector"
-	      DstPort		      1
-	    }
-	    Line {
 	      SrcBlock		      "GCB_Meas"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nSelector1"
@@ -11287,7 +11256,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From19"
 	  SID			  "3999"
-	  Position		  [520, 615, 615, 635]
+	  Position		  [535, 535, 630, 555]
 	  ZOrder		  -24
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -11383,7 +11352,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "5942"
-	  Position		  [385, 535, 480, 555]
+	  Position		  [380, 455, 475, 475]
 	  ZOrder		  2897
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -11415,21 +11384,11 @@ Model {
 	  GotoTag		  "Mains1_opt"
 	}
 	Block {
-	  BlockType		  From
-	  Name			  "From6"
-	  SID			  "4000"
-	  Position		  [520, 455, 615, 475]
-	  ZOrder		  -39
-	  ShowName		  off
-	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "Mains1_PRM"
-	}
-	Block {
 	  BlockType		  Reference
 	  Name			  "Genset_PQFV"
 	  SID			  "5954"
 	  Ports			  [1, 1]
-	  Position		  [550, 533, 650, 557]
+	  Position		  [545, 453, 645, 477]
 	  ZOrder		  3669
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
@@ -16299,9 +16258,8 @@ Model {
 	Line {
 	  SrcBlock		  "From19"
 	  SrcPort		  1
-	  Points		  [65, 0; 0, -70]
 	  DstBlock		  "Diesel_Generator"
-	  DstPort		  4
+	  DstPort		  3
 	}
 	Line {
 	  Name			  "Gen_meas"
@@ -16316,13 +16274,6 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "MODBUS1"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  Points		  [85, 0]
-	  DstBlock		  "Diesel_Generator"
-	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Mains1"
@@ -16648,14 +16599,13 @@ Model {
 	Line {
 	  SrcBlock		  "Genset_PQFV"
 	  SrcPort		  1
-	  Points		  [50, 0]
 	  DstBlock		  "Diesel_Generator"
-	  DstPort		  3
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
-	  Points		  [35, 0; 0, -5]
+	  Points		  [35, 0; 0, 5]
 	  DstBlock		  "Diesel_Generator"
 	  DstPort		  1
 	}

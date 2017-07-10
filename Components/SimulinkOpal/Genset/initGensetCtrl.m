@@ -9,6 +9,7 @@ switch GenSel
         GP.VCtrl.I = 1.5;
         GP.FCtrl.P = 0.025;
         GP.FCtrl.I = 1;
+        GP.Prec = 1;
     case 2
         GP.Pn = 80000;
         GP.Vn = 480;
@@ -17,4 +18,5 @@ switch GenSel
         GP.VCtrl.I = 1.5;
         GP.FCtrl.P = 0.025;
         GP.FCtrl.I = 1;
+        GP.Prec = 10;
 end

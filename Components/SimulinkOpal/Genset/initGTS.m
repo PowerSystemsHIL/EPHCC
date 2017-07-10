@@ -38,24 +38,29 @@ switch GenSelect
         set_param(TestSystemCtrlPath, 'GenSel', '80kVA diesel generator');
         GenPN = 100e3;
         GenVN = 480;
+        GenMult = 10;
     case '80kVA'
         set_param(TestSystemGenPath,  'GenSel', '80kVA diesel generator');
         set_param(TestSystemCtrlPath, 'GenSel', '80kVA diesel generator');
         GenPN = 100e3;
         GenVN = 480;
+        GenMult = 10;
     case '4MW'
         set_param(TestSystemGenPath,  'GenSel', '4MVA diesel generator');
         set_param(TestSystemCtrlPath, 'GenSel', '4MVA diesel generator');
         GenPN = 4e6;
         GenVN = 13800;
+        GenMult = 1;
     case '4MVA'
         set_param(TestSystemGenPath,  'GenSel', '4MVA diesel generator');
         set_param(TestSystemCtrlPath, 'GenSel', '4MVA diesel generator');
         GenPN = 4e6;
         GenVN = 13800;
+        GenMult = 1;
     case '3.5MVA NG'
         set_param(TestSystemGenPath,  'GenSel', '3.5MVA natural gas generator');
         set_param(TestSystemCtrlPath, 'GenSel', '3.5MVA natural gas generator');
         GenPN = 3.5e6;
         GenVN = 13800;
+        GenMult = 1;
 end;
