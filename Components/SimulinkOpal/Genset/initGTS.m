@@ -23,6 +23,12 @@ T4dend = [ 1.0000   -0.9460 ];
 T3numd = [ 0    0.0087 ];
 T3dend = [ 1.0000   -0.9913 ];
 
+%% circuit breaker delays
+% breaker mechanical open/close delay in seconds
+% different delays may be applied to each breaker, however,
+% for convenience it is assumed all breaker have the same delay
+cb_mech_delay = 5/60;
+
 %% Initialise test system depending on generator model to be tested
 TestSystemGenPath  = 'NREL_Diesel_Genset_Test_System/SM_Master/Diesel_Generator/GenSet';
 TestSystemCtrlPath = 'NREL_Diesel_Genset_Test_System/SM_Master/Diesel_Generator/SimGenCtrl';
