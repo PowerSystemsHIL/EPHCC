@@ -23,6 +23,11 @@ T4dend = [ 1.0000   -0.9460 ];
 T3numd = [ 0    0.0087 ];
 T3dend = [ 1.0000   -0.9913 ];
 
+%% read relay settings
+% reads-in all relay settings for the system and initializes vectors to
+% hold these settings that will be called from the software relays
+relay_settings_init;
+
 %% circuit breaker delays
 % breaker mechanical open/close delay in seconds
 % different delays may be applied to each breaker, however,
