@@ -34,3 +34,21 @@ F2 = xlsread('F2_relay_banshee.xlsx');
 F3 = xlsread('F3_relay_banshee.xlsx');
 F4 = xlsread('F4_relay_nrel.xlsx');
 
+DER_REL = xlsread('DER_relay.xlsx');
+% Define CB id's and their aliases
+CBID.CB151     = 1;
+CBID.GEN1      = 1;
+CBID.CB251     = 2;
+CBID.ESS1      = 2;
+CBID.CB252     = 3;
+CBID.PV1       = 3;
+CBID.CB351     = 4;
+CBID.GEN2      = 4;
+CBID.CB451     = 5;
+CBID.GEN3      = 5;
+CBID.CB452     = 6;
+CBID.ESS2      = 6;
+CBID.CB453     = 7;
+CBID.PV2       = 7;
+
+
