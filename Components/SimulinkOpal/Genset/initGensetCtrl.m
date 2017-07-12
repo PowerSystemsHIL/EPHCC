@@ -19,6 +19,15 @@ switch GenSel
         GP.FCtrl.P = 0.025;
         GP.FCtrl.I = 1;
         GP.Prec = 10;
+    case 3
+        GP.Pn = 3500000;
+        GP.Vn = 13800;
+        GP.fn = 60;
+        GP.VCtrl.P = 0.2;
+        GP.VCtrl.I = 1.5;
+        GP.FCtrl.P = 0.025;
+        GP.FCtrl.I = 1;
+        GP.Prec = 1;
 end
 
 %% Nominal current ratings

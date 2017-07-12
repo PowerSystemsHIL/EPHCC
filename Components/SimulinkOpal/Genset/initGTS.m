@@ -26,7 +26,10 @@ T3dend = [ 1.0000   -0.9913 ];
 %% read relay settings
 % reads-in all relay settings for the system and initializes vectors to
 % hold these settings that will be called from the software relays
+mypath = pwd;
+cd '..\..\..\DistributionSystems\SimulinkOpal\Banshee';
 relay_settings_init;
+cd(mypath);
 
 %% circuit breaker delays
 % breaker mechanical open/close delay in seconds
@@ -57,7 +60,7 @@ switch GenSelect
         GenPN = 4e6;
         GenVN = 13800;
         GenMult = 1;
-    case '3.5MVA NG'
+    case '3.5MW'
         set_param(TestSystemGenPath,  'GenSel', '3.5MVA natural gas generator');
         set_param(TestSystemCtrlPath, 'GenSel', '3.5MVA natural gas generator');
         set_param(GCBPath, 'relay_settings', '[DER_REL(CBID.GEN2,:)]');
