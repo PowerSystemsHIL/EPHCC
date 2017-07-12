@@ -20,3 +20,9 @@ switch GenSel
         GP.FCtrl.I = 1;
         GP.Prec = 10;
 end
+
+%% Nominal current ratings
+GP.In = GP.Pn/(GP.Vn/sqrt(3))/3;
+
+%% Droop lowpass filter
+GP.filt = firstOrderDig(50e-3, 100e-6, 'low');
