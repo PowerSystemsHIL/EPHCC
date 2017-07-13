@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [743.0, 74.0, 1932.0, 1092.0]
+      Location		      [595.0, 64.0, 1058.0, 1058.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 926.0]
+	Extents			[815.0, 892.0]
 	ZoomFactor		[1.2]
-	Offset			[0.0, 0.0]
+	Offset			[-2.2737367544323206e-13, 0.0]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 13 12:22:00 2017"
-  RTWModifiedTimeStamp	  421849317
-  ModelVersionFormat	  "1.%<AutoIncrement:51>"
+  LastModifiedDate	  "Thu Jul 13 14:59:48 2017"
+  RTWModifiedTimeStamp	  421858782
+  ModelVersionFormat	  "1.%<AutoIncrement:55>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -723,6 +723,12 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -826,7 +832,7 @@ Library {
   }
   System {
     Name		    "Feeder4_lib"
-    Location		    [743, 74, 2675, 1166]
+    Location		    [595, 64, 1653, 1122]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -840,17 +846,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "999"
+    SIDHighWatermark	    "1012"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder4"
       SID		      "1"
-      Ports		      [4, 1, 0, 0, 0, 3]
+      Ports		      [5, 2]
       Position		      [145, 248, 440, 632]
       ZOrder		      3617
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.50"
+      LibraryVersion	      "*1.54"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -860,7 +866,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder4"
-	Location		[-9, 0, 1923, 1050]
+	Location		[960, 0, 1920, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -872,7 +878,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"54"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -907,9 +913,18 @@ Library {
 	  BlockType		  Inport
 	  Name			  "HWCtrl_CMD"
 	  SID			  "503"
-	  Position		  [2190, 513, 2220, 527]
+	  Position		  [1155, 903, 1185, 917]
 	  ZOrder		  3418
 	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PHIL_V"
+	  SID			  "1006"
+	  Position		  [1160, 853, 1190, 867]
+	  ZOrder		  3922
+	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1139,7 +1154,7 @@ Library {
 	  Name			  "Bus\nSelector16"
 	  SID			  "504"
 	  Ports			  [1, 1]
-	  Position		  [2440, 508, 2445, 532]
+	  Position		  [1320, 898, 1325, 922]
 	  ZOrder		  3419
 	  ShowName		  off
 	  OutputSignals		  "TestSeq"
@@ -1353,6 +1368,60 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "Controlled Voltage Source"
+	  SID			  "1001"
+	  Ports			  [1, 0, 0, 0, 0, 1, 1]
+	  Position		  [1545, 805, 1590, 840]
+	  ZOrder		  3917
+	  ShowName		  off
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Electrical\nSources/Controlled Voltage Source"
+	  SourceType		  "Controlled Voltage Source"
+	  Initialize		  on
+	  Source_Type		  "AC"
+	  Amplitude		  "0"
+	  Phase			  "0"
+	  Frequency		  "0"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Controlled Voltage Source1"
+	  SID			  "1002"
+	  Ports			  [1, 0, 0, 0, 0, 1, 1]
+	  Position		  [1545, 850, 1590, 885]
+	  ZOrder		  3918
+	  ShowName		  off
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Electrical\nSources/Controlled Voltage Source"
+	  SourceType		  "Controlled Voltage Source"
+	  Initialize		  on
+	  Source_Type		  "AC"
+	  Amplitude		  "0"
+	  Phase			  "0"
+	  Frequency		  "0"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Controlled Voltage Source2"
+	  SID			  "1003"
+	  Ports			  [1, 0, 0, 0, 0, 1, 1]
+	  Position		  [1545, 895, 1590, 930]
+	  ZOrder		  3919
+	  ShowName		  off
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Electrical\nSources/Controlled Voltage Source"
+	  SourceType		  "Controlled Voltage Source"
+	  Initialize		  on
+	  Source_Type		  "AC"
+	  Amplitude		  "0"
+	  Phase			  "0"
+	  Frequency		  "0"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "Critical_7"
 	  SID			  "753"
 	  Ports			  [1, 1, 0, 0, 0, 3]
@@ -1398,6 +1467,17 @@ Library {
 	  kVA			  "3"
 	  PF			  "0.9"
 	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "1007"
+	  Ports			  [1, 3]
+	  Position		  [1430, 793, 1435, 927]
+	  ZOrder		  3923
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -2511,6 +2591,17 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From10"
+	  SID			  "1009"
+	  Position		  [1555, 757, 1615, 773]
+	  ZOrder		  3925
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "I_PHIL"
+	  TagVisibility		  "global"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From11"
 	  SID			  "826"
 	  Position		  [1575, 1550, 1650, 1570]
@@ -2917,7 +3008,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From6"
 	  SID			  "770"
-	  Position		  [1565, 1310, 1640, 1330]
+	  Position		  [1565, 1250, 1640, 1270]
 	  ZOrder		  3685
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -3238,7 +3329,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto8"
 	  SID			  "735"
-	  Position		  [2490, 509, 2565, 531]
+	  Position		  [1390, 994, 1465, 1016]
 	  ZOrder		  3642
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
@@ -3252,6 +3343,47 @@ Library {
 	  ZOrder		  3669
 	  ShowName		  off
 	  GotoTag		  "LOAD_C7"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Ground"
+	  SID			  "1004"
+	  Ports			  [0, 0, 0, 0, 0, 1]
+	  Position		  [1464, 940, 1486, 965]
+	  ZOrder		  3920
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  ShowName		  off
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Elements/Ground"
+	  SourceType		  "Ground"
+	  LConnTagsString	  "a"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "I_PHIL"
+	  SID			  "1008"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [1650, 801, 1655, 939]
+	  ZOrder		  3924
+	  BackgroundColor	  "black"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Measurements/Three-Phase\nV-I Measurement"
+	  SourceType		  "Three-Phase VI Measurement"
+	  VoltageMeasurement	  "no"
+	  SetLabelV		  on
+	  LabelV		  "Vabc"
+	  Vpu			  off
+	  VpuLL			  off
+	  CurrentMeasurement	  "yes"
+	  SetLabelI		  on
+	  LabelI		  "I_PHIL"
+	  Ipu			  off
+	  Pbase			  "100e6"
+	  Vbase			  "500e3"
+	  OutputType		  "Complex"
+	  PhasorSimulation	  off
+	  PSBequivalent		  "0"
 	}
 	Block {
 	  BlockType		  Reference
@@ -3294,16 +3426,24 @@ Library {
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  Memory
+	  Name			  "Memory1"
+	  SID			  "1012"
+	  Position		  [1650, 750, 1680, 780]
+	  ZOrder		  3927
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "OpComm1"
 	  SID			  "83"
-	  Ports			  [3, 3]
-	  Position		  [2315, 434, 2385, 536]
+	  Ports			  [2, 2]
+	  Position		  [2315, 434, 2385, 501]
 	  ZOrder		  2357
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "3"
+	  nbport		  "2"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -3349,6 +3489,32 @@ Library {
 	  Samples		  off
 	  dynSigOut		  off
 	  from_console		  "1"
+	  warning_done		  off
+	  writeOpCommFile	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "OpComm3"
+	  SID			  "1011"
+	  Ports			  [2, 2]
+	  Position		  [1220, 834, 1290, 936]
+	  ZOrder		  3926
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/OpComm"
+	  SourceType		  "RT-LAB OpComm"
+	  nbport		  "2"
+	  groupe_acq		  "1"
+	  subsys_rate		  "0"
+	  st			  "0"
+	  Synchronization	  on
+	  Interpolation		  on
+	  Threshold		  "1.0"
+	  Missed_Data		  off
+	  Offset		  off
+	  Sim_Time		  off
+	  Samples		  off
+	  dynSigOut		  off
+	  from_console		  "0"
 	  warning_done		  off
 	  writeOpCommFile	  off
 	}
@@ -3900,39 +4066,112 @@ Library {
 	  I_port_shunt_resistance "1e9"
 	}
 	Block {
-	  BlockType		  PMIOPort
-	  Name			  "PCC_A"
-	  SID			  "960"
-	  Position		  [1635, 818, 1665, 832]
-	  ZOrder		  3901
-	  Port			  "1"
-	  Side			  "Left"
-	}
-	Block {
-	  BlockType		  PMIOPort
-	  Name			  "PCC_B"
-	  SID			  "961"
-	  Position		  [1635, 863, 1665, 877]
-	  ZOrder		  3902
-	  Port			  "2"
-	  Side			  "Left"
-	}
-	Block {
-	  BlockType		  PMIOPort
-	  Name			  "PCC_C"
-	  SID			  "962"
-	  Position		  [1635, 908, 1665, 922]
-	  ZOrder		  3903
-	  Port			  "3"
-	  Side			  "Left"
-	}
-	Block {
 	  BlockType		  Outport
 	  Name			  "DATA_OUT"
 	  SID			  "189"
 	  Position		  [4120, 588, 4150, 602]
 	  ZOrder		  2447
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "PHIL_I"
+	  SID			  "1005"
+	  Position		  [1710, 758, 1740, 772]
+	  ZOrder		  3921
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Memory1"
+	  SrcPort		  1
+	  DstBlock		  "PHIL_I"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm3"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From10"
+	  SrcPort		  1
+	  DstBlock		  "Memory1"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Controlled Voltage Source2"
+	  SrcPort		  RConn1
+	  DstBlock		  "I_PHIL"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "I_PHIL"
+	  SrcPort		  LConn2
+	  DstBlock		  "Controlled Voltage Source1"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Controlled Voltage Source"
+	  SrcPort		  RConn1
+	  DstBlock		  "I_PHIL"
+	  DstPort		  LConn1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Controlled Voltage Source2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Controlled Voltage Source1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "Controlled Voltage Source"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "PHIL_V"
+	  SrcPort		  1
+	  DstBlock		  "OpComm3"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Ground"
+	  SrcPort		  LConn1
+	  Points		  [0, -5]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "Controlled Voltage Source2"
+	    SrcPort		    LConn1
+	    Points		    [-55, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [1473, 875; 0, 45; 2, 0]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Controlled Voltage Source"
+	      SrcPort		      LConn1
+	      Points		      [-57, 0; 0, 45]
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Controlled Voltage Source1"
+	      SrcPort		      LConn1
+	      Points		      [-57, 0]
+	    }
+	  }
 	}
 	Line {
 	  Name			  "F4_I8"
@@ -4602,7 +4841,6 @@ Library {
 	Line {
 	  SrcBlock		  "From6"
 	  SrcPort		  1
-	  Points		  [22, 0; 0, -60]
 	  DstBlock		  "Diesel_Generator"
 	  DstPort		  2
 	}
@@ -4797,6 +5035,7 @@ Library {
 	Line {
 	  SrcBlock		  "OpComm1"
 	  SrcPort		  1
+	  Points		  [0, 0]
 	  DstBlock		  "Goto3"
 	  DstPort		  1
 	}
@@ -4895,6 +5134,7 @@ Library {
 	Line {
 	  SrcBlock		  "OpComm1"
 	  SrcPort		  2
+	  Points		  [0, 0]
 	  DstBlock		  "Goto20"
 	  DstPort		  1
 	}
@@ -4934,12 +5174,12 @@ Library {
 	Line {
 	  SrcBlock		  "HWCtrl_CMD"
 	  SrcPort		  1
-	  DstBlock		  "OpComm1"
-	  DstPort		  3
+	  DstBlock		  "OpComm3"
+	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "OpComm1"
-	  SrcPort		  3
+	  SrcBlock		  "OpComm3"
+	  SrcPort		  2
 	  DstBlock		  "Bus\nSelector16"
 	  DstPort		  1
 	}
@@ -5057,36 +5297,37 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "PCC_A"
+	  SrcBlock		  "I_PHIL"
 	  SrcPort		  RConn1
-	  Points		  [115, 0; 0, 25]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "500kcmil-Mutual5"
-	    DstPort		    LConn1
-	  }
+	  Points		  [125, 0; 0, 25]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "448 kvar inductor at 13.8kV \nto cancel kvar produced by the stublines1"
 	    SrcPort		    LConn1
 	    Points		    [0, -115]
 	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "500kcmil-Mutual5"
+	    DstPort		    LConn1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "PCC_B"
-	  SrcPort		  RConn1
-	  Points		  [135, 0]
+	  Points		  [1815, 870; 50, 0]
+	  DstBlock		  "500kcmil-Mutual5"
+	  DstPort		  LConn2
 	  Branch {
-	    ConnectType		    "DEST_DEST"
+	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "448 kvar inductor at 13.8kV \nto cancel kvar produced by the stublines1"
 	    SrcPort		    LConn2
 	    Points		    [0, -95]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "500kcmil-Mutual5"
-	    DstPort		    LConn2
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "I_PHIL"
+	    SrcPort		    RConn2
+	    Points		    [145, 0]
 	  }
 	}
 	Line {
@@ -5102,9 +5343,9 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "PCC_C"
-	    SrcPort		    RConn1
-	    Points		    [155, 0]
+	    SrcBlock		    "I_PHIL"
+	    SrcPort		    RConn3
+	    Points		    [165, 0]
 	  }
 	}
 	Line {
@@ -5112,6 +5353,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector16"
 	  SrcPort		  1
+	  Points		  [2, 0; 0, 95]
 	  DstBlock		  "Goto8"
 	  DstPort		  1
 	}
@@ -5130,22 +5372,17 @@ Library {
       }
     }
     Annotation {
-      SID		      "249"
-      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of"
-      " charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\""
-      "), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modify,"
-      " \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to wh"
-      "om the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright n"
-      "otice and this permission notice shall be included in \n% all copies or substantial portions of the Software.\n%"
-      " \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT"
-      " LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO E"
-      "VENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN "
-      "AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE"
-      " USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
-      Position		      [61, 57]
+      SID		      "1010"
+      Name		      "Copyright © 2017 the Alliance for Sustainable Energy, LLC\n\nThe above copyright notice and this pe"
+      "rmission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROV"
+      "IDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING \nBUT NOT LIMITED TO THE WARRANTIES "
+      "OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND \nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COP"
+      "YRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+      "OTHERWISE, ARISING FROM, \nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWAR"
+      "E\n"
+      Position		      [38, 146]
       HorizontalAlignment     "left"
-      ZOrder		      -3
-      FontWeight	      "bold"
+      ZOrder		      -5
     }
   }
 }

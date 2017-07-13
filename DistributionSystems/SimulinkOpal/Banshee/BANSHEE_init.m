@@ -72,19 +72,10 @@ T4dend = [ 1.0000   -0.9460 ];
 T3numd = [ 0    0.0087 ];
 T3dend = [ 1.0000   -0.9913 ];
 
-%% Initialise test system depending on generator model to be tested
-
-switch NREL_Mode
-    case 3
-        GenPN = 80e3;
-        GenVN = 480;
-    case 2
-        GenPN = 4e6;
-        GenVN = 13800;
-    case 1
-        GenPN = 4e6;
-        GenVN = 13800;    
-end;
+%% PHIL interface
+PHIL.P_ratio = 20;
+PHIL.V_ratio = 4160/480;
+PHIL.I_ratio = PHIL.P_ratio/PHIL.V_ratio;
 
 %% Test stimuli generator
 % see. Stimuli.xlsx for better view and changes
