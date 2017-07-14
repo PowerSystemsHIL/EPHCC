@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 14 15:25:28 2017"
-  RTWModifiedTimeStamp	  421946723
-  ModelVersionFormat	  "1.%<AutoIncrement:45>"
+  LastModifiedDate	  "Fri Jul 14 16:39:16 2017"
+  RTWModifiedTimeStamp	  421951150
+  ModelVersionFormat	  "1.%<AutoIncrement:46>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1156,7 +1156,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "971"
+    SIDHighWatermark	    "977"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2923,7 +2923,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.44"
+	  LibraryVersion	  "1.45"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3638,7 +3638,7 @@ Library {
       Position		      [405, 70, 485, 215]
       ZOrder		      3887
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.44"
+      LibraryVersion	      "*1.45"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3735,7 +3735,7 @@ Library {
       }
       System {
 	Name			"NREL_BESS"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-8, 0, 1928, 1056]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -9810,7 +9810,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Status_Interface"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [-8, 0, 1928, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -10118,6 +10118,18 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Gain
+	      Name		      "Gain10"
+	      SID		      "977"
+	      Position		      [515, 410, 595, 440]
+	      ZOrder		      3988
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
 	      Name		      "Gain2"
 	      SID		      "970"
 	      Position		      [515, 760, 595, 790]
@@ -10171,6 +10183,66 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain5"
+	      SID		      "972"
+	      Position		      [515, 655, 595, 685]
+	      ZOrder		      3983
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain6"
+	      SID		      "973"
+	      Position		      [515, 585, 595, 615]
+	      ZOrder		      3984
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain7"
+	      SID		      "974"
+	      Position		      [515, 515, 595, 545]
+	      ZOrder		      3985
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain8"
+	      SID		      "975"
+	      Position		      [515, 480, 595, 510]
+	      ZOrder		      3986
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain9"
+	      SID		      "976"
+	      Position		      [515, 445, 595, 475]
+	      ZOrder		      3987
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
 	      BlockType		      Mux
 	      Name		      "Mux"
 	      SID		      "386"
@@ -10188,6 +10260,42 @@ Library {
 	      Position		      [790, 578, 820, 592]
 	      ZOrder		      -2
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Gain10"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      10
+	    }
+	    Line {
+	      SrcBlock		      "Gain9"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      11
+	    }
+	    Line {
+	      SrcBlock		      "Gain8"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      12
+	    }
+	    Line {
+	      SrcBlock		      "Gain7"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      13
+	    }
+	    Line {
+	      SrcBlock		      "Gain6"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      15
+	    }
+	    Line {
+	      SrcBlock		      "Gain5"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      17
 	    }
 	    Line {
 	      Name		      "kw"
@@ -10336,8 +10444,8 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      17
-	      DstBlock		      "Mux"
-	      DstPort		      17
+	      DstBlock		      "Gain5"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal16>"
@@ -10352,8 +10460,8 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      15
-	      DstBlock		      "Mux"
-	      DstPort		      15
+	      DstBlock		      "Gain6"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal14>"
@@ -10368,32 +10476,32 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      13
-	      DstBlock		      "Mux"
-	      DstPort		      13
+	      DstBlock		      "Gain7"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal12>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      12
-	      DstBlock		      "Mux"
-	      DstPort		      12
+	      DstBlock		      "Gain8"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal11>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      11
-	      DstBlock		      "Mux"
-	      DstPort		      11
+	      DstBlock		      "Gain9"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal10>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      10
-	      DstBlock		      "Mux"
-	      DstPort		      10
+	      DstBlock		      "Gain10"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal9>"
@@ -10778,7 +10886,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"941"
+		SIDHighWatermark	"995"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -11208,7 +11316,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "127"
+		    SIDHighWatermark	    "134"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
@@ -12255,7 +12363,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Protection"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, 0, 1928, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
