@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jun 21 09:56:50 2017"
-  RTWModifiedTimeStamp	  419939804
-  ModelVersionFormat	  "1.%<AutoIncrement:529>"
+  LastModifiedDate	  "Fri Jul 14 15:03:09 2017"
+  RTWModifiedTimeStamp	  421945385
+  ModelVersionFormat	  "1.%<AutoIncrement:530>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -993,11 +993,11 @@ Library {
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      3875
+      ZOrder		      3896
       BlockMirror	      on
       BackgroundColor	      "yellow"
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.528"
+      LibraryVersion	      "*1.529"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1045,14 +1045,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[F4(3,:)]"
+	    Value		    "[DER_REL(CBID.GEN3,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[-8, 0, 1924, 1056]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1064,7 +1064,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -1598,6 +1598,12 @@ Library {
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "P"
+	  Port {
+	    PortNumber		    1
+	    Name		    "kw"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -1607,6 +1613,12 @@ Library {
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Q"
+	  Port {
+	    PortNumber		    1
+	    Name		    "kvar"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -2283,18 +2295,6 @@ Library {
 	}
 	Block {
 	  BlockType		  Gain
-	  Name			  "Gain10"
-	  SID			  "82769"
-	  Position		  [1655, 1108, 1690, 1132]
-	  ZOrder		  3543
-	  ShowName		  off
-	  Gain			  "10"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Gain
 	  Name			  "Gain11"
 	  SID			  "82405"
 	  Position		  [1660, 428, 1690, 452]
@@ -2520,42 +2520,6 @@ Library {
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Gain6"
-	  SID			  "82767"
-	  Position		  [1655, 1028, 1690, 1052]
-	  ZOrder		  3541
-	  ShowName		  off
-	  Gain			  "10"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	  Port {
-	    PortNumber		    1
-	    Name		    "kw"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Gain7"
-	  SID			  "82768"
-	  Position		  [1655, 1068, 1690, 1092]
-	  ZOrder		  3542
-	  ShowName		  off
-	  Gain			  "10"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	  Port {
-	    PortNumber		    1
-	    Name		    "kvar"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Gain
@@ -4536,7 +4500,7 @@ Library {
 	  }
 	}
 	Line {
-	  SrcBlock		  "Gain10"
+	  SrcBlock		  "From23"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  21
@@ -4544,7 +4508,7 @@ Library {
 	Line {
 	  Name			  "kvar"
 	  Labels		  [1, 1]
-	  SrcBlock		  "Gain7"
+	  SrcBlock		  "From21"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  20
@@ -4552,7 +4516,7 @@ Library {
 	Line {
 	  Name			  "kw"
 	  Labels		  [1, 1]
-	  SrcBlock		  "Gain6"
+	  SrcBlock		  "From20"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  19
@@ -5235,24 +5199,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator1"
 	  DstPort		  22
-	}
-	Line {
-	  SrcBlock		  "From23"
-	  SrcPort		  1
-	  DstBlock		  "Gain10"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From21"
-	  SrcPort		  1
-	  DstBlock		  "Gain7"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From20"
-	  SrcPort		  1
-	  DstBlock		  "Gain6"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Gain3"

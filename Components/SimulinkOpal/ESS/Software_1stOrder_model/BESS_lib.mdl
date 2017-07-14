@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jun 21 13:34:20 2017"
-  RTWModifiedTimeStamp	  419952857
-  ModelVersionFormat	  "1.%<AutoIncrement:44>"
+  LastModifiedDate	  "Fri Jul 14 15:25:28 2017"
+  RTWModifiedTimeStamp	  421946723
+  ModelVersionFormat	  "1.%<AutoIncrement:45>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1156,7 +1156,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "964"
+    SIDHighWatermark	    "971"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2923,7 +2923,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.43"
+	  LibraryVersion	  "1.44"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3638,7 +3638,7 @@ Library {
       Position		      [405, 70, 485, 215]
       ZOrder		      3887
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.43"
+      LibraryVersion	      "*1.44"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3651,14 +3651,15 @@ Library {
 	$ObjectID		24
 	$ClassName		"Simulink.Mask"
 	Initialization		"CFG.InvType = InvType;\nCFG.Sn = Sn*1000;\nCFG.Vn = Vn;\nCFG.fn = 60;\nCFG.r_I_max = r_I_max;\nCFG.T"
-	"c = Tc;\n\n% get bess internal params (BP)\nBP = BESS_init_mask(CFG);\n\n\ndstr = 'Inverter data:\\n';\ndstr = [ dstr"
-	" 'Sn=' num2str(Sn) 'kW\\n'];\ndstr = [ dstr 'Vn=' num2str(Vn/1000) 'kV\\n'];\ndstr = [ dstr 'In=' num2str(BP.In) 'A\\"
-	"n'];\ndstr = [ dstr 'Imax=' num2str(BP.Imax) 'A\\n'];"
+	"c = Tc;\n\nif (MbusPrecInc == true)\n    CFG.Prec = 10;\nelse\n    CFG.Prec = 1;\nend;\n\n% get bess internal params "
+	"(BP)\nBP = BESS_init_mask(CFG);\n\n\ndstr = 'Inverter data:\\n';\ndstr = [ dstr 'Sn=' num2str(Sn) 'kW\\n'];\ndstr = ["
+	" dstr 'Vn=' num2str(Vn/1000) 'kV\\n'];\ndstr = [ dstr 'In=' num2str(BP.In) 'A\\n'];\ndstr = [ dstr 'Imax=' num2str(BP"
+	".Imax) 'A\\n'];"
 	Display			"disp(dstr);"
 	IconOpaque		"off"
 	Array {
 	  Type			  "Simulink.MaskParameter"
-	  Dimension		  8
+	  Dimension		  9
 	  Object {
 	    $ObjectID		    25
 	    Type		    "popup"
@@ -3722,12 +3723,19 @@ Library {
 	    Prompt		    "Control time step [s]"
 	    Value		    "Ts"
 	  }
+	  Object {
+	    $ObjectID		    33
+	    Type		    "checkbox"
+	    Name		    "MbusPrecInc"
+	    Prompt		    "Increase power precision at Modbus interface (10x)"
+	    Value		    "on"
+	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"NREL_BESS"
-	Location		[-8, 0, 1924, 1056]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3811,7 +3819,7 @@ Library {
 	      MaskHideContents	      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		33
+		$ObjectID		34
 		$ClassName		"Simulink.Mask"
 		Type			"Very simple battery model.  "
 		Description		"Model integrates charge and stops at the rated capacity.  When charge is all removed the current drops"
@@ -3822,21 +3830,21 @@ Library {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  3
 		  Object {
-		    $ObjectID		    34
+		    $ObjectID		    35
 		    Type		    "edit"
 		    Name		    "kWh"
 		    Prompt		    "Capacity  (kWh)"
 		    Value		    "b_kWh"
 		  }
 		  Object {
-		    $ObjectID		    35
+		    $ObjectID		    36
 		    Type		    "edit"
 		    Name		    "esr"
 		    Prompt		    "Output Resistance (Ohms)"
 		    Value		    "b_esr"
 		  }
 		  Object {
-		    $ObjectID		    36
+		    $ObjectID		    37
 		    Type		    "edit"
 		    Name		    "Vdc_nom"
 		    Prompt		    "Open Circuit Voltage"
@@ -4404,7 +4412,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "CB_Meas1"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -5118,7 +5126,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Droop"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -6836,7 +6844,7 @@ Library {
 	      MaskHideContents	      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		37
+		$ObjectID		38
 		$ClassName		"Simulink.Mask"
 		Description		"PID controller integral is in enable state when Enable signal value equals 1. If Enable state equals z"
 		"ero the PID output also equals zero."
@@ -6844,70 +6852,70 @@ Library {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  10
 		  Object {
-		    $ObjectID		    38
+		    $ObjectID		    39
 		    Type		    "edit"
 		    Name		    "Kp"
 		    Prompt		    "Proportional gain Kp"
 		    Value		    "2"
 		  }
 		  Object {
-		    $ObjectID		    39
+		    $ObjectID		    40
 		    Type		    "edit"
 		    Name		    "Ti"
 		    Prompt		    "Integral doubling-time Ti [s]"
 		    Value		    "0.6e-3"
 		  }
 		  Object {
-		    $ObjectID		    40
+		    $ObjectID		    41
 		    Type		    "edit"
 		    Name		    "Ts"
 		    Prompt		    "Sample time [s]"
 		    Value		    "Ts"
 		  }
 		  Object {
-		    $ObjectID		    41
+		    $ObjectID		    42
 		    Type		    "edit"
 		    Name		    "D"
 		    Prompt		    "Derivative Gain"
 		    Value		    "0"
 		  }
 		  Object {
-		    $ObjectID		    42
+		    $ObjectID		    43
 		    Type		    "edit"
 		    Name		    "Iup"
 		    Prompt		    "Integral upper saturation limit"
 		    Value		    "1"
 		  }
 		  Object {
-		    $ObjectID		    43
+		    $ObjectID		    44
 		    Type		    "edit"
 		    Name		    "Idown"
 		    Prompt		    "Integral lower saturation limit"
 		    Value		    "-1"
 		  }
 		  Object {
-		    $ObjectID		    44
+		    $ObjectID		    45
 		    Type		    "edit"
 		    Name		    "PIup"
 		    Prompt		    "PI output upper saturation limit"
 		    Value		    "1"
 		  }
 		  Object {
-		    $ObjectID		    45
+		    $ObjectID		    46
 		    Type		    "edit"
 		    Name		    "PIdown"
 		    Prompt		    "PI output lower saturation limit"
 		    Value		    "-1"
 		  }
 		  Object {
-		    $ObjectID		    46
+		    $ObjectID		    47
 		    Type		    "edit"
 		    Name		    "Int_init"
 		    Prompt		    "Integral initial value"
 		    Value		    "0"
 		  }
 		  Object {
-		    $ObjectID		    47
+		    $ObjectID		    48
 		    Type		    "edit"
 		    Name		    "Enable_zero_val"
 		    Prompt		    "Output value when Enable=0"
@@ -7190,7 +7198,7 @@ Library {
 	      MaskHideContents	      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		48
+		$ObjectID		49
 		$ClassName		"Simulink.Mask"
 		Description		"PID controller integral is in enable state when Enable signal value equals 1. If Enable state equals z"
 		"ero the PID output also equals zero."
@@ -7198,70 +7206,70 @@ Library {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  10
 		  Object {
-		    $ObjectID		    49
+		    $ObjectID		    50
 		    Type		    "edit"
 		    Name		    "Kp"
 		    Prompt		    "Proportional gain Kp"
 		    Value		    "2"
 		  }
 		  Object {
-		    $ObjectID		    50
+		    $ObjectID		    51
 		    Type		    "edit"
 		    Name		    "Ti"
 		    Prompt		    "Integral doubling-time Ti [s]"
 		    Value		    "0.6e-3"
 		  }
 		  Object {
-		    $ObjectID		    51
+		    $ObjectID		    52
 		    Type		    "edit"
 		    Name		    "Ts"
 		    Prompt		    "Sample time [s]"
 		    Value		    "Ts"
 		  }
 		  Object {
-		    $ObjectID		    52
+		    $ObjectID		    53
 		    Type		    "edit"
 		    Name		    "D"
 		    Prompt		    "Derivative Gain"
 		    Value		    "0"
 		  }
 		  Object {
-		    $ObjectID		    53
+		    $ObjectID		    54
 		    Type		    "edit"
 		    Name		    "Iup"
 		    Prompt		    "Integral upper saturation limit"
 		    Value		    "1"
 		  }
 		  Object {
-		    $ObjectID		    54
+		    $ObjectID		    55
 		    Type		    "edit"
 		    Name		    "Idown"
 		    Prompt		    "Integral lower saturation limit"
 		    Value		    "-1"
 		  }
 		  Object {
-		    $ObjectID		    55
+		    $ObjectID		    56
 		    Type		    "edit"
 		    Name		    "PIup"
 		    Prompt		    "PI output upper saturation limit"
 		    Value		    "1"
 		  }
 		  Object {
-		    $ObjectID		    56
+		    $ObjectID		    57
 		    Type		    "edit"
 		    Name		    "PIdown"
 		    Prompt		    "PI output lower saturation limit"
 		    Value		    "-1"
 		  }
 		  Object {
-		    $ObjectID		    57
+		    $ObjectID		    58
 		    Type		    "edit"
 		    Name		    "Int_init"
 		    Prompt		    "Integral initial value"
 		    Value		    "0"
 		  }
 		  Object {
-		    $ObjectID		    58
+		    $ObjectID		    59
 		    Type		    "edit"
 		    Name		    "Enable_zero_val"
 		    Prompt		    "Output value when Enable=0"
@@ -8962,7 +8970,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Meas_Status_Interface"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9177,7 +9185,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Ctrl_Interface"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9472,11 +9480,11 @@ Library {
 	    Block {
 	      BlockType		      Gain
 	      Name		      "Gain4"
-	      SID		      "637"
-	      Position		      [615, 220, 690, 250]
-	      ZOrder		      3963
+	      SID		      "965"
+	      Position		      [615, 220, 755, 250]
+	      ZOrder		      3970
 	      ShowName		      off
-	      Gain		      "0.1/Sn"
+	      Gain		      "1/Sn/CFG.Prec"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -9491,10 +9499,10 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain5"
 	      SID		      "638"
-	      Position		      [615, 165, 690, 195]
+	      Position		      [615, 165, 755, 195]
 	      ZOrder		      3964
 	      ShowName		      off
-	      Gain		      "0.1/Sn"
+	      Gain		      "1/Sn/CFG.Prec"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -9802,7 +9810,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Status_Interface"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -10109,6 +10117,60 @@ Library {
 	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain2"
+	      SID		      "970"
+	      Position		      [515, 760, 595, 790]
+	      ZOrder		      3981
+	      ShowName		      off
+	      Gain		      "CFG.Prec"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"kvar"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain3"
+	      SID		      "971"
+	      Position		      [515, 725, 595, 755]
+	      ZOrder		      3982
+	      ShowName		      off
+	      Gain		      "CFG.Prec"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"kw"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain4"
+	      SID		      "969"
+	      Position		      [515, 795, 595, 825]
+	      ZOrder		      3980
+	      ShowName		      off
+	      Gain		      "CFG.Prec"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"kva"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
 	      BlockType		      Mux
 	      Name		      "Mux"
 	      SID		      "386"
@@ -10126,6 +10188,30 @@ Library {
 	      Position		      [790, 578, 820, 592]
 	      ZOrder		      -2
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "kw"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain3"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      19
+	    }
+	    Line {
+	      Name		      "kvar"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain2"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      20
+	    }
+	    Line {
+	      Name		      "kva"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain4"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      21
 	    }
 	    Line {
 	      Name		      "<status>"
@@ -10218,24 +10304,24 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      21
-	      DstBlock		      "Mux"
-	      DstPort		      21
+	      DstBlock		      "Gain4"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<kvar>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      20
-	      DstBlock		      "Mux"
-	      DstPort		      20
+	      DstBlock		      "Gain2"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<kw>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      19
-	      DstBlock		      "Mux"
-	      DstPort		      19
+	      DstBlock		      "Gain3"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<signal18>"
@@ -10581,7 +10667,7 @@ Library {
 	      MaskHideContents	      off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		59
+		$ObjectID		60
 		$ClassName		"Simulink.Mask"
 		Type			"PLL (3ph)"
 		Description		"This Phase Locked Loop (PLL) system can be used  to synchronize on a set of variable frequency, three-"
@@ -10600,56 +10686,56 @@ Library {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  8
 		  Object {
-		    $ObjectID		    60
+		    $ObjectID		    61
 		    Type		    "edit"
 		    Name		    "Flim"
 		    Prompt		    "Minimum frequency (Hz):"
 		    Value		    "[55 66]"
 		  }
 		  Object {
-		    $ObjectID		    61
+		    $ObjectID		    62
 		    Type		    "edit"
 		    Name		    "Par_Init"
 		    Prompt		    "Initial inputs [ Phase (degrees), Frequency (Hz) ]:"
 		    Value		    "[0, 60]"
 		  }
 		  Object {
-		    $ObjectID		    62
+		    $ObjectID		    63
 		    Type		    "edit"
 		    Name		    "ParK"
 		    Prompt		    "Regulator gains [ Kp, Ki, Kd ]:"
 		    Value		    "[180, 3200, 1]"
 		  }
 		  Object {
-		    $ObjectID		    63
+		    $ObjectID		    64
 		    Type		    "edit"
 		    Name		    "TcD"
 		    Prompt		    "Time constant for derivative action (s):"
 		    Value		    "Tc"
 		  }
 		  Object {
-		    $ObjectID		    64
+		    $ObjectID		    65
 		    Type		    "edit"
 		    Name		    "MaxRateChangeFreq"
 		    Prompt		    "Maximum rate of change of frequency (Hz/s):"
 		    Value		    "12"
 		  }
 		  Object {
-		    $ObjectID		    65
+		    $ObjectID		    66
 		    Type		    "edit"
 		    Name		    "FilterCutOffFreq"
 		    Prompt		    "Filter cut-off frequency for frequency measurement (Hz):"
 		    Value		    "25"
 		  }
 		  Object {
-		    $ObjectID		    66
+		    $ObjectID		    67
 		    Type		    "edit"
 		    Name		    "Ts"
 		    Prompt		    "Sample time:"
 		    Value		    "Tc"
 		  }
 		  Object {
-		    $ObjectID		    67
+		    $ObjectID		    68
 		    Type		    "checkbox"
 		    Name		    "AGC"
 		    Prompt		    "Enable automatic gain control"
@@ -10692,7 +10778,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"887"
+		SIDHighWatermark	"941"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -11040,7 +11126,7 @@ Library {
 		    VariantControl	    "PID_Discrete"
 		    Object {
 		    $PropName		    "MaskObject"
-		    $ObjectID		    68
+		    $ObjectID		    69
 		    $ClassName		    "Simulink.Mask"
 		    Type		    "Discrete PID Controller"
 		    Description		    "This block implements a discrete PID controller."
@@ -11050,49 +11136,49 @@ Library {
 		    Type		    "Simulink.MaskParameter"
 		    Dimension		    7
 		    Object {
-		    $ObjectID		    69
+		    $ObjectID		    70
 		    Type		    "edit"
 		    Name		    "Kp"
 		    Prompt		    "Proportional gain (Kp):"
 		    Value		    "ParK(1)"
 		    }
 		    Object {
-		    $ObjectID		    70
+		    $ObjectID		    71
 		    Type		    "edit"
 		    Name		    "Ki"
 		    Prompt		    "Integral gain (Ki):"
 		    Value		    "ParK(2)"
 		    }
 		    Object {
-		    $ObjectID		    71
+		    $ObjectID		    72
 		    Type		    "edit"
 		    Name		    "Kd"
 		    Prompt		    "Derivative gain (Kd):"
 		    Value		    "ParK(3)"
 		    }
 		    Object {
-		    $ObjectID		    72
+		    $ObjectID		    73
 		    Type		    "edit"
 		    Name		    "TcD"
 		    Prompt		    "Time constant for derivative filter (s):"
 		    Value		    "TcD"
 		    }
 		    Object {
-		    $ObjectID		    73
+		    $ObjectID		    74
 		    Type		    "edit"
 		    Name		    "Par_Limits"
 		    Prompt		    "Output limits: [ Upper   Lower ]"
 		    Value		    "[Flim(2) Flim(1)]*2*pi"
 		    }
 		    Object {
-		    $ObjectID		    74
+		    $ObjectID		    75
 		    Type		    "edit"
 		    Name		    "Init"
 		    Prompt		    "Output initial value:"
 		    Value		    "2*pi*Par_Init(2)"
 		    }
 		    Object {
-		    $ObjectID		    75
+		    $ObjectID		    76
 		    Type		    "edit"
 		    Name		    "Ts"
 		    Prompt		    "Sample time:"
@@ -11122,7 +11208,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "120"
+		    SIDHighWatermark	    "127"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
