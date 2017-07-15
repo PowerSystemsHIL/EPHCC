@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, -4.0, 1928.0, 1208.0]
+      Location		      [795.0, 218.0, 1928.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 1056.0]
+	Extents			[1685.0, 926.0]
 	ZoomFactor		[1.2786069651741294]
-	Offset			[-262.48443579766541, -120.94941634241245]
+	Offset			[-262.48443579766541, -120.94941634241246]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "g73labuser"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Dec 13 17:50:32 2016"
-  RTWModifiedTimeStamp	  403552206
-  ModelVersionFormat	  "1.%<AutoIncrement:476>"
+  LastModifiedDate	  "Fri Jul 14 23:22:00 2017"
+  RTWModifiedTimeStamp	  421975314
+  ModelVersionFormat	  "1.%<AutoIncrement:477>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -914,7 +914,7 @@ Library {
   }
   System {
     Name		    "breaker_lib"
-    Location		    [1916, -4, 3844, 1204]
+    Location		    [795, 218, 2723, 1310]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -935,9 +935,9 @@ Library {
       SID		      "52436"
       Ports		      [1, 1, 0, 0, 0, 3, 3]
       Position		      [95, 383, 150, 467]
-      ZOrder		      3171
-      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "*1.468"
+      ZOrder		      2116
+      BackgroundColor	      "lightBlue"
+      LibraryVersion	      "*1.476"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -978,7 +978,7 @@ Library {
       }
       System {
 	Name			"Breaker"
-	Location		[-8, 0, 1928, 1176]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1484,7 +1484,7 @@ Library {
 	  SwitchTimes		  "[1/60  5/60]"
 	  External		  on
 	  BreakerResistance	  "1e-4"
-	  SnubberResistance	  "1E15"
+	  SnubberResistance	  "1e8"
 	  SnubberCapacitance	  "inf"
 	  Measurements		  "None"
 	}
@@ -1506,7 +1506,7 @@ Library {
 	  Position		  [1330, 526, 1375, 594]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1520,7 +1520,7 @@ Library {
 	  Position		  [360, 491, 405, 559]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -1886,107 +1886,49 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [755, 535; 0, 195]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  LConn1
+	  Points		  [-265, 0]
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  LConn2
+	  Points		  [-265, 0]
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  RConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  LConn3
+	  DstBlock		  "Three-Phase\nV-I Measurement"
+	  DstPort		  RConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  RConn1
+	  Points		  [0, -5]
+	  DstBlock		  "Three-Phase\nV-I Measurement1"
 	  DstPort		  LConn1
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    Points		    [-195, 0]
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn1
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    LConn1
-	    Points		    [-70, 0]
-	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [770, 550; 0, 180]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  RConn2
+	  DstBlock		  "Three-Phase\nV-I Measurement1"
 	  DstPort		  LConn2
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    Points		    [-210, 0]
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn2
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    LConn2
-	    Points		    [-55, 0]
-	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [785, 565; 0, 165]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch"
+	  SrcBlock		  "Three-Phase Breaker"
+	  SrcPort		  RConn3
+	  Points		  [0, 5]
+	  DstBlock		  "Three-Phase\nV-I Measurement1"
 	  DstPort		  LConn3
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement"
-	    DstPort		    RConn3
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    LConn3
-	    Points		    [-40, 0]
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [960, 520; 0, 210]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
-	  DstPort		  LConn1
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    RConn1
-	    Points		    [0, -5; 50, 0]
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [975, 545; 0, 185]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
-	  DstPort		  LConn2
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn2
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    RConn2
-	    Points		    [65, 0]
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  Points		  [990, 570; 0, 160]
-	  DstBlock		  "Three-Phase\nSeries RLC Branch1"
-	  DstPort		  LConn3
-	  Branch {
-	    ConnectType		    "SRC_SRC"
-	    DstBlock		    "Three-Phase\nV-I Measurement1"
-	    DstPort		    LConn3
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Three-Phase Breaker"
-	    SrcPort		    RConn3
-	    Points		    [0, 5; 80, 0]
-	  }
 	}
 	Line {
 	  Name			  "<Logic_trip>"
@@ -2854,7 +2796,7 @@ Library {
 	  Position		  [1330, 881, 1375, 949]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -2868,7 +2810,7 @@ Library {
 	  Position		  [360, 846, 405, 914]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "10"
@@ -4171,7 +4113,7 @@ Library {
 	  Position		  [265, 381, 310, 449]
 	  ZOrder		  1840
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "1"
@@ -4185,7 +4127,7 @@ Library {
 	  Position		  [665, 401, 710, 469]
 	  ZOrder		  1841
 	  BackgroundColor	  "orange"
-	  LibraryVersion	  "1.475"
+	  LibraryVersion	  "1.476"
 	  SourceBlock		  "breaker_lib/impedance"
 	  SourceType		  "1/0AWG cable"
 	  length		  "1"
