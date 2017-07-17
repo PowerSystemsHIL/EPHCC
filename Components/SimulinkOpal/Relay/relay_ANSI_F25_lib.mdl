@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[14]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[1689.0, 926.0]
 	ZoomFactor		[1.25]
-	Offset			[-143.79122807017586, -25.321052631578908]
+	Offset			[-143.79122807017586, -25.321052631578937]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jul 15 01:14:55 2017"
-  RTWModifiedTimeStamp	  421979773
-  ModelVersionFormat	  "1.%<AutoIncrement:19>"
+  LastModifiedDate	  "Mon Jul 17 00:56:56 2017"
+  RTWModifiedTimeStamp	  422153810
+  ModelVersionFormat	  "1.%<AutoIncrement:20>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -984,7 +984,7 @@ Library {
       Position		      [845, 234, 1045, 386]
       ZOrder		      3172
       BackgroundColor	      "gray"
-      LibraryVersion	      "*1.18"
+      LibraryVersion	      "1.19"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1306,44 +1306,10 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "Sum"
+	      SrcBlock		      "Mux1"
 	      SrcPort		      1
-	      DstBlock		      "dF"
+	      DstBlock		      "Fcn2"
 	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "f_grid"
-	      SrcPort		      1
-	      Points		      [14, 0]
-	      Branch {
-		DstBlock		"Mux1"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, -100]
-		DstBlock		"Sum"
-		DstPort			2
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "f_gen"
-	      SrcPort		      1
-	      Points		      [36, 0]
-	      Branch {
-		DstBlock		"Mux1"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, -145]
-		DstBlock		"Sum"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "dF_threshold"
-	      SrcPort		      1
-	      DstBlock		      "Mux1"
-	      DstPort		      3
 	    }
 	    Line {
 	      SrcBlock		      "Fcn2"
@@ -1352,9 +1318,43 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Mux1"
+	      SrcBlock		      "dF_threshold"
 	      SrcPort		      1
-	      DstBlock		      "Fcn2"
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "f_gen"
+	      SrcPort		      1
+	      Points		      [36, 0]
+	      Branch {
+		Points			[0, -145]
+		DstBlock		"Sum"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Mux1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "f_grid"
+	      SrcPort		      1
+	      Points		      [14, 0]
+	      Branch {
+		Points			[0, -100]
+		DstBlock		"Sum"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Mux1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "dF"
 	      DstPort		      1
 	    }
 	    Annotation {
@@ -1789,42 +1789,10 @@ Library {
 		  IconDisplay		  "Port number"
 		}
 		Line {
-		  SrcBlock		  "Compare\nTo Constant2"
+		  SrcBlock		  "Sum"
 		  SrcPort		  1
-		  DstBlock		  "Gain2"
+		  DstBlock		  "Out1"
 		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Compare\nTo Constant1"
-		  SrcPort		  1
-		  DstBlock		  "Gain1"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "In1"
-		  SrcPort		  1
-		  Points		  [46, 0]
-		  Branch {
-		    DstBlock		    "Sum"
-		    DstPort		    2
-		  }
-		  Branch {
-		    Points		    [0, -40]
-		    DstBlock		    "Compare\nTo Constant1"
-		    DstPort		    1
-		  }
-		  Branch {
-		    Points		    [0, 45]
-		    DstBlock		    "Compare\nTo Constant2"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  SrcBlock		  "Gain2"
-		  SrcPort		  1
-		  Points		  [30, 0]
-		  DstBlock		  "Sum"
-		  DstPort		  3
 		}
 		Line {
 		  SrcBlock		  "Gain1"
@@ -1834,9 +1802,41 @@ Library {
 		  DstPort		  1
 		}
 		Line {
-		  SrcBlock		  "Sum"
+		  SrcBlock		  "Gain2"
 		  SrcPort		  1
-		  DstBlock		  "Out1"
+		  Points		  [30, 0]
+		  DstBlock		  "Sum"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "In1"
+		  SrcPort		  1
+		  Points		  [46, 0]
+		  Branch {
+		    Points		    [0, 45]
+		    DstBlock		    "Compare\nTo Constant2"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, -40]
+		    DstBlock		    "Compare\nTo Constant1"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "Sum"
+		    DstPort		    2
+		  }
+		}
+		Line {
+		  SrcBlock		  "Compare\nTo Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Gain1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Compare\nTo Constant2"
+		  SrcPort		  1
+		  DstBlock		  "Gain2"
 		  DstPort		  1
 		}
 	      }
@@ -1859,56 +1859,12 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "WrapPi"
+	      Name		      "diff"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Abs"
 	      SrcPort		      1
-	      Points		      [29, 0]
-	      Branch {
-		DstBlock		"Abs"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, -55]
-		DstBlock		"dWt"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "Sum1"
-	      SrcPort		      1
-	      DstBlock		      "WrapPi"
+	      DstBlock		      "Radians\nto Degrees"
 	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "wt_grid"
-	      SrcPort		      1
-	      DstBlock		      "Sum1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "wt_gen"
-	      SrcPort		      1
-	      Points		      [85, 0]
-	      DstBlock		      "Sum1"
-	      DstPort		      2
-	    }
-	    Line {
-	      Name		      "R2D"
-	      SrcBlock		      "Radians\nto Degrees"
-	      SrcPort		      1
-	      DstBlock		      "Mux1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Mux1"
-	      SrcPort		      1
-	      DstBlock		      "Fcn1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "angle_threshold"
-	      SrcPort		      1
-	      DstBlock		      "Mux1"
-	      DstPort		      2
 	    }
 	    Line {
 	      Name		      "bool"
@@ -1919,12 +1875,56 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "diff"
-	      Labels		      [0, 0]
-	      SrcBlock		      "Abs"
+	      SrcBlock		      "angle_threshold"
 	      SrcPort		      1
-	      DstBlock		      "Radians\nto Degrees"
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "Fcn1"
 	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "R2D"
+	      SrcBlock		      "Radians\nto Degrees"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wt_gen"
+	      SrcPort		      1
+	      Points		      [85, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "wt_grid"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "WrapPi"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "WrapPi"
+	      SrcPort		      1
+	      Points		      [29, 0]
+	      Branch {
+		Points			[0, -55]
+		DstBlock		"dWt"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Abs"
+		DstPort			1
+	      }
 	    }
 	    Annotation {
 	      SID		      "222"
@@ -2178,61 +2178,19 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "Sum"
+	      Name		      "[dec]"
+	      Labels		      [1, 1]
+	      SrcBlock		      "a"
 	      SrcPort		      1
-	      DstBlock		      "dV"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Product"
-	      SrcPort		      1
-	      Points		      [9, 0; 0, -60]
-	      DstBlock		      "Mux1"
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "VRMSLL"
-	      SrcPort		      1
-	      Points		      [93, 0; 0, 15]
+	      Points		      [12, 0; 0, -20]
 	      DstBlock		      "Product"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "Fcn2"
 	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "[%]"
-	      Labels		      [-1, 1]
-	      SrcBlock		      "dV_threshold"
-	      SrcPort		      1
-	      DstBlock		      "a"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "V_bus"
-	      SrcPort		      1
-	      Points		      [20, 0]
-	      Branch {
-		Points			[0, -20]
-		DstBlock		"Sum"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, 30]
-		DstBlock		"Mux1"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "V_line"
-	      SrcPort		      1
-	      Points		      [7, 0]
-	      Branch {
-		DstBlock		"Mux1"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, -70]
-		DstBlock		"Sum"
-		DstPort			1
-	      }
 	    }
 	    Line {
 	      Name		      "thshld"
@@ -2243,31 +2201,73 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Mux1"
+	      SrcBlock		      "V_line"
 	      SrcPort		      1
-	      DstBlock		      "Fcn2"
+	      Points		      [7, 0]
+	      Branch {
+		Points			[0, -70]
+		DstBlock		"Sum"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Mux1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "V_bus"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      Branch {
+		Points			[0, 30]
+		DstBlock		"Mux1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -20]
+		DstBlock		"Sum"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      Name		      "[%]"
+	      Labels		      [-1, 1]
+	      SrcBlock		      "dV_threshold"
+	      SrcPort		      1
+	      DstBlock		      "a"
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "[dec]"
-	      Labels		      [1, 1]
-	      SrcBlock		      "a"
+	      SrcBlock		      "VRMSLL"
 	      SrcPort		      1
-	      Points		      [12, 0; 0, -20]
+	      Points		      [93, 0; 0, 15]
 	      DstBlock		      "Product"
-	      DstPort		      2
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product"
+	      SrcPort		      1
+	      Points		      [9, 0; 0, -60]
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "dV"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "246"
+	      Name		      "dV_threshold% of the nominal VRMSLL"
+	      Position		      [342, 217]
+	      ZOrder		      -1
 	    }
 	    Annotation {
 	      SID		      "245"
 	      Name		      "This block compares the voltage at the circuit breaker terminals\n* if the difference is less than"
 	      " threshold, then outputs 1"
 	      Position		      [396, 180]
-	      ZOrder		      -1
-	    }
-	    Annotation {
-	      SID		      "246"
-	      Name		      "dV_threshold% of the nominal VRMSLL"
-	      Position		      [342, 217]
 	      ZOrder		      -2
 	    }
 	  }
@@ -2313,7 +2313,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "184"
+	    SIDHighWatermark	    "196"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -2343,20 +2343,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "247::176"
+	      SID		      "247::195"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      55
+	      ZOrder		      60
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "247::175"
-	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 2"
+	      SID		      "247::194"
+	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 3"
 	      Ports		      [3, 2]
 	      Position		      [180, 100, 230, 180]
-	      ZOrder		      54
+	      ZOrder		      59
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[3 2]"
 	      EnableBusSupport	      off
@@ -2370,9 +2370,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "247::177"
+	      SID		      "247::196"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      56
+	      ZOrder		      61
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -2591,59 +2591,15 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "V_bus"
-	      SrcPort		      1
-	      DstBlock		      "Divide1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Divide1"
-	      SrcPort		      1
-	      DstBlock		      "Discrete\n1-phase PLL1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "V_line"
-	      SrcPort		      1
-	      DstBlock		      "Divide"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Divide"
-	      SrcPort		      1
-	      DstBlock		      "Discrete\n1-phase PLL"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "VRMSLL"
-	      SrcPort		      1
-	      Points		      [74, 0; 0, -65]
-	      Branch {
-		Points			[0, -160]
-		DstBlock		"Divide1"
-		DstPort			2
-	      }
-	      Branch {
-		DstBlock		"Divide"
-		DstPort			2
-	      }
-	    }
-	    Line {
 	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      1
-	      DstBlock		      "f_bus"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      2
-	      DstBlock		      "wt_bus"
+	      SrcPort		      3
+	      DstBlock		      "Terminator1"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Discrete\n1-phase PLL"
-	      SrcPort		      1
-	      DstBlock		      "f_line"
+	      SrcPort		      3
+	      DstBlock		      "Terminator"
 	      DstPort		      1
 	    }
 	    Line {
@@ -2654,14 +2610,58 @@ Library {
 	    }
 	    Line {
 	      SrcBlock		      "Discrete\n1-phase PLL"
-	      SrcPort		      3
-	      DstBlock		      "Terminator"
+	      SrcPort		      1
+	      DstBlock		      "f_line"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      3
-	      DstBlock		      "Terminator1"
+	      SrcPort		      2
+	      DstBlock		      "wt_bus"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete\n1-phase PLL1"
+	      SrcPort		      1
+	      DstBlock		      "f_bus"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "VRMSLL"
+	      SrcPort		      1
+	      Points		      [74, 0; 0, -65]
+	      Branch {
+		DstBlock		"Divide"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, -160]
+		DstBlock		"Divide1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Divide"
+	      SrcPort		      1
+	      DstBlock		      "Discrete\n1-phase PLL"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "V_line"
+	      SrcPort		      1
+	      DstBlock		      "Divide"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Divide1"
+	      SrcPort		      1
+	      DstBlock		      "Discrete\n1-phase PLL1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "V_bus"
+	      SrcPort		      1
+	      DstBlock		      "Divide1"
 	      DstPort		      1
 	    }
 	  }
@@ -2841,64 +2841,9 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      SrcBlock		      "Data Type Conversion"
+	      SrcBlock		      "Mux"
 	      SrcPort		      1
-	      DstBlock		      "Fcn"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Fcn"
-	      SrcPort		      1
-	      DstBlock		      "Discrete-Time\nIntegrator"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "logic_signal"
-	      SrcPort		      1
-	      Points		      [35, 0]
-	      Branch {
-		DstBlock		"Mux"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 115]
-		DstBlock		"Logical\nOperator3"
-		DstPort			2
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "Discrete-Time\nIntegrator"
-	      SrcPort		      1
-	      DstBlock		      "Relational\nOperator"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "check-counter time"
-	      SrcPort		      1
-	      Points		      [26, 0; 0, 65]
-	      DstBlock		      "Relational\nOperator"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "reset"
-	      SrcPort		      1
-	      Points		      [34, 0]
-	      Branch {
-		Points			[0, 35]
-		DstBlock		"Discrete-Time\nIntegrator"
-		DstPort			2
-	      }
-	      Branch {
-		DstBlock		"Mux"
-		DstPort			2
-	      }
-	    }
-	    Line {
-	      Name		      "SR-FF"
-	      Labels		      [1, 0]
-	      SrcBlock		      "Logical\nOperator3"
-	      SrcPort		      1
-	      DstBlock		      "SR-FF"
+	      DstBlock		      "Data Type Conversion"
 	      DstPort		      1
 	    }
 	    Line {
@@ -2909,9 +2854,64 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Mux"
+	      Name		      "SR-FF"
+	      Labels		      [1, 0]
+	      SrcBlock		      "Logical\nOperator3"
 	      SrcPort		      1
-	      DstBlock		      "Data Type Conversion"
+	      DstBlock		      "SR-FF"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reset"
+	      SrcPort		      1
+	      Points		      [34, 0]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 35]
+		DstBlock		"Discrete-Time\nIntegrator"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "check-counter time"
+	      SrcPort		      1
+	      Points		      [26, 0; 0, 65]
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete-Time\nIntegrator"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "logic_signal"
+	      SrcPort		      1
+	      Points		      [35, 0]
+	      Branch {
+		Points			[0, 115]
+		DstBlock		"Logical\nOperator3"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Fcn"
+	      SrcPort		      1
+	      DstBlock		      "Discrete-Time\nIntegrator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Fcn"
 	      DstPort		      1
 	    }
 	    Annotation {
@@ -2969,353 +2969,12 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Bus\nCreator"
+	  Name			  "dV&dF&dW"
+	  SrcBlock		  "Logical\nOperator"
 	  SrcPort		  1
-	  Points		  [0, 35]
-	  DstBlock		  "dMeas"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "dWt"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Phase_Comparator"
-	  SrcPort		  2
-	  Points		  [115, 0]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "dF"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Freq_Comparator"
-	  SrcPort		  2
-	  Points		  [75, 0]
-	  DstBlock		  "Bus\nCreator"
+	  Points		  [24, 0; 0, -85]
+	  DstBlock		  "Logical\nOperator3"
 	  DstPort		  2
-	}
-	Line {
-	  Name			  "dV"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Voltage_Comparator"
-	  SrcPort		  2
-	  Points		  [35, 0]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "R25"
-	  SrcBlock		  "S-R\nFlip-Flop1"
-	  SrcPort		  1
-	  DstBlock		  "R25"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "R25"
-	  SrcBlock		  "signal time check-counter"
-	  SrcPort		  1
-	  DstBlock		  "S-R\nFlip-Flop1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "fault_flag"
-	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  Points		  [8, 0]
-	  Branch {
-	    DstBlock		    "signal time check-counter"
-	    DstPort		    2
-	  }
-	  Branch {
-	    Points		    [0, 42; 224, 0; 0, -22]
-	    DstBlock		    "S-R\nFlip-Flop1"
-	    DstPort		    2
-	  }
-	}
-	Line {
-	  SrcBlock		  "Logical\nOperator3"
-	  SrcPort		  1
-	  DstBlock		  "signal time check-counter"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From5"
-	  SrcPort		  1
-	  DstBlock		  "Voltage_Comparator"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "From4"
-	  SrcPort		  1
-	  DstBlock		  "Voltage_Comparator"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From3"
-	  SrcPort		  1
-	  DstBlock		  "Phase_Comparator"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "Freq_Comparator"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "set of 1ph PLLs"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "<dF_threshold>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  4
-	  DstBlock		  "Goto3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<angle_threshold>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  3
-	  DstBlock		  "Goto2"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<dV_threshold>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  2
-	  DstBlock		  "Goto1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<VRMSLL>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  DstBlock		  "Goto"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "relay_param"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Fcn"
-	  SrcPort		  1
-	  Points		  [35, 0; 0, -65]
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "mode_in"
-	  SrcPort		  1
-	  DstBlock		  "Fcn"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "reset"
-	  Labels		  [0, 1]
-	  SrcBlock		  "Logical\nOperator1"
-	  SrcPort		  1
-	  DstBlock		  "Goto4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "S-R\nFlip-Flop1"
-	  SrcPort		  2
-	  DstBlock		  "Terminator1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "deadbus fcn"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "RMSLL"
-	  Labels		  [1, 1]
-	  SrcBlock		  "sqrt3"
-	  SrcPort		  1
-	  DstBlock		  "Demux10"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Mux1"
-	  SrcPort		  1
-	  Points		  [12, 0; 0, -30]
-	  DstBlock		  "RMS_Calculator"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "RMS_Calculator"
-	  SrcPort		  1
-	  DstBlock		  "sqrt3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "dW"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Phase_Comparator"
-	  SrcPort		  1
-	  Points		  [225, 0; 0, -195]
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "dF"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Freq_Comparator"
-	  SrcPort		  1
-	  Points		  [122, 0; 0, -90]
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "dV"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Voltage_Comparator"
-	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "vline"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Demux10"
-	  SrcPort		  2
-	  Points		  [80, 0]
-	  Branch {
-	    Points		    [0, -175]
-	    DstBlock		    "deadbus fcn"
-	    DstPort		    2
-	  }
-	  Branch {
-	    DstBlock		    "Voltage_Comparator"
-	    DstPort		    2
-	  }
-	}
-	Line {
-	  SrcBlock		  "set of 1ph PLLs"
-	  SrcPort		  4
-	  Points		  [35, 0; 0, 50]
-	  DstBlock		  "Phase_Comparator"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "set of 1ph PLLs"
-	  SrcPort		  3
-	  Points		  [57, 0; 0, 55]
-	  DstBlock		  "Phase_Comparator"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "set of 1ph PLLs"
-	  SrcPort		  2
-	  Points		  [57, 0; 0, -40]
-	  DstBlock		  "Freq_Comparator"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "set of 1ph PLLs"
-	  SrcPort		  1
-	  Points		  [37, 0; 0, -35]
-	  DstBlock		  "Freq_Comparator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "vbus"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Demux10"
-	  SrcPort		  1
-	  Points		  [60, 0]
-	  Branch {
-	    Points		    [0, -180]
-	    DstBlock		    "deadbus fcn"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Voltage_Comparator"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  Name			  "a_sys"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Demux"
-	  SrcPort		  1
-	  Points		  [155, 0]
-	  Branch {
-	    DstBlock		    "Mux1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 130]
-	    DstBlock		    "set of 1ph PLLs"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Demux1"
-	  SrcPort		  1
-	  Points		  [123, 0]
-	  Branch {
-	    Points		    [0, 65]
-	    DstBlock		    "set of 1ph PLLs"
-	    DstPort		    2
-	  }
-	  Branch {
-	    Points		    [60, 0; 0, -75]
-	    DstBlock		    "Mux1"
-	    DstPort		    2
-	  }
-	}
-	Line {
-	  SrcBlock		  "Demux1"
-	  SrcPort		  2
-	  DstBlock		  "Terminator6"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux1"
-	  SrcPort		  3
-	  DstBlock		  "Terminator5"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  2
-	  DstBlock		  "Terminator7"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  3
-	  DstBlock		  "Terminator8"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "VPKLN_bus"
-	  SrcPort		  1
-	  DstBlock		  "Demux"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "VPKLN_line"
-	  SrcPort		  1
-	  DstBlock		  "Demux1"
-	  DstPort		  1
 	}
 	Line {
 	  Name			  "deadbus"
@@ -3327,51 +2986,353 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "dV&dF&dW"
-	  SrcBlock		  "Logical\nOperator"
+	  SrcBlock		  "VPKLN_line"
 	  SrcPort		  1
-	  Points		  [24, 0; 0, -85]
-	  DstBlock		  "Logical\nOperator3"
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "VPKLN_bus"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Terminator8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Terminator7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "Terminator5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  Points		  [123, 0]
+	  Branch {
+	    Points		    [60, 0; 0, -75]
+	    DstBlock		    "Mux1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 65]
+	    DstBlock		    "set of 1ph PLLs"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "a_sys"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  Points		  [155, 0]
+	  Branch {
+	    Points		    [0, 130]
+	    DstBlock		    "set of 1ph PLLs"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "vbus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux10"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    DstBlock		    "Voltage_Comparator"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -180]
+	    DstBlock		    "deadbus fcn"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  1
+	  Points		  [37, 0; 0, -35]
+	  DstBlock		  "Freq_Comparator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  2
+	  Points		  [57, 0; 0, -40]
+	  DstBlock		  "Freq_Comparator"
 	  DstPort		  2
 	}
-	Annotation {
-	  SID			  "264"
-	  Name			  "If any protection elements give a trip indication \nor the MGC requests the CB to open, reset the RS FF"
-	  Position		  [1178, 494]
-	  HorizontalAlignment	  "left"
-	  ForegroundColor	  "blue"
-	  ZOrder		  -1
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  3
+	  Points		  [57, 0; 0, 55]
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  1
 	}
-	Annotation {
-	  SID			  "265"
-	  Name			  "* this block checks for synchronism based on phase A only\n* the block also implements a deadbus logic"
-	  Position		  [309, 162]
-	  ZOrder		  -2
+	Line {
+	  SrcBlock		  "set of 1ph PLLs"
+	  SrcPort		  4
+	  Points		  [35, 0; 0, 50]
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  2
 	}
-	Annotation {
-	  SID			  "266"
-	  Name			  "angle difference"
-	  Position		  [655, 614]
-	  ZOrder		  -3
+	Line {
+	  Name			  "vline"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Demux10"
+	  SrcPort		  2
+	  Points		  [80, 0]
+	  Branch {
+	    DstBlock		    "Voltage_Comparator"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, -175]
+	    DstBlock		    "deadbus fcn"
+	    DstPort		    2
+	  }
 	}
-	Annotation {
-	  SID			  "267"
-	  Name			  "frequency difference"
-	  Position		  [705, 489]
-	  ZOrder		  -4
+	Line {
+	  Name			  "dV"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Voltage_Comparator"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
 	}
-	Annotation {
-	  SID			  "268"
-	  Name			  "voltage difference"
-	  Position		  [775, 364]
-	  ZOrder		  -5
+	Line {
+	  Name			  "dF"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Freq_Comparator"
+	  SrcPort		  1
+	  Points		  [122, 0; 0, -90]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
 	}
-	Annotation {
-	  SID			  "269"
-	  Name			  "true: If the life bus has voltage > 0.9pu and the other bus has voltage < threshold\ntrue: both sides of "
-	  "the breaker are deadbuses"
-	  Position		  [832, 172]
-	  ZOrder		  -6
+	Line {
+	  Name			  "dW"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Phase_Comparator"
+	  SrcPort		  1
+	  Points		  [225, 0; 0, -195]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "RMS_Calculator"
+	  SrcPort		  1
+	  DstBlock		  "sqrt3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  Points		  [12, 0; 0, -30]
+	  DstBlock		  "RMS_Calculator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "RMSLL"
+	  Labels		  [1, 1]
+	  SrcBlock		  "sqrt3"
+	  SrcPort		  1
+	  DstBlock		  "Demux10"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "deadbus fcn"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop1"
+	  SrcPort		  2
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "reset"
+	  Labels		  [0, 1]
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "Goto4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "mode_in"
+	  SrcPort		  1
+	  DstBlock		  "Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Fcn"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -65]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "relay_param"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<VRMSLL>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Goto"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<dV_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Goto1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<angle_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  3
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<dF_threshold>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  4
+	  DstBlock		  "Goto3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "set of 1ph PLLs"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Freq_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "Phase_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  DstBlock		  "Voltage_Comparator"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "From5"
+	  SrcPort		  1
+	  DstBlock		  "Voltage_Comparator"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "signal time check-counter"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From6"
+	  SrcPort		  1
+	  Points		  [8, 0]
+	  Branch {
+	    Points		    [0, 42; 224, 0; 0, -22]
+	    DstBlock		    "S-R\nFlip-Flop1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "signal time check-counter"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "fault_flag"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "R25"
+	  SrcBlock		  "signal time check-counter"
+	  SrcPort		  1
+	  DstBlock		  "S-R\nFlip-Flop1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "R25"
+	  SrcBlock		  "S-R\nFlip-Flop1"
+	  SrcPort		  1
+	  DstBlock		  "R25"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "dV"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Voltage_Comparator"
+	  SrcPort		  2
+	  Points		  [35, 0]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "dF"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Freq_Comparator"
+	  SrcPort		  2
+	  Points		  [75, 0]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "dWt"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Phase_Comparator"
+	  SrcPort		  2
+	  Points		  [115, 0]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  Points		  [0, 35]
+	  DstBlock		  "dMeas"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "270"
@@ -3388,8 +3349,47 @@ Library {
 	  "FTWARE.\n%\n%\n%%"
 	  Position		  [156, 842]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -7
+	  ZOrder		  -1
 	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "269"
+	  Name			  "true: If the life bus has voltage > 0.9pu and the other bus has voltage < threshold\ntrue: both sides of "
+	  "the breaker are deadbuses"
+	  Position		  [832, 172]
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "268"
+	  Name			  "voltage difference"
+	  Position		  [775, 364]
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "267"
+	  Name			  "frequency difference"
+	  Position		  [705, 489]
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "266"
+	  Name			  "angle difference"
+	  Position		  [655, 614]
+	  ZOrder		  -5
+	}
+	Annotation {
+	  SID			  "265"
+	  Name			  "* this block checks for synchronism based on phase A only\n* the block also implements a deadbus logic"
+	  Position		  [309, 162]
+	  ZOrder		  -6
+	}
+	Annotation {
+	  SID			  "264"
+	  Name			  "If any protection elements give a trip indication \nor the MGC requests the CB to open, reset the RS FF"
+	  Position		  [1178, 494]
+	  HorizontalAlignment	  "left"
+	  ForegroundColor	  "blue"
+	  ZOrder		  -7
 	}
       }
     }
@@ -6922,7 +6922,6 @@ Stateflow {
     id			    1
     name		    "relay_ANSI_F25_lib"
     created		    "19-Apr-2016 10:15:12"
-    locked		    1
     isLibrary		    1
     firstTarget		    29
     sfVersion		    76014001.0015
@@ -6938,7 +6937,6 @@ Stateflow {
     firstJunction	    8
     viewObj		    2
     machine		    1
-    locked		    1
     toolbarMode		    LIBRARY_TOOLBAR
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
@@ -7116,12 +7114,13 @@ Stateflow {
     firstJunction	    17
     viewObj		    11
     machine		    1
-    locked		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    13
-    chartFileNumber	    2
+    chartFileNumber	    3
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -7152,11 +7151,11 @@ Stateflow {
       "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
       "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
       "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction y = fcn(Vbus, Vline, VRMSLL)\n%#codegen\nif isnan(Vbus)\n   "
-      " Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% % voltage threshold for deadbus\n% if VRMSLL > 520\n%   "
-      "  threshold = VRMSLL * 0.03; % @ 3%\n% else\n%     threshold = VRMSLL * 0.05; % @ 5%\n% end\n\n% selecting 10V a"
-      "s the deadbus band - similar to SEL751\nthreshold = 10;\n\n% bounding open-circuit voltage at 120%\na = (Vbus>(V"
-      "RMSLL*0.8)) && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline>(VRMSLL*0.8)) && (Vline<(VRMSLL*1.20)) &"
-      "& (Vbus < threshold);\nc = (Vline < threshold) && (Vbus < threshold);\ny = a||b||c;\n"
+      " Vbus=0;\nelseif isnan(Vline)\n    Vline = 0;\nend\n\n% voltage threshold for deadbus\nif VRMSLL > 520\n    thre"
+      "shold = VRMSLL * 0.03; % @ 3%\nelse\n    threshold = VRMSLL * 0.05; % @ 5%\nend\n\n% selecting 10V as the deadbu"
+      "s band - similar to SEL751\n% threshold = 10;\n\n% bounding open-circuit voltage at 120%\na = (Vbus>(VRMSLL*0.8)"
+      ") && (Vbus<(VRMSLL*1.20)) && (Vline < threshold);\nb = (Vline>(VRMSLL*0.8)) && (Vline<(VRMSLL*1.20)) && (Vbus < "
+      "threshold);\nc = (Vline < threshold) && (Vbus < threshold);\ny = a||b||c;\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
@@ -7293,7 +7292,6 @@ Stateflow {
     firstJunction	    26
     viewObj		    20
     machine		    1
-    locked		    1
     toolbarMode		    LIBRARY_TOOLBAR
     ssIdHighWaterMark	    7
     decomposition	    CLUSTER_CHART
