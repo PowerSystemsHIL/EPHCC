@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jul 17 02:50:54 2017"
-  RTWModifiedTimeStamp	  422160648
-  ModelVersionFormat	  "1.%<AutoIncrement:43>"
+  LastModifiedDate	  "Mon Jul 17 10:36:22 2017"
+  RTWModifiedTimeStamp	  422188573
+  ModelVersionFormat	  "1.%<AutoIncrement:44>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -878,7 +878,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "823"
+    SIDHighWatermark	    "825"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -887,7 +887,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.42"
+      LibraryVersion	      "*1.43"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -897,7 +897,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[960, 0, 1920, 1040]
+	Location		[-8, -8, 1928, 1048]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -909,7 +909,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"50"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1053,6 +1053,23 @@ Library {
 	  Rating		  "2500"
 	  Vp			  "13800"
 	  Vs			  "480"
+	  Z			  "5.75"
+	  XR			  "6.6"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "2500 kVA1"
+	  SID			  "825"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [2405, 1287, 2490, 1353]
+	  ZOrder		  3945
+	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
+	  LibraryVersion	  "1.30"
+	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
+	  SourceType		  "Transformers"
+	  Rating		  "5000"
+	  Vp			  "13800"
+	  Vs			  "4160"
 	  Z			  "5.75"
 	  XR			  "6.6"
 	}
@@ -4440,23 +4457,6 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Reference
-	  Name			  "XFR DYg-30 HIL2"
-	  SID			  "815"
-	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2405, 1288, 2490, 1352]
-	  ZOrder		  3924
-	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
-	  LibraryVersion	  "1.30"
-	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
-	  SourceType		  "Transformers"
-	  Rating		  "50000"
-	  Vp			  "115000"
-	  Vs			  "4160"
-	  Z			  "6"
-	  XR			  "30"
-	}
-	Block {
 	  BlockType		  SubSystem
 	  Name			  "fault_signal"
 	  SID			  "738"
@@ -4472,7 +4472,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "fault_signal"
-	    Location		    [-4, 0, 1924, 1164]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -4767,24 +4767,24 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_10"
-	  SrcPort		  RConn3
-	  DstBlock		  "XFR DYg-30 HIL2"
-	  DstPort		  LConn3
+	  SrcBlock		  "2500 kVA1"
+	  SrcPort		  LConn3
+	  DstBlock		  "F3_CB_10"
+	  DstPort		  RConn3
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_10"
-	  SrcPort		  RConn1
-	  DstBlock		  "XFR DYg-30 HIL2"
-	  DstPort		  LConn1
+	  SrcBlock		  "2500 kVA1"
+	  SrcPort		  LConn1
+	  DstBlock		  "F3_CB_10"
+	  DstPort		  RConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_10"
-	  SrcPort		  RConn2
-	  DstBlock		  "XFR DYg-30 HIL2"
-	  DstPort		  LConn2
+	  SrcBlock		  "2500 kVA1"
+	  SrcPort		  LConn2
+	  DstBlock		  "F3_CB_10"
+	  DstPort		  RConn2
 	}
 	Line {
 	  SrcBlock		  "PHIL_I"
@@ -4800,21 +4800,21 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcBlock		  "2500 kVA1"
 	  SrcPort		  RConn1
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcBlock		  "2500 kVA1"
 	  SrcPort		  RConn2
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn2
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcBlock		  "2500 kVA1"
 	  SrcPort		  RConn3
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn3
@@ -7161,6 +7161,12 @@ Library {
 	  Name			  "Signal for this Cb will come from a SEL relay"
 	  Position		  [1202, 2471]
 	  ZOrder		  -7
+	}
+	Annotation {
+	  SID			  "824"
+	  Name			  " "
+	  Position		  [842, 382]
+	  ZOrder		  -8
 	}
       }
     }
