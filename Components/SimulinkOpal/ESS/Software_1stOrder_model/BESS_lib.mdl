@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [752.0, 99.0, 1932.0, 1092.0]
+      Location		      [793.0, 161.0, 775.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1882.0, 926.0]
+	Extents			[725.0, 926.0]
 	ZoomFactor		[1.25]
 	Offset			[0.0, 0.0]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 14 23:07:53 2017"
-  RTWModifiedTimeStamp	  421974467
-  ModelVersionFormat	  "1.%<AutoIncrement:47>"
+  LastModifiedDate	  "Sun Jul 16 23:51:20 2017"
+  RTWModifiedTimeStamp	  422149828
+  ModelVersionFormat	  "1.%<AutoIncrement:48>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1142,7 +1142,7 @@ Library {
   }
   System {
     Name		    "BESS_lib"
-    Location		    [752, 99, 2684, 1191]
+    Location		    [793, 161, 1568, 1253]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1156,7 +1156,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "983"
+    SIDHighWatermark	    "984"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2923,7 +2923,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.46"
+	  LibraryVersion	  "1.47"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3636,9 +3636,9 @@ Library {
       SID		      "236"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [405, 70, 485, 215]
-      ZOrder		      3887
+      ZOrder		      3849
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.45"
+      LibraryVersion	      "*1.47"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3672,14 +3672,14 @@ Library {
 	    }
 	    Name		    "InvType"
 	    Prompt		    "Inverter type"
-	    Value		    "ESS Inverter"
+	    Value		    "PV Inverter"
 	  }
 	  Object {
 	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "Sn"
 	    Prompt		    "Nominal power [kVA]"
-	    Value		    "250"
+	    Value		    "5000"
 	  }
 	  Object {
 	    $ObjectID		    27
@@ -3714,7 +3714,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "r_I_max"
 	    Prompt		    "Max Current Ratio"
-	    Value		    "3"
+	    Value		    "1.2"
 	  }
 	  Object {
 	    $ObjectID		    32
@@ -3728,14 +3728,14 @@ Library {
 	    Type		    "checkbox"
 	    Name		    "MbusPrecInc"
 	    Prompt		    "Increase power precision at Modbus interface (10x)"
-	    Value		    "on"
+	    Value		    "off"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"NREL_BESS"
-	Location		[1, 1, 1919, 1039]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -9810,7 +9810,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Status_Interface"
-	    Location		    [-8, 0, 1928, 1056]
+	    Location		    [-8, 0, 1924, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9843,12 +9843,12 @@ Library {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector1"
 	      SID		      "647"
-	      Ports		      [1, 23]
-	      Position		      [315, 62, 320, 928]
+	      Ports		      [1, 26]
+	      Position		      [315, 64, 320, 1031]
 	      ZOrder		      5
 	      ShowName		      off
 	      OutputSignals	      "signal1,signal2,signal3,signal4,signal5,signal6,signal7,signal8,signal9,signal10,signal11,"
-	      "signal12,signal13,signal14,signal15,signal16,signal17,signal18,kw,kvar,signal21,signal22,signal23"
+	      "signal12,signal13,signal14,signal15,signal16,signal17,signal18,kw,kvar,signal21,signal22,signal23,dF,dV,dWt"
 	      Port {
 		PortNumber		1
 		Name			"<signal1>"
@@ -9987,13 +9987,31 @@ Library {
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
+	      Port {
+		PortNumber		24
+		Name			"<dF>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		25
+		Name			"<dV>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		26
+		Name			"<dWt>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector2"
 	      SID		      "649"
 	      Ports		      [1, 2]
-	      Position		      [475, 896, 480, 969]
+	      Position		      [475, 1001, 480, 1074]
 	      ZOrder		      3969
 	      ShowName		      off
 	      OutputSignals	      "Idc,Vdc"
@@ -10015,7 +10033,7 @@ Library {
 	      Name		      "Bus\nSelector3"
 	      SID		      "650"
 	      Ports		      [1, 1]
-	      Position		      [475, 1040, 480, 1070]
+	      Position		      [475, 1145, 480, 1175]
 	      ZOrder		      3971
 	      ShowName		      off
 	      OutputSignals	      "SoC"
@@ -10031,7 +10049,7 @@ Library {
 	      Name		      "Bus\nSelector4"
 	      SID		      "793"
 	      Ports		      [1, 2]
-	      Position		      [475, 969, 480, 1036]
+	      Position		      [475, 1074, 480, 1141]
 	      ZOrder		      3977
 	      ShowName		      off
 	      OutputSignals	      "status,flt_word"
@@ -10052,7 +10070,7 @@ Library {
 	      BlockType		      From
 	      Name		      "From1"
 	      SID		      "648"
-	      Position		      [375, 928, 445, 942]
+	      Position		      [375, 1033, 445, 1047]
 	      ZOrder		      3968
 	      BackgroundColor	      "darkGreen"
 	      ShowName		      off
@@ -10074,7 +10092,7 @@ Library {
 	      BlockType		      From
 	      Name		      "From2"
 	      SID		      "651"
-	      Position		      [375, 1048, 445, 1062]
+	      Position		      [375, 1153, 445, 1167]
 	      ZOrder		      3970
 	      BackgroundColor	      "darkGreen"
 	      ShowName		      off
@@ -10085,7 +10103,7 @@ Library {
 	      BlockType		      From
 	      Name		      "From3"
 	      SID		      "787"
-	      Position		      [375, 998, 445, 1012]
+	      Position		      [375, 1103, 445, 1117]
 	      ZOrder		      3976
 	      BackgroundColor	      "darkGreen"
 	      ShowName		      off
@@ -10096,7 +10114,7 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain"
 	      SID		      "654"
-	      Position		      [550, 1040, 595, 1070]
+	      Position		      [550, 1145, 595, 1175]
 	      ZOrder		      3974
 	      ShowName		      off
 	      Gain		      "100"
@@ -10108,7 +10126,7 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain1"
 	      SID		      "655"
-	      Position		      [550, 900, 595, 930]
+	      Position		      [550, 1005, 595, 1035]
 	      ZOrder		      3975
 	      ShowName		      off
 	      Gain		      "10"
@@ -10122,6 +10140,18 @@ Library {
 	      SID		      "983"
 	      Position		      [515, 410, 595, 440]
 	      ZOrder		      3988
+	      ShowName		      off
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain11"
+	      SID		      "984"
+	      Position		      [550, 935, 595, 965]
+	      ZOrder		      3989
 	      ShowName		      off
 	      Gain		      "10"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -10246,11 +10276,11 @@ Library {
 	      BlockType		      Mux
 	      Name		      "Mux"
 	      SID		      "386"
-	      Ports		      [28, 1]
-	      Position		      [670, 77, 675, 1088]
+	      Ports		      [31, 1]
+	      Position		      [670, 81, 680, 1189]
 	      ZOrder		      4
 	      ShowName		      off
-	      Inputs		      "28"
+	      Inputs		      "31"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -10260,6 +10290,36 @@ Library {
 	      Position		      [790, 578, 820, 592]
 	      ZOrder		      -2
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Gain11"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      25
+	    }
+	    Line {
+	      Name		      "<dWt>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      26
+	      DstBlock		      "Mux"
+	      DstPort		      26
+	    }
+	    Line {
+	      Name		      "<dV>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      25
+	      DstBlock		      "Gain11"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<dF>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      24
+	      DstBlock		      "Mux"
+	      DstPort		      24
 	    }
 	    Line {
 	      SrcBlock		      "Gain10"
@@ -10327,7 +10387,7 @@ Library {
 	      SrcBlock		      "Bus\nSelector4"
 	      SrcPort		      1
 	      DstBlock		      "Mux"
-	      DstPort		      26
+	      DstPort		      29
 	    }
 	    Line {
 	      SrcBlock		      "From3"
@@ -10339,13 +10399,13 @@ Library {
 	      SrcBlock		      "Gain1"
 	      SrcPort		      1
 	      DstBlock		      "Mux"
-	      DstPort		      24
+	      DstPort		      27
 	    }
 	    Line {
 	      SrcBlock		      "Gain"
 	      SrcPort		      1
 	      DstBlock		      "Mux"
-	      DstPort		      28
+	      DstPort		      31
 	    }
 	    Line {
 	      Name		      "<flt_word>"
@@ -10353,7 +10413,7 @@ Library {
 	      SrcBlock		      "Bus\nSelector4"
 	      SrcPort		      2
 	      DstBlock		      "Mux"
-	      DstPort		      27
+	      DstPort		      30
 	    }
 	    Line {
 	      Name		      "<SoC>"
@@ -10383,7 +10443,7 @@ Library {
 	      SrcBlock		      "Bus\nSelector2"
 	      SrcPort		      2
 	      DstBlock		      "Mux"
-	      DstPort		      25
+	      DstPort		      28
 	    }
 	    Line {
 	      SrcBlock		      "From1"
@@ -10412,6 +10472,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      21
+	      Points		      [0, 0]
 	      DstBlock		      "Gain4"
 	      DstPort		      1
 	    }
@@ -10420,6 +10481,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      20
+	      Points		      [0, 0]
 	      DstBlock		      "Gain2"
 	      DstPort		      1
 	    }
@@ -10428,6 +10490,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      19
+	      Points		      [0, 0]
 	      DstBlock		      "Gain3"
 	      DstPort		      1
 	    }
@@ -10444,6 +10507,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      17
+	      Points		      [0, 0]
 	      DstBlock		      "Gain5"
 	      DstPort		      1
 	    }
@@ -10460,6 +10524,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      15
+	      Points		      [0, 0]
 	      DstBlock		      "Gain6"
 	      DstPort		      1
 	    }
@@ -10476,6 +10541,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      13
+	      Points		      [0, 0]
 	      DstBlock		      "Gain7"
 	      DstPort		      1
 	    }
@@ -10484,6 +10550,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      12
+	      Points		      [0, 0]
 	      DstBlock		      "Gain8"
 	      DstPort		      1
 	    }
@@ -10492,6 +10559,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      11
+	      Points		      [0, 0]
 	      DstBlock		      "Gain9"
 	      DstPort		      1
 	    }
@@ -10500,6 +10568,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      10
+	      Points		      [0, 0]
 	      DstBlock		      "Gain10"
 	      DstPort		      1
 	    }
@@ -10532,6 +10601,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      6
+	      Points		      [0, 0]
 	      DstBlock		      "Mux"
 	      DstPort		      6
 	    }
@@ -10580,12 +10650,14 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      1
+	      Points		      [40, 0; 0, 55]
 	      DstBlock		      "Bus\nSelector1"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Mux"
 	      SrcPort		      1
+	      Points		      [50, 0; 0, -50]
 	      DstBlock		      "Out1"
 	      DstPort		      1
 	    }
@@ -10886,7 +10958,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"995"
+		SIDHighWatermark	"1049"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -11316,7 +11388,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "134"
+		    SIDHighWatermark	    "141"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
