@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Jul 16 23:41:14 2017"
-  RTWModifiedTimeStamp	  422149215
-  ModelVersionFormat	  "1.%<AutoIncrement:40>"
+  LastModifiedDate	  "Mon Jul 17 02:50:54 2017"
+  RTWModifiedTimeStamp	  422160648
+  ModelVersionFormat	  "1.%<AutoIncrement:43>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -735,6 +735,21 @@ Library {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Goto
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -843,6 +858,9 @@ Library {
       SampleTime	      "-1"
       AllowDiffInputSizes     off
     }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "Feeder3_lib"
@@ -860,16 +878,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "796"
+    SIDHighWatermark	    "823"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
       SID		      "1"
-      Ports		      [4, 1, 0, 0, 0, 3, 12]
-      Position		      [145, 248, 440, 632]
+      Ports		      [5, 2, 0, 0, 0, 3, 12]
+      Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.39"
+      LibraryVersion	      "*1.42"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -891,7 +909,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"15"
+	ZoomFactor		"50"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -926,9 +944,19 @@ Library {
 	  BlockType		  Inport
 	  Name			  "HWCtrl_CMD"
 	  SID			  "503"
-	  Position		  [2220, 493, 2250, 507]
+	  Position		  [2220, 528, 2250, 542]
 	  ZOrder		  3418
 	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PHIL_I"
+	  SID			  "823"
+	  Position		  [2220, 493, 2250, 507]
+	  ZOrder		  3944
+	  ForegroundColor	  "cyan"
+	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -953,7 +981,7 @@ Library {
 	  Name			  "1000 kVA1"
 	  SID			  "3"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3020, 2383, 3105, 2447]
+	  Position		  [4210, 2373, 4295, 2437]
 	  ZOrder		  2026
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
 	  LibraryVersion	  "1.30"
@@ -970,7 +998,7 @@ Library {
 	  Name			  "200 HP chiller compressor"
 	  SID			  "552"
 	  Ports			  [1, 1]
-	  Position		  [3705, 1297, 3870, 1333]
+	  Position		  [3705, 1782, 3870, 1818]
 	  ZOrder		  3471
 	  BlockMirror		  on
 	  LibraryVersion	  "1.100"
@@ -1016,7 +1044,7 @@ Library {
 	  Name			  "2500 kVA"
 	  SID			  "213"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2600, 1172, 2685, 1238]
+	  Position		  [2600, 1657, 2685, 1723]
 	  ZOrder		  2469
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
 	  LibraryVersion	  "1.30"
@@ -1057,7 +1085,7 @@ Library {
 	  Name			  "5 kvar inductor at 480V \nto cancel kvar produced by the stublines"
 	  SID			  "683"
 	  Ports			  [0, 0, 0, 0, 0, 3]
-	  Position		  [3012, 1480, 3068, 1545]
+	  Position		  [3012, 1965, 3068, 2030]
 	  ZOrder		  3517
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -1171,7 +1199,7 @@ Library {
 	  Name			  "500kcmil-Mutual9"
 	  SID			  "698"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2810, 1367, 2850, 1433]
+	  Position		  [2810, 1852, 2850, 1918]
 	  ZOrder		  3532
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -1306,11 +1334,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator5"
 	  SID			  "127"
-	  Ports			  [10, 1]
-	  Position		  [3945, 380, 3950, 715]
+	  Ports			  [11, 1]
+	  Position		  [3945, 382, 3950, 748]
 	  ZOrder		  2405
 	  ShowName		  off
-	  Inputs		  "10"
+	  Inputs		  "11"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1318,7 +1346,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "746"
 	  Ports			  [1, 1]
-	  Position		  [3530, 1306, 3535, 1344]
+	  Position		  [3530, 1791, 3535, 1829]
 	  ZOrder		  3657
 	  ShowName		  off
 	  OutputSignals		  "motor_2"
@@ -1334,7 +1362,7 @@ Library {
 	  Name			  "Bus\nSelector1"
 	  SID			  "190"
 	  Ports			  [1, 1]
-	  Position		  [2080, 1098, 2085, 1122]
+	  Position		  [2080, 1583, 2085, 1607]
 	  ZOrder		  2448
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_4"
@@ -1366,7 +1394,7 @@ Library {
 	  Name			  "Bus\nSelector11"
 	  SID			  "226"
 	  Ports			  [1, 1]
-	  Position		  [3870, 1121, 3875, 1159]
+	  Position		  [3870, 1606, 3875, 1644]
 	  ZOrder		  2615
 	  ShowName		  off
 	  OutputSignals		  "P6"
@@ -1382,7 +1410,7 @@ Library {
 	  Name			  "Bus\nSelector12"
 	  SID			  "231"
 	  Ports			  [1, 1]
-	  Position		  [3330, 1108, 3335, 1132]
+	  Position		  [3330, 1593, 3335, 1617]
 	  ZOrder		  2621
 	  ShowName		  off
 	  OutputSignals		  "F3_CB_9"
@@ -1486,7 +1514,7 @@ Library {
 	  Name			  "Bus\nSelector17"
 	  SID			  "553"
 	  Ports			  [1, 1]
-	  Position		  [3875, 1399, 3880, 1431]
+	  Position		  [3875, 1884, 3880, 1916]
 	  ZOrder		  3470
 	  ShowName		  off
 	  OutputSignals		  "RPM"
@@ -1502,7 +1530,7 @@ Library {
 	  Name			  "Bus\nSelector18"
 	  SID			  "714"
 	  Ports			  [1, 1]
-	  Position		  [3340, 1048, 3345, 1082]
+	  Position		  [3340, 1533, 3345, 1567]
 	  ZOrder		  3547
 	  ShowName		  off
 	  OutputSignals		  "CB309"
@@ -1534,7 +1562,7 @@ Library {
 	  Name			  "Bus\nSelector2"
 	  SID			  "86"
 	  Ports			  [1, 1]
-	  Position		  [3255, 2276, 3260, 2314]
+	  Position		  [4445, 2266, 4450, 2304]
 	  ZOrder		  2364
 	  ShowName		  off
 	  OutputSignals		  "C6"
@@ -1573,6 +1601,22 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<F3_PCC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector22"
+	  SID			  "797"
+	  Ports			  [1, 1]
+	  Position		  [2080, 1218, 2085, 1242]
+	  ZOrder		  3921
+	  ShowName		  off
+	  OutputSignals		  "F3_CB_10"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<F3_CB_10>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1754,7 +1798,7 @@ Library {
 	  Name			  "C303"
 	  SID			  "697"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2385, 1172, 2425, 1238]
+	  Position		  [2385, 1657, 2425, 1723]
 	  ZOrder		  3531
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -1808,10 +1852,48 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "CCS1"
+	  SID			  "804"
+	  Ports			  [1, 0, 0, 0, 0, 1, 1]
+	  Position		  [3000, 1242, 3045, 1278]
+	  ZOrder		  3928
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Electrical\nSources/Controlled Current Source"
+	  SourceType		  "Controlled Current Source"
+	  Initialize		  on
+	  Source_Type		  "AC"
+	  Amplitude		  "0"
+	  Phase			  "0"
+	  Frequency		  "0"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CCS2"
+	  SID			  "805"
+	  Ports			  [1, 0, 0, 0, 0, 1, 1]
+	  Position		  [3000, 1302, 3045, 1338]
+	  ZOrder		  3929
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Electrical\nSources/Controlled Current Source"
+	  SourceType		  "Controlled Current Source"
+	  Initialize		  on
+	  Source_Type		  "AC"
+	  Amplitude		  "0"
+	  Phase			  "0"
+	  Frequency		  "0"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "CHP_Modbus"
 	  SID			  "793"
 	  Ports			  [1, 1]
-	  Position		  [3065, 1679, 3210, 1711]
+	  Position		  [4255, 1669, 4400, 1701]
 	  ZOrder		  3916
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -1843,9 +1925,9 @@ Library {
 	  Name			  "Critical_6"
 	  SID			  "19"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3315, 2361, 3375, 2449]
+	  Position		  [4505, 2351, 4565, 2439]
 	  ZOrder		  2031
-	  BackgroundColor	  "gray"
+	  BackgroundColor	  "[0.501961, 0.501961, 0.501961]"
 	  LibraryVersion	  "1.100"
 	  SourceBlock		  "Load_lib/Dynamic_Load"
 	  SourceType		  "Dynamic load"
@@ -1853,6 +1935,19 @@ Library {
 	  kVA			  "800"
 	  PF			  "0.9"
 	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "806"
+	  Ports			  [1, 3]
+	  Position		  [3140, 1222, 3145, 1398]
+	  ZOrder		  3932
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  Demux
@@ -1873,6 +1968,20 @@ Library {
 	  Position		  [2165, 3558, 2220, 3642]
 	  ZOrder		  1842
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
+	  LibraryVersion	  "1.477"
+	  SourceBlock		  "breaker_lib/Breaker"
+	  SourceType		  "Breaker"
+	  Ts			  "Ts"
+	  mech_delay		  "cb_mech_delay"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "F3_CB_10"
+	  SID			  "798"
+	  Ports			  [1, 1, 0, 0, 0, 3, 3]
+	  Position		  [2135, 1268, 2190, 1352]
+	  ZOrder		  3919
+	  BackgroundColor	  "lightBlue"
 	  LibraryVersion	  "1.477"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
@@ -1912,7 +2021,7 @@ Library {
 	  Name			  "F3_CB_4"
 	  SID			  "24"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2135, 1153, 2190, 1237]
+	  Position		  [2135, 1638, 2190, 1722]
 	  ZOrder		  1846
 	  BackgroundColor	  "lightBlue"
 	  LibraryVersion	  "1.477"
@@ -1982,7 +2091,7 @@ Library {
 	  Name			  "F3_CB_9"
 	  SID			  "712"
 	  Ports			  [2, 1, 0, 0, 0, 3, 3]
-	  Position		  [3435, 1143, 3495, 1237]
+	  Position		  [3435, 1628, 3495, 1722]
 	  ZOrder		  3545
 	  BackgroundColor	  "[0.000000, 0.666667, 0.000000]"
 	  LibraryVersion	  "1.477"
@@ -2024,7 +2133,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  "554"
-	  Position		  [3425, 1355, 3525, 1375]
+	  Position		  [3425, 1840, 3525, 1860]
 	  ZOrder		  3469
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -2101,7 +2210,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From15"
 	  SID			  "713"
-	  Position		  [3215, 1055, 3315, 1075]
+	  Position		  [3215, 1540, 3315, 1560]
 	  ZOrder		  3546
 	  ShowName		  off
 	  GotoTag		  "SEL_2440_FLS"
@@ -2325,7 +2434,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From29"
 	  SID			  "191"
-	  Position		  [1965, 1100, 2040, 1120]
+	  Position		  [1965, 1585, 2040, 1605]
 	  ZOrder		  2449
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2345,7 +2454,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From30"
 	  SID			  "225"
-	  Position		  [3735, 695, 3810, 715]
+	  Position		  [3735, 730, 3810, 750]
 	  ZOrder		  2613
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2362,7 +2471,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From31"
 	  SID			  "227"
-	  Position		  [3765, 1131, 3840, 1149]
+	  Position		  [3765, 1616, 3840, 1634]
 	  ZOrder		  2616
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -2388,7 +2497,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From33"
 	  SID			  "233"
-	  Position		  [3215, 1110, 3290, 1130]
+	  Position		  [3215, 1595, 3290, 1615]
 	  ZOrder		  2622
 	  BackgroundColor	  "red"
 	  ShowName		  off
@@ -2442,7 +2551,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From37"
 	  SID			  "745"
-	  Position		  [3425, 1317, 3500, 1333]
+	  Position		  [3425, 1802, 3500, 1818]
 	  ZOrder		  3656
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -2453,7 +2562,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From38"
 	  SID			  "753"
-	  Position		  [2905, 1955, 3000, 1975]
+	  Position		  [4095, 1945, 4190, 1965]
 	  ZOrder		  3911
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -2463,9 +2572,9 @@ Library {
 	  BlockType		  From
 	  Name			  "From39"
 	  SID			  "789"
-	  Position		  [2900, 2017, 3010, 2033]
+	  Position		  [4090, 2007, 4200, 2023]
 	  ZOrder		  3914
-	  BackgroundColor	  "cyan"
+	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
 	  NamePlacement		  "alternate"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -2485,10 +2594,59 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "CB_DATA"
-	    PropagatedSignals	    "F3_CB_1, F3_CB_2, F3_CB_3, F3_CB_4, F3_CB_5, F3_CB_6, F3_CB_7, F3_CB_8, F3_CB_9, F3_PCC"
+	    PropagatedSignals	    "F3_CB_1, F3_CB_2, F3_CB_3, F3_CB_4, F3_CB_5, F3_CB_6, F3_CB_7, F3_CB_8, F3_CB_9, F3_CB_10,"
+	    " F3_PCC"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From40"
+	  SID			  "799"
+	  Position		  [1965, 1220, 2040, 1240]
+	  ZOrder		  3922
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  GotoTag		  "RELAY_IN"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From41"
+	  SID			  "801"
+	  Position		  [3735, 695, 3810, 715]
+	  ZOrder		  3923
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_CB_10"
+	  Port {
+	    PortNumber		    1
+	    Name		    "F3_CB_10"
+	    PropagatedSignals	    "m"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From42"
+	  SID			  "808"
+	  Position		  [3200, 1430, 3270, 1450]
+	  ZOrder		  3938
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "PHIL_I"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From43"
+	  SID			  "821"
+	  Position		  [2820, 1165, 2890, 1185]
+	  ZOrder		  3942
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "V_PHIL"
+	  TagVisibility		  "global"
 	}
 	Block {
 	  BlockType		  From
@@ -2516,7 +2674,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "87"
-	  Position		  [3155, 2286, 3230, 2304]
+	  Position		  [4345, 2276, 4420, 2294]
 	  ZOrder		  2365
 	  ShowName		  off
 	  GotoTag		  "LOAD_IN"
@@ -2593,7 +2751,7 @@ Library {
 	  Name			  "GEN2_Modbus"
 	  SID			  "754"
 	  Ports			  [1, 1]
-	  Position		  [3065, 1744, 3210, 1776]
+	  Position		  [4255, 1734, 4400, 1766]
 	  ZOrder		  3913
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2654,7 +2812,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto13"
 	  SID			  "120"
-	  Position		  [2240, 1100, 2320, 1120]
+	  Position		  [2240, 1585, 2320, 1605]
 	  ZOrder		  2398
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2743,7 +2901,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto21"
 	  SID			  "228"
-	  Position		  [4045, 1190, 4125, 1210]
+	  Position		  [4045, 1675, 4125, 1695]
 	  ZOrder		  2617
 	  ShowName		  off
 	  GotoTag		  "LOAD_P6"
@@ -2762,7 +2920,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto23"
 	  SID			  "234"
-	  Position		  [3545, 1130, 3625, 1150]
+	  Position		  [3545, 1615, 3625, 1635]
 	  ZOrder		  2620
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2777,6 +2935,25 @@ Library {
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
 	  ShowName		  off
 	  GotoTag		  "F3_CB_8"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto25"
+	  SID			  "800"
+	  Position		  [2240, 1225, 2320, 1245]
+	  ZOrder		  3920
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_CB_10"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto26"
+	  SID			  "822"
+	  Position		  [2505, 487, 2600, 513]
+	  ZOrder		  3943
+	  ShowName		  off
+	  GotoTag		  "PHIL_I"
 	}
 	Block {
 	  BlockType		  Goto
@@ -2820,7 +2997,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto4"
 	  SID			  "512"
-	  Position		  [4000, 537, 4095, 563]
+	  Position		  [4000, 552, 4095, 578]
 	  ZOrder		  3422
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
@@ -2849,9 +3026,9 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto6"
 	  SID			  "755"
-	  Position		  [3300, 1912, 3425, 1928]
+	  Position		  [4490, 1902, 4615, 1918]
 	  ZOrder		  3910
-	  BackgroundColor	  "darkGreen"
+	  BackgroundColor	  "[0.419608, 0.588235, 0.239216]"
 	  ShowName		  off
 	  GotoTag		  "NG_CHP_DATA"
 	}
@@ -2878,10 +3055,24 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto9"
 	  SID			  "106"
-	  Position		  [3415, 2395, 3495, 2415]
+	  Position		  [4605, 2385, 4685, 2405]
 	  ZOrder		  2384
 	  ShowName		  off
 	  GotoTag		  "LOAD_C6"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "I_ratio"
+	  SID			  "810"
+	  Position		  [3175, 1294, 3285, 1326]
+	  ZOrder		  3935
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  Gain			  "PHIL.I_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Constant
@@ -2912,7 +3103,7 @@ Library {
 	  Name			  "Logical\nOperator"
 	  SID			  "747"
 	  Ports			  [2, 1]
-	  Position		  [3575, 1342, 3605, 1373]
+	  Position		  [3575, 1827, 3605, 1858]
 	  ZOrder		  3658
 	  ShowName		  off
 	  Operator		  "OR"
@@ -2976,11 +3167,19 @@ Library {
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  Memory
+	  Name			  "Memory3"
+	  SID			  "811"
+	  Position		  [3230, 1160, 3260, 1190]
+	  ZOrder		  3937
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "Motor"
 	  SID			  "555"
 	  Ports			  [2, 1, 0, 0, 0, 3]
-	  Position		  [3680, 1367, 3830, 1463]
+	  Position		  [3680, 1852, 3830, 1948]
 	  ZOrder		  3472
 	  BackgroundColor	  "yellow"
 	  LibraryVersion	  "1.24"
@@ -3003,7 +3202,7 @@ Library {
 	  Name			  "NGCHP_Generator"
 	  SID			  "752"
 	  Ports			  [4, 3, 0, 0, 0, 0, 3]
-	  Position		  [3065, 1812, 3220, 2058]
+	  Position		  [4255, 1802, 4410, 2048]
 	  ZOrder		  3912
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  MinAlgLoopOccurrences	  off
@@ -3021,7 +3220,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Gen_meas"
-	    PropagatedSignals	    ", , , , , , , , , , , , , , , , , , , , , , , status, flt_word"
+	    PropagatedSignals	    ", , , , , , , , , , , , , , , , , , , , , , , dF, , dWt, status, flt_word"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3338,7 +3537,7 @@ Library {
 	      Position		      [820, 640, 1090, 805]
 	      ZOrder		      3902
 	      BackgroundColor	      "[0.501961, 0.949020, 0.050980]"
-	      LibraryVersion	      "1.49"
+	      LibraryVersion	      "1.50"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/GenSet"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -3412,7 +3611,7 @@ Library {
 	      ZOrder		      3666
 	      ForegroundColor	      "red"
 	      BackgroundColor	      "yellow"
-	      LibraryVersion	      "1.49"
+	      LibraryVersion	      "1.50"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/Simulated\nGenerator Controller"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -3927,13 +4126,13 @@ Library {
 	  BlockType		  Reference
 	  Name			  "OpComm1"
 	  SID			  "83"
-	  Ports			  [3, 3]
-	  Position		  [2350, 415, 2420, 515]
+	  Ports			  [4, 4]
+	  Position		  [2350, 414, 2415, 551]
 	  ZOrder		  2357
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "3"
+	  nbport		  "4"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -4027,7 +4226,7 @@ Library {
 	  Name			  "Priority_6"
 	  SID			  "229"
 	  Ports			  [1, 1, 0, 0, 0, 3]
-	  Position		  [3915, 1156, 3975, 1244]
+	  Position		  [3915, 1641, 3975, 1729]
 	  ZOrder		  2614
 	  BackgroundColor	  "gray"
 	  LibraryVersion	  "1.100"
@@ -4110,19 +4309,19 @@ Library {
 	  BlockType		  Reference
 	  Name			  "SSN Interface Block (3ph)5"
 	  SID			  "52"
-	  Ports			  [0, 0, 0, 0, 0, 3, 9]
-	  Position		  [1705, 2520, 1790, 2700]
+	  Ports			  [0, 0, 0, 0, 0, 3, 12]
+	  Position		  [1705, 2522, 1790, 2703]
 	  ZOrder		  2296
 	  LibraryVersion	  "1.187"
 	  SourceBlock		  "ssn_lib/SSN Interface Block (3ph)"
 	  SourceType		  "ARTEMiS-SSN Nodal interface Blocks"
 	  nb_phase		  "3"
-	  nb_port		  "4"
+	  nb_port		  "5"
 	  p1_type		  "V-type(Left)"
 	  p2_type		  "V-type (Right)"
 	  p3_type		  "V-type (Right)"
 	  p4_type		  "V-type (Right)"
-	  p5_type		  "V-type(Left)"
+	  p5_type		  "V-type (Right)"
 	  p6_type		  "V-type(Left)"
 	  p7_type		  "V-type(Left)"
 	  p8_type		  "V-type(Left)"
@@ -4162,12 +4361,100 @@ Library {
 	  Value			  "1800-1"
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "812"
+	  Position		  [3095, 1360, 3115, 1380]
+	  ZOrder		  3933
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Three-Phase\nParallel RLC Load"
+	  SID			  "813"
+	  Ports			  [0, 0, 0, 0, 0, 3]
+	  Position		  [2817, 1410, 2873, 1475]
+	  ZOrder		  3936
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  AttributesFormatString  "\\n"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Elements/Three-Phase\nParallel RLC Load"
+	  SourceType		  "Three-Phase Parallel RLC Load"
+	  LConnTagsString	  "A|B|C"
+	  Configuration		  "Y (grounded)"
+	  NominalVoltage	  "4160"
+	  NominalFrequency	  "60"
+	  ActivePower		  "1e3"
+	  InductivePower	  "0"
+	  CapacitivePower	  "1e3"
+	  Measurements		  "None"
+	  LoadType		  "constant Z"
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Time_Scale_Factor "
 	  SID			  "456"
 	  Position		  [1000, 420, 1045, 440]
 	  ZOrder		  3318
 	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "V_PHIL"
+	  SID			  "820"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [2615, 1286, 2620, 1354]
+	  ZOrder		  3941
+	  BackgroundColor	  "black"
+	  LibraryVersion	  "1.2191"
+	  SourceBlock		  "powerlib/Measurements/Three-Phase\nV-I Measurement"
+	  SourceType		  "Three-Phase VI Measurement"
+	  VoltageMeasurement	  "phase-to-ground"
+	  SetLabelV		  on
+	  LabelV		  "V_PHIL"
+	  Vpu			  off
+	  VpuLL			  off
+	  CurrentMeasurement	  "no"
+	  SetLabelI		  on
+	  LabelI		  "I_PHIL"
+	  Ipu			  off
+	  Pbase			  "100e6"
+	  Vbase			  "500e3"
+	  OutputType		  "Complex"
+	  PhasorSimulation	  off
+	  PSBequivalent		  "0"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "V_ratio"
+	  SID			  "814"
+	  Position		  [3045, 1158, 3170, 1192]
+	  ZOrder		  3934
+	  ShowName		  off
+	  Gain			  "1/PHIL.V_ratio"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "XFR DYg-30 HIL2"
+	  SID			  "815"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [2405, 1288, 2490, 1352]
+	  ZOrder		  3924
+	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
+	  LibraryVersion	  "1.30"
+	  SourceBlock		  "transformer_lib/XFR DYg-30 HIL"
+	  SourceType		  "Transformers"
+	  Rating		  "50000"
+	  Vp			  "115000"
+	  Vs			  "4160"
+	  Z			  "6"
+	  XR			  "30"
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -4309,7 +4596,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_CB_4"
 	  SID			  "215"
-	  Position		  [3125, 1358, 3155, 1372]
+	  Position		  [3125, 1843, 3155, 1857]
 	  ZOrder		  2470
 	  BlockMirror		  on
 	  Port			  "1"
@@ -4319,7 +4606,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_CB_4"
 	  SID			  "216"
-	  Position		  [3125, 1393, 3155, 1407]
+	  Position		  [3125, 1878, 3155, 1892]
 	  ZOrder		  2471
 	  BlockMirror		  on
 	  Port			  "2"
@@ -4329,7 +4616,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_CB_4"
 	  SID			  "217"
-	  Position		  [3125, 1423, 3155, 1437]
+	  Position		  [3125, 1908, 3155, 1922]
 	  ZOrder		  2472
 	  BlockMirror		  on
 	  Port			  "3"
@@ -4469,6 +4756,235 @@ Library {
 	  ZOrder		  2447
 	  IconDisplay		  "Port number"
 	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "PHIL_V"
+	  SID			  "816"
+	  Position		  [3300, 1168, 3330, 1182]
+	  ZOrder		  3931
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  RConn3
+	  DstBlock		  "XFR DYg-30 HIL2"
+	  DstPort		  LConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  RConn1
+	  DstBlock		  "XFR DYg-30 HIL2"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  RConn2
+	  DstBlock		  "XFR DYg-30 HIL2"
+	  DstPort		  LConn2
+	}
+	Line {
+	  SrcBlock		  "PHIL_I"
+	  SrcPort		  1
+	  DstBlock		  "OpComm1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "OpComm1"
+	  SrcPort		  3
+	  DstBlock		  "Goto26"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcPort		  RConn1
+	  DstBlock		  "V_PHIL"
+	  DstPort		  LConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcPort		  RConn2
+	  DstBlock		  "V_PHIL"
+	  DstPort		  LConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "XFR DYg-30 HIL2"
+	  SrcPort		  RConn3
+	  DstBlock		  "V_PHIL"
+	  DstPort		  LConn3
+	}
+	Line {
+	  SrcBlock		  "Memory3"
+	  SrcPort		  1
+	  DstBlock		  "PHIL_V"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From42"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "I_ratio"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "I_ratio"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "V_ratio"
+	  SrcPort		  1
+	  DstBlock		  "Memory3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "CCS2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "CCS1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From43"
+	  SrcPort		  1
+	  DstBlock		  "V_ratio"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "CCS2"
+	  SrcPort		  LConn1
+	  Points		  [8, 0]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    Points		    [2865, 1340; 75, 0; 0, 45; 128, 0; 0, -55]
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "V_PHIL"
+	      SrcPort		      RConn3
+	      Points		      [230, 0]
+	    }
+	    Branch {
+	      ConnectType	      "SRC_DEST"
+	      SrcBlock		      "Three-Phase\nParallel RLC Load"
+	      SrcPort		      LConn3
+	      Points		      [0, -55]
+	    }
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "CCS1"
+	    SrcPort		    LConn1
+	    Points		    [8, 0; 0, 60]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Three-Phase\nParallel RLC Load"
+	  SrcPort		  LConn1
+	  Points		  [0, -95]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "V_PHIL"
+	    DstPort		    RConn1
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "CCS1"
+	    SrcPort		    RConn1
+	    Points		    [-45, 0; 0, 40; -115, 0]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [2845, 1320; 140, 0]
+	  DstBlock		  "CCS2"
+	  DstPort		  RConn1
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "V_PHIL"
+	    SrcPort		    RConn2
+	    Points		    [210, 0]
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Three-Phase\nParallel RLC Load"
+	    SrcPort		    LConn2
+	    Points		    [0, -75]
+	  }
+	}
+	Line {
+	  Name			  "F3_CB_10"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From41"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator5"
+	  DstPort		  10
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  LConn1
+	  Points		  [-231, 0; 0, 1230]
+	  DstBlock		  "SSN Interface Block (3ph)5"
+	  DstPort		  RConn1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  LConn2
+	  Points		  [-215, 0; 0, 1225]
+	  DstBlock		  "SSN Interface Block (3ph)5"
+	  DstPort		  RConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  LConn3
+	  Points		  [-201, 0; 0, 1220]
+	  DstBlock		  "SSN Interface Block (3ph)5"
+	  DstPort		  RConn3
+	}
+	Line {
+	  SrcBlock		  "From40"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector22"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "F3_CB_10"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -45]
+	  DstBlock		  "Goto25"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<F3_CB_10>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector22"
+	  SrcPort		  1
+	  Points		  [15, 0; 0, 50]
+	  DstBlock		  "F3_CB_10"
+	  DstPort		  1
+	}
 	Line {
 	  Name			  "<CHP_cmds>"
 	  Labels		  [0, 0]
@@ -4588,25 +5104,25 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "F3_CB_1"
 	  SrcPort		  LConn3
-	  Points		  [-296, 0; 0, -940]
+	  Points		  [-306, 0; 0, -935]
 	  DstBlock		  "SSN Interface Block (3ph)5"
-	  DstPort		  RConn9
+	  DstPort		  RConn12
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "F3_CB_1"
 	  SrcPort		  LConn1
-	  Points		  [-234, 0; 0, -940]
+	  Points		  [-215, 0; 0, -925]
 	  DstBlock		  "SSN Interface Block (3ph)5"
-	  DstPort		  RConn7
+	  DstPort		  RConn10
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "F3_CB_1"
 	  SrcPort		  LConn2
-	  Points		  [-266, 0; 0, -940]
+	  Points		  [-270, 0; 0, -930]
 	  DstBlock		  "SSN Interface Block (3ph)5"
-	  DstPort		  RConn8
+	  DstPort		  RConn11
 	}
 	Line {
 	  LineType		  "Connection"
@@ -4801,7 +5317,7 @@ Library {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    LConn3
-	    Points		    [-145, 0; 0, -40; -80, 0]
+	    Points		    [-145, 0; 0, -45; -80, 0]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -4818,7 +5334,7 @@ Library {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    LConn2
-	    Points		    [-245, 0]
+	    Points		    [0, -5; -245, 0]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -4835,7 +5351,7 @@ Library {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)5"
 	    SrcPort		    LConn1
-	    Points		    [-144, 0; 0, 40; -121, 0]
+	    Points		    [-144, 0; 0, 35; -121, 0]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -4989,7 +5505,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3040, 1400; 70, 0]
+	  Points		  [3040, 1885; 70, 0]
 	  DstBlock		  "B_CB_4"
 	  DstPort		  RConn1
 	  Branch {
@@ -5007,7 +5523,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3060, 1420; 13, 0; 0, 10; 37, 0]
+	  Points		  [3060, 1905; 13, 0; 0, 10; 37, 0]
 	  DstBlock		  "C_CB_4"
 	  DstPort		  RConn1
 	  Branch {
@@ -5025,7 +5541,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3020, 1380; 53, 0; 0, -15; 37, 0]
+	  Points		  [3020, 1865; 53, 0; 0, -15; 37, 0]
 	  DstBlock		  "A_CB_4"
 	  DstPort		  RConn1
 	  Branch {
@@ -5286,8 +5802,8 @@ Library {
 	}
 	Line {
 	  SrcBlock		  "OpComm1"
-	  SrcPort		  3
-	  Points		  [97, 0; 0, 40]
+	  SrcPort		  4
+	  Points		  [100, 0; 0, 5]
 	  DstBlock		  "Bus\nSelector16"
 	  DstPort		  1
 	}
@@ -5295,7 +5811,7 @@ Library {
 	  SrcBlock		  "HWCtrl_CMD"
 	  SrcPort		  1
 	  DstBlock		  "OpComm1"
-	  DstPort		  3
+	  DstPort		  4
 	}
 	Line {
 	  Name			  "<fault_cmd>"
@@ -5481,79 +5997,79 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2100, 2610; 0, -420; 360, 0]
-	  DstBlock		  "F3_CB_3"
-	  DstPort		  LConn2
+	  SrcBlock		  "SSN Interface Block (3ph)5"
+	  SrcPort		  RConn8
+	  Points		  [295, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -445]
+	    DstBlock		    "F3_CB_3"
+	    DstPort		    LConn2
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "C2"
 	    SrcPort		    LConn2
-	    Points		    [-360, 0; 0, -195]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)5"
-	    SrcPort		    RConn5
-	    Points		    [295, 0]
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "C2"
-	  SrcPort		  LConn3
-	  Points		  [-332, 0; 0, -195]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [0, -420]
-	    DstBlock		    "F3_CB_3"
-	    DstPort		    LConn3
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)5"
-	    SrcPort		    RConn6
-	    Points		    [323, 0]
-	  }
-	}
-	Line {
-	  LineType		  "Connection"
-	  SrcBlock		  "C2"
-	  SrcPort		  LConn1
-	  Points		  [-388, 0; 0, -195]
-	  Branch {
-	    ConnectType		    "DEST_SRC"
-	    Points		    [0, -420]
-	    DstBlock		    "F3_CB_3"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)5"
-	    SrcPort		    RConn4
-	    Points		    [267, 0]
+	    Points		    [-360, 0; 0, -170]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "SSN Interface Block (3ph)5"
-	  SrcPort		  RConn2
-	  Points		  [126, 0; 0, -1345]
+	  SrcPort		  RConn9
+	  Points		  [323, 0]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -440]
+	    DstBlock		    "F3_CB_3"
+	    DstPort		    LConn3
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "C2"
+	    SrcPort		    LConn3
+	    Points		    [-332, 0; 0, -175]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "SSN Interface Block (3ph)5"
+	  SrcPort		  RConn7
+	  Points		  [267, 0]
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -450]
+	    DstBlock		    "F3_CB_3"
+	    DstPort		    LConn1
+	  }
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "C2"
+	    SrcPort		    LConn1
+	    Points		    [-388, 0; 0, -165]
+	  }
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "SSN Interface Block (3ph)5"
+	  SrcPort		  RConn5
+	  Points		  [175, 0; 0, -900]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn2
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "SSN Interface Block (3ph)5"
-	  SrcPort		  RConn3
-	  Points		  [154, 0; 0, -1345]
+	  SrcPort		  RConn6
+	  Points		  [197, 0; 0, -895]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn3
 	}
 	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "SSN Interface Block (3ph)5"
-	  SrcPort		  RConn1
-	  Points		  [98, 0; 0, -1345]
+	  SrcPort		  RConn4
+	  Points		  [160, 0; 0, -905]
 	  DstBlock		  "F3_CB_4"
 	  DstPort		  LConn1
 	}
@@ -5698,7 +6214,7 @@ Library {
 	  SrcBlock		  "From30"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nCreator5"
-	  DstPort		  10
+	  DstPort		  11
 	}
 	Line {
 	  SrcBlock		  "F3_PCC"
@@ -5773,7 +6289,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2747, 1210; 0, -5; -47, 0]
+	  Points		  [2747, 1695; 0, -5; -47, 0]
 	  DstBlock		  "2500 kVA"
 	  DstPort		  RConn2
 	  Branch {
@@ -5784,7 +6300,7 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    Points		    [3337, 1210; -590, 0]
+	    Points		    [3337, 1695; -590, 0]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
 	      SrcBlock		      "F3_CB_9"
@@ -5801,7 +6317,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2716, 1225; -16, 0]
+	  Points		  [2716, 1710; -16, 0]
 	  DstBlock		  "2500 kVA"
 	  DstPort		  RConn3
 	  Branch {
@@ -5812,7 +6328,7 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    Points		    [3295, 1230; 0, -5; -579, 0]
+	    Points		    [3295, 1715; 0, -5; -579, 0]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
 	      SrcBlock		      "Motor"
@@ -5828,7 +6344,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2767, 1190; 0, -5; -67, 0]
+	  Points		  [2767, 1675; 0, -5; -67, 0]
 	  DstBlock		  "2500 kVA"
 	  DstPort		  RConn1
 	  Branch {
@@ -5839,7 +6355,7 @@ Library {
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
-	    Points		    [3367, 1190; -600, 0]
+	    Points		    [3367, 1675; -600, 0]
 	    Branch {
 	      ConnectType	      "SRC_DEST"
 	      SrcBlock		      "F3_CB_9"
@@ -6444,10 +6960,10 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "NGCHP_Generator"
 	  SrcPort		  RConn2
-	  Points		  [123, 0; 0, 195; -494, 0]
+	  Points		  [14, 0; 0, 205; -1575, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [0, 225]
+	    Points		    [0, 215]
 	    DstBlock		    "1000 kVA1"
 	    DstPort		    LConn2
 	  }
@@ -6469,10 +6985,10 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "NGCHP_Generator"
 	  SrcPort		  RConn1
-	  Points		  [142, 0; 0, 215; -487, 0]
+	  Points		  [0, 225; -1535, 0]
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    Points		    [0, 225]
+	    Points		    [0, 215]
 	    DstBlock		    "1000 kVA1"
 	    DstPort		    LConn1
 	  }
@@ -6498,14 +7014,14 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2836, 2210; 0, 225; 169, 0]
+	  Points		  [2836, 2210; 0, 215; 1359, 0]
 	  DstBlock		  "1000 kVA1"
 	  DstPort		  LConn3
 	  Branch {
 	    ConnectType		    "SRC_DEST"
 	    SrcBlock		    "NGCHP_Generator"
 	    SrcPort		    RConn3
-	    Points		    [103, 0; 0, 175; -502, 0]
+	    Points		    [28, 0; 0, 185; -1617, 0]
 	  }
 	  Branch {
 	    ConnectType		    "SRC_DEST"
@@ -6593,6 +7109,12 @@ Library {
 	  }
 	}
 	Annotation {
+	  SID			  "817"
+	  Name			  "PHIL interface"
+	  Position		  [3057, 1107]
+	  ZOrder		  -1
+	}
+	Annotation {
 	  SID			  "313"
 	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
 	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
@@ -6607,38 +7129,38 @@ Library {
 	  "FTWARE.\n%\n%\n%%"
 	  Position		  [1026, 937]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -1
+	  ZOrder		  -2
 	  FontWeight		  "bold"
 	}
 	Annotation {
 	  SID			  "218"
 	  Name			  "connect to F1"
-	  Position		  [3136, 1471]
-	  ZOrder		  -2
+	  Position		  [3136, 1956]
+	  ZOrder		  -3
 	}
 	Annotation {
 	  SID			  "77"
 	  Name			  "connect to F2"
 	  Position		  [4056, 3016]
-	  ZOrder		  -3
+	  ZOrder		  -4
 	}
 	Annotation {
 	  SID			  "76"
 	  Name			  "connect to F2"
 	  Position		  [3856, 3996]
-	  ZOrder		  -4
+	  ZOrder		  -5
 	}
 	Annotation {
 	  SID			  "74"
 	  Name			  "connect to F2"
 	  Position		  [4396, 3531]
-	  ZOrder		  -5
+	  ZOrder		  -6
 	}
 	Annotation {
 	  SID			  "212"
 	  Name			  "Signal for this Cb will come from a SEL relay"
 	  Position		  [1202, 2471]
-	  ZOrder		  -6
+	  ZOrder		  -7
 	}
       }
     }

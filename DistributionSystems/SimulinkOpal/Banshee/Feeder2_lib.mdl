@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Jul 16 23:41:23 2017"
-  RTWModifiedTimeStamp	  422149230
-  ModelVersionFormat	  "1.%<AutoIncrement:56>"
+  LastModifiedDate	  "Mon Jul 17 02:13:42 2017"
+  RTWModifiedTimeStamp	  422158414
+  ModelVersionFormat	  "1.%<AutoIncrement:57>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -855,7 +855,7 @@ Library {
       Position		      [105, 206, 395, 684]
       ZOrder		      2330
       ForegroundColor	      "magenta"
-      LibraryVersion	      "*1.55"
+      LibraryVersion	      "*1.56"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -877,7 +877,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"25"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -2255,7 +2255,7 @@ Library {
 	      Position		      [425, 74, 575, 266]
 	      ZOrder		      3887
 	      NamePlacement	      "alternate"
-	      LibraryVersion	      "1.47"
+	      LibraryVersion	      "1.48"
 	      SourceBlock	      "BESS_lib/NREL_BESS"
 	      SourceType	      ""
 	      InvType		      "ESS Inverter"
@@ -4740,7 +4740,7 @@ Library {
 	      Position		      [425, 75, 575, 265]
 	      ZOrder		      3849
 	      NamePlacement	      "alternate"
-	      LibraryVersion	      "1.47"
+	      LibraryVersion	      "1.48"
 	      SourceBlock	      "BESS_lib/NREL_BESS"
 	      SourceType	      ""
 	      InvType		      "PV Inverter"
@@ -5890,39 +5890,39 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [4330, 3485; -2, 0]
+	  SrcBlock		  "F2_CB_8"
+	  SrcPort		  LConn1
+	  Points		  [-375, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "F2_CB_8"
-	    SrcPort		    LConn1
-	    Points		    [-375, 0]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Losses7"
 	    SrcPort		    LConn1
 	    Points		    [0, -85]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [4328, 3255; 0, 230]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "C1"
-	      SrcPort		      LConn1
-	      Points		      [-217, 0; 0, 270]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_4"
-	      SrcPort		      LConn1
-	      Points		      [-352, 0]
-	    }
-	  }
-	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "SSN Interface Block (3ph)1"
-	    DstPort		    RConn1
+	    Points		    [-2, 0]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      Points		      [4328, 3255; 0, 230]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"C1"
+		SrcPort			LConn1
+		Points			[-217, 0; 0, 270]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"F2_CB_4"
+		SrcPort			LConn1
+		Points			[-352, 0]
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "SSN Interface Block (3ph)1"
+	      DstPort		      RConn1
+	    }
 	  }
 	}
 	Line {
@@ -5969,77 +5969,77 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [4355, 3505; -2, 0]
+	  SrcBlock		  "F2_CB_8"
+	  SrcPort		  LConn2
+	  Points		  [-350, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "F2_CB_8"
-	    SrcPort		    LConn2
-	    Points		    [-350, 0]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Losses7"
 	    SrcPort		    LConn2
 	    Points		    [0, -65]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [4353, 3275; 0, 230]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-2, 0]
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_4"
-	      SrcPort		      LConn2
-	      Points		      [-327, 0]
+	      ConnectType	      "DEST_DEST"
+	      Points		      [4353, 3275; 0, 230]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"F2_CB_4"
+		SrcPort			LConn2
+		Points			[-327, 0]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"C1"
+		SrcPort			LConn2
+		Points			[-192, 0; 0, 270]
+	      }
 	    }
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "C1"
-	      SrcPort		      LConn2
-	      Points		      [-192, 0; 0, 270]
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)1"
+	      SrcPort		      RConn2
+	      Points		      [183, 0]
 	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)1"
-	    SrcPort		    RConn2
-	    Points		    [183, 0]
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [4380, 3525; -1, 0]
+	  SrcBlock		  "F2_CB_8"
+	  SrcPort		  LConn3
+	  Points		  [-325, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "F2_CB_8"
-	    SrcPort		    LConn3
-	    Points		    [-325, 0]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Losses7"
 	    SrcPort		    LConn3
 	    Points		    [0, -45]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [4379, 3295; 0, 230]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "C1"
-	      SrcPort		      LConn3
-	      Points		      [-166, 0; 0, 270]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_4"
-	      SrcPort		      LConn3
-	      Points		      [-301, 0]
-	    }
-	  }
-	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "SSN Interface Block (3ph)1"
-	    DstPort		    RConn3
+	    Points		    [-1, 0]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      Points		      [4379, 3295; 0, 230]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"C1"
+		SrcPort			LConn3
+		Points			[-166, 0; 0, 270]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"F2_CB_4"
+		SrcPort			LConn3
+		Points			[-301, 0]
+	      }
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "SSN Interface Block (3ph)1"
+	      DstPort		      RConn3
+	    }
 	  }
 	}
 	Line {
@@ -8192,30 +8192,30 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1525, 2010; 0, 15]
+	  SrcBlock		  "Losses6"
+	  SrcPort		  LConn2
+	  Points		  [0, 75]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses6"
-	    SrcPort		    LConn2
-	    Points		    [0, 75]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "500kcmil-Mutual8"
 	    SrcPort		    RConn2
 	    Points		    [150, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "4/0AWG-Mutual"
-	    SrcPort		    LConn2
-	    Points		    [-190, 0; 0, -1480]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)4"
-	    SrcPort		    LConn2
-	    Points		    [-200, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, 15]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "4/0AWG-Mutual"
+	      SrcPort		      LConn2
+	      Points		      [-190, 0; 0, -1480]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)4"
+	      SrcPort		      LConn2
+	      Points		      [-200, 0]
+	    }
 	  }
 	}
 	Line {
@@ -8235,40 +8235,40 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2660, 2035; 3, 0]
+	  SrcBlock		  "Losses3"
+	  SrcPort		  LConn1
+	  Points		  [0, -70]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses3"
-	    SrcPort		    LConn1
-	    Points		    [0, -70]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "C202"
 	    SrcPort		    RConn1
 	    Points		    [80, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    Points		    [2989, 2035; -326, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [3, 0]
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_10"
-	      SrcPort		      LConn1
-	      Points		      [-71, 0]
+	      ConnectType	      "DEST_DEST"
+	      Points		      [2989, 2035; -326, 0]
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"F2_CB_10"
+		SrcPort			LConn1
+		Points			[-71, 0]
+	      }
+	      Branch {
+		ConnectType		"SRC_DEST"
+		SrcBlock		"SSN Interface Block (3ph)3"
+		SrcPort			LConn1
+		Points			[-41, 0; 0, -270]
+	      }
 	    }
 	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "SSN Interface Block (3ph)3"
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "F2_CB_11"
 	      SrcPort		      LConn1
-	      Points		      [-41, 0; 0, -270]
+	      Points		      [-217, 0; 0, 595]
 	    }
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "F2_CB_11"
-	    SrcPort		    LConn1
-	    Points		    [-217, 0; 0, 595]
 	  }
 	}
 	Line {
@@ -8494,68 +8494,68 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [1550, 1985; 0, 5]
+	  SrcBlock		  "Losses6"
+	  SrcPort		  LConn3
+	  Points		  [0, 50]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses6"
-	    SrcPort		    LConn3
-	    Points		    [0, 50]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "SSN Interface Block (3ph)4"
 	    SrcPort		    LConn1
 	    Points		    [-175, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "500kcmil-Mutual8"
-	    SrcPort		    RConn1
-	    Points		    [175, 0]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "4/0AWG-Mutual"
-	    SrcPort		    LConn1
-	    Points		    [-165, 0; 0, -1495]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, 5]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "500kcmil-Mutual8"
+	      SrcPort		      RConn1
+	      Points		      [175, 0]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "4/0AWG-Mutual"
+	      SrcPort		      LConn1
+	      Points		      [-165, 0; 0, -1495]
+	    }
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2685, 2055; -2, 0]
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    Points		    [2961, 2055; -276, 0]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "SSN Interface Block (3ph)3"
-	      SrcPort		      LConn2
-	      Points		      [-69, 0; 0, -280]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_10"
-	      SrcPort		      LConn2
-	      Points		      [-99, 0]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses3"
-	    SrcPort		    LConn2
-	    Points		    [0, -50]
-	  }
+	  SrcBlock		  "SSN Interface Block (3ph)3"
+	  SrcPort		  LConn2
+	  Points		  [-69, 0; 0, -280]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "F2_CB_11"
+	    SrcBlock		    "F2_CB_10"
 	    SrcPort		    LConn2
-	    Points		    [-197, 0; 0, 595]
+	    Points		    [-99, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "C202"
-	    SrcPort		    RConn2
-	    Points		    [103, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-276, 0]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "Losses3"
+	      SrcPort		      LConn2
+	      Points		      [0, -50]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [-2, 0]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		SrcBlock		"F2_CB_11"
+		SrcPort			LConn2
+		Points			[-197, 0; 0, 595]
+	      }
+	      Branch {
+		ConnectType		"DEST_DEST"
+		SrcBlock		"C202"
+		SrcPort			RConn2
+		Points			[103, 0]
+	      }
+	    }
 	  }
 	}
 	Line {
@@ -8630,40 +8630,40 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2710, 2075; -1, 0]
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    Points		    [2931, 2075; -221, 0]
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "F2_CB_10"
-	      SrcPort		      LConn3
-	      Points		      [-129, 0]
-	    }
-	    Branch {
-	      ConnectType	      "SRC_DEST"
-	      SrcBlock		      "SSN Interface Block (3ph)3"
-	      SrcPort		      LConn3
-	      Points		      [-99, 0; 0, -290]
-	    }
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses3"
-	    SrcPort		    LConn3
-	    Points		    [0, -30]
-	  }
+	  SrcBlock		  "F2_CB_10"
+	  SrcPort		  LConn3
+	  Points		  [-129, 0]
 	  Branch {
 	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "F2_CB_11"
+	    SrcBlock		    "SSN Interface Block (3ph)3"
 	    SrcPort		    LConn3
-	    Points		    [-171, 0; 0, 595]
+	    Points		    [-99, 0; 0, -290]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "C202"
-	    SrcPort		    RConn3
-	    Points		    [129, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-221, 0]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "Losses3"
+	      SrcPort		      LConn3
+	      Points		      [0, -30]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      Points		      [-1, 0]
+	      Branch {
+		ConnectType		"DEST_DEST"
+		SrcBlock		"F2_CB_11"
+		SrcPort			LConn3
+		Points			[-171, 0; 0, 595]
+	      }
+	      Branch {
+		ConnectType		"DEST_DEST"
+		SrcBlock		"C202"
+		SrcPort			RConn3
+		Points			[129, 0]
+	      }
+	    }
 	  }
 	}
 	Line {
@@ -8697,29 +8697,29 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3710, 530; 0, -5]
+	  SrcBlock		  "F2_CB_18"
+	  SrcPort		  LConn2
+	  Points		  [-280, 0]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "F2_CB_18"
-	    SrcPort		    LConn2
-	    Points		    [-280, 0]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "Losses2"
 	    SrcPort		    LConn2
 	    Points		    [0, -40]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "2000 kVA3"
-	    DstPort		    RConn2
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "F2_CB_16"
-	    SrcPort		    LConn2
-	    Points		    [-70, 0; 0, 305]
+	    Points		    [0, -5]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "2000 kVA3"
+	      DstPort		      RConn2
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "F2_CB_16"
+	      SrcPort		      LConn2
+	      Points		      [-70, 0; 0, 305]
+	    }
 	  }
 	}
 	Line {
@@ -8904,86 +8904,86 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2590, 970; 0, -135]
+	  SrcBlock		  "Losses1"
+	  SrcPort		  LConn1
+	  Points		  [0, -5]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses1"
-	    SrcPort		    LConn1
-	    Points		    [0, -5]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "C203"
 	    SrcPort		    RConn3
 	    Points		    [50, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "500kcmil-Mutual9"
-	    SrcPort		    LConn3
-	    Points		    [-135, 0; 0, 520]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)2"
-	    SrcPort		    LConn3
-	    Points		    [-135, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [0, -135]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "500kcmil-Mutual9"
+	      SrcPort		      LConn3
+	      Points		      [-135, 0; 0, 520]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)2"
+	      SrcPort		      LConn3
+	      Points		      [-135, 0]
+	    }
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2615, 950; 1, 0; 0, -165]
+	  SrcBlock		  "Losses1"
+	  SrcPort		  LConn2
+	  Points		  [0, -25]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses1"
-	    SrcPort		    LConn2
-	    Points		    [0, -25]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "C203"
 	    SrcPort		    RConn2
 	    Points		    [75, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "500kcmil-Mutual9"
-	    SrcPort		    LConn2
-	    Points		    [-109, 0; 0, 490]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)2"
-	    SrcPort		    LConn2
-	    Points		    [-109, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [1, 0; 0, -165]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "500kcmil-Mutual9"
+	      SrcPort		      LConn2
+	      Points		      [-109, 0; 0, 490]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)2"
+	      SrcPort		      LConn2
+	      Points		      [-109, 0]
+	    }
 	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2640, 930; 3, 0; 0, -195]
+	  SrcBlock		  "Losses1"
+	  SrcPort		  LConn3
+	  Points		  [0, -45]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "Losses1"
-	    SrcPort		    LConn3
-	    Points		    [0, -45]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "C203"
 	    SrcPort		    RConn1
 	    Points		    [100, 0]
 	  }
 	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "500kcmil-Mutual9"
-	    SrcPort		    LConn1
-	    Points		    [-82, 0; 0, 460]
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)2"
-	    SrcPort		    LConn1
-	    Points		    [-82, 0]
+	    ConnectType		    "DEST_SRC"
+	    Points		    [3, 0; 0, -195]
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "500kcmil-Mutual9"
+	      SrcPort		      LConn1
+	      Points		      [-82, 0; 0, 460]
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)2"
+	      SrcPort		      LConn1
+	      Points		      [-82, 0]
+	    }
 	  }
 	}
 	Annotation {

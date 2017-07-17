@@ -136,6 +136,7 @@ Stim.CB.CB306	= [	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	
 Stim.CB.CB307	= [	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	];
 Stim.CB.CB308	= [	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	];
 Stim.CB.CB309	= [	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	];
+Stim.CB.CB310	= [	1	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	];
 Stim.CB.CB401	= [	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	2	2	2	];
 Stim.CB.CB402	= [	2	2	2	2	2	1	1	2	2	2	2	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	2	2	2	];
 Stim.CB.CB403	= [	2	2	2	2	2	2	1	2	2	2	2	2	1	1	2	2	2	2	1	1	2	2	1	1	1	1	1	1	2	2	2	2	2	2	2	2	];
@@ -183,6 +184,7 @@ if exist('OpenLinks', 'var')  % only run when in opal - keep link resolved when 
             'UrbanCHIL/SS_Feeder1' ...
             'UrbanCHIL/SS_Feeder2' ...
             'UrbanCHIL/SS_Feeder3' ...
+            'UrbanCHIL/SS_Feeder4' ...
             'UrbanCHIL/SM_UtilityService'};
         for ii = 1:length(LinkPath)
             if (length(find_system(LinkPath{ii}, 'SearchDepth', 0)) == 1)
