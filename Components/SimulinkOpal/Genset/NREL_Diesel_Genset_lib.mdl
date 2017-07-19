@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Jul 16 23:47:49 2017"
-  RTWModifiedTimeStamp	  422149664
-  ModelVersionFormat	  "1.%<AutoIncrement:50>"
+  LastModifiedDate	  "Tue Jul 18 12:05:10 2017"
+  RTWModifiedTimeStamp	  422280266
+  ModelVersionFormat	  "1.%<AutoIncrement:52>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1159,12 +1159,12 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "189"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "5455"
+    SIDHighWatermark	    "5467"
     Block {
       BlockType		      SubSystem
       Name		      "DieselGovernor"
       SID		      "5294"
-      Ports		      [3, 1]
+      Ports		      [3, 2]
       Position		      [385, 18, 465, 92]
       ZOrder		      3904
       DropShadow	      on
@@ -1239,7 +1239,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"80"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "wref (pu)"
@@ -1265,6 +1265,62 @@ Library {
 	  ZOrder		  -3
 	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator"
+	  SID			  "5456"
+	  Ports			  [3, 1]
+	  Position		  [800, 366, 805, 404]
+	  ZOrder		  108
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Thermal Data"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "5461"
+	  Position		  [480, 370, 510, 400]
+	  ZOrder		  112
+	  Port {
+	    PortNumber		    1
+	    Name		    "Nm^3 per hour NG fuel usage"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "5462"
+	  Position		  [600, 435, 630, 465]
+	  ZOrder		  113
+	  Port {
+	    PortNumber		    1
+	    Name		    "CO2 lbm/hr"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "5463"
+	  Position		  [600, 315, 630, 345]
+	  ZOrder		  114
+	  Port {
+	    PortNumber		    1
+	    Name		    "Heat Recovered, MBtu/hr"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Gain
@@ -1509,6 +1565,16 @@ Library {
 	  ZOrder		  -17
 	  IconDisplay		  "Port number"
 	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Thermal Data"
+	  SID			  "5460"
+	  Position		  [890, 378, 1015, 392]
+	  ZOrder		  109
+	  ShowName		  off
+	  Port			  "2"
+	  IconDisplay		  "Signal name"
+	}
 	Line {
 	  SrcBlock		  "Sum1"
 	  SrcPort		  1
@@ -1630,6 +1696,40 @@ Library {
 	    DstBlock		    "Discrete PID Controller"
 	    DstPort		    2
 	  }
+	}
+	Line {
+	  Name			  "CO2 lbm/hr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  Points		  [82, 0; 0, -55]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "Nm^3 per hour NG fuel usage"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Heat Recovered, MBtu/hr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  Points		  [82, 0; 0, 45]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Thermal Data"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  DstBlock		  "Thermal Data"
+	  DstPort		  1
 	}
 	Annotation {
 	  SID			  "5314"
@@ -1852,7 +1952,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"89"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "wref (pu)"
@@ -3747,7 +3847,7 @@ Library {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"131"
-	SIDHighWatermark	"5889"
+	SIDHighWatermark	"5978"
 	Block {
 	  BlockType		  Inport
 	  Name			  "w_ref"
@@ -4379,7 +4479,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "343"
+		    SIDHighWatermark	    "379"
 		    SIDPrevWatermark	    "63"
 		    Block {
 		    BlockType		    Inport
@@ -5609,7 +5709,7 @@ Library {
 		    Ports		    [3, 2]
 		    Position		    [100, 40, 140, 80]
 		    ZOrder		    3903
-		    LibraryVersion	    "1.49"
+		    LibraryVersion	    "1.50"
 		    SourceBlock		    "NREL_Diesel_Genset_lib/GEJenbacherJ620"
 		    SourceType		    ""
 		    cd			    ".8"
@@ -7484,7 +7584,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "60"
-	    SIDHighWatermark	    "5518"
+	    SIDHighWatermark	    "5533"
 	    SIDPrevWatermark	    "5443"
 	    Block {
 	      BlockType		      Inport
@@ -7893,9 +7993,9 @@ Library {
 	Block {
 	  BlockType		  Ground
 	  Name			  "gnd2"
-	  SID			  "5342"
+	  SID			  "5467"
 	  Position		  [160, 80, 180, 100]
-	  ZOrder		  -6
+	  ZOrder		  -12
 	}
 	Block {
 	  BlockType		  Outport
