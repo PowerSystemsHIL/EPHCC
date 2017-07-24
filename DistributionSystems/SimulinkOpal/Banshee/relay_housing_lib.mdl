@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [172.0, 108.0, 1928.0, 1092.0]
+      Location		      [29.0, 117.0, 1292.0, 1036.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1685.0, 926.0]
+	Extents			[1049.0, 870.0]
 	ZoomFactor		[1.0]
 	Offset			[-77.78051232166024, 41.2023022049284]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 20 12:41:43 2017"
-  RTWModifiedTimeStamp	  422455299
-  ModelVersionFormat	  "1.%<AutoIncrement:73>"
+  LastModifiedDate	  "Fri Jul 21 17:29:49 2017"
+  RTWModifiedTimeStamp	  422558967
+  ModelVersionFormat	  "1.%<AutoIncrement:74>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -970,7 +970,7 @@ Library {
   }
   System {
     Name		    "relay_housing_lib"
-    Location		    [172, 108, 2100, 1200]
+    Location		    [29, 117, 1321, 1153]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -984,18 +984,18 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1024"
+    SIDHighWatermark	    "1049"
     Block {
       BlockType		      SubSystem
       Name		      "SS_F1_RELAY_HOUSING"
       SID		      "1"
-      Ports		      [2, 1]
-      Position		      [200, 458, 400, 527]
+      Ports		      [3, 1]
+      Position		      [200, 460, 400, 530]
       ZOrder		      2597
       BlockMirror	      on
       ForegroundColor	      "[1.000000, 0.501961, 0.000000]"
       BackgroundColor	      "[1.000000, 0.501961, 0.000000]"
-      LibraryVersion	      "*1.66"
+      LibraryVersion	      "*1.73"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1005,7 +1005,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_F1_RELAY_HOUSING"
-	Location		[960, 0, 1920, 1040]
+	Location		[0, 0, 1292, 1036]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1017,12 +1017,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F1_MS_IN"
 	  SID			  "2"
-	  Position		  [480, 1158, 510, 1172]
+	  Position		  [265, 1158, 295, 1172]
 	  ZOrder		  2441
 	  IconDisplay		  "Port number"
 	}
@@ -1033,6 +1033,15 @@ Library {
 	  Position		  [125, 593, 155, 607]
 	  ZOrder		  3905
 	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GOOSE_TRIP"
+	  SID			  "1044"
+	  Position		  [265, 1193, 295, 1207]
+	  ZOrder		  4071
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1199,11 +1208,31 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector35"
+	  SID			  "1045"
+	  Ports			  [1, 1]
+	  Position		  [465, 1184, 470, 1216]
+	  ZOrder		  4067
+	  ShowName		  off
+	  OutputSignals		  "NA,NA,NA,F1.CB104,NA,NA,F1.CB107,F1.CB108,F1.CB109,F1.CB110,F1.CB111,NA,F1.CB113,F1.CB114,PCC.CB1"
+	  "00"
+	  OutputAsBus		  on
+	}
+	Block {
 	  BlockType		  BusToVector
 	  Name			  "Bus to Vector"
 	  SID			  "853"
 	  Position		  [455, 645, 510, 675]
 	  ZOrder		  3951
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  BusToVector
+	  Name			  "Bus to Vector1"
+	  SID			  "1046"
+	  Position		  [495, 1185, 550, 1215]
+	  ZOrder		  4070
 	  ShowName		  off
 	}
 	Block {
@@ -1214,7 +1243,7 @@ Library {
 	  Position		  [930, 101, 1110, 154]
 	  ZOrder		  2431
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1235,7 +1264,7 @@ Library {
 	  Position		  [930, 1451, 1110, 1504]
 	  ZOrder		  2461
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1256,7 +1285,7 @@ Library {
 	  Position		  [930, 1601, 1110, 1654]
 	  ZOrder		  2462
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1277,7 +1306,7 @@ Library {
 	  Position		  [930, 1751, 1110, 1804]
 	  ZOrder		  2463
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1298,7 +1327,7 @@ Library {
 	  Position		  [930, 1901, 1110, 1954]
 	  ZOrder		  2464
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1320,7 +1349,7 @@ Library {
 	  ZOrder		  2653
 	  ForegroundColor	  "red"
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1341,7 +1370,7 @@ Library {
 	  Position		  [930, 2201, 1110, 2254]
 	  ZOrder		  3903
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1362,7 +1391,7 @@ Library {
 	  Position		  [930, 251, 1110, 304]
 	  ZOrder		  2453
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1383,7 +1412,7 @@ Library {
 	  Position		  [930, 401, 1110, 454]
 	  ZOrder		  2454
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1404,7 +1433,7 @@ Library {
 	  Position		  [930, 551, 1110, 604]
 	  ZOrder		  2455
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1425,7 +1454,7 @@ Library {
 	  Position		  [930, 701, 1110, 754]
 	  ZOrder		  2456
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1446,7 +1475,7 @@ Library {
 	  Position		  [930, 851, 1110, 904]
 	  ZOrder		  2457
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1467,7 +1496,7 @@ Library {
 	  Position		  [930, 1001, 1110, 1054]
 	  ZOrder		  2458
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1488,7 +1517,7 @@ Library {
 	  Position		  [930, 1151, 1110, 1204]
 	  ZOrder		  2459
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1509,7 +1538,7 @@ Library {
 	  Position		  [930, 1301, 1110, 1354]
 	  ZOrder		  2460
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -1533,6 +1562,16 @@ Library {
 	  GotoTag		  "SignalsAll"
 	}
 	Block {
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility1"
+	  SID			  "1047"
+	  Position		  [605, 1217, 671, 1235]
+	  ZOrder		  4069
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "859"
@@ -1541,6 +1580,17 @@ Library {
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto6"
+	  SID			  "1048"
+	  Position		  [600, 1191, 675, 1209]
+	  ZOrder		  4068
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
 	  TagVisibility		  "scoped"
 	}
 	Block {
@@ -1802,11 +1852,11 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm1"
-	  SID			  "808"
+	  Name			  "OpComm2"
+	  SID			  "409"
 	  Ports			  [1, 1]
 	  Position		  [215, 580, 285, 620]
-	  ZOrder		  3906
+	  ZOrder		  2652
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
@@ -1828,15 +1878,15 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm2"
-	  SID			  "409"
-	  Ports			  [1, 1]
-	  Position		  [570, 1145, 640, 1185]
-	  ZOrder		  2652
+	  Name			  "OpComm3"
+	  SID			  "1049"
+	  Ports			  [2, 2]
+	  Position		  [360, 1148, 420, 1217]
+	  ZOrder		  4066
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "1"
+	  nbport		  "2"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -1862,7 +1912,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "4"
@@ -1878,7 +1928,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "3"
@@ -1894,7 +1944,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "11"
@@ -1910,7 +1960,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "12"
@@ -1926,7 +1976,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "13"
@@ -1942,7 +1992,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "14"
@@ -1958,7 +2008,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "15"
@@ -1974,7 +2024,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "2"
@@ -1990,7 +2040,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "1"
@@ -2006,7 +2056,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "5"
@@ -2022,7 +2072,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "6"
@@ -2038,7 +2088,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "7"
@@ -2054,7 +2104,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "8"
@@ -2070,7 +2120,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "9"
@@ -2086,7 +2136,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "10"
@@ -2099,6 +2149,30 @@ Library {
 	  Position		  [1530, 1158, 1560, 1172]
 	  ZOrder		  2449
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Bus to Vector1"
+	  SrcPort		  1
+	  DstBlock		  "Goto6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nSelector35"
+	  SrcPort		  1
+	  DstBlock		  "Bus to Vector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm3"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nSelector35"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GOOSE_TRIP"
+	  SrcPort		  1
+	  DstBlock		  "OpComm3"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "SelectMockup13"
@@ -2348,7 +2422,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm1"
+	  SrcBlock		  "OpComm2"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
@@ -2356,7 +2430,7 @@ Library {
 	Line {
 	  SrcBlock		  "SC_CMD"
 	  SrcPort		  1
-	  DstBlock		  "OpComm1"
+	  DstBlock		  "OpComm2"
 	  DstPort		  1
 	}
 	Line {
@@ -2628,7 +2702,7 @@ Library {
 	Line {
 	  SrcBlock		  "F1_MS_IN"
 	  SrcPort		  1
-	  DstBlock		  "OpComm2"
+	  DstBlock		  "OpComm3"
 	  DstPort		  1
 	}
 	Line {
@@ -2723,7 +2797,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm2"
+	  SrcBlock		  "OpComm3"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector1"
 	  DstPort		  1
@@ -2752,13 +2826,13 @@ Library {
       BlockType		      SubSystem
       Name		      "SS_F2_RELAY_HOUSING"
       SID		      "20"
-      Ports		      [2, 1]
-      Position		      [460, 457, 655, 528]
+      Ports		      [3, 1]
+      Position		      [460, 459, 655, 531]
       ZOrder		      2598
       BlockMirror	      on
-      ForegroundColor	      "magenta"
-      BackgroundColor	      "magenta"
-      LibraryVersion	      "*1.62"
+      ForegroundColor	      "[1.000000, 0.258824, 0.819608]"
+      BackgroundColor	      "[1.000000, 0.258824, 0.819608]"
+      LibraryVersion	      "*1.73"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2768,7 +2842,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_F2_RELAY_HOUSING"
-	Location		[-8, 0, 1916, 1056]
+	Location		[0, 0, 1292, 1036]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2780,12 +2854,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"50"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F2_MS_IN"
 	  SID			  "21"
-	  Position		  [455, 1183, 485, 1197]
+	  Position		  [310, 1183, 340, 1197]
 	  ZOrder		  2580
 	  IconDisplay		  "Port number"
 	}
@@ -2793,9 +2867,18 @@ Library {
 	  BlockType		  Inport
 	  Name			  "SC_CMD"
 	  SID			  "976"
-	  Position		  [170, 1348, 200, 1362]
+	  Position		  [160, 833, 190, 847]
 	  ZOrder		  3995
 	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GOOSE_TRIP"
+	  SID			  "1038"
+	  Position		  [285, 1218, 315, 1232]
+	  ZOrder		  4071
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -2814,7 +2897,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "977"
 	  Ports			  [1, 1]
-	  Position		  [370, 1336, 375, 1374]
+	  Position		  [360, 821, 365, 859]
 	  ZOrder		  3997
 	  ShowName		  off
 	  OutputSignals		  "CBStimuli"
@@ -2830,7 +2913,7 @@ Library {
 	  Name			  "Bus\nSelector1"
 	  SID			  "978"
 	  Ports			  [1, 4]
-	  Position		  [445, 1270, 450, 1440]
+	  Position		  [435, 755, 440, 925]
 	  ZOrder		  3998
 	  ShowName		  off
 	  OutputSignals		  "MockEna,ResetAll,GroupSel,F2"
@@ -2993,11 +3076,31 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector35"
+	  SID			  "1039"
+	  Ports			  [1, 1]
+	  Position		  [485, 1209, 490, 1241]
+	  ZOrder		  4067
+	  ShowName		  off
+	  OutputSignals		  "NA,NA,NA,F2.CB204,NA,F2.CB206,NA,F2.CB208,NA,NA,NA,F2.CB212,F2.CB213,NA,NA,F2.CB216,F2.CB217,F2.C"
+	  "B218,F2.CB219,PCC.CB200"
+	  OutputAsBus		  on
+	}
+	Block {
 	  BlockType		  BusToVector
 	  Name			  "Bus to Vector"
 	  SID			  "979"
-	  Position		  [500, 1400, 555, 1430]
+	  Position		  [490, 885, 545, 915]
 	  ZOrder		  3999
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  BusToVector
+	  Name			  "Bus to Vector1"
+	  SID			  "1040"
+	  Position		  [515, 1210, 570, 1240]
+	  ZOrder		  4070
 	  ShowName		  off
 	}
 	Block {
@@ -3008,7 +3111,7 @@ Library {
 	  Position		  [935, 81, 1115, 134]
 	  ZOrder		  2552
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3029,7 +3132,7 @@ Library {
 	  Position		  [935, 1116, 1115, 1169]
 	  ZOrder		  2569
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3050,7 +3153,7 @@ Library {
 	  Position		  [935, 1231, 1115, 1284]
 	  ZOrder		  2570
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3071,7 +3174,7 @@ Library {
 	  Position		  [935, 1346, 1115, 1399]
 	  ZOrder		  2571
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3092,7 +3195,7 @@ Library {
 	  Position		  [935, 1461, 1115, 1514]
 	  ZOrder		  2572
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3113,7 +3216,7 @@ Library {
 	  Position		  [935, 1576, 1115, 1629]
 	  ZOrder		  2573
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3134,7 +3237,7 @@ Library {
 	  Position		  [935, 1691, 1115, 1744]
 	  ZOrder		  2574
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3155,7 +3258,7 @@ Library {
 	  Position		  [935, 1806, 1115, 1859]
 	  ZOrder		  2575
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3176,7 +3279,7 @@ Library {
 	  Position		  [935, 1921, 1115, 1974]
 	  ZOrder		  2602
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3197,7 +3300,7 @@ Library {
 	  Position		  [935, 2036, 1115, 2089]
 	  ZOrder		  2654
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3218,7 +3321,7 @@ Library {
 	  Position		  [935, 2151, 1115, 2204]
 	  ZOrder		  2655
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3239,7 +3342,7 @@ Library {
 	  Position		  [935, 196, 1115, 249]
 	  ZOrder		  2561
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3260,7 +3363,7 @@ Library {
 	  Position		  [935, 2266, 1115, 2319]
 	  ZOrder		  3909
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3281,7 +3384,7 @@ Library {
 	  Position		  [935, 311, 1115, 364]
 	  ZOrder		  2562
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3302,7 +3405,7 @@ Library {
 	  Position		  [935, 426, 1115, 479]
 	  ZOrder		  2563
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3323,7 +3426,7 @@ Library {
 	  Position		  [935, 541, 1115, 594]
 	  ZOrder		  2564
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3344,7 +3447,7 @@ Library {
 	  Position		  [935, 656, 1115, 709]
 	  ZOrder		  2565
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3365,7 +3468,7 @@ Library {
 	  Position		  [935, 771, 1115, 824]
 	  ZOrder		  2566
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3386,7 +3489,7 @@ Library {
 	  Position		  [935, 886, 1115, 939]
 	  ZOrder		  2567
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3407,7 +3510,7 @@ Library {
 	  Position		  [935, 1001, 1115, 1054]
 	  ZOrder		  2568
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -3424,21 +3527,42 @@ Library {
 	  BlockType		  GotoTagVisibility
 	  Name			  "Goto Tag\nVisibility"
 	  SID			  "980"
-	  Position		  [630, 1317, 701, 1335]
+	  Position		  [620, 802, 691, 820]
 	  ZOrder		  4002
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
 	}
 	Block {
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility1"
+	  SID			  "1041"
+	  Position		  [625, 1242, 691, 1260]
+	  ZOrder		  4069
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "981"
-	  Position		  [630, 1347, 700, 1363]
+	  Position		  [620, 832, 690, 848]
 	  ZOrder		  4001
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto6"
+	  SID			  "1042"
+	  Position		  [620, 1216, 695, 1234]
+	  ZOrder		  4068
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
 	  TagVisibility		  "scoped"
 	}
 	Block {
@@ -3773,19 +3897,19 @@ Library {
 	  Name			  "Mux"
 	  SID			  "982"
 	  Ports			  [4, 1]
-	  Position		  [590, 1275, 595, 1435]
+	  Position		  [580, 760, 585, 920]
 	  ZOrder		  4000
 	  ShowName		  off
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm1"
-	  SID			  "983"
+	  Name			  "OpComm2"
+	  SID			  "410"
 	  Ports			  [1, 1]
-	  Position		  [260, 1335, 330, 1375]
-	  ZOrder		  3996
-	  LibraryVersion	  "1.471"
+	  Position		  [240, 820, 310, 860]
+	  ZOrder		  2653
+	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
 	  nbport		  "1"
@@ -3806,15 +3930,15 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm2"
-	  SID			  "410"
-	  Ports			  [1, 1]
-	  Position		  [565, 1170, 635, 1210]
-	  ZOrder		  2653
-	  LibraryVersion	  "1.471"
+	  Name			  "OpComm3"
+	  SID			  "1043"
+	  Ports			  [2, 2]
+	  Position		  [380, 1173, 440, 1242]
+	  ZOrder		  4066
+	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "1"
+	  nbport		  "2"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -3840,7 +3964,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "4"
@@ -3856,7 +3980,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "3"
@@ -3872,7 +3996,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "11"
@@ -3888,7 +4012,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "12"
@@ -3904,7 +4028,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "13"
@@ -3920,7 +4044,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "14"
@@ -3936,7 +4060,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "15"
@@ -3952,7 +4076,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "16"
@@ -3968,7 +4092,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "17"
@@ -3984,7 +4108,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "18"
@@ -4000,7 +4124,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "19"
@@ -4016,7 +4140,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "20"
@@ -4032,7 +4156,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "2"
@@ -4048,7 +4172,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "1"
@@ -4064,7 +4188,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "5"
@@ -4080,7 +4204,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "6"
@@ -4096,7 +4220,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "7"
@@ -4112,7 +4236,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "8"
@@ -4128,7 +4252,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "9"
@@ -4144,7 +4268,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.525"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "10"
@@ -4157,6 +4281,30 @@ Library {
 	  Position		  [1470, 1183, 1500, 1197]
 	  ZOrder		  2603
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Bus to Vector1"
+	  SrcPort		  1
+	  DstBlock		  "Goto6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nSelector35"
+	  SrcPort		  1
+	  DstBlock		  "Bus to Vector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm3"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nSelector35"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GOOSE_TRIP"
+	  SrcPort		  1
+	  DstBlock		  "OpComm3"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Mux"
@@ -4211,7 +4359,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm1"
+	  SrcBlock		  "OpComm2"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
@@ -4219,7 +4367,7 @@ Library {
 	Line {
 	  SrcBlock		  "SC_CMD"
 	  SrcPort		  1
-	  DstBlock		  "OpComm1"
+	  DstBlock		  "OpComm2"
 	  DstPort		  1
 	}
 	Line {
@@ -4713,7 +4861,7 @@ Library {
 	Line {
 	  SrcBlock		  "F2_MS_IN"
 	  SrcPort		  1
-	  DstBlock		  "OpComm2"
+	  DstBlock		  "OpComm3"
 	  DstPort		  1
 	}
 	Line {
@@ -4961,7 +5109,7 @@ Library {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "OpComm2"
+	  SrcBlock		  "OpComm3"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector2"
 	  DstPort		  1
@@ -4990,13 +5138,13 @@ Library {
       BlockType		      SubSystem
       Name		      "SS_F3_RELAY_HOUSING"
       SID		      "43"
-      Ports		      [2, 1]
+      Ports		      [3, 1]
       Position		      [735, 457, 940, 533]
       ZOrder		      2600
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.70"
+      LibraryVersion	      "*1.73"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -5006,7 +5154,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_F3_RELAY_HOUSING"
-	Location		[-8, 0, 1924, 1056]
+	Location		[0, 0, 1292, 1036]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -5018,7 +5166,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"59"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F3_MS_IN"
@@ -5031,9 +5179,18 @@ Library {
 	  BlockType		  Inport
 	  Name			  "SC_CMD"
 	  SID			  "917"
-	  Position		  [185, 433, 215, 447]
+	  Position		  [220, 433, 250, 447]
 	  ZOrder		  3996
 	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GOOSE_TRIP"
+	  SID			  "1037"
+	  Position		  [250, 763, 280, 777]
+	  ZOrder		  4065
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -5142,6 +5299,17 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector35"
+	  SID			  "1032"
+	  Ports			  [1, 1]
+	  Position		  [450, 754, 455, 786]
+	  ZOrder		  4061
+	  ShowName		  off
+	  OutputSignals		  "NA,NA,NA,NA,NA,NA,F3.CB307,F3.CB308,F3.CB309,F3.CB310,PCC.CB300"
+	  OutputAsBus		  on
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector36"
 	  SID			  "919"
 	  Ports			  [1, 4]
@@ -5183,6 +5351,14 @@ Library {
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  BusToVector
+	  Name			  "Bus to Vector1"
+	  SID			  "1033"
+	  Position		  [480, 755, 535, 785]
+	  ZOrder		  4064
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "Generic_Relay_v2_1"
 	  SID			  "47"
@@ -5190,7 +5366,7 @@ Library {
 	  Position		  [945, 71, 1125, 124]
 	  ZOrder		  2431
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -5211,7 +5387,7 @@ Library {
 	  Position		  [945, 1371, 1125, 1424]
 	  ZOrder		  3910
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -5308,7 +5484,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "83331"
+	    SIDHighWatermark	    "83605"
 	    SIDPrevWatermark	    "82783"
 	    Block {
 	      BlockType		      Inport
@@ -10436,7 +10612,7 @@ Library {
 	  Position		  [945, 201, 1125, 254]
 	  ZOrder		  2432
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10457,7 +10633,7 @@ Library {
 	  Position		  [945, 331, 1125, 384]
 	  ZOrder		  2433
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10478,7 +10654,7 @@ Library {
 	  Position		  [945, 461, 1125, 514]
 	  ZOrder		  2434
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10499,7 +10675,7 @@ Library {
 	  Position		  [945, 591, 1125, 644]
 	  ZOrder		  2435
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10520,7 +10696,7 @@ Library {
 	  Position		  [945, 721, 1125, 774]
 	  ZOrder		  2436
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10541,7 +10717,7 @@ Library {
 	  Position		  [945, 851, 1125, 904]
 	  ZOrder		  2437
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10562,7 +10738,7 @@ Library {
 	  Position		  [950, 981, 1130, 1034]
 	  ZOrder		  2656
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10583,7 +10759,7 @@ Library {
 	  Position		  [950, 1111, 1130, 1164]
 	  ZOrder		  2657
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -10607,6 +10783,16 @@ Library {
 	  GotoTag		  "SignalsAll"
 	}
 	Block {
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility1"
+	  SID			  "1034"
+	  Position		  [590, 787, 656, 805]
+	  ZOrder		  4063
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto12"
 	  SID			  "922"
@@ -10615,6 +10801,17 @@ Library {
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto6"
+	  SID			  "1035"
+	  Position		  [585, 761, 660, 779]
+	  ZOrder		  4062
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
 	  TagVisibility		  "scoped"
 	}
 	Block {
@@ -10813,11 +11010,11 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm1"
-	  SID			  "924"
+	  Name			  "OpComm2"
+	  SID			  "411"
 	  Ports			  [1, 1]
-	  Position		  [275, 420, 345, 460]
-	  ZOrder		  3997
+	  Position		  [295, 422, 345, 458]
+	  ZOrder		  4066
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
@@ -10839,15 +11036,15 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpComm2"
-	  SID			  "411"
-	  Ports			  [1, 1]
-	  Position		  [340, 717, 390, 753]
-	  ZOrder		  2653
+	  Name			  "OpComm3"
+	  SID			  "1036"
+	  Ports			  [2, 2]
+	  Position		  [345, 718, 405, 787]
+	  ZOrder		  4059
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "1"
+	  nbport		  "2"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -10873,7 +11070,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "4"
@@ -10889,7 +11086,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "3"
@@ -10905,7 +11102,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "10"
@@ -10921,7 +11118,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "2"
@@ -10937,7 +11134,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "1"
@@ -10953,7 +11150,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "5"
@@ -10969,7 +11166,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "6"
@@ -10985,7 +11182,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "7"
@@ -11001,7 +11198,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "8"
@@ -11017,7 +11214,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "9"
@@ -11033,7 +11230,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "11"
@@ -11046,6 +11243,30 @@ Library {
 	  Position		  [1475, 728, 1505, 742]
 	  ZOrder		  2449
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Bus to Vector1"
+	  SrcPort		  1
+	  DstBlock		  "Goto6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nSelector35"
+	  SrcPort		  1
+	  DstBlock		  "Bus to Vector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm3"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nSelector35"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GOOSE_TRIP"
+	  SrcPort		  1
+	  DstBlock		  "OpComm3"
+	  DstPort		  2
 	}
 	Line {
 	  Name			  "<F3_PCC>"
@@ -11196,7 +11417,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm1"
+	  SrcBlock		  "OpComm2"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector20"
 	  DstPort		  1
@@ -11204,7 +11425,7 @@ Library {
 	Line {
 	  SrcBlock		  "SC_CMD"
 	  SrcPort		  1
-	  DstBlock		  "OpComm1"
+	  DstBlock		  "OpComm2"
 	  DstPort		  1
 	}
 	Line {
@@ -11424,7 +11645,7 @@ Library {
 	Line {
 	  SrcBlock		  "F3_MS_IN"
 	  SrcPort		  1
-	  DstBlock		  "OpComm2"
+	  DstBlock		  "OpComm3"
 	  DstPort		  1
 	}
 	Line {
@@ -11526,7 +11747,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpComm2"
+	  SrcBlock		  "OpComm3"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector1"
 	  DstPort		  1
@@ -11555,13 +11776,13 @@ Library {
       BlockType		      SubSystem
       Name		      "SS_F4_RELAY_HOUSING"
       SID		      "990"
-      Ports		      [2, 1]
+      Ports		      [3, 1]
       Position		      [1000, 457, 1205, 533]
       ZOrder		      3622
       BlockMirror	      on
-      ForegroundColor	      "cyan"
+      ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "cyan"
-      LibraryVersion	      "1.70"
+      LibraryVersion	      "*1.73"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -11571,7 +11792,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_F4_RELAY_HOUSING"
-	Location		[-8, 0, 1924, 1056]
+	Location		[0, 0, 1292, 1036]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -11583,7 +11804,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -11599,6 +11820,15 @@ Library {
 	  Position		  [280, 938, 310, 952]
 	  ZOrder		  3689
 	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GOOSE_TRIP"
+	  SID			  "1025"
+	  Position		  [380, 693, 410, 707]
+	  ZOrder		  3991
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -11709,6 +11939,25 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector35"
+	  SID			  "1026"
+	  Ports			  [1, 1]
+	  Position		  [595, 684, 600, 716]
+	  ZOrder		  4055
+	  ShowName		  off
+	  OutputSignals		  "F4.CB401,F4.CB402,F4.CB403,NA,F4.CB405,F4.CB406"
+	  OutputAsBus		  on
+	}
+	Block {
+	  BlockType		  BusToVector
+	  Name			  "Bus to Vector1"
+	  SID			  "1027"
+	  Position		  [625, 685, 680, 715]
+	  ZOrder		  4058
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  BusToVector
 	  Name			  "Bus to Vector2"
 	  SID			  "997"
@@ -11724,7 +11973,7 @@ Library {
 	  Position		  [1125, 326, 1305, 379]
 	  ZOrder		  2431
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11745,7 +11994,7 @@ Library {
 	  Position		  [1125, 456, 1305, 509]
 	  ZOrder		  2432
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11766,7 +12015,7 @@ Library {
 	  Position		  [1125, 586, 1305, 639]
 	  ZOrder		  3800
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11787,7 +12036,7 @@ Library {
 	  Position		  [1125, 716, 1305, 769]
 	  ZOrder		  3805
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11808,7 +12057,7 @@ Library {
 	  Position		  [1125, 846, 1305, 899]
 	  ZOrder		  3810
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11829,7 +12078,7 @@ Library {
 	  Position		  [1125, 976, 1305, 1029]
 	  ZOrder		  2436
 	  BackgroundColor	  "[0.909804, 0.819608, 0.321569]"
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/Generic_Relay_v2_1"
 	  SourceType		  "Generic Relay"
 	  Ts			  "Ts"
@@ -11853,6 +12102,16 @@ Library {
 	  GotoTag		  "SignalsAll"
 	}
 	Block {
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility1"
+	  SID			  "1028"
+	  Position		  [735, 717, 801, 735]
+	  ZOrder		  4057
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "1005"
@@ -11870,6 +12129,17 @@ Library {
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto6"
+	  SID			  "1029"
+	  Position		  [730, 691, 805, 709]
+	  ZOrder		  4056
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "FastShed"
 	  TagVisibility		  "scoped"
 	}
 	Block {
@@ -11991,10 +12261,10 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "OpComm1"
-	  SID			  "1015"
+	  SID			  "1030"
 	  Ports			  [1, 1]
-	  Position		  [370, 921, 430, 969]
-	  ZOrder		  3690
+	  Position		  [380, 910, 440, 980]
+	  ZOrder		  4059
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
@@ -12010,7 +12280,7 @@ Library {
 	  Sim_Time		  off
 	  Samples		  off
 	  dynSigOut		  off
-	  from_console		  "1"
+	  from_console		  "0"
 	  warning_done		  off
 	  writeOpCommFile	  off
 	}
@@ -12018,13 +12288,13 @@ Library {
 	  BlockType		  Reference
 	  Name			  "OpComm2"
 	  SID			  "1016"
-	  Ports			  [1, 1]
-	  Position		  [470, 636, 530, 694]
+	  Ports			  [2, 2]
+	  Position		  [470, 648, 530, 717]
 	  ZOrder		  2653
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
-	  nbport		  "1"
+	  nbport		  "2"
 	  groupe_acq		  "1"
 	  subsys_rate		  "0"
 	  st			  "0"
@@ -12050,7 +12320,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "2"
@@ -12066,7 +12336,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "5"
@@ -12082,7 +12352,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "1"
@@ -12147,7 +12417,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "150"
-	    SIDHighWatermark	    "82773"
+	    SIDHighWatermark	    "82779"
 	    SIDPrevWatermark	    "82773"
 	    Block {
 	      BlockType		      Inport
@@ -12274,7 +12544,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "4"
@@ -12290,7 +12560,7 @@ Library {
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
 	  ShowName		  off
-	  LibraryVersion	  "1.531"
+	  LibraryVersion	  "1.533"
 	  SourceBlock		  "relay_modbus_lib/SelectMockup"
 	  SourceType		  ""
 	  sigID			  "3"
@@ -12303,6 +12573,30 @@ Library {
 	  Position		  [1675, 583, 1705, 597]
 	  ZOrder		  2449
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Bus to Vector1"
+	  SrcPort		  1
+	  DstBlock		  "Goto6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nSelector35"
+	  SrcPort		  1
+	  DstBlock		  "Bus to Vector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm2"
+	  SrcPort		  2
+	  DstBlock		  "Bus\nSelector35"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GOOSE_TRIP"
+	  SrcPort		  1
+	  DstBlock		  "OpComm2"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "OpComm2"

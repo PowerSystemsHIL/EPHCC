@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jul 15 00:36:39 2017"
-  RTWModifiedTimeStamp	  421979794
-  ModelVersionFormat	  "1.%<AutoIncrement:531>"
+  LastModifiedDate	  "Fri Jul 21 16:43:10 2017"
+  RTWModifiedTimeStamp	  422556185
+  ModelVersionFormat	  "1.%<AutoIncrement:533>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -986,7 +986,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82783"
+    SIDHighWatermark	    "82787"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
@@ -6339,9 +6339,12 @@ Library {
       SID		      "82739"
       Ports		      [1, 1]
       Position		      [210, 342, 275, 378]
-      ZOrder		      3955
+      ZOrder		      3962
       BlockMirror	      on
+      BackgroundColor	      "darkGreen"
       NamePlacement	      "alternate"
+      ShowName		      off
+      LibraryVersion	      "*1.532"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -6369,14 +6372,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "sigN"
 	    Prompt		    "Signals count"
-	    Value		    "15"
+	    Value		    "6"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"SelectMockup"
-	Location		[-8, 0, 1924, 1056]
+	Location		[3, 1, 1922, 983]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -6388,33 +6391,66 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"124"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
 	  SID			  "82740"
-	  Position		  [150, 53, 180, 67]
+	  Position		  [150, 318, 180, 332]
 	  ZOrder		  3954
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "ForceOff"
+	  SID			  "82787"
+	  Position		  [450, 345, 480, 375]
+	  ZOrder		  4053
+	  Value			  "2"
 	}
 	Block {
 	  BlockType		  From
 	  Name			  "From4"
 	  SID			  "82741"
-	  Position		  [60, 26, 125, 44]
+	  Position		  [60, 291, 125, 309]
 	  ZOrder		  3957
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "SignalsAll"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From7"
+	  SID			  "82784"
+	  Position		  [65, 132, 135, 148]
+	  ZOrder		  4050
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "FastShed"
+	  TagVisibility		  "scoped"
 	}
 	Block {
 	  BlockType		  MultiPortSwitch
 	  Name			  "Multiport\nSwitch"
 	  SID			  "82742"
 	  Ports			  [3, 1]
-	  Position		  [345, 23, 380, 97]
+	  Position		  [385, 288, 420, 362]
 	  ZOrder		  3958
 	  ShowName		  off
+	  DataPortOrder		  "Zero-based contiguous"
+	  Inputs		  "2"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  MultiPortSwitch
+	  Name			  "Multiport\nSwitch1"
+	  SID			  "82786"
+	  Ports			  [3, 1]
+	  Position		  [510, 275, 540, 375]
+	  ZOrder		  4052
 	  DataPortOrder		  "Zero-based contiguous"
 	  Inputs		  "2"
 	  InputSameDT		  off
@@ -6425,7 +6461,7 @@ Library {
 	  Name			  "Selector"
 	  SID			  "82743"
 	  Ports			  [1, 1]
-	  Position		  [165, 23, 195, 47]
+	  Position		  [165, 288, 195, 312]
 	  ZOrder		  3959
 	  ShowName		  off
 	  InputPortWidth	  "sigN+3"
@@ -6444,27 +6480,79 @@ Library {
 	  Name			  "Selector1"
 	  SID			  "82744"
 	  Ports			  [1, 1]
-	  Position		  [170, 105, 270, 345]
+	  Position		  [170, 370, 270, 610]
 	  ZOrder		  3960
 	  ShowName		  off
 	  InputPortWidth	  "sigN+3"
 	  IndexOptions		  "Index vector (dialog)"
 	  Indices		  "[2  sigID+3 3]"
 	  OutputSizes		  "1"
+	  Port {
+	    PortNumber		    1
+	    Name		    "OpMode"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Selector
+	  Name			  "Selector2"
+	  SID			  "82785"
+	  Ports			  [1, 1]
+	  Position		  [170, 20, 270, 260]
+	  ZOrder		  4051
+	  ShowName		  off
+	  InputPortWidth	  "sigN"
+	  IndexOptions		  "Index vector (dialog)"
+	  Indices		  "[sigID]"
+	  OutputSizes		  "1"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FastShedSignal"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "Out1"
 	  SID			  "82745"
-	  Position		  [420, 53, 450, 67]
+	  Position		  [680, 318, 710, 332]
 	  ZOrder		  3955
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Multiport\nSwitch"
+	  SrcBlock		  "Multiport\nSwitch1"
 	  SrcPort		  1
 	  DstBlock		  "Out1"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ForceOff"
+	  SrcPort		  1
+	  DstBlock		  "Multiport\nSwitch1"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "FastShedSignal"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Selector2"
+	  SrcPort		  1
+	  Points		  [212, 0; 0, 150]
+	  DstBlock		  "Multiport\nSwitch1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From7"
+	  SrcPort		  1
+	  DstBlock		  "Selector2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Multiport\nSwitch"
+	  SrcPort		  1
+	  DstBlock		  "Multiport\nSwitch1"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "In1"
@@ -6495,9 +6583,11 @@ Library {
 	  DstPort		  1
 	}
 	Line {
+	  Name			  "OpMode"
+	  Labels		  [0, 0]
 	  SrcBlock		  "Selector1"
 	  SrcPort		  1
-	  Points		  [30, 0; 0, -140]
+	  Points		  [36, 0; 0, -140]
 	  DstBlock		  "Multiport\nSwitch"
 	  DstPort		  3
 	}
