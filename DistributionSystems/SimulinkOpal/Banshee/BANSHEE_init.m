@@ -37,7 +37,9 @@ cable_impedance_init;
 
 %% adds the component folders to the path
 % eventually, Opal-RT may need to include flexibility to use subfolders in a development
-components_path_init;
+% components_path_init;
+% Components should be permanently added to matlab library by opening project in \SimulationTools\SimulinkOpal\HIL.prj
+% and then saving paths
 
 %% add DER modbus interface configuration files path
 addpath('der_configuration_files');
