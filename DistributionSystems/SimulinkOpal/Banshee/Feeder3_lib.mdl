@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jul 17 14:09:09 2017"
-  RTWModifiedTimeStamp	  422201337
-  ModelVersionFormat	  "1.%<AutoIncrement:45>"
+  LastModifiedDate	  "Tue Jul 25 11:10:17 2017"
+  RTWModifiedTimeStamp	  422881810
+  ModelVersionFormat	  "1.%<AutoIncrement:46>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -723,6 +723,17 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -820,6 +831,21 @@ Library {
       BlockType		      PMIOPort
     }
     Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -878,7 +904,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "825"
+    SIDHighWatermark	    "830"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -887,7 +913,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.44"
+      LibraryVersion	      "*1.45"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -897,7 +923,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[-8, 0, 1924, 1056]
+	Location		[0, 0, 1335, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1625,6 +1651,16 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector23"
+	  SID			  "830"
+	  Ports			  [1, 1]
+	  Position		  [3060, 1491, 3065, 1529]
+	  ZOrder		  3950
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector3"
 	  SID			  "88"
 	  Ports			  [1, 1]
@@ -1939,6 +1975,16 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "826"
+	  Position		  [3085, 1493, 3160, 1527]
+	  ZOrder		  3947
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "806"
@@ -1970,7 +2016,7 @@ Library {
 	  Position		  [2165, 3558, 2220, 3642]
 	  ZOrder		  1842
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1984,7 +2030,7 @@ Library {
 	  Position		  [2135, 1268, 2190, 1352]
 	  ZOrder		  3919
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1998,7 +2044,7 @@ Library {
 	  Position		  [2945, 2753, 3000, 2837]
 	  ZOrder		  1844
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2012,7 +2058,7 @@ Library {
 	  Position		  [2475, 2138, 2530, 2222]
 	  ZOrder		  1845
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2026,7 +2072,7 @@ Library {
 	  Position		  [2135, 1638, 2190, 1722]
 	  ZOrder		  1846
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2040,7 +2086,7 @@ Library {
 	  Position		  [3075, 3838, 3130, 3922]
 	  ZOrder		  2023
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2054,7 +2100,7 @@ Library {
 	  Position		  [3590, 3358, 3645, 3442]
 	  ZOrder		  2024
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2068,7 +2114,7 @@ Library {
 	  Position		  [3925, 2738, 3985, 2832]
 	  ZOrder		  3548
 	  BackgroundColor	  "[0.000000, 0.666667, 0.000000]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/FLS_CB"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2082,7 +2128,7 @@ Library {
 	  Position		  [4335, 3343, 4395, 3437]
 	  ZOrder		  3551
 	  BackgroundColor	  "[0.000000, 0.666667, 0.000000]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/FLS_CB"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2096,7 +2142,7 @@ Library {
 	  Position		  [3435, 1628, 3495, 1722]
 	  ZOrder		  3545
 	  BackgroundColor	  "[0.000000, 0.666667, 0.000000]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/FLS_CB"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2110,7 +2156,7 @@ Library {
 	  Position		  [1175, 2558, 1230, 2642]
 	  ZOrder		  1852
 	  BackgroundColor	  "lightBlue"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -2617,9 +2663,9 @@ Library {
 	Block {
 	  BlockType		  From
 	  Name			  "From42"
-	  SID			  "808"
-	  Position		  [3200, 1430, 3270, 1450]
-	  ZOrder		  3938
+	  SID			  "827"
+	  Position		  [3100, 1450, 3170, 1470]
+	  ZOrder		  3946
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "PHIL_I"
@@ -2634,6 +2680,23 @@ Library {
 	  CloseFcn		  "tagdialog Close"
 	  GotoTag		  "V_PHIL"
 	  TagVisibility		  "global"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From44"
+	  SID			  "829"
+	  Position		  [2935, 1500, 3010, 1520]
+	  ZOrder		  3949
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_CB_10"
+	  Port {
+	    PortNumber		    1
+	    PropagatedSignals	    "Status"
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -3502,7 +3565,7 @@ Library {
 	      Position		      [820, 640, 1090, 805]
 	      ZOrder		      3902
 	      BackgroundColor	      "[0.501961, 0.949020, 0.050980]"
-	      LibraryVersion	      "1.50"
+	      LibraryVersion	      "1.52"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/GenSet"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -3525,7 +3588,7 @@ Library {
 	      BlockMirror	      on
 	      BackgroundColor	      "yellow"
 	      NamePlacement	      "alternate"
-	      LibraryVersion	      "1.531"
+	      LibraryVersion	      "1.533"
 	      SourceBlock	      "relay_modbus_lib/Generic_Relay_v2_1"
 	      SourceType	      "Generic Relay"
 	      Ts		      "Ts"
@@ -3576,7 +3639,7 @@ Library {
 	      ZOrder		      3666
 	      ForegroundColor	      "red"
 	      BackgroundColor	      "yellow"
-	      LibraryVersion	      "1.50"
+	      LibraryVersion	      "1.52"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/Simulated\nGenerator Controller"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -4203,6 +4266,18 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  "828"
+	  Ports			  [2, 1]
+	  Position		  [3205, 1452, 3235, 1483]
+	  ZOrder		  3948
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Repetative "
 	  SID			  "452"
@@ -4578,6 +4653,32 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "Bus\nSelector23"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  Points		  [25, 0]
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From42"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  1
+	}
+	Line {
+	  Labels		  [0, 0]
+	  SrcBlock		  "From44"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector23"
+	  DstPort		  1
+	}
+	Line {
 	  LineType		  "Connection"
 	  SrcBlock		  "2500 kVA1"
 	  SrcPort		  LConn3
@@ -4638,9 +4739,9 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From42"
+	  SrcBlock		  "Product"
 	  SrcPort		  1
-	  Points		  [25, 0]
+	  Points		  [60, 0]
 	  DstBlock		  "I_ratio"
 	  DstPort		  1
 	}
