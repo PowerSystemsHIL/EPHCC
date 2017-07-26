@@ -10,7 +10,7 @@
       <Interface><![CDATA[PROGRAM UDPBansheeRead
 VAR
 // Configuration Information
-CONSTANT MaxN  : UINT := 400;
+CONSTANT MaxN  : UINT := 500;
 END_VAR
 VAR
 // Configuration Information
@@ -38,12 +38,14 @@ pTempSwap : POINTER TO ARRAY[1..4] OF BYTE;
 uWdg : UINT := 0;
 bWdgDataValid : SEL_IEC_TYPES.validity_t := invalid;
 
-BRK_CNT : UINT := 49;
+BRK_CNT : UINT := 59;
 REAL_ID : UINT := 38;
-REACT_ID : UINT := 87; //REAL_ID + BRK_CNT;
-VPU_ID : UINT := 136;
-FREQ_ID : UINT := 185;
-STATUS_ID : UINT := 234; //REAL_ID + 4*BRK_CNT;
+REACT_ID : UINT := REAL_ID + BRK_CNT;
+VPU_ID : UINT := REACT_ID + BRK_CNT;
+FREQ_ID : UINT := VPU_ID + BRK_CNT;
+STATUS_ID : UINT := FREQ_ID + BRK_CNT;; //REAL_ID + 4*BRK_CNT;
+LOADS_REAL : UINT := 340;
+
 END_VAR]]></Interface>
       <Implementation><![CDATA[IF NOT SocketInitialized THEN
 fun_StringToInaddr(LocalIPAddress, ipAddr => LocalIP);
