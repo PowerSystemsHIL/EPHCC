@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[14]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Jul 17 00:56:56 2017"
-  RTWModifiedTimeStamp	  422153810
-  ModelVersionFormat	  "1.%<AutoIncrement:20>"
+  LastModifiedDate	  "Wed Jul 26 14:02:56 2017"
+  RTWModifiedTimeStamp	  422978574
+  ModelVersionFormat	  "1.%<AutoIncrement:21>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -975,16 +975,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "352"
+    SIDHighWatermark	    "354"
     Block {
       BlockType		      SubSystem
       Name		      "R25 - Sync Check v0.1"
       SID		      "176"
-      Ports		      [5, 2]
-      Position		      [845, 234, 1045, 386]
+      Ports		      [6, 2]
+      Position		      [845, 236, 1045, 389]
       ZOrder		      3172
       BackgroundColor	      "gray"
-      LibraryVersion	      "1.19"
+      LibraryVersion	      "*1.20"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1020,7 +1020,7 @@ Library {
       }
       System {
 	Name			"R25 - Sync Check v0.1"
-	Location		[960, 0, 1920, 1040]
+	Location		[0, 0, 1611, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1032,12 +1032,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "VPKLN_bus"
 	  SID			  "177"
-	  Position		  [20, 433, 50, 447]
+	  Position		  [115, 403, 145, 417]
 	  ZOrder		  -1
 	  IconDisplay		  "Port number"
 	}
@@ -1045,7 +1045,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "VPKLN_line"
 	  SID			  "178"
-	  Position		  [20, 528, 50, 542]
+	  Position		  [115, 498, 145, 512]
 	  ZOrder		  -1
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1076,6 +1076,15 @@ Library {
 	  Position		  [215, 223, 245, 237]
 	  ZOrder		  1589
 	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "pll_data"
+	  SID			  "353"
+	  Position		  [375, 568, 405, 582]
+	  ZOrder		  3508
+	  Port			  "6"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1127,11 +1136,45 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "354"
+	  Ports			  [1, 4]
+	  Position		  [455, 538, 460, 612]
+	  ZOrder		  3509
+	  ShowName		  off
+	  OutputSignals		  "freq_bus,freq_line,wt_bus,wt_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<freq_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<freq_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<wt_bus>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<wt_line>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "183"
 	  Ports			  [1, 3]
-	  Position		  [75, 404, 80, 476]
+	  Position		  [170, 374, 175, 446]
 	  ZOrder		  -6
 	  ForegroundColor	  "orange"
 	  ShowName		  off
@@ -1149,7 +1192,7 @@ Library {
 	  Name			  "Demux1"
 	  SID			  "184"
 	  Ports			  [1, 3]
-	  Position		  [75, 499, 80, 571]
+	  Position		  [170, 469, 175, 541]
 	  ZOrder		  -6
 	  ForegroundColor	  "orange"
 	  ShowName		  off
@@ -1217,7 +1260,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Freq_Comparator"
-	    Location		    [0, 0, 960, 1040]
+	    Location		    [0, 0, 1611, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1377,15 +1420,6 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From1"
-	  SID			  "196"
-	  Position		  [240, 596, 305, 614]
-	  ZOrder		  1596
-	  ShowName		  off
-	  GotoTag		  "VRMSLL"
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From2"
 	  SID			  "197"
 	  Position		  [565, 531, 650, 549]
@@ -1529,7 +1563,7 @@ Library {
 	  Name			  "Mux1"
 	  SID			  "208"
 	  Ports			  [2, 1]
-	  Position		  [300, 405, 305, 445]
+	  Position		  [310, 375, 315, 415]
 	  ZOrder		  -12
 	  ShowName		  off
 	  Inputs		  "2"
@@ -1979,7 +2013,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator5"
 	  SID			  "231"
-	  Position		  [140, 550, 160, 570]
+	  Position		  [235, 520, 255, 540]
 	  ZOrder		  -20
 	  ShowName		  off
 	}
@@ -1987,7 +2021,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator6"
 	  SID			  "232"
-	  Position		  [140, 525, 160, 545]
+	  Position		  [235, 495, 255, 515]
 	  ZOrder		  -20
 	  ShowName		  off
 	}
@@ -1995,7 +2029,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator7"
 	  SID			  "233"
-	  Position		  [140, 430, 160, 450]
+	  Position		  [235, 400, 255, 420]
 	  ZOrder		  -20
 	  ShowName		  off
 	}
@@ -2003,7 +2037,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator8"
 	  SID			  "234"
-	  Position		  [140, 455, 160, 475]
+	  Position		  [235, 425, 255, 445]
 	  ZOrder		  -20
 	  ShowName		  off
 	}
@@ -2313,7 +2347,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "196"
+	    SIDHighWatermark	    "208"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -2343,20 +2377,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "247::195"
+	      SID		      "247::207"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      60
+	      ZOrder		      65
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "247::194"
+	      SID		      "247::206"
 	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 3"
 	      Ports		      [3, 2]
 	      Position		      [180, 100, 230, 180]
-	      ZOrder		      59
+	      ZOrder		      64
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[3 2]"
 	      EnableBusSupport	      off
@@ -2370,9 +2404,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "247::196"
+	      SID		      "247::208"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      61
+	      ZOrder		      66
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -2419,249 +2453,6 @@ Library {
 	      SrcPort		      1
 	      Points		      [20, 0]
 	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "set of 1ph PLLs"
-	  SID			  "248"
-	  Ports			  [3, 4]
-	  Position		  [365, 533, 465, 617]
-	  ZOrder		  -17
-	  BackgroundColor	  "magenta"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "set of 1ph PLLs"
-	    Location		    [0, 0, 1408, 1160]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "234"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "V_bus"
-	      SID		      "249"
-	      Position		      [65, 93, 95, 107]
-	      ZOrder		      -1
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "V_line"
-	      SID		      "250"
-	      Position		      [65, 253, 95, 267]
-	      ZOrder		      -1
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "VRMSLL"
-	      SID		      "251"
-	      Position		      [65, 333, 95, 347]
-	      ZOrder		      4
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "Discrete\n1-phase PLL"
-	      SID		      "252"
-	      Ports		      [1, 3]
-	      Position		      [340, 233, 405, 307]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.664"
-	      FontName		      "Verdana"
-	      FontSize		      11
-	      SourceBlock	      "powerlib_extras/Discrete \nControl Blocks/Discrete\n1-phase PLL"
-	      SourceType	      "Discrete 1-phase PLL"
-	      Fmin		      "45"
-	      Par_Init		      "[0 60]"
-	      ParK		      "[ 180 3200 1]"
-	      Ts		      "Ts"
-	      AGC		      on
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "Discrete\n1-phase PLL1"
-	      SID		      "253"
-	      Ports		      [1, 3]
-	      Position		      [335, 73, 400, 147]
-	      ZOrder		      -1
-	      LibraryVersion	      "1.664"
-	      FontName		      "Verdana"
-	      FontSize		      11
-	      SourceBlock	      "powerlib_extras/Discrete \nControl Blocks/Discrete\n1-phase PLL"
-	      SourceType	      "Discrete 1-phase PLL"
-	      Fmin		      "45"
-	      Par_Init		      "[0 60]"
-	      ParK		      "[ 180 3200 1]"
-	      Ts		      "Ts"
-	      AGC		      on
-	    }
-	    Block {
-	      BlockType		      Product
-	      Name		      "Divide"
-	      SID		      "254"
-	      Ports		      [2, 1]
-	      Position		      [215, 252, 245, 283]
-	      ZOrder		      1
-	      Inputs		      "*/"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      RndMeth		      "Floor"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Product
-	      Name		      "Divide1"
-	      SID		      "255"
-	      Ports		      [2, 1]
-	      Position		      [205, 92, 235, 123]
-	      ZOrder		      5
-	      Inputs		      "*/"
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      RndMeth		      "Floor"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator"
-	      SID		      "256"
-	      Position		      [440, 285, 460, 305]
-	      ZOrder		      -20
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      "Terminator1"
-	      SID		      "257"
-	      Position		      [430, 125, 450, 145]
-	      ZOrder		      -20
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "f_bus"
-	      SID		      "258"
-	      Position		      [515, 78, 545, 92]
-	      ZOrder		      -2
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "f_line"
-	      SID		      "259"
-	      Position		      [515, 238, 545, 252]
-	      ZOrder		      -2
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "wt_bus"
-	      SID		      "260"
-	      Position		      [475, 103, 505, 117]
-	      ZOrder		      -2
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "wt_line"
-	      SID		      "261"
-	      Position		      [480, 263, 510, 277]
-	      ZOrder		      -2
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      3
-	      DstBlock		      "Terminator1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL"
-	      SrcPort		      3
-	      DstBlock		      "Terminator"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL"
-	      SrcPort		      2
-	      DstBlock		      "wt_line"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL"
-	      SrcPort		      1
-	      DstBlock		      "f_line"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      2
-	      DstBlock		      "wt_bus"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete\n1-phase PLL1"
-	      SrcPort		      1
-	      DstBlock		      "f_bus"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "VRMSLL"
-	      SrcPort		      1
-	      Points		      [74, 0; 0, -65]
-	      Branch {
-		DstBlock		"Divide"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, -160]
-		DstBlock		"Divide1"
-		DstPort			2
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "Divide"
-	      SrcPort		      1
-	      DstBlock		      "Discrete\n1-phase PLL"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "V_line"
-	      SrcPort		      1
-	      DstBlock		      "Divide"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Divide1"
-	      SrcPort		      1
-	      DstBlock		      "Discrete\n1-phase PLL1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "V_bus"
-	      SrcPort		      1
-	      DstBlock		      "Divide1"
 	      DstPort		      1
 	    }
 	  }
@@ -2969,6 +2760,12 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "pll_data"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
 	  Name			  "dV&dF&dW"
 	  SrcBlock		  "Logical\nOperator"
 	  SrcPort		  1
@@ -3024,33 +2821,17 @@ Library {
 	Line {
 	  SrcBlock		  "Demux1"
 	  SrcPort		  1
-	  Points		  [123, 0]
-	  Branch {
-	    Points		    [60, 0; 0, -75]
-	    DstBlock		    "Mux1"
-	    DstPort		    2
-	  }
-	  Branch {
-	    Points		    [0, 65]
-	    DstBlock		    "set of 1ph PLLs"
-	    DstPort		    2
-	  }
+	  Points		  [98, 0; 0, -75]
+	  DstBlock		  "Mux1"
+	  DstPort		  2
 	}
 	Line {
 	  Name			  "a_sys"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Demux"
 	  SrcPort		  1
-	  Points		  [155, 0]
-	  Branch {
-	    Points		    [0, 130]
-	    DstBlock		    "set of 1ph PLLs"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Mux1"
-	    DstPort		    1
-	  }
+	  DstBlock		  "Mux1"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "vbus"
@@ -3069,30 +2850,38 @@ Library {
 	  }
 	}
 	Line {
-	  SrcBlock		  "set of 1ph PLLs"
+	  Name			  "<freq_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  1
-	  Points		  [37, 0; 0, -35]
+	  Points		  [29, 0; 0, -35]
 	  DstBlock		  "Freq_Comparator"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "set of 1ph PLLs"
+	  Name			  "<freq_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  2
-	  Points		  [57, 0; 0, -40]
+	  Points		  [64, 0; 0, -40]
 	  DstBlock		  "Freq_Comparator"
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "set of 1ph PLLs"
+	  Name			  "<wt_bus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  3
-	  Points		  [57, 0; 0, 55]
+	  Points		  [80, 0; 0, 55]
 	  DstBlock		  "Phase_Comparator"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "set of 1ph PLLs"
+	  Name			  "<wt_line>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  4
-	  Points		  [35, 0; 0, 50]
+	  Points		  [38, 0; 0, 50]
 	  DstBlock		  "Phase_Comparator"
 	  DstPort		  2
 	}
@@ -3147,7 +2936,6 @@ Library {
 	Line {
 	  SrcBlock		  "Mux1"
 	  SrcPort		  1
-	  Points		  [12, 0; 0, -30]
 	  DstBlock		  "RMS_Calculator"
 	  DstPort		  1
 	}
@@ -3229,12 +3017,6 @@ Library {
 	  SrcPort		  4
 	  DstBlock		  "Goto3"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "set of 1ph PLLs"
-	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "From2"

@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 21 16:43:10 2017"
-  RTWModifiedTimeStamp	  422556185
-  ModelVersionFormat	  "1.%<AutoIncrement:533>"
+  LastModifiedDate	  "Wed Jul 26 14:03:16 2017"
+  RTWModifiedTimeStamp	  422978585
+  ModelVersionFormat	  "1.%<AutoIncrement:534>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -986,16 +986,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82787"
+    SIDHighWatermark	    "82802"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      2431
-      BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.530"
+      ZOrder		      2436
+      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
+      LibraryVersion	      "*1.533"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1043,14 +1043,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[F1(1,:)]"
+	    Value		    "[F4(6,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[960, 0, 1920, 1040]
+	Location		[0, 0, 1611, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1062,7 +1062,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -1133,6 +1133,16 @@ Library {
 	  ZOrder		  -2
 	  ShowName		  off
 	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator3"
+	  SID			  "82798"
+	  Ports			  [4, 1]
+	  Position		  [1495, 171, 1500, 289]
+	  ZOrder		  3557
+	  ShowName		  off
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1251,6 +1261,25 @@ Library {
 	  Ports			  [1, 3]
 	  Position		  [1095, 442, 1170, 518]
 	  ZOrder		  -5
+	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
+	  LibraryVersion	  "1.4"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "relay_PLL_lib/CS Modified PLL"
+	  SourceType		  "Discrete 3-phase PLL"
+	  Flim			  "[55 66]"
+	  Par_Init		  "[0 60]"
+	  ParK			  "[ 180 3200 1 ]"
+	  Ts			  "Ts"
+	  AGC			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CS Modified PLL2"
+	  SID			  "82788"
+	  Ports			  [1, 3]
+	  Position		  [1095, 172, 1170, 248]
+	  ZOrder		  3547
 	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
 	  LibraryVersion	  "1.4"
 	  FontName		  "Verdana"
@@ -1384,7 +1413,7 @@ Library {
 	  Name			  "Delay"
 	  SID			  "82718"
 	  Ports			  [1, 1]
-	  Position		  [2960, 563, 2985, 587]
+	  Position		  [2960, 553, 2985, 577]
 	  ZOrder		  3524
 	  ShowName		  off
 	  InputPortMap		  "u0"
@@ -1498,6 +1527,19 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Divide3"
+	  SID			  "82791"
+	  Ports			  [2, 1]
+	  Position		  [985, 192, 1015, 223]
+	  ZOrder		  3550
+	  Inputs		  "*/"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  From
@@ -1627,6 +1669,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "kw"
+	    PropagatedSignals	    "kw"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1642,6 +1685,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "kvar"
+	    PropagatedSignals	    "kvar"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1934,7 +1978,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From47"
 	  SID			  "82379"
-	  Position		  [2905, 596, 2985, 614]
+	  Position		  [2905, 586, 2985, 604]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "op_mode"
@@ -2153,7 +2197,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From66"
 	  SID			  "82578"
-	  Position		  [2905, 625, 3010, 645]
+	  Position		  [2905, 615, 3010, 635]
 	  ZOrder		  1605
 	  ShowName		  off
 	  GotoTag		  "RELAY_PARAM"
@@ -2281,12 +2325,101 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From78"
+	  SID			  "82789"
+	  Position		  [870, 191, 935, 209]
+	  ZOrder		  3548
+	  ShowName		  off
+	  GotoTag		  "Vabc_line"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From79"
+	  SID			  "82790"
+	  Position		  [870, 221, 935, 239]
+	  ZOrder		  3549
+	  ShowName		  off
+	  GotoTag		  "VRMSLL"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From8"
 	  SID			  "82400"
 	  Position		  [905, 457, 975, 483]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Iabc"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From80"
+	  SID			  "82796"
+	  Position		  [2905, 647, 2990, 663]
+	  ZOrder		  3555
+	  ShowName		  off
+	  GotoTag		  "PLL_data"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From81"
+	  SID			  "82799"
+	  Position		  [1340, 177, 1415, 193]
+	  ZOrder		  3558
+	  ShowName		  off
+	  GotoTag		  "freq"
+	  Port {
+	    PortNumber		    1
+	    Name		    "freq_bus"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From82"
+	  SID			  "82800"
+	  Position		  [1340, 207, 1415, 223]
+	  ZOrder		  3559
+	  ShowName		  off
+	  GotoTag		  "freq_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "freq_line"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From83"
+	  SID			  "82801"
+	  Position		  [1340, 237, 1415, 253]
+	  ZOrder		  3560
+	  ShowName		  off
+	  GotoTag		  "wt"
+	  Port {
+	    PortNumber		    1
+	    Name		    "wt_bus"
+	    PropagatedSignals	    "wt"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From84"
+	  SID			  "82802"
+	  Position		  [1340, 267, 1415, 283]
+	  ZOrder		  3561
+	  ShowName		  off
+	  GotoTag		  "wt_line"
+	  Port {
+	    PortNumber		    1
+	    Name		    "wt_line"
+	    PropagatedSignals	    "wt"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -2722,7 +2855,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  "82436"
-	  Position		  [1225, 312, 1275, 328]
+	  Position		  [1270, 312, 1320, 328]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "freq"
@@ -3002,12 +3135,48 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto48"
+	  SID			  "82792"
+	  Position		  [1225, 177, 1300, 193]
+	  ZOrder		  3551
+	  ShowName		  off
+	  GotoTag		  "freq_line"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto49"
+	  SID			  "82793"
+	  Position		  [1225, 202, 1300, 218]
+	  ZOrder		  3552
+	  ShowName		  off
+	  GotoTag		  "wt_line"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto5"
 	  SID			  "82457"
 	  Position		  [730, 1002, 780, 1018]
 	  ZOrder		  -10
 	  ShowName		  off
 	  GotoTag		  "Q"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto50"
+	  SID			  "82794"
+	  Position		  [1265, 337, 1340, 353]
+	  ZOrder		  3553
+	  ShowName		  off
+	  GotoTag		  "wt"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto51"
+	  SID			  "82797"
+	  Position		  [1555, 222, 1630, 238]
+	  ZOrder		  3556
+	  ShowName		  off
+	  GotoTag		  "PLL_data"
 	}
 	Block {
 	  BlockType		  Goto
@@ -3632,11 +3801,11 @@ Library {
 	  BlockType		  Reference
 	  Name			  "R25 - Sync Check v0.1"
 	  SID			  "82674"
-	  Ports			  [5, 2]
-	  Position		  [3040, 499, 3240, 651]
+	  Ports			  [6, 2]
+	  Position		  [3040, 493, 3240, 667]
 	  ZOrder		  3172
 	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.19"
+	  LibraryVersion	  "1.21"
 	  SourceBlock		  "relay_ANSI_F25_lib/R25 - Sync Check v0.1"
 	  SourceType		  "Relay synch check"
 	  Ts			  "Ts"
@@ -3886,6 +4055,14 @@ Library {
 	}
 	Block {
 	  BlockType		  Terminator
+	  Name			  "Terminator10"
+	  SID			  "82795"
+	  Position		  [1205, 225, 1225, 245]
+	  ZOrder		  3554
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
 	  Name			  "Terminator2"
 	  SID			  "82527"
 	  Position		  [1210, 495, 1230, 515]
@@ -3952,7 +4129,7 @@ Library {
 	  BlockType		  From
 	  Name			  "Vabc_bus1"
 	  SID			  "82528"
-	  Position		  [2905, 507, 2970, 523]
+	  Position		  [2905, 497, 2970, 513]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Vabc"
@@ -3961,7 +4138,7 @@ Library {
 	  BlockType		  From
 	  Name			  "Vabc_bus2"
 	  SID			  "82529"
-	  Position		  [2905, 537, 2970, 553]
+	  Position		  [2905, 527, 2970, 543]
 	  ZOrder		  -9
 	  ShowName		  off
 	  GotoTag		  "Vabc_line"
@@ -4569,6 +4746,87 @@ Library {
 	  ZOrder		  -23
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "wt_line"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From84"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator3"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "wt_bus"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From83"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator3"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "freq_line"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From82"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator3"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "freq_bus"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From81"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator3"
+	  SrcPort		  1
+	  DstBlock		  "Goto51"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From80"
+	  SrcPort		  1
+	  DstBlock		  "R25 - Sync Check v0.1"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "CS Modified PLL2"
+	  SrcPort		  3
+	  DstBlock		  "Terminator10"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "CS Modified PLL2"
+	  SrcPort		  2
+	  DstBlock		  "Goto49"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "CS Modified PLL2"
+	  SrcPort		  1
+	  DstBlock		  "Goto48"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Divide3"
+	  SrcPort		  1
+	  DstBlock		  "CS Modified PLL2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From79"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -15]
+	  DstBlock		  "Divide3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From78"
+	  SrcPort		  1
+	  DstBlock		  "Divide3"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "dWt"
@@ -5503,9 +5761,16 @@ Library {
 	Line {
 	  SrcBlock		  "CS Modified PLL"
 	  SrcPort		  2
-	  Points		  [90, 0]
-	  DstBlock		  "Sum2"
-	  DstPort		  1
+	  Points		  [71, 0]
+	  Branch {
+	    Points		    [0, 110]
+	    DstBlock		    "Sum2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Goto50"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "CS Modified PLL"
@@ -5537,7 +5802,7 @@ Library {
 	    DstPort		    3
 	  }
 	  Branch {
-	    Points		    [0, -110]
+	    Points		    [0, -120]
 	    DstBlock		    "Delay"
 	    DstPort		    1
 	  }
@@ -5555,7 +5820,7 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "R25 - Sync Check v0.1"
 	  SrcPort		  2
-	  Points		  [50, 0]
+	  Points		  [50, 0; 0, -10]
 	  Branch {
 	    DstBlock		    "State Condition Mng"
 	    DstPort		    1
