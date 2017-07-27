@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 21 09:18:07 2017"
-  RTWModifiedTimeStamp	  422529484
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Thu Jul 27 14:06:31 2017"
+  RTWModifiedTimeStamp	  423065186
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -707,44 +707,10 @@ Library {
       OutputAsBus	      off
     }
     Block {
-      BlockType		      Constant
-      Value		      "1"
-      VectorParams1D	      on
-      SamplingMode	      "Sample based"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
-      LockScale		      off
-      SampleTime	      "inf"
-      FramePeriod	      "inf"
-      PreserveConstantTs      off
-    }
-    Block {
-      BlockType		      Demux
-      Outputs		      "4"
-      DisplayOption	      "none"
-      BusSelectionMode	      off
-    }
-    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
       TagVisibility	      "local"
-    }
-    Block {
-      BlockType		      Gain
-      Gain		      "1"
-      Multiplication	      "Element-wise(K.*u)"
-      ParamMin		      "[]"
-      ParamMax		      "[]"
-      ParamDataTypeStr	      "Inherit: Same as input"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
     }
     Block {
       BlockType		      Goto
@@ -778,32 +744,6 @@ Library {
       AllPortsSameDT	      on
       OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
       SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Memory
-      X0		      "0"
-      InheritSampleTime	      off
-      LinearizeMemory	      off
-      LinearizeAsDelay	      off
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
-    }
-    Block {
-      BlockType		      Outport
-      Port		      "1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: auto"
-      LockScale		      off
-      BusOutputAsStruct	      off
-      PortDimensions	      "-1"
-      VarSizeSig	      "Inherit"
-      SampleTime	      "-1"
-      SignalType	      "auto"
-      SamplingMode	      "auto"
-      SourceOfInitialOutputValue "Dialog"
-      OutputWhenDisabled      "held"
-      InitialOutput	      "[]"
     }
     Block {
       BlockType		      PMIOPort
@@ -840,22 +780,6 @@ Library {
       GeneratePreprocessorConditionals off
     }
     Block {
-      BlockType		      Sum
-      IconShape		      "rectangular"
-      Inputs		      "++"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Terminator
     }
   }
@@ -875,17 +799,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "60"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2492"
+    SIDHighWatermark	    "2499"
     Block {
       BlockType		      SubSystem
       Name		      "SM_UtilityService"
       SID		      "56"
-      Ports		      [1, 1, 0, 0, 0, 0, 9]
+      Ports		      [2, 0, 0, 0, 0, 0, 9]
       Position		      [255, 404, 540, 706]
       ZOrder		      2683
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "*1.25"
+      LibraryVersion	      "*1.27"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -907,14 +831,25 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"62"
+	ZoomFactor		"99"
 	Block {
 	  BlockType		  Inport
 	  Name			  "CONSOLE"
 	  SID			  "1985"
-	  Position		  [1815, 543, 1845, 557]
+	  Position		  [1340, 68, 1370, 82]
 	  ZOrder		  3553
 	  NamePlacement		  "alternate"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "TEST_SEQ"
+	  SID			  "2496"
+	  Position		  [1340, 213, 1370, 227]
+	  ZOrder		  3957
+	  ForegroundColor	  "cyan"
+	  NamePlacement		  "alternate"
+	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -922,7 +857,7 @@ Library {
 	  Name			  "500kcmil-Mutual1"
 	  SID			  "2312"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3340, 1197, 3380, 1263]
+	  Position		  [2265, 667, 2305, 733]
 	  ZOrder		  3645
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -937,7 +872,7 @@ Library {
 	  Name			  "500kcmil-Mutual2"
 	  SID			  "2313"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3340, 992, 3380, 1058]
+	  Position		  [2265, 462, 2305, 528]
 	  ZOrder		  3646
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -952,7 +887,7 @@ Library {
 	  Name			  "500kcmil-Mutual3"
 	  SID			  "2079"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2910, 992, 2950, 1058]
+	  Position		  [1835, 462, 1875, 528]
 	  ZOrder		  3610
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -967,7 +902,7 @@ Library {
 	  Name			  "500kcmil-Mutual4"
 	  SID			  "2082"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [2660, 992, 2700, 1058]
+	  Position		  [1585, 462, 1625, 528]
 	  ZOrder		  3613
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -982,7 +917,7 @@ Library {
 	  Name			  "500kcmil-Mutual5"
 	  SID			  "2314"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3340, 787, 3380, 853]
+	  Position		  [2265, 257, 2305, 323]
 	  ZOrder		  3647
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -997,7 +932,7 @@ Library {
 	  Name			  "500kcmil-Mutual6"
 	  SID			  "2315"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3790, 787, 3830, 853]
+	  Position		  [2715, 257, 2755, 323]
 	  ZOrder		  3648
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -1012,7 +947,7 @@ Library {
 	  Name			  "500kcmil-Mutual7"
 	  SID			  "2316"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3790, 992, 3830, 1058]
+	  Position		  [2715, 462, 2755, 528]
 	  ZOrder		  3649
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -1027,7 +962,7 @@ Library {
 	  Name			  "500kcmil-Mutual8"
 	  SID			  "2317"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3800, 1197, 3840, 1263]
+	  Position		  [2725, 667, 2765, 733]
 	  ZOrder		  3650
 	  BackgroundColor	  "magenta"
 	  LibraryVersion	  "1.28"
@@ -1038,458 +973,11 @@ Library {
 	  ratio			  "3"
 	}
 	Block {
-	  BlockType		  SubSystem
-	  Name			  "Banshee_HWCtrl_IOs"
-	  SID			  "2437"
-	  Ports			  [0, 1]
-	  Position		  [1570, 982, 1770, 1098]
-	  ZOrder		  3684
-	  BackgroundColor	  "orange"
-	  AncestorBlock		  "Banshee_SEL751_Woodward_lib/Banshee_HWCtrl_IOs"
-	  LibraryVersion	  "*1.3"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    17
-	    $ClassName		    "Simulink.Mask"
-	  }
-	  System {
-	    Name		    "Banshee_HWCtrl_IOs"
-	    Location		    [0, 0, 960, 1040]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "84"
-	    SIDHighWatermark	    "1966"
-	    SIDPrevWatermark	    "403"
-	    Block {
-	      BlockType		      BusCreator
-	      Name		      "Bus\nCreator3"
-	      SID		      "2437:9"
-	      Ports		      [1, 1]
-	      Position		      [3620, 1919, 3625, 2041]
-	      ZOrder		      3302
-	      ShowName		      off
-	      Inputs		      "1"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      Memory
-	      Name		      "Memory1"
-	      SID		      "2437:34"
-	      Position		      [3675, 1965, 3705, 1995]
-	      ZOrder		      3300
-	      ShowName		      off
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "SEL-2440 FAST-LOAD-SHEDDING AND CB STATUS"
-	      SID		      "2437:37"
-	      Ports		      [0, 1]
-	      Position		      [3115, 1931, 3415, 2029]
-	      ZOrder		      3364
-	      BackgroundColor	      "yellow"
-	      MinAlgLoopOccurrences   off
-	      PropExecContextOutsideSubsystem off
-	      RTWSystemCode	      "Auto"
-	      FunctionWithSeparateData off
-	      Opaque		      off
-	      RequestExecContextInheritance off
-	      MaskHideContents	      off
-	      Port {
-		PortNumber		1
-		Name			"SEL2440_FLS"
-		PropagatedSignals	"SEL2440_FLS"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      System {
-		Name			"SEL-2440 FAST-LOAD-SHEDDING AND CB STATUS"
-		Location		[-8, 0, 1924, 1056]
-		Open			off
-		ModelBrowserVisibility	on
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"80"
-		Block {
-		  BlockType		  BusCreator
-		  Name			  "Bus\nCreator"
-		  SID			  "2437:39"
-		  Ports			  [16, 1]
-		  Position		  [2290, 322, 2295, 798]
-		  ZOrder		  3381
-		  ShowName		  off
-		  Inputs		  "16"
-		  DisplayOption		  "bar"
-		  Port {
-		    PortNumber		    1
-		    Name		    "SEL2440_FLS"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Constant
-		  Name			  "Constant"
-		  SID			  "2437:750"
-		  Position		  [1790, 430, 1960, 450]
-		  ZOrder		  3383
-		  Value			  "zeros(1,8)"
-		}
-		Block {
-		  BlockType		  Constant
-		  Name			  "Constant1"
-		  SID			  "2437:751"
-		  Position		  [1800, 670, 1970, 690]
-		  ZOrder		  3384
-		  Value			  "zeros(1,8)"
-		}
-		Block {
-		  BlockType		  Demux
-		  Name			  "Demux"
-		  SID			  "2437:44"
-		  Ports			  [1, 8]
-		  Position		  [2070, 325, 2075, 555]
-		  ZOrder		  3379
-		  ShowName		  off
-		  Outputs		  "8"
-		  DisplayOption		  "bar"
-		  Port {
-		    PortNumber		    1
-		    Name		    "CB104"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    2
-		    Name		    "CB107"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    3
-		    Name		    "CB206"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    4
-		    Name		    "CB208"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    5
-		    Name		    "CB212"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    6
-		    Name		    "CB308"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    7
-		    Name		    "CB114"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    8
-		    Name		    "CB219"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Demux
-		  Name			  "Demux1"
-		  SID			  "2437:45"
-		  Ports			  [1, 8]
-		  Position		  [2070, 563, 2075, 797]
-		  ZOrder		  3380
-		  ShowName		  off
-		  Outputs		  "8"
-		  DisplayOption		  "bar"
-		  Port {
-		    PortNumber		    1
-		    Name		    "CB204"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    2
-		    Name		    "CB307"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    3
-		    Name		    "CB218"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		  Port {
-		    PortNumber		    4
-		    Name		    "CB309"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "SEL2440_FLS"
-		  SID			  "2437:56"
-		  Position		  [2415, 553, 2445, 567]
-		  ZOrder		  3382
-		  BackgroundColor	  "lightBlue"
-		  IconDisplay		  "Port number"
-		}
-		Line {
-		  Name			  "SEL2440_FLS"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Bus\nCreator"
-		  SrcPort		  1
-		  DstBlock		  "SEL2440_FLS"
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "CB204"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux1"
-		  SrcPort		  1
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  9
-		}
-		Line {
-		  Name			  "CB307"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux1"
-		  SrcPort		  2
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  10
-		}
-		Line {
-		  Name			  "CB218"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux1"
-		  SrcPort		  3
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  11
-		}
-		Line {
-		  Name			  "CB309"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux1"
-		  SrcPort		  4
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  12
-		}
-		Line {
-		  SrcBlock		  "Demux1"
-		  SrcPort		  5
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  13
-		}
-		Line {
-		  SrcBlock		  "Demux1"
-		  SrcPort		  6
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  14
-		}
-		Line {
-		  SrcBlock		  "Demux1"
-		  SrcPort		  8
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  16
-		}
-		Line {
-		  SrcBlock		  "Demux1"
-		  SrcPort		  7
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  15
-		}
-		Line {
-		  Name			  "CB219"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  8
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  8
-		}
-		Line {
-		  Name			  "CB114"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  7
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  7
-		}
-		Line {
-		  Name			  "CB308"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  6
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  6
-		}
-		Line {
-		  Name			  "CB212"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  5
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  5
-		}
-		Line {
-		  Name			  "CB208"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  4
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  4
-		}
-		Line {
-		  Name			  "CB206"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  3
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  3
-		}
-		Line {
-		  Name			  "CB107"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  2
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  2
-		}
-		Line {
-		  Name			  "CB104"
-		  Labels		  [1, 1]
-		  SrcBlock		  "Demux"
-		  SrcPort		  1
-		  DstBlock		  "Bus\nCreator"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Constant1"
-		  SrcPort		  1
-		  DstBlock		  "Demux1"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "Constant"
-		  SrcPort		  1
-		  DstBlock		  "Demux"
-		  DstPort		  1
-		}
-		Annotation {
-		  SID			  "2437:63"
-		  Name			  "16 bits to control (P, I load) breakers from Schwietzer"
-		  Position		  [1867, 280]
-		  ForegroundColor	  "blue"
-		  ZOrder		  -1
-		  FontSize		  14
-		}
-		Annotation {
-		  SID			  "2437:62"
-		  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, "
-		  "to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin"
-		  " the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, d"
-		  "istribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnishe"
-		  "d to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY K"
-		  "IND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULA"
-		  "R PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAG"
-		  "ES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTIO"
-		  "N WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-		  Position		  [919, 16]
-		  HorizontalAlignment	  "left"
-		  ZOrder		  -2
-		  FontSize		  12
-		  FontWeight		  "bold"
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "WoodwardBias"
-	      SID		      "2437:389"
-	      Position		      [3750, 1973, 3780, 1987]
-	      ZOrder		      3288
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      Name		      "SEL2440_FLS"
-	      Labels		      [1, 1]
-	      SrcBlock		      "SEL-2440 FAST-LOAD-SHEDDING AND CB STATUS"
-	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator3"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Bus\nCreator3"
-	      SrcPort		      1
-	      DstBlock		      "Memory1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Memory1"
-	      SrcPort		      1
-	      DstBlock		      "WoodwardBias"
-	      DstPort		      1
-	    }
-	    Annotation {
-	      SID		      "2437:390"
-	      Name		      "Will be replaced with Opal-RT native IEC61850"
-	      Position		      [3264, 1887]
-	      ForegroundColor	      "red"
-	      ZOrder		      -1
-	      FontSize		      16
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator"
-	  SID			  "2318"
-	  Ports			  [2, 1]
-	  Position		  [1935, 848, 1940, 972]
-	  ZOrder		  3651
-	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "bar"
-	}
-	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
 	  SID			  "2433"
 	  Ports			  [1, 1]
-	  Position		  [2700, 866, 2705, 904]
+	  Position		  [1625, 336, 1630, 374]
 	  ZOrder		  3681
 	  ShowName		  off
 	  Inputs		  "1"
@@ -1497,10 +985,26 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "2499"
+	  Ports			  [1, 1]
+	  Position		  [1615, 201, 1620, 239]
+	  ZOrder		  3959
+	  ShowName		  off
+	  OutputSignals		  "TestSeq"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<TestSeq>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector12"
 	  SID			  "2065"
 	  Ports			  [1, 1]
-	  Position		  [2510, 891, 2515, 929]
+	  Position		  [1435, 361, 1440, 399]
 	  ZOrder		  3596
 	  ShowName		  off
 	  OutputSignals		  "GridStatusCtrl.Substation.Logic_trip"
@@ -1516,7 +1020,7 @@ Library {
 	  Name			  "Bus\nSelector13"
 	  SID			  "2067"
 	  Ports			  [1, 1]
-	  Position		  [3570, 731, 3575, 769]
+	  Position		  [2495, 201, 2500, 239]
 	  ZOrder		  3598
 	  ShowName		  off
 	  OutputSignals		  "GridStatusCtrl.Grid_F3"
@@ -1532,7 +1036,7 @@ Library {
 	  Name			  "Bus\nSelector14"
 	  SID			  "2069"
 	  Ports			  [1, 1]
-	  Position		  [3570, 921, 3575, 959]
+	  Position		  [2495, 391, 2500, 429]
 	  ZOrder		  3600
 	  ShowName		  off
 	  OutputSignals		  "GridStatusCtrl.Grid_F2"
@@ -1548,7 +1052,7 @@ Library {
 	  Name			  "Bus\nSelector15"
 	  SID			  "2071"
 	  Ports			  [1, 1]
-	  Position		  [3570, 1146, 3575, 1184]
+	  Position		  [2495, 616, 2500, 654]
 	  ZOrder		  3602
 	  ShowName		  off
 	  OutputSignals		  "GridStatusCtrl.Grid_F1"
@@ -1562,10 +1066,10 @@ Library {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector20"
-	  SID			  "2406"
+	  SID			  "2494"
 	  Ports			  [1, 1]
-	  Position		  [1980, 771, 1985, 809]
-	  ZOrder		  3676
+	  Position		  [1730, 201, 1735, 239]
+	  ZOrder		  3704
 	  ShowName		  off
 	  OutputSignals		  "Cut_Grid_Power"
 	  Port {
@@ -1580,10 +1084,10 @@ Library {
 	  Name			  "Feeder_CB"
 	  SID			  "2059"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [2775, 973, 2830, 1057]
+	  Position		  [1700, 443, 1755, 527]
 	  ZOrder		  3590
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1594,10 +1098,10 @@ Library {
 	  Name			  "Feeder_CB1"
 	  SID			  "2073"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3635, 1178, 3690, 1262]
+	  Position		  [2560, 648, 2615, 732]
 	  ZOrder		  3604
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1608,10 +1112,10 @@ Library {
 	  Name			  "Feeder_CB2"
 	  SID			  "2075"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3635, 973, 3690, 1057]
+	  Position		  [2560, 443, 2615, 527]
 	  ZOrder		  3606
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1622,10 +1126,10 @@ Library {
 	  Name			  "Feeder_CB3"
 	  SID			  "2077"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [3635, 768, 3690, 852]
+	  Position		  [2560, 238, 2615, 322]
 	  ZOrder		  3608
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
-	  LibraryVersion	  "1.477"
+	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
@@ -1635,7 +1139,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From12"
 	  SID			  "2430"
-	  Position		  [2395, 855, 2465, 875]
+	  Position		  [1320, 325, 1390, 345]
 	  ZOrder		  3678
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -1645,7 +1149,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "2066"
-	  Position		  [2395, 900, 2465, 920]
+	  Position		  [1320, 370, 1390, 390]
 	  ZOrder		  3597
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -1655,7 +1159,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From6"
 	  SID			  "2068"
-	  Position		  [3465, 740, 3535, 760]
+	  Position		  [2390, 210, 2460, 230]
 	  ZOrder		  3599
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -1665,7 +1169,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From7"
 	  SID			  "2070"
-	  Position		  [3465, 930, 3535, 950]
+	  Position		  [2390, 400, 2460, 420]
 	  ZOrder		  3601
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -1675,7 +1179,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From8"
 	  SID			  "2072"
-	  Position		  [3465, 1155, 3535, 1175]
+	  Position		  [2390, 625, 2460, 645]
 	  ZOrder		  3603
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -1685,7 +1189,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "1986"
-	  Position		  [2060, 537, 2155, 563]
+	  Position		  [1585, 62, 1680, 88]
 	  ZOrder		  3554
 	  ShowName		  off
 	  GotoTag		  "CONSOLE"
@@ -1693,9 +1197,9 @@ Library {
 	Block {
 	  BlockType		  Goto
 	  Name			  "Goto3"
-	  SID			  "2405"
-	  Position		  [2055, 779, 2145, 801]
-	  ZOrder		  3675
+	  SID			  "2495"
+	  Position		  [1805, 209, 1895, 231]
+	  ZOrder		  3703
 	  ShowName		  off
 	  GotoTag		  "cut_grid_pwr"
 	}
@@ -1704,7 +1208,7 @@ Library {
 	  Name			  "Logical\nOperator"
 	  SID			  "2431"
 	  Ports			  [1, 1]
-	  Position		  [2500, 854, 2530, 876]
+	  Position		  [1425, 324, 1455, 346]
 	  ZOrder		  3679
 	  ShowName		  off
 	  Operator		  "NOT"
@@ -1716,7 +1220,7 @@ Library {
 	  Name			  "Logical\nOperator1"
 	  SID			  "2432"
 	  Ports			  [2, 1]
-	  Position		  [2600, 867, 2630, 898]
+	  Position		  [1525, 337, 1555, 368]
 	  ZOrder		  3680
 	  ShowName		  off
 	  AllPortsSameDT	  off
@@ -1729,47 +1233,11 @@ Library {
 	  }
 	}
 	Block {
-	  BlockType		  Memory
-	  Name			  "Memory1"
-	  SID			  "722"
-	  Position		  [2000, 895, 2030, 925]
-	  ZOrder		  3346
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Memory
-	  Name			  "Memory2"
-	  SID			  "2319"
-	  Position		  [1810, 775, 1840, 805]
-	  ZOrder		  3652
-	  ShowName		  off
-	  Port {
-	    PortNumber		    1
-	    Name		    "TestSeq"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Memory
-	  Name			  "Memory3"
-	  SID			  "2320"
-	  Position		  [1810, 1020, 1840, 1050]
-	  ZOrder		  3653
-	  ShowName		  off
-	  Port {
-	    PortNumber		    1
-	    Name		    "HWCtrl"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
 	  BlockType		  Reference
 	  Name			  "OpComm1"
 	  SID			  "1987"
 	  Ports			  [1, 1]
-	  Position		  [1915, 524, 2010, 576]
+	  Position		  [1440, 49, 1535, 101]
 	  ZOrder		  3552
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
@@ -1791,11 +1259,44 @@ Library {
 	  writeOpCommFile	  off
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "OpComm2"
+	  SID			  "2498"
+	  Ports			  [1, 1]
+	  Position		  [1440, 195, 1530, 245]
+	  ZOrder		  3956
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/OpComm"
+	  SourceType		  "RT-LAB OpComm"
+	  nbport		  "1"
+	  groupe_acq		  "1"
+	  subsys_rate		  "0"
+	  st			  "0"
+	  Synchronization	  on
+	  Interpolation		  on
+	  Threshold		  "1.0"
+	  Missed_Data		  off
+	  Offset		  off
+	  Sim_Time		  off
+	  Samples		  off
+	  dynSigOut		  off
+	  from_console		  "0"
+	  warning_done		  off
+	  writeOpCommFile	  off
+	  Port {
+	    PortNumber		    1
+	    PropagatedSignals	    "TestSeq, LoadProfile"
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  S-Function
 	  Name			  "OpalNo3"
 	  SID			  "2492"
 	  Ports			  [0, 2]
-	  Position		  [1240, 882, 1430, 933]
+	  Position		  [1815, 52, 2005, 103]
 	  ZOrder		  3695
 	  BackgroundColor	  "green"
 	  InitFcn		  "opctrl_common_cb('initfcn');"
@@ -1805,7 +1306,7 @@ Library {
 	  EnableBusSupport	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    18
+	    $ObjectID		    17
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "OpCtrlCommonMask"
 	    Description		    "This block controls the programming of one OPAL-RT cards, its initialization and the selection "
@@ -1821,7 +1322,7 @@ Library {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      21
 	      Object {
-		$ObjectID		19
+		$ObjectID		18
 		Type			"edit"
 		Name			"CtrlName"
 		Prompt			"Controller Name"
@@ -1829,7 +1330,7 @@ Library {
 		Callback		"%opctrl_common_cb('maskdisplay');"
 	      }
 	      Object {
-		$ObjectID		20
+		$ObjectID		19
 		Type			"edit"
 		Name			"boardid"
 		Prompt			"Board ID"
@@ -1837,7 +1338,7 @@ Library {
 		Callback		"%opctrl_common_cb('maskdisplay');"
 	      }
 	      Object {
-		$ObjectID		21
+		$ObjectID		20
 		Type			"edit"
 		Name			"BitstreamFilename"
 		Prompt			"Primary Bitstream FileName"
@@ -1847,7 +1348,7 @@ Library {
 		Callback		"opctrl_common_cb('filenamechange')"
 	      }
 	      Object {
-		$ObjectID		22
+		$ObjectID		21
 		Type			"edit"
 		Name			"numconfig"
 		Prompt			"Configuration Number"
@@ -1856,7 +1357,7 @@ Library {
 		Callback		"opctrl_common_cb('loadconfig')"
 	      }
 	      Object {
-		$ObjectID		23
+		$ObjectID		22
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1872,7 +1373,7 @@ Library {
 		Callback		"opctrl_common_cb('syncmode');"
 	      }
 	      Object {
-		$ObjectID		24
+		$ObjectID		23
 		Type			"checkbox"
 		Name			"externalClock"
 		Prompt			"Generate External Clock"
@@ -1880,7 +1381,7 @@ Library {
 		Callback		"opctrl_common_cb('extclock');"
 	      }
 	      Object {
-		$ObjectID		25
+		$ObjectID		24
 		Type			"edit"
 		Name			"decimRtsi"
 		Prompt			"Decimation factor"
@@ -1888,7 +1389,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		26
+		$ObjectID		25
 		Type			"checkbox"
 		Name			"calibIO"
 		Prompt			"Enable calibration inputs/outputs"
@@ -1896,14 +1397,14 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		27
+		$ObjectID		26
 		Type			"edit"
 		Name			"SampleTime"
 		Prompt			"Sample Time (s)"
 		Value			"0"
 	      }
 	      Object {
-		$ObjectID		28
+		$ObjectID		27
 		Type			"edit"
 		Name			"loadinport"
 		Prompt			"loadinport"
@@ -1911,7 +1412,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		29
+		$ObjectID		28
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1931,7 +1432,7 @@ Library {
 		Callback		"opctrl_common_cb('boardtype')"
 	      }
 	      Object {
-		$ObjectID		30
+		$ObjectID		29
 		Type			"checkbox"
 		Name			"SecondaryPresent"
 		Prompt			"Secondary used for Simulation"
@@ -1940,7 +1441,7 @@ Library {
 		Callback		"opctrl_common_cb('secused');"
 	      }
 	      Object {
-		$ObjectID		31
+		$ObjectID		30
 		Type			"edit"
 		Name			"BitstreamFilename1"
 		Prompt			"Bitstream Filename for Slot 1"
@@ -1950,7 +1451,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		32
+		$ObjectID		31
 		Type			"edit"
 		Name			"BitstreamFilename3"
 		Prompt			"Bitstream Filename for Slot 3"
@@ -1960,7 +1461,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		33
+		$ObjectID		32
 		Type			"edit"
 		Name			"BitstreamFilename5"
 		Prompt			"Bitstream Filename for Slot 5"
@@ -1970,7 +1471,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		34
+		$ObjectID		33
 		Type			"edit"
 		Name			"BitstreamFilename7"
 		Prompt			"Bitstream Filename for Slot 7"
@@ -1980,7 +1481,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		35
+		$ObjectID		34
 		Type			"edit"
 		Name			"BitstreamFilename9"
 		Prompt			"Bitstream Filename for Slot 9"
@@ -1990,7 +1491,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		36
+		$ObjectID		35
 		Type			"edit"
 		Name			"BitstreamFilename11"
 		Prompt			"Bitstream Filename for Slot 11"
@@ -2000,7 +1501,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		37
+		$ObjectID		36
 		Type			"edit"
 		Name			"BitstreamFilename13"
 		Prompt			"Bitstream Filename for Slot 13"
@@ -2010,7 +1511,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		38
+		$ObjectID		37
 		Type			"edit"
 		Name			"BitstreamFilename15"
 		Prompt			"Bitstream Filename for Slot 15"
@@ -2020,7 +1521,7 @@ Library {
 		Visible			"off"
 	      }
 	      Object {
-		$ObjectID		39
+		$ObjectID		38
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -2043,7 +1544,7 @@ Library {
 	  Name			  "SSN Interface Block (3ph)3"
 	  SID			  "2083"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3085, 992, 3160, 1058]
+	  Position		  [2010, 462, 2085, 528]
 	  ZOrder		  3614
 	  LibraryVersion	  "1.187"
 	  SourceBlock		  "ssn_lib/SSN Interface Block (3ph)"
@@ -2072,7 +1573,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator4"
 	  SID			  "2061"
-	  Position		  [2865, 975, 2885, 995]
+	  Position		  [1790, 445, 1810, 465]
 	  ZOrder		  3592
 	  ShowName		  off
 	}
@@ -2080,7 +1581,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator5"
 	  SID			  "2074"
-	  Position		  [3755, 1155, 3775, 1175]
+	  Position		  [2680, 625, 2700, 645]
 	  ZOrder		  3605
 	  ShowName		  off
 	}
@@ -2088,7 +1589,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator6"
 	  SID			  "2076"
-	  Position		  [3735, 975, 3755, 995]
+	  Position		  [2660, 445, 2680, 465]
 	  ZOrder		  3607
 	  ShowName		  off
 	}
@@ -2096,317 +1597,16 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator7"
 	  SID			  "2078"
-	  Position		  [3735, 770, 3755, 790]
+	  Position		  [2660, 240, 2680, 260]
 	  ZOrder		  3609
 	  ShowName		  off
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "TestSequenceCommands"
-	  SID			  "2400"
-	  Ports			  [0, 1]
-	  Position		  [1560, 738, 1770, 842]
-	  ZOrder		  3673
-	  BackgroundColor	  "red"
-	  AncestorBlock		  "TestSeq_slave_lib/TestSequenceCommands"
-	  LibraryVersion	  "*1.3"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "TestSequenceCommands"
-	    Location		    [-8, 0, 1924, 1056]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "122"
-	    SIDHighWatermark	    "75"
-	    SIDPrevWatermark	    "14"
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Add"
-	      SID		      "2400:10"
-	      Ports		      [2, 1]
-	      Position		      [545, 192, 575, 223]
-	      ZOrder		      3407
-	      ShowName		      off
-	      InputSameDT	      off
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	      Port {
-		PortNumber		1
-		Name			"TimeStamp"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      BusCreator
-	      Name		      "Bus\nCreator"
-	      SID		      "2400:11"
-	      Ports		      [11, 1]
-	      Position		      [730, 200, 735, 660]
-	      ZOrder		      3409
-	      ShowName		      off
-	      Inputs		      "11"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant"
-	      SID		      "2400:15"
-	      Position		      [70, 395, 240, 425]
-	      ZOrder		      3410
-	      Value		      "zeros(1,12)"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      "Demux"
-	      SID		      "2400:12"
-	      Ports		      [1, 12]
-	      Position		      [365, 169, 370, 651]
-	      ZOrder		      3405
-	      ShowName		      off
-	      Outputs		      "12"
-	      DisplayOption	      "bar"
-	      Port {
-		PortNumber		3
-		Name			"fault_location_1"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		4
-		Name			"fault_location_2"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		5
-		Name			"fault_location_3"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		6
-		Name			"fault_location_4"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		7
-		Name			"fault_location_5"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		8
-		Name			"Cut_Grid_Power"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		9
-		Name			"Irradiance"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		10
-		Name			"motor_1"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		11
-		Name			"motor_2"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		12
-		Name			"Test3"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Gain
-	      Name		      "Gain"
-	      SID		      "2400:13"
-	      Position		      [450, 215, 480, 245]
-	      ZOrder		      3406
-	      Gain		      "2^16"
-	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "TestSeqData"
-	      SID		      "2400:7"
-	      Position		      [805, 423, 835, 437]
-	      ZOrder		      3403
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Bus\nCreator"
-	      SrcPort		      1
-	      DstBlock		      "TestSeqData"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "motor_2"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      11
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      10
-	    }
-	    Line {
-	      SrcBlock		      "Constant"
-	      SrcPort		      1
-	      DstBlock		      "Demux"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Gain"
-	      SrcPort		      1
-	      Points		      [27, 0; 0, -15]
-	      DstBlock		      "Add"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Demux"
-	      SrcPort		      2
-	      DstBlock		      "Gain"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Demux"
-	      SrcPort		      1
-	      Points		      [155, 0]
-	      DstBlock		      "Add"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "TimeStamp"
-	      Labels		      [2, 1]
-	      SrcBlock		      "Add"
-	      SrcPort		      1
-	      Points		      [86, 0; 0, 20]
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "motor_1"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      10
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      9
-	    }
-	    Line {
-	      Name		      "Irradiance"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      9
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      8
-	    }
-	    Line {
-	      Name		      "Cut_Grid_Power"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      8
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      7
-	    }
-	    Line {
-	      Name		      "fault_location_5"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      7
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      6
-	    }
-	    Line {
-	      Name		      "fault_location_4"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      6
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      5
-	    }
-	    Line {
-	      Name		      "fault_location_3"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      5
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      4
-	    }
-	    Line {
-	      Name		      "fault_location_2"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      4
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      3
-	    }
-	    Line {
-	      Name		      "fault_location_1"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      3
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      2
-	    }
-	    Line {
-	      Name		      "Test3"
-	      Labels		      [1, 1]
-	      SrcBlock		      "Demux"
-	      SrcPort		      12
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      11
-	    }
-	    Annotation {
-	      SID		      "2400:8"
-	      Name		      "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of ch"
-	      "arge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to"
-	      " deal\nin the Software without restriction, including without limitation the rights to use, copy, modify, merge"
-	      ", publish, distribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Softw"
-	      "are is furnished to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT"
-	      " WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FI"
-	      "TNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIA"
-	      "BLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING F"
-	      "ROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	      Position		      [4, 31]
-	      HorizontalAlignment     "left"
-	      ZOrder		      -1
-	      FontSize		      12
-	      FontWeight	      "bold"
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Three-Phase Source1"
 	  SID			  "2045"
 	  Ports			  [0, 0, 0, 0, 0, 0, 3]
-	  Position		  [2515, 996, 2600, 1054]
+	  Position		  [1440, 466, 1525, 524]
 	  ZOrder		  3579
 	  BackgroundColor	  "yellow"
 	  LibraryVersion	  "1.2191"
@@ -2433,7 +1633,7 @@ Library {
 	  Name			  "XFR DYg-30 HIL1"
 	  SID			  "2062"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3445, 993, 3530, 1057]
+	  Position		  [2370, 463, 2455, 527]
 	  ZOrder		  3593
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
 	  LibraryVersion	  "1.30"
@@ -2450,7 +1650,7 @@ Library {
 	  Name			  "XFR DYg-30 HIL2"
 	  SID			  "2047"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3445, 788, 3530, 852]
+	  Position		  [2370, 258, 2455, 322]
 	  ZOrder		  3578
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
 	  LibraryVersion	  "1.30"
@@ -2467,7 +1667,7 @@ Library {
 	  Name			  "XFR DYg-30 HIL3"
 	  SID			  "2063"
 	  Ports			  [0, 0, 0, 0, 0, 3, 3]
-	  Position		  [3460, 1198, 3545, 1262]
+	  Position		  [2385, 668, 2470, 732]
 	  ZOrder		  3594
 	  BackgroundColor	  "[0.674510, 0.341176, 0.043137]"
 	  LibraryVersion	  "1.30"
@@ -2483,7 +1683,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_F3"
 	  SID			  "2050"
-	  Position		  [3900, 783, 3930, 797]
+	  Position		  [2825, 253, 2855, 267]
 	  ZOrder		  3580
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2494,7 +1694,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_F3"
 	  SID			  "2051"
-	  Position		  [3900, 813, 3930, 827]
+	  Position		  [2825, 283, 2855, 297]
 	  ZOrder		  3581
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2505,7 +1705,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_F3"
 	  SID			  "2052"
-	  Position		  [3900, 843, 3930, 857]
+	  Position		  [2825, 313, 2855, 327]
 	  ZOrder		  3582
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2516,7 +1716,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_F2"
 	  SID			  "2053"
-	  Position		  [3900, 988, 3930, 1002]
+	  Position		  [2825, 458, 2855, 472]
 	  ZOrder		  3583
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2527,7 +1727,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_F2"
 	  SID			  "2054"
-	  Position		  [3900, 1018, 3930, 1032]
+	  Position		  [2825, 488, 2855, 502]
 	  ZOrder		  3584
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2538,7 +1738,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_F2"
 	  SID			  "2055"
-	  Position		  [3900, 1048, 3930, 1062]
+	  Position		  [2825, 518, 2855, 532]
 	  ZOrder		  3585
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2549,7 +1749,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "A_F1"
 	  SID			  "2056"
-	  Position		  [3900, 1193, 3930, 1207]
+	  Position		  [2825, 663, 2855, 677]
 	  ZOrder		  3586
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2560,7 +1760,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "B_F1"
 	  SID			  "2057"
-	  Position		  [3900, 1223, 3930, 1237]
+	  Position		  [2825, 693, 2855, 707]
 	  ZOrder		  3587
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
@@ -2571,21 +1771,40 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "C_F1"
 	  SID			  "2058"
-	  Position		  [3900, 1253, 3930, 1267]
+	  Position		  [2825, 723, 2855, 737]
 	  ZOrder		  3588
 	  BlockMirror		  on
 	  ForegroundColor	  "darkGreen"
 	  Port			  "9"
 	  Side			  "Right"
 	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "HWCtrl_TestSeq"
-	  SID			  "723"
-	  Position		  [2075, 903, 2105, 917]
-	  ZOrder		  3344
-	  ForegroundColor	  "blue"
-	  IconDisplay		  "Port number"
+	Line {
+	  SrcBlock		  "OpComm2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "TEST_SEQ"
+	  SrcPort		  1
+	  DstBlock		  "OpComm2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Cut_Grid_Power>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector20"
+	  SrcPort		  1
+	  DstBlock		  "Goto3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<TestSeq>"
+	  Labels		  [0, 0; -1, 1]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector20"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator2"
@@ -2613,64 +1832,6 @@ Library {
 	  SrcBlock		  "From12"
 	  SrcPort		  1
 	  DstBlock		  "Logical\nOperator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<Cut_Grid_Power>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector20"
-	  SrcPort		  1
-	  DstBlock		  "Goto3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Bus\nCreator"
-	  SrcPort		  1
-	  DstBlock		  "Memory1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "TestSeq"
-	  SrcBlock		  "Memory2"
-	  SrcPort		  1
-	  Points		  [31, 0]
-	  Branch {
-	    DstBlock		    "Bus\nSelector20"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Labels		    [1, 1]
-	    Points		    [0, 90]
-	    DstBlock		    "Bus\nCreator"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  Name			  "HWCtrl"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Memory3"
-	  SrcPort		  1
-	  Points		  [25, 0; 0, -95]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "TestSequenceCommands"
-	  SrcPort		  1
-	  DstBlock		  "Memory2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Banshee_HWCtrl_IOs"
-	  SrcPort		  1
-	  Points		  [15, 0; 0, -5]
-	  DstBlock		  "Memory3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Memory1"
-	  SrcPort		  1
-	  DstBlock		  "HWCtrl_TestSeq"
 	  DstPort		  1
 	}
 	Line {
@@ -2870,7 +2031,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3264, 1045; 61, 0]
+	  Points		  [2189, 515; 61, 0]
 	  DstBlock		  "500kcmil-Mutual2"
 	  DstPort		  LConn3
 	  Branch {
@@ -2888,7 +2049,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3243, 1025; 82, 0]
+	  Points		  [2168, 495; 82, 0]
 	  DstBlock		  "500kcmil-Mutual2"
 	  DstPort		  LConn2
 	  Branch {
@@ -2906,7 +2067,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3219, 1005; 106, 0]
+	  Points		  [2144, 475; 106, 0]
 	  DstBlock		  "500kcmil-Mutual2"
 	  DstPort		  LConn1
 	  Branch {
@@ -3065,7 +2226,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3004, 1045; -39, 0]
+	  Points		  [1929, 515; -39, 0]
 	  DstBlock		  "500kcmil-Mutual3"
 	  DstPort		  RConn3
 	  Branch {
@@ -3083,7 +2244,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3041, 1005; -76, 0]
+	  Points		  [1966, 475; -76, 0]
 	  DstBlock		  "500kcmil-Mutual3"
 	  DstPort		  RConn1
 	  Branch {
@@ -3101,7 +2262,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [3022, 1025; -57, 0]
+	  Points		  [1947, 495; -57, 0]
 	  DstBlock		  "500kcmil-Mutual3"
 	  DstPort		  RConn2
 	  Branch {
@@ -3212,7 +2373,7 @@ Library {
 	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
 	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
 	  "FTWARE.\n%\n%\n%%"
-	  Position		  [2716, 527]
+	  Position		  [2406, 17]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
 	  FontWeight		  "bold"
