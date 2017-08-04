@@ -1,0 +1,55 @@
+<RTACModule>
+  <POU>
+    <ExportSource>
+      <Schema>22</Schema>
+      <DeviceMOT>3530</DeviceMOT>
+    </ExportSource>
+    <Name>LoadControl</Name>
+    <POUKind>Program</POUKind>
+    <Content>
+      <Interface><![CDATA[PROGRAM LoadControl
+VAR
+	rLB_S_setp   : REAL := 25;
+	rLB_cosphi_setp : REAL := 0.9;
+	rLB_P_setp 	 : REAL := 25;
+	rLB_Q_setp   : REAL := 10;
+	send_PQ_trig : BOOL := FALSE;
+END_VAR
+]]></Interface>
+      <Implementation><![CDATA[rLB_S_setp := 25 + 3;					  		// C7 & C9 - always connected
+IF HMI1_Proc.aCB[45].Status^.stVal = FALSE THEN
+	rLB_S_setp := rLB_S_setp + 10;  			//CB402 P7
+END_IF;
+IF HMI1_Proc.aCB[46].Status^.stVal = FALSE THEN
+	rLB_S_setp := rLB_S_setp + 15;  			//CB403 I7
+END_IF;
+IF HMI1_Proc.aCB[47].Status^.stVal = FALSE THEN
+	rLB_S_setp := rLB_S_setp + 20;  			//CB404 C8
+	IF HMI1_Proc.aCB[48].Status^.stVal = FALSE THEN
+		rLB_S_setp := rLB_S_setp + 10;  			//CB405 P8
+	END_IF;
+	IF HMI1_Proc.aCB[49].Status^.stVal = FALSE THEN
+		rLB_S_setp := rLB_S_setp + 20;  			//CB406 I8
+	END_IF;
+END_IF;
+
+rLB_P_setp := rLB_S_setp * rLB_cosphi_setp;
+rLB_Q_setp := rLB_S_setp * SIN(ACOS(rLB_cosphi_setp));
+
+LBLU1_MODBUS.LogicalUnitP_A_H.oper.setMag := rLB_P_setp/3;
+LBLU1_MODBUS.LogicalUnitP_B_H.oper.setMag := rLB_P_setp/3;
+LBLU1_MODBUS.LogicalUnitP_C_H.oper.setMag := rLB_P_setp/3;
+LBLU1_MODBUS.LogicalUnitQ_A_H.oper.setMag := rLB_Q_setp/3;
+LBLU1_MODBUS.LogicalUnitQ_B_H.oper.setMag := rLB_Q_setp/3;
+LBLU1_MODBUS.LogicalUnitQ_C_H.oper.setMag := rLB_Q_setp/3;
+
+send_PQ_trig := NOT send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitP_A_H.oper.trigger := send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitP_B_H.oper.trigger := send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitP_C_H.oper.trigger := send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitQ_A_H.oper.trigger := send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitQ_B_H.oper.trigger := send_PQ_trig;
+LBLU1_MODBUS.LogicalUnitQ_C_H.oper.trigger := send_PQ_trig;]]></Implementation>
+    </Content>
+  </POU>
+</RTACModule>

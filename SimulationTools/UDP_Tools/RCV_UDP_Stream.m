@@ -17,9 +17,9 @@ while(len>0)
     disp('.');
 end
 
-try
+%try
 
-    for i=1:2000
+    for i=1:200
         len=pnet(udp,'readpacket');
         if len>0
             u8data=pnet(udp,'read',2000,'uint8');
@@ -40,16 +40,16 @@ try
     end
     disp('Data capture complete. Closing port...');
     pnet(udp, 'close');
-catch
+%catch
    %always close port
-   disp('Error during data capture. Closing port...');
-    pnet(udp, 'close');
-end;
+   %disp('Error during data capture. Closing port...');
+   % pnet(udp, 'close');
+%end;
 %% Store data to .dat files
-save header.mat header;
 for jj=1:length(filenames)
     if exist(filenames{jj},'var')
         dlmwrite([filenames{jj} '.dat'],eval(filenames{jj}),'newline','pc');
     end;
 end
+save header.mat header;
 

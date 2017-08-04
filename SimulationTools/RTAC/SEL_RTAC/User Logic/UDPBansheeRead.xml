@@ -30,10 +30,8 @@ PacketValid : BOOL;
 PacketSize: UDINT;
 PacketPreamble: BYTE;
 ii : UINT;
-SignalsUINT : POINTER TO ARRAY [1..MaxN] OF UDINT;
 i16_Raw : ARRAY[1..MaxN] OF INT;
-pSignalsSwap : POINTER TO ARRAY[1..2] OF BYTE;
-pTempSwap : POINTER TO ARRAY[1..4] OF BYTE;
+pSignalsINT : POINTER TO ARRAY [1..MaxN] OF INT;
 
 uWdg : UINT := 0;
 bWdgDataValid : SEL_IEC_TYPES.validity_t := invalid;
@@ -44,7 +42,7 @@ REACT_ID : UINT := REAL_ID + BRK_CNT;
 VPU_ID : UINT := REACT_ID + BRK_CNT;
 FREQ_ID : UINT := VPU_ID + BRK_CNT;
 STATUS_ID : UINT := FREQ_ID + BRK_CNT;; //REAL_ID + 4*BRK_CNT;
-LOADS_REAL : UINT := 340;
+LOADS_REAL : UINT := 357;
 
 END_VAR]]></Interface>
       <Implementation><![CDATA[IF NOT SocketInitialized THEN
@@ -56,14 +54,16 @@ ELSE
 IF 0 <> UdpSocket.ReceiveFrom(DataIn, fromIpAddr => DestIP, fromPort => DestPort)
 THEN
 PacketSize := DataIn.Size;
-SignalsUINT := DataIn.pt_Data;
+pSignalsINT := DataIn.pt_Data;
 
 DataIn.GetAt(1, element => PacketPreamble);
-FOR ii:=1 TO UDINT_TO_UINT(PacketSize)/4 BY 1 DO
-	pTempSwap := ADR(SignalsUINT^[ii]);
-	pSignalsSwap := ADR(i16_Raw[ii]);
-	pSignalsSwap^[2] := pTempSwap^[1];
-	pSignalsSwap^[1] := pTempSwap^[2];
+FOR ii:=1 TO UDINT_TO_UINT(PacketSize)/2 BY 1 DO
+	i16_Raw[ii] := pSignalsINT^[ii];
+
+	//pTempSwap := ADR(SignalsUINT^[ii]);
+	//pSignalsSwap := ADR(i16_Raw[ii]);
+	//pSignalsSwap^[2] := pTempSwap^[1];
+	//pSignalsSwap^[1] := pTempSwap^[2];
 END_FOR
 
 uWdg := 50;	// 5sec assuming main task runs 100ms
