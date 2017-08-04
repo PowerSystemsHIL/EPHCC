@@ -10,40 +10,44 @@ N = End/Ts+1;
 
 %% Initial conditions
 % motors command: 0- stop, 1-run
-Motor{1}.Time   = 0; Motor{1}.Val    = 0;
-Motor{2}.Time   = 0; Motor{2}.Val    = 0;
+Init('Motor1', 0, 0);
+Init('Motor2', 0, 0);
 % DER failure command: 0- ok, 1-failed
-GenFail{1}.Time = 0; GenFail{1}.Val  = 0;
-GenFail{2}.Time = 0; GenFail{2}.Val  = 0;
-GenFail{3}.Time = 0; GenFail{3}.Val  = 0;
-EssFail{1}.Time = 0; EssFail{1}.Val  = 0;
-EssFail{2}.Time = 0; EssFail{2}.Val  = 0;
-PvFail{1}.Time  = 0; PvFail{1}.Val   = 0;
-PvFail{2}.Time  = 0; PvFail{2}.Val   = 0;
+Init('Fault.Gen1', 0, 0);
+Init('Fault.Gen2', 0, 0);
+Init('Fault.Gen3', 0, 0);
+Init('Fault.Ess1', 0, 0);
+Init('Fault.Ess2', 0, 0);
+Init('Fault.Pv1', 0, 0);
+Init('Fault.Pv2', 0, 0);
+
 % Fault injection
 % bitfield, bit no: 0 - fault loc #1, 1- fault loc #2, etc...
-Fault.BitFaultLoc1 = 1;
-Fault.BitFaultLoc1 = 2;
-Fault.BitFaultLoc1 = 3;
-Fault.BitFaultLoc1 = 4;
-Fault.BitFaultLoc1 = 5;
-Fault.Time = 0; Fault.Val = 0;
+Init('Fault.Loc1', 0, 0);
+Init('Fault.Loc2', 0, 0);
+Init('Fault.Loc3', 0, 0);
+Init('Fault.Loc4', 0, 0);
+Init('Fault.Loc5', 0, 0);
+Init('Fault.Loc6', 0, 0);
 % DMS
-DMS.DisReq.Time = 0; DMS.DisReq.Val = 0;
-%
-%
+Init('DMS.DisReq', 0, 0);
+Init('DMS.kWena', 0, 0);
+Init('DMS.PFena', 0, 0);
+Init('DMS.kWref', 0, 0);
+Init('DMS.PFref', 0, 0);
+Init('DMS.Dp', 0, 0);
+Init('DMS.Dq', 0, 0);
 %
 % Grid cut
-%   bitfield, bit no: 0 - cut grid, 1-SS feeder #1 open ... 3-SS feeder
-Grid.Breakers.BitCutGrid = 1;
-Grid.Breakers.BitOpenSSF1 = 2;
-Grid.Breakers.BitOpenSSF2 = 4;
-Grid.Breakers.BitOpenSSF3 = 8;
-Grid.Breakers.Time = 0;  Grid.Breakers.Val = 0;
+Init('Grid.CutGrid', 0, 0);
+Init('Grid.OpenSSF1', 0, 0);
+Init('Grid.OpenSSF2', 0, 0);
+Init('Grid.OpenSSF3', 0, 0);
 %Grid.Freq(n) - events
 %Grid.Voltage(n) - events
 % Irradiance - Nc= cloud number
-Nc = 0; 
+Nc = 0;
+CloudDelay = 20;
 
 %% Sequence start
 MGC_Enable.Time = [0 1 End-1];
@@ -54,21 +58,32 @@ Irradiance.RiseDuration = 40*60;    % FIX, Duration of ramp until full irradianc
 
 Nc=Nc+1; Cloud(Nc) = struct('Start', 30*60, 'Depth', 0.8, 'Ramp', 10, 'Duration', 30);
 
-Next('DMS.DisReq'      , 32*60, 1);
-Next('Grid.Breakers'   , 33*60, 1); 
+Next('DMS.DisReq'      , 32, 1);
+Next('Grid.CutGrid'   , 33, 1); 
 
 Nc=Nc+1; Cloud(Nc) = struct('Start', 50*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
-Next('Grid.Breakers'   , 54*60, 0); 
-Next('DMS.DisReq'      , 55*60, 0);
+Next('Grid.CutGrid'   , 54, 0); 
+Next('DMS.DisReq'      , 55, 0);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 60*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 300);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 81*60, 'Depth', 0.5, 'Ramp', 5 , 'Duration', 30);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 94*60, 'Depth', 0.3, 'Ramp', 15, 'Duration', 30);
 
 
+% Unintentional islanding
+Next('Fault.Loc1'      , 70, 1);
+Next('Grid.CutGrid'    , 71, 1);
+Next('Fault.Loc1'      , 72, 0);
+Next('Grid.CutGrid'    , 92, 0);
+
 out=wsp2struct(who);
 end
 
-function Next(fieldname, time, value)
-    evalin('caller', [fieldname '.Time = [' fieldname '.Time ' num2str(time)  '];']);
+function Next(fieldname, timeMin, value)
+    evalin('caller', [fieldname '.Time = [' fieldname '.Time ' num2str(timeMin*60)  '];']);
     evalin('caller', [fieldname '.Val  = [' fieldname '.Val  ' num2str(value) '];']);
+end
+
+function Init(fieldname, timeMin, value)
+    evalin('caller', [fieldname '.Time = ' num2str(timeMin) ';']);
+    evalin('caller', [fieldname '.Val  = ' num2str(value) ';']);
 end

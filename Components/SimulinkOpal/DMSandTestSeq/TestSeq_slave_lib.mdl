@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, 0.0, 1928.0, 1208.0]
+      Location		      [263.0, 124.0, 1142.0, 1023.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1685.0, 1042.0]
-	ZoomFactor		[1.8527607361963188]
-	Offset			[11.443708609271539, -110.73013245033121]
+	Extents			[899.0, 857.0]
+	ZoomFactor		[1.5793291024478697]
+	Offset			[104.13547646383466, -50.8177382319173]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 13 11:45:25 2017"
-  RTWModifiedTimeStamp	  406208707
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Fri Aug 04 12:55:40 2017"
+  RTWModifiedTimeStamp	  423752123
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,15 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      ArithShift
+      BitShiftNumberSource    "Dialog"
+      BitShiftNumber	      "0"
+      BinPtShiftNumber	      "0"
+      BitShiftDirection	      "Bidirectional"
+      DiagnosticForOORShift   "None"
+      CheckOORBitShift	      off
+    }
+    Block {
       BlockType		      BusCreator
       Inputs		      "4"
       DisplayOption	      "none"
@@ -702,10 +711,64 @@ Library {
       NonVirtualBus	      off
     }
     Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
       BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      DiscreteIntegrator
+      IntegratorMethod	      "Integration: Forward Euler"
+      gainval		      "1.0"
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      InitialConditionMode    "State and output"
+      SampleTime	      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      IgnoreLimit	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Gain
@@ -721,6 +784,42 @@ Library {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Goto
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      GotoTagVisibility
+      GotoTag		      "A"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
     }
     Block {
       BlockType		      Outport
@@ -779,10 +878,28 @@ Library {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "TestSeq_slave_lib"
-    Location		    [1916, 0, 3844, 1208]
+    Location		    [263, 124, 1405, 1147]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -794,18 +911,18 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "185"
+    ZoomFactor		    "158"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "14"
+    SIDHighWatermark	    "287"
     Block {
       BlockType		      SubSystem
       Name		      "TestSequenceCommands"
       SID		      "1"
-      Ports		      [0, 1]
-      Position		      [265, 276, 510, 384]
-      ZOrder		      3673
+      Ports		      [1, 1]
+      Position		      [255, 261, 500, 369]
+      ZOrder		      3700
       BackgroundColor	      "red"
-      LibraryVersion	      "*1.2"
+      LibraryVersion	      "*1.5"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -815,7 +932,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"TestSequenceCommands"
-	Location		[-8, -8, 1928, 1168]
+	Location		[51, 35, 1538, 1035]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -827,140 +944,2481 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"140"
+	ZoomFactor		"103"
 	Block {
-	  BlockType		  Sum
-	  Name			  "Add"
-	  SID			  "10"
-	  Ports			  [2, 1]
-	  Position		  [545, 192, 575, 223]
-	  ZOrder		  3407
-	  ShowName		  off
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	  Port {
-	    PortNumber		    1
-	    Name		    "TimeStamp"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "89"
+	  Position		  [210, 463, 240, 477]
+	  ZOrder		  3412
+	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
 	  SID			  "11"
-	  Ports			  [11, 1]
-	  Position		  [730, 200, 735, 660]
+	  Ports			  [8, 1]
+	  Position		  [795, 204, 800, 536]
 	  ZOrder		  3409
 	  ShowName		  off
-	  Inputs		  "11"
+	  Inputs		  "8"
 	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator1"
+	  SID			  "191"
+	  Ports			  [2, 1]
+	  Position		  [495, 690, 500, 770]
+	  ZOrder		  3428
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "pv"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "12"
-	  Ports			  [1, 12]
-	  Position		  [365, 169, 370, 651]
+	  Ports			  [1, 15]
+	  Position		  [365, 175, 370, 765]
 	  ZOrder		  3405
 	  ShowName		  off
-	  Outputs		  "12"
+	  Outputs		  "15"
 	  DisplayOption		  "bar"
 	  Port {
-	    PortNumber		    3
-	    Name		    "fault_location_1"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    4
-	    Name		    "fault_location_2"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
 	    PortNumber		    5
-	    Name		    "fault_location_3"
+	    Name		    "dms_cmds"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    6
-	    Name		    "fault_location_4"
+	    Name		    "dms_kw_cmd"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    7
-	    Name		    "fault_location_5"
+	    Name		    "dms_PF_cmd"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    8
-	    Name		    "Cut_Grid_Power"
+	    Name		    "dms_Dp"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    9
-	    Name		    "Irradiance"
+	    Name		    "dms_Dq"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    10
-	    Name		    "motor_1"
+	    Name		    "misc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    11
-	    Name		    "motor_2"
+	    Name		    "grid_Hz"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    12
-	    Name		    "Test3"
+	    Name		    "grid_Volt"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    13
+	    Name		    "price"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    14
+	    Name		    "insolation1"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    15
+	    Name		    "insolation2"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
-	  BlockType		  Gain
-	  Name			  "Gain"
-	  SID			  "13"
-	  Position		  [450, 215, 480, 245]
-	  ZOrder		  3406
-	  Gain			  "2^16"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "179"
+	  Position		  [630, 137, 695, 163]
+	  ZOrder		  3423
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "wdg_trip"
 	}
 	Block {
-	  BlockType		  Reference
-	  Name			  "Modbus device"
-	  SID			  "14"
-	  Ports			  [0, 1]
-	  Position		  [135, 383, 245, 437]
-	  ZOrder		  3408
-	  BackgroundColor	  "gray"
-	  LibraryVersion	  "1.13"
-	  SourceBlock		  "rtio_generic_modbus/Modbus device"
-	  SourceType		  "OpModbus"
-	  conf_name		  "TestSequenceCmd_cfg.opal"
-	  conf_name_mask	  "TestSequenceCmd_cfg.xls"
-	  sample_time		  "Ts"
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility"
+	  SID			  "180"
+	  Position		  [715, 137, 776, 160]
+	  ZOrder		  3424
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "wdg_trip"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "96"
+	  Ports			  [2, 1]
+	  Position		  [430, 168, 435, 252]
+	  ZOrder		  3413
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint1"
+	  SID			  "97"
+	  Ports			  [1, 1]
+	  Position		  [495, 214, 600, 246]
+	  ZOrder		  3414
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    17
+	    $ClassName		    "Simulink.Mask"
+	    Display		    "disp('uint16_2_uint32');"
+	  }
+	  Port {
+	    PortNumber		    1
+	    Name		    "seq_time"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint1"
+	    Location		    [51, 35, 1538, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      "98"
+	      Position		      [20, 73, 50, 87]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "99"
+	      Position		      [90, 63, 165, 97]
+	      ZOrder		      4
+	      OutDataTypeStr	      "uint32"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "100"
+	      Position		      [460, 38, 535, 72]
+	      ZOrder		      11
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      SID		      "287"
+	      Ports		      [1, 2]
+	      Position		      [210, 30, 215, 130]
+	      ZOrder		      19
+	      ShowName		      off
+	      Outputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      ArithShift
+	      Name		      "Shift\nArithmetic"
+	      SID		      "101"
+	      Ports		      [1, 1]
+	      Position		      [260, 85, 340, 125]
+	      ZOrder		      17
+	      InputPortMap	      "u0"
+	      BitShiftNumber	      "16"
+	      BitShiftDirection	      "Left"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "102"
+	      Ports		      [2, 1]
+	      Position		      [385, 45, 405, 65]
+	      ZOrder		      18
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "103"
+	      Position		      [565, 48, 595, 62]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      DstBlock		      "Shift\nArithmetic"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Shift\nArithmetic"
+	      SrcPort		      1
+	      Points		      [50, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint2"
+	  SID			  "248"
+	  Ports			  [1, 1]
+	  Position		  [495, 534, 600, 566]
+	  ZOrder		  3430
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "misc"
+	    PropagatedSignals	    "cut_grid, mgc_ena"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint2"
+	    Location		    [51, 35, 898, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "87"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "bitset"
+	      SID		      "249"
+	      Position		      [20, 98, 50, 112]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "250"
+	      Ports		      [2, 1]
+	      Position		      [505, 85, 510, 160]
+	      ZOrder		      39
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "251"
+	      Position		      [95, 88, 170, 122]
+	      ZOrder		      28
+	      ShowName		      off
+	      OutDataTypeStr	      "uint16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion2"
+	      SID		      "283"
+	      Position		      [360, 95, 435, 115]
+	      ZOrder		      44
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"cut_grid"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion3"
+	      SID		      "284"
+	      Position		      [360, 130, 435, 150]
+	      ZOrder		      45
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"mgc_ena"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits1"
+	      SID		      "253"
+	      Ports		      [1, 1]
+	      Position		      [220, 95, 300, 115]
+	      ZOrder		      26
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "[0]"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits2"
+	      SID		      "256"
+	      Ports		      [1, 1]
+	      Position		      [220, 130, 300, 150]
+	      ZOrder		      27
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "1"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "mux"
+	      SID		      "264"
+	      Position		      [545, 118, 575, 132]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits2"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc1"
+	      SrcBlock		      "Extract Bits1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "bitset"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      DstBlock		      "mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "cut_grid"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Data Type Conversion2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "mgc_ena"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Data Type Conversion3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		DstBlock		"Extract Bits1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35]
+		DstBlock		"Extract Bits2"
+		DstPort			1
+	      }
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint3"
+	  SID			  "111"
+	  Ports			  [1, 1]
+	  Position		  [495, 254, 600, 286]
+	  ZOrder		  3416
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "fault"
+	    PropagatedSignals	    "loc1, loc2, loc3, loc4, loc5, loc6, gen1, gen2, gen3, pv1, pv2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint3"
+	    Location		    [51, 35, 898, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "bitset"
+	      SID		      "112"
+	      Position		      [20, 98, 50, 112]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "215"
+	      Ports		      [11, 1]
+	      Position		      [535, 90, 540, 470]
+	      ZOrder		      41
+	      ShowName		      off
+	      Inputs		      "11"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "202"
+	      Position		      [95, 88, 170, 122]
+	      ZOrder		      28
+	      ShowName		      off
+	      OutDataTypeStr	      "uint16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "272"
+	      Position		      [360, 95, 435, 115]
+	      ZOrder		      42
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion10"
+	      SID		      "281"
+	      Position		      [360, 410, 435, 430]
+	      ZOrder		      51
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"pv1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion11"
+	      SID		      "282"
+	      Position		      [360, 445, 435, 465]
+	      ZOrder		      52
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"pv2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion2"
+	      SID		      "273"
+	      Position		      [360, 130, 435, 150]
+	      ZOrder		      43
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion3"
+	      SID		      "274"
+	      Position		      [360, 165, 435, 185]
+	      ZOrder		      44
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc3"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion4"
+	      SID		      "275"
+	      Position		      [360, 200, 435, 220]
+	      ZOrder		      45
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion5"
+	      SID		      "276"
+	      Position		      [360, 235, 435, 255]
+	      ZOrder		      46
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc5"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion6"
+	      SID		      "277"
+	      Position		      [360, 270, 435, 290]
+	      ZOrder		      47
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"loc6"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion7"
+	      SID		      "278"
+	      Position		      [360, 305, 435, 325]
+	      ZOrder		      48
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"gen1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion8"
+	      SID		      "279"
+	      Position		      [360, 340, 435, 360]
+	      ZOrder		      49
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"gen2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion9"
+	      SID		      "280"
+	      Position		      [360, 375, 435, 395]
+	      ZOrder		      50
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"gen3"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits1"
+	      SID		      "203"
+	      Ports		      [1, 1]
+	      Position		      [220, 95, 300, 115]
+	      ZOrder		      26
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "[0]"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits10"
+	      SID		      "212"
+	      Ports		      [1, 1]
+	      Position		      [220, 410, 300, 430]
+	      ZOrder		      36
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "9"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"pv1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits11"
+	      SID		      "213"
+	      Ports		      [1, 1]
+	      Position		      [220, 445, 300, 465]
+	      ZOrder		      37
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "10"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"pv2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits2"
+	      SID		      "204"
+	      Ports		      [1, 1]
+	      Position		      [220, 130, 300, 150]
+	      ZOrder		      27
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "1"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits3"
+	      SID		      "205"
+	      Ports		      [1, 1]
+	      Position		      [220, 165, 300, 185]
+	      ZOrder		      29
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "2"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc3"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits4"
+	      SID		      "206"
+	      Ports		      [1, 1]
+	      Position		      [220, 200, 300, 220]
+	      ZOrder		      30
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "3"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc4"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits5"
+	      SID		      "207"
+	      Ports		      [1, 1]
+	      Position		      [220, 235, 300, 255]
+	      ZOrder		      31
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "4"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc5"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits6"
+	      SID		      "208"
+	      Ports		      [1, 1]
+	      Position		      [220, 270, 300, 290]
+	      ZOrder		      32
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "5"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc6"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits7"
+	      SID		      "209"
+	      Ports		      [1, 1]
+	      Position		      [220, 305, 300, 325]
+	      ZOrder		      33
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "6"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"gen1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits8"
+	      SID		      "210"
+	      Ports		      [1, 1]
+	      Position		      [220, 340, 300, 360]
+	      ZOrder		      34
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "7"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"gen2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits9"
+	      SID		      "211"
+	      Ports		      [1, 1]
+	      Position		      [220, 375, 300, 395]
+	      ZOrder		      35
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "8"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"gen3"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "mux"
+	      SID		      "117"
+	      Position		      [590, 273, 620, 287]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "pv2"
+	      SrcBlock		      "Extract Bits11"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion11"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "pv1"
+	      SrcBlock		      "Extract Bits10"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion10"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "gen3"
+	      SrcBlock		      "Extract Bits9"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion9"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "gen2"
+	      SrcBlock		      "Extract Bits8"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion8"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "gen1"
+	      SrcBlock		      "Extract Bits7"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion7"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc6"
+	      SrcBlock		      "Extract Bits6"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion6"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc5"
+	      SrcBlock		      "Extract Bits5"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion5"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc4"
+	      SrcBlock		      "Extract Bits4"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc3"
+	      SrcBlock		      "Extract Bits3"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits2"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc1"
+	      SrcBlock		      "Extract Bits1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "pv2"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion11"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      11
+	    }
+	    Line {
+	      Name		      "pv1"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion10"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      10
+	    }
+	    Line {
+	      Name		      "gen3"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion9"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      9
+	    }
+	    Line {
+	      Name		      "gen2"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion8"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      8
+	    }
+	    Line {
+	      Name		      "gen1"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion7"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      7
+	    }
+	    Line {
+	      Name		      "loc6"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion6"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "loc5"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      Name		      "loc4"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "loc3"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "loc2"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "loc1"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      DstBlock		      "mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		Points			[0, 35]
+		Branch {
+		  DstBlock		  "Extract Bits2"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 35; 1, 0]
+		  Branch {
+		    DstBlock		    "Extract Bits3"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    Points		    [0, 35]
+		    DstBlock		    "Extract Bits11"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits10"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits9"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits8"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits7"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits6"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits5"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Extract Bits4"
+		    DstPort		    1
+		    }
+		  }
+		}
+	      }
+	      Branch {
+		DstBlock		"Extract Bits1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "bitset"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint4"
+	  SID			  "216"
+	  Ports			  [1, 1]
+	  Position		  [495, 294, 600, 326]
+	  ZOrder		  3429
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "motor"
+	    PropagatedSignals	    "ena1, ena2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint4"
+	    Location		    [51, 35, 898, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "85"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "bitset"
+	      SID		      "217"
+	      Position		      [20, 98, 50, 112]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "218"
+	      Ports		      [2, 1]
+	      Position		      [515, 87, 520, 158]
+	      ZOrder		      41
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "219"
+	      Position		      [95, 88, 170, 122]
+	      ZOrder		      28
+	      ShowName		      off
+	      OutDataTypeStr	      "uint16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion2"
+	      SID		      "285"
+	      Position		      [360, 95, 435, 115]
+	      ZOrder		      44
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"ena1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion3"
+	      SID		      "286"
+	      Position		      [360, 130, 435, 150]
+	      ZOrder		      45
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"ena2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits1"
+	      SID		      "221"
+	      Ports		      [1, 1]
+	      Position		      [220, 95, 300, 115]
+	      ZOrder		      26
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "[0]"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits2"
+	      SID		      "224"
+	      Ports		      [1, 1]
+	      Position		      [220, 130, 300, 150]
+	      ZOrder		      27
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "1"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "mux"
+	      SID		      "232"
+	      Position		      [555, 118, 585, 132]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits2"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "loc1"
+	      SrcBlock		      "Extract Bits1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "ena1"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "ena2"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "bitset"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      DstBlock		      "mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		DstBlock		"Extract Bits1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35]
+		DstBlock		"Extract Bits2"
+		DstPort			1
+	      }
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint5"
+	  SID			  "125"
+	  Ports			  [5, 1]
+	  Position		  [495, 331, 600, 529]
+	  ZOrder		  3418
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    18
+	    $ClassName		    "Simulink.Mask"
+	    Display		    "disp('uint16_2_uint32');"
+	  }
+	  Port {
+	    PortNumber		    1
+	    Name		    "dms"
+	    PropagatedSignals	    "DisReq, kWEna, PFEna, kWref, PFref, Dp, Dq"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint5"
+	    Location		    [51, 35, 898, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "94"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "cmd"
+	      SID		      "126"
+	      Position		      [20, 98, 50, 112]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "kWref"
+	      SID		      "139"
+	      Position		      [20, 203, 50, 217]
+	      ZOrder		      19
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"kWref"
+		PropagatedSignals	"dms_kw_cmd"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "PFref"
+	      SID		      "140"
+	      Position		      [20, 238, 50, 252]
+	      ZOrder		      20
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"PFref"
+		PropagatedSignals	"dms_PF_cmd"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Dp"
+	      SID		      "141"
+	      Position		      [20, 273, 50, 287]
+	      ZOrder		      21
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"Dp"
+		PropagatedSignals	"dms_Dp"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Dq"
+	      SID		      "142"
+	      Position		      [20, 308, 50, 322]
+	      ZOrder		      22
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"Dq"
+		PropagatedSignals	"dms_Dq"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "247"
+	      Ports		      [7, 1]
+	      Position		      [495, 88, 500, 332]
+	      ZOrder		      3437
+	      ShowName		      off
+	      Inputs		      "7"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion2"
+	      SID		      "241"
+	      Position		      [100, 88, 175, 122]
+	      ZOrder		      3433
+	      ShowName		      off
+	      OutDataTypeStr	      "uint16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion3"
+	      SID		      "268"
+	      Position		      [360, 93, 415, 117]
+	      ZOrder		      3439
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"DisReq"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion4"
+	      SID		      "269"
+	      Position		      [360, 128, 415, 152]
+	      ZOrder		      3440
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"kWEna"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion5"
+	      SID		      "270"
+	      Position		      [360, 163, 415, 187]
+	      ZOrder		      3441
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"PFEna"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits1"
+	      SID		      "242"
+	      Ports		      [1, 1]
+	      Position		      [225, 95, 305, 115]
+	      ZOrder		      3431
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "[0]"
+	      outScalingMode	      "Treat bit field as an integer"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits2"
+	      SID		      "243"
+	      Ports		      [1, 1]
+	      Position		      [225, 130, 305, 150]
+	      ZOrder		      3432
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "1"
+	      outScalingMode	      "Treat bit field as an integer"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits3"
+	      SID		      "244"
+	      Ports		      [1, 1]
+	      Position		      [225, 165, 305, 185]
+	      ZOrder		      3434
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "2"
+	      outScalingMode	      "Treat bit field as an integer"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "131"
+	      Position		      [600, 203, 630, 217]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "PFEna"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "kWEna"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "DisReq"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "Dq"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Dq"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      7
+	    }
+	    Line {
+	      Name		      "Dp"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Dp"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "PFref"
+	      Labels		      [1, 1]
+	      SrcBlock		      "PFref"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      Name		      "kWref"
+	      Labels		      [1, 1]
+	      SrcBlock		      "kWref"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion2"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		DstBlock		"Extract Bits1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35]
+		Branch {
+		  Points		  [0, 35]
+		  DstBlock		  "Extract Bits3"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Extract Bits2"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Extract Bits3"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion5"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Extract Bits2"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Extract Bits1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "cmd"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint6"
+	  SID			  "150"
+	  Ports			  [2, 1]
+	  Position		  [495, 568, 600, 652]
+	  ZOrder		  3421
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "grid"
+	    PropagatedSignals	    "Hz, Volt"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "uint32_2_uint6"
+	    Location		    [51, 35, 898, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "98"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Hz_raw"
+	      SID		      "157"
+	      Position		      [85, 183, 115, 197]
+	      ZOrder		      19
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Volt_raw"
+	      SID		      "158"
+	      Position		      [85, 253, 115, 267]
+	      ZOrder		      20
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "199"
+	      Ports		      [2, 1]
+	      Position		      [585, 139, 590, 286]
+	      ZOrder		      3432
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      "196"
+	      Position		      [245, 150, 310, 170]
+	      ZOrder		      3429
+	      ShowName		      off
+	      Value		      "6000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      SID		      "198"
+	      Position		      [245, 220, 310, 240]
+	      ZOrder		      3431
+	      ShowName		      off
+	      Value		      "11500"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From"
+	      SID		      "193"
+	      Position		      [145, 288, 210, 312]
+	      ZOrder		      3426
+	      BackgroundColor	      "darkGreen"
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      GotoTag		      "wdg_trip"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "200"
+	      Position		      [470, 160, 515, 190]
+	      ZOrder		      3433
+	      Gain		      "0.01"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Hz"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain1"
+	      SID		      "201"
+	      Position		      [470, 230, 515, 260]
+	      ZOrder		      3434
+	      Gain		      "10"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Volt"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Switch
+	      Name		      "Switch"
+	      SID		      "194"
+	      Position		      [355, 155, 405, 195]
+	      ZOrder		      3427
+	      Threshold		      "0.5"
+	      InputSameDT	      off
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Switch
+	      Name		      "Switch1"
+	      SID		      "195"
+	      Position		      [355, 225, 405, 265]
+	      ZOrder		      3428
+	      Threshold		      "0.5"
+	      InputSameDT	      off
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "grid"
+	      SID		      "156"
+	      Position		      [640, 203, 670, 217]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "Volt"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "Hz"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Switch1"
+	      SrcPort		      1
+	      DstBlock		      "Gain1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Switch"
+	      SrcPort		      1
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "Switch1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Switch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Volt_raw"
+	      SrcPort		      1
+	      DstBlock		      "Switch1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Hz_raw"
+	      SrcPort		      1
+	      DstBlock		      "Switch"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "From"
+	      SrcPort		      1
+	      Points		      [19, 0; 0, -55]
+	      Branch {
+		DstBlock		"Switch1"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, -70]
+		DstBlock		"Switch"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      Points		      [0, -5]
+	      DstBlock		      "grid"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "uint32_2_uint7"
+	  SID			  "159"
+	  Ports			  [1, 1]
+	  Position		  [495, 134, 600, 166]
+	  ZOrder		  3422
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    19
+	    $ClassName		    "Simulink.Mask"
+	    Display		    "disp('Watchdog\\nT=2s');"
+	  }
+	  System {
+	    Name		    "uint32_2_uint7"
+	    Location		    [51, 35, 1538, 1035]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "81"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Timestamp"
+	      SID		      "160"
+	      Position		      [115, 453, 145, 467]
+	      ZOrder		      13
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      "170"
+	      Position		      [320, 370, 350, 400]
+	      ZOrder		      35
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "171"
+	      Position		      [580, 488, 630, 512]
+	      ZOrder		      38
+	      ShowName		      off
+	      OutDataTypeStr	      "boolean"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Detect\nChange1"
+	      SID		      "172"
+	      Ports		      [1, 1]
+	      Position		      [205, 445, 300, 475]
+	      ZOrder		      33
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Detect\nChange"
+	      SourceType	      "Detect Change"
+	      vinit		      "0"
+	      InputProcessing	      "Inherited"
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      DiscreteIntegrator
+	      Name		      "Discrete-Time\nIntegrator1"
+	      SID		      "173"
+	      Ports		      [2, 2]
+	      Position		      [400, 347, 505, 498]
+	      ZOrder		      34
+	      ShowName		      off
+	      ExternalReset	      "level"
+	      SampleTime	      "Ts"
+	      LimitOutput	      on
+	      UpperSaturationLimit    "2"
+	      ShowSaturationPort      on
+	      ICPrevOutput	      "DiscIntNeverNeededParam"
+	      ICPrevScaledInput	      "DiscIntNeverNeededParam"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "S-R\nFlip-Flop"
+	      SID		      "174"
+	      Ports		      [2, 2]
+	      Position		      [690, 480, 735, 555]
+	      ZOrder		      37
+	      ShowName		      off
+	      LibraryVersion	      "1.44"
+	      SourceBlock	      "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	      SourceType	      "SRFlipFlop"
+	      initial_condition	      "1"
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "176"
+	      Position		      [560, 375, 580, 395]
+	      ZOrder		      39
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator1"
+	      SID		      "177"
+	      Position		      [765, 525, 785, 545]
+	      ZOrder		      40
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Wdg"
+	      SID		      "165"
+	      Position		      [790, 493, 820, 507]
+	      ZOrder		      14
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "S-R\nFlip-Flop"
+	      SrcPort		      2
+	      DstBlock		      "Terminator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "S-R\nFlip-Flop"
+	      SrcPort		      1
+	      DstBlock		      "Wdg"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete-Time\nIntegrator1"
+	      SrcPort		      1
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "S-R\nFlip-Flop"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "Discrete-Time\nIntegrator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Detect\nChange1"
+	      SrcPort		      1
+	      Points		      [42, 0]
+	      Branch {
+		DstBlock		"Discrete-Time\nIntegrator1"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 75]
+		DstBlock		"S-R\nFlip-Flop"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Timestamp"
+	      SrcPort		      1
+	      DstBlock		      "Detect\nChange1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Discrete-Time\nIntegrator1"
+	      SrcPort		      2
+	      Points		      [35, 0; 0, 40]
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "178"
+	      Name		      "2 seconds watchdog on timestamp.\n If timestamp is not updated for more than 2 seconds wdg_trip wi"
+	      "ll become active"
+	      Position		      [452, 303]
+	      BackgroundColor	      "cyan"
+	      ZOrder		      -1
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "TestSeqData"
 	  SID			  "7"
-	  Position		  [805, 423, 835, 437]
+	  Position		  [870, 363, 900, 377]
 	  ZOrder		  3403
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "pv"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  Points		  [218, 0; 0, -220]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "insolation2"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  15
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "insolation1"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  14
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "grid"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "uint32_2_uint6"
+	  SrcPort		  1
+	  Points		  [80, 0; 0, -180]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "uint32_2_uint7"
+	  SrcPort		  1
+	  DstBlock		  "Goto"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "price"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  13
+	  Points		  [328, 0; 0, -200]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "misc"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "uint32_2_uint2"
+	  SrcPort		  1
+	  Points		  [62, 0; 0, -160]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "dms"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "uint32_2_uint5"
+	  SrcPort		  1
+	  Points		  [44, 0; 0, -80]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "motor"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "uint32_2_uint4"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "fault"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "uint32_2_uint3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  DstBlock		  "uint32_2_uint1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "grid_Volt"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  12
+	  DstBlock		  "uint32_2_uint6"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "uint32_2_uint3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  4
+	  DstBlock		  "uint32_2_uint4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "dms_cmds"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  5
+	  DstBlock		  "uint32_2_uint5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "dms_kw_cmd"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  6
+	  DstBlock		  "uint32_2_uint5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "dms_PF_cmd"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  7
+	  DstBlock		  "uint32_2_uint5"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "dms_Dp"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  8
+	  DstBlock		  "uint32_2_uint5"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "dms_Dq"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  9
+	  DstBlock		  "uint32_2_uint5"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "misc"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Demux"
+	  SrcPort		  10
+	  DstBlock		  "uint32_2_uint2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "seq_time"
+	  SrcBlock		  "uint32_2_uint1"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  Branch {
+	    Labels		    [-1, 0]
+	    DstBlock		    "Bus\nCreator"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -40; -179, 0; 0, -40]
+	    DstBlock		    "uint32_2_uint7"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "grid_Hz"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Demux"
+	  SrcPort		  11
+	  DstBlock		  "uint32_2_uint6"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator"
@@ -968,156 +3426,32 @@ Library {
 	  DstBlock		  "TestSeqData"
 	  DstPort		  1
 	}
-	Line {
-	  Name			  "motor_2"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  11
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  10
-	}
-	Line {
-	  SrcBlock		  "Modbus device"
-	  SrcPort		  1
-	  DstBlock		  "Demux"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Gain"
-	  SrcPort		  1
-	  Points		  [27, 0; 0, -15]
-	  DstBlock		  "Add"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  2
-	  DstBlock		  "Gain"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  1
-	  Points		  [155, 0]
-	  DstBlock		  "Add"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "TimeStamp"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Add"
-	  SrcPort		  1
-	  Points		  [86, 0; 0, 20]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "motor_1"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  10
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  9
-	}
-	Line {
-	  Name			  "Irradiance"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  9
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  8
-	}
-	Line {
-	  Name			  "Cut_Grid_Power"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  8
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  7
-	}
-	Line {
-	  Name			  "fault_location_5"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  7
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  6
-	}
-	Line {
-	  Name			  "fault_location_4"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  6
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "fault_location_3"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  5
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "fault_location_2"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  4
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "fault_location_1"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  3
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "Test3"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  12
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  11
-	}
 	Annotation {
-	  SID			  "8"
-	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
-	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
-	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
-	  "ribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnished to"
-	  " do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "
-	  "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURP"
-	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
-	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
-	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [4, 31]
+	  SID			  "265"
+	  Name			  "Copyright © 2017 the Alliance for Sustainable Energy, LLC\n\nThe above copyright notice and this permissi"
+	  "on notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS"
+	  " IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING \nBUT NOT LIMITED TO THE WARRANTIES OF MERCHANTA"
+	  "BILITY, FITNESS FOR A PARTICULAR PURPOSE AND \nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS "
+	  "BE LIABLE FOR ANY CLAIM,\n DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING"
+	  " FROM, \nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE\n"
+	  Position		  [408, 66]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
-	  FontSize		  12
-	  FontWeight		  "bold"
 	}
       }
     }
     Annotation {
-      SID		      "9"
-      Name		      "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of cha"
-      "rge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to d"
-      "eal\nin the Software without restriction, including without limitation the rights to use, copy, modify, merge, p"
-      "ublish, distribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software "
-      "is furnished to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARR"
-      "ANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS "
-      "FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR"
-      " ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT"
-      " OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-      Position		      [19, 16]
+      SID		      "266"
+      Name		      "Copyright © 2017 the Alliance for Sustainable Energy, LLC\n\nThe above copyright notice and this pe"
+      "rmission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROV"
+      "IDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING \nBUT NOT LIMITED TO THE WARRANTIES "
+      "OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND \nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COP"
+      "YRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+      "OTHERWISE, ARISING FROM, \nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWAR"
+      "E\n"
+      Position		      [113, 121]
       HorizontalAlignment     "left"
-      ZOrder		      -2
-      FontSize		      12
-      FontWeight	      "bold"
+      ZOrder		      -3
     }
   }
 }
