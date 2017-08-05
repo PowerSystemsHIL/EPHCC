@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 04 17:02:38 2017"
-  RTWModifiedTimeStamp	  423766956
-  ModelVersionFormat	  "1.%<AutoIncrement:72>"
+  LastModifiedDate	  "Sat Aug 05 00:22:49 2017"
+  RTWModifiedTimeStamp	  423793365
+  ModelVersionFormat	  "1.%<AutoIncrement:73>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -883,15 +883,15 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1280"
+    SIDHighWatermark	    "1281"
     Block {
       BlockType		      SubSystem
       Name		      "PHIL_F3"
       SID		      "1172"
       Ports		      [3, 1, 0, 0, 0, 3]
       Position		      [175, 301, 325, 514]
-      ZOrder		      4058
-      LibraryVersion	      "*1.67"
+      ZOrder		      4065
+      LibraryVersion	      "*1.72"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -901,7 +901,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"PHIL_F3"
-	Location		[0, 0, 1702, 1040]
+	Location		[0, 0, 960, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -913,7 +913,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"74"
+	ZoomFactor		"72"
 	Block {
 	  BlockType		  Inport
 	  Name			  "FromF4"
@@ -999,38 +999,6 @@ Library {
 	  Port {
 	    PortNumber		    2
 	    Name		    "<AIN_I_GAIN>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector3"
-	  SID			  "1246"
-	  Ports			  [1, 1]
-	  Position		  [450, 886, 455, 924]
-	  ZOrder		  4088
-	  ShowName		  off
-	  OutputSignals		  "IO_scaling"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<IO_scaling>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector4"
-	  SID			  "1247"
-	  Ports			  [1, 1]
-	  Position		  [485, 576, 490, 614]
-	  ZOrder		  4076
-	  ShowName		  off
-	  OutputSignals		  "IO_scaling"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<IO_scaling>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1200,26 +1168,34 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From38"
-	  SID			  "1255"
-	  Position		  [320, 582, 435, 608]
-	  ZOrder		  4066
+	  Name			  "From3"
+	  SID			  "1281"
+	  Position		  [360, 585, 430, 605]
+	  ZOrder		  4096
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
-	  GotoTag		  "CONSOLE"
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "phil_ctrl"
 	  TagVisibility		  "scoped"
 	}
 	Block {
 	  BlockType		  From
 	  Name			  "From4"
 	  SID			  "1256"
-	  Position		  [340, 895, 410, 915]
+	  Position		  [360, 895, 430, 915]
 	  ZOrder		  4089
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "CONSOLE"
+	  GotoTag		  "phil_ctrl"
 	  TagVisibility		  "scoped"
+	  Port {
+	    PortNumber		    1
+	    PropagatedSignals	    "IO_scaling"
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  From
@@ -1653,6 +1629,12 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
 	  SrcBlock		  "Product2"
 	  SrcPort		  1
 	  Points		  [17, 0; 0, -10]
@@ -1692,17 +1674,10 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<IO_scaling>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector3"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector5"
-	  DstPort		  1
-	}
-	Line {
+	  Labels		  [1, 1]
 	  SrcBlock		  "From4"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector3"
+	  DstBlock		  "Bus\nSelector5"
 	  DstPort		  1
 	}
 	Line {
@@ -1758,14 +1733,6 @@ Library {
 	  SrcBlock		  "Gain1"
 	  SrcPort		  1
 	  DstBlock		  "Product3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<IO_scaling>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector4"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
 	}
 	Line {
@@ -1842,12 +1809,6 @@ Library {
 	  SrcBlock		  "Demux1"
 	  SrcPort		  1
 	  DstBlock		  "Gain1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From38"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector4"
 	  DstPort		  1
 	}
 	Line {

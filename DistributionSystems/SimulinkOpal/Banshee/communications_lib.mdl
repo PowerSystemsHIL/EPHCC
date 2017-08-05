@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1046.0, 850.0]
+	Extents			[1049.0, 870.0]
 	ZoomFactor		[0.90999999999999992]
 	Offset			[0.0, -5.6843418860808015e-14]
       }
@@ -55,8 +55,8 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 04 23:29:43 2017"
-  RTWModifiedTimeStamp	  423790181
+  LastModifiedDate	  "Sat Aug 05 00:22:17 2017"
+  RTWModifiedTimeStamp	  423793272
   ModelVersionFormat	  "1.%<AutoIncrement:84>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
@@ -905,7 +905,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "91"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2321"
+    SIDHighWatermark	    "2324"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
@@ -916,7 +916,7 @@ Library {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "*1.81"
+      LibraryVersion	      "*1.83"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -938,7 +938,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"75"
+	ZoomFactor		"40"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -1722,7 +1722,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"80"
-		SIDHighWatermark	"186"
+		SIDHighWatermark	"195"
 		SIDPrevWatermark	"141"
 		Block {
 		  BlockType		  Sum
@@ -2240,7 +2240,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Motor_data"
-	    Location		    [-8, 0, 1924, 1056]
+	    Location		    [0, 0, 960, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2252,25 +2252,51 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
+	    ZoomFactor		    "114"
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      SID		      "2321"
+	      Ports		      [1, 1]
+	      Position		      [250, 312, 255, 338]
+	      ZOrder		      3682
+	      ShowName		      off
+	      OutputSignals	      "ena1"
+	      Port {
+		PortNumber		1
+		Name			"<ena1>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector10"
 	      SID		      "1581"
-	      Ports		      [1, 2]
-	      Position		      [205, 303, 210, 392]
+	      Ports		      [1, 1]
+	      Position		      [205, 305, 210, 395]
 	      ZOrder		      3670
 	      ShowName		      off
-	      OutputSignals	      "motor_2,motor_1"
+	      OutputSignals	      "motor"
 	      Port {
 		PortNumber		1
-		Name			"<motor_2>"
+		Name			"<motor>"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector2"
+	      SID		      "2323"
+	      Ports		      [1, 1]
+	      Position		      [250, 357, 255, 383]
+	      ZOrder		      3684
+	      ShowName		      off
+	      OutputSignals	      "ena2"
 	      Port {
-		PortNumber		2
-		Name			"<motor_1>"
+		PortNumber		1
+		Name			"<ena2>"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2405,6 +2431,22 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
+	      Name		      "<ena2>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector2"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "<ena1>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
 	      SrcBlock		      "Data Type Conversion"
 	      SrcPort		      1
 	      Points		      [25, 0; 0, 10]
@@ -2443,20 +2485,21 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "<motor_2>"
+	      Name		      "<motor>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector10"
 	      SrcPort		      1
-	      DstBlock		      "Logical\nOperator1"
-	      DstPort		      2
-	    }
-	    Line {
-	      Name		      "<motor_1>"
-	      Labels		      [0, 0]
-	      SrcBlock		      "Bus\nSelector10"
-	      SrcPort		      2
-	      DstBlock		      "Logical\nOperator"
-	      DstPort		      2
+	      Points		      [0, 0]
+	      Branch {
+		Points			[0, -25]
+		DstBlock		"Bus\nSelector1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 20]
+		DstBlock		"Bus\nSelector2"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "From37"
@@ -2475,7 +2518,7 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector26"
 	      SrcPort		      1
-	      Points		      [90, 0; 0, -55]
+	      Points		      [63, 0; 0, -55]
 	      DstBlock		      "Logical\nOperator"
 	      DstPort		      1
 	    }
@@ -2504,9 +2547,9 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "NREL UDP Data - Formatted Packets"
-	  SID			  "2321"
+	  SID			  "2324"
 	  Ports			  [10, 1]
-	  Position		  [1410, 1376, 1655, 1884]
+	  Position		  [1405, 1376, 1650, 1884]
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
@@ -2538,7 +2581,7 @@ Library {
 	  Ports			  [8, 8]
 	  Position		  [630, 870, 690, 1180]
 	  ZOrder		  2653
-	  LibraryVersion	  "1.469"
+	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
 	  SourceType		  "RT-LAB OpComm"
 	  nbport		  "8"
@@ -6107,7 +6150,7 @@ Library {
 	  Name			  "TestSeq"
 	  SrcBlock		  "NREL UDP Data - Formatted Packets"
 	  SrcPort		  1
-	  Points		  [38, 0]
+	  Points		  [43, 0]
 	  Branch {
 	    Labels		    [1, 1]
 	    DstBlock		    "Bus\nCreator2"
