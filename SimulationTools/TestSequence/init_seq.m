@@ -34,7 +34,7 @@ Init('DMS.DisReq', 0, 0);
 Init('DMS.kWena', 0, 0);
 Init('DMS.PFena', 0, 0);
 Init('DMS.kWref', 0, 0);
-Init('DMS.PFref', 0, 0);
+Init('DMS.PFref', 0, 1.0);
 Init('DMS.Dp', 0, 0);
 Init('DMS.Dq', 0, 0);
 %
@@ -45,36 +45,104 @@ Init('Grid.OpenSSF2', 0, 0);
 Init('Grid.OpenSSF3', 0, 0);
 %Grid.Freq(n) - events
 %Grid.Voltage(n) - events
-% Irradiance - Nc= cloud number
-Nc = 0;
+Init('MGC_Enable', 0, 0);            % start of test sequence
+
+Nc = 0; % Irradiance - Nc= cloud number
+Nf = 0; % Frequency events counter
+Nv = 0; % Voltage event counter
 CloudDelay = 20;
 
-%% Sequence start
-MGC_Enable.Time = [0 1 End-1];
-MGC_Enable.Val  = [0 1 0];
+%% Sequence start - grid connected
+Next('MGC_Enable', 2/60, 1);            % start of test sequence
+
+Next('DMS.kWena', 2, 1);
+Next('DMS.kWref', 2, 5000);         % DMS xport request
+Next('DMS.PFena', 2, 1);
+Next('DMS.PFref', 2, 1.0);         % unity power factor request
+Next('DMS.Dp'   , 5, 3);
+Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 7*60, 'Depth', -0.6, 'Duration', 60);
+Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 9*60, 'Depth', 0.4, 'Duration', 20);
+Next('DMS.kWena', 10, 0);
+Next('DMS.kWref', 10, 0);           % DMS xport request
+Next('DMS.Dp'   , 10, 0);
+Next('DMS.PFref', 23, 0.9);         % unity power factor request
+Next('DMS.PFena', 25, 0);           % unity power factor request
 
 Irradiance.Rise = 20*60;            % FIX, Sunrise beginning time t=20min
 Irradiance.RiseDuration = 40*60;    % FIX, Duration of ramp until full irradiance
 
+Next('Fault.Ess1', 4, 1);
+Next('Fault.Ess1', 6, 0);
+
 Nc=Nc+1; Cloud(Nc) = struct('Start', 30*60, 'Depth', 0.8, 'Ramp', 10, 'Duration', 30);
 
+%% PLanned islanding - start island
 Next('DMS.DisReq'      , 32, 1);
 Next('Grid.CutGrid'   , 33, 1); 
+
+Next('Fault.Gen3', 36, 1);
+Next('Fault.Gen3', 38, 0);
+Next('Fault.Pv1', 42, 1);
+Next('Fault.Pv1', 44, 0);
+Next('Fault.Loc2', 46, 1);
+Next('Fault.Loc2', 46.5, 0);
 
 Nc=Nc+1; Cloud(Nc) = struct('Start', 50*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
 Next('Grid.CutGrid'   , 54, 0); 
 Next('DMS.DisReq'      , 55, 0);
+
+%% End of planned islanding - start grid connected
+Next('DMS.kWena', 58, 1);
+Next('DMS.kWref', 58, -500);         % DMS import request
+Next('DMS.PFena', 58, 1);
+Next('DMS.PFref', 58, 0.98);         
+Next('DMS.kWref', 59, -1000);         % DMS import request
+Next('DMS.kWref', 60, -1500);         % DMS import request
+Next('DMS.Dp'   , 61, 2);
+Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 62*60, 'Depth', 0.3, 'Duration', 20);
+Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 63*60, 'Depth', -0.4, 'Duration', 40);
+
+Next('DMS.kWena', 64, 0);
+Next('DMS.kWref', 64, 0);           % DMS import request
+Next('DMS.Dp'   , 64, 0);
+Next('DMS.PFena', 68, 0);
+
+Next('Fault.Gen2', 59, 1);
+Next('Fault.Gen2', 60, 0);
+Next('Fault.Ess2', 62, 1);
+Next('Fault.Ess2', 63, 0);
+Next('Fault.Loc3', 67, 1);
+Next('Fault.Loc3', 67.5, 0);
+
 Nc=Nc+1; Cloud(Nc) = struct('Start', 60*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 300);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 81*60, 'Depth', 0.5, 'Ramp', 5 , 'Duration', 30);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 94*60, 'Depth', 0.3, 'Ramp', 15, 'Duration', 30);
 
 
-% Unintentional islanding
+%% Unintentional islanding - start island
 Next('Fault.Loc1'      , 70, 1);
 Next('Grid.CutGrid'    , 71, 1);
+
+Next('Fault.Gen1', 73, 1);
+Next('Fault.Gen1', 75, 0);
+Next('Fault.Pv2', 80, 1);
+Next('Fault.Pv2', 81, 0);
+Next('Fault.Loc4', 86, 1);
+Next('Fault.Loc4', 86.5, 0);
+
+%% End of unintentional islanding - start grid connected
 Next('Fault.Loc1'      , 72, 0);
 Next('Grid.CutGrid'    , 92, 0);
 
+Next('DMS.kWena', 95, 1);
+Next('DMS.kWref', 95, 9000);         % DMS import request
+Next('DMS.PFena', 93, 1);
+Next('DMS.PFref', 93, 0.96);         
+
+Next('Fault.Loc5', 98, 1);
+Next('Fault.Loc5', 98.5, 0);
+
+Next('MGC_Enable', 99+58/60, 0);
 out=wsp2struct(who);
 end
 
