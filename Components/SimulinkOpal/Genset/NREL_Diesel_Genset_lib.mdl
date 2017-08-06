@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [366.0, 0.0, 1554.0, 1032.0]
+      Location		      [274.0, 220.0, 1554.0, 1032.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"4777:5292:64"
 	Extents			[1311.0, 866.0]
-	ZoomFactor		[1.8899999999999997]
-	Offset			[0.0, -2.8421709430404007e-14]
+	ZoomFactor		[0.8]
+	Offset			[-2.5, -192.57812506705523]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Aug 05 02:22:52 2017"
-  RTWModifiedTimeStamp	  423800569
-  ModelVersionFormat	  "1.%<AutoIncrement:55>"
+  LastModifiedDate	  "Sun Aug 06 00:01:52 2017"
+  RTWModifiedTimeStamp	  423878510
+  ModelVersionFormat	  "1.%<AutoIncrement:57>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1145,8 +1145,8 @@ Library {
   }
   System {
     Name		    "NREL_Diesel_Genset_lib"
-    Location		    [366, 0, 1920, 1032]
-    Open		    on
+    Location		    [274, 220, 1828, 1252]
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1157,9 +1157,9 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "189"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "5729"
+    SIDHighWatermark	    "5732"
     Block {
       BlockType		      SubSystem
       Name		      "DieselGovernor"
@@ -1227,7 +1227,7 @@ Library {
       }
       System {
 	Name			"DieselGovernor"
-	Location		[366, 0, 1920, 1032]
+	Location		[274, 220, 1828, 1252]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1852,7 +1852,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"200"
 	Block {
 	  BlockType		  Inport
 	  Name			  "wref (pu)"
@@ -1898,7 +1898,7 @@ Library {
 	  Name			  "Bus\nCreator"
 	  SID			  "5347"
 	  Ports			  [3, 1]
-	  Position		  [1250, 16, 1255, 54]
+	  Position		  [1250, 161, 1255, 319]
 	  ZOrder		  102
 	  ShowName		  off
 	  Inputs		  "3"
@@ -1914,7 +1914,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "CH4->CO2"
 	  SID			  "5348"
-	  Position		  [850, 212, 945, 248]
+	  Position		  [850, 272, 945, 308]
 	  ZOrder		  106
 	  Gain			  "2.75"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -1922,7 +1922,7 @@ Library {
 	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "CO2 lbm/hr"
+	    Name		    "CO2_lbm_hr"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1955,7 +1955,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Engine"
-	    Location		    [1911, -9, 3849, 1089]
+	    Location		    [366, 0, 1920, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1991,7 +1991,7 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "speed, pu"
+	      Name		      "speed_pu"
 	      SID		      "5353"
 	      Position		      [20, 100, 50, 115]
 	      ZOrder		      34
@@ -2202,6 +2202,15 @@ Library {
 	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "5732"
+	      Position		      [645, 475, 665, 495]
+	      ZOrder		      113
+	      BlockMirror	      on
+	      NamePlacement	      "alternate"
+	    }
+	    Block {
 	      BlockType		      Constant
 	      Name		      "Thermal efficiency"
 	      SID		      "5372"
@@ -2225,7 +2234,7 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Viscous damping1"
 	      SID		      "5374"
-	      Position		      [630, 459, 730, 511]
+	      Position		      [690, 459, 790, 511]
 	      ZOrder		      52
 	      BlockMirror	      on
 	      Gain		      "2*7*5.5/4"
@@ -2246,7 +2255,7 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "Pmech, kW"
+	      Name		      "Pmech_kW"
 	      SID		      "5376"
 	      Position		      [1095, 288, 1125, 302]
 	      ZOrder		      35
@@ -2255,7 +2264,7 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "Speed, pu "
+	      Name		      "Speed_pu "
 	      SID		      "5377"
 	      Position		      [1130, 478, 1160, 492]
 	      ZOrder		      41
@@ -2324,7 +2333,7 @@ Library {
 	      DstPort		      2
 	    }
 	    Line {
-	      SrcBlock		      "speed, pu"
+	      SrcBlock		      "speed_pu"
 	      SrcPort		      1
 	      Points		      [0, 185; 21, 0]
 	      Branch {
@@ -2350,7 +2359,7 @@ Library {
 	      Points		      [421, 0]
 	      Branch {
 		Points			[0, -55]
-		DstBlock		"Pmech, kW"
+		DstBlock		"Pmech_kW"
 		DstPort			1
 	      }
 	      Branch {
@@ -2362,7 +2371,7 @@ Library {
 	    Line {
 	      SrcBlock		      "rad/sec->Speed pu1"
 	      SrcPort		      1
-	      DstBlock		      "Speed, pu "
+	      DstBlock		      "Speed_pu "
 	      DstPort		      1
 	    }
 	    Line {
@@ -2387,7 +2396,7 @@ Library {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 105]
+		Points			[0, 105; 2, 0]
 		Branch {
 		  DstBlock		  "rad/sec->Speed pu1"
 		  DstPort		  1
@@ -2458,6 +2467,12 @@ Library {
 		DstPort			1
 	      }
 	    }
+	    Line {
+	      SrcBlock		      "Viscous damping1"
+	      SrcPort		      1
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
 	    Annotation {
 	      SID		      "5379"
 	      Name		      "Delay torque 120 degrees on crank\ndelay secs=120/(npu*1800*(360/60))= 1/(90*npu)\n#samples to del"
@@ -2478,12 +2493,12 @@ Library {
 	  BlockType		  Fcn
 	  Name			  "Heat Recovery Fraction, MBtu/lbm*0.2\n"
 	  SID			  "5380"
-	  Position		  [840, 302, 955, 328]
+	  Position		  [850, 177, 965, 203]
 	  ZOrder		  105
 	  Expr			  "0.2*.020267*u[1]"
 	  Port {
 	    PortNumber		    1
-	    Name		    "Heat Recovered, MBtu/hr"
+	    Name		    "Heat_Recovered_MBtu_hr"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -2504,7 +2519,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Intake manifold"
-	    Location		    [1911, -9, 3849, 1089]
+	    Location		    [366, 0, 1920, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2540,7 +2555,7 @@ Library {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "Speed, pu"
+	      Name		      "Speed_pu"
 	      SID		      "5384"
 	      Position		      [50, 558, 80, 572]
 	      ZOrder		      24
@@ -2852,7 +2867,7 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Speed, pu"
+	      SrcBlock		      "Speed_pu"
 	      SrcPort		      1
 	      DstBlock		      "pu->RPM"
 	      DstPort		      1
@@ -3091,6 +3106,22 @@ Library {
 	  ZOrder		  113
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator1"
+	  SID			  "5730"
+	  Position		  [715, 160, 735, 180]
+	  ZOrder		  115
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator2"
+	  SID			  "5731"
+	  Position		  [1105, 415, 1125, 435]
+	  ZOrder		  116
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  SubSystem
 	  Name			  "Throttle body"
 	  SID			  "5409"
@@ -3118,7 +3149,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Throttle body"
-	    Location		    [1911, -9, 3849, 1089]
+	    Location		    [366, 0, 1920, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3133,7 +3164,7 @@ Library {
 	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
-	      Name		      "Valve displacement, pu"
+	      Name		      "Valve displacement_pu"
 	      SID		      "5410"
 	      Position		      [180, 313, 210, 327]
 	      ZOrder		      5
@@ -3309,7 +3340,7 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Valve displacement, pu"
+	      SrcBlock		      "Valve displacement_pu"
 	      SrcPort		      1
 	      DstBlock		      "Force > 0\n#3"
 	      DstPort		      1
@@ -3422,7 +3453,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "lbm/hr->Nm^3/hr"
 	  SID			  "5431"
-	  Position		  [830, 62, 925, 98]
+	  Position		  [850, 222, 945, 258]
 	  ZOrder		  91
 	  Gain			  "1/1.76"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -3430,7 +3461,7 @@ Library {
 	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "Nm^3 per hour NG fuel usage"
+	    Name		    "Nm3_per_hour_NG_fuel_usage"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3447,11 +3478,10 @@ Library {
 	  BlockType		  Outport
 	  Name			  "Thermal Data"
 	  SID			  "5433"
-	  Position		  [1340, 28, 1465, 42]
+	  Position		  [1340, 233, 1385, 247]
 	  ZOrder		  103
-	  ShowName		  off
 	  Port			  "2"
-	  IconDisplay		  "Signal name"
+	  IconDisplay		  "Port number"
 	}
 	Line {
 	  SrcBlock		  "Power limit"
@@ -3481,10 +3511,10 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "CO2 lbm/hr"
+	  Name			  "CO2_lbm_hr"
+	  Labels		  [-1, 0]
 	  SrcBlock		  "CH4->CO2"
 	  SrcPort		  1
-	  Points		  [279, 0; 0, -185]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  3
 	}
@@ -3544,20 +3574,18 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "Nm^3 per hour NG fuel usage"
-	  Labels		  [0, 0]
+	  Name			  "Nm3_per_hour_NG_fuel_usage"
+	  Labels		  [-1, 0]
 	  SrcBlock		  "lbm/hr->Nm^3/hr"
 	  SrcPort		  1
-	  Points		  [8, 0; 0, 40; 271, 0; 0, -85]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  2
 	}
 	Line {
-	  Name			  "Heat Recovered, MBtu/hr"
-	  Labels		  [0, 0]
+	  Name			  "Heat_Recovered_MBtu_hr"
+	  Labels		  [-1, 0]
 	  SrcBlock		  "Heat Recovery Fraction, MBtu/lbm*0.2\n"
 	  SrcPort		  1
-	  Points		  [63, 0; 0, -290]
 	  DstBlock		  "Bus\nCreator"
 	  DstPort		  1
 	}
@@ -3581,21 +3609,18 @@ Library {
 	Line {
 	  SrcBlock		  "kg/sec->lbm/hr1"
 	  SrcPort		  1
-	  Points		  [7, 0]
+	  Points		  [108, 0]
 	  Branch {
-	    Points		    [0, 75; 101, 0]
-	    Branch {
-	      DstBlock		      "Heat Recovery Fraction, MBtu/lbm*0.2\n"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, -235]
-	      DstBlock		      "lbm/hr->Nm^3/hr"
-	      DstPort		      1
-	    }
+	    Points		    [0, -50]
+	    DstBlock		    "Heat Recovery Fraction, MBtu/lbm*0.2\n"
+	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -10]
+	    DstBlock		    "lbm/hr->Nm^3/hr"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 50]
 	    DstBlock		    "CH4->CO2"
 	    DstPort		    1
 	  }
@@ -3684,6 +3709,18 @@ Library {
 	  DstBlock		  "Thermal Data"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "kg/sec->lbm/hr"
+	  SrcPort		  1
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Engine"
+	  SrcPort		  2
+	  DstBlock		  "Terminator2"
+	  DstPort		  1
+	}
       }
     }
     Block {
@@ -3734,7 +3771,7 @@ Library {
       }
       System {
 	Name			"GenSet"
-	Location		[1911, -9, 3849, 1089]
+	Location		[274, 220, 1828, 1252]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -3746,7 +3783,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"131"
+	ZoomFactor		"101"
 	SIDHighWatermark	"6156"
 	Block {
 	  BlockType		  Inport
@@ -3905,7 +3942,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "GeneratorWPrimaryControllers"
-	    Location		    [1911, -9, 3849, 1089]
+	    Location		    [274, 220, 1828, 1252]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -4066,7 +4103,7 @@ Library {
 	      }
 	      System {
 		Name			"DieselSpeed&Voltage"
-		Location		[1911, -9, 3849, 1089]
+		Location		[274, 220, 1828, 1252]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -4078,7 +4115,7 @@ Library {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"175"
+		ZoomFactor		"200"
 		Block {
 		  BlockType		  Inport
 		  Name			  "wref"
@@ -4246,8 +4283,6 @@ Library {
 		  Ports			  [3, 1]
 		  Position		  [810, 207, 920, 283]
 		  ZOrder		  129
-		  AncestorBlock		  "sps_avr/DC1A\nExcitation System"
-		  LibraryVersion	  "*1.59"
 		  FontName		  "Arial"
 		  MinAlgLoopOccurrences	  off
 		  PropExecContextOutsideSubsystem off
@@ -4366,7 +4401,7 @@ Library {
 		  }
 		  System {
 		    Name		    "DC1A\nExcitation System"
-		    Location		    [1911, -9, 3849, 1089]
+		    Location		    [274, 220, 1828, 1252]
 		    Open		    off
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
@@ -4433,8 +4468,8 @@ Library {
 		    }
 		    System {
 		    Name		    "Discrete"
-		    Location		    [1911, -9, 3849, 1089]
-		    Open		    off
+		    Location		    [274, 220, 1828, 1252]
+		    Open		    on
 		    ModelBrowserVisibility  on
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -4646,115 +4681,6 @@ Library {
 		    ZOrder		    -3
 		    }
 		    }
-		    }
-		    Block {
-		    BlockType		    Reference
-		    Name		    "Discrete PID Controller"
-		    SID			    "4777:5292:124"
-		    Ports		    [1, 1]
-		    Position		    [515, 2, 580, 38]
-		    ZOrder		    5
-		    LibraryVersion	    "1.274"
-		    SourceBlock		    "simulink/Continuous/PID Controller"
-		    SourceType		    "PID 1dof"
-		    Controller		    "PID"
-		    TimeDomain		    "Discrete-time"
-		    SampleTime		    "Ts"
-		    IntegratorMethod	    "Forward Euler"
-		    FilterMethod	    "Forward Euler"
-		    Form		    "Parallel"
-		    P			    "1"
-		    I			    "1"
-		    D			    "0"
-		    N			    "100"
-		    InitialConditionSource  "internal"
-		    InitialConditionForIntegrator "0"
-		    InitialConditionForFilter "0"
-		    ExternalReset	    "none"
-		    IgnoreLimit		    off
-		    ZeroCross		    on
-		    LimitOutput		    on
-		    UpperSaturationLimit    "VRmax"
-		    LowerSaturationLimit    "VRmin"
-		    LinearizeAsGain	    off
-		    AntiWindupMode	    "none"
-		    Kb			    "1"
-		    TrackingMode	    off
-		    Kt			    "1"
-		    RndMeth		    "Floor"
-		    SaturateOnIntegerOverflow off
-		    LockScale		    off
-		    PParamMin		    "[]"
-		    PParamMax		    "[]"
-		    PParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IParamMin		    "[]"
-		    IParamMax		    "[]"
-		    IParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    DParamMin		    "[]"
-		    DParamMax		    "[]"
-		    DParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    NParamMin		    "[]"
-		    NParamMax		    "[]"
-		    NParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KbParamMin		    "[]"
-		    KbParamMax		    "[]"
-		    KbParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KtParamMin		    "[]"
-		    KtParamMax		    "[]"
-		    KtParamDataTypeStr	    "Inherit: Inherit via internal rule"
-		    POutMin		    "[]"
-		    POutMax		    "[]"
-		    POutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IOutMin		    "[]"
-		    IOutMax		    "[]"
-		    IOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    DOutMin		    "[]"
-		    DOutMax		    "[]"
-		    DOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    NOutMin		    "[]"
-		    NOutMax		    "[]"
-		    NOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KbOutMin		    "[]"
-		    KbOutMax		    "[]"
-		    KbOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    KtOutMin		    "[]"
-		    KtOutMax		    "[]"
-		    KtOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    IntegratorOutMin	    "[]"
-		    IntegratorOutMax	    "[]"
-		    IntegratorOutDataTypeStr "Inherit: Inherit via internal rule"
-		    FilterOutMin	    "[]"
-		    FilterOutMax	    "[]"
-		    FilterOutDataTypeStr    "Inherit: Inherit via internal rule"
-		    SumOutMin		    "[]"
-		    SumOutMax		    "[]"
-		    SumOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI1OutMin		    "[]"
-		    SumI1OutMax		    "[]"
-		    SumI1OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI2OutMin		    "[]"
-		    SumI2OutMax		    "[]"
-		    SumI2OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI3OutMin		    "[]"
-		    SumI3OutMax		    "[]"
-		    SumI3OutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumDOutMin		    "[]"
-		    SumDOutMax		    "[]"
-		    SumDOutDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumAccumDataTypeStr	    "Inherit: Inherit via internal rule"
-		    SumI1AccumDataTypeStr   "Inherit: Inherit via internal rule"
-		    SumI2AccumDataTypeStr   "Inherit: Inherit via internal rule"
-		    SumI3AccumDataTypeStr   "Inherit: Inherit via internal rule"
-		    SumDAccumDataTypeStr    "Inherit: Inherit via internal rule"
-		    SaturationOutMin	    "[]"
-		    SaturationOutMax	    "[]"
-		    SaturationOutDataTypeStr "Inherit: Same as input"
-		    IntegratorContinuousStateAttributes	"''"
-		    IntegratorStateMustResolveToSignalObject off
-		    IntegratorRTWStateStorageClass "Auto"
-		    FilterContinuousStateAttributes "''"
-		    FilterStateMustResolveToSignalObject off
-		    FilterRTWStateStorageClass "Auto"
 		    }
 		    Block {
 		    BlockType		    DiscreteIntegrator
@@ -5267,16 +5193,8 @@ Library {
 		    Line {
 		    SrcBlock		    "Transient Gain\nReduction\n(Tc.s+1)/(Tb.s+1)"
 		    SrcPort		    1
-		    Points		    [2, 0]
-		    Branch {
-		    Points		    [0, -80]
-		    DstBlock		    "Discrete PID Controller"
-		    DstPort		    1
-		    }
-		    Branch {
 		    DstBlock		    "Vaminmax"
 		    DstPort		    1
-		    }
 		    }
 		    Line {
 		    Name		    "Vfe"
@@ -5575,7 +5493,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "5729"
+		    SIDHighWatermark	    "5732"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "wref (pu)"
@@ -5609,7 +5527,7 @@ Library {
 		    Ports		    [3, 2]
 		    Position		    [100, 40, 140, 80]
 		    ZOrder		    3903
-		    LibraryVersion	    "1.54"
+		    LibraryVersion	    "1.56"
 		    SourceBlock		    "NREL_Diesel_Genset_lib/GEJenbacherJ620"
 		    SourceType		    ""
 		    cd			    ".8"
@@ -7484,7 +7402,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "60"
-	    SIDHighWatermark	    "5578"
+	    SIDHighWatermark	    "5593"
 	    SIDPrevWatermark	    "5443"
 	    Block {
 	      BlockType		      Inport
@@ -7999,7 +7917,7 @@ Library {
       }
       System {
 	Name			"Simulated\nGenerator Controller"
-	Location		[0, 0, 1702, 1040]
+	Location		[274, 220, 1828, 1252]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
