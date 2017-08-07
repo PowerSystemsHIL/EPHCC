@@ -28,6 +28,8 @@ dms_phiref_nan = acos(dms_PFref_nan)/pi*180;
 
 grid_freq = 60.000 * ones(1,opt.N);
 grid_freq = gen_freq(opt, grid_freq);
+grid_volt = 115000 * ones(1,opt.N);
+grid_volt = gen_volt(opt, grid_volt);
 
 %TODO: Freq and voltage stimuli
 dms_Dp     = gen_stairs(opt, 'DMS.Dp');
@@ -52,9 +54,28 @@ fault.pv2  = gen_stairs(opt, 'Fault.Pv2');
 
 udpframe = int16(zeros(15,opt.N));
 udpframe(1:2,:)   = reshape(typecast(uint32(t*1000), 'int16'),2,opt.N);
+udpframe(3,:)     = fault.loc1 *   1 + ...
+                    fault.loc2 *   2 + ...
+                    fault.loc3 *   4 + ...
+                    fault.loc4 *   8 + ...
+                    fault.loc5 *  16 + ...
+                    fault.loc6 *  32 + ...
+                    fault.gen1 *  64 + ...
+                    fault.gen2 * 128 + ...
+                    fault.gen3 * 256 + ...
+                    fault.ess1 * 512 + ...
+                    fault.ess2 *1042 + ...
+                    fault.pv1  *2048 + ...
+                    fault.pv2  *4096;
+udpframe(4,:)     = motor1 + 2*motor2;
+udpframe(5,:)     = dms_disreq*1 + dms_kWena*2 + dms_PFena*4;
+udpframe(6,:)     = dms_kWref;
+udpframe(7,:)     = dms_PFref*1000;
+udpframe(8,:)     = dms_Dp*100;
+udpframe(9,:)     = dms_Dq*100;
 udpframe(10,:)    = uint16(mgc_enable)*2 + uint16(cut_grid);
-% Hz udpframe(11,:)
-% Volt udpframe(12,:)
+udpframe(11,:)    = grid_freq*100;
+udpframe(12,:)    = grid_volt*0.1;
 udpframe(13,:)    = 1000*price;
 udpframe(14:15,:) = 1000*irradiance;
 

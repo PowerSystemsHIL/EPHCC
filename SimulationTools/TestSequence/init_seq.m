@@ -59,12 +59,17 @@ Next('DMS.kWena', 2, 1);
 Next('DMS.kWref', 2, 5000);         % DMS xport request
 Next('DMS.PFena', 2, 1);
 Next('DMS.PFref', 2, 1.0);         % unity power factor request
+Next('DMS.Dq'   , 3, 6);
+Nv=Nv+1; Grid.Volt(Nv) = struct('Start', 3*60, 'Depth', -115000*0.03, 'Duration', 120);
 Next('DMS.Dp'   , 5, 3);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 7*60, 'Depth', -0.6, 'Duration', 60);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 9*60, 'Depth', 0.4, 'Duration', 20);
 Next('DMS.kWena', 10, 0);
 Next('DMS.kWref', 10, 0);           % DMS xport request
 Next('DMS.Dp'   , 10, 0);
+Next('DMS.Dq'   , 10, 0);
+Next('Motor1'   , 12, 1);
+Next('Motor2'   , 15, 1);
 Next('DMS.PFref', 23, 0.9);         % unity power factor request
 Next('DMS.PFena', 25, 0);           % unity power factor request
 
@@ -80,6 +85,7 @@ Nc=Nc+1; Cloud(Nc) = struct('Start', 30*60, 'Depth', 0.8, 'Ramp', 10, 'Duration'
 Next('DMS.DisReq'      , 32, 1);
 Next('Grid.CutGrid'   , 33, 1); 
 
+
 Next('Fault.Gen3', 36, 1);
 Next('Fault.Gen3', 38, 0);
 Next('Fault.Pv1', 42, 1);
@@ -87,17 +93,23 @@ Next('Fault.Pv1', 44, 0);
 Next('Fault.Loc2', 46, 1);
 Next('Fault.Loc2', 46.5, 0);
 
+Next('Motor1'   , 45, 1);
+Next('Motor2'   , 47, 1);
+Next('Motor1'   , 49, 0);
+
 Nc=Nc+1; Cloud(Nc) = struct('Start', 50*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
 Next('Grid.CutGrid'   , 54, 0); 
 Next('DMS.DisReq'      , 55, 0);
 
 %% End of planned islanding - start grid connected
+Next('Motor1'   , 55, 1);
 Next('DMS.kWena', 58, 1);
 Next('DMS.kWref', 58, -500);         % DMS import request
 Next('DMS.PFena', 58, 1);
 Next('DMS.PFref', 58, 0.98);         
 Next('DMS.kWref', 59, -1000);         % DMS import request
 Next('DMS.kWref', 60, -1500);         % DMS import request
+Next('Motor2'   , 61, 1);
 Next('DMS.Dp'   , 61, 2);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 62*60, 'Depth', 0.3, 'Duration', 20);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 63*60, 'Depth', -0.4, 'Duration', 40);
@@ -125,6 +137,7 @@ Next('Grid.CutGrid'    , 71, 1);
 
 Next('Fault.Gen1', 73, 1);
 Next('Fault.Gen1', 75, 0);
+Next('Motor1'   , 76, 0);
 Next('Fault.Pv2', 80, 1);
 Next('Fault.Pv2', 81, 0);
 Next('Fault.Loc4', 86, 1);
@@ -134,10 +147,14 @@ Next('Fault.Loc4', 86.5, 0);
 Next('Fault.Loc1'      , 72, 0);
 Next('Grid.CutGrid'    , 92, 0);
 
+Next('Motor2'   , 95, 0);
+
 Next('DMS.kWena', 95, 1);
 Next('DMS.kWref', 95, 9000);         % DMS import request
 Next('DMS.PFena', 93, 1);
 Next('DMS.PFref', 93, 0.96);         
+Next('DMS.Dq'   , 3, 6);
+Nv=Nv+1; Grid.Volt(Nv) = struct('Start', 95*60, 'Depth', 115000*0.03, 'Duration', 150);
 
 Next('Fault.Loc5', 98, 1);
 Next('Fault.Loc5', 98.5, 0);
