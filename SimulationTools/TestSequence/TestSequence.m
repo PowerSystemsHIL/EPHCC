@@ -3,7 +3,7 @@ opt = init_seq();
 
 seq = generate_all(opt);
 
-
+figure;
 subplot(6,1,1); plot(seq.t, [seq.irradiance; seq.price]);
 subplot(6,1,2); plot(seq.t, [seq.dms_kWref_nan+0.02*10e3; ...
                              seq.dms_kWref_nan-0.02*10e3; ...

@@ -3,7 +3,7 @@
 function [out] = init_seq()
 
 %% Generic config
-Ts = 1;
+Ts = 0.2;
 End = 100*60;
 N = End/Ts+1;
 
