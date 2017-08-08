@@ -76,6 +76,7 @@ Next('DMS.PFena', 25, 0);           % unity power factor request
 Irradiance.Rise = 20*60;            % FIX, Sunrise beginning time t=20min
 Irradiance.RiseDuration = 40*60;    % FIX, Duration of ramp until full irradiance
 
+Next('Motor2'   , 24, 0);
 Next('Fault.Ess1', 4, 1);
 Next('Fault.Ess1', 6, 0);
 
