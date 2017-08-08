@@ -83,7 +83,10 @@ Nc=Nc+1; Cloud(Nc) = struct('Start', 30*60, 'Depth', 0.8, 'Ramp', 10, 'Duration'
 
 %% PLanned islanding - start island
 Next('DMS.DisReq'      , 32, 1);
-Next('Grid.CutGrid'   , 33, 1); 
+Next('Grid.OpenSSF1'   , 33, 1); 
+Next('Grid.OpenSSF2'   , 33.2, 1); 
+Next('Grid.OpenSSF3'   , 33.4, 1); 
+Next('Grid.CutGrid'   , 33.6, 1); 
 
 
 Next('Fault.Gen3', 36, 1);
@@ -98,8 +101,11 @@ Next('Motor2'   , 47, 1);
 Next('Motor1'   , 49, 0);
 
 Nc=Nc+1; Cloud(Nc) = struct('Start', 50*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
-Next('Grid.CutGrid'   , 54, 0); 
-Next('DMS.DisReq'      , 55, 0);
+Next('Grid.CutGrid'    , 54,   0); 
+Next('Grid.OpenSSF1'   , 54.2, 0); 
+Next('Grid.OpenSSF2'   , 54.4, 0); 
+Next('Grid.OpenSSF3'   , 54.6, 0); 
+Next('DMS.DisReq'      , 55,   0);
 
 %% End of planned islanding - start grid connected
 Next('Motor1'   , 55, 1);
@@ -133,7 +139,10 @@ Nc=Nc+1; Cloud(Nc) = struct('Start', 94*60, 'Depth', 0.3, 'Ramp', 15, 'Duration'
 
 %% Unintentional islanding - start island
 Next('Fault.Loc1'      , 70, 1);
-Next('Grid.CutGrid'    , 71, 1);
+Next('Grid.OpenSSF1'   , 71, 1); 
+Next('Grid.OpenSSF2'   , 71.2, 1); 
+Next('Grid.OpenSSF3'   , 71.4, 1); 
+Next('Grid.CutGrid'    , 71.6, 1);
 
 Next('Fault.Gen1', 73, 1);
 Next('Fault.Gen1', 75, 0);
@@ -146,6 +155,9 @@ Next('Fault.Loc4', 86.5, 0);
 %% End of unintentional islanding - start grid connected
 Next('Fault.Loc1'      , 72, 0);
 Next('Grid.CutGrid'    , 92, 0);
+Next('Grid.OpenSSF1'   , 92.2, 0); 
+Next('Grid.OpenSSF2'   , 92.4, 0); 
+Next('Grid.OpenSSF3'   , 92.6, 0); 
 
 Next('Motor2'   , 95, 0);
 

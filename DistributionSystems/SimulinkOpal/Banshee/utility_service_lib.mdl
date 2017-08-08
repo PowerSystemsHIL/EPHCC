@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Aug 05 00:23:17 2017"
-  RTWModifiedTimeStamp	  423793395
-  ModelVersionFormat	  "1.%<AutoIncrement:30>"
+  LastModifiedDate	  "Mon Aug 07 17:40:37 2017"
+  RTWModifiedTimeStamp	  424028435
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -707,6 +707,17 @@ Library {
       OutputAsBus	      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -792,7 +803,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "60"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2500"
+    SIDHighWatermark	    "2522"
     Block {
       BlockType		      SubSystem
       Name		      "SM_UtilityService"
@@ -802,7 +813,7 @@ Library {
       ZOrder		      2683
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "*1.29"
+      LibraryVersion	      "*1.30"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -812,7 +823,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SM_UtilityService"
-	Location		[0, 0, 960, 1032]
+	Location		[952, 0, 1912, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -824,7 +835,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"43"
 	Block {
 	  BlockType		  Inport
 	  Name			  "CONSOLE"
@@ -838,7 +849,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "TEST_SEQ"
 	  SID			  "2496"
-	  Position		  [1340, 213, 1370, 227]
+	  Position		  [1340, 148, 1370, 162]
 	  ZOrder		  3957
 	  ForegroundColor	  "cyan"
 	  NamePlacement		  "alternate"
@@ -967,22 +978,105 @@ Library {
 	}
 	Block {
 	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator2"
-	  SID			  "2433"
+	  Name			  "Bus\nCreator1"
+	  SID			  "2501"
 	  Ports			  [1, 1]
-	  Position		  [1625, 336, 1630, 374]
-	  ZOrder		  3681
+	  Position		  [1725, 336, 1730, 374]
+	  ZOrder		  4086
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator2"
+	  SID			  "2512"
+	  Ports			  [1, 1]
+	  Position		  [1725, 296, 1730, 334]
+	  ZOrder		  4092
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator3"
+	  SID			  "2502"
+	  Ports			  [1, 1]
+	  Position		  [1630, 376, 1635, 414]
+	  ZOrder		  4082
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator4"
+	  SID			  "2516"
+	  Ports			  [1, 1]
+	  Position		  [1725, 256, 1730, 294]
+	  ZOrder		  4096
 	  ShowName		  off
 	  Inputs		  "1"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector1"
-	  SID			  "2499"
+	  Name			  "Bus\nSelector"
+	  SID			  "2503"
 	  Ports			  [1, 1]
-	  Position		  [1615, 201, 1620, 239]
-	  ZOrder		  3959
+	  Position		  [1435, 316, 1440, 354]
+	  ZOrder		  4083
+	  ShowName		  off
+	  OutputSignals		  "misc"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<misc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "2504"
+	  Ports			  [1, 4]
+	  Position		  [1485, 253, 1490, 417]
+	  ZOrder		  4084
+	  ShowName		  off
+	  OutputSignals		  "open_ssf1,open_ssf2,open_ssf3,cut_grid"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<open_ssf1>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<open_ssf2>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<open_ssf3>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<cut_grid>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector3"
+	  SID			  "2510"
+	  Ports			  [1, 1]
+	  Position		  [1650, 136, 1655, 174]
+	  ZOrder		  4090
 	  ShowName		  off
 	  OutputSignals		  "TestSeq"
 	  Port {
@@ -993,81 +1087,52 @@ Library {
 	  }
 	}
 	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector12"
-	  SID			  "2065"
-	  Ports			  [1, 1]
-	  Position		  [1435, 361, 1440, 399]
-	  ZOrder		  3596
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "2505"
+	  Position		  [1615, 345, 1655, 365]
+	  ZOrder		  4088
 	  ShowName		  off
-	  OutputSignals		  "GridStatusCtrl.Substation.Logic_trip"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "<Logic_trip>"
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector13"
-	  SID			  "2067"
-	  Ports			  [1, 1]
-	  Position		  [2495, 201, 2500, 239]
-	  ZOrder		  3598
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion1"
+	  SID			  "2513"
+	  Position		  [1615, 305, 1655, 325]
+	  ZOrder		  4094
 	  ShowName		  off
-	  OutputSignals		  "GridStatusCtrl.Grid_F3"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "<Grid_F3>"
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	}
 	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector14"
-	  SID			  "2069"
-	  Ports			  [1, 1]
-	  Position		  [2495, 391, 2500, 429]
-	  ZOrder		  3600
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion2"
+	  SID			  "2517"
+	  Position		  [1615, 265, 1655, 285]
+	  ZOrder		  4098
 	  ShowName		  off
-	  OutputSignals		  "GridStatusCtrl.Grid_F2"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	  Port {
 	    PortNumber		    1
-	    Name		    "<Grid_F2>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector15"
-	  SID			  "2071"
-	  Ports			  [1, 1]
-	  Position		  [2495, 616, 2500, 654]
-	  ZOrder		  3602
-	  ShowName		  off
-	  OutputSignals		  "GridStatusCtrl.Grid_F1"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<Grid_F1>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector20"
-	  SID			  "2494"
-	  Ports			  [1, 1]
-	  Position		  [1730, 201, 1735, 239]
-	  ZOrder		  3704
-	  ShowName		  off
-	  OutputSignals		  "misc.cut_grid"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<cut_grid>"
+	    Name		    "Logic_trip"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1130,53 +1195,47 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From12"
-	  SID			  "2430"
-	  Position		  [1320, 325, 1390, 345]
-	  ZOrder		  3678
+	  Name			  "From1"
+	  SID			  "2506"
+	  Position		  [1340, 325, 1410, 345]
+	  ZOrder		  4080
+	  BackgroundColor	  "yellow"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "cut_grid_pwr"
+	  GotoTag		  "TestSeq"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From5"
-	  SID			  "2066"
-	  Position		  [1320, 370, 1390, 390]
-	  ZOrder		  3597
+	  Name			  "From2"
+	  SID			  "2520"
+	  Position		  [2440, 210, 2510, 230]
+	  ZOrder		  4099
+	  BackgroundColor	  "gray"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "CONSOLE"
+	  GotoTag		  "SSF3_Ctrl"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From6"
-	  SID			  "2068"
-	  Position		  [2390, 210, 2460, 230]
-	  ZOrder		  3599
+	  Name			  "From3"
+	  SID			  "2521"
+	  Position		  [2460, 415, 2530, 435]
+	  ZOrder		  4100
+	  BackgroundColor	  "gray"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "CONSOLE"
+	  GotoTag		  "SSF2_Ctrl"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From7"
-	  SID			  "2070"
-	  Position		  [2390, 400, 2460, 420]
-	  ZOrder		  3601
+	  Name			  "From4"
+	  SID			  "2522"
+	  Position		  [2460, 615, 2530, 635]
+	  ZOrder		  4101
+	  BackgroundColor	  "gray"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "CONSOLE"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From8"
-	  SID			  "2072"
-	  Position		  [2390, 625, 2460, 645]
-	  ZOrder		  3603
-	  ShowName		  off
-	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "CONSOLE"
+	  GotoTag		  "SSF1_Ctrl"
 	}
 	Block {
 	  BlockType		  Goto
@@ -1189,33 +1248,53 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
-	  Name			  "Goto3"
-	  SID			  "2495"
-	  Position		  [1805, 209, 1895, 231]
-	  ZOrder		  3703
+	  Name			  "Goto2"
+	  SID			  "2507"
+	  Position		  [1795, 346, 1870, 364]
+	  ZOrder		  4087
+	  BackgroundColor	  "gray"
 	  ShowName		  off
-	  GotoTag		  "cut_grid_pwr"
+	  GotoTag		  "SSF3_Ctrl"
 	}
 	Block {
-	  BlockType		  Logic
-	  Name			  "Logical\nOperator"
-	  SID			  "2431"
-	  Ports			  [1, 1]
-	  Position		  [1425, 324, 1455, 346]
-	  ZOrder		  3679
+	  BlockType		  Goto
+	  Name			  "Goto3"
+	  SID			  "2514"
+	  Position		  [1795, 306, 1870, 324]
+	  ZOrder		  4093
+	  BackgroundColor	  "gray"
 	  ShowName		  off
-	  Operator		  "NOT"
-	  AllPortsSameDT	  off
-	  OutDataTypeStr	  "boolean"
+	  GotoTag		  "SSF2_Ctrl"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto4"
+	  SID			  "2511"
+	  Position		  [1710, 144, 1800, 166]
+	  ZOrder		  4089
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  GotoTag		  "TestSeq"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto5"
+	  SID			  "2518"
+	  Position		  [1795, 266, 1870, 284]
+	  ZOrder		  4097
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "SSF1_Ctrl"
 	}
 	Block {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator1"
-	  SID			  "2432"
-	  Ports			  [2, 1]
-	  Position		  [1525, 337, 1555, 368]
-	  ZOrder		  3680
+	  SID			  "2508"
+	  Ports			  [1, 1]
+	  Position		  [1545, 384, 1575, 406]
+	  ZOrder		  4081
 	  ShowName		  off
+	  Operator		  "NOT"
 	  AllPortsSameDT	  off
 	  OutDataTypeStr	  "boolean"
 	  Port {
@@ -1224,6 +1303,42 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  SID			  "2509"
+	  Ports			  [1, 1]
+	  Position		  [1565, 344, 1595, 366]
+	  ZOrder		  4085
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator3"
+	  SID			  "2515"
+	  Ports			  [1, 1]
+	  Position		  [1565, 304, 1595, 326]
+	  ZOrder		  4091
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator4"
+	  SID			  "2519"
+	  Ports			  [1, 1]
+	  Position		  [1565, 264, 1595, 286]
+	  ZOrder		  4095
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Reference
@@ -1256,7 +1371,7 @@ Library {
 	  Name			  "OpComm2"
 	  SID			  "2498"
 	  Ports			  [1, 1]
-	  Position		  [1440, 195, 1530, 245]
+	  Position		  [1440, 130, 1530, 180]
 	  ZOrder		  3956
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/OpComm"
@@ -1524,37 +1639,146 @@ Library {
 	  Side			  "Right"
 	}
 	Line {
-	  SrcBlock		  "OpComm2"
+	  SrcBlock		  "From4"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector1"
+	  Points		  [10, 0]
+	  DstBlock		  "Feeder_CB1"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "TEST_SEQ"
+	  SrcBlock		  "From3"
 	  SrcPort		  1
-	  DstBlock		  "OpComm2"
+	  Points		  [10, 0]
+	  DstBlock		  "Feeder_CB2"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<cut_grid>"
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, 30]
+	  DstBlock		  "Feeder_CB3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Data Type Conversion2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator4"
+	  SrcPort		  1
+	  DstBlock		  "Goto5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator4"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<open_ssf1>"
 	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector20"
+	  SrcBlock		  "Bus\nSelector2"
 	  SrcPort		  1
-	  DstBlock		  "Goto3"
+	  DstBlock		  "Logical\nOperator4"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "<TestSeq>"
-	  Labels		  [0, 0; -1, 1]
-	  SrcBlock		  "Bus\nSelector1"
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Data Type Conversion1"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector20"
+	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator2"
 	  SrcPort		  1
-	  Points		  [30, 0; 0, 100]
+	  DstBlock		  "Goto3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<open_ssf2>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  2
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<TestSeq>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector3"
+	  SrcPort		  1
+	  DstBlock		  "Goto4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Logic_trip"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator1"
+	  SrcPort		  1
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<open_ssf3>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  3
+	  Points		  [0, 0]
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<cut_grid>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  4
+	  Points		  [0, 0]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<misc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Bus\nCreator3"
+	  SrcPort		  1
+	  Points		  [27, 0; 0, 60]
 	  DstBlock		  "Feeder_CB"
 	  DstPort		  1
 	}
@@ -1563,20 +1787,19 @@ Library {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Logical\nOperator1"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
+	  DstBlock		  "Bus\nCreator3"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Logical\nOperator"
+	  SrcBlock		  "From1"
 	  SrcPort		  1
-	  Points		  [30, 0; 0, 10]
-	  DstBlock		  "Logical\nOperator1"
+	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From12"
+	  SrcBlock		  "TEST_SEQ"
 	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator"
+	  DstBlock		  "OpComm2"
 	  DstPort		  1
 	}
 	Line {
@@ -1934,42 +2157,6 @@ Library {
 	  DstPort		  LConn3
 	}
 	Line {
-	  Name			  "<Grid_F1>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector15"
-	  SrcPort		  1
-	  Points		  [25, 0; 0, 25]
-	  DstBlock		  "Feeder_CB1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<Grid_F2>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector14"
-	  SrcPort		  1
-	  Points		  [25, 0; 0, 45]
-	  DstBlock		  "Feeder_CB2"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<Grid_F3>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector13"
-	  SrcPort		  1
-	  Points		  [30, 0; 0, 30]
-	  DstBlock		  "Feeder_CB3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<Logic_trip>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector12"
-	  SrcPort		  1
-	  Points		  [35, 0; 0, -20]
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  2
-	}
-	Line {
 	  LineType		  "Connection"
 	  Points		  [1929, 515; -39, 0]
 	  DstBlock		  "500kcmil-Mutual3"
@@ -2061,30 +2248,6 @@ Library {
 	  SrcPort		  1
 	  Points		  [27, 0; 0, -25]
 	  DstBlock		  "Terminator5"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From8"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector15"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From7"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector14"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector13"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From5"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector12"
 	  DstPort		  1
 	}
 	Line {

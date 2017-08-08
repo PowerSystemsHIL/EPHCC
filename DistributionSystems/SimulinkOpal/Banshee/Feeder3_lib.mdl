@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[14]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Aug 06 03:20:30 2017"
-  RTWModifiedTimeStamp	  423890422
-  ModelVersionFormat	  "1.%<AutoIncrement:53>"
+  LastModifiedDate	  "Mon Aug 07 17:50:25 2017"
+  RTWModifiedTimeStamp	  424029010
+  ModelVersionFormat	  "1.%<AutoIncrement:55>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -763,15 +763,6 @@ Library {
       Interpolate	      on
     }
     Block {
-      BlockType		      Logic
-      Operator		      "AND"
-      Inputs		      "2"
-      IconShape		      "rectangular"
-      AllPortsSameDT	      on
-      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Memory
       X0		      "0"
       InheritSampleTime	      off
@@ -876,7 +867,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.52"
+      LibraryVersion	      "*1.54"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -898,7 +889,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"15"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1267,10 +1258,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator2"
 	  SID			  "513"
-	  Ports			  [4, 1]
-	  Position		  [4405, 372, 4410, 683]
+	  Ports			  [3, 1]
+	  Position		  [4405, 376, 4410, 604]
 	  ZOrder		  3423
 	  ShowName		  off
+	  Inputs		  "3"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1306,7 +1298,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "746"
 	  Ports			  [1, 1]
-	  Position		  [3475, 1791, 3480, 1829]
+	  Position		  [3520, 1826, 3525, 1864]
 	  ZOrder		  3657
 	  ShowName		  off
 	  OutputSignals		  "motor"
@@ -1417,11 +1409,11 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector15"
 	  SID			  "480"
-	  Ports			  [1, 4]
-	  Position		  [2465, 718, 2470, 992]
+	  Ports			  [1, 2]
+	  Position		  [2465, 787, 2470, 918]
 	  ZOrder		  3400
 	  ShowName		  off
-	  OutputSignals		  "CHP_cmds,motor_ONOFF.F3_motor_ONOFF,fault_cmd,IO_scaling"
+	  OutputSignals		  "CHP_cmds,IO_scaling"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<CHP_cmds>"
@@ -1430,18 +1422,6 @@ Library {
 	  }
 	  Port {
 	    PortNumber		    2
-	    Name		    "<F3_motor_ONOFF>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "<fault_cmd>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    4
 	    Name		    "<IO_scaling>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -1538,7 +1518,7 @@ Library {
 	  Name			  "Bus\nSelector20"
 	  SID			  "841"
 	  Ports			  [1, 1]
-	  Position		  [3540, 1791, 3545, 1829]
+	  Position		  [3585, 1826, 3590, 1864]
 	  ZOrder		  4069
 	  ShowName		  off
 	  OutputSignals		  "ena2"
@@ -1998,16 +1978,6 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From"
-	  SID			  "554"
-	  Position		  [3425, 1840, 3525, 1860]
-	  ZOrder		  3469
-	  BackgroundColor	  "gray"
-	  ShowName		  off
-	  GotoTag		  "motor_cmd"
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "194"
 	  Position		  [2765, 2705, 2840, 2725]
@@ -2053,25 +2023,6 @@ Library {
 	  BackgroundColor	  "red"
 	  ShowName		  off
 	  GotoTag		  "RELAY_IN"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From14"
-	  SID			  "556"
-	  Position		  [4200, 632, 4310, 648]
-	  ZOrder		  3473
-	  BackgroundColor	  "green"
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "motor_cmd"
-	  Port {
-	    PortNumber		    1
-	    Name		    "MOTOR_ONOFF"
-	    PropagatedSignals	    "F3_motor_ONOFF"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  From
@@ -2401,7 +2352,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From37"
 	  SID			  "745"
-	  Position		  [3370, 1802, 3445, 1818]
+	  Position		  [3415, 1837, 3490, 1853]
 	  ZOrder		  3656
 	  NamePlacement		  "alternate"
 	  ShowName		  off
@@ -2582,7 +2533,7 @@ Library {
 	  BlockType		  GotoTagVisibility
 	  Name			  "Goto Tag\nVisibility"
 	  SID			  "845"
-	  Position		  [2710, 947, 2776, 975]
+	  Position		  [2650, 867, 2716, 895]
 	  ZOrder		  4072
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -2766,7 +2717,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto29"
 	  SID			  "508"
-	  Position		  [2565, 738, 2685, 762]
+	  Position		  [2565, 808, 2685, 832]
 	  ZOrder		  3420
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -2783,16 +2734,6 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
-	  Name			  "Goto35"
-	  SID			  "488"
-	  Position		  [2610, 809, 2685, 831]
-	  ZOrder		  3399
-	  BackgroundColor	  "yellow"
-	  ShowName		  off
-	  GotoTag		  "motor_cmd"
-	}
-	Block {
-	  BlockType		  Goto
 	  Name			  "Goto4"
 	  SID			  "512"
 	  Position		  [4000, 552, 4095, 578]
@@ -2803,18 +2744,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
-	  Name			  "Goto44"
-	  SID			  "487"
-	  Position		  [2605, 880, 2685, 900]
-	  ZOrder		  3392
-	  ShowName		  off
-	  GotoTag		  "fault_cmd"
-	}
-	Block {
-	  BlockType		  Goto
 	  Name			  "Goto5"
 	  SID			  "844"
-	  Position		  [2610, 949, 2685, 971]
+	  Position		  [2560, 874, 2635, 896]
 	  ZOrder		  4071
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -2873,18 +2805,6 @@ Library {
 	  kVA			  "600"
 	  PF			  "0.9"
 	  Ts			  "Ts"
-	}
-	Block {
-	  BlockType		  Logic
-	  Name			  "Logical\nOperator"
-	  SID			  "747"
-	  Ports			  [2, 1]
-	  Position		  [3575, 1827, 3605, 1858]
-	  ZOrder		  3658
-	  ShowName		  off
-	  Operator		  "OR"
-	  AllPortsSameDT	  off
-	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Reference
@@ -3313,7 +3233,7 @@ Library {
 	      ZOrder		      3902
 	      ForegroundColor	      "red"
 	      BackgroundColor	      "yellow"
-	      LibraryVersion	      "1.57"
+	      LibraryVersion	      "1.59"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/GenSet"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -3387,7 +3307,7 @@ Library {
 	      ZOrder		      3666
 	      ForegroundColor	      "red"
 	      BackgroundColor	      "yellow"
-	      LibraryVersion	      "1.57"
+	      LibraryVersion	      "1.59"
 	      SourceBlock	      "NREL_Diesel_Genset_lib/Simulated\nGenerator Controller"
 	      SourceType	      ""
 	      GenSel		      "3.5MVA natural gas generator"
@@ -4423,7 +4343,7 @@ Library {
 	  Name			  "<IO_scaling>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector15"
-	  SrcPort		  4
+	  SrcPort		  2
 	  DstBlock		  "Goto5"
 	  DstPort		  1
 	}
@@ -4432,9 +4352,9 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector20"
 	  SrcPort		  1
-	  Points		  [7, 0; 0, 25]
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  1
+	  Points		  [35, 0; 0, 35]
+	  DstBlock		  "Motor"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "From15"
@@ -4795,25 +4715,12 @@ Library {
 	  DstPort		  LConn3
 	}
 	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator"
-	  DstPort		  2
-	}
-	Line {
 	  Name			  "<motor>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector20"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Logical\nOperator"
-	  SrcPort		  1
-	  Points		  [18, 0; 0, 35]
-	  DstBlock		  "Motor"
-	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "From37"
@@ -5225,14 +5132,6 @@ Library {
 	  }
 	}
 	Line {
-	  Name			  "MOTOR_ONOFF"
-	  Labels		  [1, 1]
-	  SrcBlock		  "From14"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator2"
-	  DstPort		  4
-	}
-	Line {
 	  SrcBlock		  "200 HP chiller compressor"
 	  SrcPort		  1
 	  Points		  [-49, 0; 0, 60]
@@ -5281,6 +5180,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator2"
 	  SrcPort		  1
+	  Points		  [32, 0; 0, 40]
 	  DstBlock		  "Memory"
 	  DstPort		  1
 	}
@@ -5306,25 +5206,9 @@ Library {
 	  DstPort		  LConn1
 	}
 	Line {
-	  Name			  "<fault_cmd>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector15"
-	  SrcPort		  3
-	  DstBlock		  "Goto44"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "OpComm2"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector15"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<F3_motor_ONOFF>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector15"
-	  SrcPort		  2
-	  DstBlock		  "Goto35"
 	  DstPort		  1
 	}
 	Line {

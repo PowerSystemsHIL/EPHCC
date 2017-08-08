@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Aug 06 00:36:53 2017"
-  RTWModifiedTimeStamp	  423880606
-  ModelVersionFormat	  "1.%<AutoIncrement:85>"
+  LastModifiedDate	  "Mon Aug 07 17:40:30 2017"
+  RTWModifiedTimeStamp	  424028428
+  ModelVersionFormat	  "1.%<AutoIncrement:86>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -737,10 +737,6 @@ Library {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      DigitalClock
-      SampleTime	      "1"
-    }
-    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -788,15 +784,6 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
-    }
-    Block {
-      BlockType		      Logic
-      Operator		      "AND"
-      Inputs		      "2"
-      IconShape		      "rectangular"
-      AllPortsSameDT	      on
-      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
-      SampleTime	      "-1"
     }
     Block {
       BlockType		      Memory
@@ -863,6 +850,31 @@ Library {
       Variant		      off
       GeneratePreprocessorConditionals off
     }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      UnitDelay
+      InitialCondition	      "0"
+      InputProcessing	      "Inherited"
+      SampleTime	      "1"
+      StateMustResolveToSignalObject off
+      CodeGenStateStorageClass "Auto"
+      HasFrameUpgradeWarning  on
+    }
   }
   System {
     Name		    "communications_lib"
@@ -880,18 +892,18 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "91"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2333"
+    SIDHighWatermark	    "2343"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
       SID		      "1531"
-      Ports		      [8, 3]
-      Position		      [140, 246, 425, 759]
+      Ports		      [9, 3]
+      Position		      [140, 248, 425, 762]
       ZOrder		      3625
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "*1.84"
+      LibraryVersion	      "*1.85"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -901,7 +913,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_COMMUNICATION"
-	Location		[-8, -8, 1928, 1048]
+	Location		[952, 0, 1912, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -913,7 +925,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"40"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -986,6 +998,15 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "CONSOLE"
+	  SID			  "2340"
+	  Position		  [540, 1228, 570, 1242]
+	  ZOrder		  4228
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	}
+	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "1578"
@@ -1020,6 +1041,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "2342"
+	  Ports			  [1, 1]
+	  Position		  [720, 1216, 725, 1254]
+	  ZOrder		  4230
+	  ShowName		  off
+	  OutputSignals		  "TestSeq"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<TestSeq>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector7"
 	  SID			  "1611"
 	  Ports			  [1, 1]
@@ -1040,14 +1077,6 @@ Library {
 	  ZOrder		  3565
 	  BackgroundColor	  "red"
 	  Value			  "0"
-	}
-	Block {
-	  BlockType		  DigitalClock
-	  Name			  "Digital Clock"
-	  SID			  "1619"
-	  Position		  [1230, 1393, 1295, 1417]
-	  ZOrder		  3649
-	  SampleTime		  "Ts"
 	}
 	Block {
 	  BlockType		  Reference
@@ -1157,8 +1186,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "F1_RELAY_OUT"
-	    PropagatedSignals	    "F1_CB_1, F1_CB_2, F1_CB_3, F1_CB_4, F1_CB_5, F1_CB_6, F1_CB_7, F1_CB_8, F1_CB_9, F1_CB_10,"
-	    " F1_CB_11, F1_CB_12, F1_CB_13, F1_CB_14, F1_PCC"
+	    PropagatedSignals	    "TestSeq"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1438,6 +1466,16 @@ Library {
 	  GotoTag		  "TestSeq"
 	}
 	Block {
+	  BlockType		  GotoTagVisibility
+	  Name			  "Goto Tag\nVisibility9"
+	  SID			  "2343"
+	  Position		  [905, 1222, 1001, 1240]
+	  ZOrder		  4231
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "1988"
@@ -1544,6 +1582,17 @@ Library {
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "F2_RELAY_OUT"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto9"
+	  SID			  "2341"
+	  Position		  [795, 1224, 895, 1246]
+	  ZOrder		  4229
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
 	  TagVisibility		  "scoped"
 	}
 	Block {
@@ -2727,7 +2776,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Motor_data"
-	    Location		    [-8, -8, 1928, 1048]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2745,7 +2794,7 @@ Library {
 	      Name		      "Bus\nSelector1"
 	      SID		      "2321"
 	      Ports		      [1, 1]
-	      Position		      [250, 312, 255, 338]
+	      Position		      [250, 307, 255, 333]
 	      ZOrder		      3682
 	      ShowName		      off
 	      OutputSignals	      "ena1"
@@ -2761,7 +2810,7 @@ Library {
 	      Name		      "Bus\nSelector10"
 	      SID		      "1581"
 	      Ports		      [1, 1]
-	      Position		      [205, 305, 210, 395]
+	      Position		      [205, 300, 210, 390]
 	      ZOrder		      3670
 	      ShowName		      off
 	      OutputSignals	      "motor"
@@ -2777,45 +2826,13 @@ Library {
 	      Name		      "Bus\nSelector2"
 	      SID		      "2323"
 	      Ports		      [1, 1]
-	      Position		      [250, 357, 255, 383]
+	      Position		      [250, 352, 255, 378]
 	      ZOrder		      3684
 	      ShowName		      off
 	      OutputSignals	      "ena2"
 	      Port {
 		PortNumber		1
 		Name			"<ena2>"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      BusSelector
-	      Name		      "Bus\nSelector26"
-	      SID		      "1597"
-	      Ports		      [1, 1]
-	      Position		      [150, 397, 155, 423]
-	      ZOrder		      3644
-	      ShowName		      off
-	      OutputSignals	      "MOTOR_ONOFF"
-	      Port {
-		PortNumber		1
-		Name			"<MOTOR_ONOFF>"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      BusSelector
-	      Name		      "Bus\nSelector27"
-	      SID		      "1598"
-	      Ports		      [1, 1]
-	      Position		      [150, 277, 155, 303]
-	      ZOrder		      3645
-	      ShowName		      off
-	      OutputSignals	      "MOTOR_ONOFF"
-	      Port {
-		PortNumber		1
-		Name			"<MOTOR_ONOFF>"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2842,61 +2859,15 @@ Library {
 	    }
 	    Block {
 	      BlockType		      From
-	      Name		      "From29"
-	      SID		      "1965"
-	      Position		      [20, 400, 115, 420]
-	      ZOrder		      3677
-	      ShowName		      off
-	      CloseFcn		      "tagdialog Close"
-	      GotoTag		      "F1_MS_IN"
-	      TagVisibility	      "scoped"
-	    }
-	    Block {
-	      BlockType		      From
-	      Name		      "From30"
-	      SID		      "1967"
-	      Position		      [20, 280, 115, 300]
-	      ZOrder		      3678
-	      ShowName		      off
-	      CloseFcn		      "tagdialog Close"
-	      GotoTag		      "F3_MS_IN"
-	      TagVisibility	      "scoped"
-	    }
-	    Block {
-	      BlockType		      From
 	      Name		      "From37"
 	      SID		      "1974"
-	      Position		      [115, 342, 190, 358]
+	      Position		      [115, 337, 190, 353]
 	      ZOrder		      3669
 	      NamePlacement	      "alternate"
 	      ShowName		      off
 	      CloseFcn		      "tagdialog Close"
 	      GotoTag		      "TestSeq"
 	      TagVisibility	      "scoped"
-	    }
-	    Block {
-	      BlockType		      Logic
-	      Name		      "Logical\nOperator"
-	      SID		      "2002"
-	      Ports		      [2, 1]
-	      Position		      [290, 347, 320, 378]
-	      ZOrder		      3675
-	      ShowName		      off
-	      Operator		      "OR"
-	      AllPortsSameDT	      off
-	      OutDataTypeStr	      "boolean"
-	    }
-	    Block {
-	      BlockType		      Logic
-	      Name		      "Logical\nOperator1"
-	      SID		      "2003"
-	      Ports		      [2, 1]
-	      Position		      [290, 302, 320, 333]
-	      ZOrder		      3676
-	      ShowName		      off
-	      Operator		      "OR"
-	      AllPortsSameDT	      off
-	      OutDataTypeStr	      "boolean"
 	    }
 	    Block {
 	      BlockType		      Mux
@@ -2922,16 +2893,16 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector2"
 	      SrcPort		      1
-	      DstBlock		      "Logical\nOperator"
-	      DstPort		      2
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<ena1>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      1
-	      DstBlock		      "Logical\nOperator1"
-	      DstPort		      2
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Data Type Conversion"
@@ -2946,30 +2917,6 @@ Library {
 	      Points		      [25, 0; 0, -15]
 	      DstBlock		      "Mux5"
 	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Logical\nOperator"
-	      SrcPort		      1
-	      DstBlock		      "Data Type Conversion1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Logical\nOperator1"
-	      SrcPort		      1
-	      DstBlock		      "Data Type Conversion"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "From30"
-	      SrcPort		      1
-	      DstBlock		      "Bus\nSelector27"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "From29"
-	      SrcPort		      1
-	      DstBlock		      "Bus\nSelector26"
-	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<motor>"
@@ -3000,24 +2947,6 @@ Library {
 	      DstBlock		      "Out1"
 	      DstPort		      1
 	    }
-	    Line {
-	      Name		      "<MOTOR_ONOFF>"
-	      Labels		      [0, 0]
-	      SrcBlock		      "Bus\nSelector26"
-	      SrcPort		      1
-	      Points		      [63, 0; 0, -55]
-	      DstBlock		      "Logical\nOperator"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "<MOTOR_ONOFF>"
-	      Labels		      [0, 0]
-	      SrcBlock		      "Bus\nSelector27"
-	      SrcPort		      1
-	      Points		      [92, 0; 0, 20]
-	      DstBlock		      "Logical\nOperator1"
-	      DstPort		      1
-	    }
 	  }
 	}
 	Block {
@@ -3040,7 +2969,7 @@ Library {
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.6"
+	  LibraryVersion	  "1.9"
 	  SourceBlock		  "NREL_UDP_lib/NREL UDP Data - Formatted Packets"
 	  SourceType		  "UDP Data Block"
 	  ProfileID		  "2"
@@ -3061,6 +2990,32 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "OpComm1"
+	  SID			  "2339"
+	  Ports			  [1, 1]
+	  Position		  [630, 1211, 690, 1259]
+	  ZOrder		  4227
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/OpComm"
+	  SourceType		  "RT-LAB OpComm"
+	  nbport		  "1"
+	  groupe_acq		  "1"
+	  subsys_rate		  "0"
+	  st			  "0"
+	  Synchronization	  on
+	  Interpolation		  on
+	  Threshold		  "1.0"
+	  Missed_Data		  off
+	  Offset		  off
+	  Sim_Time		  off
+	  Samples		  off
+	  dynSigOut		  off
+	  from_console		  "0"
+	  warning_done		  off
+	  writeOpCommFile	  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6579,6 +6534,108 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "Time_ms"
+	  SID			  "2334"
+	  Ports			  [0, 1]
+	  Position		  [1110, 1387, 1200, 1423]
+	  ZOrder		  4226
+	  ShowName		  off
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Time_ms"
+	    Location		    [-8, 0, 1288, 1000]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "125"
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant4"
+	      SID		      "2335"
+	      Position		      [20, 65, 100, 95]
+	      ZOrder		      4222
+	      ShowName		      off
+	      Value		      "Ts/1e-3"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "2336"
+	      Ports		      [2, 1]
+	      Position		      [155, 70, 175, 90]
+	      ZOrder		      4221
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "++|"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      UnitDelay
+	      Name		      "Unit Delay"
+	      SID		      "2337"
+	      Position		      [185, 23, 220, 57]
+	      ZOrder		      4220
+	      BlockMirror	      on
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      InputProcessing	      "Elements as channels (sample based)"
+	      SampleTime	      "-1"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Simtime_ms"
+	      SID		      "2338"
+	      Position		      [395, 73, 425, 87]
+	      ZOrder		      4223
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [65, 0]
+	      Branch {
+		DstBlock		"Simtime_ms"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -40]
+		DstBlock		"Unit Delay"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant4"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Unit Delay"
+	      SrcPort		      1
+	      Points		      [-15, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Gain
 	  Name			  "scale_NGCHP"
 	  SID			  "2025"
@@ -6627,6 +6684,26 @@ Library {
 	  ZOrder		  4089
 	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<TestSeq>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Goto9"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpComm1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "CONSOLE"
+	  SrcPort		  1
+	  DstBlock		  "OpComm1"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Bus\nCreator2"
@@ -6781,7 +6858,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Digital Clock"
+	  SrcBlock		  "Time_ms"
 	  SrcPort		  1
 	  DstBlock		  "NREL UDP Data - Formatted Packets"
 	  DstPort		  1

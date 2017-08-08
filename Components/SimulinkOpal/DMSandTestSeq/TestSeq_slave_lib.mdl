@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[14]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Aug 05 01:24:38 2017"
-  RTWModifiedTimeStamp	  423797075
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Mon Aug 07 14:01:49 2017"
+  RTWModifiedTimeStamp	  424015303
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -913,7 +913,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "158"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "287"
+    SIDHighWatermark	    "305"
     Block {
       BlockType		      SubSystem
       Name		      "TestSequenceCommands"
@@ -921,8 +921,9 @@ Library {
       Ports		      [1, 1]
       Position		      [255, 261, 500, 369]
       ZOrder		      3700
-      BackgroundColor	      "red"
-      LibraryVersion	      "*1.6"
+      ForegroundColor	      "red"
+      BackgroundColor	      "yellow"
+      LibraryVersion	      "*1.7"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -932,7 +933,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"TestSequenceCommands"
-	Location		[0, 0, 1702, 1040]
+	Location		[805, 61, 1765, 1101]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -944,7 +945,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"103"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1267,13 +1268,13 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "misc"
-	    PropagatedSignals	    "cut_grid, mgc_ena"
+	    PropagatedSignals	    "cut_grid, mgc_ena, open_ssf1, open_ssf2, open_ssf3"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
 	    Name		    "uint32_2_uint2"
-	    Location		    [51, 35, 898, 1035]
+	    Location		    [805, 61, 1765, 1101]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -1285,7 +1286,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "87"
+	    ZoomFactor		    "124"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "bitset"
@@ -1298,11 +1299,11 @@ Library {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator"
 	      SID		      "250"
-	      Ports		      [2, 1]
-	      Position		      [505, 85, 510, 160]
+	      Ports		      [5, 1]
+	      Position		      [505, 89, 510, 261]
 	      ZOrder		      39
 	      ShowName		      off
-	      Inputs		      "2"
+	      Inputs		      "5"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -1315,6 +1316,23 @@ Library {
 	      OutDataTypeStr	      "uint16"
 	      RndMeth		      "Floor"
 	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "288"
+	      Position		      [360, 165, 435, 185]
+	      ZOrder		      47
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"open_ssf1"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      DataTypeConversion
@@ -1346,6 +1364,40 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"mgc_ena"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion4"
+	      SID		      "290"
+	      Position		      [360, 200, 435, 220]
+	      ZOrder		      49
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"open_ssf2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion5"
+	      SID		      "292"
+	      Position		      [360, 235, 435, 255]
+	      ZOrder		      51
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"open_ssf3"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -1395,12 +1447,158 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits3"
+	      SID		      "289"
+	      Ports		      [1, 1]
+	      Position		      [220, 165, 300, 185]
+	      ZOrder		      46
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "2"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits4"
+	      SID		      "291"
+	      Ports		      [1, 1]
+	      Position		      [220, 200, 300, 220]
+	      ZOrder		      48
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "3"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Extract Bits5"
+	      SID		      "293"
+	      Ports		      [1, 1]
+	      Position		      [220, 235, 300, 255]
+	      ZOrder		      50
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Extract Bits"
+	      SourceType	      "Extract Bits"
+	      bitsToExtract	      "Range of bits"
+	      numBits		      "8"
+	      bitIdxRange	      "4"
+	      outScalingMode	      "Treat bit field as an integer"
+	      Port {
+		PortNumber		1
+		Name			"loc2"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
 	      BlockType		      Outport
 	      Name		      "mux"
 	      SID		      "264"
-	      Position		      [545, 118, 575, 132]
+	      Position		      [550, 168, 580, 182]
 	      ZOrder		      14
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits5"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion5"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "open_ssf3"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Data Type Conversion5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits4"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "open_ssf2"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Data Type Conversion4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      Points		      [13, 0]
+	      Branch {
+		DstBlock		"Extract Bits1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35; 2, 0]
+		Branch {
+		  DstBlock		  "Extract Bits2"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 35]
+		  Branch {
+		    DstBlock		    "Extract Bits3"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 35]
+		    Branch {
+		    DstBlock		    "Extract Bits4"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 35]
+		    DstBlock		    "Extract Bits5"
+		    DstPort		    1
+		    }
+		  }
+		}
+	      }
+	    }
+	    Line {
+	      Name		      "loc2"
+	      SrcBlock		      "Extract Bits3"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "open_ssf1"
+	      Labels		      [0, 1]
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      3
 	    }
 	    Line {
 	      Name		      "loc2"
@@ -1430,7 +1628,7 @@ Library {
 	    }
 	    Line {
 	      Name		      "cut_grid"
-	      Labels		      [0, 0]
+	      Labels		      [1, 0]
 	      SrcBlock		      "Data Type Conversion2"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nCreator"
@@ -1443,20 +1641,6 @@ Library {
 	      SrcPort		      1
 	      DstBlock		      "Bus\nCreator"
 	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Data Type Conversion"
-	      SrcPort		      1
-	      Points		      [13, 0]
-	      Branch {
-		DstBlock		"Extract Bits1"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 35]
-		DstBlock		"Extract Bits2"
-		DstPort			1
-	      }
 	    }
 	  }
 	}
@@ -2461,7 +2645,7 @@ Library {
 	  }
 	  System {
 	    Name		    "uint32_2_uint5"
-	    Location		    [51, 35, 898, 1035]
+	    Location		    [805, 61, 1765, 1101]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200

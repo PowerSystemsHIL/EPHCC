@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [793.0, 161.0, 775.0, 1092.0]
+      Location		      [425.0, 94.0, 775.0, 1092.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Aug 05 02:12:41 2017"
-  RTWModifiedTimeStamp	  423799947
-  ModelVersionFormat	  "1.%<AutoIncrement:54>"
+  LastModifiedDate	  "Mon Aug 07 17:14:58 2017"
+  RTWModifiedTimeStamp	  424026806
+  ModelVersionFormat	  "1.%<AutoIncrement:56>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1142,7 +1142,7 @@ Library {
   }
   System {
     Name		    "BESS_lib"
-    Location		    [793, 161, 1568, 1253]
+    Location		    [780, 116, 1555, 1208]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1156,7 +1156,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "991"
+    SIDHighWatermark	    "995"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2923,7 +2923,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.53"
+	  LibraryVersion	  "1.55"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3636,11 +3636,11 @@ Library {
       SID		      "236"
       Ports		      [3, 3, 0, 0, 0, 0, 3]
       Position		      [405, 70, 485, 215]
-      ZOrder		      3849
+      ZOrder		      3887
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.53"
+      LibraryVersion	      "1.55"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3674,14 +3674,14 @@ Library {
 	    }
 	    Name		    "InvType"
 	    Prompt		    "Inverter type"
-	    Value		    "PV Inverter"
+	    Value		    "ESS Inverter"
 	  }
 	  Object {
 	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "Sn"
 	    Prompt		    "Nominal power [kVA]"
-	    Value		    "100"
+	    Value		    "250"
 	  }
 	  Object {
 	    $ObjectID		    27
@@ -3716,7 +3716,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "r_I_max"
 	    Prompt		    "Max Current Ratio"
-	    Value		    "1.2"
+	    Value		    "3"
 	  }
 	  Object {
 	    $ObjectID		    32
@@ -5127,7 +5127,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Droop"
-	    Location		    [0, 0, 1702, 1040]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -5139,7 +5139,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "175"
+	    ZoomFactor		    "150"
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector1"
@@ -5779,7 +5779,7 @@ Library {
 	      SID		      "326"
 	      Position		      [170, 75, 360, 95]
 	      ZOrder		      3893
-	      Value		      "[60 Vn/sqrt(3) [1 -1]*Sn]"
+	      Value		      "[60 Vn/sqrt(3) [1 1]*Sn]"
 	    }
 	    Block {
 	      BlockType		      Selector
@@ -9207,7 +9207,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Ctrl_Interface"
-	    Location		    [1, 1, 1919, 1039]
+	    Location		    [0, 0, 1536, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9286,6 +9286,28 @@ Library {
 	    }
 	    Block {
 	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion10"
+	      SID		      "994"
+	      Position		      [470, 383, 545, 417]
+	      ZOrder		      3973
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion11"
+	      SID		      "995"
+	      Position		      [470, 438, 545, 472]
+	      ZOrder		      3974
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion2"
 	      SID		      "397"
 	      Position		      [610, 95, 665, 115]
@@ -9359,6 +9381,28 @@ Library {
 	      ZOrder		      3968
 	      ShowName		      off
 	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion8"
+	      SID		      "992"
+	      Position		      [350, 383, 425, 417]
+	      ZOrder		      3971
+	      ShowName		      off
+	      OutDataTypeStr	      "int16"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion9"
+	      SID		      "993"
+	      Position		      [350, 438, 425, 472]
+	      ZOrder		      3972
+	      ShowName		      off
+	      OutDataTypeStr	      "int16"
 	      RndMeth		      "Floor"
 	      SaturateOnIntegerOverflow	off
 	    }
@@ -9467,7 +9511,7 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain2"
 	      SID		      "383"
-	      Position		      [445, 385, 520, 415]
+	      Position		      [615, 385, 690, 415]
 	      ZOrder		      15
 	      ShowName		      off
 	      Gain		      "0.0001"
@@ -9485,7 +9529,7 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain3"
 	      SID		      "384"
-	      Position		      [445, 440, 520, 470]
+	      Position		      [615, 440, 690, 470]
 	      ZOrder		      16
 	      ShowName		      off
 	      Gain		      "0.0001"
@@ -9556,6 +9600,30 @@ Library {
 	      ShowName		      off
 	      GotoTag		      "modbus_in"
 	      TagVisibility	      "scoped"
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion11"
+	      SrcPort		      1
+	      DstBlock		      "Gain3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion10"
+	      SrcPort		      1
+	      DstBlock		      "Gain2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion9"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion11"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion8"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion10"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Gain6"
@@ -9658,7 +9726,7 @@ Library {
 	    Line {
 	      SrcBlock		      "Demux"
 	      SrcPort		      7
-	      DstBlock		      "Gain3"
+	      DstBlock		      "Data Type Conversion9"
 	      DstPort		      1
 	    }
 	    Line {
@@ -9672,7 +9740,7 @@ Library {
 	    Line {
 	      SrcBlock		      "Demux"
 	      SrcPort		      6
-	      DstBlock		      "Gain2"
+	      DstBlock		      "Data Type Conversion8"
 	      DstPort		      1
 	    }
 	    Line {
@@ -10980,7 +11048,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"1265"
+		SIDHighWatermark	"1373"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -11410,7 +11478,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "100"
-		    SIDHighWatermark	    "169"
+		    SIDHighWatermark	    "183"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"

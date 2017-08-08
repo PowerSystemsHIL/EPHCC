@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[717.0, 874.0]
 	ZoomFactor		[1.2422907488986783]
-	Offset			[150.17021276595756, -61.269503546099259]
+	Offset			[150.17021276595779, -61.269503546099259]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Aug 05 01:54:55 2017"
-  RTWModifiedTimeStamp	  423798890
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  LastModifiedDate	  "Mon Aug 07 17:40:23 2017"
+  RTWModifiedTimeStamp	  424028420
+  ModelVersionFormat	  "1.%<AutoIncrement:9>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,11 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
+      OutputAsBus	      off
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -734,6 +739,12 @@ Library {
       PhaseDelay	      "0"
       SampleTime	      "1"
       VectorParams1D	      on
+    }
+    Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Inport
@@ -839,6 +850,21 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
   }
@@ -858,17 +884,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "124"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "91"
+    SIDHighWatermark	    "95"
     Block {
       BlockType		      SubSystem
       Name		      "NREL UDP Data - Formatted Packets"
       SID		      "37"
       Ports		      [10, 1]
       Position		      [305, 106, 550, 614]
-      ZOrder		      4224
+      ZOrder		      4225
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.000000, 0.819608, 0.819608]"
-      LibraryVersion	      "*1.5"
+      LibraryVersion	      "*1.8"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -983,7 +1009,7 @@ Library {
       }
       System {
 	Name			"NREL UDP Data - Formatted Packets"
-	Location		[-8, -8, 1928, 1048]
+	Location		[952, 0, 1912, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -995,7 +1021,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"69"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Time Stamp"
@@ -1377,10 +1403,32 @@ Library {
 	  BlockType		  SignalSpecification
 	  Name			  "B-width"
 	  SID			  "59"
-	  Position		  [1585, 692, 1705, 718]
+	  Position		  [1445, 692, 1565, 718]
 	  ZOrder		  89
 	  ShowName		  off
 	  Dimensions		  "15"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "94"
+	  Ports			  [1, 2]
+	  Position		  [1640, 726, 1645, 819]
+	  ZOrder		  3708
+	  ShowName		  off
+	  OutputSignals		  "TestSeqUDPEna,testSeqFromSC"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<TestSeqUDPEna>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<testSeqFromSC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -1416,7 +1464,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "347"
+	    SIDHighWatermark	    "380"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
@@ -1428,20 +1476,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "60::346"
+	      SID		      "60::379"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      209
+	      ZOrder		      227
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "60::345"
+	      SID		      "60::378"
 	      Tag		      "Stateflow S-Function NREL_UDP_lib 2"
 	      Ports		      [1, 2]
 	      Position		      [180, 100, 230, 160]
-	      ZOrder		      208
+	      ZOrder		      226
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 2]"
 	      EnableBusSupport	      off
@@ -1455,9 +1503,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "60::347"
+	      SID		      "60::380"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      210
+	      ZOrder		      228
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1511,7 +1559,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "62"
-	  Position		  [1330, 665, 1360, 695]
+	  Position		  [1190, 665, 1220, 695]
 	  ZOrder		  88
 	  ShowName		  off
 	  Value			  "1000"
@@ -1536,6 +1584,24 @@ Library {
 	  ConvertRealWorld	  "Stored Integer (SI)"
 	  RndMeth		  "Nearest"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "92"
+	  Position		  [1400, 766, 1475, 784]
+	  ZOrder		  3706
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
+	  TagVisibility		  "scoped"
+	  Port {
+	    PortNumber		    1
+	    PropagatedSignals	    "TestSeq"
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Mux
@@ -1574,7 +1640,7 @@ Library {
 	  Name			  "OpAsyncRecv"
 	  SID			  "68"
 	  Ports			  [1, 3]
-	  Position		  [1380, 644, 1535, 716]
+	  Position		  [1240, 644, 1395, 716]
 	  ZOrder		  86
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/Communication/Asynchronous/OpAsyncRecv"
@@ -1662,10 +1728,21 @@ Library {
 	  OutDataTypeStr	  "double"
 	}
 	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  SID			  "95"
+	  Position		  [1760, 682, 1810, 818]
+	  ZOrder		  3709
+	  Criteria		  "u2 > Threshold"
+	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator"
 	  SID			  "74"
-	  Position		  [1555, 672, 1570, 688]
+	  Position		  [1415, 672, 1430, 688]
 	  ZOrder		  84
 	  ShowName		  off
 	}
@@ -1680,7 +1757,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator3"
 	  SID			  "76"
-	  Position		  [1595, 645, 1615, 665]
+	  Position		  [1455, 645, 1475, 665]
 	  ZOrder		  3704
 	}
 	Block {
@@ -1688,11 +1765,11 @@ Library {
 	  Name			  "TestSequenceCommands"
 	  SID			  "77"
 	  Ports			  [1, 1]
-	  Position		  [1865, 653, 2075, 757]
+	  Position		  [1865, 698, 2075, 802]
 	  ZOrder		  3700
 	  ForegroundColor	  "red"
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.7"
+	  LibraryVersion	  "1.8"
 	  SourceBlock		  "TestSeq_slave_lib/TestSequenceCommands"
 	  SourceType		  "SubSystem"
 	}
@@ -1876,10 +1953,39 @@ Library {
 	  BlockType		  Outport
 	  Name			  "TestSeq"
 	  SID			  "87"
-	  Position		  [2300, 698, 2330, 712]
+	  Position		  [2300, 743, 2330, 757]
 	  ZOrder		  3697
 	  ForegroundColor	  "blue"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "TestSequenceCommands"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<TestSeqUDPEna>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<testSeqFromSC>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  Labels		  [1, 1]
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "uint32_2_uint16"
@@ -1896,7 +2002,7 @@ Library {
 	Line {
 	  SrcBlock		  "B-width"
 	  SrcPort		  1
-	  DstBlock		  "TestSequenceCommands"
+	  DstBlock		  "Switch"
 	  DstPort		  1
 	}
 	Line {
