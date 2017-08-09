@@ -166,7 +166,11 @@ HMI1.Flow_C7.q.validity := UDPBansheeRead.bWdgDataValid;
 HMI1.Flow_C8.q.validity := UDPBansheeRead.bWdgDataValid;
 HMI1.Flow_C9.q.validity := UDPBansheeRead.bWdgDataValid;
 
-
+HMI1.ESS1_SOC.instMag 		:= INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.ESS_SOC_ID])/100;
+HMI1.ESS1_SOC.q.validity 	:= UDPBansheeRead.bWdgDataValid;
+HMI1.ESS2_SOC.instMag 		:= INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.ESS_SOC_ID+1])/100;
+HMI1.ESS2_SOC.q.validity 	:= UDPBansheeRead.bWdgDataValid;
+	
 CB101_MODBUS_POU.EN := MBUS_ENA;
 CB102_MODBUS_POU.EN := MBUS_ENA;
 CB103_MODBUS_POU.EN := MBUS_ENA;

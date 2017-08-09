@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[13]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -44,8 +44,8 @@ Library {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[717.0, 874.0]
-	ZoomFactor		[1.2422907488986785]
-	Offset			[150.17021276595742, -61.269503546099287]
+	ZoomFactor		[1.2422907488986783]
+	Offset			[150.17021276595813, -61.269503546099259]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 04 12:55:33 2017"
-  RTWModifiedTimeStamp	  423752129
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Tue Aug 08 15:15:33 2017"
+  RTWModifiedTimeStamp	  424106127
+  ModelVersionFormat	  "1.%<AutoIncrement:12>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,11 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
+      OutputAsBus	      off
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -734,6 +739,12 @@ Library {
       PhaseDelay	      "0"
       SampleTime	      "1"
       VectorParams1D	      on
+    }
+    Block {
+      BlockType		      From
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
     }
     Block {
       BlockType		      Inport
@@ -839,6 +850,21 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
   }
@@ -858,17 +884,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "124"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "91"
+    SIDHighWatermark	    "95"
     Block {
       BlockType		      SubSystem
       Name		      "NREL UDP Data - Formatted Packets"
       SID		      "37"
-      Ports		      [10, 1]
+      Ports		      [7, 1]
       Position		      [305, 106, 550, 614]
       ZOrder		      4224
-      ForegroundColor	      "blue"
-      BackgroundColor	      "[0.000000, 0.819608, 0.819608]"
-      LibraryVersion	      "*1.4"
+      ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
+      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
+      LibraryVersion	      "*1.11"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -882,97 +908,72 @@ Library {
 	$ClassName		"Simulink.Mask"
 	Type			"UDP Data Block"
 	Description		"* All signal scaling/modifications should be external to this block\n\nProfile ID: (1-Sheriff, 2-Banshe"
-	"e, 3-Canary, 4-Siren) \n\nWaveforms Data: No. of per phase waveforms sent at 5Hz rate, point per waveforms [dt=80us, "
-	"208; dt=100us, 166], and scaling factor. \n-Input format: [No. of waveforms, No. of data-points, scale]\n-Ex:[3, 166,"
-	" 100]\n\nRelay Data: No. of relays feeding packet data to breakers in display - mapped/indexed in ascending order\n-P"
-	"acket order: Active power(kW), reactive power(kVAR), voltage(per-unit), frequency (Hz), breaker status (1:closed, 0:o"
-	"pen)\n-Input format: [No. of Relays, [scale_kW, scale_kVAR, scale_Vpu, scale_Hz]]\n-Ex:[4, [10, 10, 100, 100]]\n\nNo."
-	" of Batteries: TBD\n-Ex: [0]\n\nNo. of Diesel Gensets: No. of diesel gensets in the system feeding data to the displa"
-	"y.\n-Packet order: terminal voltage(per-unit), fuel consumption (Gals/hr)\n-Input format: [No. of gensets, [scale_Vpu"
-	", scale_fuel]]\n-Ex: [0, [1,1]]\n\nNo. of NG/CHP Gensets: No. of NGCHP gensets in the system feeding data to the disp"
-	"lay.\n-Packet order: Terminal Vpu, Temp Actual, Heat Recovered, Fuel usage, CHP CO2, Heat from boiler, CHP heat contr"
-	"ibution, Boiler Nm^3/hr, Boiler lbm/hr CO2\n-Ex: [1, [100,100,100,100,100,100,100,100,100]]\n\nMotors Data: No. of mo"
-	"tors monitored in the system. Currently, only looking at motor on/off state.\n-Input format: [No. of motors]\n-Ex: [1"
-	"]\n\nNo. of PV: TBD\n-Ex: [0]\n\nPower Factor Data: No. of power factors to be displayed in the system and scale valu"
-	"e. The same scale factor will be applied to all power factors.\n-Packet order: power factor, import/export, lagging/l"
-	"eading\n-Input format: [No. of Power Factors, scale_pf]\n-Ex:[1, 1000]\n\nMisc. Data - No. of Scale factor: No. of sc"
-	"ale factors to be applied to each signal-set.   \n-Ex: [3]\n\nMisc. Data - No. of Signals and Scale Values: Size of s"
-	"ignal set and scale value to be applied to the signal-set. \n-Ex: [[1, 1000], [6, 100], [3, 10]]\n\n"
+	"e, 3-Canary, 4-Siren, 5-NREL) \n\nRelay Data: No. of relays feeding packet data to breakers in display - mapped/index"
+	"ed in ascending order\n-Packet order: Active power(kW), reactive power(kVAR), voltage(per-unit), frequency (Hz), brea"
+	"ker status (1:closed, 0:open)\n-Input format: [No. of Relays, [scale_kW, scale_kVAR, scale_Vpu, scale_Hz]]\n-Ex:[4, ["
+	"10, 10, 100, 100]]\n\nNo. of Batteries: TBD\n-Ex: [0]\n\nNo. of Diesel Gensets: No. of diesel gensets in the system f"
+	"eeding data to the display.\n-Packet order: terminal voltage(per-unit), fuel consumption (Gals/hr)\n-Input format: [N"
+	"o. of gensets, [scale_Vpu, scale_fuel]]\n-Ex: [0, [1,1]]\n\nNo. of NG/CHP Gensets: No. of NGCHP gensets in the system"
+	" feeding data to the display.\n-Packet order: Terminal Vpu, Temp Actual, Heat Recovered, Fuel usage, CHP CO2, Heat fr"
+	"om boiler, CHP heat contribution, Boiler Nm^3/hr, Boiler lbm/hr CO2\n-Ex: [1, [100,100,100,100,100,100,100,100,100]]\n"
+	"\nMotors Data: No. of motors monitored in the system. Currently, only looking at motor on/off state.\n-Input format: "
+	"[No. of motors]\n-Ex: [1]\n\nMisc. Data - No. of Scale factor: No. of scale factors to be applied to each signal-set."
+	"   \n-Ex: [3]\n\nMisc. Data - No. of Signals and Scale Values: Size of signal set and scale value to be applied to th"
+	"e signal-set. \n-Ex: [[1, 1000], [6, 100], [3, 10]]\n\n"
 	Array {
 	  Type			  "Simulink.MaskParameter"
-	  Dimension		  11
+	  Dimension		  8
 	  Object {
 	    $ObjectID		    18
 	    Type		    "edit"
 	    Name		    "ProfileID"
 	    Prompt		    "Profile ID"
-	    Value		    "2"
+	    Value		    "5"
 	  }
 	  Object {
 	    $ObjectID		    19
-	    Type		    "edit"
-	    Name		    "NumOfWaveforms"
-	    Prompt		    "Waveform Data"
-	    Value		    "[3, 1, 1]"
-	  }
-	  Object {
-	    $ObjectID		    20
 	    Type		    "edit"
 	    Name		    "NumOfRelays"
 	    Prompt		    "Relay Data"
 	    Value		    "[59, [1, 1, 1000, 100]]"
 	  }
 	  Object {
-	    $ObjectID		    21
+	    $ObjectID		    20
 	    Type		    "edit"
 	    Name		    "NumOfBatteries"
 	    Prompt		    "# of Batteries"
-	    Value		    "0"
+	    Value		    "2"
 	  }
 	  Object {
-	    $ObjectID		    22
+	    $ObjectID		    21
 	    Type		    "edit"
 	    Name		    "NumOfDieselGensets"
 	    Prompt		    "Diesel Gensets Data"
-	    Value		    "[1, [100, 100]]"
+	    Value		    "[2, [100, 100]]"
 	  }
 	  Object {
-	    $ObjectID		    23
+	    $ObjectID		    22
 	    Type		    "edit"
 	    Name		    "NumOfNGCHPGensets"
 	    Prompt		    "NG-CHP Gensets Data"
 	    Value		    "[1, [100, 100, 100, 100, 100, 100, 100, 100, 100]]"
 	  }
 	  Object {
-	    $ObjectID		    24
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "NumOfMotors"
 	    Prompt		    "# of Motors"
 	    Value		    "2"
 	  }
 	  Object {
-	    $ObjectID		    25
-	    Type		    "edit"
-	    Name		    "NumOfPVs"
-	    Prompt		    "# of PVs"
-	    Value		    "0"
-	  }
-	  Object {
-	    $ObjectID		    26
-	    Type		    "edit"
-	    Name		    "NumOfPF"
-	    Prompt		    "Power Factor Data"
-	    Value		    "[3, 1000]"
-	  }
-	  Object {
-	    $ObjectID		    27
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "NumOfMiscellaneousDataScales"
 	    Prompt		    "Misc. Data - No. of Scale Factors"
 	    Value		    "2"
 	  }
 	  Object {
-	    $ObjectID		    28
+	    $ObjectID		    25
 	    Type		    "edit"
 	    Name		    "NumOfMiscellaneousDataSignalsScales"
 	    Prompt		    "Misc. - No. Signals and Scale Values"
@@ -983,7 +984,7 @@ Library {
       }
       System {
 	Name			"NREL UDP Data - Formatted Packets"
-	Location		[998, 24, 1717, 1024]
+	Location		[0, 0, 1462, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -995,26 +996,15 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"60"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Time Stamp"
 	  SID			  "38"
-	  Position		  [770, 723, 800, 737]
+	  Position		  [770, 853, 800, 867]
 	  ZOrder		  70
 	  BackgroundColor	  "lightBlue"
 	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Waveforms"
-	  SID			  "39"
-	  Position		  [955, 1438, 985, 1452]
-	  ZOrder		  -1
-	  BackgroundColor	  "lightBlue"
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	  PortDimensions	  "3"
 	}
 	Block {
 	  BlockType		  Inport
@@ -1023,7 +1013,7 @@ Library {
 	  Position		  [1275, 1098, 1305, 1112]
 	  ZOrder		  -2
 	  BackgroundColor	  "lightBlue"
-	  Port			  "3"
+	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1033,7 +1023,7 @@ Library {
 	  Position		  [1275, 1178, 1305, 1192]
 	  ZOrder		  35
 	  BackgroundColor	  "lightBlue"
-	  Port			  "4"
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1043,7 +1033,7 @@ Library {
 	  Position		  [1275, 1258, 1305, 1272]
 	  ZOrder		  39
 	  BackgroundColor	  "lightBlue"
-	  Port			  "5"
+	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1053,7 +1043,7 @@ Library {
 	  Position		  [1275, 1338, 1305, 1352]
 	  ZOrder		  69
 	  BackgroundColor	  "lightBlue"
-	  Port			  "6"
+	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1063,44 +1053,24 @@ Library {
 	  Position		  [1275, 1418, 1305, 1432]
 	  ZOrder		  37
 	  BackgroundColor	  "lightBlue"
-	  Port			  "7"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "PV Data"
-	  SID			  "45"
-	  Position		  [1275, 1498, 1305, 1512]
-	  ZOrder		  41
-	  BackgroundColor	  "lightBlue"
-	  Port			  "8"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Power Factor Data"
-	  SID			  "46"
-	  Position		  [1275, 1578, 1305, 1592]
-	  ZOrder		  66
-	  BackgroundColor	  "lightBlue"
-	  Port			  "9"
+	  Port			  "6"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "Miscellaneous Data"
 	  SID			  "47"
-	  Position		  [1275, 1658, 1305, 1672]
+	  Position		  [1275, 1498, 1305, 1512]
 	  ZOrder		  24
-	  BackgroundColor	  "lightBlue"
-	  Port			  "10"
+	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
+	  Port			  "7"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Constant
 	  Name			  " # of motors"
 	  SID			  "48"
-	  Position		  [755, 1107, 835, 1133]
+	  Position		  [755, 1172, 835, 1198]
 	  ZOrder		  21
 	  ShowName		  off
 	  Value			  "NumOfMotors"
@@ -1110,7 +1080,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  " # of motors1"
 	  SID			  "49"
-	  Position		  [755, 1302, 945, 1328]
+	  Position		  [755, 1237, 945, 1263]
 	  ZOrder		  61
 	  ShowName		  off
 	  Value			  "NumOfMiscellaneousDataScales"
@@ -1120,7 +1090,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "# of Batteries"
 	  SID			  "50"
-	  Position		  [755, 913, 835, 937]
+	  Position		  [755, 978, 835, 1002]
 	  ZOrder		  19
 	  ShowName		  off
 	  Value			  "NumOfBatteries"
@@ -1128,19 +1098,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "# of PVs"
-	  SID			  "51"
-	  Position		  [755, 1172, 835, 1198]
-	  ZOrder		  22
-	  ShowName		  off
-	  Value			  "NumOfPVs"
-	  OutDataTypeStr	  "double"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "# of PVs1"
 	  SID			  "52"
-	  Position		  [755, 1369, 965, 1391]
+	  Position		  [755, 1304, 965, 1326]
 	  ZOrder		  62
 	  ShowName		  off
 	  Value			  "NumOfMiscellaneousDataSignalsScales"
@@ -1148,19 +1108,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "# of PVs2"
-	  SID			  "53"
-	  Position		  [755, 1237, 835, 1263]
-	  ZOrder		  67
-	  ShowName		  off
-	  Value			  "NumOfPF"
-	  OutDataTypeStr	  "double"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "# of Relays"
 	  SID			  "54"
-	  Position		  [755, 847, 835, 873]
+	  Position		  [755, 912, 835, 938]
 	  ZOrder		  17
 	  ShowName		  off
 	  Value			  "NumOfRelays"
@@ -1168,19 +1118,9 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "# of Waveform s"
-	  SID			  "55"
-	  Position		  [755, 779, 850, 811]
-	  ZOrder		  15
-	  ShowName		  off
-	  Value			  "NumOfWaveforms"
-	  OutDataTypeStr	  "double"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "# of gensets"
 	  SID			  "56"
-	  Position		  [755, 979, 880, 1001]
+	  Position		  [755, 1044, 880, 1066]
 	  ZOrder		  18
 	  ShowName		  off
 	  Value			  "NumOfDieselGensets"
@@ -1190,7 +1130,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "# of gensets1"
 	  SID			  "57"
-	  Position		  [755, 1042, 890, 1068]
+	  Position		  [755, 1107, 890, 1133]
 	  ZOrder		  68
 	  ShowName		  off
 	  Value			  "NumOfNGCHPGensets"
@@ -1211,7 +1151,7 @@ Library {
 	  EnableBusSupport	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    29
+	    $ObjectID		    26
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "AsyncEthernetCtrl"
 	    Description		    "Generic asynchronous process configuration block"
@@ -1222,21 +1162,21 @@ Library {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      15
 	      Object {
-		$ObjectID		30
+		$ObjectID		27
 		Type			"edit"
 		Name			"ctrl_id"
 		Prompt			"Controller ID"
 		Value			"1"
 	      }
 	      Object {
-		$ObjectID		31
+		$ObjectID		28
 		Type			"edit"
 		Name			"nbr_to_remote_endpoint"
 		Prompt			"Number of data to send"
-		Value			"418"
+		Value			"408"
 	      }
 	      Object {
-		$ObjectID		32
+		$ObjectID		29
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1256,21 +1196,21 @@ Library {
 		Value			"INT16"
 	      }
 	      Object {
-		$ObjectID		33
+		$ObjectID		30
 		Type			"edit"
 		Name			"offset_to_remote_endpoint"
 		Prompt			"Byte offset of transmission buffer"
 		Value			"0"
 	      }
 	      Object {
-		$ObjectID		34
+		$ObjectID		31
 		Type			"edit"
 		Name			"nbr_from_remote_endpoint"
 		Prompt			"Number of data expected to be received"
 		Value			"15"
 	      }
 	      Object {
-		$ObjectID		35
+		$ObjectID		32
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1290,14 +1230,14 @@ Library {
 		Value			"INT16"
 	      }
 	      Object {
-		$ObjectID		36
+		$ObjectID		33
 		Type			"edit"
 		Name			"offset_from_remote_endpoint"
 		Prompt			"Byte offset of reception buffer"
 		Value			"0"
 	      }
 	      Object {
-		$ObjectID		37
+		$ObjectID		34
 		Type			"edit"
 		Name			"nic_name"
 		Prompt			"Network interface name"
@@ -1305,7 +1245,7 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		38
+		$ObjectID		35
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1319,7 +1259,7 @@ Library {
 		Value			"UDP"
 	      }
 	      Object {
-		$ObjectID		39
+		$ObjectID		36
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1333,14 +1273,14 @@ Library {
 		Value			"Server"
 	      }
 	      Object {
-		$ObjectID		40
+		$ObjectID		37
 		Type			"edit"
 		Name			"port"
 		Prompt			"Port"
 		Value			"7200"
 	      }
 	      Object {
-		$ObjectID		41
+		$ObjectID		38
 		Type			"edit"
 		Name			"remote_ip"
 		Prompt			"Remote IP address"
@@ -1348,7 +1288,7 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		42
+		$ObjectID		39
 		Type			"edit"
 		Name			"exe_name"
 		Prompt			"Name of the executable"
@@ -1356,14 +1296,14 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		43
+		$ObjectID		40
 		Type			"checkbox"
 		Name			"swap_tx"
 		Prompt			"Swap data endianness before transmission"
 		Value			"on"
 	      }
 	      Object {
-		$ObjectID		44
+		$ObjectID		41
 		Type			"checkbox"
 		Name			"swap_rx"
 		Prompt			"Swap data endianness after reception"
@@ -1377,10 +1317,32 @@ Library {
 	  BlockType		  SignalSpecification
 	  Name			  "B-width"
 	  SID			  "59"
-	  Position		  [1585, 692, 1705, 718]
+	  Position		  [1445, 692, 1565, 718]
 	  ZOrder		  89
 	  ShowName		  off
 	  Dimensions		  "15"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "94"
+	  Ports			  [1, 2]
+	  Position		  [1640, 726, 1645, 819]
+	  ZOrder		  3708
+	  ShowName		  off
+	  OutputSignals		  "TestSeq.TestSeqUDPEna,TestSeq.testSeqFromSC"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<TestSeqUDPEna>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<testSeqFromSC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -1416,7 +1378,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "336"
+	    SIDHighWatermark	    "402"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
@@ -1428,20 +1390,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "60::335"
+	      SID		      "60::401"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      203
+	      ZOrder		      244
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "60::334"
+	      SID		      "60::400"
 	      Tag		      "Stateflow S-Function NREL_UDP_lib 2"
 	      Ports		      [1, 2]
 	      Position		      [180, 100, 230, 160]
-	      ZOrder		      202
+	      ZOrder		      243
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 2]"
 	      EnableBusSupport	      off
@@ -1455,9 +1417,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "60::336"
+	      SID		      "60::402"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      204
+	      ZOrder		      245
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1511,7 +1473,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "62"
-	  Position		  [1330, 665, 1360, 695]
+	  Position		  [1190, 665, 1220, 695]
 	  ZOrder		  88
 	  ShowName		  off
 	  Value			  "1000"
@@ -1538,6 +1500,23 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "92"
+	  Position		  [1400, 766, 1475, 784]
+	  ZOrder		  3706
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
+	  TagVisibility		  "scoped"
+	  Port {
+	    PortNumber		    1
+	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Mux
 	  Name			  "Mux-to-Ethernet"
 	  SID			  "65"
@@ -1551,22 +1530,22 @@ Library {
 	  BlockType		  Mux
 	  Name			  "Mux1"
 	  SID			  "66"
-	  Ports			  [14, 1]
-	  Position		  [1130, 581, 1135, 1464]
+	  Ports			  [10, 1]
+	  Position		  [1130, 692, 1135, 1353]
 	  ZOrder		  -40
 	  ShowName		  off
-	  Inputs		  "14"
+	  Inputs		  "10"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux8"
 	  SID			  "67"
-	  Ports			  [10, 1]
-	  Position		  [1475, 986, 1480, 1784]
+	  Ports			  [8, 1]
+	  Position		  [1475, 986, 1480, 1624]
 	  ZOrder		  -43
 	  ShowName		  off
-	  Inputs		  "10"
+	  Inputs		  "8"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1574,7 +1553,7 @@ Library {
 	  Name			  "OpAsyncRecv"
 	  SID			  "68"
 	  Ports			  [1, 3]
-	  Position		  [1380, 644, 1535, 716]
+	  Position		  [1240, 644, 1395, 716]
 	  ZOrder		  86
 	  LibraryVersion	  "1.512"
 	  SourceBlock		  "rtlab/Communication/Asynchronous/OpAsyncRecv"
@@ -1622,7 +1601,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Profile ID"
 	  SID			  "70"
-	  Position		  [755, 650, 810, 680]
+	  Position		  [755, 780, 810, 810]
 	  ZOrder		  14
 	  ShowName		  off
 	  Value			  "ProfileID"
@@ -1644,7 +1623,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Start Word 0xAFAF"
 	  SID			  "72"
-	  Position		  [755, 587, 810, 613]
+	  Position		  [755, 717, 810, 743]
 	  ZOrder		  -5
 	  BackgroundColor	  "green"
 	  NamePlacement		  "alternate"
@@ -1655,17 +1634,28 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Stop Word 0x5555"
 	  SID			  "73"
-	  Position		  [1275, 1732, 1335, 1758]
+	  Position		  [1275, 1572, 1335, 1598]
 	  ZOrder		  -5
 	  BackgroundColor	  "red"
 	  Value			  "21845"
 	  OutDataTypeStr	  "double"
 	}
 	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  SID			  "95"
+	  Position		  [1760, 682, 1810, 818]
+	  ZOrder		  3709
+	  Criteria		  "u2 > Threshold"
+	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator"
 	  SID			  "74"
-	  Position		  [1555, 672, 1570, 688]
+	  Position		  [1415, 672, 1430, 688]
 	  ZOrder		  84
 	  ShowName		  off
 	}
@@ -1680,7 +1670,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator3"
 	  SID			  "76"
-	  Position		  [1595, 645, 1615, 665]
+	  Position		  [1455, 645, 1475, 665]
 	  ZOrder		  3704
 	}
 	Block {
@@ -1688,10 +1678,11 @@ Library {
 	  Name			  "TestSequenceCommands"
 	  SID			  "77"
 	  Ports			  [1, 1]
-	  Position		  [1865, 653, 2075, 757]
+	  Position		  [1865, 698, 2075, 802]
 	  ZOrder		  3700
-	  BackgroundColor	  "red"
-	  LibraryVersion	  "1.5"
+	  ForegroundColor	  "red"
+	  BackgroundColor	  "yellow"
+	  LibraryVersion	  "1.10"
 	  SourceBlock		  "TestSeq_slave_lib/TestSequenceCommands"
 	  SourceType		  "SubSystem"
 	}
@@ -1700,7 +1691,7 @@ Library {
 	  Name			  "uint32_2_uint16"
 	  SID			  "78"
 	  Ports			  [1, 1]
-	  Position		  [940, 706, 1055, 754]
+	  Position		  [940, 836, 1055, 884]
 	  ZOrder		  3705
 	  ShowName		  off
 	  MinAlgLoopOccurrences	  off
@@ -1712,7 +1703,7 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    45
+	    $ObjectID		    42
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('uint32_2_uint16');"
 	  }
@@ -1875,10 +1866,39 @@ Library {
 	  BlockType		  Outport
 	  Name			  "TestSeq"
 	  SID			  "87"
-	  Position		  [2300, 698, 2330, 712]
+	  Position		  [2300, 743, 2330, 757]
 	  ZOrder		  3697
 	  ForegroundColor	  "blue"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "TestSequenceCommands"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<TestSeqUDPEna>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<testSeqFromSC>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Line {
+	  Labels		  [1, 1]
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "uint32_2_uint16"
@@ -1895,7 +1915,7 @@ Library {
 	Line {
 	  SrcBlock		  "B-width"
 	  SrcPort		  1
-	  DstBlock		  "TestSequenceCommands"
+	  DstBlock		  "Switch"
 	  DstPort		  1
 	}
 	Line {
@@ -1951,61 +1971,43 @@ Library {
 	  SrcBlock		  "# of Relays"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "# of PVs2"
-	  SrcPort		  1
-	  DstBlock		  "Mux1"
-	  DstPort		  11
-	}
-	Line {
-	  SrcBlock		  "# of PVs"
-	  SrcPort		  1
-	  DstBlock		  "Mux1"
-	  DstPort		  10
+	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "# of Batteries"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  6
+	  DstPort		  5
 	}
 	Line {
 	  SrcBlock		  " # of motors"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  9
-	}
-	Line {
-	  SrcBlock		  "# of Waveform s"
-	  SrcPort		  1
-	  DstBlock		  "Mux1"
-	  DstPort		  4
+	  DstPort		  8
 	}
 	Line {
 	  SrcBlock		  "# of gensets"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  7
+	  DstPort		  6
 	}
 	Line {
 	  SrcBlock		  "# of gensets1"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  8
+	  DstPort		  7
 	}
 	Line {
 	  SrcBlock		  " # of motors1"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  12
+	  DstPort		  9
 	}
 	Line {
 	  SrcBlock		  "# of PVs1"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  13
+	  DstPort		  10
 	}
 	Line {
 	  SrcBlock		  "Time Stamp"
@@ -2020,22 +2022,10 @@ Library {
 	  DstPort		  6
 	}
 	Line {
-	  SrcBlock		  "PV Data"
-	  SrcPort		  1
-	  DstBlock		  "Mux8"
-	  DstPort		  7
-	}
-	Line {
-	  SrcBlock		  "Power Factor Data"
-	  SrcPort		  1
-	  DstBlock		  "Mux8"
-	  DstPort		  8
-	}
-	Line {
 	  SrcBlock		  "Miscellaneous Data"
 	  SrcPort		  1
 	  DstBlock		  "Mux8"
-	  DstPort		  9
+	  DstPort		  7
 	}
 	Line {
 	  SrcBlock		  "NGCHP Gensets Data"
@@ -2047,12 +2037,12 @@ Library {
 	  SrcBlock		  "Stop Word 0x5555"
 	  SrcPort		  1
 	  DstBlock		  "Mux8"
-	  DstPort		  10
+	  DstPort		  8
 	}
 	Line {
 	  SrcBlock		  "Mux8"
 	  SrcPort		  1
-	  Points		  [184, 0; 0, -95]
+	  Points		  [184, 0; 0, -15]
 	  Branch {
 	    DstBlock		    "Data Type Conversion1"
 	    DstPort		    1
@@ -2080,12 +2070,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Mux8"
 	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "Waveforms"
-	  SrcPort		  1
-	  DstBlock		  "Mux1"
-	  DstPort		  14
 	}
 	Line {
 	  SrcBlock		  "Data Type Conversion1"
@@ -2143,7 +2127,7 @@ Library {
 	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
 	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
 	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [1669, 1626]
+	  Position		  [1624, 1536]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -2
 	  FontSize		  12
