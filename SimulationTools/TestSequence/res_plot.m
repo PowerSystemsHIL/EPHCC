@@ -38,7 +38,7 @@ ax= [ax subplot(4,4,15)]; plot(res.simtime(:,1), res.voltage(:,[56]));
 
 ax= [ax subplot(4,4,4)]; plot(res.simtime(:,1), res.breaker(:,[16:34]));
 ax= [ax subplot(4,4,8)]; plot(res.simtime(:,1), res.breaker(:,[52]));
-ax= [ax subplot(4,4,12)]; plot(res.simtime(:,1), res.breaker(:,[55]));
+ax= [ax subplot(4,4,12)]; plot(res.simtime(:,1), [res.breaker(:,[55]) res.battery_SoC(:,2)./10000]);
 ax= [ax subplot(4,4,16)]; plot(res.simtime(:,1), res.breaker(:,[56]));
 
 linkaxes(ax,'x');
