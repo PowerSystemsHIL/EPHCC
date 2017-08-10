@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[815.0, 892.0]
 	ZoomFactor		[1.2]
-	Offset			[-1.9326762412674725e-12, 0.0]
+	Offset			[-2.1032064978498966e-12, 0.0]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 08 15:58:06 2017"
-  RTWModifiedTimeStamp	  424108680
-  ModelVersionFormat	  "1.%<AutoIncrement:78>"
+  LastModifiedDate	  "Thu Aug 10 12:56:57 2017"
+  RTWModifiedTimeStamp	  424267240
+  ModelVersionFormat	  "1.%<AutoIncrement:80>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -851,8 +851,9 @@ Library {
       SID		      "1"
       Ports		      [4, 2]
       Position		      [145, 250, 440, 635]
-      ZOrder		      3617
-      LibraryVersion	      "*1.77"
+      ZOrder		      3618
+      ForegroundColor	      "red"
+      LibraryVersion	      "*1.79"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -862,7 +863,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder4"
-	Location		[960, 0, 1920, 1040]
+	Location		[5, 0, 1497, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -874,7 +875,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1382,6 +1383,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Gen_meas"
+	    PropagatedSignals	    ", , , , , , , , , , , , , , , , , , , , , , , dF, , dWt, status, flt_word"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1612,6 +1614,8 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"gen"
+		PropagatedSignals	"gal_per_hr, Pm, Vf, w, Vt, Stator current, dq0 components, Mechanical, Load angle   delta  (deg),"
+		" Output active power   Peo (pu), Output reactive power  Qeo (pu)"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -1635,6 +1639,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -1671,12 +1676,14 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"ctrl"
+		PropagatedSignals	"control"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	      Port {
 		PortNumber		9
 		Name			"Logic_trip"
+		PropagatedSignals	", , "
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2078,7 +2085,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "ESS2"
-	    Location		    [0, 0, 1114, 1040]
+	    Location		    [960, 0, 1918, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2090,7 +2097,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "125"
+	    ZoomFactor		    "150"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "modbus_in"
@@ -2287,7 +2294,7 @@ Library {
 	      Sn		      "250"
 	      Vn		      "480"
 	      b_Vdc_nom		      "1000"
-	      b_kWh		      "1"
+	      b_kWh		      "60"
 	      b_esr		      "0.1"
 	      r_I_max		      "3"
 	      Tc		      "Ts"
@@ -2295,6 +2302,7 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"PV_meas"
+		PropagatedSignals	"Inverter, CB_meas, Battery, status_word"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2348,6 +2356,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -3216,6 +3225,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "CB_DATA"
+	    PropagatedSignals	    "F4_CB_1, F4_CB_2, F4_CB_3, F4_CB_4, F4_CB_5, F4_CB_6"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3281,6 +3291,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "GEN3_DATA"
+	    PropagatedSignals	    "ctrl, gen, cb"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3715,6 +3726,7 @@ Library {
 	  writeOpCommFile	  off
 	  Port {
 	    PortNumber		    1
+	    PropagatedSignals	    "TestSeq, LoadProfile"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -3753,7 +3765,7 @@ Library {
 	  Ports			  [1, 2, 0, 0, 0, 0, 3]
 	  Position		  [1480, 793, 1590, 907]
 	  ZOrder		  4024
-	  LibraryVersion	  "1.73"
+	  LibraryVersion	  "1.77"
 	  SourceBlock		  "PHIL_lib/PHIL_F4"
 	  SourceType		  "SubSystem"
 	}
@@ -4023,6 +4035,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -4068,6 +4081,7 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"PV_meas"
+		PropagatedSignals	"Inverter, CB_meas, Battery, status_word"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }

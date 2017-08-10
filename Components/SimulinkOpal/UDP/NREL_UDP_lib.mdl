@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[717.0, 874.0]
 	ZoomFactor		[1.2422907488986783]
-	Offset			[150.17021276595813, -61.269503546099259]
+	Offset			[150.17021276595824, -61.269503546099259]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 08 15:15:33 2017"
-  RTWModifiedTimeStamp	  424106127
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  LastModifiedDate	  "Wed Aug 09 15:55:31 2017"
+  RTWModifiedTimeStamp	  424194929
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -884,17 +884,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "124"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "95"
+    SIDHighWatermark	    "97"
     Block {
       BlockType		      SubSystem
       Name		      "NREL UDP Data - Formatted Packets"
       SID		      "37"
-      Ports		      [7, 1]
-      Position		      [305, 106, 550, 614]
-      ZOrder		      4224
+      Ports		      [8, 1]
+      Position		      [305, 108, 550, 617]
+      ZOrder		      4250
       ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.11"
+      LibraryVersion	      "*1.12"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -922,7 +922,7 @@ Library {
 	"e signal-set. \n-Ex: [[1, 1000], [6, 100], [3, 10]]\n\n"
 	Array {
 	  Type			  "Simulink.MaskParameter"
-	  Dimension		  8
+	  Dimension		  9
 	  Object {
 	    $ObjectID		    18
 	    Type		    "edit"
@@ -968,12 +968,19 @@ Library {
 	  Object {
 	    $ObjectID		    24
 	    Type		    "edit"
+	    Name		    "NumOfQuality"
+	    Prompt		    "Power quality"
+	    Value		    "[26 10 10]"
+	  }
+	  Object {
+	    $ObjectID		    25
+	    Type		    "edit"
 	    Name		    "NumOfMiscellaneousDataScales"
 	    Prompt		    "Misc. Data - No. of Scale Factors"
 	    Value		    "2"
 	  }
 	  Object {
-	    $ObjectID		    25
+	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "NumOfMiscellaneousDataSignalsScales"
 	    Prompt		    "Misc. - No. Signals and Scale Values"
@@ -984,7 +991,7 @@ Library {
       }
       System {
 	Name			"NREL UDP Data - Formatted Packets"
-	Location		[0, 0, 1462, 1040]
+	Location		[960, 0, 1920, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -996,7 +1003,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"60"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Time Stamp"
@@ -1060,10 +1067,20 @@ Library {
 	  BlockType		  Inport
 	  Name			  "Miscellaneous Data"
 	  SID			  "47"
-	  Position		  [1275, 1498, 1305, 1512]
+	  Position		  [1275, 1578, 1305, 1592]
 	  ZOrder		  24
 	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
 	  Port			  "7"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PowerQuality\n"
+	  SID			  "97"
+	  Position		  [1275, 1498, 1305, 1512]
+	  ZOrder		  3711
+	  BackgroundColor	  "[0.380392, 0.741176, 0.988235]"
+	  Port			  "8"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1080,10 +1097,20 @@ Library {
 	  BlockType		  Constant
 	  Name			  " # of motors1"
 	  SID			  "49"
-	  Position		  [755, 1237, 945, 1263]
+	  Position		  [755, 1302, 945, 1328]
 	  ZOrder		  61
 	  ShowName		  off
 	  Value			  "NumOfMiscellaneousDataScales"
+	  OutDataTypeStr	  "double"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  " # of motors2"
+	  SID			  "96"
+	  Position		  [755, 1237, 835, 1263]
+	  ZOrder		  3710
+	  ShowName		  off
+	  Value			  "NumOfQuality"
 	  OutDataTypeStr	  "double"
 	}
 	Block {
@@ -1100,7 +1127,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "# of PVs1"
 	  SID			  "52"
-	  Position		  [755, 1304, 965, 1326]
+	  Position		  [755, 1369, 965, 1391]
 	  ZOrder		  62
 	  ShowName		  off
 	  Value			  "NumOfMiscellaneousDataSignalsScales"
@@ -1151,7 +1178,7 @@ Library {
 	  EnableBusSupport	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    26
+	    $ObjectID		    27
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "AsyncEthernetCtrl"
 	    Description		    "Generic asynchronous process configuration block"
@@ -1162,21 +1189,21 @@ Library {
 	      Type		      "Simulink.MaskParameter"
 	      Dimension		      15
 	      Object {
-		$ObjectID		27
+		$ObjectID		28
 		Type			"edit"
 		Name			"ctrl_id"
 		Prompt			"Controller ID"
 		Value			"1"
 	      }
 	      Object {
-		$ObjectID		28
+		$ObjectID		29
 		Type			"edit"
 		Name			"nbr_to_remote_endpoint"
 		Prompt			"Number of data to send"
-		Value			"408"
+		Value			"457"
 	      }
 	      Object {
-		$ObjectID		29
+		$ObjectID		30
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1196,21 +1223,21 @@ Library {
 		Value			"INT16"
 	      }
 	      Object {
-		$ObjectID		30
+		$ObjectID		31
 		Type			"edit"
 		Name			"offset_to_remote_endpoint"
 		Prompt			"Byte offset of transmission buffer"
 		Value			"0"
 	      }
 	      Object {
-		$ObjectID		31
+		$ObjectID		32
 		Type			"edit"
 		Name			"nbr_from_remote_endpoint"
 		Prompt			"Number of data expected to be received"
 		Value			"15"
 	      }
 	      Object {
-		$ObjectID		32
+		$ObjectID		33
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1230,14 +1257,14 @@ Library {
 		Value			"INT16"
 	      }
 	      Object {
-		$ObjectID		33
+		$ObjectID		34
 		Type			"edit"
 		Name			"offset_from_remote_endpoint"
 		Prompt			"Byte offset of reception buffer"
 		Value			"0"
 	      }
 	      Object {
-		$ObjectID		34
+		$ObjectID		35
 		Type			"edit"
 		Name			"nic_name"
 		Prompt			"Network interface name"
@@ -1245,7 +1272,7 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		35
+		$ObjectID		36
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1259,7 +1286,7 @@ Library {
 		Value			"UDP"
 	      }
 	      Object {
-		$ObjectID		36
+		$ObjectID		37
 		Type			"popup"
 		Array {
 		  Type			  "Cell"
@@ -1273,14 +1300,14 @@ Library {
 		Value			"Server"
 	      }
 	      Object {
-		$ObjectID		37
+		$ObjectID		38
 		Type			"edit"
 		Name			"port"
 		Prompt			"Port"
 		Value			"7200"
 	      }
 	      Object {
-		$ObjectID		38
+		$ObjectID		39
 		Type			"edit"
 		Name			"remote_ip"
 		Prompt			"Remote IP address"
@@ -1288,7 +1315,7 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		39
+		$ObjectID		40
 		Type			"edit"
 		Name			"exe_name"
 		Prompt			"Name of the executable"
@@ -1296,14 +1323,14 @@ Library {
 		Evaluate		"off"
 	      }
 	      Object {
-		$ObjectID		40
+		$ObjectID		41
 		Type			"checkbox"
 		Name			"swap_tx"
 		Prompt			"Swap data endianness before transmission"
 		Value			"on"
 	      }
 	      Object {
-		$ObjectID		41
+		$ObjectID		42
 		Type			"checkbox"
 		Name			"swap_rx"
 		Prompt			"Swap data endianness after reception"
@@ -1378,7 +1405,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "402"
+	    SIDHighWatermark	    "413"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
@@ -1390,20 +1417,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "60::401"
+	      SID		      "60::412"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      244
+	      ZOrder		      250
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "60::400"
+	      SID		      "60::411"
 	      Tag		      "Stateflow S-Function NREL_UDP_lib 2"
 	      Ports		      [1, 2]
 	      Position		      [180, 100, 230, 160]
-	      ZOrder		      243
+	      ZOrder		      249
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 2]"
 	      EnableBusSupport	      off
@@ -1417,9 +1444,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "60::402"
+	      SID		      "60::413"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      245
+	      ZOrder		      251
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1530,22 +1557,22 @@ Library {
 	  BlockType		  Mux
 	  Name			  "Mux1"
 	  SID			  "66"
-	  Ports			  [10, 1]
-	  Position		  [1130, 692, 1135, 1353]
+	  Ports			  [11, 1]
+	  Position		  [1130, 694, 1135, 1416]
 	  ZOrder		  -40
 	  ShowName		  off
-	  Inputs		  "10"
+	  Inputs		  "11"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  Mux
 	  Name			  "Mux8"
 	  SID			  "67"
-	  Ports			  [8, 1]
-	  Position		  [1475, 986, 1480, 1624]
+	  Ports			  [9, 1]
+	  Position		  [1475, 988, 1480, 1702]
 	  ZOrder		  -43
 	  ShowName		  off
-	  Inputs		  "8"
+	  Inputs		  "9"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1634,7 +1661,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Stop Word 0x5555"
 	  SID			  "73"
-	  Position		  [1275, 1572, 1335, 1598]
+	  Position		  [1275, 1652, 1335, 1678]
 	  ZOrder		  -5
 	  BackgroundColor	  "red"
 	  Value			  "21845"
@@ -1703,7 +1730,7 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    42
+	    $ObjectID		    43
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('uint32_2_uint16');"
 	  }
@@ -1872,6 +1899,18 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "PowerQuality\n"
+	  SrcPort		  1
+	  DstBlock		  "Mux8"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  " # of motors2"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  9
+	}
+	Line {
 	  SrcBlock		  "Switch"
 	  SrcPort		  1
 	  DstBlock		  "TestSequenceCommands"
@@ -2001,13 +2040,13 @@ Library {
 	  SrcBlock		  " # of motors1"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  9
+	  DstPort		  10
 	}
 	Line {
 	  SrcBlock		  "# of PVs1"
 	  SrcPort		  1
 	  DstBlock		  "Mux1"
-	  DstPort		  10
+	  DstPort		  11
 	}
 	Line {
 	  SrcBlock		  "Time Stamp"
@@ -2025,7 +2064,7 @@ Library {
 	  SrcBlock		  "Miscellaneous Data"
 	  SrcPort		  1
 	  DstBlock		  "Mux8"
-	  DstPort		  7
+	  DstPort		  8
 	}
 	Line {
 	  SrcBlock		  "NGCHP Gensets Data"
@@ -2037,12 +2076,12 @@ Library {
 	  SrcBlock		  "Stop Word 0x5555"
 	  SrcPort		  1
 	  DstBlock		  "Mux8"
-	  DstPort		  8
+	  DstPort		  9
 	}
 	Line {
 	  SrcBlock		  "Mux8"
 	  SrcPort		  1
-	  Points		  [184, 0; 0, -15]
+	  Points		  [184, 0; 0, -55]
 	  Branch {
 	    DstBlock		    "Data Type Conversion1"
 	    DstPort		    1
@@ -2092,6 +2131,7 @@ Library {
 	Line {
 	  SrcBlock		  "Mux1"
 	  SrcPort		  1
+	  Points		  [165, 0; 0, -30]
 	  DstBlock		  "Mux8"
 	  DstPort		  1
 	}

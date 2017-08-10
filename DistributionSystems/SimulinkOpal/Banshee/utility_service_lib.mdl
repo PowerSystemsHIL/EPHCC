@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 08 18:02:24 2017"
-  RTWModifiedTimeStamp	  424116142
-  ModelVersionFormat	  "1.%<AutoIncrement:32>"
+  LastModifiedDate	  "Thu Aug 10 12:59:35 2017"
+  RTWModifiedTimeStamp	  424270768
+  ModelVersionFormat	  "1.%<AutoIncrement:33>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -813,7 +813,7 @@ Library {
       ZOrder		      2683
       ForegroundColor	      "blue"
       BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
-      LibraryVersion	      "*1.31"
+      LibraryVersion	      "1.32"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1590,9 +1590,12 @@ Library {
 	  Ports			  [2, 0, 0, 0, 0, 0, 3]
 	  Position		  [1430, 595, 1525, 655]
 	  ZOrder		  4144
-	  LibraryVersion	  "1.80"
+	  LibraryVersion	  "1.83"
 	  SourceBlock		  "controllable_grid_lib/Three-Phase Source Controllable"
 	  SourceType		  ""
+	  Ts			  "Ts"
+	  Rg			  "0.8"
+	  Lg			  "16.58e-3"
 	  Object {
 	    $PropName		    "MaskObject"
 	    $ObjectID		    17
@@ -2245,29 +2248,29 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [2144, 400; 0, 205]
+	  SrcBlock		  "500kcmil-Mutual9"
+	  SrcPort		  LConn1
+	  Points		  [-106, 0; 0, 155]
 	  Branch {
-	    ConnectType		    "SRC_DEST"
-	    SrcBlock		    "500kcmil-Mutual9"
-	    SrcPort		    LConn1
-	    Points		    [-106, 0; 0, 155]
-	  }
-	  Branch {
-	    ConnectType		    "SRC_DEST"
+	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "500kcmil-Mutual5"
 	    SrcPort		    LConn1
 	    Points		    [-106, 0]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
-	    DstBlock		    "500kcmil-Mutual2"
-	    DstPort		    LConn1
-	  }
-	  Branch {
-	    ConnectType		    "DEST_DEST"
-	    SrcBlock		    "SSN Interface Block (3ph)3"
-	    SrcPort		    RConn1
-	    Points		    [44, 0]
+	    Points		    [0, 205]
+	    Branch {
+	      ConnectType	      "DEST_SRC"
+	      DstBlock		      "500kcmil-Mutual2"
+	      DstPort		      LConn1
+	    }
+	    Branch {
+	      ConnectType	      "DEST_DEST"
+	      SrcBlock		      "SSN Interface Block (3ph)3"
+	      SrcPort		      RConn1
+	      Points		      [44, 0]
+	    }
 	  }
 	}
 	Line {

@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 08 18:02:36 2017"
-  RTWModifiedTimeStamp	  424116154
-  ModelVersionFormat	  "1.%<AutoIncrement:88>"
+  LastModifiedDate	  "Thu Aug 10 12:59:29 2017"
+  RTWModifiedTimeStamp	  424270766
+  ModelVersionFormat	  "1.%<AutoIncrement:91>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -778,6 +778,15 @@ Library {
       Interpolate	      on
     }
     Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Memory
       X0		      "0"
       InheritSampleTime	      off
@@ -884,7 +893,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "91"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2380"
+    SIDHighWatermark	    "2424"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
@@ -895,7 +904,7 @@ Library {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "*1.87"
+      LibraryVersion	      "1.90"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -905,7 +914,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_COMMUNICATION"
-	Location		[5, 0, 1065, 1040]
+	Location		[5, 0, 1497, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -917,7 +926,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"200"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -1238,6 +1247,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "2381"
+	  Ports			  [1, 1]
+	  Position		  [1085, 1806, 1090, 1844]
+	  ZOrder		  4257
+	  ShowName		  off
+	  OutputSignals		  "misc.mgc_ena"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<mgc_ena>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "2342"
 	  Ports			  [1, 1]
@@ -1506,6 +1531,17 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From"
+	  SID			  "2382"
+	  Position		  [1010, 1813, 1080, 1837]
+	  ZOrder		  4256
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  GotoTag		  "TestSeq"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From18"
 	  SID			  "1953"
 	  Position		  [1035, 1635, 1130, 1655]
@@ -1602,7 +1638,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "F3_MS_IN"
-	    PropagatedSignals	    "CB_DATA, LOAD_DATA, NG_CHP_DATA"
+	    PropagatedSignals	    "CB_DATA, LOAD_DATA, NG_CHP_DATA, MOTOR_DATA"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1942,7 +1978,7 @@ Library {
 	  Name			  "Load_Profiles"
 	  SID			  "2001"
 	  Ports			  [0, 1]
-	  Position		  [1405, 1823, 1650, 1867]
+	  Position		  [1405, 1868, 1650, 1912]
 	  ZOrder		  2654
 	  BackgroundColor	  "cyan"
 	  LibraryVersion	  "1.7"
@@ -1955,6 +1991,18 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "2383"
+	  Ports			  [1, 1]
+	  Position		  [1145, 1809, 1175, 1841]
+	  ZOrder		  4258
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Memory
@@ -2086,7 +2134,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"F3"
-		PropagatedSignals	"CB_DATA, LOAD_DATA, NG_CHP_DATA"
+		PropagatedSignals	"CB_DATA, LOAD_DATA, NG_CHP_DATA, MOTOR_DATA"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -3328,12 +3376,12 @@ Library {
 	  BlockType		  Reference
 	  Name			  "NREL UDP Data - Formatted Packets"
 	  SID			  "2324"
-	  Ports			  [7, 1]
-	  Position		  [1405, 1378, 1640, 1792]
+	  Ports			  [8, 1]
+	  Position		  [1405, 1375, 1640, 1855]
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.12"
+	  LibraryVersion	  "1.13"
 	  SourceBlock		  "NREL_UDP_lib/NREL UDP Data - Formatted Packets"
 	  SourceType		  "UDP Data Block"
 	  ProfileID		  "6"
@@ -3342,6 +3390,7 @@ Library {
 	  NumOfDieselGensets	  "[2, [100, 100]]"
 	  NumOfNGCHPGensets	  "[1, [100, 100, 100, 100, 100, 100, 100, 100, 100]]"
 	  NumOfMotors		  "2"
+	  NumOfQuality		  "[23 10 10]"
 	  NumOfMiscellaneousDataScales "2"
 	  NumOfMiscellaneousDataSignalsScales "[[50, 1], [8, 1]]"
 	  Port {
@@ -3374,7 +3423,7 @@ Library {
 	  Sim_Time		  off
 	  Samples		  off
 	  dynSigOut		  off
-	  from_console		  "0"
+	  from_console		  "1"
 	  warning_done		  off
 	  writeOpCommFile	  off
 	}
@@ -3403,6 +3452,538 @@ Library {
 	  from_console		  "0"
 	  warning_done		  off
 	  writeOpCommFile	  off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Power_quality_data"
+	  SID			  "2384"
+	  Ports			  [1, 1]
+	  Position		  [1200, 1807, 1290, 1843]
+	  ZOrder		  4255
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Power_quality_data"
+	    Location		    [5, 0, 1065, 1040]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "125"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Rst"
+	      SID		      "2385"
+	      Position		      [285, 133, 315, 147]
+	      ZOrder		      4252
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      SID		      "2403"
+	      Ports		      [1, 1]
+	      Position		      [175, 66, 180, 104]
+	      ZOrder		      4256
+	      ShowName		      off
+	      OutputSignals	      "F3_CB_1.m.Hz,F3_CB_5.m.Hz,F3_CB_7.m.Hz,F3_CB_8.m.Hz,F3_CB_9.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector2"
+	      SID		      "2386"
+	      Ports		      [1, 1]
+	      Position		      [175, 231, 180, 269]
+	      ZOrder		      4240
+	      ShowName		      off
+	      OutputSignals	      "F4_CB_1.m.Hz,F4_CB_2.m.Hz,F4_CB_5.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector3"
+	      SID		      "2404"
+	      Ports		      [1, 1]
+	      Position		      [175, 41, 180, 79]
+	      ZOrder		      4257
+	      ShowName		      off
+	      OutputSignals	      "F2_CB_1.m.Hz,F2_CB_6.m.Hz,F2_CB_8.m.Hz,F2_CB_9.m.Hz,F2_CB_12.m.Hz,F2_CB_14.m.Hz,F2_CB_16.m"
+	      ".Hz,F2_CB_17.m.Hz,F2_CB_19.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector4"
+	      SID		      "2405"
+	      Ports		      [1, 1]
+	      Position		      [175, 16, 180, 54]
+	      ZOrder		      4258
+	      ShowName		      off
+	      OutputSignals	      "F1_CB_1.m.Hz,F1_CB_4.m.Hz,F1_CB_9.m.Hz,F1_CB_6.m.Hz,F1_CB_10.m.Hz,F1_CB_14.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector5"
+	      SID		      "2411"
+	      Ports		      [1, 1]
+	      Position		      [175, 206, 180, 244]
+	      ZOrder		      4264
+	      ShowName		      off
+	      OutputSignals	      "F3_CB_1.m.Vpu,F3_CB_5.m.Vpu,F3_CB_7.m.Vpu,F3_CB_8.m.Vpu,F3_CB_9.m.Vpu"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector6"
+	      SID		      "2414"
+	      Ports		      [1, 1]
+	      Position		      [175, 181, 180, 219]
+	      ZOrder		      4267
+	      ShowName		      off
+	      OutputSignals	      "F2_CB_1.m.Vpu,F2_CB_6.m.Vpu,F2_CB_8.m.Vpu,F2_CB_9.m.Vpu,F2_CB_12.m.Vpu,F2_CB_14.m.Vpu,F2_C"
+	      "B_16.m.Vpu,F2_CB_17.m.Vpu,F2_CB_19.m.Vpu"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector7"
+	      SID		      "2387"
+	      Ports		      [1, 1]
+	      Position		      [175, 91, 180, 129]
+	      ZOrder		      4235
+	      ShowName		      off
+	      OutputSignals	      "F4_CB_1.m.Hz,F4_CB_2.m.Hz,F4_CB_5.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector8"
+	      SID		      "2417"
+	      Ports		      [1, 1]
+	      Position		      [175, 156, 180, 194]
+	      ZOrder		      4270
+	      ShowName		      off
+	      OutputSignals	      "F1_CB_1.m.Vpu,F1_CB_4.m.Vpu,F1_CB_9.m.Vpu,F1_CB_6.m.Vpu,F1_CB_10.m.Vpu,F1_CB_14.m.Vpu"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector"
+	      SID		      "2388"
+	      Position		      [265, 95, 300, 125]
+	      ZOrder		      4239
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector1"
+	      SID		      "2406"
+	      Position		      [265, 70, 300, 100]
+	      ZOrder		      4259
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector2"
+	      SID		      "2407"
+	      Position		      [265, 45, 300, 75]
+	      ZOrder		      4260
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector3"
+	      SID		      "2389"
+	      Position		      [265, 235, 300, 265]
+	      ZOrder		      4242
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector4"
+	      SID		      "2408"
+	      Position		      [265, 20, 300, 50]
+	      ZOrder		      4261
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector5"
+	      SID		      "2412"
+	      Position		      [265, 210, 300, 240]
+	      ZOrder		      4266
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector6"
+	      SID		      "2415"
+	      Position		      [265, 185, 300, 215]
+	      ZOrder		      4269
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      BusToVector
+	      Name		      "Bus to Vector7"
+	      SID		      "2418"
+	      Position		      [265, 160, 300, 190]
+	      ZOrder		      4272
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From1"
+	      SID		      "2392"
+	      Position		      [20, 100, 115, 120]
+	      ZOrder		      4236
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F4_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From2"
+	      SID		      "2400"
+	      Position		      [20, 75, 115, 95]
+	      ZOrder		      4253
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F3_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From3"
+	      SID		      "2401"
+	      Position		      [20, 50, 115, 70]
+	      ZOrder		      4254
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F2_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From4"
+	      SID		      "2421"
+	      Position		      [20, 240, 115, 260]
+	      ZOrder		      4274
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F4_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From5"
+	      SID		      "2402"
+	      Position		      [20, 25, 115, 45]
+	      ZOrder		      4255
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F1_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From6"
+	      SID		      "2422"
+	      Position		      [20, 215, 115, 235]
+	      ZOrder		      4275
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F3_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From7"
+	      SID		      "2423"
+	      Position		      [20, 190, 115, 210]
+	      ZOrder		      4276
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F2_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From8"
+	      SID		      "2424"
+	      Position		      [20, 165, 115, 185]
+	      ZOrder		      4277
+	      ShowName		      off
+	      CloseFcn		      "tagdialog Close"
+	      GotoTag		      "F1_RELAY_OUT"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "IEEE1547a_Hz"
+	      SID		      "2394"
+	      Ports		      [2, 1]
+	      Position		      [450, 60, 650, 120]
+	      ZOrder		      4234
+	      LibraryVersion	      "1.83"
+	      SourceBlock	      "power_quality_lib/IEEE1547a_Hz"
+	      SourceType	      "SubSystem"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "IEEE1547a_Volt"
+	      SID		      "2420"
+	      Ports		      [2, 1]
+	      Position		      [450, 175, 650, 235]
+	      ZOrder		      4273
+	      LibraryVersion	      "1.83"
+	      SourceBlock	      "power_quality_lib/IEEE1547a_Volt"
+	      SourceType	      "SubSystem"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      SID		      "2409"
+	      Ports		      [4, 1]
+	      Position		      [375, 22, 380, 123]
+	      ZOrder		      4262
+	      ShowName		      off
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux2"
+	      SID		      "2410"
+	      Ports		      [4, 1]
+	      Position		      [375, 162, 380, 263]
+	      ZOrder		      4263
+	      ShowName		      off
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux3"
+	      SID		      "2398"
+	      Ports		      [2, 1]
+	      Position		      [765, 31, 770, 264]
+	      ZOrder		      4248
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "2399"
+	      Position		      [880, 143, 910, 157]
+	      ZOrder		      4251
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Mux2"
+	      SrcPort		      1
+	      Points		      [8, 0; 0, -25]
+	      DstBlock		      "IEEE1547a_Volt"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector7"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector7"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From8"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector8"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector6"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector6"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector6"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From7"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector6"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector5"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector5"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector5"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From6"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector5"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "IEEE1547a_Hz"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector1"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector2"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector4"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector3"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector4"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From3"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector3"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector2"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector7"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus to Vector"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "IEEE1547a_Hz"
+	      SrcPort		      1
+	      DstBlock		      "Mux3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "IEEE1547a_Volt"
+	      SrcPort		      1
+	      DstBlock		      "Mux3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Mux3"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector7"
+	      SrcPort		      1
+	      DstBlock		      "Bus to Vector"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Rst"
+	      SrcPort		      1
+	      Points		      [85, 0]
+	      Branch {
+		Points			[0, -35]
+		DstBlock		"IEEE1547a_Hz"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 80]
+		DstBlock		"IEEE1547a_Volt"
+		DstPort			2
+	      }
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -6598,6 +7179,32 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "Power_quality_data"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<mgc_ena>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Power_quality_data"
+	  SrcPort		  1
+	  DstBlock		  "NREL UDP Data - Formatted Packets"
+	  DstPort		  8
+	}
+	Line {
 	  SrcBlock		  "DieselData"
 	  SrcPort		  1
 	  DstBlock		  "NREL UDP Data - Formatted Packets"
@@ -6643,14 +7250,14 @@ Library {
 	  SrcPort		  1
 	  Points		  [53, 0]
 	  Branch {
-	    Points		    [0, -20]
-	    DstBlock		    "Goto7"
+	    Labels		    [2, 1]
+	    Points		    [0, 15]
+	    DstBlock		    "Bus\nCreator2"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Labels		    [2, 1]
-	    Points		    [0, 45]
-	    DstBlock		    "Bus\nCreator2"
+	    Points		    [0, -50]
+	    DstBlock		    "Goto7"
 	    DstPort		    1
 	  }
 	}
@@ -6763,7 +7370,6 @@ Library {
 	Line {
 	  SrcBlock		  "OpComm2"
 	  SrcPort		  1
-	  Points		  [0, 0]
 	  DstBlock		  "Goto13"
 	  DstPort		  1
 	}
@@ -6916,7 +7522,7 @@ Library {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Load_Profiles"
 	  SrcPort		  1
-	  Points		  [80, 0; 0, -155]
+	  Points		  [80, 0; 0, -200]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  2
 	}
