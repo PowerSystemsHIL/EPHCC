@@ -69,9 +69,13 @@ for jj=1:length(filenames)
 end
 save header.mat header;
 
-%% 
+%%
+temp = eval(filenames{k});
+res.t = temp(:,1);
 for k=1:length(filenames),
             temp = eval(filenames{k});
-            eval(['res.' filenames{k} '= temp;']);
+            N=size(temp,2);
+            res.t = temp(:,1);
+            eval(['res.' filenames{k} '= temp(:,2:N);']);
         end;
 save res.mat;
