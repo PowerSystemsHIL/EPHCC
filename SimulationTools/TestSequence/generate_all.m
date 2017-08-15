@@ -29,7 +29,14 @@ dms_Dq     = gen_stairs(opt, 'DMS.Dq');
 iDp = dms_Dp>0;
 dms_kWHzref = dms_kWref;
 dms_kWHzref(iDp) = dms_kWref(iDp) + (grid_freq(iDp) - 60)/60./(dms_Dp(iDp)/100)*10e3;
+kWref_assume = dms_kWref;               % kW load from grid for angle calculations - assume kWref when in dmskWena=1
+kWref_assume(dms_kWref == 0) = 8000;    % assume 8MW load when not in dms_kWena
+dms_kVArref = sqrt(1-dms_PFref.*dms_PFref)./dms_PFref.*kWref_assume;        % Reactive power with PF control term
+dms_kVArVoltref = dms_kVArref + (grid_volt-115000)/115000./(dms_Dq/100)*10e3;     % Reactive power with kVAR/Volt support
+dms_ang_kVArVoltref = atan(dms_kVArVoltref./kWref_assume);
+
 iFreqEvent = grid_freq ~= 60.00;
+iVoltEvent = grid_volt ~= 115000;
 
 nanv = nan*ones(1,opt.N);
 kWref = nanv;
@@ -39,6 +46,12 @@ dms_kWHzref_nan = nanv;
 dms_kWHzref_nan(iFreqEvent) = dms_kWHzref(iFreqEvent);
 dms_PFref_nan = nanv;
 dms_PFref_nan(dms_PFena==1) = dms_PFref(dms_PFena==1);
+dms_kVArref_nan = nanv;
+dms_kVArref_nan(dms_PFena==1) = dms_kVArref(dms_PFena==1);
+dms_kVArVoltref_nan = nanv;
+dms_kVArVoltref_nan(iVoltEvent) = dms_kVArVoltref(iVoltEvent);
+dms_ang_kVArVoltref_nan = nanv;
+dms_ang_kVArVoltref_nan(iVoltEvent) = dms_ang_kVArVoltref(iVoltEvent);
 dms_phiref_nan = acos(dms_PFref_nan)/pi*180;
 
 motor1     = gen_stairs(opt, 'Motor1');

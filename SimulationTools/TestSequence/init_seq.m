@@ -35,8 +35,8 @@ Init('DMS.kWena', 0, 0);
 Init('DMS.PFena', 0, 0);
 Init('DMS.kWref', 0, 0);
 Init('DMS.PFref', 0, 1.0);
-Init('DMS.Dp', 0, 0);
-Init('DMS.Dq', 0, 0);
+Init('DMS.Dp', 0, 3);
+Init('DMS.Dq', 0, 6);
 %
 % Grid cut
 Init('Grid.CutGrid', 0, 0);
@@ -59,15 +59,16 @@ Next('DMS.kWena', 2, 1);
 Next('DMS.kWref', 2, 5000);         % DMS xport request
 Next('DMS.PFena', 2, 1);
 Next('DMS.PFref', 2, 1.0);         % unity power factor request
-Next('DMS.Dq'   , 3, 6);
+% Next('DMS.Dq'   , 3, 6);         % Droops will be set to it's values
+% since init - evauation of responses will only be done during voltage/freq event 
 Nv=Nv+1; Grid.Volt(Nv) = struct('Start', 3*60, 'Depth', -115000*0.03, 'Duration', 120);
-Next('DMS.Dp'   , 5, 3);
+% Next('DMS.Dp'   , 5, 3);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 7*60, 'Depth', -0.6, 'Duration', 60);
 Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 9*60, 'Depth', 0.4, 'Duration', 20);
 Next('DMS.kWena', 10, 0);
 Next('DMS.kWref', 10, 0);           % DMS xport request
-Next('DMS.Dp'   , 10, 0);
-Next('DMS.Dq'   , 10, 0);
+%Next('DMS.Dp'   , 10, 0);
+%Next('DMS.Dq'   , 10, 0);
 Next('Motor1'   , 12, 1);
 Next('Motor2'   , 15, 1);
 Next('DMS.PFref', 23, 0.9);         % unity power factor request
@@ -123,7 +124,7 @@ Nf=Nf+1; Grid.Freq(Nf) = struct('Start', 63*60, 'Depth', -0.4, 'Duration', 40);
 
 Next('DMS.kWena', 64, 0);
 Next('DMS.kWref', 64, 0);           % DMS import request
-Next('DMS.Dp'   , 64, 0);
+%Next('DMS.Dp'   , 64, 0);
 Next('DMS.PFena', 68, 0);
 
 Next('Fault.Gen2', 59, 1);
@@ -166,7 +167,7 @@ Next('DMS.kWena', 95, 1);
 Next('DMS.kWref', 95, 9000);         % DMS import request
 Next('DMS.PFena', 93, 1);
 Next('DMS.PFref', 93, 0.96);         
-Next('DMS.Dq'   , 3, 6);
+%Next('DMS.Dq'   , 3, 6);
 Nv=Nv+1; Grid.Volt(Nv) = struct('Start', 95*60, 'Depth', 115000*0.03, 'Duration', 150);
 
 Next('Fault.Loc5', 98, 1);

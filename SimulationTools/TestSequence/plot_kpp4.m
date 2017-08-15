@@ -2,14 +2,13 @@ figure;
 
 ax = [];
 ax= [ax subplot(3,1,1)]; plot(seqi.t, [ kpp3.pcc.p ], 'LineWidth', 2); hold on
-                         plot(seqi.t, [ kpp4.lim.kWHz_max ], '--');
-                         plot(seqi.t, [ kpp4.lim.kWHz_min ], '--');
+                         plot(seqi.t, [ kpp4.lim.kW_max kpp4.lim.kW_min], '--');
+                         plot(seqi.t, [ kpp4.lim.kWHz_max kpp4.lim.kWHz_min], '--');
                          all = [ kpp3.pcc.p      kpp4.lim.kWHz_max kpp4.lim.kWHz_min ];
                          ymin = (min(min(all))); ymax = (max(max(all)));
                          ymin = (floor(ymin/200))*200;
                          ymax = (ceil(ymax/200))*200;
                          ylim([ymin ymax]);
-                         legend({'P_{POI}' 'Q_{POI}'});
 ax= [ax subplot(3,1,2)]; plot(seqi.t, [seqi.dms_phiref_nan+5 ...
                              seqi.dms_phiref_nan-5 ...
                              ... %seqi.dms_kWref_nan+(0.02+1./seqi.dms_Dp)*10e3; ...

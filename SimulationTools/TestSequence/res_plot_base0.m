@@ -15,7 +15,7 @@ seqi = seq_interp(seq, comm.t_sek);
 kpp1 = calc_kpp1(res, seqi, comm, prices);
 kpp3 = calc_kpp3(res, seqi, comm, prices, id);
 kpp4 = calc_kpp4(res, seqi, comm, prices, id, kpp3);
-
+kpp5 = calc_kpp5(res, seqi, comm, prices, id);
 
 
 
