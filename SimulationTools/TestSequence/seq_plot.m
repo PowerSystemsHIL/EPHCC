@@ -5,20 +5,23 @@ figure;
 ax= [ax subplot(6,1,1)]; plot(seq.t/60, [seq.irradiance; seq.price]);
     legend({'Irradiance PV1', 'Irradiance PV2', 'Grid energy price'});
     title('Microgid controller procurement 2017 - test sequence');
-    ylabel('[PU]');
+    set(gca,'XTick', [0:5:100]);
+    ylabel('[PU]'); grid on;
 ax= [ax subplot(6,1,2)]; plot(seq.t/60, [seq.grid_freq./60.0; seq.grid_volt./115000]);
     legend({'Grid freq', 'Grid voltage'});
-    ylabel('[PU]');
+    set(gca,'XTick', [0:5:100]);
+    ylabel('[PU]'); grid on;
     title('Grid parameters');
 ax= [ax subplot(6,1,3)]; plot(seq.t/60, [seq.dms_kWref_nan+0.02*10e3; ...
                              seq.dms_kWref_nan-0.02*10e3; ...
                              seq.dms_kWHzref_nan+0.05*10e3; ...
                              seq.dms_kWHzref_nan-0.05*10e3; ...
-                             ]); hold on;
+                             ]); hold on; 
                          
     %legend({'DMS kW max' 'DMS kW min' 'DMS kW max(Hz/kW)' 'DMS kW max(Hz/kW)'});
     title('DMS active power reference');
-    ylabel('[kW]');
+    set(gca,'XTick', [0:5:100]);
+    ylabel('[kW]'); grid on;
 ax= [ax subplot(6,1,4)];
     plot(seq.t/60, [seq.dms_kVArref_nan+0.02*10e3; ...
                              seq.dms_kVArref_nan-0.02*10e3; ...
@@ -28,7 +31,8 @@ ax= [ax subplot(6,1,4)];
 %     plot(seq.t/60, [seq.dms_phiref_nan+5; seq.dms_phiref_nan-5]); hold on;
 %     plot(seq.t/60, [seq.dms_ang_kVArVoltref_nan+10; seq.dms_ang_kVArVoltref_nan-10]);
     title('DMS reactive power reference');
-    ylabel('[kVAr]');
+    set(gca,'XTick', [0:5:100]);
+    ylabel('[kVAr]'); grid on;
                          
 dig     = [seq.fault.loc1; seq.fault.loc2; seq.fault.loc3; seq.fault.loc4; seq.fault.loc5; seq.fault.loc6];
 dig_lab = {'fault.loc1' 'fault.loc2' 'fault.loc3' 'fault.loc4' 'fault.loc5' 'fault.loc6' };
@@ -43,6 +47,9 @@ base = (((Ndig-1):-1:0)'*ones(1,opt.N)*1.2);
 ax= [ax subplot(6,1,[5 6])]; plot(seq.t/60, dig + base);
 xlabel('time [min]');
 set(gca,'YTick', [0:Ndig-1]*1.2);
+set(gca,'XTick', [0:5:100]);
 set(gca,'YTickLabel', dig_lab);
-linkaxes(ax,'x');
+linkaxes(ax,'x'); grid on;
+
+
 %tightfig();
