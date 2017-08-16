@@ -3,14 +3,18 @@ function [ seq_out ] = seq_interp( seq, t_new )
 %   Interpolation of test sequence into results time
 %   Additionally all data's are transposed - original tes seq is vertical
 %   (1,N) while results are horizontal (Nx1)
-%% interpolate tes sequence vectors to result time
+%% interpolate test sequence vectors to result time
 seq_out.opt = seq.opt;
 
 seq_out.t = t_new';
 
+seq_out.fault.loc1 = round(interp1(seq.t, seq.fault.loc1, t_new)); seq_out.fault.loc1(isnan(seq_out.fault.loc1)) = 0;
+seq_out.cut_grid = round(interp1(seq.t, seq.cut_grid, t_new)); seq_out.cut_grid(isnan(seq_out.cut_grid)) = 0;
+
+
 seq_out.motor1 = round(interp1(seq.t, seq.motor1, t_new));
 seq_out.motor2 = round(interp1(seq.t, seq.motor2, t_new));
-seq_out.dms_disreq = round(interp1(seq.t, seq.dms_disreq, t_new));
+seq_out.dms_disreq = round(interp1(seq.t, seq.dms_disreq, t_new)); seq_out.dms_disreq(isnan(seq_out.dms_disreq)) = 0;
 seq_out.dms_kWena = round(interp1(seq.t, seq.dms_kWena, t_new));
 seq_out.dms_PFena = round(interp1(seq.t, seq.dms_PFena, t_new));
 seq_out.dms_kWref = interp1(seq.t, seq.dms_kWref, t_new);

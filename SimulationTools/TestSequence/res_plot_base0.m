@@ -1,9 +1,11 @@
 %% Load the data
 clear all;
 close all;
-load 20170810_0800_res_base0.mat; 
-%%
-res_remove_time;
+%load 20170810_0800_res_base0.mat; res_remove_time;  
+    % Conservative case - all I and most P are closed to serve C
+    % fully autonomous control - only SoC commands from operator
+%load 20170811_1539_res.mat;        % Manual control - crashed after Gen1 outage
+load 20170815_0400_res.mat;         % Manual control - crashed after Gen1 outage
 
 %%  Initialise supporting data
 prices = init_prices;
