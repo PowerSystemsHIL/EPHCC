@@ -60,7 +60,7 @@ q_per_class = [ q_exp_over q_exp q_imp q_imp_over]; % [kW]
 
 pq_per_class = [p_per_class q_per_class];
 
-doe_coefs_per_class = [ -0.5 -1 -1 -3 1 0 0 -1]; % [$ / kWh]
+doe_coefs_per_class = [ -prices.P32*[0.5 1 1 3] prices.P33*[1 0 0 -1] ]; % [$ / kWh]
 doe = zeros(comm.M, 8);
 doe(:,1:4) = repmat(doe_coefs_per_class(1:4), comm.M, 1) .* repmat(seqi.price, 1, 4);
 doe(:,5:8) = repmat(doe_coefs_per_class(5:8), comm.M, 1);

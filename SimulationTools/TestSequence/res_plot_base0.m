@@ -15,9 +15,13 @@ seqi = seq_interp(seq, comm.t_sek);
 
 %% Calc all KPP
 kpp1 = calc_kpp1(res, seqi, comm, prices);
+kpp2 = calc_kpp2(res, seqi, comm, prices);
 kpp3 = calc_kpp3(res, seqi, comm, prices, id);
 kpp4 = calc_kpp4(res, seqi, comm, prices, id, kpp3);
 kpp5 = calc_kpp5(res, seqi, comm, prices, id);
+kpp6 = calc_kpp6(res, seqi, comm, prices);
+kpp7 = calc_kpp7(res, seqi, comm, prices);
+kpp8 = calc_kpp8(kpp1, kpp2, kpp3, kpp4, kpp5, kpp6);
 
 
 
@@ -26,6 +30,7 @@ kpp5 = calc_kpp5(res, seqi, comm, prices, id);
 %% Plot KPP1
 plot_kpp1;
 plot_kpp3;
+plot_kpp4;
 
 %% Plots
 seq_plot(seq);

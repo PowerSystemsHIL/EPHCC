@@ -9,4 +9,4 @@ subplot(3,1,2); area(comm.t_min, -kpp1.P_outage_per_class, 'LineStyle', 'none');
 %                 area(comm.t_min, -kpp1.EOP_per_class, 'LineStyle', 'none');
 %                 plot(comm.t_min, zeros(M,1), 'b', 'LineWidth', 2);
 %                 plot(comm.t_min, kpp1.Price_total, 'r', 'LineWidth', 2);
-subplot(3,1,3); plot(comm.t_min, kpp1.Price_total, 'r', 'LineWidth', 2);
+subplot(3,1,3); plot(comm.t_min, kpp1.d_cum_total, 'r', 'LineWidth', 2);

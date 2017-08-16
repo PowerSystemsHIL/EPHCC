@@ -1,5 +1,5 @@
-function [ kpp4 ] = calc_kpp5( res, seqi, comm, prices, id)
-%CALC_KPP4 Summary of this function goes here
+function [ kpp5 ] = calc_kpp5( res, seqi, comm, prices, id)
+%CALC_KPP5 Summary of this function goes here
 %   Detailed explanation goes here
 
 iB.B101 =  1; iB.B104 =  2; iB.B109 =  3; iB.B106 =  4; iB.B110 =  5; iB.B114 =  6;
@@ -13,8 +13,9 @@ iPQ = [id.CB101 id.CB104 id.CB109 id.CB106 id.CB110 id.CB114 ...
        id.CB401 id.CB402 id.CB403];
    
    
+d_cum_total = zeros(comm.M,1);
 
 clear( 'res', 'seqi', 'comm', 'prices', 'id', 'kpp3' );
-kpp4=wsp2struct(who);
+kpp5=wsp2struct(who);
 
 
