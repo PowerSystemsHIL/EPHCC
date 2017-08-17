@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 08 12:51:26 2017"
-  RTWModifiedTimeStamp	  424097483
-  ModelVersionFormat	  "1.%<AutoIncrement:10>"
+  LastModifiedDate	  "Thu Aug 17 11:22:52 2017"
+  RTWModifiedTimeStamp	  424869771
+  ModelVersionFormat	  "1.%<AutoIncrement:11>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -913,7 +913,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "158"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "311"
+    SIDHighWatermark	    "315"
     Block {
       BlockType		      SubSystem
       Name		      "TestSequenceCommands"
@@ -923,7 +923,7 @@ Library {
       ZOrder		      3700
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.9"
+      LibraryVersion	      "*1.10"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -933,7 +933,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"TestSequenceCommands"
-	Location		[0, 0, 1126, 1040]
+	Location		[5, 0, 1497, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -945,7 +945,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1040,12 +1040,6 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
-	  Port {
-	    PortNumber		    13
-	    Name		    "price"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  Gain
@@ -1079,6 +1073,24 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "insolation2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "315"
+	  Position		  [460, 655, 520, 685]
+	  ZOrder		  3433
+	  ShowName		  off
+	  Gain			  "0.001"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "price"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -2785,7 +2797,7 @@ Library {
 	  }
 	  System {
 	    Name		    "uint32_2_uint5"
-	    Location		    [0, 0, 1288, 1040]
+	    Location		    [960, 0, 1920, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2830,13 +2842,6 @@ Library {
 	      ZOrder		      20
 	      Port		      "3"
 	      IconDisplay	      "Port number"
-	      Port {
-		PortNumber		1
-		Name			"PFref"
-		PropagatedSignals	"dms_PF_cmd"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
 	    }
 	    Block {
 	      BlockType		      Inport
@@ -2846,13 +2851,6 @@ Library {
 	      ZOrder		      21
 	      Port		      "4"
 	      IconDisplay	      "Port number"
-	      Port {
-		PortNumber		1
-		Name			"Dp"
-		PropagatedSignals	"dms_Dp"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
 	    }
 	    Block {
 	      BlockType		      Inport
@@ -2862,13 +2860,6 @@ Library {
 	      ZOrder		      22
 	      Port		      "5"
 	      IconDisplay	      "Port number"
-	      Port {
-		PortNumber		1
-		Name			"Dq"
-		PropagatedSignals	"dms_Dq"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
 	    }
 	    Block {
 	      BlockType		      BusCreator
@@ -2992,12 +2983,90 @@ Library {
 	      outScalingMode	      "Treat bit field as an integer"
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "312"
+	      Position		      [185, 300, 270, 330]
+	      ZOrder		      3442
+	      ShowName		      off
+	      Gain		      "0.01"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Dq"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain1"
+	      SID		      "313"
+	      Position		      [185, 265, 270, 295]
+	      ZOrder		      3443
+	      ShowName		      off
+	      Gain		      "0.01"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Dp"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain2"
+	      SID		      "314"
+	      Position		      [185, 230, 270, 260]
+	      ZOrder		      3444
+	      ShowName		      off
+	      Gain		      "0.001"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"PFref"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
 	      BlockType		      Outport
 	      Name		      "Out1"
 	      SID		      "131"
 	      Position		      [600, 203, 630, 217]
 	      ZOrder		      14
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "PFref"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      Name		      "Dp"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "Dq"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      7
 	    }
 	    Line {
 	      Name		      "PFEna"
@@ -3024,28 +3093,22 @@ Library {
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "Dq"
-	      Labels		      [1, 1]
 	      SrcBlock		      "Dq"
 	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      7
+	      DstBlock		      "Gain"
+	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "Dp"
-	      Labels		      [1, 1]
 	      SrcBlock		      "Dp"
 	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      6
+	      DstBlock		      "Gain1"
+	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "PFref"
-	      Labels		      [1, 1]
 	      SrcBlock		      "PFref"
 	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator"
-	      DstPort		      5
+	      DstBlock		      "Gain2"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "kWref"
@@ -3132,7 +3195,7 @@ Library {
 	  }
 	  System {
 	    Name		    "uint32_2_uint6"
-	    Location		    [0, 0, 960, 1040]
+	    Location		    [960, 0, 1920, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3547,6 +3610,15 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "price"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  Points		  [178, 0; 0, -200]
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  7
+	}
+	Line {
 	  Name			  "insolation2"
 	  Labels		  [1, 1]
 	  SrcBlock		  "Gain1"
@@ -3599,13 +3671,10 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "price"
-	  Labels		  [-1, 0]
 	  SrcBlock		  "Demux"
 	  SrcPort		  13
-	  Points		  [328, 0; 0, -200]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  7
+	  DstBlock		  "Gain2"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "misc"
