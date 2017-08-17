@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1916.0, 0.0, 1928.0, 1208.0]
+      Location		      [448.0, 148.0, 811.0, 607.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1685.0, 1042.0]
-	ZoomFactor		[1.8482989403234802]
-	Offset			[11.425467712733855, -112.63080869040436]
+	Extents			[568.0, 441.0]
+	ZoomFactor		[0.97914777878513148]
+	Offset			[-6.2981481481481474, -67.695833333333312]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 13 10:17:27 2017"
-  RTWModifiedTimeStamp	  406203439
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Tue Aug 15 15:09:06 2017"
+  RTWModifiedTimeStamp	  424710539
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,28 +695,9 @@ Library {
   }
   BlockParameterDefaults {
     Block {
-      BlockType		      BusCreator
-      Inputs		      "4"
-      DisplayOption	      "none"
-      OutDataTypeStr	      "Inherit: auto"
-      NonVirtualBus	      off
-    }
-    Block {
-      BlockType		      DataTypeConversion
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via back propagation"
-      LockScale		      off
-      ConvertRealWorld	      "Real World Value (RWV)"
-      RndMeth		      "Zero"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Demux
-      Outputs		      "4"
-      DisplayOption	      "none"
-      BusSelectionMode	      off
+      BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
+      OutputAsBus	      off
     }
     Block {
       BlockType		      Gain
@@ -732,6 +713,32 @@ Library {
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
     }
     Block {
       BlockType		      Outport
@@ -774,29 +781,10 @@ Library {
       Variant		      off
       GeneratePreprocessorConditionals off
     }
-    Block {
-      BlockType		      Sum
-      IconShape		      "rectangular"
-      Inputs		      "++"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Terminator
-    }
   }
   System {
     Name		    "DMS_slave_lib"
-    Location		    [1916, 0, 3844, 1208]
+    Location		    [448, 148, 1259, 755]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -808,18 +796,16 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "185"
+    ZoomFactor		    "98"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "14"
+    SIDHighWatermark	    "25"
     Block {
       BlockType		      SubSystem
-      Name		      "DMSCommands"
-      SID		      "1"
-      Ports		      [0, 1]
-      Position		      [280, 266, 525, 374]
-      ZOrder		      3666
-      BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.3"
+      Name		      "DMS_Scaling"
+      SID		      "15"
+      Ports		      [1, 1]
+      Position		      [220, 212, 345, 258]
+      ZOrder		      4272
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -828,8 +814,8 @@ Library {
       RequestExecContextInheritance off
       MaskHideContents	      off
       System {
-	Name			"DMSCommands"
-	Location		[1916, 0, 3844, 1208]
+	Name			"DMS_Scaling"
+	Location		[100, 100, 900, 600]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -841,107 +827,81 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"143"
+	ZoomFactor		"72"
 	Block {
-	  BlockType		  Sum
-	  Name			  "Add"
-	  SID			  "2"
-	  Ports			  [2, 1]
-	  Position		  [560, 147, 590, 178]
-	  ZOrder		  3399
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "16"
+	  Position		  [20, 193, 50, 207]
+	  ZOrder		  4271
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "17"
+	  Ports			  [1, 10]
+	  Position		  [90, 29, 95, 366]
+	  ZOrder		  4264
 	  ShowName		  off
-	  InputSameDT		  off
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
+	  OutputSignals		  "seq_time,dms.DisReq,dms.kWEna,dms.kWref,dms.PFEna,dms.PFref,dms.Dp,dms.Dq,misc.mgc_ena,price"
 	  Port {
 	    PortNumber		    1
-	    Name		    "TimeStamp"
+	    Name		    "<seq_time>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
-	}
-	Block {
-	  BlockType		  BusCreator
-	  Name			  "Bus\nCreator"
-	  SID			  "3"
-	  Ports			  [8, 1]
-	  Position		  [745, 182, 755, 643]
-	  ZOrder		  3404
-	  ShowName		  off
-	  Inputs		  "8"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  DataTypeConversion
-	  Name			  "Data Type Conversion"
-	  SID			  "14"
-	  Position		  [805, 405, 850, 425]
-	  ZOrder		  3407
-	  ShowName		  off
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Demux
-	  Name			  "Demux"
-	  SID			  "4"
-	  Ports			  [1, 11]
-	  Position		  [380, 117, 385, 643]
-	  ZOrder		  3397
-	  ShowName		  off
-	  Outputs		  "11"
-	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    2
+	    Name		    "<DisReq>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	  Port {
 	    PortNumber		    3
-	    Name		    "Fault1"
+	    Name		    "<kWEna>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    4
-	    Name		    "Fault2"
+	    Name		    "<kWref>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    5
-	    Name		    "Disconnect"
+	    Name		    "<PFEna>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    6
-	    Name		    "Limit Active"
+	    Name		    "<PFref>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    7
-	    Name		    "Limit Value"
+	    Name		    "<Dp>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    8
-	    Name		    "PF Active"
+	    Name		    "<Dq>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    9
-	    Name		    "PF Value"
+	    Name		    "<mgc_ena>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    10
-	    Name		    "VAR Active"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    11
-	    Name		    "VAR Value"
+	    Name		    "<price>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -949,211 +909,226 @@ Library {
 	Block {
 	  BlockType		  Gain
 	  Name			  "Gain"
-	  SID			  "5"
-	  Position		  [475, 170, 505, 200]
-	  ZOrder		  3398
-	  Gain			  "2^16"
+	  SID			  "18"
+	  Position		  [200, 25, 290, 55]
+	  ZOrder		  4265
+	  ShowName		  off
+	  Gain			  "0.001"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "t_sek"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "19"
+	  Position		  [200, 200, 290, 230]
+	  ZOrder		  4267
+	  ShowName		  off
+	  Gain			  "1000"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Reference
-	  Name			  "Modbus device"
-	  SID			  "6"
-	  Ports			  [0, 1]
-	  Position		  [205, 353, 315, 407]
-	  ZOrder		  3400
-	  LibraryVersion	  "1.13"
-	  SourceBlock		  "rtio_generic_modbus/Modbus device"
-	  SourceType		  "OpModbus"
-	  conf_name		  "DMS_cfg.opal"
-	  conf_name_mask	  "DMS_cfg.xls"
-	  sample_time		  "Ts"
+	  BlockType		  Gain
+	  Name			  "Gain2"
+	  SID			  "20"
+	  Position		  [200, 235, 290, 265]
+	  ZOrder		  4268
+	  ShowName		  off
+	  Gain			  "100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator"
-	  SID			  "7"
-	  Position		  [455, 280, 475, 300]
-	  ZOrder		  3405
+	  BlockType		  Gain
+	  Name			  "Gain3"
+	  SID			  "21"
+	  Position		  [200, 270, 290, 300]
+	  ZOrder		  4269
+	  ShowName		  off
+	  Gain			  "100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator1"
-	  SID			  "8"
-	  Position		  [455, 235, 475, 255]
-	  ZOrder		  3406
+	  BlockType		  Gain
+	  Name			  "Gain4"
+	  SID			  "22"
+	  Position		  [200, 340, 290, 370]
+	  ZOrder		  4270
+	  ShowName		  off
+	  Gain			  "1000"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "23"
+	  Ports			  [10, 1]
+	  Position		  [350, 21, 355, 374]
+	  ZOrder		  4266
+	  ShowName		  off
+	  Inputs		  "10"
+	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "DMS Data"
-	  SID			  "9"
-	  Position		  [895, 408, 925, 422]
-	  ZOrder		  3403
+	  Name			  "Out1"
+	  SID			  "24"
+	  Position		  [420, 193, 450, 207]
+	  ZOrder		  4272
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "Data Type Conversion"
+	  SrcBlock		  "Gain3"
 	  SrcPort		  1
-	  DstBlock		  "DMS Data"
+	  DstBlock		  "Mux"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "Gain4"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  10
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "TimeStamp"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Add"
-	  SrcPort		  1
-	  Points		  [86, 0; 0, 55]
-	  DstBlock		  "Bus\nCreator"
+	  Name			  "<PFEna>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  5
+	  DstBlock		  "Mux"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "<kWref>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  4
+	  DstBlock		  "Mux"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<PFref>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  6
+	  DstBlock		  "Gain1"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Demux"
-	  SrcPort		  1
-	  Points		  [155, 0]
-	  DstBlock		  "Add"
+	  Name			  "<price>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  10
+	  DstBlock		  "Gain4"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Demux"
+	  Name			  "<Dq>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  8
+	  DstBlock		  "Gain3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "t_sek"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<kWEna>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  3
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<mgc_ena>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  9
+	  DstBlock		  "Mux"
+	  DstPort		  9
+	}
+	Line {
+	  Name			  "<Dp>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  7
+	  DstBlock		  "Gain2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<DisReq>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
 	  SrcPort		  2
-	  Points		  [35, 0; 0, -15]
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Gain2"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "<seq_time>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
 	  DstBlock		  "Gain"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Gain"
+	  SrcBlock		  "In1"
 	  SrcPort		  1
-	  Points		  [22, 0; 0, -15]
-	  DstBlock		  "Add"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Modbus device"
-	  SrcPort		  1
-	  DstBlock		  "Demux"
+	  DstBlock		  "Bus\nSelector2"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Bus\nCreator"
-	  SrcPort		  1
-	  DstBlock		  "Data Type Conversion"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "Disconnect"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  5
-	  Points		  [156, 0; 0, -60]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "Limit Active"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  6
-	  Points		  [204, 0; 0, -50]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "Limit Value"
-	  Labels		  [2, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  7
-	  Points		  [230, 0; 0, -40]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  4
-	}
-	Line {
-	  Name			  "Fault2"
-	  SrcBlock		  "Demux"
-	  SrcPort		  4
-	  DstBlock		  "Terminator"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "Fault1"
-	  SrcBlock		  "Demux"
-	  SrcPort		  3
-	  Points		  [50, 0]
-	  DstBlock		  "Terminator1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "PF Active"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  8
-	  Points		  [326, 0; 0, -30]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "PF Value"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  9
-	  Points		  [340, 0]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  6
-	}
-	Line {
-	  Name			  "VAR Active"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  10
-	  Points		  [340, 0]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  7
-	}
-	Line {
-	  Name			  "VAR Value"
-	  Labels		  [1, 1]
-	  SrcBlock		  "Demux"
-	  SrcPort		  11
-	  Points		  [340, 0]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  8
-	}
-	Annotation {
-	  SID			  "10"
-	  Name			  "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of charge, t"
-	  "o any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal\nin t"
-	  "he Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, dist"
-	  "ribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software is furnished to"
-	  " do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "
-	  "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURP"
-	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
-	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
-	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [19, 1]
-	  HorizontalAlignment	  "left"
-	  ZOrder		  -1
-	  FontSize		  12
-	  FontWeight		  "bold"
 	}
       }
     }
     Annotation {
-      SID		      "13"
-      Name		      "Copyright (c) 2016 Massachusetts Institute of Technology\nPermission is hereby granted, free of cha"
-      "rge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to d"
-      "eal\nin the Software without restriction, including without limitation the rights to use, copy, modify, merge, p"
-      "ublish, distribute, sublicense, and/or sell copies of the\nSoftware, and to permit persons to whom the Software "
-      "is furnished to do so, subject to the following conditions:\n \nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARR"
-      "ANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE \nWARRANTIES OF MERCHANTABILITY, FITNESS "
-      "FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR"
-      " ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT"
-      " OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-      Position		      [19, 16]
+      SID		      "25"
+      Name		      "Copyright © 2017 the Alliance for Sustainable Energy, LLC\n\nThe above copyright notice and this pe"
+      "rmission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROV"
+      "IDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING \nBUT NOT LIMITED TO THE WARRANTIES "
+      "OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND \nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COP"
+      "YRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+      "OTHERWISE, ARISING FROM, \nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWAR"
+      "E\n"
+      Position		      [8, 106]
       HorizontalAlignment     "left"
       ZOrder		      -1
-      FontSize		      12
-      FontWeight	      "bold"
     }
   }
 }
