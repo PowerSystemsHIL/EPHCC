@@ -4,6 +4,7 @@ function [ kpp3 ] = calc_kpp3( res, seqi, comm, prices , id)
 
 
 pcc.p=res.powerreal(:,id.CB100) + res.powerreal(:,id.CB200) + res.powerreal(:,id.CB300);
+pcc.e=cumsum(pcc.p*seqi.opt.Ts/3600);
 pcc.q=res.reactivepower(:,id.CB100)+res.reactivepower(:,id.CB200)+res.reactivepower(:,id.CB300);
 pcc.s= sqrt( pcc.p.^2 + pcc.q.^2 );
 
@@ -58,15 +59,17 @@ q_exp_over(imp & pcc.q<lim.q_min(1)) = pcc.q(imp & pcc.q<lim.q_min(1)) + lim.q_m
 
 q_per_class = [ q_exp_over q_exp q_imp q_imp_over]; % [kW]
 
-pq_per_class = [p_per_class q_per_class];
+pq_per_class = [p_per_class q_per_class(:,1)-q_per_class(:,4)];
 
-doe_coefs_per_class = [ -prices.P32*[0.5 1 1 3] prices.P33*[1 0 0 -1] ]; % [$ / kWh]
-doe = zeros(comm.M, 8);
+doe_coefs_per_class = [ -prices.P32*[0.5 1 1 3] prices.P33 ]; % [$ / kWh]
+doe = zeros(comm.M, 5);
 doe(:,1:4) = repmat(doe_coefs_per_class(1:4), comm.M, 1) .* repmat(seqi.price, 1, 4);
-doe(:,5:8) = repmat(doe_coefs_per_class(5:8), comm.M, 1);
+doe(:,5)   = doe_coefs_per_class(5)*ones(comm.M, 1);
 
 d_per_class = pq_per_class * seqi.opt.Ts / 3600 .* doe;
 d_cum_per_class = cumsum(d_per_class);
+legend_per_class = {'E_{BO}' 'E_{B}' 'E_{E}' 'E_{EO}' 'E_{RP}'};
+
 d_cum_total = sum(d_cum_per_class,2);
 
 clear( 'res', 'seqi', 'comm', 'prices', 'id' );

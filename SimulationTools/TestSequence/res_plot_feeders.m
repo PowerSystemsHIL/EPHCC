@@ -66,7 +66,7 @@ linkaxes(ax,'x');
 
 %% Feeder 4
 fh = figure();
-annotation(fh, 'TextBox', 'string', 'Feeder 2', 'position', [0.2 0.95 0.6 0.05]);
+annotation(fh, 'TextBox', 'string', 'Feeder 4', 'position', [0.2 0.95 0.6 0.05]);
 ax=     subplot(5,4,1) ; plot(comm.t_min, res.powerreal(:,[45:49]));
 ax= [ax subplot(5,4,5)]; plot(comm.t_min, res.powerreal(:,[44]));
 ax= [ax subplot(5,4,9)]; plot(comm.t_min, res.powerreal(:,[57]));

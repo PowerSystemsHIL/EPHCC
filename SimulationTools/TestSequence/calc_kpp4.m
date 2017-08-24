@@ -54,6 +54,7 @@ dot_per_class = [prices.P41 prices.P44 prices.P46 prices.P43 -prices.P45 -prices
 dot = repmat(dot_per_class, comm.M,1); 
 d_per_class = t_per_class.*dot.*seqi.opt.Ts/60;                         % $ values
 d_cum_per_class = cumsum(d_per_class);
+legend_per_class = {'T_{TD/M}', 'T_{FkW}', 'T_{PF}', 'T_{VV}', 'T_{DR}', 'T_{UD}'};
 d_cum_total = sum(d_cum_per_class,2);
 
 clear( 'res', 'seqi', 'comm', 'prices', 'id', 'kpp3' );
