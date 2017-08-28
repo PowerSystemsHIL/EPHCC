@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 10 12:59:29 2017"
-  RTWModifiedTimeStamp	  424270766
-  ModelVersionFormat	  "1.%<AutoIncrement:91>"
+  LastModifiedDate	  "Thu Aug 17 11:26:18 2017"
+  RTWModifiedTimeStamp	  424869977
+  ModelVersionFormat	  "1.%<AutoIncrement:92>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -893,7 +893,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "91"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2424"
+    SIDHighWatermark	    "2440"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
@@ -904,7 +904,7 @@ Library {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "1.90"
+      LibraryVersion	      "*1.91"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -926,7 +926,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"200"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -1301,6 +1301,31 @@ Library {
 	  Value			  "0"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "DMS_Modbus"
+	  SID			  "2428"
+	  Ports			  [1]
+	  Position		  [1945, 1454, 2090, 1486]
+	  ZOrder		  4262
+	  LibraryVersion	  "1.13"
+	  SourceBlock		  "rtio_generic_modbus/Modbus device"
+	  SourceType		  "OpModbus"
+	  conf_name		  "DMS_cfg.opal"
+	  conf_name_mask	  "DMS_cfg.xls"
+	  sample_time		  "Ts"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "DMS_Scaling1"
+	  SID			  "2440"
+	  Ports			  [1, 1]
+	  Position		  [1785, 1447, 1910, 1493]
+	  ZOrder		  4273
+	  LibraryVersion	  "1.5"
+	  SourceBlock		  "DMS_slave_lib/DMS_Scaling"
+	  SourceType		  "SubSystem"
+	}
+	Block {
 	  BlockType		  SubSystem
 	  Name			  "DieselData"
 	  SID			  "2353"
@@ -1535,6 +1560,17 @@ Library {
 	  SID			  "2382"
 	  Position		  [1010, 1813, 1080, 1837]
 	  ZOrder		  4256
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  GotoTag		  "TestSeq"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "2427"
+	  Position		  [1700, 1458, 1770, 1482]
+	  ZOrder		  4261
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
 	  GotoTag		  "TestSeq"
@@ -3381,7 +3417,7 @@ Library {
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.13"
+	  LibraryVersion	  "1.14"
 	  SourceBlock		  "NREL_UDP_lib/NREL UDP Data - Formatted Packets"
 	  SourceType		  "UDP Data Block"
 	  ProfileID		  "6"
@@ -3469,7 +3505,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Power_quality_data"
-	    Location		    [5, 0, 1065, 1040]
+	    Location		    [960, 0, 1920, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3481,7 +3517,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "125"
+	    ZoomFactor		    "77"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Rst"
@@ -7153,6 +7189,18 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "scale_Quality"
+	  SID			  "2425"
+	  Position		  [1325, 1807, 1370, 1843]
+	  ZOrder		  4259
+	  BackgroundColor	  "green"
+	  Gain			  "100"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "CMBNE_SGNLS"
 	  SID			  "2031"
@@ -7179,6 +7227,24 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "DMS_Scaling1"
+	  SrcPort		  1
+	  DstBlock		  "DMS_Modbus"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "DMS_Scaling1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "scale_Quality"
+	  SrcPort		  1
+	  DstBlock		  "NREL UDP Data - Formatted Packets"
+	  DstPort		  8
+	}
+	Line {
 	  SrcBlock		  "Logical\nOperator"
 	  SrcPort		  1
 	  DstBlock		  "Power_quality_data"
@@ -7201,8 +7267,8 @@ Library {
 	Line {
 	  SrcBlock		  "Power_quality_data"
 	  SrcPort		  1
-	  DstBlock		  "NREL UDP Data - Formatted Packets"
-	  DstPort		  8
+	  DstBlock		  "scale_Quality"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "DieselData"
