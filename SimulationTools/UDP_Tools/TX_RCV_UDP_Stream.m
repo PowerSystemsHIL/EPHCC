@@ -70,7 +70,7 @@ end
 save header.mat header;
 
 %%
-temp = eval(filenames{k});
+temp = eval(filenames{1});
 res.t = temp(:,1);
 for k=1:length(filenames),
             temp = eval(filenames{k});
