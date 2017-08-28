@@ -18,8 +18,8 @@ pcc.ang(use_ctg & pcc.p<0) = pcc.ang(use_ctg & pcc.p<0) + 180;
 
 pcc.pf= cos(pcc.ang);
 
-lim.p_max = 10000 * ones(comm.M,1);
-lim.p_min = -5000 * ones(comm.M,1);
+lim.p_max = 12000 * ones(comm.M,1);
+lim.p_min = -6000 * ones(comm.M,1);
 lim.q_max =  5000 * ones(comm.M,1);
 lim.q_min = -5000 * ones(comm.M,1);
 

@@ -31,7 +31,7 @@ it_island = t_for_islanding/seqi.opt.Ts;
 planned_island = seqi.dms_disreq & [zeros(it_island, 1); seqi.dms_disreq(1:end-it_island)];
 unplanned_island = (seqi.fault.loc1 | seqi.cut_grid) & ~planned_island;
 % determine when grid is islanded = CB100 & CB200 & CB300 opened
-islanded = (res.breaker(:,id.CB100) | res.breaker(:,id.CB200) | res.breaker(:,id.CB200)) & 1;
+islanded = ~((res.breaker(:,id.CB100) | res.breaker(:,id.CB200) | res.breaker(:,id.CB200)) & 1);
 
 planned_penalty = zeros(comm.M,1);
 unplanned_penalty = zeros(comm.M,1);
