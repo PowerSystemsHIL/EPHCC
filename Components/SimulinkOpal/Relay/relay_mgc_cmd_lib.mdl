@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
+	ViewObjType		"SimulinkSubsys"
+	LoadSaveID		"1"
 	Extents			[1686.0, 906.0]
-	ZoomFactor		[1.0]
-	Offset			[-321.43671171171178, -342.69031531531505]
+	ZoomFactor		[1.5]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 28 22:47:54 2017"
-  RTWModifiedTimeStamp	  425861252
-  ModelVersionFormat	  "1.%<AutoIncrement:17>"
+  LastModifiedDate	  "Tue Aug 29 03:07:18 2017"
+  RTWModifiedTimeStamp	  425876793
+  ModelVersionFormat	  "1.%<AutoIncrement:18>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -833,7 +833,7 @@ Library {
   System {
     Name		    "relay_mgc_cmd_lib"
     Location		    [-8, 0, 1924, 1092]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -846,7 +846,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "40"
+    SIDHighWatermark	    "41"
     Block {
       BlockType		      SubSystem
       Name		      "Relay_param"
@@ -855,7 +855,7 @@ Library {
       Position		      [705, 125, 845, 175]
       ZOrder		      1904
       BackgroundColor	      "[0.254902, 0.678431, 0.388235]"
-      LibraryVersion	      "*1.16"
+      LibraryVersion	      "*1.17"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -894,8 +894,8 @@ Library {
       }
       System {
 	Name			"Relay_param"
-	Location		[-9, -9, 1929, 1041]
-	Open			off
+	Location		[-8, 0, 1924, 1092]
+	Open			on
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -906,12 +906,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"92"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MODBUS"
 	  SID			  "2"
-	  Position		  [45, 818, 75, 832]
+	  Position		  [20, 888, 50, 902]
 	  ZOrder		  1905
 	  IconDisplay		  "Port number"
 	}
@@ -919,18 +919,18 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "20"
-	  Ports			  [21, 1]
-	  Position		  [745, 63, 750, 717]
+	  Ports			  [22, 1]
+	  Position		  [745, 63, 750, 747]
 	  ZOrder		  1942
 	  ShowName		  off
-	  Inputs		  "21"
+	  Inputs		  "22"
 	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion"
 	  SID			  "40"
-	  Position		  [490, 730, 540, 750]
+	  Position		  [465, 800, 515, 820]
 	  ZOrder		  3597
 	  ShowName		  off
 	  RndMeth		  "Floor"
@@ -1095,7 +1095,7 @@ Library {
 	  Name			  "Demux2"
 	  SID			  "7"
 	  Ports			  [1, 3]
-	  Position		  [115, 720, 120, 930]
+	  Position		  [90, 790, 95, 1000]
 	  ZOrder		  1914
 	  ShowName		  off
 	  Outputs		  "3"
@@ -1118,7 +1118,7 @@ Library {
 	  Name			  "Detect\nChange"
 	  SID			  "37"
 	  Ports			  [1, 1]
-	  Position		  [305, 760, 365, 790]
+	  Position		  [280, 830, 340, 860]
 	  ZOrder		  3595
 	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nChange"
@@ -1138,7 +1138,7 @@ Library {
 	  Name			  "Detect Rise\nPositive"
 	  SID			  "38"
 	  Ports			  [1, 1]
-	  Position		  [305, 670, 365, 720]
+	  Position		  [280, 740, 340, 790]
 	  ZOrder		  3596
 	  LibraryVersion	  "1.274"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
@@ -1157,10 +1157,25 @@ Library {
 	  GotoTag		  "protection_mode"
 	}
 	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "41"
+	  Position		  [550, 711, 660, 729]
+	  ZOrder		  3598
+	  ShowName		  off
+	  GotoTag		  "protection_mode"
+	  Port {
+	    PortNumber		    1
+	    Name		    "prot_mode"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "10"
-	  Position		  [170, 885, 280, 905]
+	  Position		  [145, 955, 255, 975]
 	  ZOrder		  1908
 	  ShowName		  off
 	  GotoTag		  "protection_mode"
@@ -1170,7 +1185,7 @@ Library {
 	  Name			  "Logical\nOperator1"
 	  SID			  "39"
 	  Ports			  [2, 1]
-	  Position		  [425, 704, 465, 771]
+	  Position		  [400, 774, 440, 841]
 	  ZOrder		  3594
 	  ShowName		  off
 	  Operator		  "OR"
@@ -1236,7 +1251,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "cb_op_mode"
 	  SID			  "15"
-	  Position		  [535, 818, 565, 832]
+	  Position		  [510, 888, 540, 902]
 	  ZOrder		  1916
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1245,10 +1260,18 @@ Library {
 	  BlockType		  Outport
 	  Name			  "reset"
 	  SID			  "16"
-	  Position		  [565, 733, 595, 747]
+	  Position		  [540, 803, 570, 817]
 	  ZOrder		  1915
 	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "prot_mode"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  22
 	}
 	Line {
 	  Name			  "81rfrp"
@@ -1488,7 +1511,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator1"
 	  SrcPort		  1
-	  Points		  [5, 0; 0, -100]
+	  Points		  [5, 0; 0, -115]
 	  DstBlock		  "relay_param"
 	  DstPort		  1
 	}

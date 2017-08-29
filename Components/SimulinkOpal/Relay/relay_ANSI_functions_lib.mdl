@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1856.0, 0.0, 1936.0, 1212.0]
+      Location		      [-18.0, 122.0, 1359.0, 617.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1045.0]
-	ZoomFactor		[1.3224781572676725]
-	Offset			[5.4138138138138174, -122.48198198198207]
+	Extents			[1113.0, 431.0]
+	ZoomFactor		[1.25]
+	Offset			[618.0, 450.20000000000005]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Dec 22 15:24:39 2016"
-  RTWModifiedTimeStamp	  404321070
-  ModelVersionFormat	  "1.%<AutoIncrement:33>"
+  LastModifiedDate	  "Tue Aug 29 03:03:23 2017"
+  RTWModifiedTimeStamp	  425876598
+  ModelVersionFormat	  "1.%<AutoIncrement:38>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,11 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Bias
+      Bias		      "0"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
       BlockType		      BusSelector
       OutputSignals	      "signal1,signal2,signal3"
       OutputAsBus	      off
@@ -728,6 +733,43 @@ Library {
       Outputs		      "4"
       DisplayOption	      "none"
       BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      DiscreteIntegrator
+      IntegratorMethod	      "Integration: Forward Euler"
+      gainval		      "1.0"
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      InitialConditionMode    "State and output"
+      SampleTime	      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      IgnoreLimit	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      EnablePort
+      StatesWhenEnabling      "held"
+      PropagateVarSize	      "Only when enabling"
+      ShowOutputPort	      off
+      ZeroCross		      on
+      PortDimensions	      "1"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "double"
+      Interpolate	      on
     }
     Block {
       BlockType		      From
@@ -775,6 +817,29 @@ Library {
       Interpolate	      on
     }
     Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      MinMax
+      Function		      "min"
+      Inputs		      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -790,6 +855,21 @@ Library {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      RelationalOperator
@@ -831,12 +911,28 @@ Library {
       GeneratePreprocessorConditionals off
     }
     Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Terminator
     }
   }
   System {
     Name		    "relay_ANSI_functions_lib"
-    Location		    [1856, 0, 3792, 1212]
+    Location		    [-18, 122, 1341, 739]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -848,9 +944,9 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "132"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "138"
+    SIDHighWatermark	    "348"
     Block {
       BlockType		      SubSystem
       Name		      "R50512759"
@@ -2096,13 +2192,13 @@ Library {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "relay_protection_functions"
-      SID		      "33"
-      Ports		      [7, 4]
-      Position		      [630, 483, 830, 597]
-      ZOrder		      1930
+      Name		      "relay_protection_freq_functions"
+      SID		      "139"
+      Ports		      [6, 3]
+      Position		      [995, 483, 1195, 597]
+      ZOrder		      3596
       BackgroundColor	      "red"
-      LibraryVersion	      "*1.32"
+      LibraryVersion	      "1.37"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -2115,11 +2211,8 @@ Library {
 	$ObjectID		24
 	$ClassName		"Simulink.Mask"
 	Type			"Relays 50-51-27-59"
-	Description		"This block simulates the behavior of the following relay functions:\n1) Instantaneous overcurrent (50)\n"
-	"2) AC inverse time overcurrent (51)\n3) Undervoltage (27)\n4) Overvoltage (59) \nIt is not suitable for instantaneous"
-	" earth current relaying. \nThe model neglects the influence CTs since only the logics of the relay are required or th"
-	"e current effort.\n\nThe input bus with the relay parameters should be ordered as follows:\n1) VRMSLL\n2) IOC\n3) TOC"
-	"\n4) dV_threshold\n5) angle_threshold\n6) dF_threshold"
+	Description		"This block simulates the behavior of the following relay functions:\n1)	Overfrequency (ANSI 81O)\n2)	Un"
+	"derfrequency (ANSI 81U)\n3)	Fast rate of change of frequency (ANSI 81R)"
 	Object {
 	  $PropName		  "Parameters"
 	  $ObjectID		  25
@@ -2131,8 +2224,8 @@ Library {
 	}
       }
       System {
-	Name			"relay_protection_functions"
-	Location		[1912, -8, 3848, 1208]
+	Name			"relay_protection_freq_functions"
+	Location		[960, 0, 1920, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -2144,274 +2237,67 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"111"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Iinst"
-	  SID			  "34"
-	  Position		  [720, 303, 750, 317]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Irms"
-	  SID			  "35"
-	  Position		  [720, 348, 750, 362]
-	  ZOrder		  -1
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "VRMSLN"
-	  SID			  "36"
-	  Position		  [725, 393, 755, 407]
+	  SID			  "242"
+	  Position		  [290, 238, 320, 252]
 	  ZOrder		  -1
-	  Port			  "3"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "reset"
-	  SID			  "37"
-	  Position		  [330, 168, 360, 182]
-	  ZOrder		  -1
-	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "relay_param"
-	  SID			  "38"
-	  Position		  [485, 643, 515, 657]
+	  SID			  "243"
+	  Position		  [340, 283, 370, 297]
 	  ZOrder		  1587
-	  Port			  "5"
+	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "clock_time"
-	  SID			  "54"
+	  SID			  "244"
 	  Position		  [330, 53, 360, 67]
 	  ZOrder		  1591
-	  Port			  "6"
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "time_delay"
-	  SID			  "55"
+	  SID			  "245"
 	  Position		  [330, 98, 360, 112]
 	  ZOrder		  1592
-	  Port			  "7"
+	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector"
-	  SID			  "39"
-	  Ports			  [1, 10]
-	  Position		  [600, 428, 605, 867]
-	  ZOrder		  1588
-	  ShowName		  off
-	  OutputSignals		  "VRMSLL,CT_primary,50P_pickup,50P_tripDelay,51P_pickup,51P_curveType,51P_timeDial,27P_pickup,59P_p"
-	  "ickup,27P_59P_tripDelay"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<VRMSLL>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    2
-	    Name		    "<CT_primary>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "<50P_pickup>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    4
-	    Name		    "<50P_tripDelay>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    5
-	    Name		    "<51P_pickup>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    6
-	    Name		    "<51P_curveType>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    7
-	    Name		    "<51P_timeDial>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    8
-	    Name		    "<27P_pickup>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    9
-	    Name		    "<59P_pickup>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    10
-	    Name		    "<27P_59P_tripDelay>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
+	  BlockType		  Inport
+	  Name			  "freq"
+	  SID			  "246"
+	  Position		  [340, 328, 370, 342]
+	  ZOrder		  1965
+	  Port			  "5"
+	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  DataTypeConversion
-	  Name			  "Data Type Conversion3"
-	  SID			  "40"
-	  Position		  [400, 165, 445, 185]
-	  ZOrder		  1586
-	  ShowName		  off
-	  RndMeth		  "Floor"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Detect Rise\nPositive"
-	  SID			  "79"
-	  Ports			  [1, 1]
-	  Position		  [1225, 585, 1285, 635]
-	  ZOrder		  1959
-	  LibraryVersion	  "1.274"
-	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
-	  SourceType		  "Detect Rise Positive"
-	  vinit			  "0"
-	  InputProcessing	  "Inherited"
-	  OutDataTypeStr	  "boolean"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Detect Rise\nPositive1"
-	  SID			  "82"
-	  Ports			  [1, 1]
-	  Position		  [1225, 205, 1285, 255]
-	  ZOrder		  1962
-	  LibraryVersion	  "1.274"
-	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
-	  SourceType		  "Detect Rise Positive"
-	  vinit			  "0"
-	  InputProcessing	  "Inherited"
-	  OutDataTypeStr	  "boolean"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Detect Rise\nPositive2"
-	  SID			  "83"
-	  Ports			  [1, 1]
-	  Position		  [1225, 395, 1285, 445]
-	  ZOrder		  1963
-	  LibraryVersion	  "1.274"
-	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
-	  SourceType		  "Detect Rise Positive"
-	  vinit			  "0"
-	  InputProcessing	  "Inherited"
-	  OutDataTypeStr	  "boolean"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "Detect Rise\nPositive3"
-	  SID			  "84"
-	  Ports			  [1, 1]
-	  Position		  [1225, 775, 1285, 825]
-	  ZOrder		  1964
-	  LibraryVersion	  "1.274"
-	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
-	  SourceType		  "Detect Rise Positive"
-	  vinit			  "0"
-	  InputProcessing	  "Inherited"
-	  OutDataTypeStr	  "boolean"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From"
-	  SID			  "59"
-	  Position		  [695, 168, 775, 182]
-	  ZOrder		  1941
-	  GotoTag		  "enable_logic"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From1"
-	  SID			  "74"
-	  Position		  [705, 256, 790, 274]
-	  ZOrder		  1954
-	  ShowName		  off
-	  GotoTag		  "reset"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Gain"
-	  SID			  "50"
-	  Position		  [680, 429, 775, 461]
-	  ZOrder		  1590
-	  ShowName		  off
-	  Gain			  "1/1.732025"
-	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-	  SaturateOnIntegerOverflow off
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto1"
-	  SID			  "73"
-	  Position		  [485, 165, 540, 185]
-	  ZOrder		  1953
-	  ShowName		  off
-	  GotoTag		  "reset"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto41"
-	  SID			  "56"
-	  Position		  [485, 76, 565, 94]
-	  ZOrder		  1937
-	  ShowName		  off
-	  GotoTag		  "enable_logic"
-	}
-	Block {
-	  BlockType		  RelationalOperator
-	  Name			  "Relational\nOperator"
-	  SID			  "58"
-	  Ports			  [2, 1]
-	  Position		  [420, 67, 450, 98]
-	  ZOrder		  1940
-	  ShowName		  off
-	  InputSameDT		  off
-	  OutDataTypeStr	  "boolean"
+	  BlockType		  Inport
+	  Name			  "dfdt"
+	  SID			  "247"
+	  Position		  [340, 373, 370, 387]
+	  ZOrder		  1966
+	  Port			  "6"
+	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Relays"
-	  SID			  "49"
-	  Ports			  [16, 4]
-	  Position		  [840, 133, 1160, 892]
-	  ZOrder		  1589
-	  LibraryVersion	  "1.32"
-	  ErrorFcn		  "Stateflow.Translate.translate"
-	  PermitHierarchicalResolution "ExplicitOnly"
+	  Name			  "Enabled\nSubsystem"
+	  SID			  "248"
+	  Ports			  [4, 3, 1]
+	  Position		  [420, 224, 520, 401]
+	  ZOrder		  1967
 	  TreatAsAtomicUnit	  on
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
@@ -2420,38 +2306,9 @@ Library {
 	  Opaque		  off
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
-	  SFBlockType		  "MATLAB Function"
-	  Port {
-	    PortNumber		    1
-	    Name		    "t50"
-	    PropagatedSignals	    "trip50"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    2
-	    Name		    "t51"
-	    PropagatedSignals	    "trip51"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "t27"
-	    PropagatedSignals	    "trip27"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    4
-	    Name		    "t59"
-	    PropagatedSignals	    "trip59"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	  System {
-	    Name		    "Relays"
-	    Location		    [227, 345, 838, 789]
+	    Name		    "Enabled\nSubsystem"
+	    Location		    [960, 0, 1920, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2463,616 +2320,1736 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "233"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Enable_logic"
-	      SID		      "49::158"
-	      Position		      [20, 101, 40, 119]
-	      ZOrder		      35
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Ts"
-	      SID		      "49::36"
-	      Position		      [20, 136, 40, 154]
-	      ZOrder		      -1
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Reset"
-	      SID		      "49::31"
-	      Position		      [20, 171, 40, 189]
-	      ZOrder		      -2
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Iinst"
-	      SID		      "49::33"
-	      Position		      [20, 206, 40, 224]
-	      ZOrder		      -3
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Irms"
-	      SID		      "49::1"
-	      Position		      [20, 246, 40, 264]
-	      ZOrder		      -4
-	      Port		      "5"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Vrms"
-	      SID		      "49::24"
-	      Position		      [20, 281, 40, 299]
-	      ZOrder		      -5
-	      Port		      "6"
-	      IconDisplay	      "Port number"
-	    }
+	    ZoomFactor		    "60"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "VRMSLN"
-	      SID		      "49::21"
-	      Position		      [20, 316, 40, 334]
-	      ZOrder		      -8
-	      Port		      "7"
+	      SID		      "249"
+	      Position		      [675, 93, 705, 107]
+	      ZOrder		      1968
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "CT_p"
-	      SID		      "49::35"
-	      Position		      [20, 351, 40, 369]
-	      ZOrder		      -6
-	      Port		      "8"
+	      Name		      "relay_param"
+	      SID		      "250"
+	      Position		      [135, 108, 165, 122]
+	      ZOrder		      1969
+	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "IOC_pickup"
-	      SID		      "49::20"
-	      Position		      [20, 386, 40, 404]
-	      ZOrder		      -7
-	      Port		      "9"
+	      Name		      "freq"
+	      SID		      "251"
+	      Position		      [20, 508, 50, 522]
+	      ZOrder		      1970
+	      Port		      "3"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "IOC_tripDelay"
-	      SID		      "49::97"
-	      Position		      [20, 426, 40, 444]
-	      ZOrder		      16
-	      Port		      "10"
+	      Name		      "dfdt"
+	      SID		      "252"
+	      Position		      [20, 473, 50, 487]
+	      ZOrder		      1971
+	      Port		      "4"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
-	      BlockType		      Inport
-	      Name		      "TOC_pickup"
-	      SID		      "49::98"
-	      Position		      [20, 461, 40, 479]
-	      ZOrder		      17
-	      Port		      "11"
-	      IconDisplay	      "Port number"
+	      BlockType		      EnablePort
+	      Name		      "Enable"
+	      SID		      "253"
+	      Ports		      []
+	      Position		      [275, 20, 295, 40]
+	      ZOrder		      -2
 	    }
 	    Block {
-	      BlockType		      Inport
-	      Name		      "curveType"
-	      SID		      "49::99"
-	      Position		      [20, 496, 40, 514]
-	      ZOrder		      18
-	      Port		      "12"
-	      IconDisplay	      "Port number"
+	      BlockType		      Bias
+	      Name		      "Bias"
+	      SID		      "254"
+	      Position		      [85, 500, 125, 530]
+	      ZOrder		      1991
+	      Bias		      "-60"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"df"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
-	      BlockType		      Inport
-	      Name		      "timeDial"
-	      SID		      "49::100"
-	      Position		      [20, 531, 40, 549]
-	      ZOrder		      19
-	      Port		      "13"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "UV_pickup"
-	      SID		      "49::124"
-	      Position		      [20, 566, 40, 584]
-	      ZOrder		      23
-	      Port		      "14"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "OV_pickup"
-	      SID		      "49::125"
-	      Position		      [20, 606, 40, 624]
-	      ZOrder		      24
-	      Port		      "15"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "UVOV_tripDelay"
-	      SID		      "49::126"
-	      Position		      [20, 641, 40, 659]
-	      ZOrder		      25
-	      Port		      "16"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      " Demux "
-	      SID		      "49::232"
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector"
+	      SID		      "255"
 	      Ports		      [1, 1]
-	      Position		      [270, 280, 320, 320]
-	      ZOrder		      40
-	      Outputs		      "1"
+	      Position		      [730, 116, 735, 154]
+	      ZOrder		      1977
+	      ShowName		      off
+	      OutputSignals	      "VRMSLL"
+	      Port {
+		PortNumber		1
+		Name			"<VRMSLL>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
-	      BlockType		      S-Function
-	      Name		      " SFunction "
-	      SID		      "49::231"
-	      Tag		      "Stateflow S-Function relay_ANSI_functions_lib 1"
-	      Ports		      [16, 5]
-	      Position		      [180, 85, 230, 425]
-	      ZOrder		      39
-	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[16 5]"
-	      EnableBusSupport	      off
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      SID		      "256"
+	      Ports		      [1, 2]
+	      Position		      [400, 75, 405, 150]
+	      ZOrder		      1990
+	      ShowName		      off
+	      OutputSignals	      "81rfrp,81rfdfp"
+	      Port {
+		PortNumber		1
+		Name			"<81rfrp>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	      Port {
 		PortNumber		2
-		Name			"trip50"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		3
-		Name			"trip51"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		4
-		Name			"trip27"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		5
-		Name			"trip59"
+		Name			"<81rfdfp>"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	    }
 	    Block {
-	      BlockType		      Terminator
-	      Name		      " Terminator "
-	      SID		      "49::233"
-	      Position		      [460, 291, 480, 309]
-	      ZOrder		      41
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector2"
+	      SID		      "257"
+	      Ports		      [1, 1]
+	      Position		      [260, 596, 265, 614]
+	      ZOrder		      1999
+	      ShowName		      off
+	      OutputSignals	      "81rfrp"
+	      Port {
+		PortNumber		1
+		Name			"<81rfrp>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector3"
+	      SID		      "258"
+	      Ports		      [1, 1]
+	      Position		      [710, 596, 715, 614]
+	      ZOrder		      2014
+	      ShowName		      off
+	      OutputSignals	      "81rf_tripDelay"
+	      Port {
+		PortNumber		1
+		Name			"<81rf_tripDelay>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector4"
+	      SID		      "259"
+	      Ports		      [1, 1]
+	      Position		      [545, 221, 550, 239]
+	      ZOrder		      2024
+	      ShowName		      off
+	      OutputSignals	      "81u_pickup"
+	      Port {
+		PortNumber		1
+		Name			"<81u_pickup>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector5"
+	      SID		      "260"
+	      Ports		      [1, 1]
+	      Position		      [710, 301, 715, 319]
+	      ZOrder		      2028
+	      ShowName		      off
+	      OutputSignals	      "81u_tripDealy"
+	      Port {
+		PortNumber		1
+		Name			"<81u_tripDealy>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector6"
+	      SID		      "261"
+	      Ports		      [1, 1]
+	      Position		      [710, 441, 715, 459]
+	      ZOrder		      2030
+	      ShowName		      off
+	      OutputSignals	      "81o_tripDelay"
+	      Port {
+		PortNumber		1
+		Name			"<81o_tripDelay>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector7"
+	      SID		      "262"
+	      Ports		      [1, 1]
+	      Position		      [545, 361, 550, 379]
+	      ZOrder		      2033
+	      ShowName		      off
+	      OutputSignals	      "81o_pickup"
+	      Port {
+		PortNumber		1
+		Name			"<81o_pickup>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Constant"
+	      SID		      "263"
+	      Ports		      [1, 1]
+	      Position		      [890, 105, 920, 135]
+	      ZOrder		      1980
+	      ShowName		      off
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	      SourceType	      "Compare To Constant"
+	      relop		      ">"
+	      const		      "0.5"
+	      OutDataTypeStr	      "boolean"
+	      ZeroCross		      on
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      "264"
+	      Position		      [220, 755, 265, 775]
+	      ZOrder		      2007
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0.2"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      "265"
+	      Position		      [220, 795, 265, 815]
+	      ZOrder		      2008
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "0.1"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      SID		      "266"
+	      Position		      [220, 880, 265, 900]
+	      ZOrder		      2009
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "-0.1"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      "267"
+	      Position		      [220, 840, 265, 860]
+	      ZOrder		      2010
+	      NamePlacement	      "alternate"
+	      ShowName		      off
+	      Value		      "-0.2"
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "DelayOn1"
+	      SID		      "268"
+	      Ports		      [2, 1]
+	      Position		      [825, 224, 885, 291]
+	      ZOrder		      2020
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"DelayOn1"
+		Location		[960, 0, 1920, 1032]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "trig"
+		  SID			  "269"
+		  Position		  [20, 63, 50, 77]
+		  ZOrder		  2019
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "delay_t"
+		  SID			  "270"
+		  Position		  [160, 93, 190, 107]
+		  ZOrder		  2020
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		  Port {
+		    PortNumber		    1
+		    PropagatedSignals	    "81u_tripDealy"
+		    ShowPropagatedSignals   "on"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "Compare\nTo Zero"
+		  SID			  "271"
+		  Ports			  [1, 1]
+		  Position		  [370, 55, 400, 85]
+		  ZOrder		  2017
+		  ShowName		  off
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+		  SourceType		  "Compare To Zero"
+		  relop			  "<"
+		  OutDataTypeStr	  "boolean"
+		  ZeroCross		  on
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "272"
+		  Position		  [205, 32, 240, 48]
+		  ZOrder		  2015
+		  ShowName		  off
+		  Value			  "-1"
+		}
+		Block {
+		  BlockType		  DiscreteIntegrator
+		  Name			  "Discrete-Time\nIntegrator"
+		  SID			  "273"
+		  Ports			  [3, 1]
+		  Position		  [280, 22, 350, 118]
+		  ZOrder		  2012
+		  ShowName		  off
+		  ExternalReset		  "level"
+		  InitialConditionSource  "external"
+		  SampleTime		  "Ts"
+		  LimitOutput		  on
+		  LowerSaturationLimit	  "-1"
+		  ICPrevOutput		  "DiscIntNeverNeededParam"
+		  ICPrevScaledInput	  "DiscIntNeverNeededParam"
+		}
+		Block {
+		  BlockType		  Logic
+		  Name			  "Logical\nOperator6"
+		  SID			  "274"
+		  Ports			  [1, 1]
+		  Position		  [205, 54, 235, 86]
+		  ZOrder		  2018
+		  ShowName		  off
+		  Operator		  "NOT"
+		  AllPortsSameDT	  off
+		  OutDataTypeStr	  "boolean"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "out"
+		  SID			  "275"
+		  Position		  [440, 63, 470, 77]
+		  ZOrder		  2021
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "Logical\nOperator6"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "delay_t"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Discrete-Time\nIntegrator"
+		  SrcPort		  1
+		  DstBlock		  "Compare\nTo Zero"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Compare\nTo Zero"
+		  SrcPort		  1
+		  DstBlock		  "out"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "trig"
+		  SrcPort		  1
+		  DstBlock		  "Logical\nOperator6"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "DelayOn2"
+	      SID		      "276"
+	      Ports		      [2, 1]
+	      Position		      [825, 364, 885, 431]
+	      ZOrder		      2021
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"DelayOn2"
+		Location		[960, 0, 1920, 1032]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "trig"
+		  SID			  "277"
+		  Position		  [20, 63, 50, 77]
+		  ZOrder		  2019
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "delay_t"
+		  SID			  "278"
+		  Position		  [160, 93, 190, 107]
+		  ZOrder		  2020
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		  Port {
+		    PortNumber		    1
+		    PropagatedSignals	    "81o_tripDelay"
+		    ShowPropagatedSignals   "on"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "Compare\nTo Zero"
+		  SID			  "279"
+		  Ports			  [1, 1]
+		  Position		  [370, 55, 400, 85]
+		  ZOrder		  2017
+		  ShowName		  off
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+		  SourceType		  "Compare To Zero"
+		  relop			  "<"
+		  OutDataTypeStr	  "boolean"
+		  ZeroCross		  on
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "280"
+		  Position		  [205, 32, 240, 48]
+		  ZOrder		  2015
+		  ShowName		  off
+		  Value			  "-1"
+		}
+		Block {
+		  BlockType		  DiscreteIntegrator
+		  Name			  "Discrete-Time\nIntegrator"
+		  SID			  "281"
+		  Ports			  [3, 1]
+		  Position		  [280, 22, 350, 118]
+		  ZOrder		  2012
+		  ShowName		  off
+		  ExternalReset		  "level"
+		  InitialConditionSource  "external"
+		  SampleTime		  "Ts"
+		  LimitOutput		  on
+		  LowerSaturationLimit	  "-1"
+		  ICPrevOutput		  "DiscIntNeverNeededParam"
+		  ICPrevScaledInput	  "DiscIntNeverNeededParam"
+		}
+		Block {
+		  BlockType		  Logic
+		  Name			  "Logical\nOperator6"
+		  SID			  "282"
+		  Ports			  [1, 1]
+		  Position		  [205, 54, 235, 86]
+		  ZOrder		  2018
+		  ShowName		  off
+		  Operator		  "NOT"
+		  AllPortsSameDT	  off
+		  OutDataTypeStr	  "boolean"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "out"
+		  SID			  "283"
+		  Position		  [440, 63, 470, 77]
+		  ZOrder		  2021
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "trig"
+		  SrcPort		  1
+		  DstBlock		  "Logical\nOperator6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Compare\nTo Zero"
+		  SrcPort		  1
+		  DstBlock		  "out"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Discrete-Time\nIntegrator"
+		  SrcPort		  1
+		  DstBlock		  "Compare\nTo Zero"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "delay_t"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Logical\nOperator6"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  2
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "DelayOn3"
+	      SID		      "284"
+	      Ports		      [2, 1]
+	      Position		      [825, 524, 885, 591]
+	      ZOrder		      2019
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"DelayOn3"
+		Location		[960, 0, 1920, 1032]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "trig"
+		  SID			  "285"
+		  Position		  [20, 63, 50, 77]
+		  ZOrder		  2019
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "delay_t"
+		  SID			  "286"
+		  Position		  [160, 93, 190, 107]
+		  ZOrder		  2020
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		  Port {
+		    PortNumber		    1
+		    PropagatedSignals	    "81rf_tripDelay"
+		    ShowPropagatedSignals   "on"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "Compare\nTo Zero"
+		  SID			  "287"
+		  Ports			  [1, 1]
+		  Position		  [370, 55, 400, 85]
+		  ZOrder		  2017
+		  ShowName		  off
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+		  SourceType		  "Compare To Zero"
+		  relop			  "<"
+		  OutDataTypeStr	  "boolean"
+		  ZeroCross		  on
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant4"
+		  SID			  "288"
+		  Position		  [205, 32, 240, 48]
+		  ZOrder		  2015
+		  ShowName		  off
+		  Value			  "-1"
+		}
+		Block {
+		  BlockType		  DiscreteIntegrator
+		  Name			  "Discrete-Time\nIntegrator"
+		  SID			  "289"
+		  Ports			  [3, 1]
+		  Position		  [280, 22, 350, 118]
+		  ZOrder		  2012
+		  ShowName		  off
+		  ExternalReset		  "level"
+		  InitialConditionSource  "external"
+		  SampleTime		  "Ts"
+		  LimitOutput		  on
+		  LowerSaturationLimit	  "-1"
+		  ICPrevOutput		  "DiscIntNeverNeededParam"
+		  ICPrevScaledInput	  "DiscIntNeverNeededParam"
+		}
+		Block {
+		  BlockType		  Logic
+		  Name			  "Logical\nOperator6"
+		  SID			  "290"
+		  Ports			  [1, 1]
+		  Position		  [205, 54, 235, 86]
+		  ZOrder		  2018
+		  ShowName		  off
+		  Operator		  "NOT"
+		  AllPortsSameDT	  off
+		  OutDataTypeStr	  "boolean"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "out"
+		  SID			  "291"
+		  Position		  [440, 63, 470, 77]
+		  ZOrder		  2021
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "trig"
+		  SrcPort		  1
+		  DstBlock		  "Logical\nOperator6"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Compare\nTo Zero"
+		  SrcPort		  1
+		  DstBlock		  "out"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Constant4"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Discrete-Time\nIntegrator"
+		  SrcPort		  1
+		  DstBlock		  "Compare\nTo Zero"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "delay_t"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Logical\nOperator6"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  2
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From"
+	      SID		      "292"
+	      Position		      [620, 123, 670, 147]
+	      ZOrder		      1976
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From1"
+	      SID		      "293"
+	      Position		      [645, 548, 695, 572]
+	      ZOrder		      1982
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "n_block"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From10"
+	      SID		      "294"
+	      Position		      [480, 363, 530, 377]
+	      ZOrder		      2032
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From11"
+	      SID		      "295"
+	      Position		      [645, 388, 695, 412]
+	      ZOrder		      2034
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "n_block"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From2"
+	      SID		      "296"
+	      Position		      [290, 103, 340, 127]
+	      ZOrder		      1989
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From3"
+	      SID		      "297"
+	      Position		      [170, 553, 225, 567]
+	      ZOrder		      1993
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "rfslp"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From4"
+	      SID		      "298"
+	      Position		      [170, 598, 220, 612]
+	      ZOrder		      1998
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From5"
+	      SID		      "299"
+	      Position		      [645, 598, 695, 612]
+	      ZOrder		      2013
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From6"
+	      SID		      "300"
+	      Position		      [480, 223, 530, 237]
+	      ZOrder		      2023
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From7"
+	      SID		      "301"
+	      Position		      [645, 248, 695, 272]
+	      ZOrder		      2025
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "n_block"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From8"
+	      SID		      "302"
+	      Position		      [645, 303, 695, 317]
+	      ZOrder		      2027
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From9"
+	      SID		      "303"
+	      Position		      [645, 443, 695, 457]
+	      ZOrder		      2029
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "304"
+	      Position		      [730, 85, 790, 115]
+	      ZOrder		      1979
+	      ShowName		      off
+	      Gain		      "sqrt(3)"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain1"
+	      SID		      "305"
+	      Position		      [520, 100, 550, 130]
+	      ZOrder		      2036
+	      ShowName		      off
+	      Gain		      "-1"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "Goto"
+	      SID		      "306"
+	      Position		      [215, 102, 265, 128]
+	      ZOrder		      1975
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "param"
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "Goto1"
+	      SID		      "307"
+	      Position		      [965, 107, 1015, 133]
+	      ZOrder		      1981
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "n_block"
+	    }
+	    Block {
+	      BlockType		      Goto
+	      Name		      "Goto2"
+	      SID		      "308"
+	      Position		      [565, 107, 615, 123]
+	      ZOrder		      1996
+	      BackgroundColor	      "gray"
+	      ShowName		      off
+	      GotoTag		      "rfslp"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator"
+	      SID		      "309"
+	      Ports		      [2, 1]
+	      Position		      [745, 502, 775, 578]
+	      ZOrder		      1983
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator1"
+	      SID		      "310"
+	      Ports		      [2, 1]
+	      Position		      [600, 502, 630, 533]
+	      ZOrder		      1984
+	      ShowName		      off
+	      Operator		      "OR"
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator2"
+	      SID		      "311"
+	      Ports		      [2, 1]
+	      Position		      [520, 482, 550, 513]
+	      ZOrder		      1985
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator3"
+	      SID		      "312"
+	      Ports		      [2, 1]
+	      Position		      [520, 542, 550, 573]
+	      ZOrder		      1986
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator4"
+	      SID		      "313"
+	      Ports		      [2, 1]
+	      Position		      [405, 762, 435, 793]
+	      ZOrder		      2001
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator5"
+	      SID		      "314"
+	      Ports		      [2, 1]
+	      Position		      [405, 847, 435, 878]
+	      ZOrder		      2002
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator6"
+	      SID		      "315"
+	      Ports		      [2, 1]
+	      Position		      [745, 202, 775, 278]
+	      ZOrder		      2026
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator7"
+	      SID		      "316"
+	      Ports		      [2, 1]
+	      Position		      [745, 342, 775, 418]
+	      ZOrder		      2035
+	      ShowName		      off
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product"
+	      SID		      "317"
+	      Ports		      [2, 1]
+	      Position		      [815, 84, 835, 151]
+	      ZOrder		      1978
+	      ShowName		      off
+	      Inputs		      "*/"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"v_pu"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product1"
+	      SID		      "318"
+	      Ports		      [2, 1]
+	      Position		      [305, 491, 320, 584]
+	      ZOrder		      1992
+	      ShowName		      off
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product2"
+	      SID		      "319"
+	      Ports		      [2, 1]
+	      Position		      [480, 79, 500, 146]
+	      ZOrder		      1995
+	      ShowName		      off
+	      Inputs		      "*/"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator"
+	      SID		      "320"
+	      Ports		      [2, 1]
+	      Position		      [440, 472, 470, 503]
+	      ZOrder		      1987
+	      ShowName		      off
+	      Operator		      ">"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator1"
+	      SID		      "321"
+	      Ports		      [2, 1]
+	      Position		      [440, 532, 470, 563]
+	      ZOrder		      1988
+	      ShowName		      off
+	      Operator		      "<"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator2"
+	      SID		      "322"
+	      Ports		      [2, 1]
+	      Position		      [300, 742, 330, 773]
+	      ZOrder		      2003
+	      ShowName		      off
+	      Operator		      ">"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator3"
+	      SID		      "323"
+	      Ports		      [2, 1]
+	      Position		      [300, 782, 330, 813]
+	      ZOrder		      2004
+	      ShowName		      off
+	      Operator		      ">"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator4"
+	      SID		      "324"
+	      Ports		      [2, 1]
+	      Position		      [300, 827, 330, 858]
+	      ZOrder		      2005
+	      ShowName		      off
+	      Operator		      "<"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator5"
+	      SID		      "325"
+	      Ports		      [2, 1]
+	      Position		      [300, 867, 330, 898]
+	      ZOrder		      2006
+	      ShowName		      off
+	      Operator		      "<"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator6"
+	      SID		      "326"
+	      Ports		      [2, 1]
+	      Position		      [650, 202, 680, 238]
+	      ZOrder		      2022
+	      ShowName		      off
+	      Operator		      "<"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator7"
+	      SID		      "327"
+	      Ports		      [2, 1]
+	      Position		      [650, 342, 680, 378]
+	      ZOrder		      2031
+	      ShowName		      off
+	      Operator		      ">"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "328"
+	      Ports		      [2, 1]
+	      Position		      [360, 530, 380, 550]
+	      ZOrder		      1997
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      SID		      "329"
+	      Ports		      [2, 1]
+	      Position		      [360, 625, 380, 645]
+	      ZOrder		      2000
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|+-"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "trip50"
-	      SID		      "49::34"
-	      Position		      [460, 101, 480, 119]
-	      ZOrder		      -12
+	      Name		      "trip_80u"
+	      SID		      "330"
+	      Position		      [945, 253, 975, 267]
+	      ZOrder		      1974
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "trip51"
-	      SID		      "49::5"
-	      Position		      [460, 136, 480, 154]
-	      ZOrder		      -13
+	      Name		      "trip_80o"
+	      SID		      "331"
+	      Position		      [935, 393, 965, 407]
+	      ZOrder		      1973
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "trip27"
-	      SID		      "49::18"
-	      Position		      [460, 171, 480, 189]
-	      ZOrder		      -14
+	      Name		      "trip_80rf"
+	      SID		      "332"
+	      Position		      [935, 548, 965, 562]
+	      ZOrder		      1972
 	      Port		      "3"
 	      IconDisplay	      "Port number"
 	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "trip59"
-	      SID		      "49::23"
-	      Position		      [460, 206, 480, 224]
-	      ZOrder		      -15
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
 	    Line {
-	      SrcBlock		      "Enable_logic"
+	      SrcBlock		      "relay_param"
 	      SrcPort		      1
-	      DstBlock		      " SFunction "
+	      DstBlock		      "Goto"
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "Ts"
+	      SrcBlock		      "From"
 	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "Reset"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "Iinst"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      4
-	    }
-	    Line {
-	      SrcBlock		      "Irms"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      5
-	    }
-	    Line {
-	      SrcBlock		      "Vrms"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      6
+	      DstBlock		      "Bus\nSelector"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "VRMSLN"
 	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      7
+	      DstBlock		      "Gain"
+	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "CT_p"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      8
-	    }
-	    Line {
-	      SrcBlock		      "IOC_pickup"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      9
-	    }
-	    Line {
-	      SrcBlock		      "IOC_tripDelay"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      10
-	    }
-	    Line {
-	      SrcBlock		      "TOC_pickup"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      11
-	    }
-	    Line {
-	      SrcBlock		      "curveType"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      12
-	    }
-	    Line {
-	      SrcBlock		      "timeDial"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      13
-	    }
-	    Line {
-	      SrcBlock		      "UV_pickup"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      14
-	    }
-	    Line {
-	      SrcBlock		      "OV_pickup"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      15
-	    }
-	    Line {
-	      SrcBlock		      "UVOV_tripDelay"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      16
-	    }
-	    Line {
-	      Name		      "trip50"
+	      Name		      "<VRMSLL>"
 	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      1
+	      DstBlock		      "Product"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "v_pu"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Product"
+	      SrcPort		      1
+	      DstBlock		      "Compare\nTo Constant"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Product"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Compare\nTo Constant"
+	      SrcPort		      1
+	      DstBlock		      "Goto1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From1"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator1"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "dfdt"
+	      SrcPort		      1
+	      Points		      [89, 0]
+	      Branch {
+		Points			[0, 270]
+		Branch {
+		  Points		  [0, 85]
+		  DstBlock		  "Relational\nOperator4"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Relational\nOperator2"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		Points			[256, 0]
+		Branch {
+		  DstBlock		  "Relational\nOperator"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 60]
+		  DstBlock		  "Relational\nOperator1"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "From2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81rfrp>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Product2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "freq"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		Points			[0, -165]
+		Branch {
+		  DstBlock		  "Relational\nOperator7"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, -140]
+		  DstBlock		  "Relational\nOperator6"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"Bias"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, -80]
+	      DstBlock		      "Relational\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "df"
+	      SrcBlock		      "Bias"
+	      SrcPort		      1
+	      Points		      [30, 0]
+	      Branch {
+		Points			[0, 275]
+		Branch {
+		  Points		  [0, 85]
+		  DstBlock		  "Relational\nOperator5"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Relational\nOperator3"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		Labels			[1, 1]
+		DstBlock		"Product1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "From3"
+	      SrcPort		      1
+	      DstBlock		      "Product1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "<81rfdfp>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      2
-	      Points		      [0, -75]
-	      DstBlock		      "trip50"
-	      DstPort		      1
+	      DstBlock		      "Product2"
+	      DstPort		      2
 	    }
 	    Line {
-	      Name		      "trip51"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      3
-	      DstBlock		      "trip51"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "trip27"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      4
-	      DstBlock		      "trip27"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "trip59"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      5
-	      DstBlock		      "trip59"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
+	      SrcBlock		      "Product2"
 	      SrcPort		      1
-	      DstBlock		      " Terminator "
+	      DstBlock		      "Gain1"
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      " SFunction "
+	      SrcBlock		      "Product1"
 	      SrcPort		      1
-	      DstBlock		      " Demux "
+	      Points		      [16, 0]
+	      Branch {
+		Points			[0, 95]
+		DstBlock		"Sum1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Sum"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "From4"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector2"
 	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81rfrp>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector2"
+	      SrcPort		      1
+	      Points		      [57, 0]
+	      Branch {
+		Points			[43, 0]
+		DstBlock		"Sum"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 79; 43, 0]
+		DstBlock		"Sum1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, -45]
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator1"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator2"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 10]
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator3"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -35]
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator4"
+	      SrcPort		      1
+	      Points		      [47, 0; 0, -275]
+	      DstBlock		      "Logical\nOperator2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator5"
+	      SrcPort		      1
+	      Points		      [62, 0; 0, -300]
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator2"
+	      SrcPort		      1
+	      Points		      [33, 0; 0, 10]
+	      DstBlock		      "Logical\nOperator4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator3"
+	      SrcPort		      1
+	      Points		      [32, 0; 0, -15]
+	      DstBlock		      "Logical\nOperator4"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator4"
+	      SrcPort		      1
+	      Points		      [32, 0; 0, 10]
+	      DstBlock		      "Logical\nOperator5"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator5"
+	      SrcPort		      1
+	      Points		      [33, 0; 0, -15]
+	      DstBlock		      "Logical\nOperator5"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator4"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator5"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "DelayOn3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81rf_tripDelay>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector3"
+	      SrcPort		      1
+	      Points		      [90, 0; 0, -35]
+	      DstBlock		      "DelayOn3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "DelayOn3"
+	      SrcPort		      1
+	      Points		      [0, -5]
+	      DstBlock		      "trip_80rf"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DelayOn2"
+	      SrcPort		      1
+	      DstBlock		      "trip_80o"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DelayOn1"
+	      SrcPort		      1
+	      DstBlock		      "trip_80u"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From6"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81u_pickup>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector4"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator6"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From7"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator6"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator6"
+	      SrcPort		      1
+	      DstBlock		      "DelayOn1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator6"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator6"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From8"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector5"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81u_tripDealy>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector5"
+	      SrcPort		      1
+	      Points		      [80, 0; 0, -35]
+	      DstBlock		      "DelayOn1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From9"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector6"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81o_tripDelay>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector6"
+	      SrcPort		      1
+	      Points		      [76, 0; 0, -35]
+	      DstBlock		      "DelayOn2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From10"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector7"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<81o_pickup>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector7"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator7"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From11"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator7"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator7"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator7"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator7"
+	      SrcPort		      1
+	      DstBlock		      "DelayOn2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain1"
+	      SrcPort		      1
+	      DstBlock		      "Goto2"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "339"
+	      Name		      "Hz"
+	      Position		      [275, 504]
+	      ZOrder		      -1
+	    }
+	    Annotation {
+	      SID		      "338"
+	      Name		      "Hz/sek"
+	      Position		      [341, 515]
+	      ZOrder		      -2
+	    }
+	    Annotation {
+	      SID		      "337"
+	      Name		      "1/sek"
+	      Position		      [272, 547]
+	      ZOrder		      -3
+	    }
+	    Annotation {
+	      SID		      "336"
+	      Name		      "Hz"
+	      Position		      [196, 886]
+	      ZOrder		      -4
+	    }
+	    Annotation {
+	      SID		      "335"
+	      Name		      "Hz"
+	      Position		      [196, 806]
+	      ZOrder		      -5
+	    }
+	    Annotation {
+	      SID		      "334"
+	      Name		      "Hz/s"
+	      Position		      [196, 846]
+	      ZOrder		      -6
+	    }
+	    Annotation {
+	      SID		      "333"
+	      Name		      "Hz/s"
+	      Position		      [196, 766]
+	      ZOrder		      -7
 	    }
 	  }
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "a4"
-	  SID			  "42"
-	  Position		  [705, 212, 770, 228]
-	  ZOrder		  -4
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "340"
+	  Position		  [330, 168, 410, 182]
+	  ZOrder		  1941
+	  GotoTag		  "enable_logic"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto41"
+	  SID			  "341"
+	  Position		  [485, 76, 565, 94]
+	  ZOrder		  1937
 	  ShowName		  off
-	  Value			  "Ts"
+	  GotoTag		  "enable_logic"
+	}
+	Block {
+	  BlockType		  MinMax
+	  Name			  "MinMax"
+	  SID			  "342"
+	  Ports			  [1, 1]
+	  Position		  [355, 230, 385, 260]
+	  ZOrder		  1968
+	  ShowName		  off
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\nOperator"
+	  SID			  "343"
+	  Ports			  [2, 1]
+	  Position		  [420, 67, 450, 98]
+	  ZOrder		  1940
+	  ShowName		  off
+	  InputSameDT		  off
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "trip_50"
-	  SID			  "43"
-	  Position		  [1355, 223, 1385, 237]
+	  Name			  "trip_80u"
+	  SID			  "344"
+	  Position		  [665, 248, 695, 262]
 	  ZOrder		  -11
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "trip_51"
-	  SID			  "44"
-	  Position		  [1355, 413, 1385, 427]
+	  Name			  "trip_80o"
+	  SID			  "345"
+	  Position		  [665, 308, 695, 322]
 	  ZOrder		  -12
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "trip_27"
-	  SID			  "45"
-	  Position		  [1355, 603, 1385, 617]
+	  Name			  "trip_80rf"
+	  SID			  "346"
+	  Position		  [665, 368, 695, 382]
 	  ZOrder		  -13
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "trip_59"
-	  SID			  "46"
-	  Position		  [1355, 793, 1385, 807]
-	  ZOrder		  -14
-	  Port			  "4"
-	  IconDisplay		  "Port number"
-	}
 	Line {
-	  SrcBlock		  "Detect Rise\nPositive3"
+	  SrcBlock		  "From"
 	  SrcPort		  1
-	  DstBlock		  "trip_59"
-	  DstPort		  1
+	  Points		  [55, 0]
+	  DstBlock		  "Enabled\nSubsystem"
+	  DstPort		  enable
 	}
 	Line {
-	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcBlock		  "Relational\nOperator"
 	  SrcPort		  1
-	  DstBlock		  "trip_27"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Detect Rise\nPositive2"
-	  SrcPort		  1
-	  DstBlock		  "trip_51"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Detect Rise\nPositive1"
-	  SrcPort		  1
-	  DstBlock		  "trip_50"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "t59"
-	  SrcBlock		  "Relays"
-	  SrcPort		  4
-	  DstBlock		  "Detect Rise\nPositive3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "t51"
-	  SrcBlock		  "Relays"
-	  SrcPort		  2
-	  DstBlock		  "Detect Rise\nPositive2"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "t50"
-	  SrcBlock		  "Relays"
-	  SrcPort		  1
-	  DstBlock		  "Detect Rise\nPositive1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "t27"
-	  SrcBlock		  "Relays"
-	  SrcPort		  3
-	  DstBlock		  "Detect Rise\nPositive"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "Data Type Conversion3"
-	  SrcPort		  1
-	  DstBlock		  "Goto1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Gain"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  7
-	}
-	Line {
-	  Name			  "<27P_pickup>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  8
-	  DstBlock		  "Relays"
-	  DstPort		  14
-	}
-	Line {
-	  Name			  "<59P_pickup>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  9
-	  DstBlock		  "Relays"
-	  DstPort		  15
-	}
-	Line {
-	  Name			  "<27P_59P_tripDelay>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  10
-	  DstBlock		  "Relays"
-	  DstPort		  16
-	}
-	Line {
-	  SrcBlock		  "Iinst"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Irms"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  5
-	}
-	Line {
-	  Name			  "<51P_timeDial>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  7
-	  DstBlock		  "Relays"
-	  DstPort		  13
-	}
-	Line {
-	  Name			  "<51P_curveType>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  6
-	  DstBlock		  "Relays"
-	  DstPort		  12
-	}
-	Line {
-	  Name			  "<51P_pickup>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  5
-	  DstBlock		  "Relays"
-	  DstPort		  11
-	}
-	Line {
-	  Name			  "<50P_tripDelay>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  4
-	  DstBlock		  "Relays"
-	  DstPort		  10
-	}
-	Line {
-	  Name			  "<50P_pickup>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  3
-	  DstBlock		  "Relays"
-	  DstPort		  9
-	}
-	Line {
-	  Name			  "<CT_primary>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  2
-	  DstBlock		  "Relays"
-	  DstPort		  8
-	}
-	Line {
-	  Name			  "<VRMSLL>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  DstBlock		  "Gain"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "reset"
-	  SrcPort		  1
-	  DstBlock		  "Data Type Conversion3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "VRMSLN"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "a4"
-	  SrcPort		  1
-	  DstBlock		  "Relays"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "relay_param"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "clock_time"
-	  SrcPort		  1
-	  Points		  [40, 0]
-	  DstBlock		  "Relational\nOperator"
+	  DstBlock		  "Goto41"
 	  DstPort		  1
 	}
 	Line {
@@ -3083,44 +4060,82 @@ Library {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Relational\nOperator"
+	  SrcBlock		  "clock_time"
 	  SrcPort		  1
-	  DstBlock		  "Goto41"
+	  Points		  [40, 0]
+	  DstBlock		  "Relational\nOperator"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From"
+	  SrcBlock		  "VRMSLN"
 	  SrcPort		  1
-	  DstBlock		  "Relays"
+	  DstBlock		  "MinMax"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Enabled\nSubsystem"
+	  SrcPort		  1
+	  DstBlock		  "trip_80u"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Enabled\nSubsystem"
+	  SrcPort		  2
+	  DstBlock		  "trip_80o"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Enabled\nSubsystem"
+	  SrcPort		  3
+	  DstBlock		  "trip_80rf"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "relay_param"
+	  SrcPort		  1
+	  DstBlock		  "Enabled\nSubsystem"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "freq"
+	  SrcPort		  1
+	  DstBlock		  "Enabled\nSubsystem"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "dfdt"
+	  SrcPort		  1
+	  DstBlock		  "Enabled\nSubsystem"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "MinMax"
+	  SrcPort		  1
+	  DstBlock		  "Enabled\nSubsystem"
 	  DstPort		  1
 	}
 	Annotation {
-	  SID			  "60"
+	  SID			  "347"
 	  Name			  "\ntime delay [sec] to activate logic. Forces the trip_out signal\nto 1 (close) until the simulation clock"
 	  " exceeds the threshold"
 	  Position		  [438, 16]
 	  ForegroundColor	  "blue"
 	  ZOrder		  -1
 	}
-	Annotation {
-	  SID			  "64"
-	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
-	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
-	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
-	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
-	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
-	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
-	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
-	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
-	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
-	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
-	  "FTWARE.\n%\n%\n%%"
-	  Position		  [16, 387]
-	  HorizontalAlignment	  "left"
-	  ZOrder		  -2
-	  FontWeight		  "bold"
-	}
       }
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "relay_protection_functions"
+      SID		      "348"
+      Ports		      [7, 4]
+      Position		      [660, 483, 860, 597]
+      ZOrder		      3574
+      BackgroundColor	      "red"
+      LibraryVersion	      "1.33"
+      SourceBlock	      "relay_ANSI_functions_liba14f04b/relay_protection_functions"
+      SourceType	      "Relays 50-51-27-59"
+      Ts		      "Ts"
     }
     Annotation {
       SID		      "1"
@@ -3166,6 +4181,12 @@ Library {
       ZOrder		      -8
       FontWeight	      "bold"
     }
+    Annotation {
+      SID		      "140"
+      Name		      "Added by NREL 08/29/2017\n* block for frequency protection funtions"
+      Position		      [1094, 450]
+      ZOrder		      -1
+    }
   }
 }
 # Finite State Machines
@@ -3180,30 +4201,29 @@ Stateflow {
     name		    "relay_ANSI_functions_lib"
     created		    "19-Apr-2016 10:19:53"
     isLibrary		    1
-    firstTarget		    61
+    firstTarget		    36
     sfVersion		    76014001.0015
   }
   chart {
     id			    2
-    name		    "relay_protection_functions/Relays"
+    name		    "R50512759/Relays"
     windowPosition	    [541 458.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1200 1.333333333333333]
     treeNode		    [0 3 0 0]
-    firstTransition	    25
-    firstJunction	    24
+    firstTransition	    17
+    firstJunction	    16
     viewObj		    2
     machine		    1
-    subviewS {
-    }
-    ssIdHighWaterMark	    33
+    toolbarMode		    LIBRARY_TOOLBAR
+    ssIdHighWaterMark	    24
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    4
-    chartFileNumber	    1
+    chartFileNumber	    4
     disableImplicitCasting  1
     eml {
-      name		      "relay_elements"
+      name		      "relays_50512759"
     }
   }
   state {
@@ -3221,34 +4241,29 @@ Stateflow {
     eml {
       isEML		      1
       script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
-      "of charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software"
-      "\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modif"
-      "y,\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to wh"
-      "om the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright noti"
-      "ce and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% "
-      "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMIT"
-      "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
-      "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
-      "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
-      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction [trip50, trip51, trip27, trip59] = relay_elements(Enable_log"
-      "ic, Ts, Reset, Iinst, Irms, Vrms, VRMSLN,...\n    CT_p, IOC_pickup, IOC_tripDelay, TOC_pickup, curveType, timeDi"
-      "al, UV_pickup, OV_pickup, UVOV_tripDelay)\n%#codegen\n\n% initialize or reset the trip signals\npersistent R50 R"
-      "51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;\nend\n\n% a"
-      "pplying turns CT ratio - assuming protection type CT\nIinst = Iinst * (5/CT_p);\nIrms = Irms * (5/CT_p);\n\n% ol"
-      "d- latch for true signals\n% old- if ~(R50==true || R51==true) && Enable_logic==1\nif Enable_logic==1\n    % cal"
-      "ling external function expressing relay protection elements\n    T50 = relay_ANSI_50P_script(Ts, Iinst , IOC_pic"
-      "kup, IOC_tripDelay);\n    T51 = relay_ANSI_51P_script(Ts, Irms, TOC_pickup, curveType, timeDial);\n    T27 = rel"
-      "ay_ANSI_27P_script(Ts, Vrms, VRMSLN, UV_pickup, UVOV_tripDelay);\n    T59 = relay_ANSI_59P_script(Ts, Vrms, VRMS"
-      "LN, OV_pickup, UVOV_tripDelay);\n    \n    R50 = T50;\n    R51 = T51;\n    R27 = T27;\n    R59 = T59;\nend\n\n% "
-      "external latch\ntrip50 = R50; % old- latched\ntrip51 = R51; % old- latched\ntrip27 = R27; % old- not latched\ntr"
-      "ip59 = R59; % old- not latched\n\n"
+      "of charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
+      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modi"
+      "fy, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to"
+      " whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyrigh"
+      "t notice and this permission notice shall be included in \n% all copies or substantial portions of the Software."
+      "\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT "
+      "NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN N"
+      "O EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER "
+      "IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR "
+      "THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\n\nfunction [trip50, trip51, trip27, trip59] = relays_505"
+      "12759(Ts, Reset, Iinst, Irms, Vrms, IOC, TOC, VRMSLL)\n%#codegen\n\n% initialize or reset the trip signals\npers"
+      "istent R50 R51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;"
+      "\nend\n\n% latch for true signals\nif ~(R50==true || R51==true)\n    % calling external function\n    r = relay_"
+      "ANSI_50512759_script(Ts, Iinst, Irms, Vrms, IOC, TOC, VRMSLL);\n    R50 = r.trip50;\n    R51 = r.trip51;\n    R2"
+      "7 = r.trip27;\n    R59 = r.trip59;\nend\n\ntrip50 = R50; % latched\ntrip51 = R51; % latched\ntrip27 = R27; % not"
+      " latched\ntrip59 = R59; % not latched\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
   data {
     id			    4
-    ssIdNumber		    33
-    name		    "Enable_logic"
+    ssIdNumber		    24
+    name		    "Ts"
     linkNode		    [2 0 5]
     scope		    INPUT_DATA
     machine		    1
@@ -3269,10 +4284,10 @@ Stateflow {
   }
   data {
     id			    5
-    ssIdNumber		    24
-    name		    "Ts"
+    ssIdNumber		    22
+    name		    "trip50"
     linkNode		    [2 4 6]
-    scope		    INPUT_DATA
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -3285,7 +4300,7 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
@@ -3376,8 +4391,8 @@ Stateflow {
   }
   data {
     id			    10
-    ssIdNumber		    9
-    name		    "VRMSLN"
+    ssIdNumber		    23
+    name		    "IOC"
     linkNode		    [2 9 11]
     scope		    INPUT_DATA
     machine		    1
@@ -3398,10 +4413,10 @@ Stateflow {
   }
   data {
     id			    11
-    ssIdNumber		    23
-    name		    "CT_p"
+    ssIdNumber		    5
+    name		    "trip51"
     linkNode		    [2 10 12]
-    scope		    INPUT_DATA
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -3410,20 +4425,18 @@ Stateflow {
       type {
 	method			SF_INHERITED_TYPE
 	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    12
-    ssIdNumber		    8
-    name		    "IOC_pickup"
+    ssIdNumber		    6
+    name		    "trip27"
     linkNode		    [2 11 13]
-    scope		    INPUT_DATA
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -3436,14 +4449,14 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    13
-    ssIdNumber		    25
-    name		    "IOC_tripDelay"
+    ssIdNumber		    8
+    name		    "TOC"
     linkNode		    [2 12 14]
     scope		    INPUT_DATA
     machine		    1
@@ -3464,8 +4477,8 @@ Stateflow {
   }
   data {
     id			    14
-    ssIdNumber		    26
-    name		    "TOC_pickup"
+    ssIdNumber		    9
+    name		    "VRMSLL"
     linkNode		    [2 13 15]
     scope		    INPUT_DATA
     machine		    1
@@ -3486,10 +4499,10 @@ Stateflow {
   }
   data {
     id			    15
-    ssIdNumber		    27
-    name		    "curveType"
-    linkNode		    [2 14 16]
-    scope		    INPUT_DATA
+    ssIdNumber		    11
+    name		    "trip59"
+    linkNode		    [2 14 0]
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -3502,593 +4515,65 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
-  data {
+  junction {
     id			    16
-    ssIdNumber		    28
-    name		    "timeDial"
-    linkNode		    [2 15 17]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
   }
-  data {
+  transition {
     id			    17
-    ssIdNumber		    30
-    name		    "UV_pickup"
-    linkNode		    [2 16 18]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
-    dataType		    "Inherit: Same as Simulink"
+    dst {
+      id		      16
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
   }
-  data {
+  instance {
     id			    18
-    ssIdNumber		    31
-    name		    "OV_pickup"
-    linkNode		    [2 17 19]
-    scope		    INPUT_DATA
+    name		    "R50512759/Relays"
     machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
+    chart		    2
   }
-  data {
+  chart {
     id			    19
-    ssIdNumber		    32
-    name		    "UVOV_tripDelay"
-    linkNode		    [2 18 20]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    20
-    ssIdNumber		    22
-    name		    "trip50"
-    linkNode		    [2 19 21]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    21
-    ssIdNumber		    5
-    name		    "trip51"
-    linkNode		    [2 20 22]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    22
-    ssIdNumber		    6
-    name		    "trip27"
-    linkNode		    [2 21 23]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    23
-    ssIdNumber		    11
-    name		    "trip59"
-    linkNode		    [2 22 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  junction {
-    id			    24
-    position		    [23.5747 49.5747 7]
-    chart		    2
-    linkNode		    [2 0 0]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    25
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      24
-      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    2
-    linkNode		    [2 0 0]
-    dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  instance {
-    id			    26
-    name		    "relay_protection_functions/Relays"
-    machine		    1
-    chart		    2
-  }
-  chart {
-    id			    27
-    name		    "R50512759/Relays"
-    windowPosition	    [541 458.75 213 385]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 28 0 0]
-    firstTransition	    42
-    firstJunction	    41
-    viewObj		    27
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    24
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    29
-    chartFileNumber	    4
-    disableImplicitCasting  1
-    eml {
-      name		      "relays_50512759"
-    }
-  }
-  state {
-    id			    28
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    27
-    treeNode		    [27 0 0 0]
-    superState		    SUBCHART
-    subviewer		    27
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
-      "of charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
-      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modi"
-      "fy, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to"
-      " whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyrigh"
-      "t notice and this permission notice shall be included in \n% all copies or substantial portions of the Software."
-      "\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT "
-      "NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN N"
-      "O EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER "
-      "IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR "
-      "THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\n\nfunction [trip50, trip51, trip27, trip59] = relays_505"
-      "12759(Ts, Reset, Iinst, Irms, Vrms, IOC, TOC, VRMSLL)\n%#codegen\n\n% initialize or reset the trip signals\npers"
-      "istent R50 R51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;"
-      "\nend\n\n% latch for true signals\nif ~(R50==true || R51==true)\n    % calling external function\n    r = relay_"
-      "ANSI_50512759_script(Ts, Iinst, Irms, Vrms, IOC, TOC, VRMSLL);\n    R50 = r.trip50;\n    R51 = r.trip51;\n    R2"
-      "7 = r.trip27;\n    R59 = r.trip59;\nend\n\ntrip50 = R50; % latched\ntrip51 = R51; % latched\ntrip27 = R27; % not"
-      " latched\ntrip59 = R59; % not latched\n\n"
-      editorLayout	      "100 M4x1[10 5 700 500]"
-    }
-  }
-  data {
-    id			    29
-    ssIdNumber		    24
-    name		    "Ts"
-    linkNode		    [27 0 30]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    30
-    ssIdNumber		    22
-    name		    "trip50"
-    linkNode		    [27 29 31]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    31
-    ssIdNumber		    19
-    name		    "Reset"
-    linkNode		    [27 30 32]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    32
-    ssIdNumber		    21
-    name		    "Iinst"
-    linkNode		    [27 31 33]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    33
-    ssIdNumber		    4
-    name		    "Irms"
-    linkNode		    [27 32 34]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    34
-    ssIdNumber		    12
-    name		    "Vrms"
-    linkNode		    [27 33 35]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    35
-    ssIdNumber		    23
-    name		    "IOC"
-    linkNode		    [27 34 36]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    36
-    ssIdNumber		    5
-    name		    "trip51"
-    linkNode		    [27 35 37]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    37
-    ssIdNumber		    6
-    name		    "trip27"
-    linkNode		    [27 36 38]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    38
-    ssIdNumber		    8
-    name		    "TOC"
-    linkNode		    [27 37 39]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    39
-    ssIdNumber		    9
-    name		    "VRMSLL"
-    linkNode		    [27 38 40]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    40
-    ssIdNumber		    11
-    name		    "trip59"
-    linkNode		    [27 39 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  junction {
-    id			    41
-    position		    [23.5747 49.5747 7]
-    chart		    27
-    linkNode		    [27 0 0]
-    subviewer		    27
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    42
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      41
-      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    27
-    linkNode		    [27 0 0]
-    dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    27
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  instance {
-    id			    43
-    name		    "R50512759/Relays"
-    machine		    1
-    chart		    27
-  }
-  chart {
-    id			    44
     name		    "R50512759_ext_param/Relays"
     windowPosition	    [541 458.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 45 0 0]
-    firstTransition	    59
-    firstJunction	    58
-    viewObj		    44
+    treeNode		    [0 20 0 0]
+    firstTransition	    34
+    firstJunction	    33
+    viewObj		    19
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
     ssIdHighWaterMark	    24
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    46
+    firstData		    21
     chartFileNumber	    12
     disableImplicitCasting  1
     eml {
@@ -4096,14 +4581,14 @@ Stateflow {
     }
   }
   state {
-    id			    45
+    id			    20
     labelString		    "eML_blk_kernel()"
     position		    [18 64.5 118 66]
     fontSize		    12
-    chart		    44
-    treeNode		    [44 0 0 0]
+    chart		    19
+    treeNode		    [19 0 0 0]
     superState		    SUBCHART
-    subviewer		    44
+    subviewer		    19
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -4130,10 +4615,10 @@ Stateflow {
     }
   }
   data {
-    id			    46
+    id			    21
     ssIdNumber		    24
     name		    "Ts"
-    linkNode		    [44 0 47]
+    linkNode		    [19 0 22]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4152,10 +4637,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    47
+    id			    22
     ssIdNumber		    22
     name		    "trip50"
-    linkNode		    [44 46 48]
+    linkNode		    [19 21 23]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4174,10 +4659,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    48
+    id			    23
     ssIdNumber		    19
     name		    "Reset"
-    linkNode		    [44 47 49]
+    linkNode		    [19 22 24]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4196,10 +4681,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    49
+    id			    24
     ssIdNumber		    21
     name		    "Iinst"
-    linkNode		    [44 48 50]
+    linkNode		    [19 23 25]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4218,10 +4703,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    50
+    id			    25
     ssIdNumber		    4
     name		    "Irms"
-    linkNode		    [44 49 51]
+    linkNode		    [19 24 26]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4237,10 +4722,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    51
+    id			    26
     ssIdNumber		    12
     name		    "Vrms"
-    linkNode		    [44 50 52]
+    linkNode		    [19 25 27]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4259,10 +4744,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    52
+    id			    27
     ssIdNumber		    23
     name		    "IOC"
-    linkNode		    [44 51 53]
+    linkNode		    [19 26 28]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4281,10 +4766,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    53
+    id			    28
     ssIdNumber		    5
     name		    "trip51"
-    linkNode		    [44 52 54]
+    linkNode		    [19 27 29]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4301,10 +4786,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    54
+    id			    29
     ssIdNumber		    6
     name		    "trip27"
-    linkNode		    [44 53 55]
+    linkNode		    [19 28 30]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4323,10 +4808,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    55
+    id			    30
     ssIdNumber		    8
     name		    "TOC"
-    linkNode		    [44 54 56]
+    linkNode		    [19 29 31]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4345,10 +4830,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    56
+    id			    31
     ssIdNumber		    9
     name		    "VRMSLL"
-    linkNode		    [44 55 57]
+    linkNode		    [19 30 32]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4367,10 +4852,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    57
+    id			    32
     ssIdNumber		    11
     name		    "trip59"
-    linkNode		    [44 56 0]
+    linkNode		    [19 31 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4389,16 +4874,16 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   junction {
-    id			    58
+    id			    33
     position		    [23.5747 49.5747 7]
-    chart		    44
-    linkNode		    [44 0 0]
-    subviewer		    44
+    chart		    19
+    linkNode		    [19 0 0]
+    subviewer		    19
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    59
+    id			    34
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -4406,14 +4891,14 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      58
+      id		      33
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    44
-    linkNode		    [44 0 0]
+    chart		    19
+    linkNode		    [19 0 0]
     dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    44
+    subviewer		    19
     drawStyle		    SMART
     slide {
       sticky		      BOTH_STICK
@@ -4422,13 +4907,13 @@ Stateflow {
     ssIdNumber		    2
   }
   instance {
-    id			    60
+    id			    35
     name		    "R50512759_ext_param/Relays"
     machine		    1
-    chart		    44
+    chart		    19
   }
   target {
-    id			    61
+    id			    36
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
