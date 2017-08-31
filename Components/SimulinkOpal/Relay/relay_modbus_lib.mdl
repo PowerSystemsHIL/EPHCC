@@ -34,7 +34,7 @@ Library {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[714.0, 798.0]
+	Extents			[717.0, 848.0]
 	ZoomFactor		[1.3443902439024389]
-	Offset			[175.58635703918719, -200.36502177068223]
+	Offset			[175.58635703918719, -200.36502177068229]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 29 03:10:39 2017"
-  RTWModifiedTimeStamp	  425876988
-  ModelVersionFormat	  "1.%<AutoIncrement:537>"
+  LastModifiedDate	  "Wed Aug 30 03:03:28 2017"
+  RTWModifiedTimeStamp	  425962998
+  ModelVersionFormat	  "1.%<AutoIncrement:540>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -899,15 +899,6 @@ Library {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      RateTransition
-      Integrity		      on
-      Deterministic	      on
-      X0		      "0"
-      OutPortSampleTimeOpt    "Specify"
-      OutPortSampleTimeMultiple	"1"
-      OutPortSampleTime	      "-1"
-    }
-    Block {
       BlockType		      RelationalOperator
       Operator		      ">="
       InputSameDT	      on
@@ -995,16 +986,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82847"
+    SIDHighWatermark	    "82848"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
       SID		      "82308"
       Ports		      [2, 2]
       Position		      [225, 246, 405, 299]
-      ZOrder		      2431
+      ZOrder		      2432
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "1.536"
+      LibraryVersion	      "*1.539"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1052,14 +1043,14 @@ Library {
 	    Type		    "edit"
 	    Name		    "relay_settings"
 	    Prompt		    "Relay Settings"
-	    Value		    "[F4(1,:)]"
+	    Value		    "[F4(2,:)]"
 	  }
 	  PropName		  "Parameters"
 	}
       }
       System {
 	Name			"Generic_Relay_v2_1"
-	Location		[960, 0, 1920, 1032]
+	Location		[1090, 0, 1884, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1071,7 +1062,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"30"
 	Block {
 	  BlockType		  Inport
 	  Name			  "MEASUREMENTS"
@@ -3370,12 +3361,12 @@ Library {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator4"
 	  SID			  "82464"
-	  Ports			  [4, 1]
-	  Position		  [2495, 611, 2540, 754]
+	  Ports			  [7, 1]
+	  Position		  [2495, 613, 2535, 857]
 	  ZOrder		  -11
 	  ShowName		  off
 	  Operator		  "OR"
-	  Inputs		  "4"
+	  Inputs		  "7"
 	  AllPortsSameDT	  off
 	  OutDataTypeStr	  "boolean"
 	  Port {
@@ -4879,7 +4870,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "dfdt"
-	    Location		    [-9, 0, 1923, 1050]
+	    Location		    [5, 0, 1497, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -4908,7 +4899,7 @@ Library {
 	      Position		      [170, 28, 205, 62]
 	      ZOrder		      3564
 	      InputPortMap	      "u0"
-	      DelayLength	      "3/60/(Ts*10)"
+	      DelayLength	      "3/60/(Ts)"
 	      UseCircularBuffer	      on
 	    }
 	    Block {
@@ -4927,24 +4918,6 @@ Library {
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
-	    }
-	    Block {
-	      BlockType		      RateTransition
-	      Name		      "Rate Transition"
-	      SID		      "82806"
-	      Position		      [85, 24, 125, 66]
-	      ZOrder		      3565
-	      Integrity		      off
-	      OutPortSampleTime	      "10*Ts"
-	    }
-	    Block {
-	      BlockType		      RateTransition
-	      Name		      "Rate Transition1"
-	      SID		      "82807"
-	      Position		      [360, 24, 400, 66]
-	      ZOrder		      3566
-	      Integrity		      off
-	      OutPortSampleTime	      "Ts"
 	    }
 	    Block {
 	      BlockType		      Sum
@@ -4976,15 +4949,16 @@ Library {
 	    }
 	    Line {
 	      Name		      "dfdt"
-	      Labels		      [1, 1]
+	      Labels		      [0, 0]
 	      SrcBlock		      "Gain"
 	      SrcPort		      1
-	      DstBlock		      "Rate Transition1"
+	      DstBlock		      "dfdt"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Delay1"
 	      SrcPort		      1
+	      Points		      [0, -5]
 	      DstBlock		      "Sum3"
 	      DstPort		      1
 	    }
@@ -4999,13 +4973,7 @@ Library {
 	    Line {
 	      SrcBlock		      "freq"
 	      SrcPort		      1
-	      DstBlock		      "Rate Transition"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Rate Transition"
-	      SrcPort		      1
-	      Points		      [13, 0]
+	      Points		      [88, 0]
 	      Branch {
 		DstBlock		"Delay1"
 		DstPort			1
@@ -5015,12 +4983,6 @@ Library {
 		DstBlock		"Sum3"
 		DstPort			2
 	      }
-	    }
-	    Line {
-	      SrcBlock		      "Rate Transition1"
-	      SrcPort		      1
-	      DstBlock		      "dfdt"
-	      DstPort		      1
 	    }
 	    Annotation {
 	      SID		      "82813"
@@ -5212,8 +5174,8 @@ Library {
 	  Ports			  [6, 3]
 	  Position		  [2115, 773, 2325, 887]
 	  ZOrder		  3596
-	  BackgroundColor	  "red"
-	  LibraryVersion	  "1.38"
+	  ForegroundColor	  "red"
+	  LibraryVersion	  "1.39"
 	  SourceBlock		  "relay_ANSI_functions_lib/relay_protection_freq_functions"
 	  SourceType		  "Relays 50-51-27-59"
 	  Ts			  "Ts"
@@ -5227,14 +5189,13 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "relay_protection_functions"
-	  SID			  "82624"
+	  SID			  "82848"
 	  Ports			  [7, 4]
-	  Position		  [2115, 609, 2320, 751]
-	  ZOrder		  1930
-	  ForegroundColor	  "blue"
+	  Position		  [2115, 608, 2315, 752]
+	  ZOrder		  3598
 	  BackgroundColor	  "red"
-	  LibraryVersion	  "1.33"
-	  SourceBlock		  "relay_ANSI_functions_liba14f04b/relay_protection_functions"
+	  LibraryVersion	  "1.39"
+	  SourceBlock		  "relay_ANSI_functions_lib/relay_protection_functions"
 	  SourceType		  "Relays 50-51-27-59"
 	  Ts			  "Ts"
 	  Port {
@@ -5352,16 +5313,32 @@ Library {
 	Line {
 	  SrcBlock		  "relay_protection_freq_functions"
 	  SrcPort		  2
-	  Points		  [51, 0; 0, 585]
-	  DstBlock		  "S-R\nFlip-Flop7"
-	  DstPort		  1
+	  Points		  [51, 0]
+	  Branch {
+	    Points		    [0, 585]
+	    DstBlock		    "S-R\nFlip-Flop7"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -25]
+	    DstBlock		    "Logical\nOperator4"
+	    DstPort		    6
+	  }
 	}
 	Line {
 	  SrcBlock		  "relay_protection_freq_functions"
 	  SrcPort		  1
-	  Points		  [77, 0; 0, 535]
-	  DstBlock		  "S-R\nFlip-Flop6"
-	  DstPort		  1
+	  Points		  [77, 0]
+	  Branch {
+	    Points		    [0, -20]
+	    DstBlock		    "Logical\nOperator4"
+	    DstPort		    5
+	  }
+	  Branch {
+	    Points		    [0, 535]
+	    DstBlock		    "S-R\nFlip-Flop6"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "S-R\nFlip-Flop6"
@@ -5453,9 +5430,17 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "relay_protection_freq_functions"
 	  SrcPort		  3
-	  Points		  [25, 0; 0, 635]
-	  DstBlock		  "S-R\nFlip-Flop8"
-	  DstPort		  1
+	  Points		  [25, 0]
+	  Branch {
+	    Points		    [0, -30]
+	    DstBlock		    "Logical\nOperator4"
+	    DstPort		    7
+	  }
+	  Branch {
+	    Points		    [0, 635]
+	    DstBlock		    "S-R\nFlip-Flop8"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "From87"
@@ -5623,7 +5608,7 @@ Library {
 	Line {
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  1
-	  Points		  [146, 0]
+	  Points		  [151, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    1
@@ -5787,13 +5772,13 @@ Library {
 	  SrcPort		  1
 	  Points		  [26, 0]
 	  Branch {
-	    DstBlock		    "relay_protection_functions"
-	    DstPort		    7
-	  }
-	  Branch {
 	    Points		    [0, 100]
 	    DstBlock		    "relay_protection_freq_functions"
 	    DstPort		    4
+	  }
+	  Branch {
+	    DstBlock		    "relay_protection_functions"
+	    DstPort		    7
 	  }
 	}
 	Line {
@@ -5801,13 +5786,13 @@ Library {
 	  SrcPort		  1
 	  Points		  [38, 0]
 	  Branch {
-	    DstBlock		    "relay_protection_functions"
-	    DstPort		    6
-	  }
-	  Branch {
 	    Points		    [0, 100]
 	    DstBlock		    "relay_protection_freq_functions"
 	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "relay_protection_functions"
+	    DstPort		    6
 	  }
 	}
 	Line {
@@ -5915,13 +5900,13 @@ Library {
 	  SrcPort		  1
 	  Points		  [6, 0]
 	  Branch {
-	    DstBlock		    "relay_protection_functions"
-	    DstPort		    5
-	  }
-	  Branch {
 	    Points		    [0, 100]
 	    DstBlock		    "relay_protection_freq_functions"
 	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "relay_protection_functions"
+	    DstPort		    5
 	  }
 	}
 	Line {
@@ -5935,13 +5920,13 @@ Library {
 	  SrcPort		  1
 	  Points		  [62, 0]
 	  Branch {
-	    DstBlock		    "relay_protection_functions"
-	    DstPort		    3
-	  }
-	  Branch {
 	    Points		    [0, 120]
 	    DstBlock		    "relay_protection_freq_functions"
 	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "relay_protection_functions"
+	    DstPort		    3
 	  }
 	}
 	Line {
@@ -6201,7 +6186,7 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  4
-	  Points		  [99, 0]
+	  Points		  [104, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    4
@@ -6224,7 +6209,7 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  3
-	  Points		  [114, 0]
+	  Points		  [119, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    3
@@ -6614,7 +6599,7 @@ Library {
 	  Labels		  [0, 1]
 	  SrcBlock		  "relay_protection_functions"
 	  SrcPort		  2
-	  Points		  [129, 0]
+	  Points		  [134, 0]
 	  Branch {
 	    DstBlock		    "Logical\nOperator4"
 	    DstPort		    2
@@ -7021,6 +7006,7 @@ Library {
 	  Name			  "trip_in"
 	  SrcBlock		  "Logical\nOperator4"
 	  SrcPort		  1
+	  Points		  [20, 0; 0, -50]
 	  DstBlock		  "S-R\nFlip-Flop1"
 	  DstPort		  1
 	}

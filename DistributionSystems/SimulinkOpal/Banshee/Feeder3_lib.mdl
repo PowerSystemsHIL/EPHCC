@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[717.0, 874.0]
+	Extents			[714.0, 854.0]
 	ZoomFactor		[0.8]
 	Offset			[-56.55800464037128, -215.51875483372004]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC1"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 17 11:34:25 2017"
-  RTWModifiedTimeStamp	  424870463
-  ModelVersionFormat	  "1.%<AutoIncrement:60>"
+  LastModifiedDate	  "Thu Aug 31 11:41:49 2017"
+  RTWModifiedTimeStamp	  426080506
+  ModelVersionFormat	  "1.%<AutoIncrement:62>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -858,7 +858,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "860"
+    SIDHighWatermark	    "866"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -867,7 +867,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.59"
+      LibraryVersion	      "*1.61"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -889,7 +889,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"21"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -2963,7 +2963,7 @@ Library {
 	  }
 	  System {
 	    Name		    "NGCHP_Generator"
-	    Location		    [5, 0, 1065, 1040]
+	    Location		    [5, 0, 1497, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2975,7 +2975,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "60"
+	    ZoomFactor		    "85"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "ModbusIn"
@@ -3029,7 +3029,7 @@ Library {
 	      Name		      "Bus\nCreator"
 	      SID		      "758"
 	      Ports		      [4, 1]
-	      Position		      [1360, 498, 1365, 612]
+	      Position		      [1360, 433, 1365, 547]
 	      ZOrder		      3900
 	      ShowName		      off
 	      DisplayOption	      "bar"
@@ -3080,6 +3080,12 @@ Library {
 	      ShowName		      off
 	      OutputSignals	      "relay_out"
 	      OutputAsBus	      on
+	      Port {
+		PortNumber		1
+		Name			"<relay_out>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      BusSelector
@@ -3338,7 +3344,7 @@ Library {
 	      BlockMirror	      on
 	      BackgroundColor	      "yellow"
 	      NamePlacement	      "alternate"
-	      LibraryVersion	      "1.535"
+	      LibraryVersion	      "1.540"
 	      SourceBlock	      "relay_modbus_lib/Generic_Relay_v2_1"
 	      SourceType	      "Generic Relay"
 	      Ts		      "Ts"
@@ -3362,7 +3368,7 @@ Library {
 	      BlockType		      Goto
 	      Name		      "Goto1"
 	      SID		      "788"
-	      Position		      [1200, 628, 1320, 642]
+	      Position		      [1200, 558, 1320, 572]
 	      ZOrder		      3916
 	      BackgroundColor	      "cyan"
 	      ShowName		      off
@@ -3472,10 +3478,18 @@ Library {
 	      BlockType		      Outport
 	      Name		      "Gen_meas"
 	      SID		      "774"
-	      Position		      [1405, 548, 1435, 562]
+	      Position		      [1405, 483, 1435, 497]
 	      ZOrder		      -49
 	      Port		      "3"
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "<relay_out>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "GCB"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "<gen2>"
@@ -3519,7 +3533,7 @@ Library {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 175]
+		Points			[0, 110]
 		DstBlock		"Bus\nCreator"
 		DstPort			1
 	      }
@@ -3674,14 +3688,8 @@ Library {
 	    Line {
 	      SrcBlock		      "GenSet"
 	      SrcPort		      2
-	      Points		      [62, 0; 0, -55]
+	      Points		      [62, 0; 0, -125]
 	      DstBlock		      "Goto1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Bus\nSelector1"
-	      SrcPort		      1
-	      DstBlock		      "GCB"
 	      DstPort		      1
 	    }
 	    Line {
@@ -3689,7 +3697,7 @@ Library {
 	      Labels		      [-1, 1]
 	      SrcBlock		      "SimGenCtrl"
 	      SrcPort		      2
-	      Points		      [86, 0; 0, -95]
+	      Points		      [86, 0; 0, -160]
 	      DstBlock		      "Bus\nCreator"
 	      DstPort		      2
 	    }
@@ -3847,7 +3855,7 @@ Library {
 		}
 		Branch {
 		  Labels		  [-1, 1]
-		  Points		  [0, -90]
+		  Points		  [0, -155]
 		  DstBlock		  "Bus\nCreator"
 		  DstPort		  4
 		}
@@ -3858,7 +3866,7 @@ Library {
 	      Labels		      [-1, 1]
 	      SrcBlock		      "GenSet"
 	      SrcPort		      1
-	      Points		      [46, 0; 0, -85]
+	      Points		      [46, 0; 0, -150]
 	      DstBlock		      "Bus\nCreator"
 	      DstPort		      3
 	    }

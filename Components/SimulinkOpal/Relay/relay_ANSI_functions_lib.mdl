@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-18.0, 122.0, 1359.0, 617.0]
+      Location		      [0.0, 0.0, 960.0, 1040.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1113.0, 431.0]
+	Extents			[717.0, 874.0]
 	ZoomFactor		[1.25]
 	Offset			[618.0, 450.20000000000005]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 29 03:03:23 2017"
-  RTWModifiedTimeStamp	  425876598
-  ModelVersionFormat	  "1.%<AutoIncrement:38>"
+  LastModifiedDate	  "Tue Aug 29 09:48:56 2017"
+  RTWModifiedTimeStamp	  425900935
+  ModelVersionFormat	  "1.%<AutoIncrement:39>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -932,7 +932,7 @@ Library {
   }
   System {
     Name		    "relay_ANSI_functions_lib"
-    Location		    [-18, 122, 1341, 739]
+    Location		    [0, 0, 960, 1040]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -946,7 +946,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "348"
+    SIDHighWatermark	    "376"
     Block {
       BlockType		      SubSystem
       Name		      "R50512759"
@@ -4125,17 +4125,1031 @@ Library {
       }
     }
     Block {
-      BlockType		      Reference
+      BlockType		      SubSystem
       Name		      "relay_protection_functions"
-      SID		      "348"
+      SID		      "349"
       Ports		      [7, 4]
-      Position		      [660, 483, 860, 597]
-      ZOrder		      3574
+      Position		      [695, 488, 895, 602]
+      ZOrder		      3597
       BackgroundColor	      "red"
-      LibraryVersion	      "1.33"
-      SourceBlock	      "relay_ANSI_functions_liba14f04b/relay_protection_functions"
-      SourceType	      "Relays 50-51-27-59"
-      Ts		      "Ts"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		26
+	$ClassName		"Simulink.Mask"
+	Type			"Relays 50-51-27-59"
+	Description		"This block simulates the behavior of the following relay functions:\n1) Instantaneous overcurrent (50)\n"
+	"2) AC inverse time overcurrent (51)\n3) Undervoltage (27)\n4) Overvoltage (59) \nIt is not suitable for instantaneous"
+	" earth current relaying. \nThe model neglects the influence CTs since only the logics of the relay are required or th"
+	"e current effort.\n\nThe input bus with the relay parameters should be ordered as follows:\n1) VRMSLL\n2) IOC\n3) TOC"
+	"\n4) dV_threshold\n5) angle_threshold\n6) dF_threshold"
+	Object {
+	  $PropName		  "Parameters"
+	  $ObjectID		  27
+	  $ClassName		  "Simulink.MaskParameter"
+	  Type			  "edit"
+	  Name			  "Ts"
+	  Prompt		  "Sampling Time [Sec]"
+	  Value			  "Ts"
+	}
+      }
+      System {
+	Name			"relay_protection_functions"
+	Location		[1912, -8, 3848, 1208]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"111"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Iinst"
+	  SID			  "350"
+	  Position		  [720, 303, 750, 317]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Irms"
+	  SID			  "351"
+	  Position		  [720, 348, 750, 362]
+	  ZOrder		  -1
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "VRMSLN"
+	  SID			  "352"
+	  Position		  [725, 393, 755, 407]
+	  ZOrder		  -1
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "reset"
+	  SID			  "353"
+	  Position		  [330, 168, 360, 182]
+	  ZOrder		  -1
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "relay_param"
+	  SID			  "354"
+	  Position		  [485, 643, 515, 657]
+	  ZOrder		  1587
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "clock_time"
+	  SID			  "355"
+	  Position		  [330, 53, 360, 67]
+	  ZOrder		  1591
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "time_delay"
+	  SID			  "356"
+	  Position		  [330, 98, 360, 112]
+	  ZOrder		  1592
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "357"
+	  Ports			  [1, 10]
+	  Position		  [600, 428, 605, 867]
+	  ZOrder		  1588
+	  ShowName		  off
+	  OutputSignals		  "VRMSLL,CT_primary,50P_pickup,50P_tripDelay,51P_pickup,51P_curveType,51P_timeDial,27P_pickup,59P_p"
+	  "ickup,27P_59P_tripDelay"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<VRMSLL>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<CT_primary>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<50P_pickup>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<50P_tripDelay>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    5
+	    Name		    "<51P_pickup>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    6
+	    Name		    "<51P_curveType>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    7
+	    Name		    "<51P_timeDial>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    8
+	    Name		    "<27P_pickup>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    9
+	    Name		    "<59P_pickup>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    10
+	    Name		    "<27P_59P_tripDelay>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion3"
+	  SID			  "358"
+	  Position		  [400, 165, 445, 185]
+	  ZOrder		  1586
+	  ShowName		  off
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive"
+	  SID			  "359"
+	  Ports			  [1, 1]
+	  Position		  [1225, 585, 1285, 635]
+	  ZOrder		  1959
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  vinit			  "0"
+	  InputProcessing	  "Inherited"
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive1"
+	  SID			  "360"
+	  Ports			  [1, 1]
+	  Position		  [1225, 205, 1285, 255]
+	  ZOrder		  1962
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  vinit			  "0"
+	  InputProcessing	  "Inherited"
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive2"
+	  SID			  "361"
+	  Ports			  [1, 1]
+	  Position		  [1225, 395, 1285, 445]
+	  ZOrder		  1963
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  vinit			  "0"
+	  InputProcessing	  "Inherited"
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect Rise\nPositive3"
+	  SID			  "362"
+	  Ports			  [1, 1]
+	  Position		  [1225, 775, 1285, 825]
+	  ZOrder		  1964
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect Rise\nPositive"
+	  SourceType		  "Detect Rise Positive"
+	  vinit			  "0"
+	  InputProcessing	  "Inherited"
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "363"
+	  Position		  [695, 168, 775, 182]
+	  ZOrder		  1941
+	  GotoTag		  "enable_logic"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "364"
+	  Position		  [705, 256, 790, 274]
+	  ZOrder		  1954
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "365"
+	  Position		  [680, 429, 775, 461]
+	  ZOrder		  1590
+	  ShowName		  off
+	  Gain			  "1/1.732025"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto1"
+	  SID			  "366"
+	  Position		  [485, 165, 540, 185]
+	  ZOrder		  1953
+	  ShowName		  off
+	  GotoTag		  "reset"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto41"
+	  SID			  "367"
+	  Position		  [485, 76, 565, 94]
+	  ZOrder		  1937
+	  ShowName		  off
+	  GotoTag		  "enable_logic"
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\nOperator"
+	  SID			  "368"
+	  Ports			  [2, 1]
+	  Position		  [420, 67, 450, 98]
+	  ZOrder		  1940
+	  ShowName		  off
+	  InputSameDT		  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Relays"
+	  SID			  "369"
+	  Ports			  [16, 4]
+	  Position		  [840, 133, 1160, 892]
+	  ZOrder		  1589
+	  LibraryVersion	  "1.32"
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  SFBlockType		  "MATLAB Function"
+	  Port {
+	    PortNumber		    1
+	    Name		    "t50"
+	    PropagatedSignals	    "trip50"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "t51"
+	    PropagatedSignals	    "trip51"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "t27"
+	    PropagatedSignals	    "trip27"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "t59"
+	    PropagatedSignals	    "trip59"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Relays"
+	    Location		    [227, 345, 838, 789]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "236"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Enable_logic"
+	      SID		      "369::158"
+	      Position		      [20, 101, 40, 119]
+	      ZOrder		      35
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Ts"
+	      SID		      "369::36"
+	      Position		      [20, 136, 40, 154]
+	      ZOrder		      -1
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Reset"
+	      SID		      "369::31"
+	      Position		      [20, 171, 40, 189]
+	      ZOrder		      -2
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Iinst"
+	      SID		      "369::33"
+	      Position		      [20, 206, 40, 224]
+	      ZOrder		      -3
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Irms"
+	      SID		      "369::1"
+	      Position		      [20, 246, 40, 264]
+	      ZOrder		      -4
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Vrms"
+	      SID		      "369::24"
+	      Position		      [20, 281, 40, 299]
+	      ZOrder		      -5
+	      Port		      "6"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VRMSLN"
+	      SID		      "369::21"
+	      Position		      [20, 316, 40, 334]
+	      ZOrder		      -8
+	      Port		      "7"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "CT_p"
+	      SID		      "369::35"
+	      Position		      [20, 351, 40, 369]
+	      ZOrder		      -6
+	      Port		      "8"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "IOC_pickup"
+	      SID		      "369::20"
+	      Position		      [20, 386, 40, 404]
+	      ZOrder		      -7
+	      Port		      "9"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "IOC_tripDelay"
+	      SID		      "369::97"
+	      Position		      [20, 426, 40, 444]
+	      ZOrder		      16
+	      Port		      "10"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "TOC_pickup"
+	      SID		      "369::98"
+	      Position		      [20, 461, 40, 479]
+	      ZOrder		      17
+	      Port		      "11"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "curveType"
+	      SID		      "369::99"
+	      Position		      [20, 496, 40, 514]
+	      ZOrder		      18
+	      Port		      "12"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "timeDial"
+	      SID		      "369::100"
+	      Position		      [20, 531, 40, 549]
+	      ZOrder		      19
+	      Port		      "13"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "UV_pickup"
+	      SID		      "369::124"
+	      Position		      [20, 566, 40, 584]
+	      ZOrder		      23
+	      Port		      "14"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "OV_pickup"
+	      SID		      "369::125"
+	      Position		      [20, 606, 40, 624]
+	      ZOrder		      24
+	      Port		      "15"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "UVOV_tripDelay"
+	      SID		      "369::126"
+	      Position		      [20, 641, 40, 659]
+	      ZOrder		      25
+	      Port		      "16"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "369::235"
+	      Ports		      [1, 1]
+	      Position		      [270, 280, 320, 320]
+	      ZOrder		      43
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "369::234"
+	      Tag		      "Stateflow S-Function relay_ANSI_functions_lib 1"
+	      Ports		      [16, 5]
+	      Position		      [180, 85, 230, 425]
+	      ZOrder		      42
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[16 5]"
+	      EnableBusSupport	      off
+	      Port {
+		PortNumber		2
+		Name			"trip50"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"trip51"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"trip27"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		5
+		Name			"trip59"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "369::236"
+	      Position		      [460, 291, 480, 309]
+	      ZOrder		      44
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "trip50"
+	      SID		      "369::34"
+	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -12
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "trip51"
+	      SID		      "369::5"
+	      Position		      [460, 136, 480, 154]
+	      ZOrder		      -13
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "trip27"
+	      SID		      "369::18"
+	      Position		      [460, 171, 480, 189]
+	      ZOrder		      -14
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "trip59"
+	      SID		      "369::23"
+	      Position		      [460, 206, 480, 224]
+	      ZOrder		      -15
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Enable_logic"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Ts"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Reset"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Iinst"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Irms"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "Vrms"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "VRMSLN"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "CT_p"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      8
+	    }
+	    Line {
+	      SrcBlock		      "IOC_pickup"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      9
+	    }
+	    Line {
+	      SrcBlock		      "IOC_tripDelay"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      10
+	    }
+	    Line {
+	      SrcBlock		      "TOC_pickup"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      11
+	    }
+	    Line {
+	      SrcBlock		      "curveType"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      12
+	    }
+	    Line {
+	      SrcBlock		      "timeDial"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      13
+	    }
+	    Line {
+	      SrcBlock		      "UV_pickup"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      14
+	    }
+	    Line {
+	      SrcBlock		      "OV_pickup"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      15
+	    }
+	    Line {
+	      SrcBlock		      "UVOV_tripDelay"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      16
+	    }
+	    Line {
+	      Name		      "trip50"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      Points		      [0, -75]
+	      DstBlock		      "trip50"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "trip51"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
+	      DstBlock		      "trip51"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "trip27"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      4
+	      DstBlock		      "trip27"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "trip59"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      5
+	      DstBlock		      "trip59"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      DstBlock		      " Demux "
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "a4"
+	  SID			  "370"
+	  Position		  [705, 212, 770, 228]
+	  ZOrder		  -4
+	  ShowName		  off
+	  Value			  "Ts"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "trip_50"
+	  SID			  "371"
+	  Position		  [1355, 223, 1385, 237]
+	  ZOrder		  -11
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "trip_51"
+	  SID			  "372"
+	  Position		  [1355, 413, 1385, 427]
+	  ZOrder		  -12
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "trip_27"
+	  SID			  "373"
+	  Position		  [1355, 603, 1385, 617]
+	  ZOrder		  -13
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "trip_59"
+	  SID			  "374"
+	  Position		  [1355, 793, 1385, 807]
+	  ZOrder		  -14
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Relational\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "Goto41"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "time_delay"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  DstBlock		  "Relational\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "clock_time"
+	  SrcPort		  1
+	  Points		  [40, 0]
+	  DstBlock		  "Relational\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "relay_param"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "a4"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "VRMSLN"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "reset"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<VRMSLL>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<CT_primary>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Relays"
+	  DstPort		  8
+	}
+	Line {
+	  Name			  "<50P_pickup>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  3
+	  DstBlock		  "Relays"
+	  DstPort		  9
+	}
+	Line {
+	  Name			  "<50P_tripDelay>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  4
+	  DstBlock		  "Relays"
+	  DstPort		  10
+	}
+	Line {
+	  Name			  "<51P_pickup>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  5
+	  DstBlock		  "Relays"
+	  DstPort		  11
+	}
+	Line {
+	  Name			  "<51P_curveType>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  6
+	  DstBlock		  "Relays"
+	  DstPort		  12
+	}
+	Line {
+	  Name			  "<51P_timeDial>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  7
+	  DstBlock		  "Relays"
+	  DstPort		  13
+	}
+	Line {
+	  SrcBlock		  "Irms"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Iinst"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<27P_59P_tripDelay>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  10
+	  DstBlock		  "Relays"
+	  DstPort		  16
+	}
+	Line {
+	  Name			  "<59P_pickup>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  9
+	  DstBlock		  "Relays"
+	  DstPort		  15
+	}
+	Line {
+	  Name			  "<27P_pickup>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  8
+	  DstBlock		  "Relays"
+	  DstPort		  14
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion3"
+	  SrcPort		  1
+	  DstBlock		  "Goto1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "Relays"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "t27"
+	  SrcBlock		  "Relays"
+	  SrcPort		  3
+	  DstBlock		  "Detect Rise\nPositive"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "t50"
+	  SrcBlock		  "Relays"
+	  SrcPort		  1
+	  DstBlock		  "Detect Rise\nPositive1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "t51"
+	  SrcBlock		  "Relays"
+	  SrcPort		  2
+	  DstBlock		  "Detect Rise\nPositive2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "t59"
+	  SrcBlock		  "Relays"
+	  SrcPort		  4
+	  DstBlock		  "Detect Rise\nPositive3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Detect Rise\nPositive1"
+	  SrcPort		  1
+	  DstBlock		  "trip_50"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Detect Rise\nPositive2"
+	  SrcPort		  1
+	  DstBlock		  "trip_51"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Detect Rise\nPositive"
+	  SrcPort		  1
+	  DstBlock		  "trip_27"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Detect Rise\nPositive3"
+	  SrcPort		  1
+	  DstBlock		  "trip_59"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "376"
+	  Name			  "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free of charg"
+	  "e, to any person obtaining a copy of this \n% software and associated documentation files (the \"Software\"), to de"
+	  "al in the Software\n% without restriction, including without limitation the rights to use, copy, modify, \n% merge,"
+	  " publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to whom the Softwar"
+	  "e is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyright notice and this pe"
+	  "rmission notice shall be included in \n% all copies or substantial portions of the Software.\n% \n% THE SOFTWARE IS"
+	  " PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT NOT LIMITED TO THE WARRANT"
+	  "IES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR "
+	  "COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION \n% OF CONTRACT, TO"
+	  "RT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO"
+	  "FTWARE.\n%\n%\n%%"
+	  Position		  [16, 387]
+	  HorizontalAlignment	  "left"
+	  ZOrder		  -1
+	  FontWeight		  "bold"
+	}
+	Annotation {
+	  SID			  "375"
+	  Name			  "\ntime delay [sec] to activate logic. Forces the trip_out signal\nto 1 (close) until the simulation clock"
+	  " exceeds the threshold"
+	  Position		  [438, 16]
+	  ForegroundColor	  "blue"
+	  ZOrder		  -2
+	}
+      }
     }
     Annotation {
       SID		      "1"
@@ -4201,29 +5215,30 @@ Stateflow {
     name		    "relay_ANSI_functions_lib"
     created		    "19-Apr-2016 10:19:53"
     isLibrary		    1
-    firstTarget		    36
+    firstTarget		    61
     sfVersion		    76014001.0015
   }
   chart {
     id			    2
-    name		    "R50512759/Relays"
+    name		    "relay_protection_functions/Relays"
     windowPosition	    [541 458.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1200 1.333333333333333]
     treeNode		    [0 3 0 0]
-    firstTransition	    17
-    firstJunction	    16
+    firstTransition	    25
+    firstJunction	    24
     viewObj		    2
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    24
+    subviewS {
+    }
+    ssIdHighWaterMark	    33
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    4
-    chartFileNumber	    4
+    chartFileNumber	    1
     disableImplicitCasting  1
     eml {
-      name		      "relays_50512759"
+      name		      "relay_elements"
     }
   }
   state {
@@ -4241,29 +5256,34 @@ Stateflow {
     eml {
       isEML		      1
       script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
-      "of charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
-      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modi"
-      "fy, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to"
-      " whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyrigh"
-      "t notice and this permission notice shall be included in \n% all copies or substantial portions of the Software."
-      "\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT "
-      "NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN N"
-      "O EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER "
-      "IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR "
-      "THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\n\nfunction [trip50, trip51, trip27, trip59] = relays_505"
-      "12759(Ts, Reset, Iinst, Irms, Vrms, IOC, TOC, VRMSLL)\n%#codegen\n\n% initialize or reset the trip signals\npers"
-      "istent R50 R51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;"
-      "\nend\n\n% latch for true signals\nif ~(R50==true || R51==true)\n    % calling external function\n    r = relay_"
-      "ANSI_50512759_script(Ts, Iinst, Irms, Vrms, IOC, TOC, VRMSLL);\n    R50 = r.trip50;\n    R51 = r.trip51;\n    R2"
-      "7 = r.trip27;\n    R59 = r.trip59;\nend\n\ntrip50 = R50; % latched\ntrip51 = R51; % latched\ntrip27 = R27; % not"
-      " latched\ntrip59 = R59; % not latched\n\n"
+      "of charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software"
+      "\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modif"
+      "y,\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to wh"
+      "om the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright noti"
+      "ce and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% "
+      "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMIT"
+      "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
+      "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
+      "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
+      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction [trip50, trip51, trip27, trip59] = relay_elements(Enable_log"
+      "ic, Ts, Reset, Iinst, Irms, Vrms, VRMSLN,...\n    CT_p, IOC_pickup, IOC_tripDelay, TOC_pickup, curveType, timeDi"
+      "al, UV_pickup, OV_pickup, UVOV_tripDelay)\n%#codegen\n\n% initialize or reset the trip signals\npersistent R50 R"
+      "51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;\nend\n\n% a"
+      "pplying turns CT ratio - assuming protection type CT\nIinst = Iinst * (5/CT_p);\nIrms = Irms * (5/CT_p);\n\n% ol"
+      "d- latch for true signals\n% old- if ~(R50==true || R51==true) && Enable_logic==1\nif Enable_logic==1\n    % cal"
+      "ling external function expressing relay protection elements\n    T50 = relay_ANSI_50P_script(Ts, Iinst , IOC_pic"
+      "kup, IOC_tripDelay);\n    T51 = relay_ANSI_51P_script(Ts, Irms, TOC_pickup, curveType, timeDial);\n    T27 = rel"
+      "ay_ANSI_27P_script(Ts, Vrms, VRMSLN, UV_pickup, UVOV_tripDelay);\n    T59 = relay_ANSI_59P_script(Ts, Vrms, VRMS"
+      "LN, OV_pickup, UVOV_tripDelay);\n    \n    R50 = T50;\n    R51 = T51;\n    R27 = T27;\n    R59 = T59;\nend\n\n% "
+      "external latch\ntrip50 = R50; % old- latched\ntrip51 = R51; % old- latched\ntrip27 = R27; % old- not latched\ntr"
+      "ip59 = R59; % old- not latched\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
   data {
     id			    4
-    ssIdNumber		    24
-    name		    "Ts"
+    ssIdNumber		    33
+    name		    "Enable_logic"
     linkNode		    [2 0 5]
     scope		    INPUT_DATA
     machine		    1
@@ -4284,10 +5304,10 @@ Stateflow {
   }
   data {
     id			    5
-    ssIdNumber		    22
-    name		    "trip50"
+    ssIdNumber		    24
+    name		    "Ts"
     linkNode		    [2 4 6]
-    scope		    OUTPUT_DATA
+    scope		    INPUT_DATA
     machine		    1
     props {
       array {
@@ -4300,7 +5320,7 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
@@ -4391,8 +5411,8 @@ Stateflow {
   }
   data {
     id			    10
-    ssIdNumber		    23
-    name		    "IOC"
+    ssIdNumber		    9
+    name		    "VRMSLN"
     linkNode		    [2 9 11]
     scope		    INPUT_DATA
     machine		    1
@@ -4413,30 +5433,10 @@ Stateflow {
   }
   data {
     id			    11
-    ssIdNumber		    5
-    name		    "trip51"
+    ssIdNumber		    23
+    name		    "CT_p"
     linkNode		    [2 10 12]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    12
-    ssIdNumber		    6
-    name		    "trip27"
-    linkNode		    [2 11 13]
-    scope		    OUTPUT_DATA
+    scope		    INPUT_DATA
     machine		    1
     props {
       array {
@@ -4449,14 +5449,36 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    12
+    ssIdNumber		    8
+    name		    "IOC_pickup"
+    linkNode		    [2 11 13]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    13
-    ssIdNumber		    8
-    name		    "TOC"
+    ssIdNumber		    25
+    name		    "IOC_tripDelay"
     linkNode		    [2 12 14]
     scope		    INPUT_DATA
     machine		    1
@@ -4477,8 +5499,8 @@ Stateflow {
   }
   data {
     id			    14
-    ssIdNumber		    9
-    name		    "VRMSLL"
+    ssIdNumber		    26
+    name		    "TOC_pickup"
     linkNode		    [2 13 15]
     scope		    INPUT_DATA
     machine		    1
@@ -4499,9 +5521,183 @@ Stateflow {
   }
   data {
     id			    15
+    ssIdNumber		    27
+    name		    "curveType"
+    linkNode		    [2 14 16]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    16
+    ssIdNumber		    28
+    name		    "timeDial"
+    linkNode		    [2 15 17]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    17
+    ssIdNumber		    30
+    name		    "UV_pickup"
+    linkNode		    [2 16 18]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    18
+    ssIdNumber		    31
+    name		    "OV_pickup"
+    linkNode		    [2 17 19]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    19
+    ssIdNumber		    32
+    name		    "UVOV_tripDelay"
+    linkNode		    [2 18 20]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    20
+    ssIdNumber		    22
+    name		    "trip50"
+    linkNode		    [2 19 21]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    21
+    ssIdNumber		    5
+    name		    "trip51"
+    linkNode		    [2 20 22]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    22
+    ssIdNumber		    6
+    name		    "trip27"
+    linkNode		    [2 21 23]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    23
     ssIdNumber		    11
     name		    "trip59"
-    linkNode		    [2 14 0]
+    linkNode		    [2 22 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4520,7 +5716,7 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   junction {
-    id			    16
+    id			    24
     position		    [23.5747 49.5747 7]
     chart		    2
     linkNode		    [2 0 0]
@@ -4529,7 +5725,7 @@ Stateflow {
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    17
+    id			    25
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -4537,7 +5733,7 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      16
+      id		      24
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
@@ -4553,27 +5749,381 @@ Stateflow {
     ssIdNumber		    2
   }
   instance {
-    id			    18
-    name		    "R50512759/Relays"
+    id			    26
+    name		    "relay_protection_functions/Relays"
     machine		    1
     chart		    2
   }
   chart {
-    id			    19
-    name		    "R50512759_ext_param/Relays"
+    id			    27
+    name		    "R50512759/Relays"
     windowPosition	    [541 458.75 213 385]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 20 0 0]
-    firstTransition	    34
-    firstJunction	    33
-    viewObj		    19
+    treeNode		    [0 28 0 0]
+    firstTransition	    42
+    firstJunction	    41
+    viewObj		    27
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
     ssIdHighWaterMark	    24
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    21
+    firstData		    29
+    chartFileNumber	    4
+    disableImplicitCasting  1
+    eml {
+      name		      "relays_50512759"
+    }
+  }
+  state {
+    id			    28
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    27
+    treeNode		    [27 0 0 0]
+    superState		    SUBCHART
+    subviewer		    27
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
+      "of charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
+      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modi"
+      "fy, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons to"
+      " whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyrigh"
+      "t notice and this permission notice shall be included in \n% all copies or substantial portions of the Software."
+      "\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING BUT "
+      "NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN N"
+      "O EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER "
+      "IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFTWARE OR "
+      "THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\n\nfunction [trip50, trip51, trip27, trip59] = relays_505"
+      "12759(Ts, Reset, Iinst, Irms, Vrms, IOC, TOC, VRMSLL)\n%#codegen\n\n% initialize or reset the trip signals\npers"
+      "istent R50 R51 R27 R59\nif isempty(R51) || Reset\n    R50=false;\n    R51=false;\n    R59=false;\n    R27=false;"
+      "\nend\n\n% latch for true signals\nif ~(R50==true || R51==true)\n    % calling external function\n    r = relay_"
+      "ANSI_50512759_script(Ts, Iinst, Irms, Vrms, IOC, TOC, VRMSLL);\n    R50 = r.trip50;\n    R51 = r.trip51;\n    R2"
+      "7 = r.trip27;\n    R59 = r.trip59;\nend\n\ntrip50 = R50; % latched\ntrip51 = R51; % latched\ntrip27 = R27; % not"
+      " latched\ntrip59 = R59; % not latched\n\n"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    29
+    ssIdNumber		    24
+    name		    "Ts"
+    linkNode		    [27 0 30]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    30
+    ssIdNumber		    22
+    name		    "trip50"
+    linkNode		    [27 29 31]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    31
+    ssIdNumber		    19
+    name		    "Reset"
+    linkNode		    [27 30 32]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    32
+    ssIdNumber		    21
+    name		    "Iinst"
+    linkNode		    [27 31 33]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    33
+    ssIdNumber		    4
+    name		    "Irms"
+    linkNode		    [27 32 34]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    34
+    ssIdNumber		    12
+    name		    "Vrms"
+    linkNode		    [27 33 35]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    35
+    ssIdNumber		    23
+    name		    "IOC"
+    linkNode		    [27 34 36]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    36
+    ssIdNumber		    5
+    name		    "trip51"
+    linkNode		    [27 35 37]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    37
+    ssIdNumber		    6
+    name		    "trip27"
+    linkNode		    [27 36 38]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    38
+    ssIdNumber		    8
+    name		    "TOC"
+    linkNode		    [27 37 39]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    39
+    ssIdNumber		    9
+    name		    "VRMSLL"
+    linkNode		    [27 38 40]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    40
+    ssIdNumber		    11
+    name		    "trip59"
+    linkNode		    [27 39 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    41
+    position		    [23.5747 49.5747 7]
+    chart		    27
+    linkNode		    [27 0 0]
+    subviewer		    27
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    42
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      41
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    27
+    linkNode		    [27 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    27
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  instance {
+    id			    43
+    name		    "R50512759/Relays"
+    machine		    1
+    chart		    27
+  }
+  chart {
+    id			    44
+    name		    "R50512759_ext_param/Relays"
+    windowPosition	    [541 458.75 213 385]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1200 1.333333333333333]
+    treeNode		    [0 45 0 0]
+    firstTransition	    59
+    firstJunction	    58
+    viewObj		    44
+    machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    ssIdHighWaterMark	    24
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    46
     chartFileNumber	    12
     disableImplicitCasting  1
     eml {
@@ -4581,14 +6131,14 @@ Stateflow {
     }
   }
   state {
-    id			    20
+    id			    45
     labelString		    "eML_blk_kernel()"
     position		    [18 64.5 118 66]
     fontSize		    12
-    chart		    19
-    treeNode		    [19 0 0 0]
+    chart		    44
+    treeNode		    [44 0 0 0]
     superState		    SUBCHART
-    subviewer		    19
+    subviewer		    44
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -4615,10 +6165,10 @@ Stateflow {
     }
   }
   data {
-    id			    21
+    id			    46
     ssIdNumber		    24
     name		    "Ts"
-    linkNode		    [19 0 22]
+    linkNode		    [44 0 47]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4637,10 +6187,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    22
+    id			    47
     ssIdNumber		    22
     name		    "trip50"
-    linkNode		    [19 21 23]
+    linkNode		    [44 46 48]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4659,10 +6209,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    23
+    id			    48
     ssIdNumber		    19
     name		    "Reset"
-    linkNode		    [19 22 24]
+    linkNode		    [44 47 49]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4681,10 +6231,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    24
+    id			    49
     ssIdNumber		    21
     name		    "Iinst"
-    linkNode		    [19 23 25]
+    linkNode		    [44 48 50]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4703,10 +6253,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    25
+    id			    50
     ssIdNumber		    4
     name		    "Irms"
-    linkNode		    [19 24 26]
+    linkNode		    [44 49 51]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4722,10 +6272,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    26
+    id			    51
     ssIdNumber		    12
     name		    "Vrms"
-    linkNode		    [19 25 27]
+    linkNode		    [44 50 52]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4744,10 +6294,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    27
+    id			    52
     ssIdNumber		    23
     name		    "IOC"
-    linkNode		    [19 26 28]
+    linkNode		    [44 51 53]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4766,10 +6316,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    28
+    id			    53
     ssIdNumber		    5
     name		    "trip51"
-    linkNode		    [19 27 29]
+    linkNode		    [44 52 54]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4786,10 +6336,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    29
+    id			    54
     ssIdNumber		    6
     name		    "trip27"
-    linkNode		    [19 28 30]
+    linkNode		    [44 53 55]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4808,10 +6358,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    30
+    id			    55
     ssIdNumber		    8
     name		    "TOC"
-    linkNode		    [19 29 31]
+    linkNode		    [44 54 56]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4830,10 +6380,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    31
+    id			    56
     ssIdNumber		    9
     name		    "VRMSLL"
-    linkNode		    [19 30 32]
+    linkNode		    [44 55 57]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -4852,10 +6402,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    32
+    id			    57
     ssIdNumber		    11
     name		    "trip59"
-    linkNode		    [19 31 0]
+    linkNode		    [44 56 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4874,16 +6424,16 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   junction {
-    id			    33
+    id			    58
     position		    [23.5747 49.5747 7]
-    chart		    19
-    linkNode		    [19 0 0]
-    subviewer		    19
+    chart		    44
+    linkNode		    [44 0 0]
+    subviewer		    44
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    34
+    id			    59
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -4891,14 +6441,14 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      33
+      id		      58
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    19
-    linkNode		    [19 0 0]
+    chart		    44
+    linkNode		    [44 0 0]
     dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    19
+    subviewer		    44
     drawStyle		    SMART
     slide {
       sticky		      BOTH_STICK
@@ -4907,13 +6457,13 @@ Stateflow {
     ssIdNumber		    2
   }
   instance {
-    id			    35
+    id			    60
     name		    "R50512759_ext_param/Relays"
     machine		    1
-    chart		    19
+    chart		    44
   }
   target {
-    id			    36
+    id			    61
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
     machine		    1
