@@ -3,10 +3,10 @@ function [ kpp2 ] = calc_kpp2( res, seqi, comm, prices, id )
 %   Detailed explanation goes here
 
 %% Fuel consumption
-gen1_gal_h = res.dieselGenerator_fuelConsumption(:,1)/100;    % gal/h
+gen1_gal_h = res.dieselGenerator_fuelConsumption(:,1)/100*4;    % gal/h   x4 - correction to more fuel use more realistic
 gen2_heat_rec = res.ngchpGenerator_heatRecovered/100;          % MBtu/h             
 gen2_nm3_h = gen2_heat_rec/0.2/0.020267/1.76;                   % Nm^3/h             
-gen3_gal_h = res.dieselGenerator_fuelConsumption(:,2)/100/4*1.6;    % gal/h
+gen3_gal_h = res.dieselGenerator_fuelConsumption(:,2)/100/4*1.6*4;    % gal/h x4 - correction to more fuel use more realistic
 
 cb_switches = [sum(abs(diff(1&res.breaker(:,:))),2); 0];
 
