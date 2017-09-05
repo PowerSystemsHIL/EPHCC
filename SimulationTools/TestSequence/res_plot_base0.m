@@ -6,8 +6,8 @@ close all;
     % fully autonomous control - only SoC commands from operator
 %load 20170811_1539_res.mat;        % Manual control - crashed after Gen1 outage
 %load 20170815_0400_res.mat;         % Manual control - crashed after Gen1 outage
-%load 20170824_1650_res.mat;         % Simple controller - didn't crash
-load 20170829_0800_res.mat;         % Simple controller - didn't crash
+load 20170824_1650_res.mat;         % Simple controller - didn't crash
+%load 20170829_0800_res.mat;         % Simple controller - didn't crash
 
 %%  Initialise supporting data
 prices = init_prices;
