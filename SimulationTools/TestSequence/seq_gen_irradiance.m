@@ -1,4 +1,4 @@
-function [ out_irrad ] = gen_irradiance( opt )
+function [ out_irrad ] = seq_gen_irradiance( opt )
 %IRRADIANCE Summary of this function goes here
 %   Detailed explanation goes here
 

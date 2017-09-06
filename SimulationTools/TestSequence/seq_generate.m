@@ -1,7 +1,6 @@
-opt = init_seq();
+opt = seq_config();
 
-
-seq = generate_all(opt);
+seq = seq_generate_all(opt);
 
 seq_plot(seq);
 

@@ -1,4 +1,4 @@
-function [ vect ] = gen_stairs( opt, fieldname )
+function [ vect ] = seq_gen_stairs( opt, fieldname )
 %GEN_PWL Summary of this function goes here
 %   Detailed explanation goes here
     str = eval(['opt.' fieldname]);

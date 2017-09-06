@@ -1,4 +1,4 @@
-function [ out ] = gen_price( opt )
+function [ out ] = seq_gen_price( opt )
 %GEN_PRICE Summary of this function goes here
 %   Detailed explanation goes here
 %IRRADIANCE Summary of this function goes here

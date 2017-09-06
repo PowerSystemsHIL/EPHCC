@@ -1,31 +1,31 @@
-function [ sequence ] = generate_all( opt )
+function [ sequence ] = seq_generate_all( opt )
 %GENERATE_ALL Summary of this function goes here
 %   Detailed explanation goes here
 
 t = 0:opt.Ts:opt.End;
 
-irradiance = gen_irradiance(opt);
-irradiance = [  gen_clouds(opt, irradiance, 0); ... 
-                gen_clouds(opt, irradiance, opt.CloudDelay)];
-price = gen_price(opt);
+irradiance = seq_gen_irradiance(opt);
+irradiance = [  seq_gen_clouds(opt, irradiance, 0); ... 
+                seq_gen_clouds(opt, irradiance, opt.CloudDelay)];
+price = seq_gen_price(opt);
 
-cut_grid = gen_stairs(opt, 'Grid.CutGrid');
-grid_open_ssf1 = gen_stairs(opt, 'Grid.OpenSSF1');
-grid_open_ssf2 = gen_stairs(opt, 'Grid.OpenSSF2');
-grid_open_ssf3 = gen_stairs(opt, 'Grid.OpenSSF3');
+cut_grid = seq_gen_stairs(opt, 'Grid.CutGrid');
+grid_open_ssf1 = seq_gen_stairs(opt, 'Grid.OpenSSF1');
+grid_open_ssf2 = seq_gen_stairs(opt, 'Grid.OpenSSF2');
+grid_open_ssf3 = seq_gen_stairs(opt, 'Grid.OpenSSF3');
 
 grid_freq = 60.000 * ones(1,opt.N);
-grid_freq = gen_freq(opt, grid_freq);
+grid_freq = seq_gen_freq(opt, grid_freq);
 grid_volt = 115000 * ones(1,opt.N);
-grid_volt = gen_volt(opt, grid_volt);
+grid_volt = seq_gen_volt(opt, grid_volt);
 
-dms_disreq = gen_stairs(opt, 'DMS.DisReq');
-dms_kWena  = gen_stairs(opt, 'DMS.kWena');
-dms_PFena  = gen_stairs(opt, 'DMS.PFena');
-dms_kWref  = gen_stairs(opt, 'DMS.kWref');
-dms_PFref  = gen_stairs(opt, 'DMS.PFref');
-dms_Dp     = gen_stairs(opt, 'DMS.Dp');
-dms_Dq     = gen_stairs(opt, 'DMS.Dq');
+dms_disreq = seq_gen_stairs(opt, 'DMS.DisReq');
+dms_kWena  = seq_gen_stairs(opt, 'DMS.kWena');
+dms_PFena  = seq_gen_stairs(opt, 'DMS.PFena');
+dms_kWref  = seq_gen_stairs(opt, 'DMS.kWref');
+dms_PFref  = seq_gen_stairs(opt, 'DMS.PFref');
+dms_Dp     = seq_gen_stairs(opt, 'DMS.Dp');
+dms_Dq     = seq_gen_stairs(opt, 'DMS.Dq');
 iDp = dms_Dp>0;
 dms_kWHzref = dms_kWref;
 dms_kWHzref(iDp) = dms_kWref(iDp) + (grid_freq(iDp) - 60)/60./(dms_Dp(iDp)/100)*10e3;
@@ -54,23 +54,23 @@ dms_ang_kVArVoltref_nan = nanv;
 dms_ang_kVArVoltref_nan(iVoltEvent) = dms_ang_kVArVoltref(iVoltEvent);
 dms_phiref_nan = acos(dms_PFref_nan)/pi*180;
 
-motor1     = gen_stairs(opt, 'Motor1');
-motor2     = gen_stairs(opt, 'Motor2');
+motor1     = seq_gen_stairs(opt, 'Motor1');
+motor2     = seq_gen_stairs(opt, 'Motor2');
 
-mgc_enable = gen_stairs(opt, 'MGC_Enable');
-fault.loc1 = gen_stairs(opt, 'Fault.Loc1');
-fault.loc2 = gen_stairs(opt, 'Fault.Loc2');
-fault.loc3 = gen_stairs(opt, 'Fault.Loc3');
-fault.loc4 = gen_stairs(opt, 'Fault.Loc4');
-fault.loc5 = gen_stairs(opt, 'Fault.Loc5');
-fault.loc6 = gen_stairs(opt, 'Fault.Loc6');
-fault.gen1 = gen_stairs(opt, 'Fault.Gen1');
-fault.gen2 = gen_stairs(opt, 'Fault.Gen2');
-fault.gen3 = gen_stairs(opt, 'Fault.Gen3');
-fault.ess1 = gen_stairs(opt, 'Fault.Ess1');
-fault.ess2 = gen_stairs(opt, 'Fault.Ess2');
-fault.pv1  = gen_stairs(opt, 'Fault.Pv1');
-fault.pv2  = gen_stairs(opt, 'Fault.Pv2');
+mgc_enable = seq_gen_stairs(opt, 'MGC_Enable');
+fault.loc1 = seq_gen_stairs(opt, 'Fault.Loc1');
+fault.loc2 = seq_gen_stairs(opt, 'Fault.Loc2');
+fault.loc3 = seq_gen_stairs(opt, 'Fault.Loc3');
+fault.loc4 = seq_gen_stairs(opt, 'Fault.Loc4');
+fault.loc5 = seq_gen_stairs(opt, 'Fault.Loc5');
+fault.loc6 = seq_gen_stairs(opt, 'Fault.Loc6');
+fault.gen1 = seq_gen_stairs(opt, 'Fault.Gen1');
+fault.gen2 = seq_gen_stairs(opt, 'Fault.Gen2');
+fault.gen3 = seq_gen_stairs(opt, 'Fault.Gen3');
+fault.ess1 = seq_gen_stairs(opt, 'Fault.Ess1');
+fault.ess2 = seq_gen_stairs(opt, 'Fault.Ess2');
+fault.pv1  = seq_gen_stairs(opt, 'Fault.Pv1');
+fault.pv2  = seq_gen_stairs(opt, 'Fault.Pv2');
 
 udpframe = int16(zeros(15,opt.N));
 udpframe(1:2,:)   = reshape(typecast(uint32(t*1000), 'int16'),2,opt.N);

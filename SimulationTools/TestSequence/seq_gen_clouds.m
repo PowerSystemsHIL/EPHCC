@@ -1,4 +1,4 @@
-function [ out_irrad ] = gen_clouds( opt, in_irrad, delay )
+function [ out_irrad ] = seq_gen_clouds( opt, in_irrad, delay )
 %CLOUD Summary of this function goes here
 %   Detailed explanation goes here
 
