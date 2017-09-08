@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1216.0]
+      Location		      [297.0, 6.0, 1936.0, 1102.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1693.0, 1050.0]
-	ZoomFactor		[2.1386554621848743]
-	Offset			[-123.55943025540265, 73.4538310412574]
+	Extents			[1690.0, 916.0]
+	ZoomFactor		[1.865546218487395]
+	Offset			[-180.70045045045038, 72.49549549549549]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "re25624"
+  LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Dec 07 16:01:33 2016"
-  RTWModifiedTimeStamp	  403027288
-  ModelVersionFormat	  "1.%<AutoIncrement:19>"
+  LastModifiedDate	  "Fri Sep 08 09:18:41 2017"
+  RTWModifiedTimeStamp	  426763094
+  ModelVersionFormat	  "1.%<AutoIncrement:20>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -809,7 +809,7 @@ Library {
   }
   System {
     Name		    "relay_tripOutMng_lib"
-    Location		    [1912, -8, 3848, 1208]
+    Location		    [297, 6, 2233, 1108]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -821,7 +821,7 @@ Library {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "214"
+    ZoomFactor		    "187"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "92"
     Block {
@@ -832,7 +832,7 @@ Library {
       Position		      [160, 361, 330, 539]
       ZOrder		      2044
       BackgroundColor	      "[0.827451, 0.839216, 0.156863]"
-      LibraryVersion	      "*1.18"
+      LibraryVersion	      "*1.19"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -842,7 +842,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"State Condition Mng"
-	Location		[1856, 0, 3792, 1212]
+	Location		[-9, -9, 1929, 1041]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -854,7 +854,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"160"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "R25"
@@ -1141,7 +1141,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "168"
+	    SIDHighWatermark	    "184"
 	    SIDPrevWatermark	    "115"
 	    Block {
 	      BlockType		      Inport
@@ -1199,20 +1199,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "67::167"
+	      SID		      "67::183"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      31
+	      ZOrder		      37
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "67::166"
+	      SID		      "67::182"
 	      Tag		      "Stateflow S-Function relay_tripOutMng_lib 1"
 	      Ports		      [6, 2]
 	      Position		      [180, 102, 230, 243]
-	      ZOrder		      30
+	      ZOrder		      36
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[6 2]"
 	      EnableBusSupport	      off
@@ -1226,9 +1226,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "67::168"
+	      SID		      "67::184"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      32
+	      ZOrder		      38
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1543,9 +1543,9 @@ Stateflow {
       "= ((op_mode == 0 || op_mode == 1) && isToggled_op_mode == 1);\n\nif time_flag && fault_flag==0 && isSync==1 && ("
       "ctrl_on_flag || close_cmd_flag)\n    % true when there is not faults in the relay protection zone, the\n    % sy"
       "nc-check is active, and above flags are true\n    out = 1; % close cb cmd\nelseif time_flag && (fault_flag == 1 "
-      "|| isSync == 0 || op_mode == 2)\n    % true when simulation time is greater than initial condition time and\n   "
-      " % there is a fault in the protection zone, or fails to sync, or ctrl cmd\n    out = 0; % open cb cmd\nelse\n   "
-      " out = init_cond;\nend\n\n"
+      "|| op_mode == 2)\n    % true when simulation time is greater than initial condition time and\n    % there is a f"
+      "ault in the protection zone, or fails to sync, or ctrl cmd\n    out = 0; % open cb cmd\nelse\n    out = init_con"
+      "d;\nend\n\n"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }

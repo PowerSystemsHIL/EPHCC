@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 926.0]
+	Extents			[1686.0, 906.0]
 	ZoomFactor		[1.25]
 	Offset			[-143.79122807017586, -25.321052631578937]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jul 26 14:02:56 2017"
-  RTWModifiedTimeStamp	  422978574
-  ModelVersionFormat	  "1.%<AutoIncrement:21>"
+  LastModifiedDate	  "Fri Sep 08 09:18:21 2017"
+  RTWModifiedTimeStamp	  426763094
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -731,45 +731,10 @@ Library {
       PreserveConstantTs      off
     }
     Block {
-      BlockType		      DataTypeConversion
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via back propagation"
-      LockScale		      off
-      ConvertRealWorld	      "Real World Value (RWV)"
-      RndMeth		      "Zero"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
       BusSelectionMode	      off
-    }
-    Block {
-      BlockType		      DiscreteIntegrator
-      IntegratorMethod	      "Integration: Forward Euler"
-      gainval		      "1.0"
-      ExternalReset	      "none"
-      InitialConditionSource  "internal"
-      InitialCondition	      "0"
-      InitialConditionMode    "State and output"
-      SampleTime	      "1"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	off
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
-      ShowSaturationPort      off
-      ShowStatePort	      off
-      IgnoreLimit	      off
-      StateMustResolveToSignalObject off
-      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Fcn
@@ -886,14 +851,6 @@ Library {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      RelationalOperator
-      Operator		      ">="
-      InputSameDT	      on
-      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
-      ZeroCross		      on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      S-Function
       FunctionName	      "system"
       SFunctionModules	      "''"
@@ -975,16 +932,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "354"
+    SIDHighWatermark	    "356"
     Block {
       BlockType		      SubSystem
       Name		      "R25 - Sync Check v0.1"
       SID		      "176"
-      Ports		      [6, 2]
-      Position		      [845, 236, 1045, 389]
+      Ports		      [4, 2]
+      Position		      [845, 238, 1045, 392]
       ZOrder		      3172
       BackgroundColor	      "gray"
-      LibraryVersion	      "*1.20"
+      LibraryVersion	      "*1.21"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1020,7 +977,7 @@ Library {
       }
       System {
 	Name			"R25 - Sync Check v0.1"
-	Location		[0, 0, 1611, 1040]
+	Location		[-9, -9, 1929, 1041]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1052,30 +1009,11 @@ Library {
 	}
 	Block {
 	  BlockType		  Inport
-	  Name			  "fault_flag"
-	  SID			  "179"
-	  Position		  [1160, 538, 1190, 552]
-	  ZOrder		  -1
-	  NamePlacement		  "alternate"
-	  Port			  "3"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "mode_in"
-	  SID			  "180"
-	  Position		  [1160, 623, 1190, 637]
-	  ZOrder		  -1
-	  Port			  "4"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Inport
 	  Name			  "relay_param"
 	  SID			  "181"
 	  Position		  [215, 223, 245, 237]
 	  ZOrder		  1589
-	  Port			  "5"
+	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1084,7 +1022,7 @@ Library {
 	  SID			  "353"
 	  Position		  [375, 568, 405, 582]
 	  ZOrder		  3508
-	  Port			  "6"
+	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1221,15 +1159,6 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
-	}
-	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn"
-	  SID			  "186"
-	  Position		  [1215, 620, 1265, 640]
-	  ZOrder		  -1
-	  ShowName		  off
-	  Expr			  "u(1)==2"
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -1455,16 +1384,6 @@ Library {
 	  GotoTag		  "dV_threshold"
 	}
 	Block {
-	  BlockType		  From
-	  Name			  "From6"
-	  SID			  "287"
-	  Position		  [1175, 356, 1240, 374]
-	  ZOrder		  3399
-	  BackgroundColor	  "green"
-	  ShowName		  off
-	  GotoTag		  "reset"
-	}
-	Block {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  "201"
@@ -1501,16 +1420,6 @@ Library {
 	  GotoTag		  "dF_threshold"
 	}
 	Block {
-	  BlockType		  Goto
-	  Name			  "Goto4"
-	  SID			  "281"
-	  Position		  [1405, 548, 1475, 562]
-	  ZOrder		  3393
-	  BackgroundColor	  "green"
-	  ShowName		  off
-	  GotoTag		  "reset"
-	}
-	Block {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator"
 	  SID			  "205"
@@ -1524,24 +1433,6 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "dV&dF&dW"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Logic
-	  Name			  "Logical\nOperator1"
-	  SID			  "206"
-	  Ports			  [2, 1]
-	  Position		  [1325, 533, 1365, 577]
-	  ZOrder		  -11
-	  ShowName		  off
-	  Operator		  "OR"
-	  AllPortsSameDT	  off
-	  OutDataTypeStr	  "boolean"
-	  Port {
-	    PortNumber		    1
-	    Name		    "reset"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1984,32 +1875,6 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
-	  BlockType		  Reference
-	  Name			  "S-R\nFlip-Flop1"
-	  SID			  "229"
-	  Ports			  [2, 2]
-	  Position		  [1515, 330, 1560, 405]
-	  ZOrder		  1441
-	  LibraryVersion	  "1.44"
-	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
-	  SourceType		  "SRFlipFlop"
-	  initial_condition	  "0"
-	  Port {
-	    PortNumber		    1
-	    Name		    "R25"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator1"
-	  SID			  "230"
-	  Position		  [1585, 375, 1605, 395]
-	  ZOrder		  -20
-	  ShowName		  off
-	}
-	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator5"
 	  SID			  "231"
@@ -2347,7 +2212,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "208"
+	    SIDHighWatermark	    "221"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vbus"
@@ -2377,20 +2242,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "247::207"
+	      SID		      "247::220"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      65
+	      ZOrder		      71
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "247::206"
+	      SID		      "247::219"
 	      Tag		      "Stateflow S-Function relay_ANSI_F25_lib 3"
 	      Ports		      [3, 2]
 	      Position		      [180, 100, 230, 180]
-	      ZOrder		      64
+	      ZOrder		      70
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[3 2]"
 	      EnableBusSupport	      off
@@ -2404,9 +2269,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "247::208"
+	      SID		      "247::221"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      66
+	      ZOrder		      72
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -2458,274 +2323,6 @@ Library {
 	  }
 	}
 	Block {
-	  BlockType		  SubSystem
-	  Name			  "signal time check-counter"
-	  SID			  "290"
-	  Ports			  [2, 1]
-	  Position		  [1295, 320, 1455, 380]
-	  ZOrder		  3410
-	  BackgroundColor	  "lightBlue"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  Object {
-	    $PropName		    "MaskObject"
-	    $ObjectID		    19
-	    $ClassName		    "Simulink.Mask"
-	    Type		    "Signal check-counter"
-	    Description		    "check_counter_time [s]: minimum time of synchronism between buses before setting R25 signal HI."
-	    "\nTs[s]: simulation time step in seconds "
-	    Array {
-	      Type		      "Simulink.MaskParameter"
-	      Dimension		      2
-	      Object {
-		$ObjectID		20
-		Type			"edit"
-		Name			"check_counter_time"
-		Prompt			"Check Counter Time [s]"
-		Value			"2/60"
-	      }
-	      Object {
-		$ObjectID		21
-		Type			"edit"
-		Name			"Ts"
-		Prompt			"Ts [s]"
-		Value			"Ts"
-	      }
-	      PropName		      "Parameters"
-	    }
-	  }
-	  Port {
-	    PortNumber		    1
-	    Name		    "R25"
-	    PropagatedSignals	    "SR-FF"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  System {
-	    Name		    "signal time check-counter"
-	    Location		    [1912, -8, 3848, 1208]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "150"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "logic_signal"
-	      SID		      "291"
-	      Position		      [105, 193, 135, 207]
-	      ZOrder		      3408
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "reset"
-	      SID		      "292"
-	      Position		      [200, 213, 230, 227]
-	      ZOrder		      3409
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      DataTypeConversion
-	      Name		      "Data Type Conversion"
-	      SID		      "293"
-	      Position		      [350, 200, 390, 220]
-	      ZOrder		      3405
-	      ShowName		      off
-	      RndMeth		      "Floor"
-	      SaturateOnIntegerOverflow	off
-	    }
-	    Block {
-	      BlockType		      DiscreteIntegrator
-	      Name		      "Discrete-Time\nIntegrator"
-	      SID		      "294"
-	      Ports		      [2, 1]
-	      Position		      [530, 189, 630, 276]
-	      ZOrder		      3382
-	      BackgroundColor	      "yellow"
-	      ExternalReset	      "either"
-	      InitialConditionMode    "State only (most efficient)"
-	      SampleTime	      "Ts"
-	      LimitOutput	      on
-	      UpperSaturationLimit    "1"
-	      LowerSaturationLimit    "0"
-	      ICPrevOutput	      "DiscIntNeverNeededParam"
-	      ICPrevScaledInput	      "DiscIntNeverNeededParam"
-	    }
-	    Block {
-	      BlockType		      Fcn
-	      Name		      "Fcn"
-	      SID		      "295"
-	      Position		      [415, 200, 500, 220]
-	      ZOrder		      3406
-	      ShowName		      off
-	      Expr		      "u(1) * (u(2)==0)"
-	    }
-	    Block {
-	      BlockType		      Logic
-	      Name		      "Logical\nOperator3"
-	      SID		      "296"
-	      Ports		      [2, 1]
-	      Position		      [790, 292, 820, 323]
-	      ZOrder		      3389
-	      ShowName		      off
-	      AllPortsSameDT	      off
-	      OutDataTypeStr	      "boolean"
-	      Port {
-		PortNumber		1
-		Name			"SR-FF"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Mux
-	      Name		      "Mux"
-	      SID		      "297"
-	      Ports		      [2, 1]
-	      Position		      [310, 191, 315, 229]
-	      ZOrder		      3407
-	      ShowName		      off
-	      Inputs		      "2"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      RelationalOperator
-	      Name		      "Relational\nOperator"
-	      SID		      "298"
-	      Ports		      [2, 1]
-	      Position		      [685, 214, 730, 241]
-	      ZOrder		      3386
-	      Operator		      "<="
-	      InputSameDT	      off
-	      OutDataTypeStr	      "boolean"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "check-counter time"
-	      SID		      "299"
-	      Position		      [530, 145, 630, 165]
-	      ZOrder		      3103
-	      BackgroundColor	      "[0.901961, 0.000000, 0.000000]"
-	      ShowName		      off
-	      Value		      "check_counter_time"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "SR-FF"
-	      SID		      "300"
-	      Position		      [915, 303, 945, 317]
-	      ZOrder		      3410
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Mux"
-	      SrcPort		      1
-	      DstBlock		      "Data Type Conversion"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Relational\nOperator"
-	      SrcPort		      1
-	      Points		      [24, 0; 0, 70]
-	      DstBlock		      "Logical\nOperator3"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "SR-FF"
-	      Labels		      [1, 0]
-	      SrcBlock		      "Logical\nOperator3"
-	      SrcPort		      1
-	      DstBlock		      "SR-FF"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "reset"
-	      SrcPort		      1
-	      Points		      [34, 0]
-	      Branch {
-		DstBlock		"Mux"
-		DstPort			2
-	      }
-	      Branch {
-		Points			[0, 35]
-		DstBlock		"Discrete-Time\nIntegrator"
-		DstPort			2
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "check-counter time"
-	      SrcPort		      1
-	      Points		      [26, 0; 0, 65]
-	      DstBlock		      "Relational\nOperator"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Discrete-Time\nIntegrator"
-	      SrcPort		      1
-	      DstBlock		      "Relational\nOperator"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "logic_signal"
-	      SrcPort		      1
-	      Points		      [35, 0]
-	      Branch {
-		Points			[0, 115]
-		DstBlock		"Logical\nOperator3"
-		DstPort			2
-	      }
-	      Branch {
-		DstBlock		"Mux"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "Fcn"
-	      SrcPort		      1
-	      DstBlock		      "Discrete-Time\nIntegrator"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Data Type Conversion"
-	      SrcPort		      1
-	      DstBlock		      "Fcn"
-	      DstPort		      1
-	    }
-	    Annotation {
-	      SID		      "301"
-	      Name		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free o"
-	      "f charge, to any person obtaining a copy of this \n% software and associated documentation files (the \"Softwar"
-	      "e\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, mod"
-	      "ify, \n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to \n% permit persons "
-	      "to whom the Software is furnished to do so, subject to the following \n% conditions:\n% \n% \n% The above copyr"
-	      "ight notice and this permission notice shall be included in \n% all copies or substantial portions of the Softw"
-	      "are.\n% \n% THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \n% INCLUDING"
-	      " BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A \n% PARTICULAR PURPOSE AND NONINFRINGEMENT"
-	      ". IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT \n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, W"
-	      "HETHER IN AN ACTION \n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \n% SOFT"
-	      "WARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n%\n%\n%%"
-	      Position		      [131, 17]
-	      HorizontalAlignment     "left"
-	      ZOrder		      -1
-	      FontWeight	      "bold"
-	    }
-	  }
-	}
-	Block {
 	  BlockType		  Gain
 	  Name			  "sqrt3"
 	  SID			  "262"
@@ -2754,10 +2351,16 @@ Library {
 	  BlockType		  Outport
 	  Name			  "R25"
 	  SID			  "263"
-	  Position		  [1645, 343, 1675, 357]
+	  Position		  [1270, 328, 1300, 342]
 	  ZOrder		  -2
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "R25"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "pll_data"
@@ -2954,33 +2557,6 @@ Library {
 	  DstPort		  3
 	}
 	Line {
-	  SrcBlock		  "S-R\nFlip-Flop1"
-	  SrcPort		  2
-	  DstBlock		  "Terminator1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "reset"
-	  Labels		  [0, 1]
-	  SrcBlock		  "Logical\nOperator1"
-	  SrcPort		  1
-	  DstBlock		  "Goto4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "mode_in"
-	  SrcPort		  1
-	  DstBlock		  "Fcn"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Fcn"
-	  SrcPort		  1
-	  Points		  [35, 0; 0, -65]
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "relay_param"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector"
@@ -3041,46 +2617,6 @@ Library {
 	  SrcPort		  1
 	  DstBlock		  "Voltage_Comparator"
 	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Logical\nOperator3"
-	  SrcPort		  1
-	  DstBlock		  "signal time check-counter"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  Points		  [8, 0]
-	  Branch {
-	    Points		    [0, 42; 224, 0; 0, -22]
-	    DstBlock		    "S-R\nFlip-Flop1"
-	    DstPort		    2
-	  }
-	  Branch {
-	    DstBlock		    "signal time check-counter"
-	    DstPort		    2
-	  }
-	}
-	Line {
-	  SrcBlock		  "fault_flag"
-	  SrcPort		  1
-	  DstBlock		  "Logical\nOperator1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "R25"
-	  SrcBlock		  "signal time check-counter"
-	  SrcPort		  1
-	  DstBlock		  "S-R\nFlip-Flop1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "R25"
-	  SrcBlock		  "S-R\nFlip-Flop1"
-	  SrcPort		  1
-	  DstBlock		  "R25"
-	  DstPort		  1
 	}
 	Line {
 	  Name			  "dV"
@@ -3165,14 +2701,6 @@ Library {
 	  Position		  [309, 162]
 	  ZOrder		  -6
 	}
-	Annotation {
-	  SID			  "264"
-	  Name			  "If any protection elements give a trip indication \nor the MGC requests the CB to open, reset the RS FF"
-	  Position		  [1178, 494]
-	  HorizontalAlignment	  "left"
-	  ForegroundColor	  "blue"
-	  ZOrder		  -7
-	}
       }
     }
     Block {
@@ -3192,41 +2720,41 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		22
+	$ObjectID		19
 	$ClassName		"Simulink.Mask"
 	Array {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  5
 	  Object {
-	    $ObjectID		    23
+	    $ObjectID		    20
 	    Type		    "edit"
 	    Name		    "VRMSLL"
 	    Prompt		    "Nominal Voltage [VRMSLL]"
 	    Value		    "VRMSLL"
 	  }
 	  Object {
-	    $ObjectID		    24
+	    $ObjectID		    21
 	    Type		    "edit"
 	    Name		    "Ts"
 	    Prompt		    "Sampling Time [Sec]"
 	    Value		    "Ts"
 	  }
 	  Object {
-	    $ObjectID		    25
+	    $ObjectID		    22
 	    Type		    "edit"
 	    Name		    "dV_threshold"
 	    Prompt		    "Percent Voltage Threshold [%]"
 	    Value		    "dV_threshold"
 	  }
 	  Object {
-	    $ObjectID		    26
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "angle_threshold"
 	    Prompt		    "Angle Threshold [degress]"
 	    Value		    "angle_threshold"
 	  }
 	  Object {
-	    $ObjectID		    27
+	    $ObjectID		    24
 	    Type		    "edit"
 	    Name		    "dF_threshold"
 	    Prompt		    "Frequency Threshold [Hz]"
@@ -4816,7 +4344,7 @@ Library {
       MaskHideContents	      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		28
+	$ObjectID		25
 	$ClassName		"Simulink.Mask"
 	Type			"Relay synch check"
 	Description		"This block checks if the the specified conditions for breaker reclosing \nare met at both terminals of "
@@ -4825,7 +4353,7 @@ Library {
 	"F_threshold"
 	Object {
 	  $PropName		  "Parameters"
-	  $ObjectID		  29
+	  $ObjectID		  26
 	  $ClassName		  "Simulink.MaskParameter"
 	  Type			  "edit"
 	  Name			  "Ts"
