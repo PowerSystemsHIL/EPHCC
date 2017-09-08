@@ -16,6 +16,7 @@ d_cum_per_class = cumsum(d_per_class);
 legend_per_class = {'ESS1' 'ESS2'};
 d_cum_total = sum(d_cum_per_class,2);
 
+
 clear( 'res', 'seqi', 'comm', 'prices', 'kpp4' );
 kpp6=wsp2struct(who);
 

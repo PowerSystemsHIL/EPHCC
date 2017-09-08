@@ -8,8 +8,6 @@ gen2_heat_rec = res.ngchpGenerator_heatRecovered/100;          % MBtu/h
 gen2_nm3_h = gen2_heat_rec/0.2/0.020267/1.76;                   % Nm^3/h             
 gen3_gal_h = res.dieselGenerator_fuelConsumption(:,2)/100/4*1.6*4;    % gal/h x4 - correction to more fuel use more realistic
 
-cb_switches = [sum(abs(diff(1&res.breaker(:,:))),2); 0];
-
 % unwind from i32 - didn't work due to too big dynamics of changes
 % hi= gen2_nm3_h_raw > 2^13;
 % lo= gen2_nm3_h_raw < -2^13;
@@ -21,13 +19,13 @@ cb_switches = [sum(abs(diff(1&res.breaker(:,:))),2); 0];
 foh = [gen1_gal_h gen2_nm3_h gen3_gal_h gen2_heat_rec];
 p =   [res.powerreal(:,id.CBGen1) res.powerreal(:,id.CBGen2) res.powerreal(:,id.CBGen3)*20];
 e =    cumsum(p*seqi.opt.Ts/3600);
-dof_coefs = -1*[prices.P21 prices.P22 prices.P21 -prices.P28];
+dof_coefs = -1*[prices.P21 prices.P22 prices.P21 -prices.P23];
 dof       = repmat(dof_coefs, comm.M, 1);
 d_fuel    = foh.*dof;
 
-d_per_class = [d_fuel.*seqi.opt.Ts/3600 cb_switches*prices.P26];
+d_per_class = [d_fuel.*seqi.opt.Ts/3600];
 d_cum_per_class = cumsum(d_per_class);
-legend_per_class = {'Diesel1' 'NG2' 'Diesel3' 'Heat2' 'CB switch'};
+legend_per_class = {'Diesel1' 'NG2' 'Diesel3' 'Heat2'};
 d_cum_total = sum(d_cum_per_class,2);
 
 

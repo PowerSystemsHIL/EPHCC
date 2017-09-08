@@ -2,5 +2,14 @@
 seq_generate;
 % Run UDP stream to opal and store received data. Results stored in res.mata
 TX_RCV_UDP_Stream;
-% Results of tests can be plotted
+%% Plot test results
+% Results shall be stored to C:\Results\ directory as these are used to
+% generate the report
+% zoom = [10 20]
 plot_kpp_all;
+save_figs([1:8], 'C:\Results\kpp', 1,1);
+
+%%
+close all;
+res_plot_feeders;
+save_figs([1:4], 'C:\Results\feeder', 1,1);
