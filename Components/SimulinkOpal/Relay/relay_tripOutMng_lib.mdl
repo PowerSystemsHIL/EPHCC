@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [297.0, 6.0, 1936.0, 1102.0]
+      Location		      [297.0, 6.0, 1936.0, 1100.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1690.0, 916.0]
+	Extents			[1693.0, 934.0]
 	ZoomFactor		[1.865546218487395]
-	Offset			[-180.70045045045038, 72.49549549549549]
+	Offset			[-180.70045045045038, 72.4954954954955]
       }
     }
   }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Sep 08 09:18:41 2017"
-  RTWModifiedTimeStamp	  426763094
-  ModelVersionFormat	  "1.%<AutoIncrement:20>"
+  LastModifiedDate	  "Mon Sep 11 11:59:01 2017"
+  RTWModifiedTimeStamp	  427031939
+  ModelVersionFormat	  "1.%<AutoIncrement:21>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -706,17 +706,6 @@ Library {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Demux
-      Outputs		      "4"
-      DisplayOption	      "none"
-      BusSelectionMode	      off
-    }
-    Block {
-      BlockType		      Fcn
-      Expr		      "sin(u[1])"
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
@@ -773,13 +762,6 @@ Library {
       InitialOutput	      "[]"
     }
     Block {
-      BlockType		      S-Function
-      FunctionName	      "system"
-      SFunctionModules	      "''"
-      PortCounts	      "[]"
-      SFunctionDeploymentMode off
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -804,12 +786,27 @@ Library {
       GeneratePreprocessorConditionals off
     }
     Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      AllowDiffInputSizes     off
+    }
+    Block {
       BlockType		      Terminator
     }
   }
   System {
     Name		    "relay_tripOutMng_lib"
-    Location		    [297, 6, 2233, 1108]
+    Location		    [297, 6, 2233, 1106]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -823,7 +820,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "187"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "92"
+    SIDHighWatermark	    "120"
     Block {
       BlockType		      SubSystem
       Name		      "State Condition Mng"
@@ -832,7 +829,7 @@ Library {
       Position		      [160, 361, 330, 539]
       ZOrder		      2044
       BackgroundColor	      "[0.827451, 0.839216, 0.156863]"
-      LibraryVersion	      "*1.19"
+      LibraryVersion	      "*1.20"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -842,7 +839,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"State Condition Mng"
-	Location		[-9, -9, 1929, 1041]
+	Location		[0, 0, 1757, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -900,12 +897,83 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "Compare\nTo Constant"
+	  SID			  "106"
+	  Ports			  [1, 1]
+	  Position		  [435, 870, 500, 900]
+	  ZOrder		  3199
+	  ShowName		  off
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	  SourceType		  "Compare To Constant"
+	  relop			  "=="
+	  const			  "2"
+	  OutDataTypeStr	  "boolean"
+	  ZeroCross		  on
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Compare\nTo Constant1"
+	  SID			  "113"
+	  Ports			  [1, 1]
+	  Position		  [285, 602, 350, 618]
+	  ZOrder		  3207
+	  ShowName		  off
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	  SourceType		  "Compare To Constant"
+	  relop			  "=="
+	  const			  "1"
+	  OutDataTypeStr	  "boolean"
+	  ZeroCross		  on
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Compare\nTo Constant2"
+	  SID			  "116"
+	  Ports			  [1, 1]
+	  Position		  [285, 622, 350, 638]
+	  ZOrder		  3209
+	  ShowName		  off
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	  SourceType		  "Compare To Constant"
+	  relop			  "=="
+	  const			  "0"
+	  OutDataTypeStr	  "boolean"
+	  ZeroCross		  on
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion1"
+	  SID			  "94"
+	  Position		  [925, 757, 965, 773]
+	  ZOrder		  3187
+	  ShowName		  off
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion2"
 	  SID			  "92"
 	  Position		  [790, 207, 830, 223]
 	  ZOrder		  3185
 	  ShowName		  off
+	  OutDataTypeStr	  "boolean"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion3"
+	  SID			  "120"
+	  Position		  [790, 247, 830, 263]
+	  ZOrder		  3213
+	  ShowName		  off
+	  OutDataTypeStr	  "boolean"
 	  RndMeth		  "Floor"
 	  SaturateOnIntegerOverflow off
 	}
@@ -925,30 +993,41 @@ Library {
 	  OutDataTypeStr	  "boolean"
 	}
 	Block {
-	  BlockType		  Fcn
-	  Name			  "Fcn1"
-	  SID			  "48"
-	  Position		  [790, 247, 830, 263]
-	  ZOrder		  2048
+	  BlockType		  From
+	  Name			  "From10"
+	  SID			  "117"
+	  Position		  [215, 661, 380, 679]
+	  ZOrder		  3210
+	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
-	  Expr			  "u(1)!=0"
+	  GotoTag		  "R25"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From"
-	  SID			  "49"
-	  Position		  [645, 391, 810, 409]
-	  ZOrder		  1972
+	  Name			  "From12"
+	  SID			  "104"
+	  Position		  [215, 791, 380, 809]
+	  ZOrder		  3197
+	  BackgroundColor	  "cyan"
+	  ShowName		  off
+	  GotoTag		  "fault_flag"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From13"
+	  SID			  "105"
+	  Position		  [215, 876, 380, 894]
+	  ZOrder		  3198
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
 	  GotoTag		  "op_mode_in"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From1"
-	  SID			  "50"
-	  Position		  [645, 481, 810, 499]
-	  ZOrder		  2047
+	  Name			  "From14"
+	  SID			  "109"
+	  Position		  [625, 811, 790, 829]
+	  ZOrder		  3202
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
 	  GotoTag		  "init_cond_val"
@@ -965,41 +1044,32 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From3"
-	  SID			  "91"
-	  Position		  [645, 451, 800, 469]
-	  ZOrder		  3184
-	  BackgroundColor	  "orange"
-	  ShowName		  off
-	  GotoTag		  "time_flag"
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From4"
 	  SID			  "88"
-	  Position		  [645, 511, 810, 529]
+	  Position		  [625, 756, 790, 774]
 	  ZOrder		  3181
 	  ShowName		  off
 	  GotoTag		  "isToggled_op_mode"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From5"
-	  SID			  "53"
-	  Position		  [645, 421, 810, 439]
-	  ZOrder		  2032
+	  Name			  "From7"
+	  SID			  "111"
+	  Position		  [215, 561, 380, 579]
+	  ZOrder		  3204
 	  BackgroundColor	  "cyan"
 	  ShowName		  off
 	  GotoTag		  "fault_flag"
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From6"
-	  SID			  "54"
-	  Position		  [645, 361, 810, 379]
-	  ZOrder		  1988
+	  Name			  "From8"
+	  SID			  "114"
+	  Position		  [65, 611, 230, 629]
+	  ZOrder		  3206
+	  BackgroundColor	  "yellow"
 	  ShowName		  off
-	  GotoTag		  "R25"
+	  GotoTag		  "op_mode_in"
 	}
 	Block {
 	  BlockType		  From
@@ -1037,6 +1107,7 @@ Library {
 	  SID			  "60"
 	  Position		  [865, 87, 950, 103]
 	  ZOrder		  1975
+	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
 	  GotoTag		  "R25"
 	}
@@ -1088,6 +1159,54 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "110"
+	  Ports			  [3, 1]
+	  Position		  [550, 542, 580, 698]
+	  ZOrder		  3203
+	  ShowName		  off
+	  Inputs		  "3"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  SID			  "112"
+	  Ports			  [1, 1]
+	  Position		  [410, 561, 435, 579]
+	  ZOrder		  3205
+	  ShowName		  off
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator3"
+	  SID			  "115"
+	  Ports			  [2, 1]
+	  Position		  [455, 600, 480, 640]
+	  ZOrder		  3208
+	  ShowName		  off
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator4"
+	  SID			  "103"
+	  Ports			  [2, 1]
+	  Position		  [550, 755, 580, 930]
+	  ZOrder		  3196
+	  ShowName		  off
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "S-R\nFlip-Flop1"
 	  SID			  "65"
@@ -1101,208 +1220,161 @@ Library {
 	  initial_condition	  "0"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "S-R\nFlip-Flop2"
+	  SID			  "93"
+	  Ports			  [2, 2]
+	  Position		  [640, 625, 685, 700]
+	  ZOrder		  3186
+	  ShowName		  off
+	  LibraryVersion	  "1.44"
+	  SourceBlock		  "simulink_extras/Flip Flops/S-R\nFlip-Flop"
+	  SourceType		  "SRFlipFlop"
+	  initial_condition	  "0"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch1"
+	  SID			  "108"
+	  Position		  [835, 745, 885, 785]
+	  ZOrder		  3201
+	  ShowName		  off
+	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Terminator
 	  Name			  "Terminator"
-	  SID			  "66"
-	  Position		  [425, 472, 440, 488]
-	  ZOrder		  2031
+	  SID			  "118"
+	  Position		  [440, 470, 460, 490]
+	  ZOrder		  3211
 	  ShowName		  off
 	}
 	Block {
-	  BlockType		  SubSystem
-	  Name			  "trip_out mng fnc"
-	  SID			  "67"
-	  Ports			  [6, 1]
-	  Position		  [880, 361, 1050, 529]
-	  ZOrder		  2023
-	  ErrorFcn		  "Stateflow.Translate.translate"
-	  PermitHierarchicalResolution "ExplicitOnly"
-	  TreatAsAtomicUnit	  on
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  SFBlockType		  "MATLAB Function"
-	  System {
-	    Name		    "trip_out mng fnc"
-	    Location		    [227, 345, 838, 789]
-	    Open		    off
-	    ModelBrowserVisibility  on
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "184"
-	    SIDPrevWatermark	    "115"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "isSync"
-	      SID		      "67::18"
-	      Position		      [20, 101, 40, 119]
-	      ZOrder		      -2
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "op_mode"
-	      SID		      "67::1"
-	      Position		      [20, 136, 40, 154]
-	      ZOrder		      -3
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "fault_flag"
-	      SID		      "67::24"
-	      Position		      [20, 171, 40, 189]
-	      ZOrder		      -4
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "time_flag"
-	      SID		      "67::67"
-	      Position		      [20, 206, 40, 224]
-	      ZOrder		      8
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "init_cond"
-	      SID		      "67::116"
-	      Position		      [20, 246, 40, 264]
-	      ZOrder		      13
-	      Port		      "5"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "isToggled_op_mode"
-	      SID		      "67::117"
-	      Position		      [20, 281, 40, 299]
-	      ZOrder		      14
-	      Port		      "6"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      " Demux "
-	      SID		      "67::183"
-	      Ports		      [1, 1]
-	      Position		      [270, 230, 320, 270]
-	      ZOrder		      37
-	      Outputs		      "1"
-	    }
-	    Block {
-	      BlockType		      S-Function
-	      Name		      " SFunction "
-	      SID		      "67::182"
-	      Tag		      "Stateflow S-Function relay_tripOutMng_lib 1"
-	      Ports		      [6, 2]
-	      Position		      [180, 102, 230, 243]
-	      ZOrder		      36
-	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[6 2]"
-	      EnableBusSupport	      off
-	      Port {
-		PortNumber		2
-		Name			"out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      " Terminator "
-	      SID		      "67::184"
-	      Position		      [460, 241, 480, 259]
-	      ZOrder		      38
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "out"
-	      SID		      "67::23"
-	      Position		      [460, 101, 480, 119]
-	      ZOrder		      -9
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "isSync"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "op_mode"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "fault_flag"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "time_flag"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      4
-	    }
-	    Line {
-	      SrcBlock		      "init_cond"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      5
-	    }
-	    Line {
-	      SrcBlock		      "isToggled_op_mode"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      6
-	    }
-	    Line {
-	      Name		      "out"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      2
-	      DstBlock		      "out"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
-	      SrcPort		      1
-	      DstBlock		      " Terminator "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " SFunction "
-	      SrcPort		      1
-	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	  }
+	  BlockType		  Terminator
+	  Name			  "Terminator1"
+	  SID			  "119"
+	  Position		  [720, 670, 740, 690]
+	  ZOrder		  3212
+	  ShowName		  off
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "trip_out"
 	  SID			  "68"
-	  Position		  [1095, 438, 1125, 452]
+	  Position		  [1025, 758, 1055, 772]
 	  ZOrder		  2044
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop2"
+	  SrcPort		  2
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 25]
+	  DstBlock		  "S-R\nFlip-Flop2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From10"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Compare\nTo Constant2"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Compare\nTo Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From8"
+	  SrcPort		  1
+	  Points		  [22, 0]
+	  Branch {
+	    Points		    [0, -10]
+	    DstBlock		    "Compare\nTo Constant1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 10]
+	    DstBlock		    "Compare\nTo Constant2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From7"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From14"
+	  SrcPort		  1
+	  Points		  [4, 0; 0, -40]
+	  DstBlock		  "Switch1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Switch1"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator4"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -165]
+	  DstBlock		  "S-R\nFlip-Flop2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Compare\nTo Constant"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From13"
+	  SrcPort		  1
+	  DstBlock		  "Compare\nTo Constant"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From12"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "S-R\nFlip-Flop2"
+	  SrcPort		  1
+	  Points		  [106, 0; 0, 105]
+	  DstBlock		  "Switch1"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Data Type Conversion2"
@@ -1324,16 +1396,10 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From3"
-	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
-	  DstPort		  4
-	}
-	Line {
 	  SrcBlock		  "From4"
 	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
-	  DstPort		  6
+	  DstBlock		  "Switch1"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "S-R\nFlip-Flop1"
@@ -1354,13 +1420,7 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From5"
-	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "trip_out mng fnc"
+	  SrcBlock		  "Data Type Conversion1"
 	  SrcPort		  1
 	  DstBlock		  "trip_out"
 	  DstPort		  1
@@ -1375,18 +1435,6 @@ Library {
 	  SrcBlock		  "time_flag"
 	  SrcPort		  1
 	  DstBlock		  "Data Type Conversion2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
 	  DstPort		  1
 	}
 	Line {
@@ -1410,17 +1458,11 @@ Library {
 	Line {
 	  SrcBlock		  "initial_condition"
 	  SrcPort		  1
-	  DstBlock		  "Fcn1"
+	  DstBlock		  "Data Type Conversion3"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "trip_out mng fnc"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "Fcn1"
+	  SrcBlock		  "Data Type Conversion3"
 	  SrcPort		  1
 	  DstBlock		  "Goto1"
 	  DstPort		  1
@@ -1470,280 +1512,5 @@ Library {
       ZOrder		      -5
       FontWeight	      "bold"
     }
-  }
-}
-# Finite State Machines
-#
-#    Stateflow Version 7.6 (R2013a) dated Jan 19 2013, 14:32:03
-#
-#
-
-Stateflow {
-  machine {
-    id			    1
-    name		    "relay_tripOutMng_lib"
-    created		    "19-Apr-2016 10:35:20"
-    isLibrary		    1
-    firstTarget		    14
-    sfVersion		    76014001.0015
-  }
-  chart {
-    id			    2
-    name		    "State Condition Mng/trip_out mng fnc"
-    windowPosition	    [661 458.75 213 385]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1200 1.333333333333333]
-    treeNode		    [0 3 0 0]
-    firstTransition	    12
-    firstJunction	    11
-    viewObj		    2
-    machine		    1
-    subviewS {
-    }
-    ssIdHighWaterMark	    25
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    4
-    chartFileNumber	    1
-    disableImplicitCasting  1
-    eml {
-      name		      "opModeChk"
-    }
-  }
-  state {
-    id			    3
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 0 0 0]
-    superState		    SUBCHART
-    subviewer		    2
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "% Copyright (c) 2016 Massachusetts Institute of Technology\n% Permission is hereby granted, free "
-      "of charge, to any person obtaining a copy of this\n% software and associated documentation files (the \"Software"
-      "\"), to deal in the Software\n% without restriction, including without limitation the rights to use, copy, modif"
-      "y,\n% merge, publish, distribute, sublicense, and/or sell copies of the Software, and to\n% permit persons to wh"
-      "om the Software is furnished to do so, subject to the following\n% conditions:\n%\n%\n% The above copyright noti"
-      "ce and this permission notice shall be included in\n% all copies or substantial portions of the Software.\n%\n% "
-      "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,\n% INCLUDING BUT NOT LIMIT"
-      "ED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n% PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH"
-      "ALL THE AUTHORS OR COPYRIGHT\n% HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO"
-      "N\n% OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n% SOFTWARE OR THE USE OR OT"
-      "HER DEALINGS IN THE SOFTWARE.\n%\n%\n%%\n\nfunction out = opModeChk(isSync, op_mode, fault_flag, time_flag, init"
-      "_cond, isToggled_op_mode)\n%#codegen\n\n% true when simulation time is greater than initial condition time\n% ti"
-      "me_flag = (clock_time > init_cond_time);\n% true when \"closed\" initial condition and the controller toggles th"
-      "e relay\n% operation mode to activate the logic on a \"close\" cmd. Basically, if the controller\n% cmds the rel"
-      "ay to close and the relay was already closed.\nctrl_on_flag = (init_cond == 1 && isToggled_op_mode == 1 && (op_m"
-      "ode == 0 || op_mode == 1));\n% true when controller cmds the relay to close and logic is active\nclose_cmd_flag "
-      "= ((op_mode == 0 || op_mode == 1) && isToggled_op_mode == 1);\n\nif time_flag && fault_flag==0 && isSync==1 && ("
-      "ctrl_on_flag || close_cmd_flag)\n    % true when there is not faults in the relay protection zone, the\n    % sy"
-      "nc-check is active, and above flags are true\n    out = 1; % close cb cmd\nelseif time_flag && (fault_flag == 1 "
-      "|| op_mode == 2)\n    % true when simulation time is greater than initial condition time and\n    % there is a f"
-      "ault in the protection zone, or fails to sync, or ctrl cmd\n    out = 0; % open cb cmd\nelse\n    out = init_con"
-      "d;\nend\n\n"
-      editorLayout	      "100 M4x1[10 5 700 500]"
-    }
-  }
-  data {
-    id			    4
-    ssIdNumber		    6
-    name		    "isSync"
-    linkNode		    [2 0 5]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    5
-    ssIdNumber		    4
-    name		    "op_mode"
-    linkNode		    [2 4 6]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    6
-    ssIdNumber		    8
-    name		    "out"
-    linkNode		    [2 5 7]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    7
-    ssIdNumber		    11
-    name		    "fault_flag"
-    linkNode		    [2 6 8]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    8
-    ssIdNumber		    22
-    name		    "time_flag"
-    linkNode		    [2 7 9]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    9
-    ssIdNumber		    24
-    name		    "init_cond"
-    linkNode		    [2 8 10]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    10
-    ssIdNumber		    25
-    name		    "isToggled_op_mode"
-    linkNode		    [2 9 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  junction {
-    id			    11
-    position		    [23.5747 49.5747 7]
-    chart		    2
-    linkNode		    [2 0 0]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    12
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      11
-      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    2
-    linkNode		    [2 0 0]
-    dataLimits		    [21.175 25.975 14.625 42.575]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  instance {
-    id			    13
-    name		    "State Condition Mng/trip_out mng fnc"
-    machine		    1
-    chart		    2
-  }
-  target {
-    id			    14
-    name		    "sfun"
-    description		    "Default Simulink S-Function Target."
-    machine		    1
-    linkNode		    [1 0 0]
   }
 }
