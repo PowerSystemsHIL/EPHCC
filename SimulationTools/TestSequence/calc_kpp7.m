@@ -20,6 +20,74 @@ gen3_start = sw_close(:,id.CBGen3);
 soc = res.battery_SoC./10000;
 bat_cycle = [[0 0] ; cumsum(abs(diff(soc))) ];
 
+
+%% Calculate overcurrents
+oc(1)=struct('Type','Gen','Vn',13.8,'In',167.347904112935,'CB','CB151','ID','Gen1');
+oc(2)=struct('Type','Gen','Vn',13.8,'In',146.429416098818,'CB','CB351','ID','Gen2');
+oc(3)=struct('Type','Gen','Vn',0.48,'In',96.2250448649376,'CB','CB451','ID','Gen3');
+oc(4)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB100','ID','C100');
+oc(5)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB200','ID','C200');
+oc(6)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB300','ID','C300');
+oc(7)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB109','ID','C108');
+oc(8)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB106','ID','C106');
+oc(9)=struct('Type','Line','Vn',4.16,'In',560,'CB','CB111','ID','C107');
+oc(10)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB101','ID','C101');
+oc(11)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB102','ID','C102');
+oc(12)=struct('Type','Line','Vn',13.8,'In',160,'CB','CB103','ID','C103');
+oc(13)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB112','ID','C104');
+oc(14)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB113','ID','C109');
+oc(15)=struct('Type','Line','Vn',13.8,'In',160,'CB','CB201','ID','C201');
+oc(16)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB202','ID','C202');
+oc(17)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB203','ID','C203');
+oc(18)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB213','ID','C206');
+oc(19)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB216','ID','C204');
+oc(20)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB217','ID','C205');
+oc(21)=struct('Type','Line','Vn',0.48,'In',560,'CB','CB213','ID','C206');
+oc(22)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB301','ID','C301');
+oc(23)=struct('Type','Line','Vn',13.8,'In',320,'CB','CB302','ID','C304');
+oc(24)=struct('Type','Line','Vn',13.8,'In',160,'CB','CB303','ID','C302');
+oc(25)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB304','ID','C303');
+oc(26)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB310','ID','C305');
+oc(27)=struct('Type','Line','Vn',0.48,'In',280,'CB','CB401','ID','C401');
+oc(28)=struct('Type','Line','Vn',0.48,'In',320,'CB','CB452','ID','C403');
+oc(29)=struct('Type','Line','Vn',0.48,'In',130,'CB','CB453','ID','C404');
+oc(30)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB105','ID','T102');
+oc(31)=struct('Type','Trafo','Vn',13.8,'In',156.888660105877,'CB','CB106','ID','T102');
+oc(32)=struct('Type','Trafo','Vn',4.16,'In',277.572244802705,'CB','CB110','ID','T104');
+oc(33)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB112','ID','T107');
+oc(34)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB205','ID','T201');
+oc(35)=struct('Type','Trafo','Vn',13.8,'In',156.888660105877,'CB','CB207','ID','T203');
+oc(36)=struct('Type','Trafo','Vn',13.8,'In',209.184880141169,'CB','CB211','ID','T207');
+oc(37)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB209','ID','T206');
+oc(38)=struct('Type','Trafo','Vn',13.8,'In',41.8369760282337,'CB','CB210','ID','T210');
+oc(39)=struct('Type','Trafo','Vn',13.8,'In',83.6739520564675,'CB','CB214','ID','T208');
+oc(40)=struct('Type','Trafo','Vn',13.8,'In',83.6739520564675,'CB','CB215','ID','T209');
+oc(41)=struct('Type','Trafo','Vn',13.8,'In',83.6739520564675,'CB','CB305','ID','T301');
+oc(42)=struct('Type','Trafo','Vn',13.8,'In',83.6739520564675,'CB','CB306','ID','T302');
+oc(43)=struct('Type','Trafo','Vn',13.8,'In',41.8369760282337,'CB','CB302','ID','T303');
+oc(44)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB304','ID','T305');
+oc(45)=struct('Type','Trafo','Vn',13.8,'In',209.184880141169,'CB','CB310','ID','T306');
+
+for i=1:length(oc)
+   iCB(i) = eval(['id.' oc(i).CB]);     
+   Vn(i) = oc(i).Vn;
+   In(i) = oc(i).In;
+   IsTrafo(i) = strcmp(oc(i).Type,'Trafo');
+   IsGen(i) = strcmp(oc(i).Type,'Gen');
+   IsLine(i) = strcmp(oc(i).Type,'Line');
+end
+
+voltPU = res.voltage(:,iCB)./1000;
+p = res.powerreal(:,iCB);
+q = res.reactivepower(:,iCB);
+s = sqrt(p.^2+q.^2);
+
+voltPU(voltPU<0.01) = 0.01;
+volt = voltPU.*repmat(Vn,comm.M,1);
+
+cur = s/3./(volt/sqrt(3));
+curPU = cur./repmat(In,comm.M,1);
+
 d_per_class = [cb_switches*prices.P74];
 d_cum_per_class = cumsum(d_per_class);
 legend_per_class = {'CB switch'};

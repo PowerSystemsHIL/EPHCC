@@ -2,6 +2,8 @@ function [ prices ] = init_prices(  )
 %CALC_KPP1 Summary of this function goes here
 %   Detailed explanation goes here
 
+KPP1max = 7477.5;
+
 %% KPP1
 P11 = 1.00/3;
 P12 = 0.90/3;
@@ -32,6 +34,7 @@ P47 = 8.80;
 %% KPP5
 P51 = 4.88;
 P52 = 0.49;
+KPP5_CAP = KPP1max * 0.05;
 
 %% KPP6
 P61 = 1.87;

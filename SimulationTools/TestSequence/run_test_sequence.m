@@ -7,7 +7,7 @@ TX_RCV_UDP_Stream;
 % generate the report
 % zoom = [10 20]
 plot_kpp_all;
-save_figs([1:8], 'C:\Results\kpp', 1,1);
+save_figs([1:9], 'C:\Results\kpp', 1,1);
 
 %%
 close all;
