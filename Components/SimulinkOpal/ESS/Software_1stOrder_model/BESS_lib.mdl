@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[14]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Sep 08 09:18:05 2017"
-  RTWModifiedTimeStamp	  426763080
-  ModelVersionFormat	  "1.%<AutoIncrement:61>"
+  LastModifiedDate	  "Wed Sep 27 12:24:59 2017"
+  RTWModifiedTimeStamp	  428415871
+  ModelVersionFormat	  "1.%<AutoIncrement:62>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1181,7 +1181,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1098"
+    SIDHighWatermark	    "1100"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2948,7 +2948,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.60"
+	  LibraryVersion	  "1.61"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3661,11 +3661,9 @@ Library {
       SID		      "236"
       Ports		      [5, 3, 0, 0, 0, 0, 3]
       Position		      [405, 70, 485, 215]
-      ZOrder		      3887
-      ForegroundColor	      "red"
-      BackgroundColor	      "yellow"
+      ZOrder		      3849
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.60"
+      LibraryVersion	      "*1.61"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3699,14 +3697,14 @@ Library {
 	    }
 	    Name		    "InvType"
 	    Prompt		    "Inverter type"
-	    Value		    "ESS Inverter"
+	    Value		    "PV Inverter"
 	  }
 	  Object {
 	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "Sn"
 	    Prompt		    "Nominal power [kVA]"
-	    Value		    "3000"
+	    Value		    "5000"
 	  }
 	  Object {
 	    $ObjectID		    27
@@ -3727,7 +3725,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "b_kWh"
 	    Prompt		    "Battery capacity [kWh]"
-	    Value		    "600"
+	    Value		    "1"
 	  }
 	  Object {
 	    $ObjectID		    30
@@ -3741,7 +3739,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "r_I_max"
 	    Prompt		    "Max Current Ratio"
-	    Value		    "3"
+	    Value		    "1.2"
 	  }
 	  Object {
 	    $ObjectID		    32
@@ -3769,7 +3767,7 @@ Library {
       }
       System {
 	Name			"NREL_BESS"
-	Location		[0, 0, 960, 1032]
+	Location		[-9, -9, 1929, 1041]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4650,7 +4648,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Control_Logic"
-	    Location		    [960, 0, 1920, 1032]
+	    Location		    [-9, -9, 1929, 1041]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9831,7 +9829,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Meas_Status_Interface"
-	    Location		    [960, 0, 1920, 1032]
+	    Location		    [-9, -9, 1929, 1041]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9848,18 +9846,35 @@ Library {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator4"
 	      SID		      "387"
-	      Ports		      [4, 1]
-	      Position		      [670, 126, 675, 259]
+	      Ports		      [5, 1]
+	      Position		      [670, 128, 675, 282]
 	      ZOrder		      3942
 	      ShowName		      off
+	      Inputs		      "5"
 	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      SID		      "1100"
+	      Ports		      [1, 1]
+	      Position		      [445, 253, 450, 277]
+	      ZOrder		      4008
+	      ShowName		      off
+	      OutputSignals	      "cb_ctrl.Logic_trip"
+	      Port {
+		PortNumber		1
+		Name			"<Logic_trip>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector4"
 	      SID		      "955"
 	      Ports		      [1, 1]
-	      Position		      [445, 206, 450, 264]
+	      Position		      [445, 223, 450, 247]
 	      ZOrder		      3999
 	      ShowName		      off
 	      OutputSignals	      "status,flt_word"
@@ -9892,6 +9907,17 @@ Library {
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From2"
+	      SID		      "1099"
+	      Position		      [345, 258, 415, 272]
+	      ZOrder		      4007
+	      BackgroundColor	      "darkGreen"
+	      ShowName		      off
+	      GotoTag		      "logic"
+	      TagVisibility	      "scoped"
 	    }
 	    Block {
 	      BlockType		      From
@@ -9964,16 +9990,29 @@ Library {
 	      BlockType		      Outport
 	      Name		      "Out1"
 	      SID		      "698"
-	      Position		      [730, 183, 760, 197]
+	      Position		      [730, 198, 760, 212]
 	      ZOrder		      3995
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "<Logic_trip>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator4"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "From2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector1"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "status_word"
 	      Labels		      [1, 1]
 	      SrcBlock		      "Sum"
 	      SrcPort		      1
-	      Points		      [65, 0]
 	      DstBlock		      "Bus\nCreator4"
 	      DstPort		      4
 	    }
@@ -10014,7 +10053,6 @@ Library {
 	    Line {
 	      SrcBlock		      "Bus\nCreator4"
 	      SrcPort		      1
-	      Points		      [0, -5]
 	      DstBlock		      "Out1"
 	      DstPort		      1
 	    }
@@ -12057,7 +12095,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"1643"
+		SIDHighWatermark	"1689"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -12449,7 +12487,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "93"
-		    SIDHighWatermark	    "243"
+		    SIDHighWatermark	    "261"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
