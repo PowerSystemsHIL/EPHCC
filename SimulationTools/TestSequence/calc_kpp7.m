@@ -68,6 +68,10 @@ oc(43)=struct('Type','Trafo','Vn',13.8,'In',41.8369760282337,'CB','CB302','ID','
 oc(44)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB304','ID','T305');
 oc(45)=struct('Type','Trafo','Vn',13.8,'In',209.184880141169,'CB','CB310','ID','T306');
 
+LegendGen = {};
+LegendLine = {};
+LegendTrafo = {};
+
 for i=1:length(oc)
    iCB(i) = eval(['id.' oc(i).CB]);     
    Vn(i) = oc(i).Vn;
@@ -75,6 +79,15 @@ for i=1:length(oc)
    IsTrafo(i) = strcmp(oc(i).Type,'Trafo');
    IsGen(i) = strcmp(oc(i).Type,'Gen');
    IsLine(i) = strcmp(oc(i).Type,'Line');
+   if IsTrafo(i)
+       LegendTrafo(length(LegendTrafo)+1) = {oc(i).ID};
+   end;
+   if IsLine(i)
+       LegendLine(length(LegendLine)+1) = {oc(i).ID};
+   end;
+   if IsGen(i)
+       LegendGen(length(LegendGen)+1) = {oc(i).ID};
+   end;
 end
 
 voltPU = res.voltage(:,iCB)./1000;

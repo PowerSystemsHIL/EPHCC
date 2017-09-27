@@ -141,6 +141,7 @@ Nc=Nc+1; Cloud(Nc) = struct('Start', 94*60, 'Depth', 0.3, 'Ramp', 15, 'Duration'
 
 %% Unintentional islanding - start island
 Next('Fault.Loc1'      , 70, 1);
+Next('DMS.DisReq'      , 70+(10/60),   1);
 Next('Grid.OpenSSF1'   , 71, 1); 
 Next('Grid.OpenSSF2'   , 71.2, 1); 
 Next('Grid.OpenSSF3'   , 71.4, 1); 
@@ -160,6 +161,7 @@ Next('Grid.CutGrid'    , 92, 0);
 Next('Grid.OpenSSF1'   , 92.2, 0); 
 Next('Grid.OpenSSF2'   , 92.4, 0); 
 Next('Grid.OpenSSF3'   , 92.6, 0); 
+Next('DMS.DisReq'      , 92.7, 0);
 
 Next('Motor2'   , 95, 0);
 
