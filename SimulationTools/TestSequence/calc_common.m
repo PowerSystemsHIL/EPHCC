@@ -1,8 +1,8 @@
-function [out] = calc_common(res, seq)
+function [out] = calc_common(res, seq, TxSequenceSpeed)
     %% time vectors - based on PC time during test equecution
     t           = res.t;
     t_simulink  = double(typecast(int16(res.simtime(:,1)),'uint16'))+res.simtime(:,2)*2^16;
-    t_sek = res.t/1000;
+    t_sek = res.t/1000*TxSequenceSpeed;
     t_min = t_sek./60;
     
     dt_ms = diff(res.t);

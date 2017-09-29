@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[14]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[723.0, 730.0]
+	Extents			[725.0, 750.0]
 	ZoomFactor		[1.25]
 	Offset			[0.0, 0.0]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "ch24070"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 27 12:24:59 2017"
-  RTWModifiedTimeStamp	  428415871
-  ModelVersionFormat	  "1.%<AutoIncrement:62>"
+  LastModifiedDate	  "Wed Sep 27 16:51:38 2017"
+  RTWModifiedTimeStamp	  428431884
+  ModelVersionFormat	  "1.%<AutoIncrement:65>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1181,7 +1181,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1100"
+    SIDHighWatermark	    "1103"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2948,7 +2948,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.61"
+	  LibraryVersion	  "1.64"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3661,9 +3661,11 @@ Library {
       SID		      "236"
       Ports		      [5, 3, 0, 0, 0, 0, 3]
       Position		      [405, 70, 485, 215]
-      ZOrder		      3849
+      ZOrder		      3887
+      ForegroundColor	      "red"
+      BackgroundColor	      "yellow"
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.61"
+      LibraryVersion	      "*1.64"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3697,14 +3699,14 @@ Library {
 	    }
 	    Name		    "InvType"
 	    Prompt		    "Inverter type"
-	    Value		    "PV Inverter"
+	    Value		    "ESS Inverter"
 	  }
 	  Object {
 	    $ObjectID		    26
 	    Type		    "edit"
 	    Name		    "Sn"
 	    Prompt		    "Nominal power [kVA]"
-	    Value		    "5000"
+	    Value		    "250"
 	  }
 	  Object {
 	    $ObjectID		    27
@@ -3725,7 +3727,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "b_kWh"
 	    Prompt		    "Battery capacity [kWh]"
-	    Value		    "1"
+	    Value		    "60"
 	  }
 	  Object {
 	    $ObjectID		    30
@@ -3739,7 +3741,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "r_I_max"
 	    Prompt		    "Max Current Ratio"
-	    Value		    "1.2"
+	    Value		    "3"
 	  }
 	  Object {
 	    $ObjectID		    32
@@ -3753,7 +3755,7 @@ Library {
 	    Type		    "checkbox"
 	    Name		    "MbusPrecInc"
 	    Prompt		    "Increase power precision at Modbus interface (10x)"
-	    Value		    "off"
+	    Value		    "on"
 	  }
 	  Object {
 	    $ObjectID		    34
@@ -3767,7 +3769,7 @@ Library {
       }
       System {
 	Name			"NREL_BESS"
-	Location		[-9, -9, 1929, 1041]
+	Location		[0, 0, 960, 1040]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -9829,7 +9831,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Meas_Status_Interface"
-	    Location		    [-9, -9, 1929, 1041]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -9841,16 +9843,16 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "200"
+	    ZoomFactor		    "166"
 	    Block {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator4"
 	      SID		      "387"
-	      Ports		      [5, 1]
-	      Position		      [670, 128, 675, 282]
+	      Ports		      [6, 1]
+	      Position		      [670, 130, 675, 310]
 	      ZOrder		      3942
 	      ShowName		      off
-	      Inputs		      "5"
+	      Inputs		      "6"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -9871,6 +9873,22 @@ Library {
 	    }
 	    Block {
 	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector2"
+	      SID		      "1103"
+	      Ports		      [1, 1]
+	      Position		      [610, 283, 615, 307]
+	      ZOrder		      4011
+	      ShowName		      off
+	      OutputSignals	      "raw"
+	      Port {
+		PortNumber		1
+		Name			"<raw>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector4"
 	      SID		      "955"
 	      Ports		      [1, 1]
@@ -9879,6 +9897,23 @@ Library {
 	      ShowName		      off
 	      OutputSignals	      "status,flt_word"
 	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "1101"
+	      Position		      [525, 258, 570, 272]
+	      ZOrder		      4009
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	      Port {
+		PortNumber		1
+		Name			"Logic_trip"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      From
@@ -9955,6 +9990,17 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      From
+	      Name		      "From5"
+	      SID		      "1102"
+	      Position		      [510, 288, 580, 302]
+	      ZOrder		      4010
+	      BackgroundColor	      "darkGreen"
+	      ShowName		      off
+	      GotoTag		      "modbus_in"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
 	      BlockType		      Gain
 	      Name		      "Gain"
 	      SID		      "963"
@@ -9990,17 +10036,39 @@ Library {
 	      BlockType		      Outport
 	      Name		      "Out1"
 	      SID		      "698"
-	      Position		      [730, 198, 760, 212]
+	      Position		      [730, 213, 760, 227]
 	      ZOrder		      3995
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "<raw>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector2"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator4"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "From5"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "Logic_trip"
+	      Labels		      [1, 1]
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator4"
+	      DstPort		      5
 	    }
 	    Line {
 	      Name		      "<Logic_trip>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      1
-	      DstBlock		      "Bus\nCreator4"
-	      DstPort		      5
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "From2"
@@ -10082,7 +10150,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Modbus_Ctrl_Interface"
-	    Location		    [960, 0, 1920, 1032]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -10102,6 +10170,12 @@ Library {
 	      Position		      [95, 313, 125, 327]
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
+	      Port {
+		PortNumber		1
+		Name			"raw"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      BusCreator
@@ -10124,11 +10198,11 @@ Library {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator1"
 	      SID		      "378"
-	      Ports		      [8, 1]
-	      Position		      [855, 90, 860, 545]
+	      Ports		      [9, 1]
+	      Position		      [855, 92, 860, 598]
 	      ZOrder		      10
 	      ShowName		      off
-	      Inputs		      "8"
+	      Inputs		      "9"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -10469,12 +10543,28 @@ Library {
 	      BlockType		      Goto
 	      Name		      "Goto2"
 	      SID		      "366"
-	      Position		      [930, 312, 1050, 328]
+	      Position		      [930, 337, 1050, 353]
 	      ZOrder		      3962
 	      BackgroundColor	      "darkGreen"
 	      ShowName		      off
 	      GotoTag		      "modbus_in"
 	      TagVisibility	      "scoped"
+	    }
+	    Line {
+	      Name		      "raw"
+	      SrcBlock		      "raw"
+	      SrcPort		      1
+	      Points		      [39, 0]
+	      Branch {
+		DstBlock		"Demux"
+		DstPort			1
+	      }
+	      Branch {
+		Labels			[-1, 0]
+		Points			[0, 245]
+		DstBlock		"Bus\nCreator1"
+		DstPort			9
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Data Type Conversion11"
@@ -10701,12 +10791,6 @@ Library {
 	      SrcBlock		      "Demux"
 	      SrcPort		      1
 	      DstBlock		      "Data Type Conversion"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "raw"
-	      SrcPort		      1
-	      DstBlock		      "Demux"
 	      DstPort		      1
 	    }
 	    Annotation {
@@ -12095,7 +12179,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"1689"
+		SIDHighWatermark	"1781"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -12487,7 +12571,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "93"
-		    SIDHighWatermark	    "261"
+		    SIDHighWatermark	    "297"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"

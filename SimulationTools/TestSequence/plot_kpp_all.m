@@ -3,7 +3,7 @@ close all;
 %%  Initialise supporting data
 prices = init_prices;
 id = init_ID;
-comm = calc_common(res, seq);
+comm = calc_common(res, seq, TxSequenceSpeed);
 seqi = seq_interp(seq, comm.t_sek);
 
 %% Calc all KPP

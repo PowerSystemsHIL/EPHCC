@@ -61,6 +61,10 @@ tic;
    %disp('Error during data capture. Closing port...');
    % pnet(udp, 'close');
 %end;
+%% Data type conversions
+%int16 -> uint16
+breaker(breaker<0) = breaker(breaker<0) + 2^16;
+
 %% Store data to .dat files
 for jj=1:length(filenames)
     if exist(filenames{jj},'var')
@@ -75,7 +79,7 @@ res.t = temp(:,1);
 for k=1:length(filenames),
             temp = eval(filenames{k});
             N=size(temp,2);
-            res.t = temp(:,1);
             eval(['res.' filenames{k} '= temp(:,2:N);']);
         end;
+        
 save res.mat;

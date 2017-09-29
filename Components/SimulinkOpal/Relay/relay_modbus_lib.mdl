@@ -53,11 +53,11 @@ Library {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Sep 11 11:59:27 2017"
-  RTWModifiedTimeStamp	  427031959
-  ModelVersionFormat	  "1.%<AutoIncrement:542>"
+  LastModifiedDate	  "Wed Sep 27 23:42:42 2017"
+  RTWModifiedTimeStamp	  428456559
+  ModelVersionFormat	  "1.%<AutoIncrement:544>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -914,6 +914,21 @@ Library {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Saturate
+      UpperLimitSource	      "Dialog"
+      UpperLimit	      "0.5"
+      LowerLimitSource	      "Dialog"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+    Block {
       BlockType		      Selector
       NumberOfDimensions      "1"
       IndexMode		      "One-based"
@@ -993,7 +1008,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "134"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82849"
+    SIDHighWatermark	    "82872"
     Block {
       BlockType		      SubSystem
       Name		      "Generic_Relay_v2_1"
@@ -4953,7 +4968,6 @@ Library {
 	    Line {
 	      SrcBlock		      "Delay1"
 	      SrcPort		      1
-	      Points		      [0, -5]
 	      DstBlock		      "Sum3"
 	      DstPort		      1
 	    }
@@ -7247,14 +7261,14 @@ Library {
       BlockType		      SubSystem
       Name		      "SelectMockup"
       SID		      "82739"
-      Ports		      [1, 1]
+      Ports		      [1, 2]
       Position		      [210, 342, 275, 378]
       ZOrder		      3962
       BlockMirror	      on
       BackgroundColor	      "darkGreen"
       NamePlacement	      "alternate"
       ShowName		      off
-      LibraryVersion	      "*1.532"
+      LibraryVersion	      "*1.543"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -7289,7 +7303,7 @@ Library {
       }
       System {
 	Name			"SelectMockup"
-	Location		[3, 1, 1922, 983]
+	Location		[0, 0, 960, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -7301,7 +7315,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"124"
+	ZoomFactor		"200"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -7311,11 +7325,107 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "82854"
+	  Position		  [555, 540, 605, 560]
+	  ZOrder		  4070
+	  ShowName		  off
+	  OutDataTypeStr	  "boolean"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion1"
+	  SID			  "82855"
+	  Position		  [625, 540, 675, 560]
+	  ZOrder		  4071
+	  ShowName		  off
+	  OutDataTypeStr	  "uint16"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion2"
+	  SID			  "82856"
+	  Position		  [625, 575, 675, 595]
+	  ZOrder		  4072
+	  ShowName		  off
+	  OutDataTypeStr	  "uint16"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion3"
+	  SID			  "82857"
+	  Position		  [555, 575, 605, 595]
+	  ZOrder		  4073
+	  ShowName		  off
+	  OutDataTypeStr	  "boolean"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion4"
+	  SID			  "82858"
+	  Position		  [625, 505, 675, 525]
+	  ZOrder		  4074
+	  ShowName		  off
+	  OutDataTypeStr	  "uint16"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion5"
+	  SID			  "82859"
+	  Position		  [625, 470, 675, 490]
+	  ZOrder		  4075
+	  ShowName		  off
+	  OutDataTypeStr	  "uint16"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  SID			  "82853"
+	  Ports			  [1, 3]
+	  Position		  [445, 218, 450, 432]
+	  ZOrder		  4060
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Reset"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Modbus_OpMode"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "ProtSet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Constant
-	  Name			  "ForceOff"
-	  SID			  "82787"
-	  Position		  [450, 345, 480, 375]
-	  ZOrder		  4053
+	  Name			  "ForceOff1"
+	  SID			  "82850"
+	  Position		  [585, 345, 615, 375]
+	  ZOrder		  4058
+	  ShowName		  off
 	  Value			  "2"
 	}
 	Block {
@@ -7356,15 +7466,55 @@ Library {
 	}
 	Block {
 	  BlockType		  MultiPortSwitch
-	  Name			  "Multiport\nSwitch1"
-	  SID			  "82786"
+	  Name			  "Multiport\nSwitch2"
+	  SID			  "82851"
 	  Ports			  [3, 1]
-	  Position		  [510, 275, 540, 375]
-	  ZOrder		  4052
+	  Position		  [685, 275, 715, 375]
+	  ZOrder		  4057
+	  ShowName		  off
 	  DataPortOrder		  "Zero-based contiguous"
 	  Inputs		  "2"
 	  InputSameDT		  off
 	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "OpMode"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "82852"
+	  Ports			  [3, 1]
+	  Position		  [785, 218, 790, 432]
+	  ZOrder		  4059
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "82860"
+	  Ports			  [4, 1]
+	  Position		  [695, 457, 700, 608]
+	  ZOrder		  4068
+	  ShowName		  off
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  SID			  "82861"
+	  Ports			  [1, 1]
+	  Position		  [580, 465, 610, 495]
+	  ZOrder		  4069
+	  ShowName		  off
+	  InputPortMap		  "u0"
+	  UpperLimit		  "3"
+	  LowerLimit		  "0"
 	}
 	Block {
 	  BlockType		  Selector
@@ -7424,32 +7574,347 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  SubSystem
+	  Name			  "bitwise_ctrl"
+	  SID			  "82862"
+	  Ports			  [1, 1]
+	  Position		  [730, 522, 800, 548]
+	  ZOrder		  4067
+	  BackgroundColor	  "green"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "bitwise_ctrl"
+	    Location		    [0, 0, 960, 1032]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "104"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "S"
+	      SID		      "82863"
+	      Position		      [95, 248, 125, 262]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Bitwise\nOperator"
+	      SID		      "82864"
+	      Ports		      [4, 1]
+	      Position		      [530, 99, 570, 406]
+	      ZOrder		      -3
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Bitwise\nOperator"
+	      SourceType	      "Bitwise Operator"
+	      logicop		      "OR"
+	      UseBitMask	      off
+	      NumInputPorts	      "4"
+	      BitMask		      "bin2dec('11011001')"
+	      BitMaskRealWorld	      "Stored Integer"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "82865"
+	      Position		      [605, 238, 680, 272]
+	      ZOrder		      -7
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      SID		      "82866"
+	      Ports		      [1, 4]
+	      Position		      [165, 102, 170, 403]
+	      ZOrder		      -7
+	      ShowName		      off
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      ArithShift
+	      Name		      "Shift\nArithmetic"
+	      SID		      "82867"
+	      Ports		      [1, 1]
+	      Position		      [285, 195, 365, 235]
+	      ZOrder		      -19
+	      ShowName		      off
+	      InputPortMap	      "u0"
+	      BitShiftNumber	      "2"
+	      BitShiftDirection	      "Left"
+	    }
+	    Block {
+	      BlockType		      ArithShift
+	      Name		      "Shift\nArithmetic1"
+	      SID		      "82868"
+	      Ports		      [1, 1]
+	      Position		      [285, 270, 365, 310]
+	      ZOrder		      -19
+	      ShowName		      off
+	      InputPortMap	      "u0"
+	      BitShiftNumber	      "3"
+	      BitShiftDirection	      "Left"
+	    }
+	    Block {
+	      BlockType		      ArithShift
+	      Name		      "Shift\nArithmetic2"
+	      SID		      "82869"
+	      Ports		      [1, 1]
+	      Position		      [285, 345, 365, 385]
+	      ZOrder		      -19
+	      ShowName		      off
+	      InputPortMap	      "u0"
+	      BitShiftNumber	      "4"
+	      BitShiftDirection	      "Left"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "s"
+	      SID		      "82870"
+	      Position		      [730, 248, 760, 262]
+	      ZOrder		      -25
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Shift\nArithmetic2"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Shift\nArithmetic1"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Shift\nArithmetic"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      4
+	      DstBlock		      "Shift\nArithmetic2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      3
+	      DstBlock		      "Shift\nArithmetic1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      DstBlock		      "Shift\nArithmetic"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "s"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bitwise\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "S"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "82871"
+	      Name		      "Constant array has LSB on most left."
+	      Position		      [180, 67]
+	      ZOrder		      -1
+	    }
+	  }
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "Out1"
 	  SID			  "82745"
-	  Position		  [680, 318, 710, 332]
+	  Position		  [805, 318, 835, 332]
 	  ZOrder		  3955
 	  IconDisplay		  "Port number"
 	}
-	Line {
-	  SrcBlock		  "Multiport\nSwitch1"
-	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "ForceOff"
-	  SrcPort		  1
-	  DstBlock		  "Multiport\nSwitch1"
-	  DstPort		  3
+	Block {
+	  BlockType		  Outport
+	  Name			  "mon"
+	  SID			  "82872"
+	  Position		  [825, 528, 855, 542]
+	  ZOrder		  4066
+	  Port			  "2"
+	  IconDisplay		  "Port number"
 	}
 	Line {
 	  Name			  "FastShedSignal"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Selector2"
 	  SrcPort		  1
-	  Points		  [212, 0; 0, 150]
-	  DstBlock		  "Multiport\nSwitch1"
+	  Points		  [245, 0; 0, 150]
+	  Branch {
+	    DstBlock		    "Multiport\nSwitch2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [-1, 0]
+	    Points		    [0, 225]
+	    DstBlock		    "Data Type Conversion4"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "Modbus_OpMode"
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  Points		  [48, 0]
+	  Branch {
+	    DstBlock		    "Multiport\nSwitch2"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Labels		    [-1, 0]
+	    Points		    [0, 155]
+	    DstBlock		    "Saturation"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "ProtSet"
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  Points		  [18, 0]
+	  Branch {
+	    Labels		    [-1, 0]
+	    DstBlock		    "Mux"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Labels		    [-1, 0]
+	    Points		    [0, 190]
+	    DstBlock		    "Data Type Conversion3"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "Reset"
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  Points		  [33, 0]
+	  Branch {
+	    Labels		    [-1, 0]
+	    DstBlock		    "Mux"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Labels		    [-1, 0]
+	    Points		    [0, 295]
+	    DstBlock		    "Data Type Conversion"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "bitwise_ctrl"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "bitwise_ctrl"
+	  SrcPort		  1
+	  DstBlock		  "mon"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion1"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion2"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion3"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion4"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion5"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ForceOff1"
+	  SrcPort		  1
+	  DstBlock		  "Multiport\nSwitch2"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "OpMode"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Multiport\nSwitch2"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
 	  DstPort		  1
 	}
 	Line {
@@ -7461,8 +7926,8 @@ Library {
 	Line {
 	  SrcBlock		  "Multiport\nSwitch"
 	  SrcPort		  1
-	  DstBlock		  "Multiport\nSwitch1"
-	  DstPort		  2
+	  DstBlock		  "Demux"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "In1"
