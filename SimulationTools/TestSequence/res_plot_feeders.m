@@ -12,7 +12,7 @@ ax= [ax subplot(3,4,3)]; plot(comm.t_min, res.voltage(:,[2:15]));
 ax= [ax subplot(3,4,7)]; plot(comm.t_min, res.voltage(:,[50]));
 ax= [ax subplot(3,4,11)]; plot(comm.t_min, res.voltage(:,[53]));
 
-ax= [ax subplot(3,4,4)]; plot(comm.t_min, repmat(0:(14-2)*1.1,comm.M,1) + bitand(res.breaker(:,[2:15]),1));
+ax= [ax subplot(3,4,4)]; plot(comm.t_min, repmat((0:(14-1))*1.1,comm.M,1) + bitand(res.breaker(:,[1:14]),1));
 ax= [ax subplot(3,4,8)]; plot(comm.t_min,  bitand(res.breaker(:,[50]),1));
 ax= [ax subplot(3,4,12)]; plot(comm.t_min, bitand(res.breaker(:,[53]),1));
 
@@ -36,7 +36,7 @@ ax= [ax subplot(4,4,7)]; plot(comm.t_min, res.voltage(:,[51]));
 ax= [ax subplot(4,4,11)]; plot(comm.t_min, res.voltage(:,[54]));
 ax= [ax subplot(4,4,15)]; plot(comm.t_min, res.voltage(:,[55]));
 
-ax= [ax subplot(4,4,4)]; plot(comm.t_min, repmat(0:(19-2)*1.1,comm.M,1) + bitand(res.breaker(:,[15:33]),1));
+ax= [ax subplot(4,4,4)]; plot(comm.t_min, repmat((0:(19-1))*1.1,comm.M,1) + bitand(res.breaker(:,[15:33]),1));
 ax= [ax subplot(4,4,8)]; plot(comm.t_min, bitand(res.breaker(:,[51]),1));
 ax= [ax subplot(4,4,12)]; plot(comm.t_min, [bitand(res.breaker(:,[54]),1) res.battery_SoC(:,1)./10000]);
 ax= [ax subplot(4,4,16)]; plot(comm.t_min, bitand(res.breaker(:,[55]),1));
@@ -58,7 +58,7 @@ ax= [ax subplot(3,4,3)]; plot(comm.t_min, res.voltage(:,[34:43]));
 ax= [ax subplot(3,4,7)]; plot(comm.t_min, res.voltage(:,[52]));
 ax= [ax subplot(3,4,11)]; plot(comm.t_min, res.voltage(:,[56]));
 
-ax= [ax subplot(3,4,4)]; plot(comm.t_min, repmat(0:(11-2)*1.1,comm.M,1) + bitand(res.breaker(:,[34:43]),1));
+ax= [ax subplot(3,4,4)]; plot(comm.t_min, repmat((0:(10-1))*1.1,comm.M,1) + bitand(res.breaker(:,[34:43]),1));
 ax= [ax subplot(3,4,8)]; plot(comm.t_min, bitand(res.breaker(:,[52]),1));
 ax= [ax subplot(3,4,12)]; plot(comm.t_min, bitand(res.breaker(:,[56]),1));
 
@@ -85,7 +85,7 @@ ax= [ax subplot(5,4,11)]; plot(comm.t_min, res.voltage(:,[57]));
 ax= [ax subplot(5,4,15)]; plot(comm.t_min, res.voltage(:,[58]));
 ax= [ax subplot(5,4,19)]; plot(comm.t_min, res.voltage(:,[59]));
 
-ax= [ax subplot(5,4,4)]; plot(comm.t_min, repmat(0:(6-2)*1.1,comm.M,1) + bitand(res.breaker(:,[45:49]),1));
+ax= [ax subplot(5,4,4)]; plot(comm.t_min, repmat((0:(5-1))*1.1,comm.M,1) + bitand(res.breaker(:,[45:49]),1));
 ax= [ax subplot(5,4,8)]; plot(comm.t_min, bitand(res.breaker(:,[44]),1));
 ax= [ax subplot(5,4,12)]; plot(comm.t_min, bitand(res.breaker(:,[57]),1));
 ax= [ax subplot(5,4,16)]; plot(comm.t_min, [bitand(res.breaker(:,[58]),1) res.battery_SoC(:,2)./10000]);

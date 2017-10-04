@@ -42,4 +42,5 @@ switch GenSel
         GP.Ex.Regulator = [ 200 2e-3 ];
         GP.Ex.Exciter = [ 1 0.001 ];
         GP.Ex.Damping = [0.02 1 ];
+        GP.Gov.Kp = 2;
 end

@@ -1,5 +1,6 @@
 clear all;
 close all;
+clear all;
 % Generate test sequence vector before running - sequence stored in seq.mat
 seq_generate;
 % Run UDP stream to opal and store received data. Results stored in res.mata

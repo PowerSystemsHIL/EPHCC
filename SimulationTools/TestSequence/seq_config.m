@@ -138,6 +138,9 @@ Nc=Nc+1; Cloud(Nc) = struct('Start', 60*60, 'Depth', 0.9, 'Ramp', 10, 'Duration'
 Nc=Nc+1; Cloud(Nc) = struct('Start', 81*60, 'Depth', 0.5, 'Ramp', 5 , 'Duration', 30);
 Nc=Nc+1; Cloud(Nc) = struct('Start', 94*60, 'Depth', 0.3, 'Ramp', 15, 'Duration', 30);
 
+Next('Motor1'   , 64, 0);
+Next('Motor2'   , 66, 0);
+
 
 %% Unintentional islanding - start island
 Next('Fault.Loc1'      , 70, 1);
@@ -149,11 +152,14 @@ Next('Grid.CutGrid'    , 71.6, 1);
 
 Next('Fault.Gen1', 73, 1);
 Next('Fault.Gen1', 75, 0);
-Next('Motor1'   , 76, 0);
+Next('Motor1'   , 76, 1);
+Next('Motor2'   , 79, 1);
 Next('Fault.Pv2', 80, 1);
 Next('Fault.Pv2', 81, 0);
 Next('Fault.Loc4', 86, 1);
 Next('Fault.Loc4', 86.5, 0);
+Next('Motor1'   , 88, 0);
+Next('Motor2'   , 90, 0);
 
 %% End of unintentional islanding - start grid connected
 Next('Fault.Loc1'      , 72, 0);
@@ -163,7 +169,7 @@ Next('Grid.OpenSSF2'   , 92.4, 0);
 Next('Grid.OpenSSF3'   , 92.6, 0); 
 Next('DMS.DisReq'      , 92.7, 0);
 
-Next('Motor2'   , 95, 0);
+Next('Motor2'   , 96, 1);
 
 Next('DMS.kWena', 95, 1);
 Next('DMS.kWref', 95, 9000);         % DMS import request
