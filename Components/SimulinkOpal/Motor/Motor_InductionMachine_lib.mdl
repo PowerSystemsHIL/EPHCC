@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[717.0, 874.0]
+	Extents			[714.0, 854.0]
 	ZoomFactor		[1.5]
 	Offset			[-55.354835010464171, -3.0710845445945552]
       }
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 09 01:26:58 2017"
-  RTWModifiedTimeStamp	  424142814
-  ModelVersionFormat	  "1.%<AutoIncrement:28>"
+  LastModifiedDate	  "Tue Oct 03 23:50:15 2017"
+  RTWModifiedTimeStamp	  428975406
+  ModelVersionFormat	  "1.%<AutoIncrement:29>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -695,6 +695,17 @@ Library {
   }
   BlockParameterDefaults {
     Block {
+      BlockType		      Abs
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
       BlockType		      BusCreator
       Inputs		      "4"
       DisplayOption	      "none"
@@ -793,6 +804,20 @@ Library {
       IconShape		      "rectangular"
       AllPortsSameDT	      on
       OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      MinMax
+      Function		      "min"
+      Inputs		      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
       SampleTime	      "-1"
     }
     Block {
@@ -908,7 +933,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "150"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "168"
+    SIDHighWatermark	    "176"
     Block {
       BlockType		      SubSystem
       Name		      "Asynchronous Machine\nSI Units"
@@ -3305,9 +3330,10 @@ Library {
       SID		      "2"
       Ports		      [2, 1, 0, 0, 0, 3]
       Position		      [235, 182, 385, 278]
-      ZOrder		      3482
+      ZOrder		      3116
+      ForegroundColor	      "red"
       BackgroundColor	      "yellow"
-      LibraryVersion	      "*1.26"
+      LibraryVersion	      "*1.28"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3317,7 +3343,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"Motor"
-	Location		[5, 0, 1065, 1040]
+	Location		[0, 0, 960, 1032]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -3329,7 +3355,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "Mechanical Load [Nm]"
@@ -3349,7 +3375,6 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Logic_trip"
-	    PropagatedSignals	    "ena1"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3362,7 +3387,7 @@ Library {
 	  Position		  [775, 330, 905, 480]
 	  ZOrder		  3484
 	  AttributesFormatString  "\\n"
-	  LibraryVersion	  "1.26"
+	  LibraryVersion	  "1.28"
 	  SourceBlock		  "Motor_InductionMachine_lib/Asynchronous Machine\nSI Units"
 	  SourceType		  "Asynchronous Machine"
 	  PresetModel		  "No"
@@ -3504,6 +3529,23 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "Ground1"
+	  SID			  "175"
+	  Ports			  [0, 0, 0, 0, 0, 1]
+	  Position		  [429, 645, 451, 670]
+	  ZOrder		  3492
+	  BlockRotation		  270
+	  BlockMirror		  on
+	  ShowName		  off
+	  LibraryVersion	  "1.2191"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib/Elements/Ground"
+	  SourceType		  "Ground"
+	  LConnTagsString	  "a"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "Ground2"
 	  SID			  "135"
 	  Ports			  [0, 0, 0, 0, 0, 1]
@@ -3570,9 +3612,33 @@ Library {
 	  LConnTagsString	  "A|B|C"
 	  RConnTagsString	  "A|B|C"
 	  BranchType		  "RC"
-	  Resistance		  "1e6"
+	  Resistance		  "2304"
 	  Inductance		  "inf"
 	  Capacitance		  "10e-6"
+	  Measurements		  "None"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Three-Phase\nParallel RLC Branch2"
+	  SID			  "176"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [416, 530, 464, 600]
+	  ZOrder		  3491
+	  BlockRotation		  270
+	  BackgroundColor	  "[1.000000, 0.258824, 0.819608]"
+	  ShowName		  off
+	  AttributesFormatString  "\\n"
+	  LibraryVersion	  "1.2191"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib/Elements/Three-Phase\nParallel RLC Branch"
+	  SourceType		  "Three-Phase Parallel RLC Branch"
+	  LConnTagsString	  "A|B|C"
+	  RConnTagsString	  "A|B|C"
+	  BranchType		  "R"
+	  Resistance		  "230.4"
+	  Inductance		  "inf"
+	  Capacitance		  "inf"
 	  Measurements		  "None"
 	}
 	Block {
@@ -3597,7 +3663,7 @@ Library {
 	  }
 	  System {
 	    Name		    "Voltage_check"
-	    Location		    [-4, -4, 1924, 1160]
+	    Location		    [0, 0, 960, 1032]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3609,12 +3675,12 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "226"
+	    ZoomFactor		    "100"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "Vabc"
 	      SID		      "159"
-	      Position		      [100, 225, 130, 240]
+	      Position		      [100, 345, 130, 360]
 	      ZOrder		      3181
 	      BlockRotation	      270
 	      IconDisplay	      "Port number"
@@ -3629,10 +3695,33 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
+	      BlockType		      Abs
+	      Name		      "Abs"
+	      SID		      "169"
+	      Position		      [190, 295, 220, 325]
+	      ZOrder		      3184
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Constant"
+	      SID		      "171"
+	      Ports		      [1, 1]
+	      Position		      [360, 292, 445, 328]
+	      ZOrder		      3186
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	      SourceType	      "Compare To Constant"
+	      relop		      ">="
+	      const		      "2000"
+	      OutDataTypeStr	      "boolean"
+	      ZeroCross		      on
+	    }
+	    Block {
 	      BlockType		      DataTypeConversion
 	      Name		      "Data Type Conversion"
 	      SID		      "152"
-	      Position		      [545, 170, 590, 190]
+	      Position		      [720, 170, 765, 190]
 	      ZOrder		      3175
 	      ShowName		      off
 	      RndMeth		      "Floor"
@@ -3671,11 +3760,50 @@ Library {
 	      BlockType		      Logic
 	      Name		      "Logical\nOperator"
 	      SID		      "153"
-	      Ports		      [2, 1]
-	      Position		      [480, 162, 510, 193]
+	      Ports		      [3, 1]
+	      Position		      [660, 149, 685, 221]
 	      ZOrder		      3176
+	      Inputs		      "3"
 	      AllPortsSameDT	      off
 	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Logic
+	      Name		      "Logical\nOperator1"
+	      SID		      "173"
+	      Ports		      [1, 1]
+	      Position		      [585, 294, 615, 326]
+	      ZOrder		      3188
+	      Operator		      "NOT"
+	      AllPortsSameDT	      off
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      MinMax
+	      Name		      "MinMax"
+	      SID		      "170"
+	      Ports		      [1, 1]
+	      Position		      [265, 295, 295, 325]
+	      ZOrder		      3185
+	      Function		      "max"
+	      InputSameDT	      off
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Monostable"
+	      SID		      "172"
+	      Ports		      [1, 1]
+	      Position		      [490, 292, 540, 328]
+	      ZOrder		      3187
+	      LibraryVersion	      "1.31"
+	      FontName		      "Arial"
+	      SourceBlock	      "powerlib_meascontrol/Logic/Monostable"
+	      SourceType	      "Monostable"
+	      EdgeDetect	      "Rising"
+	      PulseDuration	      "5"
+	      ic		      "0"
+	      Ts		      "Ts"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -3695,7 +3823,7 @@ Library {
 	      MaskHideContents	      off
 	      System {
 		Name			"RMS_Calculator1"
-		Location		[-8, 0, 1928, 1176]
+		Location		[-9, -9, 1929, 1041]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -3812,9 +3940,40 @@ Library {
 	      BlockType		      Outport
 	      Name		      "On_Off"
 	      SID		      "160"
-	      Position		      [630, 173, 660, 187]
+	      Position		      [805, 173, 835, 187]
 	      ZOrder		      3182
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Logical\nOperator1"
+	      SrcPort		      1
+	      Points		      [16, 0; 0, -100]
+	      DstBlock		      "Logical\nOperator"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Monostable"
+	      SrcPort		      1
+	      DstBlock		      "Logical\nOperator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Compare\nTo Constant"
+	      SrcPort		      1
+	      DstBlock		      "Monostable"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "MinMax"
+	      SrcPort		      1
+	      DstBlock		      "Compare\nTo Constant"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Abs"
+	      SrcPort		      1
+	      DstBlock		      "MinMax"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Demux5"
@@ -3831,13 +3990,21 @@ Library {
 	    Line {
 	      SrcBlock		      "Vabc"
 	      SrcPort		      1
-	      Points		      [0, -5]
-	      DstBlock		      "RMS_Calculator1"
-	      DstPort		      1
+	      Points		      [0, -30]
+	      Branch {
+		Points			[0, -95]
+		DstBlock		"RMS_Calculator1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Abs"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Logical\nOperator"
 	      SrcPort		      1
+	      Points		      [10, 0; 0, -5]
 	      DstBlock		      "Data Type Conversion"
 	      DstPort		      1
 	    }
@@ -3874,7 +4041,7 @@ Library {
 	    Line {
 	      SrcBlock		      "Data Type Conversion1"
 	      SrcPort		      1
-	      Points		      [10, 0; 0, 45]
+	      Points		      [10, 0; 0, 35]
 	      DstBlock		      "Logical\nOperator"
 	      DstPort		      1
 	    }
@@ -3882,7 +4049,7 @@ Library {
 	      SID		      "162"
 	      Name		      "This block aims to limit the operation of the motor to energized terminals - to avoid numerical is"
 	      "sues"
-	      Position		      [454, 289]
+	      Position		      [469, 89]
 	      ZOrder		      -1
 	    }
 	    Annotation {
@@ -3908,14 +4075,14 @@ Library {
 	  Name			  "motor_cb"
 	  SID			  "137"
 	  Ports			  [1, 1, 0, 0, 0, 3, 3]
-	  Position		  [435, 403, 490, 487]
+	  Position		  [540, 403, 595, 487]
 	  ZOrder		  2939
 	  BackgroundColor	  "lightBlue"
 	  LibraryVersion	  "1.478"
 	  SourceBlock		  "breaker_lib/Breaker"
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
-	  mech_delay		  "cb_mech_delay"
+	  mech_delay		  "0"
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -3952,6 +4119,33 @@ Library {
 	  ZOrder		  2961
 	  NamePlacement		  "alternate"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  LineType		  "Connection"
+	  Points		  [440, 630; 0, 1]
+	  Branch {
+	    ConnectType		    "SRC_SRC"
+	    DstBlock		    "Three-Phase\nParallel RLC Branch2"
+	    DstPort		    LConn2
+	  }
+	  Branch {
+	    ConnectType		    "SRC_DEST"
+	    SrcBlock		    "Ground1"
+	    SrcPort		    LConn1
+	    Points		    [0, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [-15, 0]
+	    DstBlock		    "Three-Phase\nParallel RLC Branch2"
+	    DstPort		    LConn1
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    Points		    [15, 0]
+	    DstBlock		    "Three-Phase\nParallel RLC Branch2"
+	    DstPort		    LConn3
+	  }
 	}
 	Line {
 	  Name			  "VRMSLL"
@@ -4088,26 +4282,54 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "A"
+	  SrcBlock		  "Three-Phase\nParallel RLC Branch2"
 	  SrcPort		  RConn1
-	  Points		  [0, 20]
-	  DstBlock		  "motor_cb"
-	  DstPort		  LConn1
+	  Points		  [0, -80]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "A"
+	    SrcPort		    RConn1
+	    Points		    [0, 20; 70, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "motor_cb"
+	    DstPort		    LConn1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "B"
-	  SrcPort		  RConn1
-	  DstBlock		  "motor_cb"
-	  DstPort		  LConn2
+	  SrcBlock		  "Three-Phase\nParallel RLC Branch2"
+	  SrcPort		  RConn2
+	  Points		  [0, -60]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "B"
+	    SrcPort		    RConn1
+	    Points		    [85, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "motor_cb"
+	    DstPort		    LConn2
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "C"
-	  SrcPort		  RConn1
-	  Points		  [0, -20]
-	  DstBlock		  "motor_cb"
-	  DstPort		  LConn3
+	  SrcBlock		  "Three-Phase\nParallel RLC Branch2"
+	  SrcPort		  RConn3
+	  Points		  [0, -40]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "C"
+	    SrcPort		    RConn1
+	    Points		    [0, -20; 100, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "motor_cb"
+	    DstPort		    LConn3
+	  }
 	}
 	Line {
 	  SrcBlock		  "Mechanical Load [Nm]"
@@ -4151,7 +4373,7 @@ Library {
 	Line {
 	  SrcBlock		  "motor_cb"
 	  SrcPort		  1
-	  Points		  [14, 0; 0, -145; 444, 0]
+	  Points		  [5, 0; 0, -145; 348, 0]
 	  Branch {
 	    DstBlock		    "Bus\nSelector1"
 	    DstPort		    1

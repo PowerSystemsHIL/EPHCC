@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[12]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "pkoralew"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 03 00:16:36 2017"
-  RTWModifiedTimeStamp	  428890592
-  ModelVersionFormat	  "1.%<AutoIncrement:63>"
+  LastModifiedDate	  "Tue Oct 03 23:53:36 2017"
+  RTWModifiedTimeStamp	  428975598
+  ModelVersionFormat	  "1.%<AutoIncrement:64>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -858,7 +858,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "866"
+    SIDHighWatermark	    "867"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -867,7 +867,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.62"
+      LibraryVersion	      "*1.63"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -969,7 +969,7 @@ Library {
 	  Name			  "200 HP chiller compressor"
 	  SID			  "552"
 	  Ports			  [1, 1]
-	  Position		  [3675, 1782, 3840, 1818]
+	  Position		  [3720, 1782, 3885, 1818]
 	  ZOrder		  3471
 	  BlockMirror		  on
 	  LibraryVersion	  "1.101"
@@ -1297,7 +1297,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "746"
 	  Ports			  [1, 1]
-	  Position		  [3520, 1826, 3525, 1864]
+	  Position		  [3500, 1826, 3505, 1864]
 	  ZOrder		  3657
 	  ShowName		  off
 	  OutputSignals		  "motor"
@@ -1447,7 +1447,7 @@ Library {
 	  Name			  "Bus\nSelector17"
 	  SID			  "553"
 	  Ports			  [1, 1]
-	  Position		  [3885, 1784, 3890, 1816]
+	  Position		  [3920, 1784, 3925, 1816]
 	  ZOrder		  3470
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -1519,7 +1519,7 @@ Library {
 	  Name			  "Bus\nSelector20"
 	  SID			  "841"
 	  Ports			  [1, 1]
-	  Position		  [3585, 1826, 3590, 1864]
+	  Position		  [3550, 1826, 3555, 1864]
 	  ZOrder		  4069
 	  ShowName		  off
 	  OutputSignals		  "ena2"
@@ -1976,6 +1976,28 @@ Library {
 	  SourceType		  "Breaker"
 	  Ts			  "Ts"
 	  mech_delay		  "cb_mech_delay"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "First-Order\nFilter"
+	  SID			  "867"
+	  Ports			  [1, 1]
+	  Position		  [3640, 1782, 3690, 1818]
+	  ZOrder		  4084
+	  BlockMirror		  on
+	  NamePlacement		  "alternate"
+	  LibraryVersion	  "1.31"
+	  FontName		  "Arial"
+	  SourceBlock		  "powerlib_meascontrol/Filters/First-Order\nFilter"
+	  SourceType		  "First-Order Filter"
+	  FilterType		  "Lowpass"
+	  Tc			  "10e-3 "
+	  Ts			  "Ts"
+	  Initialize		  on
+	  Vac_Init		  "[0, 0, 60]"
+	  Vdc_Init		  "0"
+	  PlotResponse		  off
+	  FreqRange		  "[0,  200,  1]"
 	}
 	Block {
 	  BlockType		  From
@@ -2919,7 +2941,7 @@ Library {
 	  Position		  [3680, 1852, 3830, 1948]
 	  ZOrder		  3472
 	  BackgroundColor	  "yellow"
-	  LibraryVersion	  "1.28"
+	  LibraryVersion	  "1.29"
 	  SourceBlock		  "Motor_InductionMachine_lib/Motor"
 	  SourceType		  "SubSystem"
 	}
@@ -4421,6 +4443,13 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "First-Order\nFilter"
+	  SrcPort		  1
+	  Points		  [-17, 0; 0, 60]
+	  DstBlock		  "Motor"
+	  DstPort		  1
+	}
+	Line {
 	  SrcBlock		  "From16"
 	  SrcPort		  1
 	  DstBlock		  "NGCHP_Generator"
@@ -4437,13 +4466,12 @@ Library {
 	Line {
 	  SrcBlock		  "Motor"
 	  SrcPort		  1
-	  Points		  [95, 0]
+	  Points		  [105, 0]
 	  Branch {
 	    DstBlock		    "Goto1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -100]
 	    DstBlock		    "Bus\nSelector17"
 	    DstPort		    1
 	  }
@@ -4491,7 +4519,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector20"
 	  SrcPort		  1
-	  Points		  [35, 0; 0, 35]
+	  Points		  [44, 0; 0, 35]
 	  DstBlock		  "Motor"
 	  DstPort		  2
 	}
@@ -5273,8 +5301,7 @@ Library {
 	Line {
 	  SrcBlock		  "200 HP chiller compressor"
 	  SrcPort		  1
-	  Points		  [-19, 0; 0, 60]
-	  DstBlock		  "Motor"
+	  DstBlock		  "First-Order\nFilter"
 	  DstPort		  1
 	}
 	Line {
