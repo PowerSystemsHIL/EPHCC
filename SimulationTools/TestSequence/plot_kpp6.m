@@ -1,4 +1,4 @@
-figure;
+figure('name', 'kpp6');
 
 ax = [];
 ax= [ax subplot(2,1,1)]; plot(comm.t_min, [ kpp6.soc ], 'LineWidth', 2); hold on; grid on;

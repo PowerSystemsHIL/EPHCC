@@ -1,7 +1,7 @@
 function [ax] = seq_plot(seq);
 ax = [];
 opt = seq.opt;
-figure;
+figure('name', 'sequence');;
 ax= [ax subplot(6,1,1)]; plot(seq.t/60, [seq.irradiance; seq.price]);
     legend({'Irradiance PV1', 'Irradiance PV2', 'Grid energy price'});
     title('Microgid controller procurement 2017 - test sequence');

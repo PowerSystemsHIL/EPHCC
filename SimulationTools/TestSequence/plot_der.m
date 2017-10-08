@@ -10,7 +10,7 @@ DERs = {struct('name', 'gen1', 'mcb_id', id.CBGen1, 'bus_id', id.CB112, 'Vn', 13
 
 %%
 for ii=1:7
-fh = figure;
+fh = figure('name', DERs{ii}.name);
 annotation(fh, 'TextBox', 'string', DERs{ii}.name, 'position', [0.2 0.95 0.6 0.05]);
 ax = [];
 res_ctrl = eval(['res.' DERs{ii}.name '_ctrl']);

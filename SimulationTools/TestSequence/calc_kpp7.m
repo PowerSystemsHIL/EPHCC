@@ -101,6 +101,15 @@ volt = voltPU.*repmat(Vn,comm.M,1);
 cur = s/3./(volt/sqrt(3));
 curPU = cur./repmat(In,comm.M,1);
 
+dGen =  (curPU(:,IsGen) - 1).^4;
+dTrafo = (curPU(:,IsTrafo) - 1).^4;
+dLine = (curPU(:,IsLine) - 1).^4;
+
+d_cum_Gen   = prices.P75 * cumsum(sum(dGen,2));
+d_cum_Trafo = prices.P76 * cumsum(sum(dTrafo,2));
+d_cum_Line  = prices.P77 * cumsum(sum(dLine,2));
+
+%%
 d_per_class = [cb_switches*prices.P74];
 d_cum_per_class = cumsum(d_per_class);
 legend_per_class = {'CB switch'};

@@ -1,4 +1,4 @@
-figure;
+figure('name', 'kpp2');
 
 ax = [];
 ax= [ax subplot(2,1,1)]; 

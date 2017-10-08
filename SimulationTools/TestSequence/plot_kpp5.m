@@ -1,4 +1,4 @@
-figure; % Voltage
+figure('name', 'kpp5 Voltage'); % Voltage
 
 ax = [];
 ax= [ax subplot(3,1,1)]; plot(comm.t_min, res.voltage(:,kpp5.iPQ)); 
@@ -15,7 +15,7 @@ legend(kpp5.legend_per_class, 'location', 'SouthWest');
 linkaxes(ax,'x');
 
 %% Frequency
-figure; 
+figure('name', 'kpp5 Freq'); 
 ax = [];
 ax= [ax subplot(3,1,1)]; plot(comm.t_min, res.frequency(:,kpp5.iPQ)); 
 title('Bus frequencies [Hz]');                         

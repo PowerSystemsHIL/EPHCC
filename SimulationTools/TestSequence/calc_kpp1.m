@@ -55,8 +55,16 @@ EO_per_class = cumsum(P_outage_per_class*seqi.opt.Ts/3600);
 
 EP_per_class = E_good_per_class .* repmat([prices.P12 prices.P13 prices.P12 prices.P11],M,1);
 EOP_per_class = EO_per_class .* repmat([prices.P16 0 prices.P16 prices.P15],M,1);
-d_cum_per_class = [EP_per_class -EOP_per_class];
-d_cum_per_class_legend = {'M' 'I' 'P' 'C'};
+
+%% Energy stored in the battery
+e_batt = res.battery_SoC/10000 .* repmat([600 1200],M,1);
+e_batt_diff = e_batt - repmat(e_batt(1,:), M, 1);
+d_batt_diff = sum(e_batt_diff,2) .* prices.P17;
+
+
+%%
+d_cum_per_class = [EP_per_class -EOP_per_class d_batt_diff];
+d_cum_per_class_legend = {'M' 'I' 'P' 'C' 'ESS'};
 d_cum_total = sum(d_cum_per_class,2);
 
 clear( 'res', 'seqi', 'comm', 'prices' );

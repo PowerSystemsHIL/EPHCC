@@ -1,4 +1,4 @@
-figure;
+figure('name', 'kpp4');
 
 ax = [];
 ax= [ax subplot(3,1,1)]; plot(comm.t_min, [ kpp3.pcc.p ], 'r', 'LineWidth', 2); hold on; grid on;

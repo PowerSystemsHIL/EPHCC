@@ -1,4 +1,4 @@
-fh = figure();
+fh = figure('name', 'feed1');
 annotation(fh, 'TextBox', 'string', 'Feeder 1', 'position', [0.2 0.95 0.6 0.05]);
 ax= subplot(3,4,1); plot(comm.t_min, res.powerreal(:,[1:14]));
 ax= [ax subplot(3,4,5)]; plot(comm.t_min, res.powerreal(:,[50]));
@@ -19,7 +19,7 @@ ax= [ax subplot(3,4,12)]; plot(comm.t_min, bitand(res.breaker(:,[53]),1));
 linkaxes(ax,'x');
 
 %% Feeder 2
-fh = figure();
+fh = figure('name', 'feed2');
 annotation(fh, 'TextBox', 'string', 'Feeder 2', 'position', [0.2 0.95 0.6 0.05]);
 ax= subplot(4,4,1); plot(comm.t_min, res.powerreal(:,[15:33]));
 ax= [ax subplot(4,4,5)]; plot(comm.t_min, res.powerreal(:,[51]));
@@ -44,7 +44,7 @@ ax= [ax subplot(4,4,16)]; plot(comm.t_min, bitand(res.breaker(:,[55]),1));
 linkaxes(ax,'x');
 
 %% Feeder 3
-fh = figure();
+fh = figure('name', 'feed3');
 annotation(fh, 'TextBox', 'string', 'Feeder 3', 'position', [0.2 0.95 0.6 0.05]);
 ax= subplot(3,4,1); plot(comm.t_min, res.powerreal(:,[34:43]));
 ax= [ax subplot(3,4,5)]; plot(comm.t_min, res.powerreal(:,[52]));
@@ -65,7 +65,7 @@ ax= [ax subplot(3,4,12)]; plot(comm.t_min, bitand(res.breaker(:,[56]),1));
 linkaxes(ax,'x');
 
 %% Feeder 4
-fh = figure();
+fh = figure('name', 'feed4');
 annotation(fh, 'TextBox', 'string', 'Feeder 4', 'position', [0.2 0.95 0.6 0.05]);
 ax=     subplot(5,4,1) ; plot(comm.t_min, res.powerreal(:,[45:49]));
 ax= [ax subplot(5,4,5)]; plot(comm.t_min, res.powerreal(:,[44]));
