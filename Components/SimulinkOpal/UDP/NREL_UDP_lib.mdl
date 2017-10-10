@@ -45,7 +45,7 @@ Library {
 	LoadSaveID		"0"
 	Extents			[717.0, 874.0]
 	ZoomFactor		[1.2422907488986783]
-	Offset			[150.17021276595858, -61.269503546099259]
+	Offset			[150.17021276595926, -61.269503546099259]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC3"
+  LastModifiedBy	  "MGC4"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 27 16:54:27 2017"
-  RTWModifiedTimeStamp	  428432063
-  ModelVersionFormat	  "1.%<AutoIncrement:16>"
+  LastModifiedDate	  "Mon Oct 09 23:50:40 2017"
+  RTWModifiedTimeStamp	  429493837
+  ModelVersionFormat	  "1.%<AutoIncrement:22>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -747,6 +747,12 @@ Library {
       TagVisibility	      "local"
     }
     Block {
+      BlockType		      Goto
+      GotoTag		      "A"
+      IconDisplay	      "Tag"
+      TagVisibility	      "local"
+    }
+    Block {
       BlockType		      Inport
       Port		      "1"
       OutputFunctionCall      off
@@ -763,6 +769,39 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Memory
+      X0		      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      LinearizeAsDelay	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Mux
@@ -788,6 +827,26 @@ Library {
       SourceOfInitialOutputValue "Dialog"
       OutputWhenDisabled      "held"
       InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Rounding
+      Operator		      "floor"
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      S-Function
@@ -867,6 +926,23 @@ Library {
     Block {
       BlockType		      Terminator
     }
+    Block {
+      BlockType		      TriggerPort
+      TriggerType	      "rising"
+      StatesWhenEnabling      "inherit"
+      PropagateVarSize	      "During execution"
+      ShowOutputPort	      off
+      OutputDataType	      "auto"
+      SampleTimeType	      "triggered"
+      SampleTime	      "1"
+      ZeroCross		      on
+      PortDimensions	      "-1"
+      TriggerSignalSampleTime "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      Interpolate	      on
+    }
   }
   System {
     Name		    "NREL_UDP_lib"
@@ -884,7 +960,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "124"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "98"
+    SIDHighWatermark	    "171"
     Block {
       BlockType		      SubSystem
       Name		      "NREL UDP Data - Formatted Packets"
@@ -894,7 +970,7 @@ Library {
       ZOrder		      4250
       ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
       BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
-      LibraryVersion	      "*1.15"
+      LibraryVersion	      "*1.21"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -991,7 +1067,7 @@ Library {
       }
       System {
 	Name			"NREL UDP Data - Formatted Packets"
-	Location		[0, 0, 960, 1040]
+	Location		[0, 0, 1165, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1361,6 +1437,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "103"
+	  Ports			  [1, 1]
+	  Position		  [1790, 1671, 1795, 1709]
+	  ZOrder		  3717
+	  ShowName		  off
+	  OutputSignals		  "misc"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<misc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "94"
 	  Ports			  [1, 2]
@@ -1377,6 +1469,38 @@ Library {
 	  Port {
 	    PortNumber		    2
 	    Name		    "<testSeqFromSC>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "104"
+	  Ports			  [1, 1]
+	  Position		  [1850, 1671, 1855, 1709]
+	  ZOrder		  3718
+	  ShowName		  off
+	  OutputSignals		  "mgc_ena"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<mgc_ena>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector3"
+	  SID			  "108"
+	  Ports			  [1, 1]
+	  Position		  [1805, 1626, 1810, 1664]
+	  ZOrder		  3722
+	  ShowName		  off
+	  OutputSignals		  "DataLogging.record_rms_signals"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<record_rms_signals>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1415,7 +1539,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    "441"
+	    SIDHighWatermark	    "502"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "u"
@@ -1427,20 +1551,20 @@ Library {
 	    Block {
 	      BlockType		      Demux
 	      Name		      " Demux "
-	      SID		      "60::440"
+	      SID		      "60::501"
 	      Ports		      [1, 1]
 	      Position		      [270, 230, 320, 270]
-	      ZOrder		      268
+	      ZOrder		      304
 	      Outputs		      "1"
 	    }
 	    Block {
 	      BlockType		      S-Function
 	      Name		      " SFunction "
-	      SID		      "60::439"
+	      SID		      "60::500"
 	      Tag		      "Stateflow S-Function NREL_UDP_lib 2"
 	      Ports		      [1, 2]
 	      Position		      [180, 100, 230, 160]
-	      ZOrder		      267
+	      ZOrder		      303
 	      FunctionName	      "sf_sfun"
 	      PortCounts	      "[1 2]"
 	      EnableBusSupport	      off
@@ -1454,9 +1578,9 @@ Library {
 	    Block {
 	      BlockType		      Terminator
 	      Name		      " Terminator "
-	      SID		      "60::441"
+	      SID		      "60::502"
 	      Position		      [460, 241, 480, 259]
-	      ZOrder		      269
+	      ZOrder		      305
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -1516,6 +1640,30 @@ Library {
 	  Value			  "1000"
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "111"
+	  Position		  [2275, 1774, 2295, 1796]
+	  ZOrder		  3736
+	  Value			  "0.5"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "112"
+	  Position		  [1995, 1984, 2015, 2006]
+	  ZOrder		  3735
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  "113"
+	  Position		  [2275, 1854, 2295, 1876]
+	  ZOrder		  3734
+	  Value			  "0.5"
+	}
+	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion"
 	  SID			  "63"
@@ -1554,6 +1702,68 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  From
+	  Name			  "From1"
+	  SID			  "107"
+	  Position		  [1700, 1636, 1795, 1654]
+	  ZOrder		  3721
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "163"
+	  Position		  [1700, 1678, 1760, 1702]
+	  ZOrder		  3741
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "testseq"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From4"
+	  SID			  "164"
+	  Position		  [2180, 1898, 2240, 1922]
+	  ZOrder		  3742
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "udp_data"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "161"
+	  Position		  [2220, 785, 2295, 805]
+	  ZOrder		  3739
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "testseq"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto1"
+	  SID			  "162"
+	  Position		  [2275, 1310, 2355, 1330]
+	  ZOrder		  3740
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "udp_data"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "165"
+	  Ports			  [2, 1]
+	  Position		  [1915, 1624, 1950, 1711]
+	  ZOrder		  3743
+	  ShowName		  off
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
 	  BlockType		  Mux
 	  Name			  "Mux-to-Ethernet"
 	  SID			  "65"
@@ -1584,6 +1794,257 @@ Library {
 	  ShowName		  off
 	  Inputs		  "10"
 	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Number of seconds of recording"
+	  SID			  "115"
+	  Ports			  [0, 1]
+	  Position		  [1690, 1759, 1790, 1801]
+	  ZOrder		  3733
+	  BackgroundColor	  "lightBlue"
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Object {
+	    $PropName		    "MaskObject"
+	    $ObjectID		    43
+	    $ClassName		    "Simulink.Mask"
+	    Description		    "Set the number of seconds that should last the recording in each file."
+	    Object {
+	      $PropName		      "Parameters"
+	      $ObjectID		      44
+	      $ClassName	      "Simulink.MaskParameter"
+	      Type		      "edit"
+	      Name		      "time_s"
+	      Prompt		      "Time in seconds"
+	      Value		      "60"
+	    }
+	  }
+	  Port {
+	    PortNumber		    1
+	    Name		    "File suffix"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "Number of seconds of recording"
+	    Location		    [-4, 0, 1924, 1164]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Constant1"
+	      SID		      "116"
+	      Ports		      [1, 1]
+	      Position		      [325, 109, 385, 141]
+	      ZOrder		      -1
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
+	      SourceType	      "Compare To Constant"
+	      relop		      ">="
+	      const		      "time_s"
+	      OutDataTypeStr	      "boolean"
+	      ZeroCross		      on
+	      Port {
+		PortNumber		1
+		Name			"limit reached"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Increment"
+	      SID		      "117"
+	      Ports		      [0, 1, 0, 1]
+	      Position		      [410, 237, 505, 283]
+	      ZOrder		      -2
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"Increment"
+		Location		[62, 198, 439, 654]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  TriggerPort
+		  Name			  "Trigger"
+		  SID			  "118"
+		  Ports			  []
+		  Position		  [255, 25, 275, 45]
+		  ZOrder		  -1
+		  StatesWhenEnabling	  "held"
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Increment"
+		  SID			  "119"
+		  Position		  [90, 115, 120, 145]
+		  ZOrder		  -2
+		}
+		Block {
+		  BlockType		  Memory
+		  Name			  "Memory"
+		  SID			  "120"
+		  Position		  [60, 65, 90, 95]
+		  ZOrder		  -3
+		  InheritSampleTime	  on
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "Sum"
+		  SID			  "121"
+		  Ports			  [2, 1]
+		  Position		  [130, 70, 150, 90]
+		  ZOrder		  -4
+		  ShowName		  off
+		  IconShape		  "round"
+		  Inputs		  "|++"
+		  InputSameDT		  off
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Out1"
+		  SID			  "122"
+		  Position		  [205, 73, 235, 87]
+		  ZOrder		  -5
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "Increment"
+		  SrcPort		  1
+		  Points		  [15, 0]
+		  DstBlock		  "Sum"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Memory"
+		  SrcPort		  1
+		  DstBlock		  "Sum"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Sum"
+		  SrcPort		  1
+		  Points		  [30, 0]
+		  Branch {
+		    Points		    [0, -50; -155, 0; 0, 50]
+		    DstBlock		    "Memory"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "Out1"
+		    DstPort		    1
+		  }
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Integrator
+	      Name		      "Integrator"
+	      SID		      "123"
+	      Ports		      [2, 1]
+	      Position		      [190, 89, 240, 156]
+	      ZOrder		      -3
+	      ExternalReset	      "rising"
+	    }
+	    Block {
+	      BlockType		      Memory
+	      Name		      "Memory"
+	      SID		      "124"
+	      Position		      [305, 185, 335, 215]
+	      ZOrder		      -4
+	      BlockMirror	      on
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Slope"
+	      SID		      "125"
+	      Position		      [90, 90, 120, 120]
+	      ZOrder		      -5
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "file suffix"
+	      SID		      "126"
+	      Position		      [540, 253, 570, 267]
+	      ZOrder		      -6
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Increment"
+	      SrcPort		      1
+	      DstBlock		      "file suffix"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Memory"
+	      SrcPort		      1
+	      Points		      [-125, 0]
+	      DstBlock		      "Integrator"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "limit reached"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Compare\nTo Constant1"
+	      SrcPort		      1
+	      Points		      [65, 0; 0, 75]
+	      Branch {
+		DstBlock		"Increment"
+		DstPort			trigger
+	      }
+	      Branch {
+		DstBlock		"Memory"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      Labels		      [0, 0]
+	      SrcBlock		      "Integrator"
+	      SrcPort		      1
+	      DstBlock		      "Compare\nTo Constant1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Slope"
+	      SrcPort		      1
+	      DstBlock		      "Integrator"
+	      DstPort		      1
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  Reference
@@ -1635,6 +2096,80 @@ Library {
 	  sp5			  "string5"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "OpTrigger"
+	  SID			  "127"
+	  Ports			  [2, 1]
+	  Position		  [2320, 1738, 2480, 1802]
+	  ZOrder		  3732
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/DataLogging/OpTrigger"
+	  SourceType		  "OpTrigger"
+	  Trig_Type		  "TRIGGER SIGNAL >= TRIGGER LEVEL"
+	  Trig_Offset		  "0"
+	  Acq_Group		  "28"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "OpTrigger1"
+	  SID			  "128"
+	  Ports			  [2, 1]
+	  Position		  [2320, 1818, 2480, 1882]
+	  ZOrder		  3731
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/DataLogging/OpTrigger"
+	  SourceType		  "OpTrigger"
+	  Trig_Type		  "TRIGGER SIGNAL >= TRIGGER LEVEL"
+	  Trig_Offset		  "0"
+	  Acq_Group		  "29"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "OpWriteFile2"
+	  SID			  "129"
+	  Ports			  [2, 2]
+	  Position		  [2320, 1916, 2425, 1969]
+	  ZOrder		  3730
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/DataLogging/OpWriteFile"
+	  SourceType		  "OpWriteFile"
+	  Static_File		  off
+	  Decimation		  "20"
+	  varname		  "recVar"
+	  Filename		  "A_FILE_RECORDED_o.mat"
+	  rtpath		  "'./'"
+	  nrtpath		  "'.\\'"
+	  Acq_Group		  "28"
+	  file_size		  "1000000000"
+	  write_offline		  off
+	  Sim_Mode		  off
+	  Nb_Samples		  "30500"
+	  Buffer_size		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "OpWriteFile3"
+	  SID			  "130"
+	  Ports			  [2, 2]
+	  Position		  [2320, 1996, 2425, 2049]
+	  ZOrder		  3729
+	  LibraryVersion	  "1.512"
+	  SourceBlock		  "rtlab/DataLogging/OpWriteFile"
+	  SourceType		  "OpWriteFile"
+	  Static_File		  off
+	  Decimation		  "20"
+	  varname		  "recVar"
+	  Filename		  "A_FILE_RECORDED_e.mat"
+	  rtpath		  "'./'"
+	  nrtpath		  "'.\\'"
+	  Acq_Group		  "29"
+	  file_size		  "1000000000"
+	  write_offline		  off
+	  Sim_Mode		  off
+	  Nb_Samples		  "30500"
+	  Buffer_size		  "0"
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Profile ID"
 	  SID			  "70"
@@ -1678,6 +2213,20 @@ Library {
 	  OutDataTypeStr	  "double"
 	}
 	Block {
+	  BlockType		  Sum
+	  Name			  "Sum1"
+	  SID			  "131"
+	  Ports			  [2, 1]
+	  Position		  [2030, 1955, 2050, 1975]
+	  ZOrder		  3728
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Switch
 	  Name			  "Switch"
 	  SID			  "95"
@@ -1685,6 +2234,24 @@ Library {
 	  ZOrder		  3709
 	  Criteria		  "u2 > Threshold"
 	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch1"
+	  SID			  "132"
+	  Position		  [2160, 1940, 2190, 1970]
+	  ZOrder		  3727
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch2"
+	  SID			  "133"
+	  Position		  [2165, 2020, 2195, 2050]
+	  ZOrder		  3726
 	  InputSameDT		  off
 	  SaturateOnIntegerOverflow off
 	}
@@ -1705,10 +2272,58 @@ Library {
 	}
 	Block {
 	  BlockType		  Terminator
+	  Name			  "Terminator2"
+	  SID			  "166"
+	  Position		  [2465, 1945, 2485, 1965]
+	  ZOrder		  3745
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
 	  Name			  "Terminator3"
 	  SID			  "76"
 	  Position		  [1455, 645, 1475, 665]
 	  ZOrder		  3704
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator4"
+	  SID			  "167"
+	  Position		  [2465, 2025, 2485, 2045]
+	  ZOrder		  3744
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator5"
+	  SID			  "168"
+	  Position		  [2465, 1920, 2485, 1940]
+	  ZOrder		  3747
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator6"
+	  SID			  "169"
+	  Position		  [2465, 2000, 2485, 2020]
+	  ZOrder		  3746
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator7"
+	  SID			  "170"
+	  Position		  [2505, 1760, 2525, 1780]
+	  ZOrder		  3748
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator8"
+	  SID			  "171"
+	  Position		  [2505, 1840, 2525, 1860]
+	  ZOrder		  3749
+	  ShowName		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -1722,6 +2337,423 @@ Library {
 	  LibraryVersion	  "1.11"
 	  SourceBlock		  "TestSeq_slave_lib/TestSequenceCommands"
 	  SourceType		  "SubSystem"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Trigg_machine"
+	  SID			  "134"
+	  Ports			  [3, 2]
+	  Position		  [2150, 1739, 2230, 1801]
+	  ZOrder		  3725
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Trigg_machine"
+	    Location		    [960, 0, 1920, 1040]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "150"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Write"
+	      SID		      "135"
+	      Position		      [70, 103, 100, 117]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Odd"
+	      SID		      "136"
+	      Position		      [240, 53, 270, 67]
+	      ZOrder		      -2
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Even"
+	      SID		      "137"
+	      Position		      [240, 153, 270, 167]
+	      ZOrder		      -3
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Bitwise\nOperator"
+	      SID		      "138"
+	      Ports		      [2, 1]
+	      Position		      [310, 51, 350, 89]
+	      ZOrder		      -4
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Bitwise\nOperator"
+	      SourceType	      "Bitwise Operator"
+	      logicop		      "AND"
+	      UseBitMask	      off
+	      NumInputPorts	      "2"
+	      BitMask		      "bin2dec('11011001')"
+	      BitMaskRealWorld	      "Stored Integer"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Bitwise\nOperator1"
+	      SID		      "139"
+	      Ports		      [2, 1]
+	      Position		      [310, 131, 350, 169]
+	      ZOrder		      -5
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Bitwise\nOperator"
+	      SourceType	      "Bitwise Operator"
+	      logicop		      "AND"
+	      UseBitMask	      off
+	      NumInputPorts	      "2"
+	      BitMask		      "bin2dec('11011001')"
+	      BitMaskRealWorld	      "Stored Integer"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "140"
+	      Position		      [395, 60, 470, 80]
+	      ZOrder		      -6
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "141"
+	      Position		      [395, 140, 470, 160]
+	      ZOrder		      -7
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Double2uint8"
+	      SID		      "142"
+	      Position		      [155, 99, 230, 121]
+	      ZOrder		      -8
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Trig_odd"
+	      SID		      "143"
+	      Position		      [520, 63, 550, 77]
+	      ZOrder		      -9
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Trig_even"
+	      SID		      "144"
+	      Position		      [520, 143, 550, 157]
+	      ZOrder		      -10
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Bitwise\nOperator"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bitwise\nOperator1"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Even"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Trig_odd"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "Trig_even"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Odd"
+	      SrcPort		      1
+	      DstBlock		      "Bitwise\nOperator"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Write"
+	      SrcPort		      1
+	      DstBlock		      "Double2uint8"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Double2uint8"
+	      SrcPort		      1
+	      Points		      [50, 0]
+	      Branch {
+		Points			[0, -30]
+		DstBlock		"Bitwise\nOperator"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 30]
+		DstBlock		"Bitwise\nOperator1"
+		DstPort			1
+	      }
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "isOddOrEven"
+	  SID			  "145"
+	  Ports			  [1, 2]
+	  Position		  [1965, 1760, 2060, 1800]
+	  ZOrder		  3724
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "isOddOrEven"
+	    Location		    [-4, -4, 1924, 1160]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Index"
+	      SID		      "146"
+	      Position		      [20, 28, 50, 42]
+	      ZOrder		      -1
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Zero"
+	      SID		      "147"
+	      Ports		      [1, 1]
+	      Position		      [360, 30, 390, 60]
+	      ZOrder		      -2
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+	      SourceType	      "Compare To Zero"
+	      relop		      "~="
+	      OutDataTypeStr	      "boolean"
+	      ZeroCross		      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Compare\nTo Zero1"
+	      SID		      "148"
+	      Ports		      [1, 1]
+	      Position		      [360, 90, 390, 120]
+	      ZOrder		      -3
+	      LibraryVersion	      "1.274"
+	      SourceBlock	      "simulink/Logic and Bit\nOperations/Compare\nTo Zero"
+	      SourceType	      "Compare To Zero"
+	      relop		      "=="
+	      OutDataTypeStr	      "boolean"
+	      ZeroCross		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      "149"
+	      Position		      [25, 104, 45, 126]
+	      ZOrder		      -4
+	      Value		      "2"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Divide"
+	      SID		      "150"
+	      Ports		      [2, 1]
+	      Position		      [90, 27, 120, 58]
+	      ZOrder		      -5
+	      Inputs		      "*/"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Produit"
+	      SID		      "151"
+	      Ports		      [2, 1]
+	      Position		      [230, 62, 260, 93]
+	      ZOrder		      -6
+	      Inputs		      "**"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Rounding
+	      Name		      "Rounding\nFunction"
+	      SID		      "152"
+	      Position		      [150, 55, 180, 85]
+	      ZOrder		      -7
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      "153"
+	      Ports		      [2, 1]
+	      Position		      [280, 35, 300, 55]
+	      ZOrder		      -8
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|+-"
+	      InputSameDT	      off
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "isOdd"
+	      SID		      "154"
+	      Position		      [485, 38, 515, 52]
+	      ZOrder		      -9
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "isEven"
+	      SID		      "155"
+	      Position		      [485, 98, 515, 112]
+	      ZOrder		      -10
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      Branch {
+		Points			[0, -65]
+		DstBlock		"Divide"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[145, 0]
+		DstBlock		"Produit"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Divide"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      DstBlock		      "Rounding\nFunction"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Index"
+	      SrcPort		      1
+	      Points		      [5, 0]
+	      Branch {
+		DstBlock		"Divide"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -15; 105, 0; 0, 25]
+		DstBlock		"Sum"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Rounding\nFunction"
+	      SrcPort		      1
+	      DstBlock		      "Produit"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Produit"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      Branch {
+		DstBlock		"Compare\nTo Zero"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 60]
+		DstBlock		"Compare\nTo Zero1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Compare\nTo Zero"
+	      SrcPort		      1
+	      DstBlock		      "isOdd"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Compare\nTo Zero1"
+	      SrcPort		      1
+	      DstBlock		      "isEven"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "156"
+	      Name		      "Effectuer la différence entre le nombre en entrée,\net sa moitié arrondie multipliée par 2."
+	      Position		      [154, 182]
+	      ZOrder		      -1
+	    }
+	    Annotation {
+	      SID		      "157"
+	      Name		      "Si cette différence est égale à 0, c'est que le\nnombre en entrée est pair, sinon c'est qu'il est "
+	      "impair."
+	      Position		      [444, 182]
+	      ZOrder		      -2
+	    }
+	  }
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -1740,7 +2772,7 @@ Library {
 	  MaskHideContents	  off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    43
+	    $ObjectID		    45
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('uint32_2_uint16');"
 	  }
@@ -1903,10 +2935,219 @@ Library {
 	  BlockType		  Outport
 	  Name			  "TestSeq"
 	  SID			  "87"
-	  Position		  [2300, 743, 2330, 757]
+	  Position		  [2330, 743, 2360, 757]
 	  ZOrder		  3697
 	  ForegroundColor	  "blue"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "OpTrigger"
+	  SrcPort		  1
+	  DstBlock		  "Terminator7"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpTrigger1"
+	  SrcPort		  1
+	  DstBlock		  "Terminator8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpWriteFile3"
+	  SrcPort		  1
+	  DstBlock		  "Terminator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpWriteFile2"
+	  SrcPort		  1
+	  DstBlock		  "Terminator5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpWriteFile3"
+	  SrcPort		  2
+	  DstBlock		  "Terminator4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "OpWriteFile2"
+	  SrcPort		  2
+	  DstBlock		  "Terminator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [95, 0; 0, 80]
+	  DstBlock		  "Trigg_machine"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "File suffix"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Number of seconds of recording"
+	  SrcPort		  1
+	  Points		  [80, 0]
+	  Branch {
+	    Points		    [0, 165]
+	    Branch {
+	      DstBlock		      "Switch1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 20]
+	      Branch {
+		Points			[0, 60]
+		DstBlock		"Switch2"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Sum1"
+		DstPort			1
+	      }
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "isOddOrEven"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Sum1"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    Points		    [0, 80]
+	    DstBlock		    "Switch2"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "Switch1"
+	    DstPort		    3
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  DstBlock		  "Sum1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Switch2"
+	  SrcPort		  1
+	  DstBlock		  "OpWriteFile3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Switch1"
+	  SrcPort		  1
+	  DstBlock		  "OpWriteFile2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "isOddOrEven"
+	  SrcPort		  2
+	  Points		  [30, 0]
+	  Branch {
+	    DstBlock		    "Trigg_machine"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, 245]
+	    DstBlock		    "Switch2"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "isOddOrEven"
+	  SrcPort		  1
+	  Points		  [50, 0]
+	  Branch {
+	    DstBlock		    "Trigg_machine"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 185]
+	    DstBlock		    "Switch1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "OpTrigger1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "OpTrigger"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Trigg_machine"
+	  SrcPort		  2
+	  Points		  [20, 0; 0, 50]
+	  DstBlock		  "OpTrigger1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Trigg_machine"
+	  SrcPort		  1
+	  DstBlock		  "OpTrigger"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From4"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 20]
+	  Branch {
+	    Points		    [0, 80]
+	    DstBlock		    "OpWriteFile3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "OpWriteFile2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "<record_rms_signals>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector3"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<mgc_ena>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<misc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "MgcCtrl"
@@ -1964,8 +3205,16 @@ Library {
 	Line {
 	  SrcBlock		  "TestSequenceCommands"
 	  SrcPort		  1
-	  DstBlock		  "TestSeq"
-	  DstPort		  1
+	  Points		  [24, 0]
+	  Branch {
+	    DstBlock		    "TestSeq"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 45]
+	    DstBlock		    "Goto"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "B-width"
@@ -2013,8 +3262,15 @@ Library {
 	  SrcBlock		  "Mux-to-Ethernet"
 	  SrcPort		  1
 	  Points		  [70, 0]
-	  DstBlock		  "OpAsyncSend"
-	  DstPort		  2
+	  Branch {
+	    DstBlock		    "OpAsyncSend"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 55]
+	    DstBlock		    "Goto1"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "Profile ID"
@@ -2164,13 +3420,32 @@ Library {
 	  DstPort		  1
 	}
 	Annotation {
+	  SID			  "160"
+	  Name			  "To be recorded at a decimation factor of 10,   for 1800s each file with a Nb samples = 200.\nTo be expect"
+	  "ed: several *.mat files with 1800s of data"
+	  Position		  [2141, 2092]
+	  ForegroundColor	  "[0.000000, 0.000000, 1.000000]"
+	  ZOrder		  -1
+	}
+	Annotation {
+	  SID			  "159"
+	  Position		  [2387, 2000]
+	  ZOrder		  -2
+	}
+	Annotation {
+	  SID			  "158"
+	  Name			  "This bock must be configured to set the number of \nseconds that should last the recording in each file"
+	  Position		  [1709, 1737]
+	  ZOrder		  -3
+	}
+	Annotation {
 	  SID			  "90"
 	  Name			  "Warning: Microgrid controllers cannot use UDP frame for any of internal control\nDuring evaluation tests "
 	  "by NREL employees UDP streem will not be bradcasted anymore - instead it will\nbe streamed to DAQ system only."
 	  Position		  [1605, 937]
 	  HorizontalAlignment	  "left"
 	  BackgroundColor	  "magenta"
-	  ZOrder		  -1
+	  ZOrder		  -4
 	}
 	Annotation {
 	  SID			  "89"
@@ -2183,18 +3458,18 @@ Library {
 	  "OSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS \nOR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR O"
 	  "THER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR \nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH T"
 	  "HE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE"
-	  Position		  [1624, 1536]
+	  Position		  [1594, 1486]
 	  HorizontalAlignment	  "left"
-	  ZOrder		  -2
+	  ZOrder		  -5
 	  FontSize		  12
 	  FontWeight		  "bold"
 	}
 	Annotation {
 	  SID			  "88"
 	  Name			  "The Number of data to send should match the size of Mux-to-Ethernet"
-	  Position		  [2089, 1441]
+	  Position		  [1974, 1401]
 	  ForegroundColor	  "blue"
-	  ZOrder		  -3
+	  ZOrder		  -6
 	  FontSize		  14
 	}
       }

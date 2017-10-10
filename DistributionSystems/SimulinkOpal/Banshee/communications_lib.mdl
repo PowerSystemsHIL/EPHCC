@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC3"
+  LastModifiedBy	  "MGC4"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Sep 28 00:48:45 2017"
-  RTWModifiedTimeStamp	  428460522
-  ModelVersionFormat	  "1.%<AutoIncrement:96>"
+  LastModifiedDate	  "Tue Oct 10 00:36:12 2017"
+  RTWModifiedTimeStamp	  429496570
+  ModelVersionFormat	  "1.%<AutoIncrement:97>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -893,7 +893,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "91"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2611"
+    SIDHighWatermark	    "2613"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
@@ -904,7 +904,7 @@ Library {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "*1.95"
+      LibraryVersion	      "*1.96"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -914,7 +914,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_COMMUNICATION"
-	Location		[0, 0, 960, 1040]
+	Location		[960, 0, 1920, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -926,7 +926,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"80"
+	ZoomFactor		"40"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -1227,11 +1227,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "1578"
-	  Ports			  [8, 1]
-	  Position		  [2025, 867, 2030, 1263]
+	  Ports			  [9, 1]
+	  Position		  [2025, 869, 2030, 1311]
 	  ZOrder		  3636
 	  ShowName		  off
-	  Inputs		  "8"
+	  Inputs		  "9"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1257,22 +1257,6 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<mgc_ena>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector1"
-	  SID			  "2342"
-	  Ports			  [1, 1]
-	  Position		  [720, 1216, 725, 1254]
-	  ZOrder		  4230
-	  ShowName		  off
-	  OutputSignals		  "TestSeq"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<TestSeq>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1619,6 +1603,23 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "2612"
+	  Position		  [1810, 1280, 1905, 1300]
+	  ZOrder		  4278
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "GOOSE_RX"
+	  Port {
+	    PortNumber		    1
+	    Name		    "GOOSE_RX"
+	    PropagatedSignals	    "Status, PCC, F1, F2, F3, F4, NA"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From20"
 	  SID			  "1956"
 	  Position		  [1810, 1030, 1905, 1050]
@@ -1910,6 +1911,15 @@ Library {
 	  ShowName		  off
 	  GotoTag		  "F4_RELAY_OUT"
 	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto10"
+	  SID			  "2613"
+	  Position		  [925, 1769, 1030, 1791]
+	  ZOrder		  4279
+	  ShowName		  off
+	  GotoTag		  "GOOSE_RX"
 	}
 	Block {
 	  BlockType		  Goto
@@ -4393,7 +4403,7 @@ Library {
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.16"
+	  LibraryVersion	  "1.22"
 	  SourceBlock		  "NREL_UDP_lib/NREL UDP Data - Formatted Packets"
 	  SourceType		  "UDP Data Block"
 	  ProfileID		  "6"
@@ -8203,6 +8213,14 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "GOOSE_RX"
+	  Labels		  [1, 0]
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  9
+	}
+	Line {
 	  SrcBlock		  "MGC_controller"
 	  SrcPort		  1
 	  DstBlock		  "NREL UDP Data - Formatted Packets"
@@ -8267,17 +8285,9 @@ Library {
 	  DstPort		  3
 	}
 	Line {
-	  Name			  "<TestSeq>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector1"
-	  SrcPort		  1
-	  DstBlock		  "Goto9"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "OpComm1"
 	  SrcPort		  1
-	  DstBlock		  "Bus\nSelector1"
+	  DstBlock		  "Goto9"
 	  DstPort		  1
 	}
 	Line {
@@ -8329,8 +8339,16 @@ Library {
 	Line {
 	  SrcBlock		  "GOOSE_RX "
 	  SrcPort		  1
-	  DstBlock		  "GOOSE_TRIP"
-	  DstPort		  1
+	  Points		  [14, 0]
+	  Branch {
+	    DstBlock		    "GOOSE_TRIP"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -50]
+	    DstBlock		    "Goto10"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "From43"
@@ -8495,6 +8513,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator1"
 	  SrcPort		  1
+	  Points		  [20, 0; 0, -25]
 	  DstBlock		  "Memory2"
 	  DstPort		  1
 	}
