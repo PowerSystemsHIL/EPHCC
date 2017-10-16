@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC3"
+  LastModifiedBy	  "MGC4"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 06 15:12:13 2017"
-  RTWModifiedTimeStamp	  429203531
-  ModelVersionFormat	  "1.%<AutoIncrement:78>"
+  LastModifiedDate	  "Fri Oct 13 15:35:13 2017"
+  RTWModifiedTimeStamp	  429809708
+  ModelVersionFormat	  "1.%<AutoIncrement:79>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -974,7 +974,7 @@ Library {
       Ports		      [3, 1, 0, 0, 0, 3]
       Position		      [175, 301, 325, 514]
       ZOrder		      4058
-      LibraryVersion	      "*1.77"
+      LibraryVersion	      "*1.78"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -984,7 +984,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"PHIL_F3"
-	Location		[0, 0, 1605, 1032]
+	Location		[0, 0, 1497, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -996,7 +996,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"125"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "FromF4"
@@ -1155,11 +1155,11 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
 	  SID			  "1317"
-	  Ports			  [1, 2]
-	  Position		  [2095, 475, 2100, 575]
+	  Ports			  [1, 3]
+	  Position		  [2100, 460, 2105, 560]
 	  ZOrder		  4132
 	  ShowName		  off
-	  OutputSignals		  "I_sense_gain,I_sense_offset"
+	  OutputSignals		  "I_sense_gain,I_gen_offset,I_sense_offset"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<I_sense_gain>"
@@ -1168,6 +1168,12 @@ Library {
 	  }
 	  Port {
 	    PortNumber		    2
+	    Name		    "<I_gen_offset>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
 	    Name		    "<I_sense_offset>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -1380,7 +1386,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "125"
-	    SIDHighWatermark	    "110"
+	    SIDHighWatermark	    "134"
 	    SIDPrevWatermark	    "85"
 	    Block {
 	      BlockType		      Inport
@@ -1505,7 +1511,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"44"
+		SIDHighWatermark	"54"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Error"
@@ -2722,7 +2728,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From9"
 	  SID			  "1318"
-	  Position		  [2025, 515, 2095, 535]
+	  Position		  [2005, 500, 2075, 520]
 	  ZOrder		  4133
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -3216,7 +3222,7 @@ Library {
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "16"
 	  IndexOptions		  "Index vector (dialog)"
-	  Indices		  "[1 3 4]"
+	  Indices		  "[1 2 4]"
 	  OutputSizes		  "1"
 	}
 	Block {
@@ -3494,6 +3500,15 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "<I_gen_offset>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  2
+	  Points		  [105, 0]
+	  DstBlock		  "Sum2"
+	  DstPort		  1
+	}
+	Line {
 	  SrcBlock		  "Product8"
 	  SrcPort		  1
 	  DstBlock		  "Goto11"
@@ -3722,7 +3737,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector1"
 	  SrcPort		  1
-	  Points		  [137, 0; 0, 125]
+	  Points		  [132, 0; 0, 150]
 	  Branch {
 	    DstBlock		    "Product6"
 	    DstPort		    2
@@ -3744,24 +3759,17 @@ Library {
 	  Name			  "<I_sense_offset>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector1"
-	  SrcPort		  2
-	  Points		  [85, 0]
+	  SrcPort		  3
+	  Points		  [80, 0; 0, 104]
 	  Branch {
 	    Points		    [25, 0]
-	    DstBlock		    "Sum2"
+	    DstBlock		    "Sum1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 110]
-	    Branch {
-	      DstBlock		      "Sum1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 58; 25, 0]
-	      DstBlock		      "Sum4"
-	      DstPort		      1
-	    }
+	    Points		    [0, 69; 25, 0]
+	    DstBlock		    "Sum4"
+	    DstPort		    1
 	  }
 	}
 	Line {
