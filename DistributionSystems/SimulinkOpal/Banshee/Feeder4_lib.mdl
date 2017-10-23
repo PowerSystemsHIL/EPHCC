@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [595.0, 64.0, 1058.0, 1058.0]
+      Location		      [595.0, 64.0, 1058.0, 1036.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -43,9 +43,9 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[815.0, 892.0]
+	Extents			[815.0, 870.0]
 	ZoomFactor		[1.2]
-	Offset			[-2.6147972675971687e-12, 0.0]
+	Offset			[-3.1263880373444408e-12, 0.0]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC4"
+  LastModifiedBy	  "hptb1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Oct 13 15:35:36 2017"
-  RTWModifiedTimeStamp	  429809731
-  ModelVersionFormat	  "1.%<AutoIncrement:87>"
+  LastModifiedDate	  "Mon Oct 23 13:43:00 2017"
+  RTWModifiedTimeStamp	  430666976
+  ModelVersionFormat	  "1.%<AutoIncrement:92>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -723,10 +723,31 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
       BlockType		      From
       GotoTag		      "A"
       IconDisplay	      "Tag"
       TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Goto
@@ -786,6 +807,28 @@ Library {
       BlockType		      PMIOPort
     }
     Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+      SFunctionDeploymentMode off
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimitSource	      "Dialog"
+      UpperLimit	      "0.5"
+      LowerLimitSource	      "Dialog"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+    }
+    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -830,7 +873,7 @@ Library {
   }
   System {
     Name		    "Feeder4_lib"
-    Location		    [595, 64, 1653, 1122]
+    Location		    [595, 64, 1653, 1100]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -844,15 +887,16 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "120"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1178"
+    SIDHighWatermark	    "1237"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder4"
       SID		      "1"
       Ports		      [4, 2]
       Position		      [145, 250, 440, 635]
-      ZOrder		      3617
-      LibraryVersion	      "*1.86"
+      ZOrder		      3618
+      ForegroundColor	      "red"
+      LibraryVersion	      "*1.90"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -862,7 +906,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder4"
-	Location		[0, 0, 1165, 1040]
+	Location		[254, 0, 1280, 984]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -874,7 +918,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"80"
+	ZoomFactor		"60"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1045,6 +1089,22 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<C9>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector12"
+	  SID			  "1237"
+	  Ports			  [1, 1]
+	  Position		  [1425, 861, 1430, 899]
+	  ZOrder		  4057
+	  ShowName		  off
+	  OutputSignals		  "pv_phil"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<pv_phil>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1382,6 +1442,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Gen_meas"
+	    PropagatedSignals	    ", , , , , , , , , , , , , , , , , , , , , , , dF, , dWt, status, flt_word"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1617,6 +1678,8 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"gen"
+		PropagatedSignals	"gal_per_hr, Pm, Vf, w, Vt, Stator current, dq0 components, Mechanical, Load angle   delta  (deg),"
+		" Output active power   Peo (pu), Output reactive power  Qeo (pu)"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -1640,6 +1703,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -1676,6 +1740,7 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"ctrl"
+		PropagatedSignals	"control, raw"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2314,6 +2379,7 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"PV_meas"
+		PropagatedSignals	"Inverter, CB_meas, Battery, status_word, Logic_trip, raw"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -2367,6 +2433,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -3119,7 +3186,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "PV_DATA"
-	    PropagatedSignals	    "PV_meas"
+	    PropagatedSignals	    "Inverter, CB_meas, Battery, status_word, Logic_trip, raw, pv_phil"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3137,7 +3204,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From32"
 	  SID			  "1099"
-	  Position		  [1345, 840, 1440, 860]
+	  Position		  [1345, 815, 1440, 835]
 	  ZOrder		  4044
 	  BackgroundColor	  "orange"
 	  ShowName		  off
@@ -3249,6 +3316,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "CB_DATA"
+	    PropagatedSignals	    "F4_CB_1, F4_CB_2, F4_CB_3, F4_CB_4, F4_CB_5, F4_CB_6"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3285,6 +3353,16 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From43"
+	  SID			  "1233"
+	  Position		  [1310, 870, 1405, 890]
+	  ZOrder		  4056
+	  BackgroundColor	  "cyan"
+	  ShowName		  off
+	  GotoTag		  "PV_DATA"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "995"
 	  Position		  [2685, 625, 2760, 645]
@@ -3314,6 +3392,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "GEN3_DATA"
+	    PropagatedSignals	    "ctrl, gen, cb"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3748,6 +3827,7 @@ Library {
 	  writeOpCommFile	  off
 	  Port {
 	    PortNumber		    1
+	    PropagatedSignals	    "TestSeq, LoadProfile"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -3783,10 +3863,10 @@ Library {
 	  BlockType		  Reference
 	  Name			  "PHIL_F4"
 	  SID			  "1083"
-	  Ports			  [1, 2, 0, 0, 0, 0, 3]
+	  Ports			  [2, 2, 0, 0, 0, 0, 3]
 	  Position		  [1480, 793, 1590, 907]
 	  ZOrder		  4024
-	  LibraryVersion	  "1.78"
+	  LibraryVersion	  "1.83"
 	  SourceBlock		  "PHIL_lib/PHIL_F4"
 	  SourceType		  "SubSystem"
 	}
@@ -3806,7 +3886,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "PV2"
-	    Location		    [0, 0, 960, 1032]
+	    Location		    [695, 0, 1280, 984]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -3818,12 +3898,12 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "125"
+	    ZoomFactor		    "80"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "modbus_in"
 	      SID		      "916"
-	      Position		      [210, 8, 240, 22]
+	      Position		      [210, 28, 240, 42]
 	      ZOrder		      3879
 	      NamePlacement	      "alternate"
 	      IconDisplay	      "Port number"
@@ -3832,7 +3912,7 @@ Library {
 	      BlockType		      Inport
 	      Name		      "console"
 	      SID		      "1101"
-	      Position		      [35, 93, 65, 107]
+	      Position		      [35, 113, 65, 127]
 	      ZOrder		      3890
 	      Port		      "2"
 	      IconDisplay	      "Port number"
@@ -3841,7 +3921,7 @@ Library {
 	      BlockType		      Inport
 	      Name		      "testseq"
 	      SID		      "917"
-	      Position		      [35, 163, 65, 177]
+	      Position		      [35, 183, 65, 197]
 	      ZOrder		      3880
 	      Port		      "3"
 	      IconDisplay	      "Port number"
@@ -3850,17 +3930,45 @@ Library {
 	      BlockType		      Inport
 	      Name		      "phil_meas"
 	      SID		      "1149"
-	      Position		      [145, 418, 175, 432]
+	      Position		      [145, 438, 175, 452]
 	      ZOrder		      4064
 	      Port		      "4"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator"
+	      SID		      "1230"
+	      Ports		      [5, 1]
+	      Position		      [750, 595, 755, 765]
+	      ZOrder		      4081
+	      ShowName		      off
+	      Inputs		      "5"
+	      DisplayOption	      "bar"
+	      Port {
+		PortNumber		1
+		Name			"pv_phil"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusCreator
+	      Name		      "Bus\nCreator1"
+	      SID		      "1235"
+	      Ports		      [7, 1]
+	      Position		      [880, 17, 885, 143]
+	      ZOrder		      4084
+	      ShowName		      off
+	      Inputs		      "7"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator4"
 	      SID		      "908"
 	      Ports		      [3, 1]
-	      Position		      [315, 295, 320, 365]
+	      Position		      [315, 315, 320, 385]
 	      ZOrder		      3876
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
@@ -3873,7 +3981,7 @@ Library {
 	      Name		      "Bus\nSelector"
 	      SID		      "909"
 	      Ports		      [1, 1]
-	      Position		      [665, 136, 670, 174]
+	      Position		      [665, 156, 670, 194]
 	      ZOrder		      3877
 	      ShowName		      off
 	      OutputSignals	      "cb_ctrl"
@@ -3889,7 +3997,7 @@ Library {
 	      Name		      "Bus\nSelector1"
 	      SID		      "1102"
 	      Ports		      [1, 1]
-	      Position		      [135, 16, 140, 54]
+	      Position		      [135, 36, 140, 74]
 	      ZOrder		      3892
 	      ShowName		      off
 	      OutputSignals	      "ModbusEnable"
@@ -3905,7 +4013,7 @@ Library {
 	      Name		      "Bus\nSelector2"
 	      SID		      "1106"
 	      Ports		      [1, 1]
-	      Position		      [340, 151, 345, 189]
+	      Position		      [205, 171, 210, 209]
 	      ZOrder		      3894
 	      ShowName		      off
 	      OutputSignals	      "pv.insolation2"
@@ -3921,7 +4029,7 @@ Library {
 	      Name		      "Bus\nSelector20"
 	      SID		      "910"
 	      Ports		      [1, 1]
-	      Position		      [635, 311, 640, 349]
+	      Position		      [635, 331, 640, 369]
 	      ZOrder		      3878
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
@@ -3939,7 +4047,7 @@ Library {
 	      Name		      "Bus\nSelector21"
 	      SID		      "1103"
 	      Ports		      [1, 1]
-	      Position		      [135, 81, 140, 119]
+	      Position		      [135, 101, 140, 139]
 	      ZOrder		      3891
 	      ShowName		      off
 	      OutputSignals	      "ModbusFromSC.Ctrl,ModbusFromSC.PCmd,ModbusFromSC.QCmd,ModbusFromSC.VoltCmd,ModbusFromSC.Fr"
@@ -3951,7 +4059,7 @@ Library {
 	      Name		      "Bus\nSelector3"
 	      SID		      "1113"
 	      Ports		      [1, 1]
-	      Position		      [155, 191, 160, 229]
+	      Position		      [155, 211, 160, 249]
 	      ZOrder		      3896
 	      ShowName		      off
 	      OutputSignals	      "fault"
@@ -3967,7 +4075,7 @@ Library {
 	      Name		      "Bus\nSelector4"
 	      SID		      "1114"
 	      Ports		      [1, 1]
-	      Position		      [205, 191, 210, 229]
+	      Position		      [205, 211, 210, 249]
 	      ZOrder		      3897
 	      ShowName		      off
 	      OutputSignals	      "pv2"
@@ -3982,11 +4090,11 @@ Library {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector5"
 	      SID		      "1150"
-	      Ports		      [1, 2]
-	      Position		      [215, 385, 220, 460]
+	      Ports		      [1, 3]
+	      Position		      [215, 407, 220, 513]
 	      ZOrder		      4065
 	      ShowName		      off
-	      OutputSignals	      "PV2_meas,PHIL_Enabled"
+	      OutputSignals	      "PV2_meas,PHIL_Enabled,Magna_meas"
 	      Port {
 		PortNumber		1
 		Name			"<PV2_meas>"
@@ -3999,13 +4107,19 @@ Library {
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
+	      Port {
+		PortNumber		3
+		Name			"<Magna_meas>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector6"
 	      SID		      "1178"
 	      Ports		      [1, 1]
-	      Position		      [275, 111, 280, 149]
+	      Position		      [225, 141, 230, 179]
 	      ZOrder		      4070
 	      ShowName		      off
 	      OutputSignals	      "Tuning"
@@ -4017,19 +4131,168 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector7"
+	      SID		      "1227"
+	      Ports		      [1, 1]
+	      Position		      [330, 567, 335, 593]
+	      ZOrder		      4078
+	      ShowName		      off
+	      OutputSignals	      "Vdc"
+	      Port {
+		PortNumber		1
+		Name			"<Vdc>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector8"
+	      SID		      "1234"
+	      Ports		      [1, 6]
+	      Position		      [745, 25, 750, 120]
+	      ZOrder		      4083
+	      ShowName		      off
+	      OutputSignals	      "Inverter,CB_meas,Battery,status_word,Logic_trip,raw"
+	      Port {
+		PortNumber		1
+		Name			"<Inverter>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"<CB_meas>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"<Battery>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"<status_word>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		5
+		Name			"<Logic_trip>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		6
+		Name			"<raw>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector9"
+	      SID		      "1236"
+	      Ports		      [1, 3]
+	      Position		      [680, 594, 685, 696]
+	      ZOrder		      4085
+	      ShowName		      off
+	      OutputSignals	      "Vdc,Idc,Pdc"
+	      Port {
+		PortNumber		1
+		Name			"<Vdc>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"<Idc>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"<Pdc>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
 	      BlockType		      BusToVector
 	      Name		      "Bus to Vector"
 	      SID		      "1104"
-	      Position		      [180, 78, 220, 122]
+	      Position		      [180, 98, 220, 142]
 	      ZOrder		      3893
 	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      "1221"
+	      Position		      [350, 635, 380, 665]
+	      ZOrder		      4072
+	      ShowName		      off
+	      Value		      "25"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      SID		      "1222"
+	      Position		      [350, 705, 380, 735]
+	      ZOrder		      4073
+	      ShowName		      off
+	      Value		      "31"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      "1223"
+	      Position		      [350, 740, 380, 770]
+	      ZOrder		      4074
+	      ShowName		      off
+	      Value		      "36"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant4"
+	      SID		      "1224"
+	      Position		      [350, 775, 380, 805]
+	      ZOrder		      4075
+	      ShowName		      off
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant5"
+	      SID		      "1225"
+	      Position		      [350, 600, 380, 630]
+	      ZOrder		      4076
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant6"
+	      SID		      "1228"
+	      Position		      [610, 700, 640, 730]
+	      ZOrder		      4079
+	      ShowName		      off
+	      Value		      "590"
+	      Port {
+		PortNumber		1
+		Name			"Vref"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
 	    }
 	    Block {
 	      BlockType		      Reference
 	      Name		      "F4_CB_4"
 	      SID		      "879"
 	      Ports		      [1, 1, 0, 0, 0, 3, 3]
-	      Position		      [725, 140, 785, 260]
+	      Position		      [725, 160, 785, 280]
 	      ZOrder		      3846
 	      BackgroundColor	      "[0.380392, 0.741176, 0.988235]"
 	      LibraryVersion	      "1.478"
@@ -4049,18 +4312,30 @@ Library {
 	      BlockType		      From
 	      Name		      "From21"
 	      SID		      "1151"
-	      Position		      [305, 465, 380, 485]
+	      Position		      [305, 485, 380, 505]
 	      ZOrder		      4066
 	      BackgroundColor	      "gray"
 	      ShowName		      off
 	      GotoTag		      "CB_meas"
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      "1226"
+	      Position		      [315, 670, 375, 700]
+	      ZOrder		      4077
+	      ShowName		      off
+	      Gain		      "1000"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
 	      BlockType		      Reference
 	      Name		      "Generic_Relay"
 	      SID		      "907"
 	      Ports		      [2, 2]
-	      Position		      [425, 293, 575, 342]
+	      Position		      [425, 313, 575, 362]
 	      ZOrder		      3875
 	      BlockMirror	      on
 	      BackgroundColor	      "yellow"
@@ -4073,6 +4348,7 @@ Library {
 	      Port {
 		PortNumber		1
 		Name			"relay_out"
+		PropagatedSignals	"op_mode, Logic_trip, m"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -4088,7 +4364,7 @@ Library {
 	      BlockType		      Goto
 	      Name		      "Goto"
 	      SID		      "1153"
-	      Position		      [830, 145, 900, 165]
+	      Position		      [845, 165, 915, 185]
 	      ZOrder		      4069
 	      BackgroundColor	      "gray"
 	      ShowName		      off
@@ -4099,7 +4375,7 @@ Library {
 	      Name		      "Inverter"
 	      SID		      "882"
 	      Ports		      [5, 3, 0, 0, 0, 0, 3]
-	      Position		      [425, 75, 575, 265]
+	      Position		      [425, 95, 575, 285]
 	      ZOrder		      3849
 	      BackgroundColor	      "yellow"
 	      NamePlacement	      "alternate"
@@ -4119,15 +4395,801 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"PV_meas"
+		PropagatedSignals	"Inverter, CB_meas, Battery, status_word, Logic_trip, raw"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "PV model"
+	      SID		      "1179"
+	      Ports		      [7, 2]
+	      Position		      [430, 556, 580, 814]
+	      ZOrder		      4071
+	      BackgroundColor	      "yellow"
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		2
+		Name			"Iref"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"PV model"
+		Location		[0, 0, 1287, 1040]
+		Open			off
+		ModelBrowserVisibility	on
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "Vdc_meas"
+		  SID			  "1180"
+		  Position		  [195, 563, 225, 577]
+		  ZOrder		  -1
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Idc_meas"
+		  SID			  "1181"
+		  Position		  [195, 743, 225, 757]
+		  ZOrder		  -2
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Tamb"
+		  SID			  "1182"
+		  Position		  [195, 623, 225, 637]
+		  ZOrder		  -3
+		  Port			  "3"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "POA_Insolation"
+		  SID			  "1183"
+		  Position		  [195, 683, 225, 697]
+		  ZOrder		  -4
+		  Port			  "4"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "SeriesN"
+		  SID			  "1184"
+		  Position		  [200, 443, 230, 457]
+		  ZOrder		  3
+		  Port			  "5"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "ParallelN"
+		  SID			  "1185"
+		  Position		  [195, 503, 225, 517]
+		  ZOrder		  4
+		  Port			  "6"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Imin"
+		  SID			  "1186"
+		  Position		  [195, 878, 225, 892]
+		  ZOrder		  6
+		  Port			  "7"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Terminator
+		  Name			  " 3"
+		  SID			  "1187"
+		  Position		  [895, 565, 915, 585]
+		  ZOrder		  -5
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Saturate
+		  Name			  "-60 to +80 C"
+		  SID			  "1188"
+		  Ports			  [1, 1]
+		  Position		  [480, 615, 510, 645]
+		  ZOrder		  -6
+		  InputPortMap		  "u0"
+		  UpperLimit		  "80"
+		  LowerLimit		  "-60"
+		}
+		Block {
+		  BlockType		  Saturate
+		  Name			  "0 to 1500 W/m^2"
+		  SID			  "1189"
+		  Ports			  [1, 1]
+		  Position		  [480, 675, 510, 705]
+		  ZOrder		  -7
+		  InputPortMap		  "u0"
+		  UpperLimit		  "1500"
+		  LowerLimit		  "0"
+		}
+		Block {
+		  BlockType		  Saturate
+		  Name			  "1 to 600 V"
+		  SID			  "1190"
+		  Ports			  [1, 1]
+		  Position		  [480, 555, 510, 585]
+		  ZOrder		  -8
+		  InputPortMap		  "u0"
+		  UpperLimit		  "600"
+		  LowerLimit		  "1"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "First-Order\nFilter"
+		  SID			  "1191"
+		  Ports			  [1, 1]
+		  Position		  [310, 552, 360, 588]
+		  ZOrder		  1
+		  LibraryVersion	  "1.31"
+		  FontName		  "Arial"
+		  SourceBlock		  "powerlib_meascontrol/Filters/First-Order\nFilter"
+		  SourceType		  "First-Order Filter"
+		  FilterType		  "Lowpass"
+		  Tc			  "200e-3 "
+		  Ts			  "100e-6"
+		  Initialize		  on
+		  Vac_Init		  "[0, 0, 60]"
+		  Vdc_Init		  "0"
+		  PlotResponse		  off
+		  FreqRange		  "[0,  200,  1]"
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "First-Order\nFilter1"
+		  SID			  "1192"
+		  Ports			  [1, 1]
+		  Position		  [310, 732, 360, 768]
+		  ZOrder		  2
+		  LibraryVersion	  "1.31"
+		  FontName		  "Arial"
+		  SourceBlock		  "powerlib_meascontrol/Filters/First-Order\nFilter"
+		  SourceType		  "First-Order Filter"
+		  FilterType		  "Lowpass"
+		  Tc			  "200e-3 "
+		  Ts			  "100e-6"
+		  Initialize		  on
+		  Vac_Init		  "[0, 0, 60]"
+		  Vdc_Init		  "0"
+		  PlotResponse		  off
+		  FreqRange		  "[0,  200,  1]"
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Imin1"
+		  SID			  "1193"
+		  Position		  [505, 802, 535, 818]
+		  ZOrder		  5
+		  Value			  "0"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "MATLAB Function"
+		  SID			  "1194"
+		  Ports			  [7, 4]
+		  Position		  [590, 412, 760, 848]
+		  ZOrder		  -12
+		  LibraryVersion	  "1.32"
+		  ErrorFcn		  "Stateflow.Translate.translate"
+		  PermitHierarchicalResolution "ExplicitOnly"
+		  TreatAsAtomicUnit	  on
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  SFBlockType		  "MATLAB Function"
+		  Port {
+		    PortNumber		    1
+		    Name		    "Vout"
+		    PropagatedSignals	    "Vout"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    2
+		    Name		    "VocMax"
+		    PropagatedSignals	    "VocMax"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    3
+		    Name		    "IscMax"
+		    PropagatedSignals	    "IscMax"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  Port {
+		    PortNumber		    4
+		    Name		    "Iout"
+		    PropagatedSignals	    "Iout"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		  System {
+		    Name		    "MATLAB Function"
+		    Location		    [227, 345, 838, 789]
+		    Open		    off
+		    ModelBrowserVisibility  on
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    SIDHighWatermark	    "65"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Ns_module"
+		    SID			    "1194::1"
+		    Position		    [20, 101, 40, 119]
+		    ZOrder		    -1
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Np_string"
+		    SID			    "1194::18"
+		    Position		    [20, 136, 40, 154]
+		    ZOrder		    -2
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Vin"
+		    SID			    "1194::21"
+		    Position		    [20, 171, 40, 189]
+		    ZOrder		    -3
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Tamb"
+		    SID			    "1194::19"
+		    Position		    [20, 206, 40, 224]
+		    ZOrder		    -4
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "G"
+		    SID			    "1194::20"
+		    Position		    [20, 246, 40, 264]
+		    ZOrder		    -5
+		    Port		    "5"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Imeas"
+		    SID			    "1194::26"
+		    Position		    [20, 281, 40, 299]
+		    ZOrder		    -6
+		    Port		    "6"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Iout_old"
+		    SID			    "1194::22"
+		    Position		    [20, 316, 40, 334]
+		    ZOrder		    -7
+		    Port		    "7"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Demux
+		    Name		    " Demux "
+		    SID			    "1194::64"
+		    Ports		    [1, 1]
+		    Position		    [270, 280, 320, 320]
+		    ZOrder		    24
+		    Outputs		    "1"
+		    }
+		    Block {
+		    BlockType		    S-Function
+		    Name		    " SFunction "
+		    SID			    "1194::63"
+		    Tag			    "Stateflow S-Function Feeder4_lib 1"
+		    Ports		    [7, 5]
+		    Position		    [180, 100, 230, 260]
+		    ZOrder		    23
+		    FunctionName	    "sf_sfun"
+		    PortCounts		    "[7 5]"
+		    EnableBusSupport	    off
+		    Port {
+		    PortNumber		    2
+		    Name		    "Vout"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    3
+		    Name		    "VocMax"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    4
+		    Name		    "IscMax"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    Port {
+		    PortNumber		    5
+		    Name		    "Iout"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		    }
+		    }
+		    Block {
+		    BlockType		    Terminator
+		    Name		    " Terminator "
+		    SID			    "1194::65"
+		    Position		    [460, 291, 480, 309]
+		    ZOrder		    25
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Vout"
+		    SID			    "1194::5"
+		    Position		    [460, 101, 480, 119]
+		    ZOrder		    -11
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "VocMax"
+		    SID			    "1194::24"
+		    Position		    [460, 136, 480, 154]
+		    ZOrder		    -12
+		    Port		    "2"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "IscMax"
+		    SID			    "1194::25"
+		    Position		    [460, 171, 480, 189]
+		    ZOrder		    -13
+		    Port		    "3"
+		    IconDisplay		    "Port number"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "Iout"
+		    SID			    "1194::23"
+		    Position		    [460, 206, 480, 224]
+		    ZOrder		    -14
+		    Port		    "4"
+		    IconDisplay		    "Port number"
+		    }
+		    Line {
+		    SrcBlock		    "Ns_module"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Np_string"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Vin"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Tamb"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    4
+		    }
+		    Line {
+		    SrcBlock		    "G"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    5
+		    }
+		    Line {
+		    SrcBlock		    "Imeas"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    6
+		    }
+		    Line {
+		    SrcBlock		    "Iout_old"
+		    SrcPort		    1
+		    DstBlock		    " SFunction "
+		    DstPort		    7
+		    }
+		    Line {
+		    Name		    "Vout"
+		    Labels		    [0, 0]
+		    SrcBlock		    " SFunction "
+		    SrcPort		    2
+		    Points		    [0, -40]
+		    DstBlock		    "Vout"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "VocMax"
+		    Labels		    [0, 0]
+		    SrcBlock		    " SFunction "
+		    SrcPort		    3
+		    DstBlock		    "VocMax"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "IscMax"
+		    Labels		    [0, 0]
+		    SrcBlock		    " SFunction "
+		    SrcPort		    4
+		    DstBlock		    "IscMax"
+		    DstPort		    1
+		    }
+		    Line {
+		    Name		    "Iout"
+		    Labels		    [0, 0]
+		    SrcBlock		    " SFunction "
+		    SrcPort		    5
+		    DstBlock		    "Iout"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    " Demux "
+		    SrcPort		    1
+		    DstBlock		    " Terminator "
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    " SFunction "
+		    SrcPort		    1
+		    Points		    [20, 0]
+		    DstBlock		    " Demux "
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Reference
+		  Name			  "Saturation\nDynamic"
+		  SID			  "1195"
+		  Ports			  [3, 1]
+		  Position		  [965, 764, 1050, 826]
+		  ZOrder		  -15
+		  LibraryVersion	  "1.274"
+		  SourceBlock		  "simulink/Discontinuities/Saturation\nDynamic"
+		  SourceType		  "Saturation Dynamic"
+		  OutMin		  "[]"
+		  OutMax		  "[]"
+		  OutDataTypeStr	  "Inherit: Same as second input"
+		  OutputDataTypeScalingMode "Same as second input"
+		  OutDataType		  "fixdt(1, 16)"
+		  OutScaling		  "2^-10"
+		  LockScale		  off
+		  RndMeth		  "Floor"
+		  DoSatur		  off
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Vpv_set"
+		  SID			  "1196"
+		  Position		  [835, 458, 865, 472]
+		  ZOrder		  -17
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Ipv_set"
+		  SID			  "1197"
+		  Position		  [1125, 788, 1155, 802]
+		  ZOrder		  -18
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		}
+		Line {
+		  Name			  "Vout"
+		  Labels		  [0, 0]
+		  SrcBlock		  "MATLAB Function"
+		  SrcPort		  1
+		  DstBlock		  "Vpv_set"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "VocMax"
+		  Labels		  [0, 0]
+		  SrcBlock		  "MATLAB Function"
+		  SrcPort		  2
+		  DstBlock		  " 3"
+		  DstPort		  1
+		}
+		Line {
+		  Name			  "IscMax"
+		  Labels		  [0, 0]
+		  SrcBlock		  "MATLAB Function"
+		  SrcPort		  3
+		  Points		  [155, 0; 0, 90]
+		  DstBlock		  "Saturation\nDynamic"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Imin"
+		  SrcPort		  1
+		  Points		  [632, 0; 0, -70]
+		  DstBlock		  "Saturation\nDynamic"
+		  DstPort		  3
+		}
+		Line {
+		  Name			  "Iout"
+		  Labels		  [0, 0]
+		  SrcBlock		  "MATLAB Function"
+		  SrcPort		  4
+		  DstBlock		  "Saturation\nDynamic"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "First-Order\nFilter1"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  6
+		}
+		Line {
+		  SrcBlock		  "First-Order\nFilter"
+		  SrcPort		  1
+		  DstBlock		  "1 to 600 V"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Idc_meas"
+		  SrcPort		  1
+		  DstBlock		  "First-Order\nFilter1"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "1 to 600 V"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "-60 to +80 C"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  4
+		}
+		Line {
+		  SrcBlock		  "0 to 1500 W/m^2"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  5
+		}
+		Line {
+		  SrcBlock		  "Saturation\nDynamic"
+		  SrcPort		  1
+		  DstBlock		  "Ipv_set"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Vdc_meas"
+		  SrcPort		  1
+		  DstBlock		  "First-Order\nFilter"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "POA_Insolation"
+		  SrcPort		  1
+		  DstBlock		  "0 to 1500 W/m^2"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Tamb"
+		  SrcPort		  1
+		  DstBlock		  "-60 to +80 C"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "ParallelN"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "SeriesN"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Imin1"
+		  SrcPort		  1
+		  DstBlock		  "MATLAB Function"
+		  DstPort		  7
+		}
+		Annotation {
+		  SID			  "1198"
+		  Name			  "for 110kW PV rating at 500V:\nNs = 34 and Np = 35"
+		  Position		  [1180, 354]
+		  ZOrder		  -1
+		}
+		Annotation {
+		  SID			  "1199"
+		  Name			  "for 100kW PV rating at 500V:\nNs = 34 and Np = 32"
+		  Position		  [1181, 304]
+		  ZOrder		  -2
+		}
+		Annotation {
+		  SID			  "1200"
+		  Name			  "for 100kW PV rating at 450V:\nNs = 30 and Np = 36"
+		  Position		  [986, 304]
+		  ZOrder		  -3
+		}
+		Annotation {
+		  SID			  "1201"
+		  Name			  "for 110kW PV rating at 450V:\nNs = 30 and Np = 39"
+		  Position		  [985, 349]
+		  ZOrder		  -4
+		}
+		Annotation {
+		  SID			  "1202"
+		  Name			  "when using only one mangna units:"
+		  Position		  [1091, 246]
+		  ZOrder		  -5
+		}
+		Annotation {
+		  SID			  "1203"
+		  Name			  "for 200kW PV rating at 500V:\nNs = 34 and Np = 32"
+		  Position		  [1181, 169]
+		  ZOrder		  -6
+		}
+		Annotation {
+		  SID			  "1204"
+		  Name			  "for 200kW PV rating at 450V:\nNs = 30 and Np = 36"
+		  Position		  [1181, 119]
+		  ZOrder		  -7
+		}
+		Annotation {
+		  SID			  "1205"
+		  Name			  "for 250kW PV rating at 450V:\nNs = 30 and Np = 45"
+		  Position		  [986, 119]
+		  ZOrder		  -8
+		}
+		Annotation {
+		  SID			  "1206"
+		  Name			  "when using 5 magna units:"
+		  Position		  [327, 53]
+		  ZOrder		  -9
+		}
+		Annotation {
+		  SID			  "1207"
+		  Name			  "for 250kW PV rating at 500V:\nNs = 34 and Np = 40"
+		  Position		  [986, 164]
+		  ZOrder		  -10
+		}
+		Annotation {
+		  SID			  "1208"
+		  Name			  "when using only two mangna units:"
+		  Position		  [1090, 51]
+		  ZOrder		  -11
+		}
+		Annotation {
+		  SID			  "1209"
+		  Name			  "for 550kW PV rating at 500V:\nNs = 34 and Np = 35"
+		  Position		  [451, 119]
+		  ZOrder		  -12
+		}
+		Annotation {
+		  SID			  "1210"
+		  Name			  "1 PV module ratings @ 1000 W/m2:\nPm = 92.7674 W\nVm = 15 V\nIm = 6.1845 A"
+		  Position		  [732, 108]
+		  ZOrder		  -13
+		}
+		Annotation {
+		  SID			  "1211"
+		  Name			  "for 500kW PV rating at 500V:\nNs = 34 and Np = 32"
+		  Position		  [211, 234]
+		  ZOrder		  -14
+		}
+		Annotation {
+		  SID			  "1212"
+		  Name			  "for 450kW PV rating at 450V:\nNs = 30 and Np = 32"
+		  Position		  [451, 229]
+		  ZOrder		  -15
+		}
+		Annotation {
+		  SID			  "1213"
+		  Name			  "for 550kW PV rating at 450V:\nNs = 30 and Np = 39"
+		  Position		  [446, 174]
+		  ZOrder		  -16
+		}
+		Annotation {
+		  SID			  "1214"
+		  Name			  "for 250kW PV rating at 450V:\nNs = 30 and Np = 18"
+		  Position		  [211, 119]
+		  ZOrder		  -17
+		}
+		Annotation {
+		  SID			  "1215"
+		  Name			  "for 500kW PV rating at 450V:\nNs = 30 and Np = 35"
+		  Position		  [206, 179]
+		  ZOrder		  -18
+		}
+		Annotation {
+		  SID			  "1216"
+		  Name			  "ambient temperature"
+		  Position		  [357, 659]
+		  ZOrder		  -19
+		}
+		Annotation {
+		  SID			  "1217"
+		  Name			  "Number of parallel strings in an array"
+		  Position		  [431, 528]
+		  ZOrder		  -20
+		}
+		Annotation {
+		  SID			  "1218"
+		  Name			  "Number of series modules per string"
+		  Position		  [431, 421]
+		  ZOrder		  -21
+		}
+		Annotation {
+		  SID			  "1219"
+		  Name			  "Note Delay was 1"
+		  Position		  [554, 862]
+		  ZOrder		  -22
+		}
+		Annotation {
+		  SID			  "1220"
+		  Name			  "PV Model"
+		  Position		  [685, 420]
+		  BackgroundColor	  "yellow"
+		  ZOrder		  -23
+		}
 	      }
 	    }
 	    Block {
 	      BlockType		      Switch
 	      Name		      "Switch"
 	      SID		      "901"
-	      Position		      [320, 59, 365, 111]
+	      Position		      [320, 79, 365, 131]
 	      ZOrder		      3869
 	      ShowName		      off
 	      Criteria		      "u2 > Threshold"
@@ -4139,7 +5201,7 @@ Library {
 	      BlockType		      Switch
 	      Name		      "Switch1"
 	      SID		      "1152"
-	      Position		      [410, 387, 460, 493]
+	      Position		      [410, 407, 460, 513]
 	      ZOrder		      4067
 	      Threshold		      "0.5"
 	      InputSameDT	      off
@@ -4152,10 +5214,17 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      SID		      "1229"
+	      Position		      [610, 610, 630, 630]
+	      ZOrder		      4080
+	    }
+	    Block {
 	      BlockType		      PMIOPort
 	      Name		      "A"
 	      SID		      "920"
-	      Position		      [870, 177, 905, 193]
+	      Position		      [870, 197, 905, 213]
 	      ZOrder		      3883
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
@@ -4166,7 +5235,7 @@ Library {
 	      BlockType		      PMIOPort
 	      Name		      "B"
 	      SID		      "921"
-	      Position		      [870, 207, 905, 223]
+	      Position		      [870, 227, 905, 243]
 	      ZOrder		      3884
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
@@ -4177,7 +5246,7 @@ Library {
 	      BlockType		      PMIOPort
 	      Name		      "C"
 	      SID		      "922"
-	      Position		      [870, 237, 905, 253]
+	      Position		      [870, 257, 905, 273]
 	      ZOrder		      3885
 	      BlockMirror	      on
 	      NamePlacement	      "alternate"
@@ -4188,7 +5257,7 @@ Library {
 	      BlockType		      Outport
 	      Name		      "modbus_out"
 	      SID		      "918"
-	      Position		      [610, 88, 640, 102]
+	      Position		      [610, 108, 640, 122]
 	      ZOrder		      3881
 	      NamePlacement	      "alternate"
 	      IconDisplay	      "Port number"
@@ -4197,16 +5266,187 @@ Library {
 	      BlockType		      Outport
 	      Name		      "meas"
 	      SID		      "919"
-	      Position		      [870, 118, 900, 132]
+	      Position		      [910, 73, 940, 87]
 	      ZOrder		      3882
 	      Port		      "2"
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      Name		      "<Vdc>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector9"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<Pdc>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector9"
+	      SrcPort		      3
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "<Idc>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector9"
+	      SrcPort		      2
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nCreator1"
+	      SrcPort		      1
+	      DstBlock		      "meas"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<Inverter>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<CB_meas>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      2
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "<Battery>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      3
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "<status_word>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      4
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "<Logic_trip>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      5
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      5
+	    }
+	    Line {
+	      Name		      "<raw>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      6
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      6
+	    }
+	    Line {
+	      Name		      "pv_phil"
+	      Labels		      [3, 1]
+	      SrcBlock		      "Bus\nCreator"
+	      SrcPort		      1
+	      Points		      [55, 0; 0, -555]
+	      DstBlock		      "Bus\nCreator1"
+	      DstPort		      7
+	    }
+	    Line {
+	      Name		      "Vref"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Constant6"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "Iref"
+	      Labels		      [1, 0]
+	      SrcBlock		      "PV model"
+	      SrcPort		      2
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "PV model"
+	      SrcPort		      1
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<Vdc>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector7"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<Magna_meas>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector5"
+	      SrcPort		      3
+	      Points		      [65, 0; 0, 43]
+	      Branch {
+		Points			[0, 42]
+		DstBlock		"Bus\nSelector7"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[370, 0; 0, 107]
+		DstBlock		"Bus\nSelector9"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Constant5"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant4"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "PV model"
+	      DstPort		      3
 	    }
 	    Line {
 	      Name		      "<Tuning>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector6"
 	      SrcPort		      1
+	      Points		      [92, 0; 0, -10]
 	      DstBlock		      "Inverter"
 	      DstPort		      2
 	    }
@@ -4266,6 +5506,7 @@ Library {
 	    Line {
 	      SrcBlock		      "phil_meas"
 	      SrcPort		      1
+	      Points		      [17, 0; 0, 15]
 	      DstBlock		      "Bus\nSelector5"
 	      DstPort		      1
 	    }
@@ -4290,8 +5531,16 @@ Library {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector2"
 	      SrcPort		      1
-	      DstBlock		      "Inverter"
-	      DstPort		      3
+	      Points		      [61, 0]
+	      Branch {
+		DstBlock		"Inverter"
+		DstPort			3
+	      }
+	      Branch {
+		Points			[0, 495]
+		DstBlock		"Gain"
+		DstPort			1
+	      }
 	    }
 	    Line {
 	      SrcBlock		      "Bus\nSelector21"
@@ -4322,7 +5571,7 @@ Library {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, 49; 158, 0]
+		Points			[0, 49; 108, 0]
 		DstBlock		"Bus\nSelector6"
 		DstPort			1
 	      }
@@ -4367,7 +5616,8 @@ Library {
 	      Name		      "PV_meas"
 	      SrcBlock		      "Inverter"
 	      SrcPort		      2
-	      DstBlock		      "meas"
+	      Points		      [140, 0; 0, -70]
+	      DstBlock		      "Bus\nSelector8"
 	      DstPort		      1
 	    }
 	    Line {
@@ -4628,6 +5878,20 @@ Library {
 	  ZOrder		  3921
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<pv_phil>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector12"
+	  SrcPort		  1
+	  DstBlock		  "PHIL_F4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From43"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector12"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "From42"
@@ -5906,5 +7170,415 @@ Library {
       HorizontalAlignment     "left"
       ZOrder		      -5
     }
+  }
+}
+# Finite State Machines
+#
+#    Stateflow Version 7.6 (R2013a) dated Jan 19 2013, 14:32:03
+#
+#
+
+Stateflow {
+  machine {
+    id			    1
+    name		    "Feeder4_lib"
+    created		    "19-Oct-2017 13:57:29"
+    isLibrary		    1
+    firstTarget		    18
+    sfVersion		    76014001.0015
+  }
+  chart {
+    id			    2
+    name		    "SS_Feeder4/PV2/PV model/MATLAB Function"
+    windowPosition	    [416 277 213 385]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1280 1024 1.333333333333333]
+    treeNode		    [0 3 0 0]
+    firstTransition	    16
+    firstJunction	    15
+    viewObj		    2
+    machine		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    15
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    4
+    chartFileNumber	    1
+    disableImplicitCasting  1
+    eml {
+      name		      "bp_sx110"
+    }
+  }
+  state {
+    id			    3
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 0 0]
+    superState		    SUBCHART
+    subviewer		    2
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [Vout, VocMax, IscMax, Iout]  = bp_sx110(Ns_module, Np_string, Vin, Tamb, G, Imeas, Iout"
+      "_old)\n%\n% function bp_sx110.m models the BP SX 110 PV module\n%	module date found at: http://www.posharp.com/b"
+      "p-sx110-solar-panel-from-bp-solar_p60866579d.aspx\n%\n% P.S.: according to: https://www.homepower.com/view/?file"
+      "=HP113_pg106_WordPower\n%	PV array ---> set of parallel and series modules\n%	PV module (sometimes called panel)"
+      " ---> set of parallel and series PV cells\n%	PV string ---> set of series connected modules (panels)\n%\n% The f"
+      "unction calculates array output current under given:\n%	1- number of modules in series (modules in a string)\n%	"
+      "2- number of strings in parallel\n%	3- irradiance and temperature\n%\n% This model was written by Noel Dillman a"
+      "nd Blake Lundstrom of the Colorado School of Mines while working on a project for the National\n% 	Renewable Ene"
+      "rgy Laboratory.\n% It was further improved by Ali Hariri (research intern from CAPS-FSU) on June 6th, 2016. The "
+      "code is made more consistent interms of\n% 	terminology; more comments were added with references for better use"
+      " in future work.\n% It is based on the original bp_sx110 model created by Akihiro Oi (California Polytechnic Sta"
+      "te University) on 07/01/2005 \n%	(see \"Design and Simulation of Photovoltaic Water Pumping System\" (September "
+      "2005)).\n% Further PV model modifications were made based on the model presented in \"Comprehensive Approach to "
+      "Modeling and Simulation of \n% 	Photovoltaic Arrays\" (2009) by Villalva et al.\n% \n% Out:  Vout = array output"
+      " voltage\n%       Iout = Output current\n%       VocMax = Open-Circuit Voltage\n%       IscMax = Short-Circuit C"
+      "urrent\n% In:   Ns_module = Number of modules in series per string\n%       Np_string = Number of strings in par"
+      "allel\n%       Tamb = ambient temperature in degrees celsius\n%       G = Irradiance (1G = 1000 W/m^2) (can be i"
+      "nput in W/m^2 or kW/m^2)\n%       Vin = Voltage of load\n%       Iout_old = Feedback loop from previous Iout\n\n"
+      "% *************************************************************************\n%   Start Code\n% *****************"
+      "********************************************************\nImeas = Imeas / 2;  % since we are using 5 modules of "
+      "the magna power\n                    % this code calculates the output for 1 \n\n% if G is given in 1 W/m^2, con"
+      "vert to 1000 W/m^2\nif G > 1.5\n    G = G / 1000;\nend\n\n% Set all negative irradiances to 0\nif G < 0\n    G ="
+      " 0;\nend\n\n% *************************************************************************\n%   determine cell temp"
+      "erature from irradiance, windspeed, ambient temperature, and SAPM (sandia array performance model) module parame"
+      "ters\n%		using King's SFP model (see pvl_sapmcelltemp): https://pvpmc.sandia.gov/PVLIB_Matlab_Help/html/pvl_sapm"
+      "celltemp_help.html\n% *************************************************************************\nG0 = 1000;     "
+      "                                     % reference irradiance type 1000 W/m2\nwindspeed = 10;                     "
+      "                % use a default value for windspeed since its a second order effect\nap = -3.47;                "
+      "                         % default for SAM glass/cell/glass\nb = -0.0594;        %\ndeltaT = 3;         %\nTmodu"
+      "le = Tamb + (G*1000)*(exp(ap + b*windspeed));  % module temperature in degrees\nTcell_C = Tmodule + (G*1000/G0)*"
+      "deltaT;				% cell temperature in degrees\nTcell_K = 273 + Tcell_C;                            % cell temperature"
+      " in Kelvin\n\n% *************************************************************************\n%   Define and Calcul"
+      "ate Constants and Variables\n% *************************************************************************\n% PV c"
+      "ell data\n% ---------------------------------------------------------------------------------------\nderating = "
+      "0.921;                                   % Panel derating factor\nk = 1.381e-23;                                "
+      "      % Boltzmanns constant\nq = 1.602e-19;                                      % Electron charge\na = 1.25;   "
+      "                                        % Diode ideality factor (n),1 (ideal diode) < n < 2\nRes = 400;         "
+      "                                 % I-V curve resolution - adjustable\nRs = 0.001;                               "
+      "          % Series resistance per cell\nRp = 2;                                             % Parallel resistanc"
+      "e per cell\nTrK = 298;                                          % Reference temperature (25C) in Kelvin\nKv = -0"
+      ".08;                                         % Voltage temperature coefficient (-80mV/C)\nKi = 0.65e-3;         "
+      "                              % Temperature coefficient of Isc (0.065%/C)\n% -----------------------------------"
+      "----------------------------------------------------\n\n% calculate module data\n% -----------------------------"
+      "----------------------------------------------------------\nNs_cell = 36*Ns_module;                             "
+      "  		% total number of series connected cells (BP SX110, 36 series cells per module)\nVoc_TrK_module = 20.1;     "
+      "                           		% Voc in volts per module @ reference temp (V/panel)\nVoc_TaK_module = Voc_TrK_modu"
+      "le + (Kv*(Tcell_K - TrK));     % Voc per module @ actual temp\nVoc = Voc_TaK_module/36;                         "
+      "     		% Voc per cell @ actual temp\nIsc_nameplate = 7.38;                                 		% Isc per cell give"
+      "n on nameplate\nIsc_TrK = Isc_nameplate*derating;                     		% Isc (short circuit current per cell) @"
+      " reference temp inclusive of derating\n% -----------------------------------------------------------------------"
+      "----------------\n\n% *************************************************************************\n%   Calculate o"
+      "utputs\n% *************************************************************************\n\nIsc = G *(Isc_TrK * (1 + "
+      "(Ki * (Tcell_K - TrK))));      % Calculate PV cell short-circuit 'I' for given temp and irradiance\nVt =  k * Tc"
+      "ell_K / q;                                  % Define PV cell thermal potential (Vt) at actual temp\nVocMax  = Vo"
+      "c_TaK_module*Ns_module;                     % max Voc per array due to temperature\n\n% Set Vin to VocMax if req"
+      "uested Vin is beyond scope\nif Vin > VocMax\n    Vin = VocMax;\nend\n% -----------------------------------------"
+      "----------------------------------------------\n\n% If Vin is small, it is either startup or Isc.\n% If it is Is"
+      "c then Iout_old should be nearly Isc\nif Vin < 1\n    iTol = abs(Isc - (Iout_old/Np_string)) / (Iout_old/Np_stri"
+      "ng);\n    % if Iout_old is within 5% of Isc\n    if(iTol < 0.05)\n        %use normal Vin value\n    else\n     "
+      "   %set Vout = Vin = Voc\n        Vin = Ns_cell*Voc;\n    end\nend\n% ------------------------------------------"
+      "---------------------------------------------\n\nVc = Vin / Ns_cell;                                     	% Rang"
+      "e of individual cell voltages of array\nIo = Isc / (exp(Voc /(a* Vt)) -1);							% reverse saturation current fo"
+      "r given temperature per cell\nId = (Io*(exp((Vc + (Iout_old/Np_string)*Rs)/(a*Vt))-1));  	% Diode + Series Resis"
+      "tance Current\nIp = (Vc + (Iout_old/Np_string)*Rs)/Rp;                    	% Parallel Resistance Current\nIa = I"
+      "sc - Id - Ip;                            	% Final PV current (cell output)\n% ----------------------------------"
+      "-----------------------------------------------------\n\n% capture any negative commands to Ia out before they l"
+      "eave the block.\n% This avoids negatives in the Ia delay feedback\n% Ia1 = Np_string*Ia; % array output\nif Ia <"
+      " 0 \n    Ia = 0;\nend\n\nIscMax = Isc*Np_string;\nVout = Vin;\n% If Imeas is small (<10% of Isc) assume that we "
+      "are at startup and set Iout = IscMax*0.3 \n% (0.3 is chosen arbitrary smaller than Iscmax) otherwise use Ia\n% i"
+      "f (Imeas <= 0.1 * IscMax)\n%     Iout = IscMax * 0.3;\n% else\n%     Iout = Np_string*Ia;\n% end\nIout = Np_stri"
+      "ng*Ia;"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    4
+    ssIdNumber		    4
+    name		    "Ns_module"
+    linkNode		    [2 0 5]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    5
+    ssIdNumber		    5
+    name		    "Vout"
+    linkNode		    [2 4 6]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    6
+    ssIdNumber		    12
+    name		    "VocMax"
+    linkNode		    [2 5 7]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    13
+    name		    "IscMax"
+    linkNode		    [2 6 8]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    6
+    name		    "Np_string"
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    9
+    name		    "Vin"
+    linkNode		    [2 8 10]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    10
+    ssIdNumber		    7
+    name		    "Tamb"
+    linkNode		    [2 9 11]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    11
+    ssIdNumber		    8
+    name		    "G"
+    linkNode		    [2 10 12]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    12
+    ssIdNumber		    14
+    name		    "Imeas"
+    linkNode		    [2 11 13]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    13
+    ssIdNumber		    10
+    name		    "Iout_old"
+    linkNode		    [2 12 14]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    14
+    ssIdNumber		    11
+    name		    "Iout"
+    linkNode		    [2 13 0]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  junction {
+    id			    15
+    position		    [23.5747 49.5747 7]
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    16
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [28.125 13.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      15
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    2
+    linkNode		    [2 0 0]
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  instance {
+    id			    17
+    name		    "SS_Feeder4/PV2/PV model/MATLAB Function"
+    machine		    1
+    chart		    2
+  }
+  target {
+    id			    18
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    machine		    1
+    linkNode		    [1 0 0]
   }
 }

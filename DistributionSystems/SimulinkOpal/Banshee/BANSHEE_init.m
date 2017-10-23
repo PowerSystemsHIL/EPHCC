@@ -201,6 +201,23 @@ if exist('OpenLinks', 'var')  % only run when in opal - keep link resolved when 
                 end;
             end;
         end;
+    elseif (strncmp(gcb, 'Urban_f34', length('Urban_f34')))
+        LinkPath = { ... 
+            'Urban_f34/SS_COMMUNICATION' ...
+            'Urban_f34/SS_F3_RELAY_HOUSING' ...
+            'Urban_f34/SS_Feeder3' ...
+            'Urban_f34/SS_Feeder4' ...
+            'Urban_f34/SM_UtilityService'};
+        for ii = 1:length(LinkPath)
+            if (length(find_system(LinkPath{ii}, 'SearchDepth', 0)) == 1)
+                if strcmp(get_param(LinkPath{ii}, 'LinkStatus'), 'inactive') == 0
+                    disp(['###openning link: ' LinkPath{ii}]);
+                    set_param(LinkPath{ii}, 'LinkStatus', 'inactive');
+                else
+                    disp(['###link already open: ' LinkPath{ii}]);
+                end;
+            end;
+        end;
     else
         disp(['###skipping openning links for model ' gcb]);
     end;
