@@ -26,7 +26,7 @@
 % The settings are arrange in increasing order
 % reads relay settings from an excel file
 
-addpath('relay_settings', 'relays_configuration_files');
+addpath('relay_settings', 'relays_configuration_files', 'relay_iec61850');
 
 F0 = xlsread('F0_relay_banshee.xlsx');
 F1 = xlsread('F1_relay_banshee.xlsx');

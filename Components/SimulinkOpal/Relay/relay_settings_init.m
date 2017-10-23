@@ -26,7 +26,7 @@
 % The settings are arrange in increasing order
 % reads relay settings from an excel file
 
-addpath('relay_settings', 'relays_configuration_files');
+addpath('relay_settings', 'relays_configuration_files', 'relay_iec61850');
 
 relay_par = xlsread('relay_parameters.xlsx');
 
