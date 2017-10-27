@@ -83,8 +83,22 @@ END_VAR
       <Implementation><![CDATA[FOR ii:=1 TO 59 BY 1 DO
 	aCB[ii].Flow^.instMag := INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.REAL_ID + ii - 1])*aCB[ii].PScale/kWMaxBANSHEE;
 	aCB[ii].Flow^.q.validity := UDPBansheeRead.bWdgDataValid;
-	aCB[ii].Status^.stVal := NOT UINT_TO_BOOL(1 AND INT_TO_UINT(UDPBansheeRead.i16_Raw[UDPBansheeRead.STATUS_ID + ii - 1]));
-	aCB[ii].Status^.q.validity := UDPBansheeRead.bWdgDataValid;
+	IF ii=44 AND HMI_In.PHILena_ctrl.status.stVal = TRUE THEN	// CB401 PHIL GCB status
+		aCB[ii].Status^.stVal 			:= NOT ABB_MODBUS.bSGL_CB_closed.stVal;
+		aCB[ii].Status^.q.validity 		:= ABB_MODBUS.bSGL_CB_closed.q.validity;
+	ELSIF ii=57 AND HMI_In.PHILena_ctrl.status.stVal = TRUE THEN	// Gen3 PHIL GCB status
+		aCB[ii].Status^.stVal 			:= GENSET_MODBUS.bGCBOpen.stVal;
+		aCB[ii].Status^.q.validity 		:= GENSET_MODBUS.bGCBOpen.q.validity;
+	ELSIF ii=58 AND HMI_In.PHILena_ctrl.status.stVal = TRUE THEN	// Ess2 PHIL BDP250 status
+		aCB[ii].Status^.stVal 			:= TRUE;
+		aCB[ii].Status^.q.validity 		:= invalid;
+	ELSIF ii=59 AND HMI_In.PHILena_ctrl.status.stVal = TRUE THEN	// PV2 PHIL AE100 status
+		aCB[ii].Status^.stVal 			:= TRUE;
+		aCB[ii].Status^.q.validity 		:= invalid;
+	ELSE
+		aCB[ii].Status^.stVal := NOT UINT_TO_BOOL(1 AND INT_TO_UINT(UDPBansheeRead.i16_Raw[UDPBansheeRead.STATUS_ID + ii - 1]));
+		aCB[ii].Status^.q.validity := UDPBansheeRead.bWdgDataValid;
+	END_IF
 	aCB[ii].Vpu^.instMag := INT_TO_REAL(UDPBansheeRead.i16_Raw[UDPBansheeRead.VPU_ID + ii - 1])/1000;
 	aCB[ii].Vpu^.q.validity := UDPBansheeRead.bWdgDataValid;
 	aCB[ii].VLgood^.stVal := NOT(aCB[ii].Vpu^.instMag > 0.6 AND aCB[ii].Vpu^.instMag < 1.15);

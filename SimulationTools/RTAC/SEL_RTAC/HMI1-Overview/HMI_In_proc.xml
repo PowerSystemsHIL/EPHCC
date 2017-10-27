@@ -1,0 +1,22 @@
+<RTACModule>
+  <POU>
+    <ExportSource>
+      <Schema>22</Schema>
+      <DeviceMOT>3530</DeviceMOT>
+    </ExportSource>
+    <Name>HMI_In_proc</Name>
+    <POUKind>Program</POUKind>
+    <Content>
+      <Interface><![CDATA[PROGRAM HMI_In_proc
+VAR
+END_VAR
+]]></Interface>
+      <Implementation><![CDATA[IF HMI_In.PHILena_ctrl.operPulse.ctlVal = TRUE THEN
+	HMI_In.PHILena_ctrl.status.stVal := NOT HMI_In.PHILena_ctrl.status.stVal;
+	HMI_In.PHILena_ctrl.status.q.validity := good;
+END_IF
+HMI_In.PHILena.q.validity	 := good;
+HMI_In.PHILena.stVal 		 := HMI_In.PHILena_ctrl.status.stVal;]]></Implementation>
+    </Content>
+  </POU>
+</RTACModule>
