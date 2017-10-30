@@ -2,7 +2,7 @@ clear all;
 close all;
 clear all;
 % Generate test sequence vector before running - sequence stored in seq.mat
-seq = seq_generate(1);  % use seq_conig_X.mat X-parameter
+seq = seq_generate(9);  % use seq_conig_X.mat X-parameter
 save_figs(1, 'C:\Results\testseq', 1,1);
 
 %% Run UDP stream to opal and store received data. Results stored in res.mata

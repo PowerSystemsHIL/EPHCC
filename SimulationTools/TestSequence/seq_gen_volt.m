@@ -2,15 +2,16 @@ function [ out_volt ] = seq_gen_volt( opt, in_volt )
 %CLOUD Summary of this function goes here
 %   Detailed explanation goes here
 
+out_volt = in_volt;
+
 % Check required fields
 if ~isfield(opt.Grid, 'Volt')
-   error ('''Grid.Volt'' field must exist in configuration struct');
-end
+   warning ('''Grid.Volt'' field must exist in configuration struct');
+else
 
 pat = 1-[1	0.9	0.8	0.7	0.6	0.5	0.4	0.3	0.2	0.1	0	0.1	0.2	0.3	0.4	0.5	0.6	0.7	0.8	0.9	1];
 plen = length(pat);
 
-out_volt = in_volt;
 for i=1:length(opt.Grid.Volt)
     % Check required fields
     required = {'Start', 'Depth', 'Duration'};
@@ -33,4 +34,5 @@ for i=1:length(opt.Grid.Volt)
     out_volt = out_volt + dv;
 end
 
+end
 end

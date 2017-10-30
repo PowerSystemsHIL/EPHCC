@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"2614"
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
 	Extents			[556.0, 818.0]
-	ZoomFactor		[0.4]
-	Offset			[671.26558265582662, 560.91158536585283]
+	ZoomFactor		[0.8]
+	Offset			[0.0, 0.0]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 23 13:41:57 2017"
-  RTWModifiedTimeStamp	  430666874
-  ModelVersionFormat	  "1.%<AutoIncrement:98>"
+  LastModifiedDate	  "Wed Oct 25 23:00:56 2017"
+  RTWModifiedTimeStamp	  430873227
+  ModelVersionFormat	  "1.%<AutoIncrement:99>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -883,7 +883,7 @@ Library {
   System {
     Name		    "communications_lib"
     Location		    [0, 0, 799, 984]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -896,7 +896,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "2887"
+    SIDHighWatermark	    "2890"
     Block {
       BlockType		      SubSystem
       Name		      "SS_COMMUNICATION"
@@ -907,7 +907,7 @@ Library {
       BlockMirror	      on
       ForegroundColor	      "[0.000000, 0.819608, 0.000000]"
       BackgroundColor	      "darkGreen"
-      LibraryVersion	      "*1.96"
+      LibraryVersion	      "*1.98"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -929,7 +929,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"40"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "F4_MS_IN"
@@ -1260,6 +1260,38 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<mgc_ena>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  SID			  "2888"
+	  Ports			  [1, 1]
+	  Position		  [1120, 1926, 1125, 1964]
+	  ZOrder		  4281
+	  ShowName		  off
+	  OutputSignals		  "IO_scaling"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<IO_scaling>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "2890"
+	  Ports			  [1, 1]
+	  Position		  [1195, 1926, 1200, 1964]
+	  ZOrder		  4282
+	  ShowName		  off
+	  OutputSignals		  "PHIL_Enabled"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<PHIL_Enabled>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1696,6 +1728,17 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From3"
+	  SID			  "2889"
+	  Position		  [1045, 1933, 1115, 1957]
+	  ZOrder		  4280
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  GotoTag		  "TestSeqSC"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From38"
 	  SID			  "1975"
 	  Position		  [1810, 880, 1905, 900]
@@ -2038,7 +2081,7 @@ Library {
 	  Name			  "Load_Profiles"
 	  SID			  "2001"
 	  Ports			  [0, 1]
-	  Position		  [1405, 1943, 1650, 1987]
+	  Position		  [1405, 1993, 1650, 2037]
 	  ZOrder		  2654
 	  BackgroundColor	  "cyan"
 	  LibraryVersion	  "1.7"
@@ -4401,12 +4444,12 @@ Library {
 	  BlockType		  Reference
 	  Name			  "NREL UDP Data - Formatted Packets"
 	  SID			  "2324"
-	  Ports			  [9, 1]
-	  Position		  [1405, 1377, 1645, 1913]
+	  Ports			  [10, 1]
+	  Position		  [1405, 1376, 1655, 1974]
 	  ZOrder		  4225
 	  ForegroundColor	  "blue"
 	  BackgroundColor	  "[0.000000, 0.819608, 0.819608]"
-	  LibraryVersion	  "1.22"
+	  LibraryVersion	  "1.23"
 	  SourceBlock		  "NREL_UDP_lib/NREL UDP Data - Formatted Packets"
 	  SourceType		  "UDP Data Block"
 	  ProfileID		  "6"
@@ -8216,6 +8259,28 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  Name			  "<PHIL_Enabled>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  DstBlock		  "NREL UDP Data - Formatted Packets"
+	  DstPort		  10
+	}
+	Line {
+	  Name			  "<IO_scaling>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
 	  Name			  "GOOSE_RX"
 	  Labels		  [1, 0]
 	  SrcBlock		  "From2"
@@ -8309,7 +8374,7 @@ Library {
 	  Name			  "TestSeq"
 	  SrcBlock		  "NREL UDP Data - Formatted Packets"
 	  SrcPort		  1
-	  Points		  [48, 0; 0, -15]
+	  Points		  [38, 0; 0, -45]
 	  Branch {
 	    Labels		    [1, 1]
 	    DstBlock		    "Bus\nCreator2"
@@ -8591,7 +8656,7 @@ Library {
 	  Labels		  [1, 1]
 	  SrcBlock		  "Load_Profiles"
 	  SrcPort		  1
-	  Points		  [80, 0; 0, -275]
+	  Points		  [80, 0; 0, -325]
 	  DstBlock		  "Bus\nCreator2"
 	  DstPort		  2
 	}
@@ -8656,7 +8721,7 @@ Library {
       System {
 	Name			"SS_COMMUNICATION_34_NoGoose"
 	Location		[0, 0, 799, 984]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"

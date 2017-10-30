@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 23 14:16:34 2017"
-  RTWModifiedTimeStamp	  430668988
-  ModelVersionFormat	  "1.%<AutoIncrement:65>"
+  LastModifiedDate	  "Thu Oct 26 00:19:02 2017"
+  RTWModifiedTimeStamp	  430877922
+  ModelVersionFormat	  "1.%<AutoIncrement:67>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -858,7 +858,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "868"
+    SIDHighWatermark	    "882"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -867,7 +867,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.64"
+      LibraryVersion	      "*1.66"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -877,7 +877,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[0, 0, 1181, 1036]
+	Location		[960, 0, 1920, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -889,7 +889,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"20"
+	ZoomFactor		"15"
 	Block {
 	  BlockType		  Inport
 	  Name			  "RELAY_IN"
@@ -1164,6 +1164,21 @@ Library {
 	  SourceBlock		  "cables_lib/500kcmil-Mutual"
 	  SourceType		  "500kcmil cable"
 	  length		  "1000"
+	  par_sets		  "1"
+	  ratio			  "3"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "500kcmil-Mutual7"
+	  SID			  "869"
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [4420, 2997, 4460, 3063]
+	  ZOrder		  4316
+	  BackgroundColor	  "magenta"
+	  LibraryVersion	  "1.28"
+	  SourceBlock		  "cables_lib/500kcmil-Mutual"
+	  SourceType		  "500kcmil cable"
+	  length		  "10"
 	  par_sets		  "1"
 	  ratio			  "3"
 	}
@@ -1571,6 +1586,38 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<F3_CB_10>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector23"
+	  SID			  "880"
+	  Ports			  [1, 1]
+	  Position		  [4415, 2921, 4420, 2959]
+	  ZOrder		  4322
+	  ShowName		  off
+	  OutputSignals		  "fault"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<fault>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector24"
+	  SID			  "881"
+	  Ports			  [1, 1]
+	  Position		  [4495, 2921, 4500, 2959]
+	  ZOrder		  4323
+	  ShowName		  off
+	  OutputSignals		  "loc4"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<loc4>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1992,6 +2039,21 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "Fault_4"
+	  SID			  "870"
+	  Ports			  [1, 0, 0, 0, 0, 3]
+	  Position		  [4635, 2979, 4740, 3061]
+	  ZOrder		  4317
+	  BackgroundColor	  "[1.000000, 1.000000, 0.000000]"
+	  LibraryVersion	  "1.3"
+	  SourceBlock		  "fault_lib/Fault"
+	  SourceType		  ""
+	  FaultResistance	  "0.01"
+	  GroundResistance	  "1.73"
+	  SnubberResistance	  "1E6"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "First-Order\nFilter"
 	  SID			  "867"
 	  Ports			  [1, 1]
@@ -2095,6 +2157,17 @@ Library {
 	  SID			  "859"
 	  Position		  [4095, 2015, 4190, 2035]
 	  ZOrder		  4083
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "TestSeq"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From17"
+	  SID			  "882"
+	  Position		  [4325, 2930, 4395, 2950]
+	  ZOrder		  4321
 	  BackgroundColor	  "yellow"
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -3117,7 +3190,7 @@ Library {
 	      OutputAsBus	      on
 	      Port {
 		PortNumber		1
-		Name			"<relay_out>"
+		ShowPropagatedSignals	"on"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -3437,7 +3510,7 @@ Library {
 	      Port {
 		PortNumber		2
 		Name			"ctrl"
-		PropagatedSignals	"control"
+		PropagatedSignals	"control, raw"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -3519,7 +3592,6 @@ Library {
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
-	      Name		      "<relay_out>"
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector1"
 	      SrcPort		      1
@@ -4454,6 +4526,50 @@ Library {
 	  ZOrder		  3931
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<loc4>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector24"
+	  SrcPort		  1
+	  Points		  [40, 0; 0, 50]
+	  DstBlock		  "Fault_4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<fault>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector23"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector24"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From17"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector23"
+	  DstPort		  1
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Fault_4"
+	  SrcPort		  LConn2
+	  DstBlock		  "500kcmil-Mutual7"
+	  DstPort		  RConn2
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Fault_4"
+	  SrcPort		  LConn3
+	  DstBlock		  "500kcmil-Mutual7"
+	  DstPort		  RConn3
+	}
+	Line {
+	  LineType		  "Connection"
+	  SrcBlock		  "Fault_4"
+	  SrcPort		  LConn1
+	  DstBlock		  "500kcmil-Mutual7"
+	  DstPort		  RConn1
 	}
 	Line {
 	  SrcBlock		  "AIN_AOUT_ML605EX1"
@@ -6363,24 +6479,54 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_11"
-	  SrcPort		  RConn2
-	  DstBlock		  "Priority_4"
-	  DstPort		  LConn2
+	  SrcBlock		  "500kcmil-Mutual7"
+	  SrcPort		  LConn2
+	  Points		  [-210, 0; 0, -225]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "F3_CB_11"
+	    SrcPort		    RConn2
+	    Points		    [190, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Priority_4"
+	    DstPort		    LConn2
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_11"
-	  SrcPort		  RConn3
-	  DstBlock		  "Priority_4"
-	  DstPort		  LConn3
+	  SrcBlock		  "500kcmil-Mutual7"
+	  SrcPort		  LConn3
+	  Points		  [-228, 0; 0, -225]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "F3_CB_11"
+	    SrcPort		    RConn3
+	    Points		    [172, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Priority_4"
+	    DstPort		    LConn3
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
-	  SrcBlock		  "F3_CB_11"
-	  SrcPort		  RConn1
-	  DstBlock		  "Priority_4"
-	  DstPort		  LConn1
+	  SrcBlock		  "500kcmil-Mutual7"
+	  SrcPort		  LConn1
+	  Points		  [-195, 0; 0, -225]
+	  Branch {
+	    ConnectType		    "DEST_DEST"
+	    SrcBlock		    "F3_CB_11"
+	    SrcPort		    RConn1
+	    Points		    [205, 0]
+	  }
+	  Branch {
+	    ConnectType		    "DEST_SRC"
+	    DstBlock		    "Priority_4"
+	    DstPort		    LConn1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"

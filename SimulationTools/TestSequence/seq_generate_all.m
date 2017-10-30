@@ -5,8 +5,12 @@ function [ sequence ] = seq_generate_all( opt )
 t = 0:opt.Ts:opt.End;
 
 irradiance = seq_gen_irradiance(opt);
+if (isfield(opt,'Cloud'))
 irradiance = [  seq_gen_clouds(opt, irradiance, 0); ... 
                 seq_gen_clouds(opt, irradiance, opt.CloudDelay)];
+else
+    irradiance = [irradiance; irradiance];
+end
 price = seq_gen_price(opt);
 
 cut_grid = seq_gen_stairs(opt, 'Grid.CutGrid');

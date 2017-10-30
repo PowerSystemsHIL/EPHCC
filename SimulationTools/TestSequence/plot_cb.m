@@ -1,12 +1,13 @@
 
 %CBs = {'CB100', 'CB200', 'CB300', 'CB402'};
 %CBs = {'CB101', 'CB102', 'CB103', 'CB104', 'CB105', 'CB106', 'CB107', 'CB108'};
-%CBs = {'CB104', 'CB107'};
+CBs = {'CB104', 'CB107'};
+%CBs = {'CB401', 'CB402', 'CB403', 'CB404', 'CB405', 'CB406'};
 
 % Ties
 %CBs = {'CB108', 'CB109', 'CB111', 'CB113', 'CB213', 'CB216', 'CB217', 'CB401'};
 % Interruptable & priority loads
-CBs = {'CB104', 'CB107', 'CB114', 'CB206', 'CB208', 'CB204', 'CB219', 'CB218', 'CB212', 'CB307', 'CB308', 'CB309', 'CB402', 'CB403', 'CB405', 'CB406'};
+%CBs = {'CB104', 'CB107', 'CB114', 'CB206', 'CB208', 'CB204', 'CB219', 'CB218', 'CB212', 'CB307', 'CB308', 'CB309', 'CB402', 'CB403', 'CB405', 'CB406'};
 
 %%
 for ii=1:length(CBs)
@@ -28,8 +29,9 @@ ax= [ax subplot(5,1,1)];
     title('Relay status');
     dig = (double(dec2bin(ctrl,5))-48)';
     dig = dig(5:-1:1,:);
+    dig(2,:) = 2*dig(2,:)+dig(1,:);
     dig(1,:) = [];
-    dig(1,:) = dig(1,:) < 0.5;
+%     dig(1,:) = dig(1,:) < 0.5;
     dig_lab = {'CloseReq', 'GooseTrip', 'Reset', 'ProtSet'};
     
     Ndig = size(dig,1);

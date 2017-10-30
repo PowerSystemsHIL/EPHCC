@@ -67,6 +67,8 @@ oc(42)=struct('Type','Trafo','Vn',13.8,'In',83.6739520564675,'CB','CB306','ID','
 oc(43)=struct('Type','Trafo','Vn',13.8,'In',41.8369760282337,'CB','CB302','ID','T303');
 oc(44)=struct('Type','Trafo','Vn',13.8,'In',104.592440070584,'CB','CB304','ID','T305');
 oc(45)=struct('Type','Trafo','Vn',13.8,'In',209.184880141169,'CB','CB310','ID','T306');
+oc(46)=struct('Type','Line','Vn',13.8,'In',280,'CB','CB108','ID','C105');
+
 
 LegendGen = {};
 LegendLine = {};

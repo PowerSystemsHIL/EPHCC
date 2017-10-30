@@ -4,8 +4,9 @@ function [ out_freq ] = seq_gen_freq( opt, in_freq )
 
 % Check required fields
 if ~isfield(opt.Grid, 'Freq')
-   error ('''Grid.Freq'' field must exist in configuration struct');
-end
+    warning ('''Grid.Freq'' field must exist in configuration struct');
+    out_freq = in_freq;
+else
 
 pat = 1-[1	0.5	0.2	0.05	0	0.03	0.1	0.17	0.25	0.3	0.35	0.4	0.45	0.5	0.55	0.6	0.65	0.7	0.75	0.8	0.85	0.9	0.95	1];
 plen = length(pat);
@@ -33,4 +34,5 @@ for i=1:length(opt.Grid.Freq)
     out_freq = out_freq + df;
 end
 
+end
 end

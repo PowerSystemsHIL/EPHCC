@@ -12,8 +12,8 @@ while(len>0)
     disp('.');
 end
 
-TxDecimate = 1;      %Tx Send evey TxDecimate frame only
-TxSequenceSpeed = 1; %Tx sequence speed multipier
+TxDecimate = 10;      %Tx Send evey TxDecimate frame only
+TxSequenceSpeed = TxDecimate; %Tx sequence speed multipier
 nextTXd = 1;         %Indice of starting TX frame
 T0 = now - seq.t(nextTXd)/60/60/24/TxSequenceSpeed;   % Set test sequence time reference;
 timestamp = 0;
