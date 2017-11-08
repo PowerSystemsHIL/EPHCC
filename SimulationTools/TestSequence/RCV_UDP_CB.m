@@ -19,7 +19,7 @@ id = init_ID();
         if len>0
             u8data=pnet(udp,'read',2000,'uint8');
             [datastruct header] = UDP_decode(BANSHEEUDP, u8data);
-            disp(['CB307 :' num2str(datastruct.breaker_ctrl(id.CB307)) ' ' num2str(datastruct.voltage(id.CB307)) '|| Gen2_ctrl :' num2str(datastruct.gen2_ctrl) '|| Gen3_ctrl :' num2str(datastruct.gen3_ctrl) ]);
+            disp(['CB210 :' num2str(datastruct.breaker_ctrl(id.CB210)) ' ' num2str(datastruct.voltage(id.CB307)) '|| Gen2_ctrl :' num2str(datastruct.gen2_ctrl) '|| Gen3_ctrl :' num2str(datastruct.gen3_ctrl) ]);
         end
         pause(0.001);
     end

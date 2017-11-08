@@ -4,6 +4,7 @@ clear all;
 opdaq_path = '..\..\..\RemoteCHIL\models\RemoteCHIL\RemoteCHIL_SS_F4_RELAY_HOUSING\OpREDHAWKtarget\A_FILE_RECORDED_';
 opdaq_path = '..\..\..\UrbanCHIL2\models\UrbanCHIL\UrbanCHIL_SS_COMMUNICATION\OpREDHAWKtarget\A_FILE_RECORDED_';
 opdaq_path = '..\..\..\UrbanCHIL2\models\UrbanCHIL\A_FILE_RECORDED_';
+opdaq_path = '..\..\..\UrbanCHIL\models\UrbanCHIL\A_FILE_RECORDED_';
 
 dat_all = [];
 tsim_all = [];
