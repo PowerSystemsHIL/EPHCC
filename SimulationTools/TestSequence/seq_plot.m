@@ -1,10 +1,10 @@
 function [ax] = seq_plot(seq);
 ax = [];
 opt = seq.opt;
-figure('name', 'sequence');;
+figure('name', ['sequence' num2str(seq.seq_no)]);
 ax= [ax subplot(6,1,1)]; plot(seq.t/60, [seq.irradiance; seq.price]);
     legend({'Irradiance PV1', 'Irradiance PV2', 'Grid energy price'});
-    title('Microgid controller procurement 2017 - test sequence');
+    title(['Microgid controller procurement 2017 - sequence #' num2str(seq.seq_no)]);
     set(gca,'XTick', [0:5:100]);
     ylabel('[PU]'); grid on;
 ax= [ax subplot(6,1,2)]; plot(seq.t/60, [seq.grid_freq./60.0; seq.grid_volt./115000]);
@@ -40,6 +40,16 @@ dig     = [dig; seq.fault.gen1; seq.fault.gen2; seq.fault.gen3; seq.fault.ess1; 
 dig_lab = [dig_lab 'fault.gen1' 'fault.gen2' 'fault.gen3' 'fault.ess1' 'fault.ess2' 'fault.pv1' 'fault.pv2' ];
 dig     = [dig; seq.motor1; seq.motor2; seq.cut_grid; seq.dms_disreq; seq.mgc_enable];
 dig_lab = [dig_lab 'Mot1' 'Mot2' 'G.Cut'            'DMS.DR'        'MGC.En'      ];
+
+% Don't plot signals which are always zero
+rem_plot = [];
+for i=1:size(dig)
+    if (sum(dig(i,:)) == 0)
+        rem_plot = [rem_plot i];
+    end;
+end
+dig(rem_plot,:) = [];
+dig_lab(rem_plot) = [];
 
 Ndig = size(dig,1);
 dig_lab = dig_lab(Ndig:-1:1);
