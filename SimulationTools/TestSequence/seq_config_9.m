@@ -7,7 +7,6 @@ Ts = 0.2;
 End = 100*60;
 N = End/Ts+1;
 
-
 %% Initial conditions
 % motors command: 0- stop, 1-run
 Init('Motor1', 0, 0);
@@ -56,14 +55,14 @@ CloudDelay = 20;
 
 Irradiance.Rise = 20*60;            % FIX, Sunrise beginning time t=20min
 Irradiance.RiseDuration = 40*60;    % FIX, Duration of ramp until full irradiance
-
-Nc=Nc+1; Cloud(Nc) = struct('Start', 32*60, 'Depth', 0.9, 'Ramp', 20, 'Duration', 120);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 42*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 45*60, 'Depth', 0.7, 'Ramp', 15, 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 54*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 60);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 69*60, 'Depth', 0.5, 'Ramp', 5 , 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 77*60, 'Depth', 0.9, 'Ramp', 25, 'Duration', 240);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 92*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
+PV_Rate = 5;
+Nc=Nc+1; Cloud(Nc) = struct('Start', 32*60, 'Depth', 0.9, 'Ramp', PV_Rate*20, 'Duration', 120);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 42*60, 'Depth', 0.9, 'Ramp', PV_Rate*10, 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 45*60, 'Depth', 0.7, 'Ramp', PV_Rate*15, 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 54*60, 'Depth', 0.9, 'Ramp', PV_Rate*10, 'Duration', 60);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 69*60, 'Depth', 0.5, 'Ramp', PV_Rate*5 , 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 77*60, 'Depth', 0.9, 'Ramp', PV_Rate*25, 'Duration', 240);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 92*60, 'Depth', 0.6, 'Ramp', PV_Rate*15, 'Duration', 30);
 
 %% Motors
 Next('Motor1'   , 3 , 1);
@@ -142,8 +141,8 @@ Next('DMS.DisReq'      , 55,   0);
 
 
 %% Unintentional islanding - start island
-%Next('Fault.Loc1'      , 66, 1);
-%Next('Fault.Loc1'      , 67, 0);
+Next('Fault.Loc1'      , 66, 1);
+Next('Fault.Loc1'      , 67, 0);
 Next('DMS.DisReq'      , 66+(10/60),   1);
 Next('Grid.OpenSSF1'   , 67, 1); 
 Next('Grid.OpenSSF2'   , 67.2, 1); 

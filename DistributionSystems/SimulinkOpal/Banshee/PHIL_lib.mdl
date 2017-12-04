@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[9]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -41,11 +41,11 @@ Library {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"1616"
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
 	Extents			[397.0, 818.0]
 	ZoomFactor		[0.8]
-	Offset			[-38.296871818602085, 0.0]
+	Offset			[2.5, 9.125]
       }
     }
   }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hptb1"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 23 14:12:08 2017"
-  RTWModifiedTimeStamp	  430668726
-  ModelVersionFormat	  "1.%<AutoIncrement:87>"
+  LastModifiedDate	  "Tue Nov 28 13:37:15 2017"
+  RTWModifiedTimeStamp	  433777032
+  ModelVersionFormat	  "1.%<AutoIncrement:89>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -707,6 +707,16 @@ Library {
       OutputAsBus	      off
     }
     Block {
+      BlockType		      ComplexToMagnitudeAngle
+      Output		      "Magnitude and angle"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ComplexToRealImag
+      Output		      "Real and imag"
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Constant
       Value		      "1"
       VectorParams1D	      on
@@ -806,6 +816,15 @@ Library {
       Interpolate	      on
     }
     Block {
+      BlockType		      MagnitudeAngleToComplex
+      Input		      "Magnitude and angle"
+      ConstantPart	      "0"
+      ApproximationMethod     "None"
+      NumberOfIterations      "11"
+      ScaleReciprocalGainFactor	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Mux
       Inputs		      "4"
       DisplayOption	      "none"
@@ -846,6 +865,12 @@ Library {
       LockScale		      off
       RndMeth		      "Zero"
       SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      RealImagToComplex
+      Input		      "Real and imag"
+      ConstantPart	      "0"
       SampleTime	      "-1"
     }
     Block {
@@ -953,7 +978,7 @@ Library {
   System {
     Name		    "PHIL_lib"
     Location		    [640, 0, 1280, 984]
-    Open		    off
+    Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -966,7 +991,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1634"
+    SIDHighWatermark	    "1662"
     Block {
       BlockType		      SubSystem
       Name		      "AIN_AOUT_ML605EX1"
@@ -986,7 +1011,7 @@ Library {
       System {
 	Name			"AIN_AOUT_ML605EX1"
 	Location		[640, 0, 1280, 984]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1172,7 +1197,6 @@ Library {
 	Line {
 	  SrcBlock		  "ML605EX1 AnalogIn"
 	  SrcPort		  1
-	  Points		  [65, 0]
 	  DstBlock		  "Mux1"
 	  DstPort		  1
 	}
@@ -1185,7 +1209,6 @@ Library {
 	Line {
 	  SrcBlock		  "ML605EX1 AnalogIn"
 	  SrcPort		  2
-	  Points		  [20, 0]
 	  DstBlock		  "Terminator2"
 	  DstPort		  1
 	}
@@ -1204,7 +1227,6 @@ Library {
 	Line {
 	  SrcBlock		  "ML605EX1 AnalogIn1"
 	  SrcPort		  2
-	  Points		  [20, 0]
 	  DstBlock		  "Terminator3"
 	  DstPort		  1
 	}
@@ -1507,8 +1529,8 @@ Library {
       SID		      "1172"
       Ports		      [4, 2, 0, 0, 0, 3]
       Position		      [240, 303, 390, 517]
-      ZOrder		      4065
-      LibraryVersion	      "*1.82"
+      ZOrder		      4058
+      LibraryVersion	      "*1.88"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1518,7 +1540,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"PHIL_F3"
-	Location		[640, 0, 1280, 984]
+	Location		[960, 0, 1920, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1530,12 +1552,12 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"40"
+	ZoomFactor		"150"
 	Block {
 	  BlockType		  Inport
 	  Name			  "AIN"
 	  SID			  "1611"
-	  Position		  [1825, 337, 1865, 353]
+	  Position		  [1825, 372, 1865, 388]
 	  ZOrder		  4331
 	  IconDisplay		  "Port number"
 	}
@@ -1543,7 +1565,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "FromF4"
 	  SID			  "1279"
-	  Position		  [350, 763, 380, 777]
+	  Position		  [350, 618, 380, 632]
 	  ZOrder		  4094
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1552,7 +1574,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "HiZ_Ctrl"
 	  SID			  "1173"
-	  Position		  [415, 207, 455, 223]
+	  Position		  [415, 62, 455, 78]
 	  ZOrder		  4055
 	  Port			  "3"
 	  IconDisplay		  "Port number"
@@ -1568,7 +1590,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "HiZ_Status"
 	  SID			  "1174"
-	  Position		  [685, 613, 715, 627]
+	  Position		  [685, 468, 715, 482]
 	  ZOrder		  4056
 	  Port			  "4"
 	  IconDisplay		  "Port number"
@@ -1585,7 +1607,7 @@ Library {
 	  Name			  "Bus\nCreator"
 	  SID			  "1175"
 	  Ports			  [8, 1]
-	  Position		  [1345, 164, 1350, 441]
+	  Position		  [1345, 19, 1350, 296]
 	  ZOrder		  4053
 	  ShowName		  off
 	  Inputs		  "8"
@@ -1596,7 +1618,7 @@ Library {
 	  Name			  "Bus\nCreator1"
 	  SID			  "1292"
 	  Ports			  [4, 1]
-	  Position		  [2685, 450, 2690, 635]
+	  Position		  [2685, 485, 2690, 670]
 	  ZOrder		  4107
 	  ShowName		  off
 	  DisplayOption		  "bar"
@@ -1612,7 +1634,7 @@ Library {
 	  Name			  "Bus\nCreator2"
 	  SID			  "1300"
 	  Ports			  [4, 1]
-	  Position		  [2685, 645, 2690, 830]
+	  Position		  [2685, 680, 2690, 865]
 	  ZOrder		  4115
 	  ShowName		  off
 	  DisplayOption		  "bar"
@@ -1628,7 +1650,7 @@ Library {
 	  Name			  "Bus\nCreator3"
 	  SID			  "1307"
 	  Ports			  [4, 1]
-	  Position		  [2685, 845, 2690, 1030]
+	  Position		  [2685, 880, 2690, 1065]
 	  ZOrder		  4122
 	  ShowName		  off
 	  DisplayOption		  "bar"
@@ -1644,7 +1666,7 @@ Library {
 	  Name			  "Bus\nCreator4"
 	  SID			  "1244"
 	  Ports			  [4, 1]
-	  Position		  [2685, 170, 2690, 355]
+	  Position		  [2685, 205, 2690, 390]
 	  ZOrder		  4062
 	  ShowName		  off
 	  DisplayOption		  "bar"
@@ -1660,24 +1682,18 @@ Library {
 	  Name			  "Bus\nCreator5"
 	  SID			  "1389"
 	  Ports			  [5, 1]
-	  Position		  [1095, 25, 1100, 145]
+	  Position		  [720, 855, 725, 975]
 	  ZOrder		  4154
 	  ShowName		  off
 	  Inputs		  "5"
 	  DisplayOption		  "bar"
-	  Port {
-	    PortNumber		    1
-	    Name		    "V_ref"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
 	}
 	Block {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator6"
 	  SID			  "1459"
 	  Ports			  [3, 1]
-	  Position		  [2565, 343, 2570, 477]
+	  Position		  [2565, 378, 2570, 512]
 	  ZOrder		  4308
 	  ShowName		  off
 	  Inputs		  "3"
@@ -1688,7 +1704,7 @@ Library {
 	  Name			  "Bus\nSelector"
 	  SID			  "1245"
 	  Ports			  [1, 2]
-	  Position		  [2355, 90, 2360, 190]
+	  Position		  [2355, 125, 2360, 225]
 	  ZOrder		  4067
 	  ShowName		  off
 	  OutputSignals		  "AIN_V_GAIN,AIN_I_GAIN"
@@ -1710,7 +1726,7 @@ Library {
 	  Name			  "Bus\nSelector1"
 	  SID			  "1317"
 	  Ports			  [1, 3]
-	  Position		  [2100, 460, 2105, 560]
+	  Position		  [2100, 495, 2105, 595]
 	  ZOrder		  4132
 	  ShowName		  off
 	  OutputSignals		  "I_sense_gain,I_gen_offset,I_sense_offset"
@@ -1735,10 +1751,26 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector10"
+	  SID			  "1654"
+	  Ports			  [1, 1]
+	  Position		  [1500, 1041, 1505, 1079]
+	  ZOrder		  4352
+	  ShowName		  off
+	  OutputSignals		  "V_dq_mode_ena"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<V_dq_mode_ena>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector2"
 	  SID			  "1331"
 	  Ports			  [1, 1]
-	  Position		  [1270, 371, 1275, 409]
+	  Position		  [1270, 226, 1275, 264]
 	  ZOrder		  4146
 	  ShowName		  off
 	  OutputSignals		  "PHIL_Enabled"
@@ -1754,7 +1786,7 @@ Library {
 	  Name			  "Bus\nSelector3"
 	  SID			  "1425"
 	  Ports			  [1, 2]
-	  Position		  [405, 733, 410, 802]
+	  Position		  [405, 588, 410, 657]
 	  ZOrder		  4293
 	  ShowName		  off
 	  OutputSignals		  "pv_set,Iabc"
@@ -1776,7 +1808,7 @@ Library {
 	  Name			  "Bus\nSelector4"
 	  SID			  "1464"
 	  Ports			  [1, 2]
-	  Position		  [1840, 1016, 1845, 1089]
+	  Position		  [1840, 1051, 1845, 1124]
 	  ZOrder		  4313
 	  ShowName		  off
 	  OutputSignals		  "Vref,Iref"
@@ -1798,7 +1830,7 @@ Library {
 	  Name			  "Bus\nSelector5"
 	  SID			  "1248"
 	  Ports			  [1, 2]
-	  Position		  [1845, 886, 1850, 924]
+	  Position		  [1845, 921, 1850, 959]
 	  ZOrder		  4090
 	  ShowName		  off
 	  OutputSignals		  "AOUT_I_GAIN,AOUT_V_GAIN"
@@ -1817,10 +1849,26 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector6"
+	  SID			  "1635"
+	  Ports			  [1, 1]
+	  Position		  [1085, 970, 1090, 1000]
+	  ZOrder		  4334
+	  ShowName		  off
+	  OutputSignals		  "sin_cos"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<sin_cos>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector7"
 	  SID			  "1477"
 	  Ports			  [1, 1]
-	  Position		  [465, 676, 470, 714]
+	  Position		  [465, 531, 470, 569]
 	  ZOrder		  4327
 	  ShowName		  off
 	  OutputSignals		  "PHIL_Enabled"
@@ -1832,11 +1880,43 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector8"
+	  SID			  "1648"
+	  Ports			  [1, 1]
+	  Position		  [855, 800, 860, 830]
+	  ZOrder		  4346
+	  ShowName		  off
+	  OutputSignals		  "V_mag_limits"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<V_mag_limits>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector9"
+	  SID			  "1650"
+	  Ports			  [1, 1]
+	  Position		  [765, 900, 770, 930]
+	  ZOrder		  4348
+	  ShowName		  off
+	  OutputSignals		  "vdq0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<vdq0>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "CCS1"
 	  SID			  "1176"
 	  Ports			  [1, 0, 0, 0, 0, 1, 1]
-	  Position		  [775, 347, 820, 383]
+	  Position		  [775, 202, 820, 238]
 	  ZOrder		  3705
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -1855,7 +1935,7 @@ Library {
 	  Name			  "CCS2"
 	  SID			  "1177"
 	  Ports			  [1, 0, 0, 0, 0, 1, 1]
-	  Position		  [775, 407, 820, 443]
+	  Position		  [775, 262, 820, 298]
 	  ZOrder		  3706
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -1874,7 +1954,7 @@ Library {
 	  Name			  "CS Modified PLL"
 	  SID			  "1386"
 	  Ports			  [1, 4]
-	  Position		  [845, 19, 920, 126]
+	  Position		  [470, 849, 545, 956]
 	  ZOrder		  4151
 	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
 	  DialogController	  "POWERSYS.PowerSysDialog"
@@ -1984,7 +2064,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "125"
-	    SIDHighWatermark	    "230"
+	    SIDHighWatermark	    "254"
 	    SIDPrevWatermark	    "85"
 	    Block {
 	      BlockType		      Inport
@@ -2109,7 +2189,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"94"
+		SIDHighWatermark	"104"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Error"
@@ -2788,10 +2868,37 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  ComplexToMagnitudeAngle
+	  Name			  "Complex to\nMagnitude-Angle"
+	  SID			  "1642"
+	  Ports			  [1, 2]
+	  Position		  [915, 865, 945, 940]
+	  ZOrder		  4340
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  ComplexToRealImag
+	  Name			  "Complex to\nReal-Imag"
+	  SID			  "1644"
+	  Ports			  [1, 2]
+	  Position		  [1195, 873, 1225, 937]
+	  ZOrder		  4342
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "1636"
+	  Position		  [1160, 935, 1190, 965]
+	  ZOrder		  4337
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Constant2"
 	  SID			  "1251"
-	  Position		  [2560, 180, 2590, 210]
+	  Position		  [2560, 215, 2590, 245]
 	  ZOrder		  4063
 	  BackgroundColor	  "magenta"
 	  Port {
@@ -2805,7 +2912,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant3"
 	  SID			  "1294"
-	  Position		  [2600, 460, 2630, 490]
+	  Position		  [2600, 495, 2630, 525]
 	  ZOrder		  4109
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -2820,7 +2927,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant4"
 	  SID			  "1401"
-	  Position		  [935, 770, 965, 800]
+	  Position		  [935, 625, 965, 655]
 	  ZOrder		  4271
 	  Value			  "0"
 	}
@@ -2828,7 +2935,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant5"
 	  SID			  "1301"
-	  Position		  [2600, 655, 2630, 685]
+	  Position		  [2600, 690, 2630, 720]
 	  ZOrder		  4117
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -2843,7 +2950,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant6"
 	  SID			  "1404"
-	  Position		  [915, 842, 995, 868]
+	  Position		  [915, 697, 995, 723]
 	  ZOrder		  4272
 	  Value			  "2*pi*60*Ts*2"
 	}
@@ -2851,7 +2958,7 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant7"
 	  SID			  "1308"
-	  Position		  [2545, 855, 2575, 885]
+	  Position		  [2545, 890, 2575, 920]
 	  ZOrder		  4123
 	  BackgroundColor	  "magenta"
 	  ShowName		  off
@@ -2863,10 +2970,20 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Constant
+	  Name			  "Constant8"
+	  SID			  "1661"
+	  Position		  [1060, 910, 1080, 930]
+	  ZOrder		  4358
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  Value			  "0"
+	}
+	Block {
 	  BlockType		  DataTypeConversion
 	  Name			  "Data Type Conversion"
 	  SID			  "1178"
-	  Position		  [910, 603, 985, 637]
+	  Position		  [910, 458, 985, 492]
 	  ZOrder		  3725
 	  OutDataTypeStr	  "double"
 	  RndMeth		  "Floor"
@@ -2877,7 +2994,7 @@ Library {
 	  Name			  "Demux"
 	  SID			  "1179"
 	  Ports			  [1, 3]
-	  Position		  [915, 327, 920, 503]
+	  Position		  [915, 182, 920, 358]
 	  ZOrder		  3713
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2890,7 +3007,7 @@ Library {
 	  Name			  "Demux1"
 	  SID			  "1252"
 	  Ports			  [1, 6]
-	  Position		  [2355, 212, 2360, 473]
+	  Position		  [2355, 247, 2360, 508]
 	  ZOrder		  4061
 	  ShowName		  off
 	  Outputs		  "[3 3 3 1 1 5]"
@@ -2915,11 +3032,33 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Demux
+	  Name			  "Demux2"
+	  SID			  "1646"
+	  Ports			  [1, 3]
+	  Position		  [805, 876, 810, 954]
+	  ZOrder		  4344
+	  ShowName		  off
+	  Outputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux3"
+	  SID			  "1651"
+	  Ports			  [1, 2]
+	  Position		  [940, 793, 945, 837]
+	  ZOrder		  4349
+	  ShowName		  off
+	  Outputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
 	  BlockType		  Reference
 	  Name			  "First-Order\nFilter"
 	  SID			  "1388"
 	  Ports			  [1, 1]
-	  Position		  [975, 92, 1025, 128]
+	  Position		  [600, 922, 650, 958]
 	  ZOrder		  4153
 	  LibraryVersion	  "1.31"
 	  FontName		  "Arial"
@@ -2946,7 +3085,7 @@ Library {
 	  Name			  "First-Order\nFilter1"
 	  SID			  "1399"
 	  Ports			  [1, 1]
-	  Position		  [815, 732, 865, 768]
+	  Position		  [815, 587, 865, 623]
 	  ZOrder		  4164
 	  LibraryVersion	  "1.31"
 	  FontName		  "Arial"
@@ -2972,7 +3111,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "1180"
-	  Position		  [1820, 980, 1890, 1000]
+	  Position		  [1820, 1015, 1890, 1035]
 	  ZOrder		  3721
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -2983,7 +3122,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From10"
 	  SID			  "1321"
-	  Position		  [2525, 512, 2590, 528]
+	  Position		  [2525, 547, 2590, 563]
 	  ZOrder		  4136
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3000,7 +3139,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From11"
 	  SID			  "1448"
-	  Position		  [2525, 707, 2590, 723]
+	  Position		  [2525, 742, 2590, 758]
 	  ZOrder		  4298
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3017,7 +3156,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From12"
 	  SID			  "1456"
-	  Position		  [1175, 414, 1265, 436]
+	  Position		  [1175, 269, 1265, 291]
 	  ZOrder		  4305
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  ShowName		  off
@@ -3033,7 +3172,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From13"
 	  SID			  "1463"
-	  Position		  [1730, 1045, 1800, 1065]
+	  Position		  [1730, 1080, 1800, 1100]
 	  ZOrder		  4312
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3044,7 +3183,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From14"
 	  SID			  "1326"
-	  Position		  [2525, 907, 2590, 923]
+	  Position		  [2525, 942, 2590, 958]
 	  ZOrder		  4141
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3061,7 +3200,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From15"
 	  SID			  "1328"
-	  Position		  [1175, 274, 1265, 296]
+	  Position		  [1175, 129, 1265, 151]
 	  ZOrder		  4142
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  ShowName		  off
@@ -3078,7 +3217,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From16"
 	  SID			  "1329"
-	  Position		  [1175, 309, 1265, 331]
+	  Position		  [1175, 164, 1265, 186]
 	  ZOrder		  4143
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  ShowName		  off
@@ -3095,7 +3234,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From17"
 	  SID			  "1330"
-	  Position		  [1175, 344, 1265, 366]
+	  Position		  [1175, 199, 1265, 221]
 	  ZOrder		  4144
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  ShowName		  off
@@ -3112,7 +3251,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From18"
 	  SID			  "1332"
-	  Position		  [1160, 380, 1230, 400]
+	  Position		  [1160, 235, 1230, 255]
 	  ZOrder		  4145
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -3131,7 +3270,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From19"
 	  SID			  "1333"
-	  Position		  [2525, 557, 2590, 573]
+	  Position		  [2525, 592, 2590, 608]
 	  ZOrder		  4147
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3147,20 +3286,9 @@ Library {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From2"
-	  SID			  "1253"
-	  Position		  [1645, 945, 1715, 965]
-	  ZOrder		  4081
-	  ShowName		  off
-	  CloseFcn		  "tagdialog Close"
-	  GotoTag		  "V_PHIL"
-	  TagVisibility		  "global"
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From20"
 	  SID			  "1334"
-	  Position		  [2525, 762, 2590, 778]
+	  Position		  [2525, 797, 2590, 813]
 	  ZOrder		  4148
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3178,7 +3306,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From21"
 	  SID			  "1335"
-	  Position		  [2525, 952, 2590, 968]
+	  Position		  [2525, 987, 2590, 1003]
 	  ZOrder		  4149
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3196,7 +3324,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From22"
 	  SID			  "1385"
-	  Position		  [510, 65, 580, 85]
+	  Position		  [135, 895, 205, 915]
 	  ZOrder		  4150
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -3207,7 +3335,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From23"
 	  SID			  "1408"
-	  Position		  [910, 560, 980, 580]
+	  Position		  [910, 415, 980, 435]
 	  ZOrder		  4276
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3218,7 +3346,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From24"
 	  SID			  "1398"
-	  Position		  [580, 760, 650, 780]
+	  Position		  [580, 615, 650, 635]
 	  ZOrder		  4163
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3229,7 +3357,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From25"
 	  SID			  "1405"
-	  Position		  [885, 815, 955, 835]
+	  Position		  [885, 670, 955, 690]
 	  ZOrder		  4273
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3240,7 +3368,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From26"
 	  SID			  "1479"
-	  Position		  [445, 650, 515, 670]
+	  Position		  [445, 505, 515, 525]
 	  ZOrder		  4328
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3251,7 +3379,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From27"
 	  SID			  "1478"
-	  Position		  [340, 685, 410, 705]
+	  Position		  [340, 540, 410, 560]
 	  ZOrder		  4326
 	  BackgroundColor	  "[0.419608, 0.588235, 0.239216]"
 	  ShowName		  off
@@ -3268,9 +3396,33 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From28"
+	  SID			  "1649"
+	  Position		  [760, 805, 830, 825]
+	  ZOrder		  4347
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "phil_ctrl"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From29"
+	  SID			  "1653"
+	  Position		  [1390, 1050, 1460, 1070]
+	  ZOrder		  4351
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "phil_ctrl"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From3"
 	  SID			  "1281"
-	  Position		  [2125, 130, 2195, 150]
+	  Position		  [2125, 165, 2195, 185]
 	  ZOrder		  4096
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -3280,9 +3432,25 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From30"
+	  SID			  "1659"
+	  Position		  [1175, 24, 1265, 46]
+	  ZOrder		  4357
+	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
+	  ShowName		  off
+	  GotoTag		  "V_ref"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_ref"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From4"
 	  SID			  "1256"
-	  Position		  [1700, 895, 1770, 915]
+	  Position		  [1700, 930, 1770, 950]
 	  ZOrder		  4089
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -3301,7 +3469,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "1298"
-	  Position		  [2525, 602, 2590, 618]
+	  Position		  [2525, 637, 2590, 653]
 	  ZOrder		  4113
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3318,7 +3486,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From6"
 	  SID			  "1303"
-	  Position		  [2525, 797, 2590, 813]
+	  Position		  [2525, 832, 2590, 848]
 	  ZOrder		  4119
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3335,7 +3503,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From7"
 	  SID			  "1182"
-	  Position		  [1175, 239, 1265, 261]
+	  Position		  [1175, 94, 1265, 116]
 	  ZOrder		  4054
 	  BackgroundColor	  "[0.000000, 0.819608, 0.000000]"
 	  ShowName		  off
@@ -3352,7 +3520,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From8"
 	  SID			  "1310"
-	  Position		  [2525, 997, 2590, 1013]
+	  Position		  [2525, 1032, 2590, 1048]
 	  ZOrder		  4125
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3369,7 +3537,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From9"
 	  SID			  "1318"
-	  Position		  [2005, 500, 2075, 520]
+	  Position		  [2005, 535, 2075, 555]
 	  ZOrder		  4133
 	  BackgroundColor	  "darkGreen"
 	  ShowName		  off
@@ -3381,10 +3549,10 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "1257"
-	  Position		  [1775, 939, 1870, 971]
+	  Position		  [1775, 974, 1870, 1006]
 	  ZOrder		  4085
 	  ShowName		  off
-	  Gain			  "8.95/(4160/sqrt(3)*sqrt(2))"
+	  Gain			  "8.95"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
@@ -3393,7 +3561,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain1"
 	  SID			  "1258"
-	  Position		  [2395, 215, 2450, 245]
+	  Position		  [2395, 250, 2450, 280]
 	  ZOrder		  4077
 	  ShowName		  off
 	  Gain			  "50.25"
@@ -3405,7 +3573,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain2"
 	  SID			  "1259"
-	  Position		  [2395, 260, 2450, 290]
+	  Position		  [2395, 295, 2450, 325]
 	  ZOrder		  4078
 	  ShowName		  off
 	  Gain			  "50.25"
@@ -3417,7 +3585,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain3"
 	  SID			  "1260"
-	  Position		  [2395, 305, 2450, 335]
+	  Position		  [2395, 340, 2450, 370]
 	  ZOrder		  4079
 	  ShowName		  off
 	  Gain			  "-48"
@@ -3429,7 +3597,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain4"
 	  SID			  "1457"
-	  Position		  [2395, 350, 2450, 380]
+	  Position		  [2395, 385, 2450, 415]
 	  ZOrder		  4306
 	  ShowName		  off
 	  Gain			  "100"
@@ -3447,7 +3615,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain5"
 	  SID			  "1458"
-	  Position		  [2395, 395, 2450, 425]
+	  Position		  [2395, 430, 2450, 460]
 	  ZOrder		  4307
 	  ShowName		  off
 	  Gain			  "25"
@@ -3465,7 +3633,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain6"
 	  SID			  "1465"
-	  Position		  [1895, 1019, 1990, 1051]
+	  Position		  [1895, 1054, 1990, 1086]
 	  ZOrder		  4314
 	  ShowName		  off
 	  Gain			  "10/1000"
@@ -3483,7 +3651,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain7"
 	  SID			  "1466"
-	  Position		  [1895, 1054, 1990, 1086]
+	  Position		  [1895, 1089, 1990, 1121]
 	  ZOrder		  4315
 	  ShowName		  off
 	  Gain			  "10/250"
@@ -3498,10 +3666,22 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  Gain
+	  Name			  "Gain9"
+	  SID			  "1657"
+	  Position		  [1435, 1149, 1565, 1181]
+	  ZOrder		  4355
+	  ShowName		  off
+	  Gain			  "1/(4160/sqrt(3)*sqrt(2))"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "1416"
-	  Position		  [955, 345, 1055, 365]
+	  Position		  [955, 200, 1055, 220]
 	  ZOrder		  4284
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3511,7 +3691,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto10"
 	  SID			  "1407"
-	  Position		  [1200, 780, 1300, 800]
+	  Position		  [1200, 635, 1300, 655]
 	  ZOrder		  4275
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3521,7 +3701,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto11"
 	  SID			  "1447"
-	  Position		  [2340, 737, 2440, 753]
+	  Position		  [2340, 772, 2440, 788]
 	  ZOrder		  4297
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3531,7 +3711,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto12"
 	  SID			  "1460"
-	  Position		  [2695, 402, 2785, 418]
+	  Position		  [2695, 437, 2785, 453]
 	  ZOrder		  4309
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3541,7 +3721,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto13"
 	  SID			  "1462"
-	  Position		  [470, 742, 530, 758]
+	  Position		  [470, 597, 530, 613]
 	  ZOrder		  4311
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3549,9 +3729,19 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto14"
+	  SID			  "1658"
+	  Position		  [755, 840, 855, 860]
+	  ZOrder		  4356
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  GotoTag		  "V_ref"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  "1293"
-	  Position		  [2745, 535, 2845, 555]
+	  Position		  [2745, 570, 2845, 590]
 	  ZOrder		  4108
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -3561,7 +3751,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto23"
 	  SID			  "1261"
-	  Position		  [2745, 255, 2845, 275]
+	  Position		  [2745, 290, 2845, 310]
 	  ZOrder		  4065
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -3571,7 +3761,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto3"
 	  SID			  "1297"
-	  Position		  [2720, 362, 2785, 378]
+	  Position		  [2720, 397, 2785, 413]
 	  ZOrder		  4112
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3581,7 +3771,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto4"
 	  SID			  "1304"
-	  Position		  [2745, 730, 2845, 750]
+	  Position		  [2745, 765, 2845, 785]
 	  ZOrder		  4116
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -3591,7 +3781,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto5"
 	  SID			  "1306"
-	  Position		  [2745, 930, 2845, 950]
+	  Position		  [2745, 965, 2845, 985]
 	  ZOrder		  4121
 	  BackgroundColor	  "green"
 	  ShowName		  off
@@ -3601,7 +3791,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto6"
 	  SID			  "1315"
-	  Position		  [2720, 382, 2785, 398]
+	  Position		  [2720, 417, 2785, 433]
 	  ZOrder		  4130
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3611,7 +3801,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto7"
 	  SID			  "1319"
-	  Position		  [2345, 612, 2440, 628]
+	  Position		  [2345, 647, 2440, 663]
 	  ZOrder		  4134
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3621,7 +3811,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto8"
 	  SID			  "1320"
-	  Position		  [2340, 672, 2440, 688]
+	  Position		  [2340, 707, 2440, 723]
 	  ZOrder		  4135
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3631,7 +3821,7 @@ Library {
 	  BlockType		  Goto
 	  Name			  "Goto9"
 	  SID			  "1397"
-	  Position		  [1000, 42, 1055, 58]
+	  Position		  [625, 872, 680, 888]
 	  ZOrder		  4162
 	  BackgroundColor	  "gray"
 	  ShowName		  off
@@ -3641,7 +3831,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "I_ratio"
 	  SID			  "1183"
-	  Position		  [950, 399, 1060, 431]
+	  Position		  [950, 254, 1060, 286]
 	  ZOrder		  3716
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -3652,11 +3842,21 @@ Library {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  MagnitudeAngleToComplex
+	  Name			  "Magnitude-Angle\nto Complex"
+	  SID			  "1643"
+	  Ports			  [2, 1]
+	  Position		  [1125, 865, 1155, 940]
+	  ZOrder		  4341
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Mux
 	  Name			  "Mux"
 	  SID			  "1265"
 	  Ports			  [4, 1]
-	  Position		  [2035, 950, 2040, 1085]
+	  Position		  [2035, 985, 2040, 1120]
 	  ZOrder		  4080
 	  ShowName		  off
 	  Inputs		  "[3 3 1 1]"
@@ -3664,10 +3864,21 @@ Library {
 	}
 	Block {
 	  BlockType		  Mux
+	  Name			  "Mux1"
+	  SID			  "1638"
+	  Ports			  [3, 1]
+	  Position		  [1260, 875, 1265, 965]
+	  ZOrder		  4335
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
 	  Name			  "Mux3"
 	  SID			  "1402"
 	  Ports			  [2, 1]
-	  Position		  [1010, 741, 1015, 779]
+	  Position		  [1010, 596, 1015, 634]
 	  ZOrder		  4269
 	  ShowName		  off
 	  Inputs		  "2"
@@ -3678,7 +3889,7 @@ Library {
 	  Name			  "Product"
 	  SID			  "1184"
 	  Ports			  [2, 1]
-	  Position		  [1030, 562, 1060, 593]
+	  Position		  [1030, 417, 1060, 448]
 	  ZOrder		  3726
 	  InputSameDT		  off
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -3690,7 +3901,7 @@ Library {
 	  Name			  "Product1"
 	  SID			  "1267"
 	  Ports			  [2, 1]
-	  Position		  [1960, 947, 1990, 978]
+	  Position		  [1960, 982, 1990, 1013]
 	  ZOrder		  4091
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3703,7 +3914,7 @@ Library {
 	  Name			  "Product2"
 	  SID			  "1268"
 	  Ports			  [2, 1]
-	  Position		  [1960, 982, 1990, 1013]
+	  Position		  [1960, 1017, 1990, 1048]
 	  ZOrder		  4092
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3716,7 +3927,7 @@ Library {
 	  Name			  "Product3"
 	  SID			  "1269"
 	  Ports			  [2, 1]
-	  Position		  [2545, 222, 2575, 253]
+	  Position		  [2545, 257, 2575, 288]
 	  ZOrder		  4068
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3735,7 +3946,7 @@ Library {
 	  Name			  "Product4"
 	  SID			  "1270"
 	  Ports			  [2, 1]
-	  Position		  [2545, 267, 2575, 298]
+	  Position		  [2545, 302, 2575, 333]
 	  ZOrder		  4069
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3754,7 +3965,7 @@ Library {
 	  Name			  "Product5"
 	  SID			  "1271"
 	  Ports			  [2, 1]
-	  Position		  [2545, 312, 2575, 343]
+	  Position		  [2545, 347, 2575, 378]
 	  ZOrder		  4070
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3773,7 +3984,7 @@ Library {
 	  Name			  "Product6"
 	  SID			  "1296"
 	  Ports			  [2, 1]
-	  Position		  [2280, 602, 2310, 633]
+	  Position		  [2280, 637, 2310, 668]
 	  ZOrder		  4111
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3792,7 +4003,7 @@ Library {
 	  Name			  "Product7"
 	  SID			  "1305"
 	  Ports			  [2, 1]
-	  Position		  [2280, 662, 2310, 693]
+	  Position		  [2280, 697, 2310, 728]
 	  ZOrder		  4118
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3811,7 +4022,7 @@ Library {
 	  Name			  "Product8"
 	  SID			  "1446"
 	  Ports			  [2, 1]
-	  Position		  [2280, 727, 2310, 758]
+	  Position		  [2280, 762, 2310, 793]
 	  ZOrder		  4296
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3824,7 +4035,7 @@ Library {
 	  Name			  "Product9"
 	  SID			  "1461"
 	  Ports			  [2, 1]
-	  Position		  [2500, 437, 2530, 468]
+	  Position		  [2500, 472, 2530, 503]
 	  ZOrder		  4310
 	  ShowName		  off
 	  InputSameDT		  off
@@ -3839,11 +4050,42 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  RealImagToComplex
+	  Name			  "Real-Imag to\nComplex"
+	  SID			  "1641"
+	  Ports			  [2, 1]
+	  Position		  [855, 878, 885, 927]
+	  ZOrder		  4339
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Saturation\nDynamic"
+	  SID			  "1645"
+	  Ports			  [3, 1]
+	  Position		  [1000, 865, 1080, 905]
+	  ZOrder		  4343
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Discontinuities/Saturation\nDynamic"
+	  SourceType		  "Saturation Dynamic"
+	  OutMin		  "[]"
+	  OutMax		  "[]"
+	  OutDataTypeStr	  "Inherit: Same as second input"
+	  OutputDataTypeScalingMode "Same as second input"
+	  OutDataType		  "fixdt(1, 16)"
+	  OutScaling		  "2^-10"
+	  LockScale		  off
+	  RndMeth		  "Floor"
+	  DoSatur		  off
+	}
+	Block {
 	  BlockType		  Selector
 	  Name			  "Selector"
 	  SID			  "1295"
 	  Ports			  [1, 1]
-	  Position		  [2075, 601, 2145, 619]
+	  Position		  [2075, 636, 2145, 654]
 	  ZOrder		  4110
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "16"
@@ -3856,7 +4098,7 @@ Library {
 	  Name			  "Selector1"
 	  SID			  "1312"
 	  Ports			  [1, 1]
-	  Position		  [2075, 676, 2145, 694]
+	  Position		  [2075, 711, 2145, 729]
 	  ZOrder		  4127
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "16"
@@ -3869,7 +4111,7 @@ Library {
 	  Name			  "Selector2"
 	  SID			  "1403"
 	  Ports			  [1, 1]
-	  Position		  [935, 731, 975, 769]
+	  Position		  [935, 586, 975, 624]
 	  ZOrder		  4270
 	  InputPortWidth	  "3"
 	  IndexOptions		  "Index vector (dialog)"
@@ -3881,7 +4123,7 @@ Library {
 	  Name			  "Selector3"
 	  SID			  "1444"
 	  Ports			  [1, 1]
-	  Position		  [2075, 741, 2145, 759]
+	  Position		  [2075, 776, 2145, 794]
 	  ZOrder		  4294
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "16"
@@ -3894,7 +4136,7 @@ Library {
 	  Name			  "Selector4"
 	  SID			  "1609"
 	  Ports			  [1, 1]
-	  Position		  [1930, 233, 1975, 457]
+	  Position		  [1930, 268, 1975, 492]
 	  ZOrder		  4329
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "32"
@@ -3907,7 +4149,7 @@ Library {
 	  Name			  "Selector5"
 	  SID			  "1610"
 	  Ports			  [1, 1]
-	  Position		  [1930, 518, 1975, 742]
+	  Position		  [1930, 553, 1975, 777]
 	  ZOrder		  4330
 	  AttributesFormatString  "%<Indices>"
 	  InputPortWidth	  "32"
@@ -3920,7 +4162,7 @@ Library {
 	  Name			  "Sum1"
 	  SID			  "1316"
 	  Ports			  [2, 1]
-	  Position		  [2205, 675, 2225, 695]
+	  Position		  [2205, 710, 2225, 730]
 	  ZOrder		  4131
 	  ShowName		  off
 	  IconShape		  "round"
@@ -3934,7 +4176,7 @@ Library {
 	  Name			  "Sum2"
 	  SID			  "1449"
 	  Ports			  [2, 1]
-	  Position		  [2205, 600, 2225, 620]
+	  Position		  [2205, 635, 2225, 655]
 	  ZOrder		  4299
 	  ShowName		  off
 	  IconShape		  "round"
@@ -3948,7 +4190,7 @@ Library {
 	  Name			  "Sum3"
 	  SID			  "1406"
 	  Ports			  [2, 1]
-	  Position		  [1010, 815, 1030, 835]
+	  Position		  [1010, 670, 1030, 690]
 	  ZOrder		  4274
 	  ShowName		  off
 	  IconShape		  "round"
@@ -3962,7 +4204,7 @@ Library {
 	  Name			  "Sum4"
 	  SID			  "1445"
 	  Ports			  [2, 1]
-	  Position		  [2205, 740, 2225, 760]
+	  Position		  [2205, 775, 2225, 795]
 	  ZOrder		  4295
 	  ShowName		  off
 	  IconShape		  "round"
@@ -3973,9 +4215,19 @@ Library {
 	}
 	Block {
 	  BlockType		  Switch
+	  Name			  "Switch1"
+	  SID			  "1652"
+	  Position		  [1600, 904, 1640, 1216]
+	  ZOrder		  4350
+	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Switch
 	  Name			  "Switch3"
 	  SID			  "1475"
-	  Position		  [575, 642, 625, 748]
+	  Position		  [575, 497, 625, 603]
 	  ZOrder		  4320
 	  Threshold		  "0.5"
 	  InputSameDT		  off
@@ -3985,7 +4237,7 @@ Library {
 	  BlockType		  Terminator
 	  Name			  "Terminator"
 	  SID			  "1185"
-	  Position		  [875, 465, 895, 485]
+	  Position		  [875, 320, 895, 340]
 	  ZOrder		  3944
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -3993,9 +4245,25 @@ Library {
 	}
 	Block {
 	  BlockType		  Terminator
+	  Name			  "Terminator1"
+	  SID			  "1647"
+	  Position		  [830, 930, 850, 950]
+	  ZOrder		  4345
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator2"
+	  SID			  "1662"
+	  Position		  [1000, 910, 1020, 930]
+	  ZOrder		  4359
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Terminator
 	  Name			  "Terminator5"
 	  SID			  "1275"
-	  Position		  [2425, 445, 2445, 465]
+	  Position		  [2425, 480, 2445, 500]
 	  ZOrder		  4064
 	}
 	Block {
@@ -4003,7 +4271,7 @@ Library {
 	  Name			  "Three-Phase\nParallel RLC Load"
 	  SID			  "1186"
 	  Ports			  [0, 0, 0, 0, 0, 3]
-	  Position		  [572, 515, 628, 580]
+	  Position		  [572, 370, 628, 435]
 	  ZOrder		  3717
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -4025,8 +4293,8 @@ Library {
 	  BlockType		  Reference
 	  Name			  "V_PHIL"
 	  SID			  "1187"
-	  Ports			  [0, 2, 0, 0, 0, 3, 3]
-	  Position		  [660, 391, 665, 459]
+	  Ports			  [0, 0, 0, 0, 0, 3, 3]
+	  Position		  [660, 246, 665, 314]
 	  ZOrder		  3942
 	  BackgroundColor	  "black"
 	  LibraryVersion	  "1.2191"
@@ -4051,7 +4319,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "V_ratio1"
 	  SID			  "1387"
-	  Position		  [620, 60, 790, 90]
+	  Position		  [245, 890, 415, 920]
 	  ZOrder		  4152
 	  ShowName		  off
 	  Gain			  "1/(4160/sqrt(3/2))"
@@ -4070,7 +4338,7 @@ Library {
 	  Name			  "abc to dq0"
 	  SID			  "1396"
 	  Ports			  [2, 1]
-	  Position		  [705, 710, 760, 790]
+	  Position		  [705, 565, 760, 645]
 	  ZOrder		  4161
 	  LibraryVersion	  "1.31"
 	  FontName		  "Arial"
@@ -4083,7 +4351,7 @@ Library {
 	  Name			  "dq0 to abc"
 	  SID			  "1400"
 	  Ports			  [2, 1]
-	  Position		  [1095, 750, 1140, 825]
+	  Position		  [1095, 605, 1140, 680]
 	  ZOrder		  4165
 	  LibraryVersion	  "1.31"
 	  FontName		  "Arial"
@@ -4092,10 +4360,24 @@ Library {
 	  Alignment		  "90 degrees behind phase A axis"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "dq0_to_abc\nTransformation"
+	  SID			  "1640"
+	  Ports			  [2, 1]
+	  Position		  [1290, 889, 1330, 1016]
+	  ZOrder		  4333
+	  ShowName		  off
+	  LibraryVersion	  "1.664"
+	  FontName		  "Verdana"
+	  FontSize		  11
+	  SourceBlock		  "powerlib_extras/Measurements/dq0_to_abc\nTransformation"
+	  SourceType		  "dq0 to abc Transformation"
+	}
+	Block {
 	  BlockType		  PMIOPort
 	  Name			  "a"
 	  SID			  "1189"
-	  Position		  [400, 398, 430, 412]
+	  Position		  [400, 253, 430, 267]
 	  ZOrder		  4058
 	  Port			  "1"
 	  Side			  "Left"
@@ -4104,7 +4386,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "b"
 	  SID			  "1190"
-	  Position		  [455, 418, 485, 432]
+	  Position		  [455, 273, 485, 287]
 	  ZOrder		  4059
 	  Port			  "2"
 	  Side			  "Left"
@@ -4113,7 +4395,7 @@ Library {
 	  BlockType		  PMIOPort
 	  Name			  "c"
 	  SID			  "1191"
-	  Position		  [510, 438, 540, 452]
+	  Position		  [510, 293, 540, 307]
 	  ZOrder		  4060
 	  Port			  "3"
 	  Side			  "Left"
@@ -4122,7 +4404,7 @@ Library {
 	  BlockType		  Outport
 	  Name			  "AOUT"
 	  SID			  "1612"
-	  Position		  [2105, 1013, 2135, 1027]
+	  Position		  [2105, 1048, 2135, 1062]
 	  ZOrder		  4332
 	  IconDisplay		  "Port number"
 	}
@@ -4130,10 +4412,173 @@ Library {
 	  BlockType		  Outport
 	  Name			  "ToF4"
 	  SID			  "1192"
-	  Position		  [1400, 298, 1430, 312]
+	  Position		  [1400, 153, 1430, 167]
 	  ZOrder		  4057
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Constant8"
+	  SrcPort		  1
+	  DstBlock		  "Magnitude-Angle\nto Complex"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "V_ref"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From30"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  DstBlock		  "dq0_to_abc\nTransformation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain9"
+	  SrcPort		  1
+	  DstBlock		  "Switch1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Switch1"
+	  SrcPort		  1
+	  Points		  [40, 0; 0, -70]
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "dq0_to_abc\nTransformation"
+	  SrcPort		  1
+	  DstBlock		  "Switch1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From29"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector10"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<V_dq_mode_ena>"
+	  Labels		  [1, 1]
+	  SrcBlock		  "Bus\nSelector10"
+	  SrcPort		  1
+	  DstBlock		  "Switch1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Complex to\nReal-Imag"
+	  SrcPort		  2
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Complex to\nReal-Imag"
+	  SrcPort		  1
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux3"
+	  SrcPort		  1
+	  Points		  [37, 0; 0, 65]
+	  DstBlock		  "Saturation\nDynamic"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux3"
+	  SrcPort		  2
+	  Points		  [28, 0; 0, 75]
+	  DstBlock		  "Saturation\nDynamic"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<V_mag_limits>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector8"
+	  SrcPort		  1
+	  DstBlock		  "Demux3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<vdq0>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector9"
+	  SrcPort		  1
+	  DstBlock		  "Demux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From28"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector8"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Magnitude-Angle\nto Complex"
+	  SrcPort		  1
+	  DstBlock		  "Complex to\nReal-Imag"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Complex to\nMagnitude-Angle"
+	  SrcPort		  2
+	  DstBlock		  "Terminator2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Saturation\nDynamic"
+	  SrcPort		  1
+	  DstBlock		  "Magnitude-Angle\nto Complex"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Complex to\nMagnitude-Angle"
+	  SrcPort		  1
+	  DstBlock		  "Saturation\nDynamic"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Real-Imag to\nComplex"
+	  SrcPort		  1
+	  DstBlock		  "Complex to\nMagnitude-Angle"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  3
+	  DstBlock		  "Terminator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  2
+	  DstBlock		  "Real-Imag to\nComplex"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux2"
+	  SrcPort		  1
+	  DstBlock		  "Real-Imag to\nComplex"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<sin_cos>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector6"
+	  SrcPort		  1
+	  DstBlock		  "dq0_to_abc\nTransformation"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "From26"
@@ -4445,8 +4890,16 @@ Library {
 	Line {
 	  SrcBlock		  "From22"
 	  SrcPort		  1
-	  DstBlock		  "V_ratio1"
-	  DstPort		  1
+	  Points		  [14, 0]
+	  Branch {
+	    DstBlock		    "V_ratio1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 260]
+	    DstBlock		    "Gain9"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  Name			  "<PHIL_Enabled>"
@@ -4778,12 +5231,6 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "Gain"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
 	  DstBlock		  "AOUT"
@@ -4932,13 +5379,22 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "V_ref"
-	  Labels		  [-1, 0]
 	  SrcBlock		  "Bus\nCreator5"
 	  SrcPort		  1
-	  Points		  [77, 0; 0, 95]
-	  DstBlock		  "Bus\nCreator"
-	  DstPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    DstBlock		    "Goto14"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Bus\nSelector9"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "Bus\nSelector6"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  Name			  "HiZ_ctrl"
@@ -4957,7 +5413,7 @@ Library {
 	    ConnectType		    "DEST_DEST"
 	    SrcBlock		    "V_PHIL"
 	    SrcPort		    RConn3
-	    Points		    [39, 0; 0, 12; 124, 0; 0, -32]
+	    Points		    [39, 0; 0, 22; 124, 0; 0, -32]
 	  }
 	  Branch {
 	    ConnectType		    "DEST_SRC"
@@ -5002,7 +5458,7 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "V_PHIL"
 	  SrcPort		  RConn1
-	  Points		  [35, 0; 0, -60]
+	  Points		  [35, 0; 0, -40]
 	  DstBlock		  "CCS1"
 	  DstPort		  RConn1
 	}
@@ -5010,13 +5466,12 @@ Library {
 	  LineType		  "Connection"
 	  SrcBlock		  "V_PHIL"
 	  SrcPort		  RConn2
-	  Points		  [0, -15]
 	  DstBlock		  "CCS2"
 	  DstPort		  RConn1
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [620, 445; 25, 0]
+	  Points		  [620, 300; 25, 0]
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn3
 	  Branch {
@@ -5048,7 +5503,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [600, 425; 45, 0]
+	  Points		  [600, 280; 45, 0]
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn2
 	  Branch {
@@ -5072,7 +5527,7 @@ Library {
 	}
 	Line {
 	  LineType		  "Connection"
-	  Points		  [580, 405; 65, 0]
+	  Points		  [580, 260; 65, 0]
 	  DstBlock		  "V_PHIL"
 	  DstPort		  LConn1
 	  Branch {
@@ -5110,22 +5565,31 @@ Library {
 	}
 	Annotation {
 	  SID			  "1277"
-	  Position		  [2594, 368]
+	  Position		  [2594, 403]
 	  ZOrder		  -1
 	}
 	Annotation {
 	  SID			  "1276"
 	  Name			  "This should reflect actual CB401 (ABB)\nstatus"
-	  Position		  [2607, 139]
+	  Position		  [2607, 174]
 	  BackgroundColor	  "magenta"
 	  ZOrder		  -2
 	}
 	Annotation {
 	  SID			  "1327"
 	  Name			  "TBD: must be calculated assuming load feedback from loadbank"
-	  Position		  [2319, 886]
+	  Position		  [2319, 921]
 	  BackgroundColor	  "magenta"
 	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "1660"
+	  Name			  "Voltage limitting logic\nVoltage is converted to DQ and then to polar coordinates\nMAgintude is limitted "
+	  "from the bottom and top to avoid LV and HV events\nPhase is eliminated - assuming that PLL is always tracking Q to "
+	  "0\nThanks to that frequency will always be limitted to PLL limits."
+	  Position		  [1159, 774]
+	  BackgroundColor	  "lightBlue"
+	  ZOrder		  -4
 	}
       }
     }

@@ -142,8 +142,8 @@ Next('DMS.DisReq'      , 55,   0);
 
 
 %% Unintentional islanding - start island
-%Next('Fault.Loc1'      , 66, 1);
-%Next('Fault.Loc1'      , 67, 0);
+Next('Fault.Loc1'      , 66, 1);
+Next('Fault.Loc1'      , 67, 0);
 Next('DMS.DisReq'      , 66+(10/60),   1);
 Next('Grid.OpenSSF1'   , 67, 1); 
 Next('Grid.OpenSSF2'   , 67.2, 1); 

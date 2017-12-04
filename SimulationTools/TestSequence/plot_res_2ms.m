@@ -1,4 +1,4 @@
-load('opdaq_proc');
+%load('opdaq_proc');
 
 %% Convert raw data into result file
 BANSHEEUDP = BANSHEE_Frame();

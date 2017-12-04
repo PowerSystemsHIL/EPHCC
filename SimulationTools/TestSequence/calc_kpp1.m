@@ -57,7 +57,12 @@ EP_per_class = E_good_per_class .* repmat([prices.P12 prices.P13 prices.P12 pric
 EOP_per_class = EO_per_class .* repmat([prices.P16 0 prices.P16 prices.P15],M,1);
 
 %% Energy stored in the battery
-e_batt = res.battery_SoC/10000 .* repmat([600 1200],M,1);
+if (isfield(res, 'PHIL'))
+    ESS2_Capacity = 12000;
+else
+    ESS2_Capacity = 1200;
+end;
+e_batt = res.battery_SoC/10000 .* repmat([600 ESS2_Capacity],M,1);
 e_batt_diff = e_batt - repmat(e_batt(1,:), M, 1);
 d_batt_diff = sum(e_batt_diff,2) .* prices.P17;
 

@@ -57,13 +57,14 @@ CloudDelay = 20;
 Irradiance.Rise = 20*60;            % FIX, Sunrise beginning time t=20min
 Irradiance.RiseDuration = 40*60;    % FIX, Duration of ramp until full irradiance
 
-Nc=Nc+1; Cloud(Nc) = struct('Start', 32*60, 'Depth', 0.5, 'Ramp', 15 , 'Duration', 60);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 40*60, 'Depth', 0.6, 'Ramp', 15, 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 46*60, 'Depth', 0.9, 'Ramp', 20, 'Duration', 120);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 64*60, 'Depth', 0.7, 'Ramp', 15, 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 77*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 30);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 82*60, 'Depth', 0.9, 'Ramp', 30, 'Duration', 240);
-Nc=Nc+1; Cloud(Nc) = struct('Start', 92*60, 'Depth', 0.9, 'Ramp', 10, 'Duration', 60);
+PV_Rate = 5;
+Nc=Nc+1; Cloud(Nc) = struct('Start', 32*60, 'Depth', 0.5, 'Ramp', PV_Rate*15 , 'Duration', 60);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 40*60, 'Depth', 0.6, 'Ramp', PV_Rate*15, 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 46*60, 'Depth', 0.9, 'Ramp', PV_Rate*20, 'Duration', 120);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 64*60, 'Depth', 0.7, 'Ramp', PV_Rate*15, 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 77*60, 'Depth', 0.9, 'Ramp', PV_Rate*10, 'Duration', 30);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 82*60, 'Depth', 0.9, 'Ramp', PV_Rate*30, 'Duration', 240);
+Nc=Nc+1; Cloud(Nc) = struct('Start', 92*60, 'Depth', 0.9, 'Ramp', PV_Rate*10, 'Duration', 60);
 
 %% Motors
 Next('Motor1'   , 5 , 1);

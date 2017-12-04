@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3525"
+    ComputedModelVersion    "1.3535"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -60,7 +60,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[717.0, 866.0]
 	ZoomFactor		[0.6]
-	Offset			[1861.2536526366716, 746.31940009675793]
+	Offset			[1639.0229801644898, 646.24383164005769]
       }
     }
   }
@@ -72,11 +72,11 @@ Model {
   Creator		  "RE25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC4"
+  LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Oct 30 14:42:29 2017"
-  RTWModifiedTimeStamp	  431275341
-  ModelVersionFormat	  "1.%<AutoIncrement:3525>"
+  LastModifiedDate	  "Mon Dec 04 09:20:04 2017"
+  RTWModifiedTimeStamp	  434279995
+  ModelVersionFormat	  "1.%<AutoIncrement:3535>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1037,7 +1037,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "60"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "30500"
+    SIDHighWatermark	    "30526"
     Block {
       BlockType		      Reference
       Name		      "ARTEMIS Guide"
@@ -1352,7 +1352,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"SC_ctrl"
-	Location		[0, 0, 1181, 1036]
+	Location		[0, 0, 960, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1364,7 +1364,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"56"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "CMBNE_SGNLS"
@@ -8350,7 +8350,7 @@ Model {
 	  }
 	  System {
 	    Name		    "IO_scaling"
-	    Location		    [640, 0, 1280, 984]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -8367,11 +8367,11 @@ Model {
 	      BlockType		      BusCreator
 	      Name		      "Bus\nCreator12"
 	      SID		      "29901"
-	      Ports		      [8, 1]
-	      Position		      [425, 110, 430, 500]
+	      Ports		      [10, 1]
+	      Position		      [425, 110, 430, 600]
 	      ZOrder		      3789
 	      ShowName		      off
-	      Inputs		      "8"
+	      Inputs		      "10"
 	      DisplayOption	      "bar"
 	    }
 	    Block {
@@ -8394,9 +8394,25 @@ Model {
 	      Position		      [185, 265, 305, 295]
 	      ZOrder		      3814
 	      ShowName		      off
+	      Value		      "1.015"
 	      Port {
 		PortNumber		1
 		Name			"AOUT_V_GAIN"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "PCmd10"
+	      SID		      "30501"
+	      Position		      [185, 565, 305, 595]
+	      ZOrder		      3827
+	      ShowName		      off
+	      Value		      "[1.1 0.8]"
+	      Port {
+		PortNumber		1
+		Name			"V_mag_limits"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -8491,6 +8507,20 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Constant
+	      Name		      "PCmd9"
+	      SID		      "30502"
+	      Position		      [185, 515, 305, 545]
+	      ZOrder		      3826
+	      ShowName		      off
+	      Port {
+		PortNumber		1
+		Name			"V_dq_mode_ena"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
 	      Name		      "Real_measurements"
 	      SID		      "29908"
 	      Position		      [50, 380, 80, 410]
@@ -8516,7 +8546,7 @@ Model {
 	      BlockType		      Outport
 	      Name		      "Out1"
 	      SID		      "29910"
-	      Position		      [510, 297, 545, 313]
+	      Position		      [510, 347, 545, 363]
 	      ZOrder		      3796
 	      IconDisplay	      "Port number"
 	    }
@@ -8603,6 +8633,22 @@ Model {
 	      SrcPort		      1
 	      DstBlock		      "Bus\nCreator12"
 	      DstPort		      8
+	    }
+	    Line {
+	      Name		      "V_dq_mode_ena"
+	      Labels		      [1, 1]
+	      SrcBlock		      "PCmd9"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator12"
+	      DstPort		      9
+	    }
+	    Line {
+	      Name		      "V_mag_limits"
+	      Labels		      [1, 1]
+	      SrcBlock		      "PCmd10"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nCreator12"
+	      DstPort		      10
 	    }
 	  }
 	}
@@ -9089,7 +9135,7 @@ Model {
 	      }
 	      System {
 		Name			"Tuning"
-		Location		[0, 0, 960, 1032]
+		Location		[952, 6, 1912, 1046]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -9106,11 +9152,11 @@ Model {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator"
 		  SID			  "30469"
-		  Ports			  [5, 1]
-		  Position		  [300, 31, 305, 229]
+		  Ports			  [7, 1]
+		  Position		  [300, 28, 305, 312]
 		  ZOrder		  1
 		  ShowName		  off
-		  Inputs		  "5"
+		  Inputs		  "7"
 		  DisplayOption		  "bar"
 		}
 		Block {
@@ -9193,6 +9239,38 @@ Model {
 		  }
 		}
 		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "30521"
+		  Position		  [160, 240, 215, 260]
+		  ZOrder		  10
+		  BackgroundColor	  "cyan"
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_cap_div"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "30522"
+		  Position		  [160, 280, 215, 300]
+		  ZOrder		  11
+		  BackgroundColor	  "cyan"
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_soc_rst"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
 		  BlockType		  Outport
 		  Name			  "Tuning"
 		  SID			  "30475"
@@ -9243,8 +9321,32 @@ Model {
 		Line {
 		  SrcBlock		  "Bus\nCreator"
 		  SrcPort		  1
+		  Points		  [22, 0; 0, -40]
 		  DstBlock		  "Tuning"
 		  DstPort		  1
+		}
+		Line {
+		  Name			  "batt_cap_div"
+		  Labels		  [-1, 0]
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "batt_soc_rst"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  7
+		}
+		Annotation {
+		  SID			  "30523"
+		  Name			  "Not applicable\nfor PV"
+		  Position		  [110, 273]
+		  BackgroundColor	  "cyan"
+		  ZOrder		  -1
 		}
 	      }
 	    }
@@ -9831,13 +9933,13 @@ Model {
 	      Port {
 		PortNumber		1
 		Name			"Tuning"
-		PropagatedSignals	"csi_kp, csi_Ti, pll_kp, pll_ki, vff_ena"
+		PropagatedSignals	"csi_kp, csi_Ti, pll_kp, pll_ki, vff_ena, batt_cap_div, batt_soc_rst"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	      System {
 		Name			"Tuning"
-		Location		[0, 0, 960, 1032]
+		Location		[0, 0, 960, 1040]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -9854,11 +9956,11 @@ Model {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator"
 		  SID			  "30477"
-		  Ports			  [5, 1]
-		  Position		  [300, 31, 305, 229]
+		  Ports			  [7, 1]
+		  Position		  [300, 31, 305, 309]
 		  ZOrder		  1
 		  ShowName		  off
-		  Inputs		  "5"
+		  Inputs		  "7"
 		  DisplayOption		  "bar"
 		}
 		Block {
@@ -9941,6 +10043,38 @@ Model {
 		  }
 		}
 		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "30524"
+		  Position		  [160, 240, 215, 260]
+		  ZOrder		  12
+		  BackgroundColor	  "cyan"
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_cap_div"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "30525"
+		  Position		  [160, 280, 215, 300]
+		  ZOrder		  13
+		  BackgroundColor	  "cyan"
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_soc_rst"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
 		  BlockType		  Outport
 		  Name			  "Tuning"
 		  SID			  "30483"
@@ -9991,8 +10125,32 @@ Model {
 		Line {
 		  SrcBlock		  "Bus\nCreator"
 		  SrcPort		  1
+		  Points		  [22, 0; 0, -40]
 		  DstBlock		  "Tuning"
 		  DstPort		  1
+		}
+		Line {
+		  Name			  "batt_cap_div"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "batt_soc_rst"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  7
+		}
+		Annotation {
+		  SID			  "30526"
+		  Name			  "Not applicable\nfor PV"
+		  Position		  [110, 278]
+		  BackgroundColor	  "cyan"
+		  ZOrder		  -2
 		}
 	      }
 	    }
@@ -10195,8 +10353,8 @@ Model {
 	  BlockType		  SubSystem
 	  Name			  "Plots"
 	  SID			  "26254"
-	  Ports			  [1]
-	  Position		  [360, 857, 525, 913]
+	  Ports			  [2]
+	  Position		  [375, 872, 540, 928]
 	  ZOrder		  3483
 	  BackgroundColor	  "green"
 	  MinAlgLoopOccurrences	  off
@@ -10208,7 +10366,7 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Plots"
-	    Location		    [960, 0, 1920, 1040]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -10231,6 +10389,31 @@ Model {
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
+	      BlockType		      Inport
+	      Name		      "TestData"
+	      SID		      "30503"
+	      Position		      [825, 253, 855, 267]
+	      ZOrder		      3899
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector"
+	      SID		      "30504"
+	      Ports		      [1, 1]
+	      Position		      [905, 246, 915, 274]
+	      ZOrder		      3900
+	      ShowName		      off
+	      OutputSignals	      "TestSeq.seq_time"
+	      Port {
+		PortNumber		1
+		Name			"<seq_time>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector1"
 	      SID		      "28557"
@@ -10247,7 +10430,7 @@ Model {
 	      Name		      "Bus\nSelector10"
 	      SID		      "29013"
 	      Ports		      [1, 1]
-	      Position		      [945, 776, 955, 824]
+	      Position		      [945, 796, 955, 844]
 	      ZOrder		      3515
 	      ShowName		      off
 	      OutputSignals	      "F2_MS_IN.PV_DATA.CB_meas.cb_meas.Status,F2_MS_IN.PV_DATA.CB_meas.relay_out.m.kw,F2_MS_IN.P"
@@ -10273,7 +10456,7 @@ Model {
 	      Name		      "Bus\nSelector12"
 	      SID		      "30280"
 	      Ports		      [1, 1]
-	      Position		      [1245, 776, 1255, 824]
+	      Position		      [1245, 796, 1255, 844]
 	      ZOrder		      3524
 	      ShowName		      off
 	      OutputSignals	      "F4_MS_IN.PV_DATA.CB_meas.cb_meas.Status,F4_MS_IN.PV_DATA.CB_meas.relay_out.m.kw,F4_MS_IN.P"
@@ -10291,6 +10474,33 @@ Model {
 	      ShowName		      off
 	      OutputSignals	      "F4_MS_IN.GEN3_DATA.cb.cb_meas.Status,F4_MS_IN.GEN3_DATA.cb.relay_out.m.kw,F4_MS_IN.GEN3_DA"
 	      "TA.cb.relay_out.m.kvar,F4_MS_IN.GEN3_DATA.cb.relay_out.m.Va_rms,F4_MS_IN.GEN3_DATA.cb.relay_out.m.Hz"
+	      OutputAsBus	      on
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector14"
+	      SID		      "30511"
+	      Ports		      [1, 1]
+	      Position		      [500, 778, 510, 822]
+	      ZOrder		      3904
+	      ShowName		      off
+	      OutputSignals	      "F4_RELAY_OUT.F4_CB_1"
+	      Port {
+		PortNumber		1
+		Name			"<F4_CB_1>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector15"
+	      SID		      "30517"
+	      Ports		      [1, 1]
+	      Position		      [580, 777, 590, 823]
+	      ZOrder		      3908
+	      ShowName		      off
+	      OutputSignals	      "m.kw,m.kvar,m.Vpu,m.Hz"
 	      OutputAsBus	      on
 	    }
 	    Block {
@@ -10407,18 +10617,18 @@ Model {
 	      Position		      [580, 337, 590, 383]
 	      ZOrder		      3509
 	      ShowName		      off
-	      OutputSignals	      "m.Vpu,m.Hz,m.kw,m.kvar"
+	      OutputSignals	      "m.kw,m.kvar,m.Vpu,m.Hz"
 	      OutputAsBus	      on
 	    }
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector6"
-	      SID		      "28558"
+	      SID		      "30515"
 	      Ports		      [1, 1]
 	      Position		      [580, 487, 590, 533]
-	      ZOrder		      3507
+	      ZOrder		      3906
 	      ShowName		      off
-	      OutputSignals	      "m.Vpu,m.Hz,m.kw,m.kvar"
+	      OutputSignals	      "m.kw,m.kvar,m.Vpu,m.Hz"
 	      OutputAsBus	      on
 	    }
 	    Block {
@@ -10440,12 +10650,12 @@ Model {
 	    Block {
 	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector8"
-	      SID		      "28562"
+	      SID		      "30516"
 	      Ports		      [1, 1]
 	      Position		      [580, 637, 590, 683]
-	      ZOrder		      3511
+	      ZOrder		      3907
 	      ShowName		      off
-	      OutputSignals	      "m.Vpu,m.Hz,m.kw,m.kvar"
+	      OutputSignals	      "m.kw,m.kvar,m.Vpu,m.Hz"
 	      OutputAsBus	      on
 	    }
 	    Block {
@@ -10530,7 +10740,7 @@ Model {
 	      Name		      "Display1"
 	      SID		      "30492"
 	      Ports		      [1]
-	      Position		      [1650, 369, 1715, 451]
+	      Position		      [1650, 224, 1715, 306]
 	      ZOrder		      3888
 	      Decimation	      "1"
 	      Lockdown		      off
@@ -10540,7 +10750,7 @@ Model {
 	      Name		      "Display2"
 	      SID		      "30493"
 	      Ports		      [1]
-	      Position		      [1765, 216, 1830, 454]
+	      Position		      [1670, 366, 1735, 604]
 	      ZOrder		      3894
 	      Decimation	      "1"
 	      Lockdown		      off
@@ -10550,7 +10760,7 @@ Model {
 	      Name		      "Display3"
 	      SID		      "30494"
 	      Ports		      [1]
-	      Position		      [1865, 216, 1935, 454]
+	      Position		      [1765, 366, 1835, 604]
 	      ZOrder		      3895
 	      Decimation	      "1"
 	      Lockdown		      off
@@ -10560,7 +10770,7 @@ Model {
 	      Name		      "Display4"
 	      SID		      "30495"
 	      Ports		      [1]
-	      Position		      [1960, 216, 2030, 454]
+	      Position		      [1665, 661, 1735, 899]
 	      ZOrder		      3896
 	      Decimation	      "1"
 	      Lockdown		      off
@@ -10570,7 +10780,7 @@ Model {
 	      Name		      "Display5"
 	      SID		      "30496"
 	      Ports		      [1]
-	      Position		      [2060, 216, 2130, 454]
+	      Position		      [1765, 661, 1835, 899]
 	      ZOrder		      3897
 	      Decimation	      "1"
 	      Lockdown		      off
@@ -10580,7 +10790,7 @@ Model {
 	      Name		      "ESS"
 	      SID		      "29011"
 	      Ports		      [1]
-	      Position		      [995, 605, 1090, 715]
+	      Position		      [995, 592, 1090, 728]
 	      ZOrder		      3513
 	      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
 	      FontSize		      14
@@ -10592,7 +10802,7 @@ Model {
 	      Name		      "ESS2"
 	      SID		      "30275"
 	      Ports		      [1]
-	      Position		      [1295, 605, 1390, 715]
+	      Position		      [1295, 592, 1390, 728]
 	      ZOrder		      3519
 	      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
 	      FontSize		      14
@@ -10636,6 +10846,18 @@ Model {
 	      Lockdown		      off
 	    }
 	    Block {
+	      BlockType		      Display
+	      Name		      "F4"
+	      SID		      "30513"
+	      Ports		      [1]
+	      Position		      [650, 745, 745, 855]
+	      ZOrder		      3902
+	      BackgroundColor	      "lightBlue"
+	      FontSize		      14
+	      Decimation	      "1"
+	      Lockdown		      off
+	    }
+	    Block {
 	      BlockType		      From
 	      Name		      "From"
 	      SID		      "26645"
@@ -10661,6 +10883,16 @@ Model {
 	      SID		      "30497"
 	      Position		      [1285, 500, 1385, 520]
 	      ZOrder		      3884
+	      BackgroundColor	      "magenta"
+	      ShowName		      off
+	      GotoTag		      "CMBNE_SGNLS"
+	    }
+	    Block {
+	      BlockType		      From
+	      Name		      "From11"
+	      SID		      "30514"
+	      Position		      [345, 790, 445, 810]
+	      ZOrder		      3903
 	      BackgroundColor	      "magenta"
 	      ShowName		      off
 	      GotoTag		      "CMBNE_SGNLS"
@@ -10709,7 +10941,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From6"
 	      SID		      "29015"
-	      Position		      [820, 790, 920, 810]
+	      Position		      [820, 810, 920, 830]
 	      ZOrder		      3517
 	      BackgroundColor	      "magenta"
 	      ShowName		      off
@@ -10729,7 +10961,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From8"
 	      SID		      "30281"
-	      Position		      [1120, 790, 1220, 810]
+	      Position		      [1120, 810, 1220, 830]
 	      ZOrder		      3526
 	      BackgroundColor	      "magenta"
 	      ShowName		      off
@@ -10772,7 +11004,7 @@ Model {
 	      Name		      "PV"
 	      SID		      "29014"
 	      Ports		      [1]
-	      Position		      [995, 745, 1090, 855]
+	      Position		      [995, 765, 1090, 875]
 	      ZOrder		      3516
 	      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
 	      FontSize		      14
@@ -10784,7 +11016,7 @@ Model {
 	      Name		      "PV2"
 	      SID		      "30282"
 	      Ports		      [1]
-	      Position		      [1295, 745, 1390, 855]
+	      Position		      [1295, 765, 1390, 875]
 	      ZOrder		      3525
 	      BackgroundColor	      "[0.909804, 0.819608, 0.321569]"
 	      FontSize		      14
@@ -10793,13 +11025,34 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Display
+	      Name		      "SeqMinute"
+	      SID		      "30505"
+	      Ports		      [1]
+	      Position		      [1085, 242, 1220, 278]
+	      ZOrder		      3898
+	      Decimation	      "1"
+	      Lockdown		      off
+	    }
+	    Block {
+	      BlockType		      Display
 	      Name		      "Status"
 	      SID		      "30491"
 	      Ports		      [1]
-	      Position		      [1655, 220, 1715, 320]
+	      Position		      [1535, 260, 1595, 360]
 	      ZOrder		      3887
 	      Decimation	      "1"
 	      Lockdown		      off
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "ms2min"
+	      SID		      "30506"
+	      Position		      [975, 245, 1065, 275]
+	      ZOrder		      3901
+	      Gain		      "0.001/60"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
 	    }
 	    Line {
 	      SrcBlock		      "Bus\nSelector5"
@@ -10813,12 +11066,6 @@ Model {
 	      SrcBlock		      "Bus\nSelector4"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nSelector6"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Bus\nSelector8"
-	      SrcPort		      1
-	      DstBlock		      "F3"
 	      DstPort		      1
 	    }
 	    Line {
@@ -10867,12 +11114,6 @@ Model {
 	      SrcBlock		      "From2"
 	      SrcPort		      1
 	      DstBlock		      "Bus\nSelector1"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Bus\nSelector6"
-	      SrcPort		      1
-	      DstBlock		      "F2"
 	      DstPort		      1
 	    }
 	    Line {
@@ -10970,7 +11211,7 @@ Model {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector37"
 	      SrcPort		      1
-	      Points		      [60, 0; 0, -125]
+	      Points		      [10, 0]
 	      DstBlock		      "Status"
 	      DstPort		      1
 	    }
@@ -10985,7 +11226,7 @@ Model {
 	    Line {
 	      SrcBlock		      "Bus to Vector"
 	      SrcPort		      1
-	      Points		      [22, 0; 0, -30]
+	      Points		      [23, 0; 0, -175]
 	      DstBlock		      "Display1"
 	      DstPort		      1
 	    }
@@ -11024,35 +11265,96 @@ Model {
 	    Line {
 	      SrcBlock		      "Bus to Vector4"
 	      SrcPort		      1
-	      Points		      [445, 0]
+	      Points		      [148, 0; 0, 160]
 	      DstBlock		      "Display5"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Bus to Vector3"
 	      SrcPort		      1
-	      Points		      [345, 0]
+	      Points		      [30, 0; 0, 205]
 	      DstBlock		      "Display4"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Bus to Vector2"
 	      SrcPort		      1
-	      Points		      [250, 0]
+	      Points		      [150, 0]
 	      DstBlock		      "Display3"
 	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Bus to Vector1"
 	      SrcPort		      1
-	      Points		      [144, 0; 0, -150]
 	      DstBlock		      "Display2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<seq_time>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      1
+	      DstBlock		      "ms2min"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "TestData"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "ms2min"
+	      SrcPort		      1
+	      DstBlock		      "SeqMinute"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "From11"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector14"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<F4_CB_1>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector14"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector15"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector6"
+	      SrcPort		      1
+	      DstBlock		      "F2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector15"
+	      SrcPort		      1
+	      DstBlock		      "F4"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Bus\nSelector8"
+	      SrcPort		      1
+	      DstBlock		      "F3"
 	      DstPort		      1
 	    }
 	    Annotation {
 	      SID		      "27609"
-	      Name		      "VRMSLL\nHz\nkW\nkVAR"
-	      Position		      [871, 238]
+	      Name		      "kW\nkVAR\nVpu\nHz"
+	      Position		      [701, 243]
+	      BackgroundColor	      "lightBlue"
+	      ZOrder		      -1
+	      FontSize		      18
+	      FontWeight	      "bold"
+	    }
+	    Annotation {
+	      SID		      "30518"
+	      Name		      "CBstat\nkW\nkVAR\nVpu\nHz"
+	      Position		      [1186, 448]
+	      BackgroundColor	      "lightBlue"
 	      ZOrder		      -1
 	      FontSize		      18
 	      FontWeight	      "bold"
@@ -11461,7 +11763,7 @@ Model {
 	      }
 	      System {
 		Name			"Tuning"
-		Location		[0, 0, 960, 1032]
+		Location		[0, 0, 960, 1040]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -11478,11 +11780,11 @@ Model {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator"
 		  SID			  "30453"
-		  Ports			  [5, 1]
-		  Position		  [300, 31, 305, 229]
+		  Ports			  [7, 1]
+		  Position		  [300, 32, 305, 308]
 		  ZOrder		  1
 		  ShowName		  off
-		  Inputs		  "5"
+		  Inputs		  "7"
 		  DisplayOption		  "bar"
 		}
 		Block {
@@ -11565,10 +11867,41 @@ Model {
 		  }
 		}
 		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "30508"
+		  Position		  [160, 240, 215, 260]
+		  ZOrder		  8
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_cap_div"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "30510"
+		  Position		  [160, 280, 215, 300]
+		  ZOrder		  9
+		  ShowName		  off
+		  Value			  "0"
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_soc_rst"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
 		  BlockType		  Outport
 		  Name			  "Tuning"
 		  SID			  "30459"
-		  Position		  [360, 123, 390, 137]
+		  Position		  [360, 163, 390, 177]
 		  ZOrder		  -2
 		  IconDisplay		  "Port number"
 		}
@@ -11617,6 +11950,22 @@ Model {
 		  SrcPort		  1
 		  DstBlock		  "Tuning"
 		  DstPort		  1
+		}
+		Line {
+		  Name			  "batt_cap_div"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "batt_soc_rst"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  7
 		}
 	      }
 	    }
@@ -12259,7 +12608,7 @@ Model {
 	      }
 	      System {
 		Name			"Tuning"
-		Location		[0, 0, 960, 1032]
+		Location		[0, 0, 960, 1040]
 		Open			off
 		ModelBrowserVisibility	on
 		ModelBrowserWidth	200
@@ -12271,16 +12620,16 @@ Model {
 		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 		TiledPageScale		1
 		ShowPageBoundaries	off
-		ZoomFactor		"100"
+		ZoomFactor		"175"
 		Block {
 		  BlockType		  BusCreator
 		  Name			  "Bus\nCreator"
 		  SID			  "30461"
-		  Ports			  [5, 1]
-		  Position		  [300, 31, 305, 229]
+		  Ports			  [7, 1]
+		  Position		  [300, 35, 305, 305]
 		  ZOrder		  1
 		  ShowName		  off
-		  Inputs		  "5"
+		  Inputs		  "7"
 		  DisplayOption		  "bar"
 		}
 		Block {
@@ -12363,6 +12712,37 @@ Model {
 		  }
 		}
 		Block {
+		  BlockType		  Constant
+		  Name			  "Constant5"
+		  SID			  "30507"
+		  Position		  [160, 240, 215, 260]
+		  ZOrder		  7
+		  ShowName		  off
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_cap_div"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant6"
+		  SID			  "30509"
+		  Position		  [160, 280, 215, 300]
+		  ZOrder		  8
+		  ShowName		  off
+		  Value			  "0"
+		  SampleTime		  "[Stim.Ts Ts]"
+		  Port {
+		    PortNumber		    1
+		    Name		    "batt_soc_rst"
+		    RTWStorageClass	    "Auto"
+		    DataLoggingNameMode	    "SignalName"
+		  }
+		}
+		Block {
 		  BlockType		  Outport
 		  Name			  "Tuning"
 		  SID			  "30467"
@@ -12413,8 +12793,25 @@ Model {
 		Line {
 		  SrcBlock		  "Bus\nCreator"
 		  SrcPort		  1
+		  Points		  [9, 0; 0, -40]
 		  DstBlock		  "Tuning"
 		  DstPort		  1
+		}
+		Line {
+		  Name			  "batt_cap_div"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant5"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  6
+		}
+		Line {
+		  Name			  "batt_soc_rst"
+		  Labels		  [1, 1]
+		  SrcBlock		  "Constant6"
+		  SrcPort		  1
+		  DstBlock		  "Bus\nCreator"
+		  DstPort		  7
 		}
 	      }
 	    }
@@ -12672,7 +13069,7 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "TestSeq"
-	    Location		    [5, 0, 1497, 1040]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -12684,7 +13081,7 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "83"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "TestData"
@@ -12915,16 +13312,6 @@ Model {
 	      }
 	    }
 	    Block {
-	      BlockType		      Display
-	      Name		      "Display"
-	      SID		      "29926"
-	      Ports		      [1]
-	      Position		      [340, 82, 475, 118]
-	      ZOrder		      3413
-	      Decimation	      "1"
-	      Lockdown		      off
-	    }
-	    Block {
 	      BlockType		      Gain
 	      Name		      "Gain"
 	      SID		      "29927"
@@ -12940,6 +13327,16 @@ Model {
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
+	    }
+	    Block {
+	      BlockType		      Display
+	      Name		      "SeqMinute"
+	      SID		      "29926"
+	      Ports		      [1]
+	      Position		      [340, 82, 475, 118]
+	      ZOrder		      3413
+	      Decimation	      "1"
+	      Lockdown		      off
 	    }
 	    Block {
 	      BlockType		      Scope
@@ -12984,11 +13381,11 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Gain
-	      Name		      "ms2sek"
+	      Name		      "ms2min"
 	      SID		      "30447"
-	      Position		      [240, 85, 300, 115]
+	      Position		      [230, 85, 320, 115]
 	      ZOrder		      3431
-	      Gain		      "0.001"
+	      Gain		      "0.001/60"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
 	      SaturateOnIntegerOverflow	off
@@ -13159,7 +13556,7 @@ Model {
 	      Labels		      [0, 0]
 	      SrcBlock		      "Bus\nSelector"
 	      SrcPort		      1
-	      DstBlock		      "ms2sek"
+	      DstBlock		      "ms2min"
 	      DstPort		      1
 	    }
 	    Line {
@@ -13177,9 +13574,9 @@ Model {
 	      }
 	    }
 	    Line {
-	      SrcBlock		      "ms2sek"
+	      SrcBlock		      "ms2min"
 	      SrcPort		      1
-	      DstBlock		      "Display"
+	      DstBlock		      "SeqMinute"
 	      DstPort		      1
 	    }
 	  }
@@ -15705,8 +16102,16 @@ Model {
 	Line {
 	  SrcBlock		  "OpComm"
 	  SrcPort		  2
-	  DstBlock		  "TestSeq"
-	  DstPort		  1
+	  Points		  [141, 0]
+	  Branch {
+	    Points		    [0, -80]
+	    DstBlock		    "Plots"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "TestSeq"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  Name			  "IO_scaling"
@@ -15911,7 +16316,7 @@ Model {
       Position		      [2355, 2824, 2640, 3166]
       ZOrder		      2334
       ForegroundColor	      "orange"
-      LibraryVersion	      "1.58"
+      LibraryVersion	      "1.60"
       SourceBlock	      "Feeder1_lib/SS_Feeder1"
       SourceType	      "SubSystem"
     }
@@ -15923,7 +16328,7 @@ Model {
       Position		      [2365, 1677, 2645, 2543]
       ZOrder		      2330
       ForegroundColor	      "magenta"
-      LibraryVersion	      "1.76"
+      LibraryVersion	      "1.78"
       SourceBlock	      "Feeder2_lib/SS_Feeder2"
       SourceType	      "SubSystem"
     }
@@ -15935,7 +16340,7 @@ Model {
       Position		      [2350, 1063, 2650, 1412]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "1.70"
+      LibraryVersion	      "1.72"
       SourceBlock	      "Feeder3_lib/SS_Feeder3"
       SourceType	      "SubSystem"
     }
@@ -15944,10 +16349,10 @@ Model {
       Name		      "SS_Feeder4"
       SID		      "29193"
       Ports		      [4, 2]
-      Position		      [3905, 1063, 4180, 1372]
+      Position		      [3905, 1058, 4180, 1367]
       ZOrder		      3618
       ForegroundColor	      "red"
-      LibraryVersion	      "1.92"
+      LibraryVersion	      "1.93"
       SourceBlock	      "Feeder4_lib/SS_Feeder4"
       SourceType	      "SubSystem"
     }
@@ -16537,7 +16942,7 @@ Model {
 	  Branch {
 	    Points		    [1026, 0]
 	    Branch {
-	      Points		      [0, 258]
+	      Points		      [0, 253]
 	      DstBlock		      "SS_Feeder4"
 	      DstPort		      3
 	    }
@@ -16718,7 +17123,7 @@ Model {
 	DstPort			5
       }
       Branch {
-	Points			[0, 170]
+	Points			[0, 165]
 	DstBlock		"SS_Feeder4"
 	DstPort			1
       }
@@ -16726,7 +17131,7 @@ Model {
     Line {
       SrcBlock		      "SS_Feeder4"
       SrcPort		      1
-      Points		      [53, 0; 0, -230]
+      Points		      [53, 0; 0, -225]
       Branch {
 	Points			[0, -660]
 	DstBlock		"SS_COMMUNICATION"
@@ -16740,14 +17145,14 @@ Model {
     Line {
       SrcBlock		      "SS_Feeder3"
       SrcPort		      2
-      Points		      [1040, 0; 0, 230]
+      Points		      [1040, 0; 0, 225]
       DstBlock		      "SS_Feeder4"
       DstPort		      4
     }
     Line {
       SrcBlock		      "SS_Feeder4"
       SrcPort		      2
-      Points		      [61, 0; 0, 148; -1954, 0; 0, -203]
+      Points		      [61, 0; 0, 153; -1954, 0; 0, -203]
       DstBlock		      "SS_Feeder3"
       DstPort		      4
     }
@@ -16822,7 +17227,7 @@ Model {
 	}
       }
       Branch {
-	Points			[1557, 0; 0, 202]
+	Points			[1557, 0; 0, 197]
 	DstBlock		"SS_Feeder4"
 	DstPort			2
       }

@@ -1,5 +1,8 @@
 close all;
 
+%% Process for PHIL or CHIL run
+res.PHIL = 1; % Comment out if CHIL shall be used
+
 %%  Initialise supporting data
 prices = init_prices;
 id = init_ID;

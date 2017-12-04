@@ -5,11 +5,12 @@ opdaq_path = '..\..\..\RemoteCHIL\models\RemoteCHIL\RemoteCHIL_SS_F4_RELAY_HOUSI
 opdaq_path = '..\..\..\UrbanCHIL2\models\UrbanCHIL\UrbanCHIL_SS_COMMUNICATION\OpREDHAWKtarget\A_FILE_RECORDED_';
 opdaq_path = '..\..\..\UrbanCHIL2\models\UrbanCHIL\A_FILE_RECORDED_';
 opdaq_path = '..\..\..\UrbanCHIL\models\UrbanCHIL\A_FILE_RECORDED_';
+opdaq_path = 'Run66\A_FILE_RECORDED_';
 
 dat_all = [];
 tsim_all = [];
 next_tsim = 0;
-for i=1:300
+for i=1:1000
     
     if mod(i-1,2)==0
         suffix = 'e_';

@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[8]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -55,9 +55,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "MGC3"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Sep 27 16:51:38 2017"
-  RTWModifiedTimeStamp	  428431884
-  ModelVersionFormat	  "1.%<AutoIncrement:65>"
+  LastModifiedDate	  "Thu Nov 30 01:01:37 2017"
+  RTWModifiedTimeStamp	  433904491
+  ModelVersionFormat	  "1.%<AutoIncrement:66>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1181,7 +1181,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1103"
+    SIDHighWatermark	    "1108"
     Block {
       BlockType		      SubSystem
       Name		      "BESS"
@@ -2948,7 +2948,7 @@ Library {
 	  Ports			  [1, 1, 0, 0, 0, 0, 3]
 	  Position		  [390, 344, 470, 481]
 	  ZOrder		  3736
-	  LibraryVersion	  "1.64"
+	  LibraryVersion	  "1.65"
 	  SourceBlock		  "BESS_lib/BESS"
 	  SourceType		  "SubSystem"
 	}
@@ -3665,7 +3665,7 @@ Library {
       ForegroundColor	      "red"
       BackgroundColor	      "yellow"
       NamePlacement	      "alternate"
-      LibraryVersion	      "*1.64"
+      LibraryVersion	      "*1.65"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3727,7 +3727,7 @@ Library {
 	    Type		    "edit"
 	    Name		    "b_kWh"
 	    Prompt		    "Battery capacity [kWh]"
-	    Value		    "60"
+	    Value		    "600"
 	  }
 	  Object {
 	    $ObjectID		    30
@@ -3842,7 +3842,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Battery"
-	    Location		    [5, 0, 1497, 1040]
+	    Location		    [0, 0, 960, 1040]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -3859,7 +3859,7 @@ Library {
 	      BlockType		      SubSystem
 	      Name		      "Battery"
 	      SID		      "239"
-	      Ports		      [1, 3]
+	      Ports		      [3, 3]
 	      Position		      [310, 70, 420, 130]
 	      ZOrder		      3733
 	      MinAlgLoopOccurrences   off
@@ -3913,7 +3913,7 @@ Library {
 	      }
 	      System {
 		Name			"Battery"
-		Location		[5, 0, 1497, 1040]
+		Location		[-8, -8, 1928, 1048]
 		Open			off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
@@ -3932,6 +3932,24 @@ Library {
 		  SID			  "240"
 		  Position		  [140, 113, 170, 127]
 		  ZOrder		  186
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "cap_div"
+		  SID			  "1106"
+		  Position		  [140, 23, 170, 37]
+		  ZOrder		  241
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "soc_rst"
+		  SID			  "1107"
+		  Position		  [260, 73, 290, 87]
+		  ZOrder		  242
+		  Port			  "3"
 		  IconDisplay		  "Port number"
 		}
 		Block {
@@ -3958,9 +3976,11 @@ Library {
 		  BlockType		  DiscreteIntegrator
 		  Name			  "Discrete-Time\nIntegrator"
 		  SID			  "244"
-		  Ports			  [1, 2]
-		  Position		  [320, 21, 355, 54]
+		  Ports			  [2, 2]
+		  Position		  [320, 21, 360, 99]
 		  ZOrder		  189
+		  ShowName		  off
+		  ExternalReset		  "level"
 		  InitialCondition	  "kWh*0.8*1000"
 		  InitialConditionMode	  "State only (most efficient)"
 		  SampleTime		  "-1"
@@ -3977,6 +3997,7 @@ Library {
 		  SID			  "245"
 		  Position		  [270, 25, 300, 55]
 		  ZOrder		  177
+		  ShowName		  off
 		  Gain			  "-Vdc_nom/3600"
 		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -3986,19 +4007,10 @@ Library {
 		  BlockType		  Gain
 		  Name			  "Gain2"
 		  SID			  "246"
-		  Position		  [480, 15, 510, 45]
+		  Position		  [425, 27, 575, 53]
 		  ZOrder		  178
+		  ShowName		  off
 		  Gain			  "1/(kWh*1000)"
-		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
-		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
-		  SaturateOnIntegerOverflow off
-		}
-		Block {
-		  BlockType		  Gain
-		  Name			  "Gain3"
-		  SID			  "247"
-		  Position		  [215, 25, 245, 55]
-		  ZOrder		  177
 		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 		  SaturateOnIntegerOverflow off
@@ -4007,16 +4019,31 @@ Library {
 		  BlockType		  InitialCondition
 		  Name			  "IC1"
 		  SID			  "248"
-		  Position		  [550, 133, 590, 177]
+		  Position		  [515, 133, 590, 177]
 		  ZOrder		  191
+		  ShowName		  off
 		  Value			  "Vdc_nom"
 		}
 		Block {
 		  BlockType		  Memory
 		  Name			  "Memory"
 		  SID			  "249"
-		  Position		  [460, 140, 490, 170]
+		  Position		  [420, 140, 450, 170]
 		  ZOrder		  240
+		  ShowName		  off
+		}
+		Block {
+		  BlockType		  Product
+		  Name			  "Product"
+		  SID			  "1108"
+		  Ports			  [2, 1]
+		  Position		  [215, 22, 245, 53]
+		  ZOrder		  243
+		  ShowName		  off
+		  InputSameDT		  off
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  RndMeth		  "Floor"
+		  SaturateOnIntegerOverflow off
 		}
 		Block {
 		  BlockType		  Gain
@@ -4041,7 +4068,7 @@ Library {
 		  BlockType		  Outport
 		  Name			  "Capacity"
 		  SID			  "253"
-		  Position		  [620, 23, 650, 37]
+		  Position		  [625, 33, 655, 47]
 		  ZOrder		  188
 		  Port			  "2"
 		  IconDisplay		  "Port number"
@@ -4050,10 +4077,22 @@ Library {
 		  BlockType		  Outport
 		  Name			  "Saturation"
 		  SID			  "254"
-		  Position		  [410, 63, 440, 77]
+		  Position		  [410, 73, 440, 87]
 		  ZOrder		  187
 		  Port			  "3"
 		  IconDisplay		  "Port number"
+		}
+		Line {
+		  SrcBlock		  "cap_div"
+		  SrcPort		  1
+		  DstBlock		  "Product"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "soc_rst"
+		  SrcPort		  1
+		  DstBlock		  "Discrete-Time\nIntegrator"
+		  DstPort		  2
 		}
 		Line {
 		  SrcBlock		  "Gain1"
@@ -4077,9 +4116,9 @@ Library {
 		    DstPort		    1
 		  }
 		  Branch {
-		    Points		    [0, -80]
-		    DstBlock		    "Gain3"
-		    DstPort		    1
+		    Points		    [0, -75]
+		    DstBlock		    "Product"
+		    DstPort		    2
 		  }
 		}
 		Line {
@@ -4101,7 +4140,7 @@ Library {
 		  DstPort		  1
 		}
 		Line {
-		  SrcBlock		  "Gain3"
+		  SrcBlock		  "Product"
 		  SrcPort		  1
 		  DstBlock		  "Gain1"
 		  DstPort		  1
@@ -4109,7 +4148,6 @@ Library {
 		Line {
 		  SrcBlock		  "Discrete-Time\nIntegrator"
 		  SrcPort		  2
-		  Points		  [28, 0; 0, 25]
 		  DstBlock		  "Saturation"
 		  DstPort		  1
 		}
@@ -4165,10 +4203,32 @@ Library {
 	    }
 	    Block {
 	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      SID		      "1105"
+	      Ports		      [1, 2]
+	      Position		      [110, 90, 115, 130]
+	      ZOrder		      3936
+	      ShowName		      off
+	      OutputSignals	      "batt_cap_div,batt_soc_rst"
+	      Port {
+		PortNumber		1
+		Name			"<batt_cap_div>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"<batt_soc_rst>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
 	      Name		      "Bus\nSelector4"
 	      SID		      "262"
 	      Ports		      [1, 1]
-	      Position		      [110, 73, 115, 107]
+	      Position		      [110, 53, 115, 87]
 	      ZOrder		      3890
 	      ShowName		      off
 	      OutputSignals	      "relay_out.m.kw"
@@ -4250,7 +4310,7 @@ Library {
 	      Name		      "Divide"
 	      SID		      "274"
 	      Ports		      [2, 1]
-	      Position		      [235, 82, 265, 113]
+	      Position		      [215, 62, 245, 93]
 	      ZOrder		      3737
 	      ShowName		      off
 	      Inputs		      "*/"
@@ -4267,9 +4327,19 @@ Library {
 	    }
 	    Block {
 	      BlockType		      From
+	      Name		      "From1"
+	      SID		      "1104"
+	      Position		      [20, 103, 90, 117]
+	      ZOrder		      3935
+	      ShowName		      off
+	      GotoTag		      "tuning"
+	      TagVisibility	      "scoped"
+	    }
+	    Block {
+	      BlockType		      From
 	      Name		      "From5"
 	      SID		      "297"
-	      Position		      [20, 83, 90, 97]
+	      Position		      [20, 63, 90, 77]
 	      ZOrder		      3889
 	      ShowName		      off
 	      GotoTag		      "cb_meas"
@@ -4296,8 +4366,9 @@ Library {
 	      BlockType		      Gain
 	      Name		      "Gain2"
 	      SID		      "357"
-	      Position		      [160, 75, 190, 105]
+	      Position		      [155, 55, 185, 85]
 	      ZOrder		      3934
+	      ShowName		      off
 	      Gain		      "1000"
 	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
 	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -4312,6 +4383,28 @@ Library {
 	      BackgroundColor	      "darkGreen"
 	      GotoTag		      "battery"
 	      TagVisibility	      "scoped"
+	    }
+	    Line {
+	      Name		      "<batt_soc_rst>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      2
+	      DstBlock		      "Battery"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "<batt_cap_div>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Battery"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "From1"
+	      SrcPort		      1
+	      DstBlock		      "Bus\nSelector1"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Gain2"
@@ -4331,14 +4424,14 @@ Library {
 	      Name		      "Idc"
 	      SrcBlock		      "Divide"
 	      SrcPort		      1
-	      Points		      [17, 0]
+	      Points		      [37, 0]
 	      Branch {
 		DstBlock		"Battery"
 		DstPort			1
 	      }
 	      Branch {
 		Labels			[-1, 0]
-		Points			[0, 165]
+		Points			[0, 185]
 		DstBlock		"Bus\nCreator1"
 		DstPort			5
 	      }
@@ -4355,7 +4448,7 @@ Library {
 		DstPort			1
 	      }
 	      Branch {
-		Points			[-248, 0; 0, 58]
+		Points			[-265, 0; 0, 38]
 		DstBlock		"Divide"
 		DstPort			2
 	      }
@@ -6464,7 +6557,7 @@ Library {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Inverter Controller"
-	    Location		    [0, 0, 960, 1032]
+	    Location		    [-8, -8, 1928, 1048]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -6476,7 +6569,7 @@ Library {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "50"
+	    ZoomFactor		    "125"
 	    Block {
 	      BlockType		      Sum
 	      Name		      "Add1"
@@ -12179,7 +12272,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"1781"
+		SIDHighWatermark	"1827"
 		SIDPrevWatermark	"65"
 		Block {
 		  BlockType		  Inport
@@ -12571,7 +12664,7 @@ Library {
 		    TiledPageScale	    1
 		    ShowPageBoundaries	    off
 		    ZoomFactor		    "93"
-		    SIDHighWatermark	    "297"
+		    SIDHighWatermark	    "315"
 		    Block {
 		    BlockType		    Inport
 		    Name		    "Err"
