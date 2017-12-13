@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[15]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC3"
+  LastModifiedBy	  "MGC4"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 28 13:37:15 2017"
-  RTWModifiedTimeStamp	  433777032
-  ModelVersionFormat	  "1.%<AutoIncrement:89>"
+  LastModifiedDate	  "Fri Dec 08 11:24:44 2017"
+  RTWModifiedTimeStamp	  434633080
+  ModelVersionFormat	  "1.%<AutoIncrement:94>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -991,16 +991,17 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "1662"
+    SIDHighWatermark	    "1691"
     Block {
       BlockType		      SubSystem
       Name		      "AIN_AOUT_ML605EX1"
       SID		      "1616"
-      Ports		      [1, 1]
-      Position		      [240, 656, 390, 704]
-      ZOrder		      4314
+      Ports		      [2, 1]
+      Position		      [240, 658, 390, 707]
+      ZOrder		      4315
       BlockMirror	      on
       NamePlacement	      "alternate"
+      LibraryVersion	      "*1.91"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1010,7 +1011,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"AIN_AOUT_ML605EX1"
-	Location		[640, 0, 1280, 984]
+	Location		[0, 0, 1232, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1022,13 +1023,22 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"80"
+	ZoomFactor		"125"
+	Block {
+	  BlockType		  Inport
+	  Name			  "DOUT"
+	  SID			  "1689"
+	  Position		  [20, 453, 50, 467]
+	  ZOrder		  4322
+	  IconDisplay		  "Port number"
+	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "AOUT"
 	  SID			  "1617"
 	  Position		  [20, 363, 50, 377]
 	  ZOrder		  4313
+	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -1137,6 +1147,25 @@ Library {
 	  slotside		  "Slot_1_Module_A"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "ML605EX1 DigitalOut"
+	  SID			  "1690"
+	  Ports			  [1, 1]
+	  Position		  [70, 440, 295, 480]
+	  ZOrder		  4323
+	  AttributesFormatString  "%<CtrlName>"
+	  LibraryVersion	  "1.147"
+	  SourceBlock		  "rtio_opalrt_ml605ex1/ML605EX1 DigitalOut"
+	  SourceType		  "OpFcnML605EX1DigitalOut"
+	  CtrlName		  "'ML605EX1 Ctrl'"
+	  portNb		  "5"
+	  FcnNos		  "Slot 4 Module B Subsection 1"
+	  size			  "1"
+	  maxcount		  "8"
+	  count			  "8"
+	  numchan		  "8"
+	}
+	Block {
 	  BlockType		  Mux
 	  Name			  "Mux1"
 	  SID			  "1620"
@@ -1187,12 +1216,32 @@ Library {
 	  ShowName		  off
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator6"
+	  SID			  "1691"
+	  Position		  [330, 450, 350, 470]
+	  ZOrder		  4324
+	  ShowName		  off
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "AIN"
 	  SID			  "1627"
 	  Position		  [400, 153, 430, 167]
 	  ZOrder		  4314
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "ML605EX1 DigitalOut"
+	  SrcPort		  1
+	  DstBlock		  "Terminator6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "DOUT"
+	  SrcPort		  1
+	  DstBlock		  "ML605EX1 DigitalOut"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "ML605EX1 AnalogIn"
@@ -1527,10 +1576,10 @@ Library {
       BlockType		      SubSystem
       Name		      "PHIL_F3"
       SID		      "1172"
-      Ports		      [4, 2, 0, 0, 0, 3]
+      Ports		      [4, 3, 0, 0, 0, 3]
       Position		      [240, 303, 390, 517]
-      ZOrder		      4058
-      LibraryVersion	      "*1.88"
+      ZOrder		      4065
+      LibraryVersion	      "*1.93"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1540,7 +1589,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"PHIL_F3"
-	Location		[960, 0, 1920, 1040]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1552,7 +1601,7 @@ Library {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"150"
+	ZoomFactor		"61"
 	Block {
 	  BlockType		  Inport
 	  Name			  "AIN"
@@ -1565,7 +1614,7 @@ Library {
 	  BlockType		  Inport
 	  Name			  "FromF4"
 	  SID			  "1279"
-	  Position		  [350, 618, 380, 632]
+	  Position		  [350, 638, 380, 652]
 	  ZOrder		  4094
 	  Port			  "2"
 	  IconDisplay		  "Port number"
@@ -1588,7 +1637,7 @@ Library {
 	}
 	Block {
 	  BlockType		  Inport
-	  Name			  "HiZ_Status"
+	  Name			  "Vsrc_con"
 	  SID			  "1174"
 	  Position		  [685, 468, 715, 482]
 	  ZOrder		  4056
@@ -1596,7 +1645,6 @@ Library {
 	  IconDisplay		  "Port number"
 	  Port {
 	    PortNumber		    1
-	    PropagatedSignals	    "Status"
 	    ShowPropagatedSignals   "on"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
@@ -1606,11 +1654,11 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator"
 	  SID			  "1175"
-	  Ports			  [8, 1]
-	  Position		  [1345, 19, 1350, 296]
+	  Ports			  [9, 1]
+	  Position		  [1345, 21, 1350, 329]
 	  ZOrder		  4053
 	  ShowName		  off
-	  Inputs		  "8"
+	  Inputs		  "9"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -1767,6 +1815,22 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector11"
+	  SID			  "1664"
+	  Ports			  [1, 1]
+	  Position		  [925, 950, 930, 980]
+	  ZOrder		  4362
+	  ShowName		  off
+	  OutputSignals		  "Vang_enable"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Vang_enable>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector2"
 	  SID			  "1331"
 	  Ports			  [1, 1]
@@ -1785,11 +1849,11 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector3"
 	  SID			  "1425"
-	  Ports			  [1, 2]
-	  Position		  [405, 588, 410, 657]
+	  Ports			  [1, 3]
+	  Position		  [405, 584, 410, 706]
 	  ZOrder		  4293
 	  ShowName		  off
-	  OutputSignals		  "pv_set,Iabc"
+	  OutputSignals		  "pv_set,Iabc,cb401_syncOK"
 	  Port {
 	    PortNumber		    1
 	    Name		    "<pv_set>"
@@ -1799,6 +1863,12 @@ Library {
 	  Port {
 	    PortNumber		    2
 	    Name		    "<Iabc>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<cb401_syncOK>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1953,7 +2023,7 @@ Library {
 	  BlockType		  SubSystem
 	  Name			  "CS Modified PLL"
 	  SID			  "1386"
-	  Ports			  [1, 4]
+	  Ports			  [2, 4]
 	  Position		  [470, 849, 545, 956]
 	  ZOrder		  4151
 	  BackgroundColor	  "[0.725490, 1.000000, 0.725490]"
@@ -2040,18 +2110,26 @@ Library {
 	  Port {
 	    PortNumber		    2
 	    Name		    "wt"
+	    PropagatedSignals	    "wt"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  Port {
 	    PortNumber		    3
 	    Name		    "sin_cos"
+	    PropagatedSignals	    ", "
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "vdq0"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
 	  System {
 	    Name		    "CS Modified PLL"
-	    Location		    [0, 0, 960, 1040]
+	    Location		    [-8, 0, 1924, 1056]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -2064,7 +2142,7 @@ Library {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "125"
-	    SIDHighWatermark	    "254"
+	    SIDHighWatermark	    "394"
 	    SIDPrevWatermark	    "85"
 	    Block {
 	      BlockType		      Inport
@@ -2074,6 +2152,16 @@ Library {
 	      ZOrder		      -1
 	      IconDisplay	      "Port number"
 	      PortDimensions	      "3"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Funfreeze"
+	      SID		      "1386:304"
+	      Position		      [175, 338, 205, 352]
+	      ZOrder		      3793
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      PortDimensions	      "1"
 	    }
 	    Block {
 	      BlockType		      Reference
@@ -2094,6 +2182,24 @@ Library {
 	      Vdc_Init		      "Finit"
 	      PlotResponse	      off
 	      param1		      "[1 500 0.1]"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      "1386:305"
+	      Position		      [280, 390, 310, 420]
+	      ZOrder		      3794
+	      ShowName		      off
+	      Value		      "0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      "1386:307"
+	      Position		      [280, 185, 345, 215]
+	      ZOrder		      3796
+	      ShowName		      off
+	      Value		      "[0.1 0 0]"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -2189,7 +2295,7 @@ Library {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"104"
+		SIDHighWatermark	"154"
 		Block {
 		  BlockType		  Inport
 		  Name			  "Error"
@@ -2474,6 +2580,26 @@ Library {
 	      }
 	    }
 	    Block {
+	      BlockType		      Switch
+	      Name		      "Switch"
+	      SID		      "1386:303"
+	      Position		      [385, 252, 440, 438]
+	      ZOrder		      3792
+	      Threshold		      "0.5"
+	      InputSameDT	      off
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      Switch
+	      Name		      "Switch1"
+	      SID		      "1386:306"
+	      Position		      [385, 47, 440, 233]
+	      ZOrder		      3795
+	      Threshold		      "0.5"
+	      InputSameDT	      off
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
 	      BlockType		      Trigonometry
 	      Name		      "Trigonometric\nFunction"
 	      SID		      "1386:23"
@@ -2713,10 +2839,49 @@ Library {
 	      BlockType		      Outport
 	      Name		      "Vdq"
 	      SID		      "1386:86"
-	      Position		      [265, 188, 295, 202]
+	      Position		      [480, 133, 510, 147]
 	      ZOrder		      3791
 	      Port		      "4"
 	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      DstBlock		      "Switch1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Switch1"
+	      SrcPort		      1
+	      DstBlock		      "Vdq"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Switch"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Funfreeze"
+	      SrcPort		      1
+	      Points		      [44, 0]
+	      Branch {
+		DstBlock		"Switch"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, -205]
+		DstBlock		"Switch1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Switch"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -60]
+	      DstBlock		      "Controller"
+	      DstPort		      1
 	    }
 	    Line {
 	      Name		      "Vq"
@@ -2801,14 +2966,14 @@ Library {
 	    Line {
 	      SrcBlock		      "abc_to_dq0\nTransformation"
 	      SrcPort		      1
-	      Points		      [8, 0]
+	      Points		      [10, 0]
 	      Branch {
 		DstBlock		"Selector"
 		DstPort			1
 	      }
 	      Branch {
-		Points			[0, -90]
-		DstBlock		"Vdq"
+		Points			[7, 0; 0, -205]
+		DstBlock		"Switch1"
 		DstPort			1
 	      }
 	    }
@@ -2836,7 +3001,7 @@ Library {
 	    Line {
 	      SrcBlock		      "Discrete \nMean value"
 	      SrcPort		      1
-	      DstBlock		      "Controller"
+	      DstBlock		      "Switch"
 	      DstPort		      1
 	    }
 	    Annotation {
@@ -2973,11 +3138,20 @@ Library {
 	  BlockType		  Constant
 	  Name			  "Constant8"
 	  SID			  "1661"
-	  Position		  [1060, 910, 1080, 930]
-	  ZOrder		  4358
+	  Position		  [965, 940, 985, 960]
+	  ZOrder		  4361
 	  BackgroundColor	  "lightBlue"
 	  ShowName		  off
 	  Value			  "0"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant9"
+	  SID			  "1686"
+	  Position		  [1855, 1292, 1955, 1318]
+	  ZOrder		  4370
+	  ShowName		  off
+	  Value			  "zeros(1,7)"
 	}
 	Block {
 	  BlockType		  DataTypeConversion
@@ -3055,33 +3229,6 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "First-Order\nFilter"
-	  SID			  "1388"
-	  Ports			  [1, 1]
-	  Position		  [600, 922, 650, 958]
-	  ZOrder		  4153
-	  LibraryVersion	  "1.31"
-	  FontName		  "Arial"
-	  SourceBlock		  "powerlib_meascontrol/Filters/First-Order\nFilter"
-	  SourceType		  "First-Order Filter"
-	  FilterType		  "Lowpass"
-	  Tc			  "10e-3 "
-	  Ts			  "Ts"
-	  Initialize		  on
-	  Vac_Init		  "[0, 0, 60]"
-	  Vdc_Init		  "0"
-	  PlotResponse		  off
-	  FreqRange		  "[0,  200,  1]"
-	  Port {
-	    PortNumber		    1
-	    Name		    "vdq0"
-	    PropagatedSignals	    " y(k)"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "First-Order\nFilter1"
 	  SID			  "1399"
 	  Ports			  [1, 1]
@@ -3103,6 +3250,20 @@ Library {
 	    PortNumber		    1
 	    PropagatedSignals	    " y(k)"
 	    ShowPropagatedSignals   "on"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From"
+	  SID			  "1667"
+	  Position		  [1150, 303, 1230, 327]
+	  ZOrder		  4365
+	  GotoTag		  "phil_vref"
+	  Port {
+	    PortNumber		    1
+	    Name		    "phil_vref_abc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3131,6 +3292,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Iabc"
+	    PropagatedSignals	    "Iabc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3164,6 +3326,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Magna_meas"
+	    PropagatedSignals	    "Vdc, Idc, Pdc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3192,6 +3355,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Iabc"
+	    PropagatedSignals	    "Iabc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3286,6 +3450,18 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "1665"
+	  Position		  [830, 955, 900, 975]
+	  ZOrder		  4363
+	  BackgroundColor	  "darkGreen"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "phil_ctrl"
+	  TagVisibility		  "scoped"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From20"
 	  SID			  "1334"
 	  Position		  [2525, 797, 2590, 813]
@@ -3324,7 +3500,7 @@ Library {
 	  BlockType		  From
 	  Name			  "From22"
 	  SID			  "1385"
-	  Position		  [135, 895, 205, 915]
+	  Position		  [135, 865, 205, 885]
 	  ZOrder		  4150
 	  ShowName		  off
 	  CloseFcn		  "tagdialog Close"
@@ -3442,9 +3618,32 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "V_ref"
+	    PropagatedSignals	    "Hz, wt, sin_cos, vdq0, v_abc"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From31"
+	  SID			  "1669"
+	  Position		  [310, 920, 380, 940]
+	  ZOrder		  4367
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "Vsrc_con"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From32"
+	  SID			  "1688"
+	  Position		  [1855, 1230, 1955, 1250]
+	  ZOrder		  4372
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "cb401_syncOK"
 	}
 	Block {
 	  BlockType		  From
@@ -3478,6 +3677,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Vabc_line"
+	    PropagatedSignals	    "Vabc_line"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3495,6 +3695,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Vabc_line"
+	    PropagatedSignals	    "Vabc_line"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3529,6 +3730,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "Vabc_line"
+	    PropagatedSignals	    "Vabc_line"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3679,6 +3881,14 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto"
+	  SID			  "1666"
+	  Position		  [1720, 832, 1795, 858]
+	  ZOrder		  4364
+	  GotoTag		  "phil_vref"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  "1416"
 	  Position		  [955, 200, 1055, 220]
@@ -3736,6 +3946,26 @@ Library {
 	  BackgroundColor	  "green"
 	  ShowName		  off
 	  GotoTag		  "V_ref"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto15"
+	  SID			  "1668"
+	  Position		  [790, 430, 890, 450]
+	  ZOrder		  4366
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "Vsrc_con"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto16"
+	  SID			  "1687"
+	  Position		  [505, 677, 615, 693]
+	  ZOrder		  4371
+	  BackgroundColor	  "gray"
+	  ShowName		  off
+	  GotoTag		  "cb401_syncOK"
 	}
 	Block {
 	  BlockType		  Goto
@@ -3871,6 +4101,17 @@ Library {
 	  ZOrder		  4335
 	  ShowName		  off
 	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  SID			  "1685"
+	  Ports			  [2, 1]
+	  Position		  [2035, 1205, 2040, 1340]
+	  ZOrder		  4369
+	  ShowName		  off
+	  Inputs		  "[1 7]"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -4225,6 +4466,16 @@ Library {
 	}
 	Block {
 	  BlockType		  Switch
+	  Name			  "Switch2"
+	  SID			  "1663"
+	  Position		  [1000, 914, 1080, 956]
+	  ZOrder		  4360
+	  Threshold		  "0.5"
+	  InputSameDT		  off
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Switch
 	  Name			  "Switch3"
 	  SID			  "1475"
 	  Position		  [575, 497, 625, 603]
@@ -4249,14 +4500,6 @@ Library {
 	  SID			  "1647"
 	  Position		  [830, 930, 850, 950]
 	  ZOrder		  4345
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator2"
-	  SID			  "1662"
-	  Position		  [1000, 910, 1020, 930]
-	  ZOrder		  4359
 	  ShowName		  off
 	}
 	Block {
@@ -4319,7 +4562,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "V_ratio1"
 	  SID			  "1387"
-	  Position		  [245, 890, 415, 920]
+	  Position		  [245, 860, 415, 890]
 	  ZOrder		  4152
 	  ShowName		  off
 	  Gain			  "1/(4160/sqrt(3/2))"
@@ -4410,16 +4653,93 @@ Library {
 	}
 	Block {
 	  BlockType		  Outport
+	  Name			  "DOUT"
+	  SID			  "1684"
+	  Position		  [2115, 1268, 2145, 1282]
+	  ZOrder		  4368
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
 	  Name			  "ToF4"
 	  SID			  "1192"
 	  Position		  [1400, 153, 1430, 167]
 	  ZOrder		  4057
-	  Port			  "2"
+	  Port			  "3"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  Name			  "<cb401_syncOK>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector3"
+	  SrcPort		  3
+	  DstBlock		  "Goto16"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From32"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Constant9"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  DstBlock		  "DOUT"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From31"
+	  SrcPort		  1
+	  DstBlock		  "CS Modified PLL"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "phil_vref_abc"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  9
+	}
+	Line {
+	  Name			  "<Vang_enable>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector11"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -30]
+	  DstBlock		  "Switch2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector11"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Constant8"
 	  SrcPort		  1
+	  DstBlock		  "Switch2"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Complex to\nMagnitude-Angle"
+	  SrcPort		  2
+	  DstBlock		  "Switch2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Switch2"
+	  SrcPort		  1
+	  Points		  [7, 0; 0, -15]
 	  DstBlock		  "Magnitude-Angle\nto Complex"
 	  DstPort		  2
 	}
@@ -4447,8 +4767,15 @@ Library {
 	  SrcBlock		  "Switch1"
 	  SrcPort		  1
 	  Points		  [40, 0; 0, -70]
-	  DstBlock		  "Gain"
-	  DstPort		  1
+	  Branch {
+	    DstBlock		    "Gain"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -145]
+	    DstBlock		    "Goto"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "dq0_to_abc\nTransformation"
@@ -4528,12 +4855,6 @@ Library {
 	  SrcBlock		  "Magnitude-Angle\nto Complex"
 	  SrcPort		  1
 	  DstBlock		  "Complex to\nReal-Imag"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Complex to\nMagnitude-Angle"
-	  SrcPort		  2
-	  DstBlock		  "Terminator2"
 	  DstPort		  1
 	}
 	Line {
@@ -4750,7 +5071,7 @@ Library {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector3"
 	  SrcPort		  2
-	  Points		  [127, 0; 0, -55]
+	  Points		  [127, 0; 0, -60]
 	  DstBlock		  "Switch3"
 	  DstPort		  3
 	}
@@ -4860,16 +5181,10 @@ Library {
 	Line {
 	  Name			  "vdq0"
 	  Labels		  [-1, 0]
-	  SrcBlock		  "First-Order\nFilter"
-	  SrcPort		  1
-	  DstBlock		  "Bus\nCreator5"
-	  DstPort		  4
-	}
-	Line {
 	  SrcBlock		  "CS Modified PLL"
 	  SrcPort		  4
-	  DstBlock		  "First-Order\nFilter"
-	  DstPort		  1
+	  DstBlock		  "Bus\nCreator5"
+	  DstPort		  4
 	}
 	Line {
 	  Name			  "v_abc"
@@ -4882,7 +5197,7 @@ Library {
 	  }
 	  Branch {
 	    Labels		    [4, 1]
-	    Points		    [0, 93; 239, 0; 0, -33]
+	    Points		    [0, 123; 239, 0; 0, -33]
 	    DstBlock		    "Bus\nCreator5"
 	    DstPort		    5
 	  }
@@ -4896,7 +5211,7 @@ Library {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 260]
+	    Points		    [0, 290]
 	    DstBlock		    "Gain9"
 	    DstPort		    1
 	  }
@@ -5375,6 +5690,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator"
 	  SrcPort		  1
+	  Points		  [20, 0; 0, -15]
 	  DstBlock		  "ToF4"
 	  DstPort		  1
 	}
@@ -5520,10 +5836,18 @@ Library {
 	  }
 	}
 	Line {
-	  SrcBlock		  "HiZ_Status"
+	  SrcBlock		  "Vsrc_con"
 	  SrcPort		  1
-	  DstBlock		  "Data Type Conversion"
-	  DstPort		  1
+	  Points		  [50, 0]
+	  Branch {
+	    DstBlock		    "Data Type Conversion"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -35]
+	    DstBlock		    "Goto15"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  LineType		  "Connection"
@@ -5600,7 +5924,7 @@ Library {
       Ports		      [2, 2, 0, 0, 0, 0, 3]
       Position		      [460, 299, 600, 511]
       ZOrder		      4024
-      LibraryVersion	      "*1.81"
+      LibraryVersion	      "*1.91"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -5610,7 +5934,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"PHIL_F4"
-	Location		[0, 0, 1287, 1040]
+	Location		[0, 0, 1375, 1040]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -5642,6 +5966,7 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "pv_set"
+	    PropagatedSignals	    "pv_phil"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -5661,11 +5986,10 @@ Library {
 	  BlockType		  BusCreator
 	  Name			  "Bus\nCreator1"
 	  SID			  "1382"
-	  Ports			  [3, 1]
-	  Position		  [1050, 555, 1055, 625]
+	  Ports			  [4, 1]
+	  Position		  [1050, 554, 1055, 651]
 	  ZOrder		  4286
 	  ShowName		  off
-	  Inputs		  "3"
 	  DisplayOption		  "bar"
 	}
 	Block {
@@ -5705,20 +6029,14 @@ Library {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector"
 	  SID			  "1368"
-	  Ports			  [1, 2]
-	  Position		  [120, 741, 125, 894]
+	  Ports			  [1, 1]
+	  Position		  [170, 805, 175, 845]
 	  ZOrder		  4265
 	  ShowName		  off
-	  OutputSignals		  "V_ref.vdq0,V_ref.sin_cos"
+	  OutputSignals		  "phil_vref_abc"
 	  Port {
 	    PortNumber		    1
-	    Name		    "<vdq0>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    2
-	    Name		    "<sin_cos>"
+	    Name		    "<phil_vref_abc>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -5767,6 +6085,22 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<PHIL_Enabled>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  SID			  "1676"
+	  Ports			  [1, 1]
+	  Position		  [415, 883, 420, 907]
+	  ZOrder		  4293
+	  ShowName		  off
+	  OutputSignals		  "F4_CB_1"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<F4_CB_1>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -5868,6 +6202,38 @@ Library {
 	  }
 	}
 	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector3"
+	  SID			  "1677"
+	  Ports			  [1, 1]
+	  Position		  [485, 883, 490, 907]
+	  ZOrder		  4294
+	  ShowName		  off
+	  OutputSignals		  "m"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<m>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector4"
+	  SID			  "1678"
+	  Ports			  [1, 1]
+	  Position		  [580, 883, 585, 907]
+	  ZOrder		  4295
+	  ShowName		  off
+	  OutputSignals		  "status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
 	  SID			  "1148"
@@ -5893,14 +6259,6 @@ Library {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Constant2"
-	  SID			  "1371"
-	  Position		  [165, 800, 195, 830]
-	  ZOrder		  4268
-	  Value			  "0"
 	}
 	Block {
 	  BlockType		  Reference
@@ -5957,6 +6315,34 @@ Library {
 	  Measurements		  "None"
 	}
 	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion3"
+	  SID			  "1680"
+	  Position		  [860, 885, 915, 905]
+	  ZOrder		  4298
+	  ShowName		  off
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	  Port {
+	    PortNumber		    1
+	    Name		    "cb401_syncOK"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion6"
+	  SID			  "1681"
+	  Position		  [665, 885, 720, 905]
+	  ZOrder		  4300
+	  ShowName		  off
+	  OutDataTypeStr	  "uint16"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
 	  BlockType		  Demux
 	  Name			  "Demux"
 	  SID			  "1153"
@@ -5966,6 +6352,22 @@ Library {
 	  ShowName		  off
 	  Outputs		  "3"
 	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Extract Bits1"
+	  SID			  "1682"
+	  Ports			  [1, 1]
+	  Position		  [755, 885, 835, 905]
+	  ZOrder		  4296
+	  ShowName		  off
+	  LibraryVersion	  "1.274"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Extract Bits"
+	  SourceType		  "Extract Bits"
+	  bitsToExtract		  "Range of bits"
+	  numBits		  "8"
+	  bitIdxRange		  "1"
+	  outScalingMode	  "Treat bit field as an integer"
 	}
 	Block {
 	  BlockType		  Reference
@@ -5985,11 +6387,22 @@ Library {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  "1366"
-	  Position		  [20, 812, 80, 828]
+	  Position		  [70, 817, 130, 833]
 	  ZOrder		  4263
 	  BackgroundColor	  "gray"
 	  ShowName		  off
 	  GotoTag		  "PHIL"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From2"
+	  SID			  "1675"
+	  Position		  [300, 885, 375, 905]
+	  ZOrder		  4292
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  GotoTag		  "RELAY_IN"
+	  TagVisibility		  "scoped"
 	}
 	Block {
 	  BlockType		  From
@@ -6059,7 +6472,7 @@ Library {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "1374"
-	  Position		  [390, 810, 420, 840]
+	  Position		  [280, 810, 420, 840]
 	  ZOrder		  4271
 	  Gain			  "480/sqrt(3/2)"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -6089,29 +6502,6 @@ Library {
 	  SourceBlock		  "powerlib/Elements/Ground"
 	  SourceType		  "Ground"
 	  LConnTagsString	  "a"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  "1369"
-	  Ports			  [2, 1]
-	  Position		  [240, 771, 245, 809]
-	  ZOrder		  4266
-	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "bar"
-	}
-	Block {
-	  BlockType		  Selector
-	  Name			  "Selector"
-	  SID			  "1370"
-	  Ports			  [1, 1]
-	  Position		  [165, 761, 205, 799]
-	  ZOrder		  4267
-	  InputPortWidth	  "3"
-	  IndexOptions		  "Index vector (dialog)"
-	  Indices		  "[1 2]"
-	  OutputSizes		  "1"
 	}
 	Block {
 	  BlockType		  Switch
@@ -6162,20 +6552,6 @@ Library {
 	  }
 	}
 	Block {
-	  BlockType		  Reference
-	  Name			  "dq0_to_abc\nTransformation"
-	  SID			  "1367"
-	  Ports			  [2, 1]
-	  Position		  [270, 759, 310, 886]
-	  ZOrder		  4264
-	  ShowName		  off
-	  LibraryVersion	  "1.664"
-	  FontName		  "Verdana"
-	  FontSize		  11
-	  SourceBlock		  "powerlib_extras/Measurements/dq0_to_abc\nTransformation"
-	  SourceType		  "dq0 to abc Transformation"
-	}
-	Block {
 	  BlockType		  PMIOPort
 	  Name			  "Conn1"
 	  SID			  "1166"
@@ -6223,6 +6599,57 @@ Library {
 	  IconDisplay		  "Port number"
 	}
 	Line {
+	  SrcBlock		  "Data Type Conversion6"
+	  SrcPort		  1
+	  DstBlock		  "Extract Bits1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Extract Bits1"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector4"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<m>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector3"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<F4_CB_1>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "cb401_syncOK"
+	  Labels		  [-1, 0]
+	  SrcBlock		  "Data Type Conversion3"
+	  SrcPort		  1
+	  Points		  [115, 0]
+	  DstBlock		  "Bus\nCreator1"
+	  DstPort		  4
+	}
+	Line {
 	  Name			  "pv_set"
 	  Labels		  [-1, 1]
 	  SrcBlock		  "pv_phil"
@@ -6241,7 +6668,7 @@ Library {
 	  }
 	  Branch {
 	    Labels		    [-1, 1]
-	    Points		    [0, -90]
+	    Points		    [0, 120; 419, 0; 0, -210]
 	    DstBlock		    "Bus\nCreator1"
 	    DstPort		    3
 	  }
@@ -6249,7 +6676,7 @@ Library {
 	Line {
 	  SrcBlock		  "Bus\nCreator1"
 	  SrcPort		  1
-	  Points		  [15, 0; 0, 45]
+	  Points		  [15, 0; 0, 30]
 	  DstBlock		  "ToF3"
 	  DstPort		  1
 	}
@@ -6261,48 +6688,15 @@ Library {
 	  DstPort		  3
 	}
 	Line {
-	  Name			  "<sin_cos>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  2
-	  DstBlock		  "dq0_to_abc\nTransformation"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Constant2"
-	  SrcPort		  1
-	  Points		  [22, 0; 0, -15]
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Selector"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Mux"
-	  SrcPort		  1
-	  DstBlock		  "dq0_to_abc\nTransformation"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "<vdq0>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  DstBlock		  "Selector"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "From1"
 	  SrcPort		  1
 	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "dq0_to_abc\nTransformation"
+	  Name			  "<phil_vref_abc>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
 	  SrcPort		  1
 	  DstBlock		  "Gain"
 	  DstPort		  1

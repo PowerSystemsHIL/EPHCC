@@ -28,7 +28,7 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[12]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "MGC3"
+  LastModifiedBy	  "MGC4"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 04 09:19:57 2017"
-  RTWModifiedTimeStamp	  434279995
-  ModelVersionFormat	  "1.%<AutoIncrement:72>"
+  LastModifiedDate	  "Fri Dec 08 11:25:04 2017"
+  RTWModifiedTimeStamp	  434633095
+  ModelVersionFormat	  "1.%<AutoIncrement:75>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -723,6 +723,17 @@ Library {
       PreserveConstantTs      off
     }
     Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
       BlockType		      Demux
       Outputs		      "4"
       DisplayOption	      "none"
@@ -761,6 +772,15 @@ Library {
       LatchByDelayingOutsideSignal off
       LatchInputForFeedbackSignals off
       Interpolate	      on
+    }
+    Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
     }
     Block {
       BlockType		      Memory
@@ -858,7 +878,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "883"
+    SIDHighWatermark	    "898"
     Block {
       BlockType		      SubSystem
       Name		      "SS_Feeder3"
@@ -867,7 +887,7 @@ Library {
       Position		      [145, 250, 440, 635]
       ZOrder		      2323
       ForegroundColor	      "green"
-      LibraryVersion	      "*1.71"
+      LibraryVersion	      "*1.74"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -877,7 +897,7 @@ Library {
       MaskHideContents	      off
       System {
 	Name			"SS_Feeder3"
-	Location		[-8, -8, 1928, 1048]
+	Location		[-8, 0, 1924, 1056]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1258,12 +1278,12 @@ Library {
 	  BlockType		  Reference
 	  Name			  "AIN_AOUT_ML605EX1"
 	  SID			  "868"
-	  Ports			  [1, 1]
+	  Ports			  [2, 1]
 	  Position		  [2765, 1161, 2875, 1199]
 	  ZOrder		  4315
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.89"
+	  LibraryVersion	  "1.94"
 	  SourceBlock		  "PHIL_lib/AIN_AOUT_ML605EX1"
 	  SourceType		  "SubSystem"
 	}
@@ -1441,22 +1461,6 @@ Library {
 	}
 	Block {
 	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector16"
-	  SID			  "836"
-	  Ports			  [1, 1]
-	  Position		  [2575, 1271, 2580, 1289]
-	  ZOrder		  4063
-	  ShowName		  off
-	  OutputSignals		  "Status"
-	  Port {
-	    PortNumber		    1
-	    Name		    "<Status>"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector17"
 	  SID			  "553"
 	  Ports			  [1, 1]
@@ -1603,6 +1607,70 @@ Library {
 	  Port {
 	    PortNumber		    1
 	    Name		    "<loc4>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector25"
+	  SID			  "888"
+	  Ports			  [1, 1]
+	  Position		  [3305, 1096, 3310, 1114]
+	  ZOrder		  4329
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector26"
+	  SID			  "889"
+	  Ports			  [1, 1]
+	  Position		  [3305, 1156, 3310, 1174]
+	  ZOrder		  4330
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector27"
+	  SID			  "890"
+	  Ports			  [1, 1]
+	  Position		  [3340, 1226, 3345, 1244]
+	  ZOrder		  4331
+	  ShowName		  off
+	  OutputSignals		  "Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector28"
+	  SID			  "891"
+	  Ports			  [1, 1]
+	  Position		  [3305, 1291, 3310, 1309]
+	  ZOrder		  4332
+	  ShowName		  off
+	  OutputSignals		  "cb.cb_meas.Status"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Status>"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1858,15 +1926,14 @@ Library {
 	  Ts			  "Ts"
 	}
 	Block {
-	  BlockType		  Demux
-	  Name			  "Demux2"
-	  SID			  "446"
-	  Ports			  [1, 6]
-	  Position		  [1130, 343, 1140, 442]
-	  ZOrder		  3326
-	  ShowName		  off
-	  Outputs		  "6"
-	  DisplayOption		  "bar"
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "898"
+	  Position		  [3710, 1123, 3785, 1157]
+	  ZOrder		  4338
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
 	}
 	Block {
 	  BlockType		  Reference
@@ -2539,6 +2606,65 @@ Library {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From42"
+	  SID			  "884"
+	  Position		  [3140, 1095, 3215, 1115]
+	  ZOrder		  4325
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_CB_10"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From43"
+	  SID			  "885"
+	  Position		  [3140, 1155, 3215, 1175]
+	  ZOrder		  4326
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_PCC"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From44"
+	  SID			  "886"
+	  Position		  [3140, 1225, 3215, 1245]
+	  ZOrder		  4327
+	  BackgroundColor	  "lightBlue"
+	  ShowName		  off
+	  GotoTag		  "F3_CB_3"
+	  Port {
+	    PortNumber		    1
+	    Name		    "F3_CB_3"
+	    PropagatedSignals	    "m"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From45"
+	  SID			  "887"
+	  Position		  [3140, 1292, 3250, 1308]
+	  ZOrder		  4328
+	  BackgroundColor	  "green"
+	  NamePlacement		  "alternate"
+	  ShowName		  off
+	  CloseFcn		  "tagdialog Close"
+	  GotoTag		  "NG_CHP_DATA"
+	}
+	Block {
+	  BlockType		  From
+	  Name			  "From46"
+	  SID			  "895"
+	  Position		  [2640, 1270, 2715, 1290]
+	  ZOrder		  4336
+	  BackgroundColor	  "magenta"
+	  ShowName		  off
+	  GotoTag		  "Vsrc_con"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From5"
 	  SID			  "87"
 	  Position		  [4345, 2276, 4420, 2294]
@@ -2757,6 +2883,16 @@ Library {
 	}
 	Block {
 	  BlockType		  Goto
+	  Name			  "Goto2"
+	  SID			  "896"
+	  Position		  [3825, 1130, 3905, 1150]
+	  ZOrder		  4337
+	  BackgroundColor	  "magenta"
+	  ShowName		  off
+	  GotoTag		  "Vsrc_con"
+	}
+	Block {
+	  BlockType		  Goto
 	  Name			  "Goto20"
 	  SID			  "187"
 	  Position		  [2515, 455, 2595, 475]
@@ -2902,14 +3038,6 @@ Library {
 	  GotoTag		  "LOAD_C6"
 	}
 	Block {
-	  BlockType		  Constant
-	  Name			  "Interpolation "
-	  SID			  "448"
-	  Position		  [1000, 445, 1045, 465]
-	  ZOrder		  3323
-	  ShowName		  off
-	}
-	Block {
 	  BlockType		  Reference
 	  Name			  "Interruptible_6"
 	  SID			  "47"
@@ -2924,6 +3052,37 @@ Library {
 	  kVA			  "600"
 	  PF			  "0.9"
 	  Ts			  "Ts"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "892"
+	  Ports			  [2, 1]
+	  Position		  [3610, 1071, 3650, 1204]
+	  ZOrder		  4333
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "893"
+	  Ports			  [2, 1]
+	  Position		  [3540, 1131, 3580, 1264]
+	  ZOrder		  4334
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  SID			  "894"
+	  Ports			  [2, 1]
+	  Position		  [3470, 1201, 3510, 1334]
+	  ZOrder		  4335
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Reference
@@ -2985,7 +3144,7 @@ Library {
 	  BlockType		  Memory
 	  Name			  "Memory1"
 	  SID			  "839"
-	  Position		  [2945, 1300, 2975, 1330]
+	  Position		  [2945, 1310, 2975, 1340]
 	  ZOrder		  4064
 	  ShowName		  off
 	}
@@ -3000,17 +3159,6 @@ Library {
 	  LibraryVersion	  "1.29"
 	  SourceBlock		  "Motor_InductionMachine_lib/Motor"
 	  SourceType		  "SubSystem"
-	}
-	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  "449"
-	  Ports			  [6, 1]
-	  Position		  [1085, 320, 1095, 465]
-	  ZOrder		  3324
-	  ShowName		  off
-	  Inputs		  "6"
-	  DisplayOption		  "bar"
 	}
 	Block {
 	  BlockType		  SubSystem
@@ -3041,7 +3189,7 @@ Library {
 	  }
 	  System {
 	    Name		    "NGCHP_Generator"
-	    Location		    [-9, -9, 1929, 1041]
+	    Location		    [14, 34, 974, 1074]
 	    Open		    off
 	    ModelBrowserVisibility  on
 	    ModelBrowserWidth	    200
@@ -4082,36 +4230,12 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "OpFromFile"
-	  SID			  "451"
-	  Ports			  [6, 4]
-	  Position		  [1190, 345, 1420, 440]
-	  ZOrder		  3317
-	  LibraryVersion	  "1.512"
-	  SourceBlock		  "rtlab/DataLogging/OpFromFile"
-	  SourceType		  "OpFromFile"
-	  filename_mode		  "Static (same filename all the time)"
-	  reload_mode		  "Next time model is paused (Real-Time)"
-	  init_file_id		  "0"
-	  filename		  "HeatLoad.mat"
-	  rtpath		  "'./'"
-	  nrtpath		  "'.\\'"
-	  sample_time		  "Ts"
-	  Port {
-	    PortNumber		    2
-	    Name		    "Heat Load MBtu/hr"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Reference
 	  Name			  "PHIL_F3"
 	  SID			  "840"
-	  Ports			  [4, 2, 0, 0, 0, 3]
+	  Ports			  [4, 3, 0, 0, 0, 3]
 	  Position		  [2765, 1211, 2875, 1349]
 	  ZOrder		  4065
-	  LibraryVersion	  "1.89"
+	  LibraryVersion	  "1.94"
 	  SourceBlock		  "PHIL_lib/PHIL_F3"
 	  SourceType		  "SubSystem"
 	}
@@ -4146,14 +4270,6 @@ Library {
 	  kVA			  "1000"
 	  PF			  "0.9"
 	  Ts			  "Ts"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Repetative "
-	  SID			  "452"
-	  Position		  [1000, 345, 1045, 365]
-	  ZOrder		  3322
-	  ShowName		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -4247,28 +4363,18 @@ Library {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "Start_Index "
-	  SID			  "453"
-	  Position		  [1000, 370, 1045, 390]
-	  ZOrder		  3321
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "State "
 	  SID			  "454"
-	  Position		  [1000, 320, 1045, 340]
+	  Position		  [1375, 370, 1420, 390]
 	  ZOrder		  3320
 	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Stop_Index "
-	  SID			  "455"
-	  Position		  [1000, 395, 1045, 415]
-	  ZOrder		  3319
-	  ShowName		  off
-	  Value			  "1800-1"
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Heat Load MBtu/hr"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
 	}
 	Block {
 	  BlockType		  Terminator
@@ -4288,42 +4394,10 @@ Library {
 	}
 	Block {
 	  BlockType		  Terminator
-	  Name			  "Terminator2"
-	  SID			  "848"
-	  Position		  [1460, 420, 1480, 440]
-	  ZOrder		  4075
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator3"
-	  SID			  "849"
-	  Position		  [1460, 345, 1480, 365]
-	  ZOrder		  4076
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Terminator
-	  Name			  "Terminator4"
-	  SID			  "850"
-	  Position		  [1460, 395, 1480, 415]
-	  ZOrder		  4077
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Terminator
 	  Name			  "Terminator5"
 	  SID			  "883"
 	  Position		  [4635, 2980, 4655, 3000]
 	  ZOrder		  4324
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "Time_Scale_Factor "
-	  SID			  "456"
-	  Position		  [1000, 420, 1045, 440]
-	  ZOrder		  3318
-	  ShowName		  off
 	}
 	Block {
 	  BlockType		  PMIOPort
@@ -4493,10 +4567,107 @@ Library {
 	  BlockType		  Outport
 	  Name			  "PHIL_V"
 	  SID			  "816"
-	  Position		  [2995, 1308, 3025, 1322]
+	  Position		  [2995, 1318, 3025, 1332]
 	  ZOrder		  3931
 	  Port			  "2"
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "PHIL_F3"
+	  SrcPort		  2
+	  Points		  [23, 0; 0, -110]
+	  DstBlock		  "AIN_AOUT_ML605EX1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From46"
+	  SrcPort		  1
+	  DstBlock		  "PHIL_F3"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector27"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector28"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From45"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector28"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector26"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From43"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector26"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<Status>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector25"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "F3_CB_3"
+	  Labels		  [1, 1]
+	  SrcBlock		  "From44"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector27"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From42"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector25"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "<loc4>"
@@ -4545,9 +4716,9 @@ Library {
 	Line {
 	  SrcBlock		  "PHIL_F3"
 	  SrcPort		  1
-	  Points		  [22, 0; 0, -65]
+	  Points		  [10, 0]
 	  DstBlock		  "AIN_AOUT_ML605EX1"
-	  DstPort		  1
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "First-Order\nFilter"
@@ -4596,24 +4767,6 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "OpFromFile"
-	  SrcPort		  3
-	  DstBlock		  "Terminator4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "OpFromFile"
-	  SrcPort		  1
-	  DstBlock		  "Terminator3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "OpFromFile"
-	  SrcPort		  4
-	  DstBlock		  "Terminator2"
-	  DstPort		  1
-	}
-	Line {
 	  Name			  "<IO_scaling>"
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector15"
@@ -4646,17 +4799,9 @@ Library {
 	}
 	Line {
 	  SrcBlock		  "PHIL_F3"
-	  SrcPort		  2
+	  SrcPort		  3
 	  DstBlock		  "Memory1"
 	  DstPort		  1
-	}
-	Line {
-	  Name			  "<Status>"
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector16"
-	  SrcPort		  1
-	  DstBlock		  "PHIL_F3"
-	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "Memory1"
@@ -4683,16 +4828,9 @@ Library {
 	Line {
 	  SrcBlock		  "F3_CB_10"
 	  SrcPort		  1
-	  Points		  [20, 0]
-	  Branch {
-	    Points		    [0, -45]
-	    DstBlock		    "Goto25"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Bus\nSelector16"
-	    DstPort		    1
-	  }
+	  Points		  [20, 0; 0, -45]
+	  DstBlock		  "Goto25"
+	  DstPort		  1
 	}
 	Line {
 	  LineType		  "Connection"
@@ -5476,89 +5614,12 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Stop_Index "
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Interpolation "
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "Mux"
-	  SrcPort		  1
-	  DstBlock		  "Demux2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  2
-	  DstBlock		  "OpFromFile"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  6
-	  DstBlock		  "OpFromFile"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  3
-	  DstBlock		  "OpFromFile"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "Repetative "
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  5
-	  DstBlock		  "OpFromFile"
-	  DstPort		  5
-	}
-	Line {
 	  Name			  "Heat Load MBtu/hr"
-	  SrcBlock		  "OpFromFile"
-	  SrcPort		  2
-	  DstBlock		  "Goto27"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  4
-	  DstBlock		  "OpFromFile"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Demux2"
-	  SrcPort		  1
-	  DstBlock		  "OpFromFile"
-	  DstPort		  1
-	}
-	Line {
+	  Labels		  [0, 0]
 	  SrcBlock		  "State "
 	  SrcPort		  1
-	  DstBlock		  "Mux"
+	  DstBlock		  "Goto27"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Time_Scale_Factor "
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "Start_Index "
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "Memory"
@@ -6738,6 +6799,14 @@ Library {
 	  Name			  " "
 	  Position		  [842, 382]
 	  ZOrder		  -8
+	}
+	Annotation {
+	  SID			  "897"
+	  Name			  "Logic to protect against situation where there is no voltage \nsource at F3 side of PHIL. If no voltage s"
+	  "ource is available current is not injected back to F3"
+	  Position		  [3396, 1033]
+	  BackgroundColor	  "magenta"
+	  ZOrder		  -9
 	}
       }
     }

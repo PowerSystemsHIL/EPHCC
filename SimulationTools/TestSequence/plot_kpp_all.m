@@ -2,6 +2,7 @@ close all;
 
 %% Process for PHIL or CHIL run
 res.PHIL = 1; % Comment out if CHIL shall be used
+res.Speed = 1;
 
 %%  Initialise supporting data
 prices = init_prices;
