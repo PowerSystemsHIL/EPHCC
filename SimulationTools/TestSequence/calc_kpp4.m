@@ -6,7 +6,7 @@ function [ kpp4 ] = calc_kpp4( res, seqi, comm, prices, id, kpp3)
 lim.kW_max = seqi.dms_kWref_nan + 0.05*10e3;
 lim.kW_min = seqi.dms_kWref_nan - 0.05*10e3;
 lim.kWHz_max =  seqi.dms_kWHzref_nan + 0.10*10e3;
-lim.kWHz_min =  seqi.dms_kWHzref_nan - 0.10*10e3;;
+lim.kWHz_min =  seqi.dms_kWHzref_nan - 0.10*10e3;
 
 dms_kVArref = sqrt(1-power(seqi.dms_PFref,2))./seqi.dms_PFref.*kpp3.pcc.p;        % Reactive power with PF control term
 dms_kVArVoltref = dms_kVArref + (seqi.grid_volt-115000)/115000./(seqi.dms_Dq/100)*10e3;     % Reactive power with kVAR/Volt support
@@ -38,6 +38,17 @@ unplanned_penalty = zeros(comm.M,1);
 planned_penalty(~islanded & planned_island) = 1;
 unplanned_penalty(~islanded & unplanned_island) = 1;
 
+%% Additional sequence data
+isl1 = (seqi.opt.DMS.DisReq.Time(3) - seqi.opt.DMS.DisReq.Time(2))/60;
+isl2 = (seqi.opt.DMS.DisReq.Time(5) - seqi.opt.DMS.DisReq.Time(4))/60;
+isl = isl1+isl2;
+
+kVAr_req = sum(~isnan(seqi.dms_kVArref_nan)*seqi.opt.Ts)/60;
+kW_req = sum(~isnan(seqi.dms_kWref_nan)*seqi.opt.Ts)/60;
+kWHz_req = sum(~isnan(seqi.dms_kWHzref_nan)*seqi.opt.Ts)/60;
+kVArVolt_req = sum(~isnan(seqi.dms_kVArVoltref_nan)*seqi.opt.Ts)/60;
+
+
 %% Calculate within limits
 kW_good = zeros(comm.M,1);
 kWHz_good = zeros(comm.M,1);
@@ -54,6 +65,7 @@ dot_per_class = [prices.P41 prices.P44 prices.P46 prices.P43 -prices.P45 -prices
 dot = repmat(dot_per_class, comm.M,1); 
 d_per_class = t_per_class.*dot.*seqi.opt.Ts/60;                         % $ values
 d_cum_per_class = cumsum(d_per_class);
+t_cum_per_class = d_cum_per_class ./ dot;
 legend_per_class = {'T_{TD/M}', 'T_{FkW}', 'T_{PF}', 'T_{VV}', 'T_{DR}', 'T_{UD}'};
 d_cum_total = sum(d_cum_per_class,2);
 

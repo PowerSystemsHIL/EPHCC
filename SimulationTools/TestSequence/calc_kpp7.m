@@ -15,6 +15,7 @@ cb_switches = sum(sw_open(:,id.CB101:id.CB300),2);
 gen1_start = sw_close(:,id.CBGen1);
 gen2_start = sw_close(:,id.CBGen2);
 gen3_start = sw_close(:,id.CBGen3);
+gen_start = gen1_start + gen2_start + gen3_start;
 
 %Calculate battery cycling
 soc = res.battery_SoC./10000;
@@ -103,19 +104,29 @@ volt = voltPU.*repmat(Vn,comm.M,1);
 cur = s/3./(volt/sqrt(3));
 curPU = cur./repmat(In,comm.M,1);
 
-dGen =  (curPU(:,IsGen) - 1).^4;
-dTrafo = (curPU(:,IsTrafo) - 1).^4;
-dLine = (curPU(:,IsLine) - 1).^4;
+dcurGen =  (curPU(:,IsGen) - 1);
+dcurTrafo = (curPU(:,IsTrafo) - 1);
+dcurLine = (curPU(:,IsLine) - 1);
+dcurGen(dcurGen<0) = 0;
+dcurTrafo(dcurTrafo<0) = 0;
+dcurLine(dcurLine<0) = 0;
 
-d_cum_Gen   = prices.P75 * cumsum(sum(dGen,2));
-d_cum_Trafo = prices.P76 * cumsum(sum(dTrafo,2));
-d_cum_Line  = prices.P77 * cumsum(sum(dLine,2));
+dGen =  dcurGen.^2;
+dTrafo = dcurTrafo.^2;
+dLine = dcurLine.^2;
+
+d_cum_Gen   = cumsum(sum(dGen,2));
+d_cum_Trafo = cumsum(sum(dTrafo,2));
+d_cum_Line  = cumsum(sum(dLine,2));
 
 %%
-d_per_class = [cb_switches*prices.P74];
-d_cum_per_class = cumsum(d_per_class);
-legend_per_class = {'CB switch'};
-d_cum_total = sum(d_cum_per_class,2);
+u_cum_per_class = [cumsum(gen_start) bat_cycle cumsum(cb_switches) d_cum_Gen d_cum_Trafo d_cum_Line];
+dot_per_class = [-prices.P71 -prices.P73 -prices.P73 -prices.P74 -prices.P75 -prices.P76 -prices.P77];          % $/(sek*PU) , $/(sek*Hz)
+dot = repmat(dot_per_class, comm.M,1);              %  
+d_cum_per_class = u_cum_per_class .* dot;
+legend_per_class = {'Gen starts', 'ESS1 cycles', 'ESS2cycles', 'CB switch', 'Gen OC', 'Trafo OC', 'Line OC'};
+d_cum_total_uncapped = sum(d_cum_per_class,2);
+d_cum_total = max(d_cum_total_uncapped, -prices.KPP7_CAP);
 
 clear( 'res', 'seqi', 'comm', 'prices' );
 kpp7=wsp2struct(who);

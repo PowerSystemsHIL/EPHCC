@@ -6,7 +6,7 @@ function [ kpp2 ] = calc_kpp2( res, seqi, comm, prices, id )
 gen1_gal_h = res.dieselGenerator_fuelConsumption(:,1)/100*4;    % gal/h   x4 - correction to more fuel use more realistic
 gen2_heat_rec = res.ngchpGenerator_heatRecovered/100;          % MBtu/h             
 gen2_nm3_h = gen2_heat_rec/0.2/0.020267/1.76;                   % Nm^3/h             
-if (isfield(res, 'PHIL'))
+if (isfield(res, 'PHIL') && (res.PHIL==1))
     gen3_p = res.powerreal(:,id.CBGen3)/80 + 0.2;
     gen3_p(gen3_p>1.6) = 1.6;
     gen3_gal_h = 1.6*4*(14.827*gen3_p.^4 -27.253*gen3_p.^3 +15.553*gen3_p.^2 + 7.9033*gen3_p + 2.5);
@@ -31,6 +31,7 @@ d_fuel    = foh.*dof;
 
 d_per_class = [d_fuel.*seqi.opt.Ts/3600];
 d_cum_per_class = cumsum(d_per_class);
+f_cum_per_class = d_cum_per_class ./ dof;
 legend_per_class = {'Diesel1' 'NG2' 'Diesel3' 'Heat2'};
 d_cum_total = sum(d_cum_per_class,2);
 

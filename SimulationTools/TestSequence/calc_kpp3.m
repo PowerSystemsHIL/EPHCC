@@ -67,7 +67,9 @@ doe(:,1:4) = repmat(doe_coefs_per_class(1:4), comm.M, 1) .* repmat(seqi.price, 1
 doe(:,5)   = doe_coefs_per_class(5)*ones(comm.M, 1);
 
 d_per_class = pq_per_class * seqi.opt.Ts / 3600 .* doe;
+e_per_class = cumsum(pq_per_class * seqi.opt.Ts / 3600);
 d_cum_per_class = cumsum(d_per_class);
+doe_per_class = d_cum_per_class ./ e_per_class;
 legend_per_class = {'E_{BO}' 'E_{B}' 'E_{E}' 'E_{EO}' 'E_{RP}'};
 
 d_cum_total = sum(d_cum_per_class,2);

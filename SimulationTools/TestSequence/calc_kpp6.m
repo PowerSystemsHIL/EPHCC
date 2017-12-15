@@ -13,6 +13,7 @@ t_under( (soc<40) & repmat(not_island,1,2) ) = 1;
 dot = -prices.P61;     % dot $/min
 d_per_class = t_under.*dot.*seqi.opt.Ts/60;                         % $ values
 d_cum_per_class = cumsum(d_per_class);
+t_cum_under = d_cum_per_class ./ dot;
 legend_per_class = {'ESS1' 'ESS2'};
 d_cum_total = sum(d_cum_per_class,2);
 

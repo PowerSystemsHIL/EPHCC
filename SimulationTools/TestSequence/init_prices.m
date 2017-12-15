@@ -44,9 +44,10 @@ P71 = 10.00;
 P72 = 10.00;
 P73 = 10.00;
 P74 = 0.40;
-P75 = 1.00; % Generators overcurrents
-P76 = 1.00; % Trafos overcurrents
-P77 = 1.00; % Cable overcurrent
+P75 = 0.50; % Generators overcurrents
+P76 = 0.05 % Trafos overcurrents
+P77 = 0.005; % Line overcurrent
+KPP7_CAP = KPP1max * 0.15;
 
 
 prices=wsp2struct(who);
