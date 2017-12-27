@@ -115,9 +115,9 @@ dGen =  dcurGen.^2;
 dTrafo = dcurTrafo.^2;
 dLine = dcurLine.^2;
 
-d_cum_Gen   = cumsum(sum(dGen,2));
-d_cum_Trafo = cumsum(sum(dTrafo,2));
-d_cum_Line  = cumsum(sum(dLine,2));
+d_cum_Gen   = res.Speed * cumsum(sum(dGen,2));
+d_cum_Trafo = res.Speed * cumsum(sum(dTrafo,2));
+d_cum_Line  = res.Speed * cumsum(sum(dLine,2));
 
 %%
 u_cum_per_class = [cumsum(gen_start) bat_cycle cumsum(cb_switches) d_cum_Gen d_cum_Trafo d_cum_Line];

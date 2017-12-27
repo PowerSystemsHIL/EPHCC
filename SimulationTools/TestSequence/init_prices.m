@@ -45,7 +45,7 @@ P72 = 10.00;
 P73 = 10.00;
 P74 = 0.40;
 P75 = 0.50; % Generators overcurrents
-P76 = 0.05 % Trafos overcurrents
+P76 = 0.05; % Trafos overcurrents
 P77 = 0.005; % Line overcurrent
 KPP7_CAP = KPP1max * 0.15;
 

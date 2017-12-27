@@ -49,20 +49,21 @@ P_outage_per_class(:,2) = sum(P_outage(:,iI),2);
 P_outage_per_class(:,3) = sum(P_outage(:,iP),2);
 P_outage_per_class(:,4) = sum(P_outage(:,iC),2);
 
-E = cumsum(P*seqi.opt.Ts/3600);
-E_good_per_class = cumsum(P_good_per_class*seqi.opt.Ts/3600);
-EO_per_class = cumsum(P_outage_per_class*seqi.opt.Ts/3600);
+E = res.Speed * cumsum(P*seqi.opt.Ts/3600);
+E_good_per_class = res.Speed * cumsum(P_good_per_class*seqi.opt.Ts/3600);
+EO_per_class = res.Speed * cumsum(P_outage_per_class*seqi.opt.Ts/3600);
 
 EP_per_class = E_good_per_class .* repmat([prices.P12 prices.P13 prices.P12 prices.P11],M,1);
 EOP_per_class = EO_per_class .* repmat([prices.P16 0 prices.P16 prices.P15],M,1);
 
 %% Energy stored in the battery
 if (isfield(res, 'PHIL') && (res.PHIL==1))
-    ESS2_Capacity = 12000 / res.Speed;
+    ESS2_Capacity = 12000;
 else
-    ESS2_Capacity = 1200 / res.Speed;
+    ESS2_Capacity = 1200;
 end;
-e_batt = res.battery_SoC/10000 .* repmat([600/res.Speed ESS2_Capacity],M,1);
+ESS1_Capacity = 600;
+e_batt = res.battery_SoC/10000 .* repmat([ESS1_Capacity ESS2_Capacity],M,1);
 e_batt_diff = e_batt - repmat(e_batt(1,:), M, 1);
 
 d_batt_diff_indiv = e_batt_diff .* prices.P17;

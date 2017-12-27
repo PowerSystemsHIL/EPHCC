@@ -24,12 +24,12 @@ end;
 
 foh = [gen1_gal_h gen2_nm3_h gen3_gal_h gen2_heat_rec];
 p =   [res.powerreal(:,id.CBGen1) res.powerreal(:,id.CBGen2) res.powerreal(:,id.CBGen3)*20];
-e =    cumsum(p*seqi.opt.Ts/3600);
+e =   res.Speed * cumsum(p*seqi.opt.Ts/3600);
 dof_coefs = -1*[prices.P21 prices.P22 prices.P21 -prices.P23];
 dof       = repmat(dof_coefs, comm.M, 1);
 d_fuel    = foh.*dof;
 
-d_per_class = [d_fuel.*seqi.opt.Ts/3600];
+d_per_class = res.Speed * [d_fuel.*seqi.opt.Ts/3600];
 d_cum_per_class = cumsum(d_per_class);
 f_cum_per_class = d_cum_per_class ./ dof;
 legend_per_class = {'Diesel1' 'NG2' 'Diesel3' 'Heat2'};
