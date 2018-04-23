@@ -18,7 +18,7 @@ kpp4 = calc_kpp4(res, seqi, comm, prices, id, kpp3);
 kpp5 = calc_kpp5(res, seqi, comm, prices, id);
 kpp6 = calc_kpp6(res, seqi, comm, prices, kpp4);
 kpp7 = calc_kpp7(res, seqi, comm, prices, id);
-kpp8 = calc_kpp8(kpp1, kpp2, kpp3, kpp4, kpp5, kpp6);
+kpp8 = calc_kpp8(kpp1, kpp2, kpp3, kpp4, kpp5, kpp6, kpp7);
 
 %% Plot all KPP's
 plot_kpp1;
