@@ -1,1 +1,0 @@
-Need to add summary description of CHP unit test

@@ -1,0 +1,169 @@
+version = 4.2
+
+
+//
+// Saved by sw version: 2017.1 Dev
+// Save timestamp: 31-Jan-2017 @ 09:49:53 AM
+//
+
+model "Chiller Compressor" {
+    configuration {
+        hil_device = "HIL402"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = auto
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+    }
+
+    
+    component Subsystem Root {
+
+        
+        component Subsystem Chiller_compressor {
+            layout = dynamic
+    
+            
+            component gen_c_function "C function1" {
+                
+                in_terminal_properties = "real w;"
+                init_fnc = "/*Begin code section*/
+                                    T = 0;
+                                    w = 0;
+                                    /*End code section*/"
+                no_feed_inputs = "[u'']"
+                no_feed_outputs = "[u'']"
+                out_terminal_properties = "real T;"
+                output_fnc = "/*Begin code section*/
+                                    T = 0.1118*w+0.000861*powf(w,2)-3.371e-7*powf(w,3);
+                                    /*End code section*/"
+    	    
+            }
+            [
+                position = 8192, 8192
+            ]
+            
+            component tm_delay "Unit Delay1" {
+                
+    	    
+            }
+            [
+                position = 8272, 8192
+            ]
+            
+            component gen_gain Gain1 {
+                
+                gain = "9.5493"
+    	    
+            }
+            [
+                position = 8112, 8192
+            ]
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            port w_meas {
+                label = "w meas"
+                
+                position = left:1
+                kind = sp
+                direction = out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 8056, 8192
+            ]
+            
+            port torque {
+                label = "Torque"
+                
+                position = right:1
+                kind = sp
+                direction = in
+                sp_type {
+                    default = inherit
+                    readonly = True
+                }
+            }
+            [
+                position = 8376, 8192
+            ]
+            connect "C function1.w" "Gain1.out" as Connection5
+            
+            connect "C function1.T" "Unit Delay1.in" as Connection3
+            
+            connect "Gain1.in" w_meas as Connection6
+            
+            connect "Unit Delay1.out" torque as Connection4
+            
+            
+    
+            
+        }
+        [
+            position = 8048, 8176
+            scale = -1, 1
+            size = 80, 48
+        ]
+        
+        
+
+        
+    }
+
+    
+    
+    default {
+        
+        gen_c_function {
+            in_terminal_properties = "real in;"
+            in_terminal_labels = ""
+            out_terminal_properties = "real out;"
+            out_terminal_labels = ""
+            no_feed_inputs = ""
+            no_feed_outputs = ""
+            output_fnc = ""
+            update_fnc = ""
+            init_fnc = ""
+            global_variables = ""
+            parameters = ""
+            execution_rate = "inherit"
+        }
+        
+        gen_gain {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            execution_rate = "inherit"
+        }
+        
+        tm_delay {
+            init_value = "0"
+            signal_out_type = "inherit"
+            execution_rate = "inherit"
+        }
+    }
+
+}

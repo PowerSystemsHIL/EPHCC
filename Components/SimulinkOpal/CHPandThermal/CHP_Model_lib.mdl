@@ -19,7 +19,7 @@ Library {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [604.0, 201.0, 1932.0, 1092.0]
+      Location		      [604.0, 201.0, 1936.0, 1216.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -28,13 +28,13 @@ Library {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[15]
       }
       Object {
 	$PropName		"ExplorerBarInfo"
 	$ObjectID		4
 	$ClassName		"Simulink.ExplorerBarInfo"
-	Visible			[1]
+	Visible			[0]
       }
       Object {
 	$PropName		"EditorsInfo"
@@ -43,7 +43,7 @@ Library {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1689.0, 926.0]
+	Extents			[1693.0, 1080.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -53,11 +53,11 @@ Library {
   Creator		  "re25624"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "pkoralew"
+  LastModifiedBy	  "ed12083"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu May 04 14:27:28 2017"
-  RTWModifiedTimeStamp	  415808846
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Wed Nov 02 12:00:01 2016"
+  RTWModifiedTimeStamp	  399988790
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -874,7 +874,7 @@ Library {
   }
   System {
     Name		    "CHP_Model_lib"
-    Location		    [604, 201, 2536, 1293]
+    Location		    [604, 201, 2540, 1417]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -888,7 +888,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "39"
+    SIDHighWatermark	    "38"
     Block {
       BlockType		      SubSystem
       Name		      "CHPThermalModel"
@@ -897,7 +897,7 @@ Library {
       Position		      [465, 283, 745, 457]
       ZOrder		      2981
       BlockMirror	      on
-      LibraryVersion	      "*1.4"
+      LibraryVersion	      "*1.3"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -921,7 +921,7 @@ Library {
       }
       System {
 	Name			"CHPThermalModel"
-	Location		[0, 0, 1846, 1040]
+	Location		[0, 0, 1932, 1092]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1144,6 +1144,24 @@ Library {
 	  ZOrder		  35
 	  Value			  "0"
 	  SampleTime		  "Ts"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CHP MIxing TC1"
+	  SID			  "10"
+	  Ports			  [1, 1]
+	  Position		  [520, 224, 560, 256]
+	  ZOrder		  96
+	  LibraryVersion	  "1.321"
+	  SourceBlock		  "dsparch4/Analog\nFilter Design"
+	  SourceType		  "Analog Filter Design"
+	  method		  "Butterworth"
+	  filttype		  "Lowpass"
+	  N			  "2"
+	  Wlo			  "0.2*pi"
+	  Whi			  "80"
+	  Rp			  "2"
+	  Rs			  "40"
 	}
 	Block {
 	  BlockType		  Constant
@@ -1462,9 +1480,15 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Piping\nTransport\nDelay1"
+	  SrcBlock		  "CHP MIxing TC1"
 	  SrcPort		  1
 	  DstBlock		  "Remove\nAlgebraic\nLoop"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Piping\nTransport\nDelay1"
+	  SrcPort		  1
+	  DstBlock		  "CHP MIxing TC1"
 	  DstPort		  1
 	}
 	Line {
@@ -1668,13 +1692,6 @@ Library {
 	  Position		  [385, 84]
 	  HorizontalAlignment	  "left"
 	  ZOrder		  -1
-	}
-	Annotation {
-	  SID			  "39"
-	  Name			  "Removed DSP\nAnalogue filter\n(missing toolbox)"
-	  Position		  [536, 237]
-	  BackgroundColor	  "magenta"
-	  ZOrder		  -2
 	}
       }
     }

@@ -1,0 +1,743 @@
+<ui_settings>
+    <version>2.0</version>
+    <mode>2</mode>
+    <canvas_bg_color>#ffffff</canvas_bg_color>
+    <initialization_code><![CDATA[# NOTE: Variables and functions defined here will be
+# available for use in all Macro and Expression scripts.
+# This code is always executed prior simulation start.
+
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+dms_disconect = 'DMS_ENGINE.Disconnect'
+dms_reconect = 'DMS_ENGINE.Reconnect'
+dms_exp_req = 'DMS_ENGINE.Export Request'
+dms_exp_val = 'DMS_ENGINE.Export Value'
+dms_import_req = 'DMS_ENGINE.Import Request'
+dms_import_val = 'DMS_ENGINE.Import Value'
+dms_pf_req = 'DMS_ENGINE.PF Request'
+dms_pf_val = 'DMS_ENGINE.PF Value'
+dms_var_req = 'DMS_ENGINE.VAR Request'
+dms_var_val = 'DMS_ENGINE.VAR Value'
+dms_dr_req = 'DMS_ENGINE.DR Request'
+dms_dr_val = 'DMS_ENGINE.DR Value'
+dms_blc_start_en = 'DMS_ENGINE.Black Start Enable'
+dms_mcgrid_ctrl_start = 'DMS_ENGINE.MicorGrid Controler Start'
+dms_req_to_sync = 'DMS_ENGINE.Request To Sync To POI'
+dms_bs_en = 'DMS_ENGINE.BS Enabled'
+
+
+time_in_sec = 0
+dms_enable = False
+loop_time = 30*60
+dms_cmds = [     #dms reg      ,val, time in s
+                [ dms_exp_req, 1000, 5.5*60],
+                [ dms_exp_req, 0, 7*60],
+
+                [ dms_exp_req, 4000, 7.5*60],
+                [ dms_exp_req, 0, 9*60],
+
+                [ dms_import_val, 8000, 17.5*60],
+                [ dms_import_val, 0, 18.5*60],
+
+                [ dms_pf_req, 0.5, 6.5*60],
+                [ dms_pf_req, 1, 9*60],
+
+                [ dms_disconect, 1, 9*60],
+                [ dms_disconect, 0, 17*60],
+
+                [ dms_req_to_sync, 1, 5*60],
+                [ dms_req_to_sync, 0, 9*60],
+
+                [ dms_req_to_sync, 1, 17*60],
+                [ dms_req_to_sync, 0, 20*60],
+
+                [ dms_mcgrid_ctrl_start, 1, 3*60],
+
+                [ dms_bs_en, 1, 3*60],
+            ]]]></initialization_code>
+    <components>
+        <component_data>
+                <id>f7cab000ec8511e68ea14c348851fa7b</id>
+                <name><![CDATA[DMS]]></name>
+                <type>Group</type>
+                <description><![CDATA[None]]></description>
+                <components_ids><![CDATA[[u'166c54eeec8611e694104c348851fa7b', u'33833b30ec8611e680aa4c348851fa7b', u'9e3efe00ec8611e68a8d4c348851fa7b', u'946f21aeec8711e69b754c348851fa7b', u'b421c170ec8711e69c654c348851fa7b']]]></components_ids>
+                <hierarchy_position>1</hierarchy_position>
+                <canvas_bg_color>#ffffff</canvas_bg_color>
+                <widget_settings>
+                    <x>120</x>
+                    <y>64</y>
+                    <width>1136</width>
+                    <height>296</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                    <collapsed>False</collapsed>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>166c54eeec8611e694104c348851fa7b</id>
+                <name><![CDATA[DMS Time Sequence]]></name>
+                <type>Macro</type>
+                <description><![CDATA[None]]></description>
+                <on_click_code active="True"><![CDATA[# NOTE: The code specified in this handler will be executed on button click.
+
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+global dms_enable
+dms_enable = not dms_enable]]></on_click_code>
+                <on_start_code active="True"><![CDATA[# NOTE: The code specified in this handler will be executed on simulation start.
+# NOTE: Variables specified here will be available in other two handlers
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+global time_in_sec
+time_in_sec = 0
+
+global dms_enable
+dms_enable = False]]></on_start_code>
+                <on_timer_code active="True"><![CDATA[# NOTE: The code specified in this handler will be executed on timer event.
+
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+#time_cmd(time, cmd_time, var, value)
+#dms_disconect = 'DMS_ENGINE.Disconnect'
+#dms_reconect = 'DMS_ENGINE.Reconnect'
+#dms_exp_req = 'DMS_ENGINE.Export Request'
+#dms_exp_val = 'DMS_ENGINE.Export Value'
+#dms_import_req = 'DMS_ENGINE.Import Request'
+#dms_import_val = 'DMS_ENGINE.Import Value'
+#dms_pf_req = 'DMS_ENGINE.PF Request'
+#dms_pf_val = 'DMS_ENGINE.PF Value'
+#dms_var_req = 'DMS_ENGINE.VAR Request'
+#dms_var_val = 'DMS_ENGINE.VAR Value'
+#dms_dr_req = 'DMS_ENGINE.DR Request'
+#dms_dr_val = 'DMS_ENGINE.DR Value'
+global dms_enable
+global time_in_sec
+
+if dms_enable:
+    for values in dms_cmds:
+        if(time_in_sec == values[2]):
+            hil.set_cp_input_value('User defined', 'DMS_ENGINE', values[0], values[1])
+
+
+
+    time_in_sec += 1
+    
+    if time_in_sec == loop_time:
+        time_in_sec = 0
+        
+
+
+
+
+
+
+]]></on_timer_code>
+                <run_each>1000</run_each>
+                <execute_on_load>False</execute_on_load>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>712</x>
+                    <y>8</y>
+                    <width>168</width>
+                    <height>40</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>33833b30ec8611e680aa4c348851fa7b</id>
+                <name><![CDATA[DMS Override]]></name>
+                <type>Group</type>
+                <description><![CDATA[None]]></description>
+                <components_ids><![CDATA[[u'39ac8840ec8611e6874a4c348851fa7b', u'39af9580ec8611e6ba1a4c348851fa7b', u'39b27bb0ec8611e68b5d4c348851fa7b', u'39b588f0ec8611e6a6904c348851fa7b', u'39b784c0ec8611e6b7d24c348851fa7b', u'39b95980ec8611e6a2b74c348851fa7b', u'39bb0730ec8611e681374c348851fa7b', u'39bc3fb0ec8611e6adc74c348851fa7b', u'39bd7830ec8611e6a8a94c348851fa7b', u'39beb0aeec8611e686234c348851fa7b', u'39c01040ec8611e6abf64c348851fa7b', u'39c16fcfec8611e6887e4c348851fa7b', u'c167a21eecbc11e6b4394c348851fa7b', u'c3949440ecbc11e685184c348851fa7b', u'c749ad00ecbc11e6bf844c348851fa7b']]]></components_ids>
+                <hierarchy_position>2</hierarchy_position>
+                <canvas_bg_color>#ffffff</canvas_bg_color>
+                <widget_settings>
+                    <x>0</x>
+                    <y>8</y>
+                    <width>696</width>
+                    <height>248</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                    <collapsed>False</collapsed>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39ac8840ec8611e6874a4c348851fa7b</id>
+                <name><![CDATA[DMS Disconect]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Disconnect', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Disconnect', 0)
+
+]]></code>
+                <inputValue><![CDATA[0.0]]></inputValue>
+                <inputValueType>float</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>16</x>
+                    <y>0</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39af9580ec8611e6ba1a4c348851fa7b</id>
+                <name><![CDATA[DMS  DR Value ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.DR Value', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.DR Value', 0)]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>488</x>
+                    <y>136</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39b27bb0ec8611e68b5d4c348851fa7b</id>
+                <name><![CDATA[DMS VAR Request ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.VAR Request', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.VAR Request', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>488</x>
+                    <y>0</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39b588f0ec8611e6a6904c348851fa7b</id>
+                <name><![CDATA[DMS  PF Request ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.PF Request', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.PF Request', 0)
+
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>240</x>
+                    <y>88</y>
+                    <width>216</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39b784c0ec8611e6b7d24c348851fa7b</id>
+                <name><![CDATA[DMS Reconnect]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Reconnect', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Reconnect', 0)]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>16</x>
+                    <y>40</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39b95980ec8611e6a2b74c348851fa7b</id>
+                <name><![CDATA[DMS VAR Value ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.VAR Value', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.VAR Value', 0)]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>488</x>
+                    <y>40</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39bb0730ec8611e681374c348851fa7b</id>
+                <name><![CDATA[DMS  Import Request ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Import Request', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Import Request', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>240</x>
+                    <y>0</y>
+                    <width>216</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39bc3fb0ec8611e6adc74c348851fa7b</id>
+                <name><![CDATA[DMS  DR Request ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.DR Request', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.DR Request', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>488</x>
+                    <y>88</y>
+                    <width>192</width>
+                    <height>40</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39bd7830ec8611e6a8a94c348851fa7b</id>
+                <name><![CDATA[DMS  Import Value ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Import Value', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Import Value', 0)
+
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>240</x>
+                    <y>40</y>
+                    <width>216</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39beb0aeec8611e686234c348851fa7b</id>
+                <name><![CDATA[DMS Export Value ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Export Value', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Export Value', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>16</x>
+                    <y>128</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39c01040ec8611e6abf64c348851fa7b</id>
+                <name><![CDATA[DMS Export Request ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Export Request', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Export Request', 0)]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>16</x>
+                    <y>88</y>
+                    <width>192</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>39c16fcfec8611e6887e4c348851fa7b</id>
+                <name><![CDATA[DMS  PF Value ]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.PF Value', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.PF Value', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>240</x>
+                    <y>136</y>
+                    <width>216</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>9e3efe00ec8611e68a8d4c348851fa7b</id>
+                <name><![CDATA[ ]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[None]]></description>
+                <data_type>Expression</data_type>
+                <signal_name><![CDATA[]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Green</led_color>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+# NOTE: Only read functions are available from HIL Control Panel API
+#------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+global dms_enable
+displayValue = dms_enable
+
+]]></code>
+                <updateRate>1000</updateRate>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>880</x>
+                    <y>8</y>
+                    <width>64</width>
+                    <height>40</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>946f21aeec8711e69b754c348851fa7b</id>
+                <name><![CDATA[Note component]]></name>
+                <type>TextNote</type>
+                <description><![CDATA[None]]></description>
+                <text><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Arial'; font-size:8pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">DMS On</p></body></html>]]></text>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>880</x>
+                    <y>8</y>
+                    <width>48</width>
+                    <height>40</height>
+                    <background_color><![CDATA[#f0f0f0]]></background_color>
+                    <background_type><![CDATA[Transparent]]></background_type>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>b421c170ec8711e69c654c348851fa7b</id>
+                <name><![CDATA[Note component]]></name>
+                <type>TextNote</type>
+                <description><![CDATA[None]]></description>
+                <text><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Arial'; font-size:8pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:10pt;">Press start button to enable DMS sequence.</span></p></body></html>]]></text>
+                <hierarchy_position>2</hierarchy_position>
+                <widget_settings>
+                    <x>704</x>
+                    <y>48</y>
+                    <width>264</width>
+                    <height>32</height>
+                    <background_color><![CDATA[#ffff00]]></background_color>
+                    <background_type><![CDATA[Filled]]></background_type>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>c167a21eecbc11e6b4394c348851fa7b</id>
+                <name><![CDATA[DMS Black Start Enable]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Black Start Enable', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Black Start Enable', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>0</x>
+                    <y>176</y>
+                    <width>208</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>c3949440ecbc11e685184c348851fa7b</id>
+                <name><![CDATA[DMS MicorGrid Controler Start]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.MicorGrid Controler Start', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.MicorGrid Controler Start', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>208</x>
+                    <y>176</y>
+                    <width>248</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>c749ad00ecbc11e6bf844c348851fa7b</id>
+                <name><![CDATA[DMS Request To Sync To POI]]></name>
+                <type>TextBoxMacro</type>
+                <description><![CDATA[None]]></description>
+                <code><![CDATA[#------------- MANDATORY IMPORTS ---------------
+# HIL Control Panel API
+from typhoon.api import hil_control_panel as hil
+
+# Function for printing text to console (e.g printf("Hello world"))
+from typhoon.utilities.misc import printf
+#------------------------------------------------
+
+# NOTE: entered value is available through variable 'inputValue'
+
+if(inputValue > 0):
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Request To Sync To POI', 1)
+else:
+    hil.set_cp_input_value('User defined', 'DMS_ENGINE', 'DMS_ENGINE.Request To Sync To POI', 0)
+]]></code>
+                <inputValue><![CDATA[0]]></inputValue>
+                <inputValueType>int</inputValueType>
+                <execute_on_load>True</execute_on_load>
+                <unit><![CDATA[]]></unit>
+                <hierarchy_position>3</hierarchy_position>
+                <widget_settings>
+                    <x>472</x>
+                    <y>176</y>
+                    <width>208</width>
+                    <height>32</height>
+                    <inputWidgetWidth>80</inputWidgetWidth>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        </components>
+</ui_settings>
