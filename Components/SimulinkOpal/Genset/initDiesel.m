@@ -43,4 +43,18 @@ switch GenSel
         GP.Ex.Exciter = [ 1 0.001 ];
         GP.Ex.Damping = [0.02 1 ];
         GP.Gov.Kp = 2;
+   case 4
+        GP.Pn = 1e9; %1GVA
+        GP.Vn = 115000;
+        GP.fn = 60;
+        GP.Stator = [0.008979 0.05 2.35 1.72];
+        GP.Field = [0.00206 0.511];
+        GP.Dampers = [0.2826 3.738 0.02545 0.2392];
+        GP.Inertia = [4.2 0.009238 2];
+        GP.Initial = [ -99  0  0  0  0  0  0  0  0 ];
+        GP.Ex.Tr = 20e-4;
+        GP.Ex.Regulator = [ 200 2e-3 ];
+        GP.Ex.Exciter = [ 1 0.001 ];
+        GP.Ex.Damping = [0.02 1 ];
+        GP.Gov.Kp = 1/0.05;
 end
