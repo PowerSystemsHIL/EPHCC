@@ -1,0 +1,680 @@
+<ui_settings>
+    <version>2.1</version>
+    <model_locked>False</model_locked>
+    <canvas_bg_color>#ffffff</canvas_bg_color>
+    <initialization_code><![CDATA[# NOTE: Variables and functions defined here will be
+# available for use in all Macro and Expression scripts.
+# This code is always executed prior simulation start.
+# HIL API
+import typhoon.api.hil as hil
+
+# Variable 'SETTINGS_DIR' holds directory where loaded Panel .cus file is located.
+# Also you can call 'get_settings_dir_path()' function in any
+# Macro and Expression scripts to get the same directory.
+SETTINGS_DIR = get_settings_dir_path()
+
+# Numpy module is imported as 'np'
+# Scipy module is imported as 'sp'
+]]></initialization_code>
+    <components>
+        <component_data>
+                <id>e9437b218cc111e7a0cf1803734fe704</id>
+                <name><![CDATA[Generator Voltage]]></name>
+                <type>MultiTraceDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ [sigVal1,sigVal2,sigVal3], ["Signal 1 name","Signal 2 name","Signal 3 name"] ]
+x1 = hil.read_analog_signal(name = 'DIESEL GENSET.DIESEL_GCB_Measurements.Vpu')
+x2 = hil.read_analog_signal(name = 'DIESEL GENSET.NG_Gen_machine mechanical speed') / (120 * np.pi / 2)
+
+displayValue = [[x1, x2], ['Genset Vpu', 'Speed']]
+]]></code>
+                <signals><![CDATA[[u'DIESEL_MCB.VA_grid2rms']]]></signals>
+                <updateRate>250</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>32.0</x>
+                    <y>376.0</y>
+                    <width>500</width>
+                    <height>330</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <x_title><![CDATA[x axes]]></x_title>
+                    <y_title><![CDATA[y axes]]></y_title>
+                    <y_range_min>6300.0</y_range_min>
+                    <y_range_max>9600.0</y_range_max>
+                    <time_window>10</time_window>
+                    <auto_scale_enabled>True</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                    <x_axis_title_enabled>False</x_axis_title_enabled>
+                    <y_axis_title_enabled>False</y_axis_title_enabled>
+                    <use_reference_curve>False</use_reference_curve>
+                    <reference_curve_code><![CDATA[# NOTE: Global namespace variables are available
+# Selected time window is available through variable 'timeWindow'
+# Selected update rate is available through variable 'updateRate'
+
+# reference curve data point
+curveData = 12.0
+
+# specify curve options ('data' part is mandatory)
+refCurveData1 = {
+    # reference curve data point
+    "data": curveData,
+
+    # curve line style: 'solid', 'dashed', 'dashdot', 'dotted'
+    "line_style": "dashed",
+
+    # curve line color: 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow'
+    "line_color": 'red',
+
+    # curve line width: float number
+    "line_width": 2.0,
+    
+    # reference curve title
+    "title": "Reference curve",
+
+    # show a title in the legend
+    "show_in_legend": True
+}
+
+# list of reference curves data: [ref1, ref2,...refN]
+referenceCurves = [refCurveData1]
+
+]]></reference_curve_code>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>0f8862f08cc211e7bc491803734fe704</id>
+                <name><![CDATA[kW: Diesel and Grid]]></name>
+                <type>MultiTraceDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Expression</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ [sigVal1,sigVal2,sigVal3], ["Signal 1 name","Signal 2 name","Signal 3 name"] ]
+
+
+x1 = hil.read_analog_signal(name = 'GEN_MS.calc.P') / 1000
+x2 = hil.read_analog_signal(name = 'MS.calc.P') / 1000
+
+displayValue = [[x1, x2], ['Genset kW', 'Grid kW']]]]></code>
+                <signals><![CDATA[[u'Genset kW', u'Grid kW']]]></signals>
+                <updateRate>250</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>544.0</x>
+                    <y>56.0</y>
+                    <width>500</width>
+                    <height>330</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <x_title><![CDATA[x axes]]></x_title>
+                    <y_title><![CDATA[y axes]]></y_title>
+                    <y_range_min>-20.0</y_range_min>
+                    <y_range_max>20.0</y_range_max>
+                    <time_window>10</time_window>
+                    <auto_scale_enabled>True</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                    <x_axis_title_enabled>False</x_axis_title_enabled>
+                    <y_axis_title_enabled>False</y_axis_title_enabled>
+                    <use_reference_curve>False</use_reference_curve>
+                    <reference_curve_code><![CDATA[# NOTE: Global namespace variables are available
+# Selected time window is available through variable 'timeWindow'
+# Selected update rate is available through variable 'updateRate'
+
+# reference curve data point
+curveData = 12.0
+
+# specify curve options ('data' part is mandatory)
+refCurveData1 = {
+    # reference curve data point
+    "data": curveData,
+
+    # curve line style: 'solid', 'dashed', 'dashdot', 'dotted'
+    "line_style": "dashed",
+
+    # curve line color: 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow'
+    "line_color": 'red',
+
+    # curve line width: float number
+    "line_width": 2.0,
+    
+    # reference curve title
+    "title": "Reference curve",
+
+    # show a title in the legend
+    "show_in_legend": True
+}
+
+# list of reference curves data: [ref1, ref2,...refN]
+referenceCurves = [refCurveData1]
+
+]]></reference_curve_code>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>4fb3d89e8cc211e794451803734fe704</id>
+                <name><![CDATA[Electrical torque]]></name>
+                <type>MultiTraceDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ [sigVal1,sigVal2,sigVal3], ["Signal 1 name","Signal 2 name","Signal 3 name"] ]
+
+x1 = hil.read_analog_signal(name = 'GEN_MS.calc.Q') / 1000
+x2 = hil.read_analog_signal(name = 'MS.calc.Q') / 1000
+
+displayValue = [[x1, x2], ['Genset kVAR', 'Grid kVAR']]
+
+]]></code>
+                <signals><![CDATA[[u'DIESEL GENSET1.Electrical Torque', u'DIESEL GENSET1.Governor_and_Diesel_Engine.Tmech_SI']]]></signals>
+                <updateRate>250</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>552.0</x>
+                    <y>384.0</y>
+                    <width>500</width>
+                    <height>330</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <x_title><![CDATA[x axes]]></x_title>
+                    <y_title><![CDATA[y axes]]></y_title>
+                    <y_range_min>-17000.0</y_range_min>
+                    <y_range_max>0.0</y_range_max>
+                    <time_window>10</time_window>
+                    <auto_scale_enabled>True</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                    <x_axis_title_enabled>False</x_axis_title_enabled>
+                    <y_axis_title_enabled>False</y_axis_title_enabled>
+                    <use_reference_curve>False</use_reference_curve>
+                    <reference_curve_code><![CDATA[# NOTE: Global namespace variables are available
+# Selected time window is available through variable 'timeWindow'
+# Selected update rate is available through variable 'updateRate'
+
+# reference curve data point
+curveData = 12.0
+
+# specify curve options ('data' part is mandatory)
+refCurveData1 = {
+    # reference curve data point
+    "data": curveData,
+
+    # curve line style: 'solid', 'dashed', 'dashdot', 'dotted'
+    "line_style": "dashed",
+
+    # curve line color: 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow'
+    "line_color": 'red',
+
+    # curve line width: float number
+    "line_width": 2.0,
+    
+    # reference curve title
+    "title": "Reference curve",
+
+    # show a title in the legend
+    "show_in_legend": True
+}
+
+# list of reference curves data: [ref1, ref2,...refN]
+referenceCurves = [refCurveData1]
+
+]]></reference_curve_code>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>bddbf5218cf311e7af7b1803734fe704</id>
+                <name><![CDATA[Generator Hz]]></name>
+                <type>DigitalDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = 0.0
+
+]]></code>
+                <signal_name><![CDATA[GEN_MS.calc.f]]></signal_name>
+                <unit><![CDATA[]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <decimals><![CDATA[2]]></decimals>
+                <updateRate>250</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>104.0</x>
+                    <y>728.0</y>
+                    <width>144</width>
+                    <height>56</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <green_range>(0, 0, 0, 0)</green_range>
+                    <orange_range>(0, 0, 0, 0)</orange_range>
+                    <red_range>(0, 0, 0, 0)</red_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>f08885b08cf311e7b57f1803734fe704</id>
+                <name><![CDATA[Generator kW]]></name>
+                <type>DigitalDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Expression</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+
+displayValue = hil.read_analog_signal(name = 'GEN_MS.calc.P') / 1000]]></code>
+                <signal_name><![CDATA[GEN_MS.calc.P]]></signal_name>
+                <unit><![CDATA[]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <decimals><![CDATA[2]]></decimals>
+                <updateRate>250</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>288.0</x>
+                    <y>728.0</y>
+                    <width>144</width>
+                    <height>56</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <green_range>(0, 0, 0, 0)</green_range>
+                    <orange_range>(0, 0, 0, 0)</orange_range>
+                    <red_range>(0, 0, 0, 0)</red_range>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>1f3fca80927611e793ea1803734fe704</id>
+                <name><![CDATA[OPEN GCB COMMAND]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[HIL3 digital input 7]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Red</led_color>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1080.0</x>
+                    <y>80.0</y>
+                    <width>176</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>68f7674f927611e7b1651803734fe704</id>
+                <name><![CDATA[GCB CLOSED REPLY   ]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[DIESEL GENSET1.DIESEL_GCB_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Red</led_color>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1088.0</x>
+                    <y>104.0</y>
+                    <width>168</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>afb747f0927611e7adb51803734fe704</id>
+                <name><![CDATA[MCB OPEN COMMAND]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[HIL3 digital input 9]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Red</led_color>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1120.0</x>
+                    <y>8.0</y>
+                    <width>136</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ce2cacc0927611e782ad1803734fe704</id>
+                <name><![CDATA[MCB CLOSED REPLY]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[S1_fb]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Red</led_color>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1128.0</x>
+                    <y>32.0</y>
+                    <width>128</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>ebda069e927611e7849f1803734fe704</id>
+                <name><![CDATA[DIESEL GENSET EXCITER/FUEL OFF]]></name>
+                <type>LedDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Digital signal</data_type>
+                <signal_name><![CDATA[EXC]]></signal_name>
+                <hil_device>0</hil_device>
+                <led_color>Red</led_color>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing LED indicator state
+# True -> On, False -> Off
+displayValue = False
+]]></code>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>1032.0</x>
+                    <y>160.0</y>
+                    <width>224</width>
+                    <height>32</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+            </component_data>
+        <component_data>
+                <id>e5dde8808cee11e79b171803734fe704</id>
+                <name><![CDATA[Frequency [Hz]]]></name>
+                <type>MultiTraceDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing values
+# that will be displayed
+# e.g displayValue = [ [sigVal1,sigVal2,sigVal3], ["Signal 1 name","Signal 2 name","Signal 3 name"] ]
+displayValue = []
+
+]]></code>
+                <signals><![CDATA[[u'GEN_MS.calc.f']]]></signals>
+                <updateRate>250</updateRate>
+                <background_color>#ffffff</background_color>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>40.0</x>
+                    <y>56.0</y>
+                    <width>488</width>
+                    <height>336</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <x_title><![CDATA[x axes]]></x_title>
+                    <y_title><![CDATA[y axes]]></y_title>
+                    <y_range_min>56.0</y_range_min>
+                    <y_range_max>64.0</y_range_max>
+                    <time_window>10</time_window>
+                    <auto_scale_enabled>False</auto_scale_enabled>
+                    <legend_enabled>True</legend_enabled>
+                    <x_axis_title_enabled>False</x_axis_title_enabled>
+                    <y_axis_title_enabled>False</y_axis_title_enabled>
+                    <use_reference_curve>False</use_reference_curve>
+                    <reference_curve_code><![CDATA[# NOTE: Global namespace variables are available
+# Selected time window is available through variable 'timeWindow'
+# Selected update rate is available through variable 'updateRate'
+
+# reference curve data point
+curveData = 12.0
+
+# specify curve options ('data' part is mandatory)
+refCurveData1 = {
+    # reference curve data point
+    "data": curveData,
+
+    # curve line style: 'solid', 'dashed', 'dashdot', 'dotted'
+    "line_style": "dashed",
+
+    # curve line color: 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow'
+    "line_color": 'red',
+
+    # curve line width: float number
+    "line_width": 2.0,
+    
+    # reference curve title
+    "title": "Reference curve",
+
+    # show a title in the legend
+    "show_in_legend": True
+}
+
+# list of reference curves data: [ref1, ref2,...refN]
+referenceCurves = [refCurveData1]
+
+]]></reference_curve_code>
+                </advance_widget_settings>
+            </component_data>
+        <component_data>
+                <id>56d8e6219cad11e7b7981803734fe704</id>
+                <name><![CDATA[Capture/Scope]]></name>
+                <type>Capture/Scope</type>
+                <description><![CDATA[]]></description>
+                <hierarchy_position>1</hierarchy_position>
+                <working_mode>windowed</working_mode>
+                <widget_settings>
+                    <x>1120.0</x>
+                    <y>272.0</y>
+                    <width>120</width>
+                    <height>120</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                    <state>Capture</state>
+                    <layout>None</layout>
+
+                    <capture>
+                        <time_interval>20.0</time_interval>
+                        <sample_rate>1000.0</sample_rate>
+                        <background_color>False</background_color>
+                        <layout>Vertical</layout>
+                        <legend>True</legend>
+                        <trigger>
+                            <type>Analog</type>
+                            <source>DIESEL GENSET1.Governor_and_Diesel_Engine.wmeas</source>
+                            <edge>Falling edge</edge>
+                            <treshold>0.99</treshold>
+                            <offset>10.0</offset>
+                        </trigger>
+
+                        <analog_signals>
+                            <analog>
+                            <chanel>0</chanel>
+                            <name>DIESEL GENSET1.Governor_and_Diesel_Engine.wmeas</name>
+                            <vertical_scale>Auto</vertical_scale>
+                            <vertical_offset>0</vertical_offset>
+                            <coupling>False</coupling>
+                            <viewports>
+                                
+                                <num_viewport>1</num_viewport>
+                                
+                           </viewports>
+                        </analog>
+                            <analog>
+                            <chanel>1</chanel>
+                            <name>DIESEL GENSET1.NG_Gen_machine electrical torque</name>
+                            <vertical_scale>Auto</vertical_scale>
+                            <vertical_offset>0</vertical_offset>
+                            <coupling>False</coupling>
+                            <viewports>
+                                
+                                <num_viewport>2</num_viewport>
+                                
+                           </viewports>
+                        </analog>
+                            </analog_signals>
+
+                         <digital_signals>
+                            </digital_signals>
+
+                    </capture>
+
+                    <scope>
+                        <time_base>0.005 </time_base>
+                        <background_color>False</background_color>
+                        <layout>Grid</layout>
+                        <legend>True</legend>
+                        <trigger>
+                            <mode>Auto</mode>
+                            <type>Analog</type>
+                            <source>None</source>
+                            <edge>Rising edge</edge>
+                            <treshold>0.0</treshold>
+                            <offset>50.0</offset>
+                        </trigger>
+
+                         <analog_signals>
+                            </analog_signals>
+
+                        <digital_signals>
+                            </digital_signals>
+
+                    </scope>
+
+                </widget_settings>
+
+            </component_data>
+        <component_data>
+                <id>bb92fb219fad11e7a2001803734fe704</id>
+                <name><![CDATA[Electrical Torque]]></name>
+                <type>DigitalDisplay</type>
+                <description><![CDATA[]]></description>
+                <data_type>Analog signal</data_type>
+                <code><![CDATA[#----------------------- MANDATORY IMPORT --------------------------
+# HIL API
+import typhoon.api.hil as hil
+
+# NOTE: Only read functions are available from the HIL API
+#-------------------------------------------------------------------
+
+# mandatory variable used for storing value
+# that will be displayed
+displayValue = 0.0
+
+]]></code>
+                <signal_name><![CDATA[DIESEL GENSET1.Electrical Torque]]></signal_name>
+                <unit><![CDATA[]]></unit>
+                <automatic_unit>True</automatic_unit>
+                <decimals><![CDATA[2]]></decimals>
+                <updateRate>500</updateRate>
+                <hierarchy_position>1</hierarchy_position>
+                <widget_settings>
+                    <x>552</x>
+                    <y>728</y>
+                    <width>144</width>
+                    <height>56</height>
+                    <appearance><![CDATA[Flat]]></appearance>
+                </widget_settings>
+                <advance_widget_settings>
+                    <color_range>False</color_range>
+                    <green_range>(0, 0, 0, 0)</green_range>
+                    <orange_range>(0, 0, 0, 0)</orange_range>
+                    <red_range>(0, 0, 0, 0)</red_range>
+                </advance_widget_settings>
+            </component_data>
+        </components>
+</ui_settings>
